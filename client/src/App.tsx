@@ -45,6 +45,13 @@ import InteractiveCallMap from "./pages/InteractiveCallMap";
 import IndigenousChildrenRights from "./pages/IndigenousChildrenRights";
 import Shop from "./pages/Shop";
 import NewspaperFrontPage from "./pages/NewspaperFrontPage";
+import ElectoralReformDemands from "./pages/ElectoralReformDemands";
+import BrokenPromises from "./pages/BrokenPromises";
+import AccountabilityFramework from "./pages/AccountabilityFramework";
+import LifestyleInequalityReport from "./pages/LifestyleInequalityReport";
+import ParliamentaryReformManifesto from "./pages/ParliamentaryReformManifesto";
+import InMemoriam from "./pages/InMemoriam";
+import AlliesAndOrganizations from "./pages/AlliesAndOrganizations";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -84,12 +91,19 @@ function Router() {
       <Route path={"/legal-violations-framework"} component={LegalViolationsFramework} />
       <Route path={"/hall-of-shame"} component={HallOfShame} />
       <Route path={"/how-to-document-your-case"} component={HowToDocumentYourCase} />
-      <Route path={"orange-shirt-day-investigation"} component={OrangeShirtDayInvestigation} />
+      <Route path="/orange-shirt-day-investigation" component={OrangeShirtDayInvestigation} />
       <Route path="/call-log-documentation" component={CallLogDocumentation} />
       <Route path="/interactive-call-map" component={InteractiveCallMap} />
       <Route path="/indigenous-children-rights" component={IndigenousChildrenRights} />
       <Route path="/shop" component={Shop} />
       <Route path="/newspaper-front-page" component={NewspaperFrontPage} />
+      <Route path="/electoral-reform-demands" component={ElectoralReformDemands} />
+      <Route path="/broken-promises" component={BrokenPromises} />
+      <Route path="/accountability-framework" component={AccountabilityFramework} />
+      <Route path="/lifestyle-inequality-report" component={LifestyleInequalityReport} />
+      <Route path="/parliamentary-reform-manifesto" component={ParliamentaryReformManifesto} />
+      <Route path="/in-memoriam" component={InMemoriam} />
+      <Route path="/allies-and-organizations" component={AlliesAndOrganizations} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

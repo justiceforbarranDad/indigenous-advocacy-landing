@@ -394,3 +394,77 @@ All accountability pages redesigned with vintage newspaper aesthetic (black & wh
 - [x] Integrate powerful headlines and pull quotes - COMPLETE
 - [x] Test all changes and verify functionality - COMPLETE (17 tests passing)
 - [ ] Save checkpoint with newspaper front page
+
+
+## COMPREHENSIVE POLITICAL REFORM MANIFESTO (March 15, 2026 - Session 7)
+STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous art, earth tones, visual storytelling)
+- [ ] Redesign Electoral Reform Demands - Three-panel infographic with legal analysis
+- [ ] Redesign 150 Years of Broken Promises - Infographic timeline with Indigenous art
+- [ ] Create Accountability Framework - Three-panel infographic (Problem → Solution → Action)
+- [ ] Create Lifestyle Inequality Report - Infographic comparing politician vs. victim support
+- [ ] Create Parliamentary Reform Manifesto - Multi-panel infographic with complete blueprint
+- [ ] Update newspaper front page - Reflect broader movement scope (land, environment, treaties, finance)
+- [ ] Test all changes and save checkpoint
+
+
+## MERCHANDISE COMING SOON (March 15, 2026 - User Request)
+- [x] Add "Coming Soon" message to Shop page
+- [x] Hide merchandise grid until suppliers are sourced
+- [x] Hide "How It Works" section until launch
+- [x] Hide transparency/CTA sections until launch
+- [x] Add "Help Fund This Movement" button linking to donation page
+- [x] Add "Suggest a Supplier" button with email contact
+- [ ] Notify when suppliers are secured and funds come in
+
+
+## COMPREHENSIVE POLITICAL REFORM MANIFESTO (March 15, 2026 - COMPLETE)
+
+### Infographic-Based Pages Created
+- [x] Electoral Reform Demands page - 4-point proposal with three-panel infographic
+- [x] 150 Years of Broken Promises page - Historical timeline with infographic (1876-2026)
+- [x] Accountability Framework page - 6-month probation system with infographic
+- [x] Lifestyle Inequality Report page - Politician salaries vs. victim support with infographic
+- [x] Parliamentary Reform Manifesto page - Complete blueprint with three-panel infographic
+- [x] In Memoriam page - Newspaper memorial aesthetic for elders and justice figures
+- [x] Allies & Organizations page - Indigenous orgs, media, human rights groups to tag
+
+### Infographics Generated
+- [x] Electoral Reform Demands infographic - Three-panel (Private Channels Failed → Public Accountability → Real Change)
+- [x] 150 Years of Broken Promises infographic - Three-panel historical timeline with Indigenous art
+- [x] Accountability Framework infographic - Problem → Solution → Consequence
+- [x] Lifestyle Inequality Report infographic - Politician Luxury → Victim Poverty → Demand Equity
+- [x] Parliamentary Reform Manifesto infographic - Current System Broken → Systemic Reform → Real Democracy
+
+### Navigation & Routing
+- [x] Added all 7 new pages to App.tsx routing
+- [x] Fixed routing error on orange-shirt-day-investigation page
+- [x] All routes properly configured with leading slashes
+
+### Merchandise Shop
+- [x] Added "Coming Soon" message to Shop page
+- [x] Hidden merchandise grid until suppliers secured
+- [x] Hidden "How It Works" section until launch
+- [x] Added "Help Fund This Movement" button
+- [x] Added "Suggest a Supplier" email contact
+
+### Amplification Strategy
+- [x] Created Allies & Organizations page with copy-to-clipboard functionality
+- [x] Listed 6 Indigenous organizations to tag
+- [x] Listed 6 media outlets to tag
+- [x] Listed 5 human rights organizations to tag
+- [x] Added suggested hashtags for Indigenous justice movement
+- [x] Provided pre-filled tagging instructions for supporters
+
+### Design Consistency
+- [x] Removed forced Elon Musk quotes - kept authentic movement voice
+- [x] Maintained Indigenous advocacy infographic aesthetic throughout
+- [x] Used consistent color palette (forest green, amber orange, cream, charcoal)
+- [x] Applied newspaper memorial aesthetic to In Memoriam page
+- [x] All pages feature three-panel infographic progression
+
+### Status: POLITICAL REFORM MANIFESTO COMPLETE
+- All reform pages created with infographic aesthetic
+- All pages routed and accessible
+- Allies & Organizations page ready for grassroots amplification
+- Merchandise Coming Soon messaging in place
+- Movement ready for full launch and social media amplification

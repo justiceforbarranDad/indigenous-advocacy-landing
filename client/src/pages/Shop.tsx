@@ -132,8 +132,37 @@ export default function Shop() {
         </div>
       </section>
 
-      {/* Merchandise Grid */}
-      <section className="py-16 md:py-24">
+      {/* Coming Soon Notice */}
+      <section className="py-12 md:py-16 bg-amber-orange/20 border-t-4 border-b-4 border-amber-orange">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <div className="bg-white rounded-lg p-8 border-2 border-amber-orange shadow-lg">
+            <h2 className="text-3xl md:text-4xl font-bold text-forest-green mb-4">🚀 Coming Soon</h2>
+            <p className="text-lg text-charcoal/80 mb-4">
+              We are currently sourcing suppliers and establishing partnerships to bring you high-quality merchandise that supports the Indigenous Justice Advocacy movement.
+            </p>
+            <p className="text-base text-charcoal/70 mb-6">
+              Once initial donations come in, we will launch our full merchandise collection with print-on-demand partners. All profits will go directly to legal action and systemic accountability.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/donate"
+                className="inline-flex items-center justify-center gap-2 bg-forest-green hover:bg-forest-green/90 text-white px-8 py-3 rounded-lg font-bold transition-colors"
+              >
+                Help Fund This Movement
+              </a>
+              <a
+                href="mailto:justiceforbarran@gmail.com"
+                className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-3 rounded-lg font-bold transition-colors"
+              >
+                Suggest a Supplier
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Merchandise Grid - Hidden until launch */}
+      <section className="py-16 md:py-24 hidden">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {merchandise.map((item) => (
@@ -216,10 +245,10 @@ export default function Shop() {
             ))}
           </div>
         </div>
-      </section>
+      </section> {/* End hidden merchandise grid */}
 
-      {/* How It Works */}
-      <section className="py-16 md:py-24 bg-forest-green/10">
+      {/* How It Works - Hidden until launch */}
+      <section className="py-16 md:py-24 bg-forest-green/10 hidden">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-forest-green mb-12 text-center">How Print-on-Demand Works</h2>
 
@@ -251,8 +280,8 @@ export default function Shop() {
         </div>
       </section>
 
-      {/* Transparency Section */}
-      <section className="py-16 md:py-24">
+      {/* Transparency Section - Hidden until launch */}
+      <section className="py-16 md:py-24 hidden">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-forest-green mb-8 text-center">Full Transparency</h2>
 
@@ -274,8 +303,8 @@ export default function Shop() {
             </div>
           </div>
 
-          {/* Call to Action */}
-          <div className="mt-12 text-center">
+          {/* Call to Action - Hidden until launch */}
+          <div className="mt-12 text-center hidden">
             <h3 className="text-2xl font-bold text-forest-green mb-4">Ready to Support the Movement?</h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
