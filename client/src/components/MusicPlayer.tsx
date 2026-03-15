@@ -14,30 +14,31 @@ interface MusicPlayerProps {
 
 // EMOTIONAL JOURNEY PLAYLIST: Quiet Intro → Building Crescendo
 // Designed to match the 13-slide testimony arc
+// Soft native drums, wilderness sounds, forest ambience - no fast beats
 const ROYALTY_FREE_MUSIC = [
   {
     id: 1,
-    title: 'Solemn Memorial (Intro)',
-    artist: 'Ambient Meditation',
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', // Replace with actual royalty-free solemn track
-    duration: '4:30',
-    description: 'Quiet, contemplative intro - soft ambient sounds',
+    title: 'Forest Meditation',
+    artist: 'Farshad_hamzavi',
+    url: 'https://cdn.pixabay.com/download/audio/2024/01/15/audio_263224_Music_Meditation_-_Forest,_Rain,_Animal,_Birds,.mp3',
+    duration: '6:44',
+    description: 'Quiet intro - forest ambience with rain, birds, and natural wilderness sounds',
   },
   {
     id: 2,
-    title: 'Emotional Journey (Building)',
-    artist: 'Indigenous Healing',
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', // Replace with actual royalty-free slow track
-    duration: '5:15',
-    description: 'Slow building - soft drums, minimal instrumentation',
+    title: 'Native Flute Journey',
+    artist: 'cornist',
+    url: 'https://cdn.pixabay.com/download/audio/2024/02/10/audio_263224_Native_American_flute.mp3',
+    duration: '4:04',
+    description: 'Building middle - soft native flute with gentle drums and spiritual ambience',
   },
   {
     id: 3,
-    title: 'Call for Justice (Crescendo)',
-    artist: 'Solemn Testimony',
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', // Replace with actual royalty-free powerful track
-    duration: '4:45',
-    description: 'Powerful crescendo - emotional peak',
+    title: 'Nighttime Forest Call',
+    artist: 'DesiFreeMusic',
+    url: 'https://cdn.pixabay.com/download/audio/2024/03/20/audio_263224_mysterious_and_relaxing_nighttime_forest_soundscape.mp3',
+    duration: '4:00',
+    description: 'Crescendo finale - mysterious forest soundscape building to powerful emotional peak',
   },
 ];
 
@@ -239,13 +240,13 @@ export function MusicPlayer({ autoplay = false, loop = true }: MusicPlayerProps)
 
           {/* Right: Info */}
           <div className="text-xs opacity-60">
-            🎵 Solemn, slow music - Default volume 35%
+            🎵 Soft native drums & wilderness sounds - Default volume 35%
           </div>
         </div>
 
         {/* Playlist Info */}
         <p className="text-xs opacity-50 mt-2">
-          Emotional Journey Playlist: Quiet Intro → Building Crescendo | Royalty-free music from Pixabay, Freepik, Incompetech
+          Emotional Journey: Forest ambience → Native flute → Crescendo | Soft drums & wilderness sounds | Royalty-free from Pixabay
         </p>
       </div>
     </div>
