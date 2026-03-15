@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation } from "../drizzle/schema";
+import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, legalProfiles, InsertLegalProfile } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -154,4 +154,25 @@ export async function getTotalDonations() {
   const result = await db.select().from(donations);
   const total = result.reduce((sum, donation) => sum + donation.amount, 0);
   return total; // in cents
+}
+
+// Legal Profiles Functions
+export async function createLegalProfile(profile: InsertLegalProfile) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  const result = await db.insert(legalProfiles).values(profile);
+  return result;
+}
+
+export async function getLegalProfiles(limit: number = 50, offset: number = 0) {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select().from(legalProfiles).limit(limit).offset(offset);
+  return result;
 }

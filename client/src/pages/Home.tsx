@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/_core/hooks/useAuth';
-import { ChevronDown, Share2, ExternalLink } from 'lucide-react';
+import { ChevronDown, Share2, ExternalLink, Mail } from 'lucide-react';
 
 /**
  * DESIGN SYSTEM: "Orange Sky" — Solemn Memorial / Indigenous Aesthetic
@@ -390,6 +390,20 @@ export default function Home() {
             >
               Children's Rights & Education
               <ExternalLink size={20} />
+            </a>
+            <a
+              href="/legal-support"
+              className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
+            >
+              International Legal Support
+              <ExternalLink size={20} />
+            </a>
+            <a
+              href="mailto:justiceforbarran@gmail.com"
+              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
+            >
+              Contact via Email
+              <Mail size={20} />
             </a>
             <a
               href="https://www.tiktok.com/@barranneedsjustice"

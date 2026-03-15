@@ -3,7 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
-import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations } from "./db";
+import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile } from "./db";
 import { notifyOwner } from "./_core/notification";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
 
@@ -124,6 +124,41 @@ export const appRouter = router({
       const totalCents = await getTotalDonations();
       return { totalCAD: (totalCents / 100).toFixed(2) };
     }),
+  }),
+
+  legal: router({
+    submitLawyerProfile: publicProcedure
+      .input(z.object({
+        lawyerName: z.string().min(1, "Name is required"),
+        email: z.string().email("Valid email required"),
+        jurisdiction: z.string().min(1, "Jurisdiction is required"),
+        specialization: z.string().min(1, "Specialization is required"),
+        experience: z.string().min(1, "Experience is required"),
+        message: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        try {
+          await createLegalProfile({
+            lawyerName: input.lawyerName,
+            email: input.email,
+            jurisdiction: input.jurisdiction,
+            specialization: input.specialization,
+            experience: input.experience,
+            message: input.message || null,
+            status: "pending",
+          });
+          
+          await notifyOwner({
+            title: "New Legal Professional Inquiry",
+            content: `${input.lawyerName} from ${input.jurisdiction} submitted legal profile. Specialization: ${input.specialization}`,
+          });
+          
+          return { success: true, message: "Thank you! Your legal profile has been received." };
+        } catch (error) {
+          console.error("Error submitting legal profile:", error);
+          throw new Error("Failed to submit legal profile");
+        }
+      }),
   }),
 });
 

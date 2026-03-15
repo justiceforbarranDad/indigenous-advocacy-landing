@@ -58,3 +58,20 @@ export const donations = mysqlTable("donations", {
 
 export type Donation = typeof donations.$inferSelect;
 export type InsertDonation = typeof donations.$inferInsert;
+
+// Legal Profiles Table
+export const legalProfiles = mysqlTable("legal_profiles", {
+  id: int("id").autoincrement().primaryKey(),
+  lawyerName: varchar("lawyer_name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  jurisdiction: varchar("jurisdiction", { length: 255 }).notNull(),
+  specialization: text("specialization").notNull(),
+  experience: text("experience").notNull(),
+  message: text("message"),
+  status: mysqlEnum("status", ["pending", "reviewed", "contacted"]).default("pending").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type LegalProfile = typeof legalProfiles.$inferSelect;
+export type InsertLegalProfile = typeof legalProfiles.$inferInsert;

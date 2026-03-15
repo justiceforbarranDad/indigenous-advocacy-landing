@@ -10,6 +10,7 @@ import Resources from "./pages/Resources";
 import ShareStory from "./pages/ShareStory";
 import Donate from "./pages/Donate";
 import ChildrensRights from "./pages/ChildrensRights";
+import LegalSupport from "./pages/LegalSupport";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -19,7 +20,8 @@ function Router() {
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
       <Route path={"/donate"} component={Donate} />
-      <Route path={"/childrens-rights"} component={ChildrensRights} />
+       <Route path={"childrens-rights"} component={ChildrensRights} />
+      <Route path={"legal-support"} component={LegalSupport} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
