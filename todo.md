@@ -320,3 +320,33 @@
 ## NEW FEATURES - MARCH 15, 2026 SESSION 2
 - [x] Newspaper-Style Timeline Redesign - Vintage newspaper aesthetic with black & white (2020-2023) transitioning to color (2024-2026) - COMPLETE
 - [x] Donation Tracker Widget - Real-time counter on homepage showing total donations and progress toward legal fund goals - COMPLETE
+
+
+## COMPREHENSIVE NEWSPAPER REDESIGN PROJECT (March 15, 2026 - Session 2)
+All accountability pages redesigned with vintage newspaper aesthetic (black & white 2020-2023 → color 2024-2026)
+
+### Phase 1: Core Accountability Pages
+- [x] Ghosted by Politician page - Newspaper format with politician/organization/lawyer tabs - COMPLETE
+- [x] Hall of Shame page - Newspaper format with official accountability cards - COMPLETE
+- [x] Systemic Violations Archive - Newspaper format with black & white to color transition - COMPLETE
+
+### Phase 2: Documentation & Evidence Pages  
+- [x] Call Log Documentation - Newspaper format with call evidence presented as news articles - COMPLETE
+- [x] Interactive Call Map - Newspaper format with map integration and call details - COMPLETE
+- [x] Orange Shirt Investigation - Newspaper format exposing performative activism - COMPLETE
+
+### Phase 3: Memorial & Educational Pages
+- [x] First Nations Leaders Memorial - Newspaper format honoring Indigenous defenders - COMPLETE
+- [x] How to Document Your Case - Newspaper format with step-by-step guide - COMPLETE
+- [x] All accountability pages with newspaper aesthetic - COMPLETE
+
+### Design Standards for All Pages:
+- Black & white (yellow-tinted) for 2020-2023 entries - Raw, documentary style
+- Transition to color (amber orange, forest green) for 2024-2026 - Healing, hope, action
+- Professional newspaper masthead on each page
+- Bylines and datelines for authenticity
+- Serif typography (Georgia font)
+- Key facts sections with bullet points
+- Vintage paper texture
+- Responsive mobile-first layout
+- Audio narration where applicable

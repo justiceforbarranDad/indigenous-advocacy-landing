@@ -1,12 +1,13 @@
 import { AlertTriangle, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 
 /**
- * HALL OF SHAME
+ * HALL OF SHAME - NEWSPAPER FORMAT
  * 
  * Politicians and officials who ghosted families seeking help
  * Documented failures and institutional neglect
  * Public accountability for public officials
  * 
+ * Vintage newspaper aesthetic: Black & white (2020-2023) → Color (2024-2026)
  * Every fact documented. Every promise broken. Every child failed.
  */
 
@@ -29,7 +30,9 @@ export default function HallOfShame() {
       phone: "514-251-8126",
       address: "8695, rue Hochelaga, Bureau 202-E, Montreal",
       quote: "Cease-and-desist warning: stop all contact (in-person, phone, email, social) or face criminal harassment complaint/police",
-      officialPage: "https://www.assnat.qc.ca/en/deputes/haytayan-celine"
+      officialPage: "https://www.assnat.qc.ca/en/deputes/haytayan-celine",
+      year: 2023,
+      isColor: false
     },
     {
       name: "Paul St-Pierre Plamondon",
@@ -47,7 +50,9 @@ export default function HallOfShame() {
       email: "Paul.St-PierrePlamondon.CALA@assnat.qc.ca",
       phone: "514-251-8126",
       address: "8695, rue Hochelaga, Bureau 202-E, Montreal",
-      officialPage: "https://www.assnat.qc.ca/en/deputes/st-pierre-plamondon-paul"
+      officialPage: "https://www.assnat.qc.ca/en/deputes/st-pierre-plamondon-paul",
+      year: 2024,
+      isColor: true
     },
     {
       name: "Assembly of First Nations (AFN)",
@@ -65,7 +70,9 @@ export default function HallOfShame() {
       email: "Contact through AFN website",
       phone: "613-241-6789",
       address: "55 Metcalfe Street, Suite 1600, Ottawa, ON K1P 6L5",
-      officialPage: "https://www.afn.ca/"
+      officialPage: "https://www.afn.ca/",
+      year: 2021,
+      isColor: false
     },
     {
       name: "Prime Minister's Office (PMO)",
@@ -82,7 +89,9 @@ export default function HallOfShame() {
       email: "pm@pm.gc.ca",
       phone: "613-957-5555",
       address: "80 Wellington Street, Ottawa, ON K1A 0A2",
-      officialPage: "https://www.pm.gc.ca/"
+      officialPage: "https://www.pm.gc.ca/",
+      year: 2023,
+      isColor: false
     },
     {
       name: "Amnesty International Canada",
@@ -99,7 +108,9 @@ export default function HallOfShame() {
       email: "info@amnesty.ca",
       phone: "1-800-266-3789",
       address: "312 Laurier Ave W, Ottawa, ON K1P 5J6",
-      officialPage: "https://www.amnesty.ca/"
+      officialPage: "https://www.amnesty.ca/",
+      year: 2023,
+      isColor: false
     },
     {
       name: "DYP/DPJ Leadership",
@@ -118,115 +129,222 @@ export default function HallOfShame() {
       email: "Contact through Quebec government",
       phone: "1-800-361-6477",
       address: "Multiple locations across Quebec",
-      officialPage: "https://www.quebec.ca/en/"
+      officialPage: "https://www.quebec.ca/en/",
+      year: 2021,
+      isColor: false
     }
   ];
 
   return (
-    <div className="min-h-screen bg-charcoal text-white">
-      {/* Header */}
-      <section className="bg-gradient-to-b from-red-900 to-charcoal py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-            HALL OF SHAME
-          </h1>
-          <p className="text-xl text-red-300 mb-6">
+    <div className="min-h-screen bg-cream text-charcoal">
+      {/* Hero Section */}
+      <section className="relative py-16 md:py-24 bg-forest-green text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <AlertTriangle className="w-16 h-16 mx-auto mb-6 text-red-500" />
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">HALL OF SHAME</h1>
+          <p className="text-lg md:text-xl opacity-90">
             Politicians and Officials Who Ghosted Vulnerable Families
           </p>
-          <div className="flex items-center justify-center gap-2 text-red-400">
-            <AlertTriangle size={24} />
-            <span className="font-semibold">Documented Failures. Public Accountability. No Excuses.</span>
-          </div>
         </div>
       </section>
 
-      {/* Introduction */}
-      <section className="py-12 px-4 bg-charcoal-light">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-lg leading-relaxed text-center">
-            These officials promised to help. They promised to advocate. They promised to protect vulnerable children. 
-            Instead, they ghosted. They ignored. They failed. This is the documented record of their inaction.
-          </p>
-        </div>
-      </section>
-
-      {/* Officials */}
-      <section className="py-16 px-4">
-        <div className="max-w-5xl mx-auto space-y-12">
+      {/* Officials - Newspaper Format */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-5xl mx-auto px-4 space-y-12">
           {officials.map((official, idx) => (
-            <div key={idx} className="bg-charcoal-light rounded-lg overflow-hidden border-l-4 border-red-500">
-              {/* Header */}
-              <div className="bg-gradient-to-r from-red-900/50 to-charcoal-light p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h2 className="text-3xl font-bold text-white mb-2">{official.name}</h2>
-                    <p className="text-red-300 font-semibold">{official.title}</p>
-                    <p className="text-amber-light">{official.party}</p>
-                  </div>
+            <div
+              key={idx}
+              className={`transition-all duration-500 ${
+                official.isColor
+                  ? 'bg-white border-4 border-red-600 shadow-lg'
+                  : 'bg-yellow-50 border-4 border-yellow-900 shadow-xl'
+              }`}
+              style={{
+                backgroundImage: official.isColor
+                  ? 'none'
+                  : 'repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px)',
+              }}
+            >
+              {/* Newspaper Masthead */}
+              <div
+                className={`border-b-4 p-6 md:p-8 ${
+                  official.isColor
+                    ? 'bg-white border-red-600'
+                    : 'bg-yellow-100 border-yellow-900'
+                }`}
+              >
+                <div className={`text-xs md:text-sm font-bold tracking-widest mb-2 ${
+                  official.isColor ? 'text-red-600' : 'text-yellow-800'
+                }`}>
+                  ACCOUNTABILITY RECORD
                 </div>
+                <h2
+                  className={`text-3xl md:text-4xl font-black tracking-tight mb-1 ${
+                    official.isColor ? 'text-forest-green' : 'text-yellow-900'
+                  }`}
+                  style={{ fontFamily: 'Georgia, serif' }}
+                >
+                  {official.name}
+                </h2>
+                <p
+                  className={`text-xs md:text-sm font-semibold tracking-widest ${
+                    official.isColor ? 'text-charcoal' : 'text-yellow-800'
+                  }`}
+                >
+                  {official.title} · {official.party}
+                </p>
               </div>
 
               {/* Content */}
-              <div className="p-6 space-y-6">
+              <div className="p-6 md:p-8 space-y-6">
                 {/* Promised vs Actual */}
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-charcoal p-4 rounded border-l-4 border-green-500">
-                    <p className="text-green-400 font-bold mb-2">PROMISED:</p>
-                    <p className="text-white">{official.promised}</p>
+                  <div className={`p-4 rounded border-l-4 ${
+                    official.isColor
+                      ? 'bg-green-50 border-green-600'
+                      : 'bg-yellow-100 border-yellow-800'
+                  }`}>
+                    <p className={`text-xs font-black tracking-widest mb-2 ${
+                      official.isColor ? 'text-green-700' : 'text-yellow-800'
+                    }`}>
+                      PROMISED
+                    </p>
+                    <p className={`text-sm ${
+                      official.isColor ? 'text-charcoal' : 'text-yellow-900'
+                    }`}>
+                      {official.promised}
+                    </p>
                   </div>
-                  <div className="bg-charcoal p-4 rounded border-l-4 border-red-500">
-                    <p className="text-red-400 font-bold mb-2">ACTUAL:</p>
-                    <p className="text-white">{official.actual}</p>
+                  <div className={`p-4 rounded border-l-4 ${
+                    official.isColor
+                      ? 'bg-red-50 border-red-600'
+                      : 'bg-yellow-100 border-yellow-800'
+                  }`}>
+                    <p className={`text-xs font-black tracking-widest mb-2 ${
+                      official.isColor ? 'text-red-700' : 'text-yellow-800'
+                    }`}>
+                      ACTUAL
+                    </p>
+                    <p className={`text-sm ${
+                      official.isColor ? 'text-charcoal' : 'text-yellow-900'
+                    }`}>
+                      {official.actual}
+                    </p>
                   </div>
                 </div>
 
                 {/* Timeline */}
                 <div>
-                  <h3 className="text-xl font-bold text-amber-light mb-4">TIMELINE OF GHOSTING</h3>
+                  <h3 className={`text-xs md:text-sm font-black tracking-widest mb-4 ${
+                    official.isColor ? 'text-red-600' : 'text-yellow-800'
+                  }`}>
+                    TIMELINE OF GHOSTING
+                  </h3>
                   <div className="space-y-3">
                     {official.timeline.map((event, i) => (
-                      <div key={i} className="flex gap-4 bg-charcoal p-3 rounded">
-                        <div className="text-red-400 font-bold whitespace-nowrap">{event.date}</div>
-                        <div className="text-white">{event.action}</div>
+                      <div key={i} className="flex gap-4">
+                        <span className={`font-black text-lg flex-shrink-0 ${
+                          official.isColor ? 'text-red-600' : 'text-yellow-800'
+                        }`}>
+                          ■
+                        </span>
+                        <div>
+                          <p className={`text-xs font-bold ${
+                            official.isColor ? 'text-red-600' : 'text-yellow-800'
+                          }`}>
+                            {event.date}
+                          </p>
+                          <p className={`text-sm ${
+                            official.isColor ? 'text-charcoal' : 'text-yellow-900'
+                          }`}>
+                            {event.action}
+                          </p>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Impact */}
-                <div className="bg-red-900/30 p-4 rounded border-l-4 border-red-500">
-                  <p className="text-red-300 font-bold mb-2">IMPACT ON VULNERABLE CHILDREN:</p>
-                  <p className="text-white">{official.impact}</p>
+                <div className={`p-4 rounded border-l-4 ${
+                  official.isColor
+                    ? 'bg-red-50 border-red-600'
+                    : 'bg-yellow-100 border-yellow-800'
+                }`}>
+                  <p className={`text-xs font-black tracking-widest mb-2 ${
+                    official.isColor ? 'text-red-700' : 'text-yellow-800'
+                  }`}>
+                    IMPACT ON VULNERABLE CHILDREN
+                  </p>
+                  <p className={`text-sm ${
+                    official.isColor ? 'text-charcoal' : 'text-yellow-900'
+                  }`}>
+                    {official.impact}
+                  </p>
                 </div>
 
                 {/* Contact Information */}
                 <div>
-                  <h3 className="text-xl font-bold text-amber-light mb-4">PUBLIC CONTACT INFORMATION</h3>
+                  <h3 className={`text-xs md:text-sm font-black tracking-widest mb-4 ${
+                    official.isColor ? 'text-red-600' : 'text-yellow-800'
+                  }`}>
+                    PUBLIC CONTACT INFORMATION
+                  </h3>
                   <div className="space-y-3">
                     {official.email && (
                       <div className="flex gap-3 items-start">
-                        <Mail size={20} className="text-amber-orange flex-shrink-0 mt-1" />
+                        <Mail size={20} className={`flex-shrink-0 mt-1 ${
+                          official.isColor ? 'text-red-600' : 'text-yellow-800'
+                        }`} />
                         <div>
-                          <p className="text-amber-light font-semibold">Email</p>
-                          <p className="text-white break-all">{official.email}</p>
+                          <p className={`text-xs font-bold ${
+                            official.isColor ? 'text-red-600' : 'text-yellow-800'
+                          }`}>
+                            EMAIL
+                          </p>
+                          <p className={`text-sm break-all ${
+                            official.isColor ? 'text-charcoal' : 'text-yellow-900'
+                          }`}>
+                            {official.email}
+                          </p>
                         </div>
                       </div>
                     )}
                     {official.phone && (
                       <div className="flex gap-3 items-start">
-                        <Phone size={20} className="text-amber-orange flex-shrink-0 mt-1" />
+                        <Phone size={20} className={`flex-shrink-0 mt-1 ${
+                          official.isColor ? 'text-red-600' : 'text-yellow-800'
+                        }`} />
                         <div>
-                          <p className="text-amber-light font-semibold">Phone</p>
-                          <p className="text-white">{official.phone}</p>
+                          <p className={`text-xs font-bold ${
+                            official.isColor ? 'text-red-600' : 'text-yellow-800'
+                          }`}>
+                            PHONE
+                          </p>
+                          <p className={`text-sm ${
+                            official.isColor ? 'text-charcoal' : 'text-yellow-900'
+                          }`}>
+                            {official.phone}
+                          </p>
                         </div>
                       </div>
                     )}
                     {official.address && (
                       <div className="flex gap-3 items-start">
-                        <MapPin size={20} className="text-amber-orange flex-shrink-0 mt-1" />
+                        <MapPin size={20} className={`flex-shrink-0 mt-1 ${
+                          official.isColor ? 'text-red-600' : 'text-yellow-800'
+                        }`} />
                         <div>
-                          <p className="text-amber-light font-semibold">Address</p>
-                          <p className="text-white">{official.address}</p>
+                          <p className={`text-xs font-bold ${
+                            official.isColor ? 'text-red-600' : 'text-yellow-800'
+                          }`}>
+                            ADDRESS
+                          </p>
+                          <p className={`text-sm ${
+                            official.isColor ? 'text-charcoal' : 'text-yellow-900'
+                          }`}>
+                            {official.address}
+                          </p>
                         </div>
                       </div>
                     )}
@@ -235,9 +353,21 @@ export default function HallOfShame() {
 
                 {/* Quote if available */}
                 {official.quote && (
-                  <div className="bg-charcoal p-4 rounded border-l-4 border-amber-orange italic">
-                    <p className="text-amber-light font-semibold mb-2">DIRECT QUOTE:</p>
-                    <p className="text-white">"{official.quote}"</p>
+                  <div className={`p-4 rounded border-l-4 italic ${
+                    official.isColor
+                      ? 'bg-amber-50 border-amber-600'
+                      : 'bg-yellow-100 border-yellow-800'
+                  }`}>
+                    <p className={`text-xs font-bold tracking-widest mb-2 ${
+                      official.isColor ? 'text-amber-700' : 'text-yellow-800'
+                    }`}>
+                      DIRECT QUOTE
+                    </p>
+                    <p className={`text-sm ${
+                      official.isColor ? 'text-charcoal' : 'text-yellow-900'
+                    }`}>
+                      "{official.quote}"
+                    </p>
                   </div>
                 )}
 
@@ -248,12 +378,33 @@ export default function HallOfShame() {
                       href={official.officialPage}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-amber-orange hover:text-amber-light font-semibold transition-colors"
+                      className={`inline-flex items-center gap-2 font-semibold transition-colors ${
+                        official.isColor
+                          ? 'text-red-600 hover:text-red-700'
+                          : 'text-yellow-800 hover:text-yellow-900'
+                      }`}
                     >
                       View Official Page <ExternalLink size={16} />
                     </a>
                   </div>
                 )}
+              </div>
+
+              {/* Edition Indicator */}
+              <div
+                className={`px-6 md:px-8 py-3 text-right border-t-2 ${
+                  official.isColor
+                    ? 'bg-white border-red-600'
+                    : 'bg-yellow-100 border-yellow-900'
+                }`}
+              >
+                <p
+                  className={`text-xs font-semibold ${
+                    official.isColor ? 'text-charcoal/60' : 'text-yellow-900/60'
+                  }`}
+                >
+                  {official.isColor ? '🌈 Color Edition' : '⬛ Black & White Edition'}
+                </p>
               </div>
             </div>
           ))}
@@ -261,40 +412,33 @@ export default function HallOfShame() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 px-4 bg-gradient-to-b from-charcoal to-red-900">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-8">
+      <section className="py-16 md:py-24 bg-forest-green text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
             PUBLIC ACCOUNTABILITY STARTS WITH YOU
           </h2>
-          
-          <div className="bg-charcoal-light p-8 rounded-lg border-4 border-red-500 space-y-6">
-            <p className="text-xl leading-relaxed">
-              These officials have contact information. They have email addresses. They have phone numbers. 
-              They have offices. They work for you. They are accountable to you.
-            </p>
-            
-            <p className="text-xl font-bold text-red-300">
-              Contact them. Ask them why they ghosted vulnerable families. Ask them why they failed children. 
-              Demand accountability.
-            </p>
-
-            <p className="text-lg text-amber-light">
-              Public officials must answer to the public. This is not harassment—this is democracy.
-            </p>
-          </div>
+          <p className="text-lg opacity-90 mb-8">
+            These officials have contact information. They have email addresses. They have phone numbers. They have offices. They work for you. They are accountable to you.
+          </p>
+          <p className="text-lg font-bold mb-8">
+            Contact them. Ask them why they ghosted vulnerable families. Ask them why they failed children. Demand accountability.
+          </p>
+          <p className="text-base opacity-80">
+            Public officials must answer to the public. This is not harassment—this is democracy.
+          </p>
         </div>
       </section>
 
       {/* Footer Message */}
-      <section className="py-12 px-4 bg-charcoal text-center">
-        <p className="text-lg text-amber-light max-w-2xl mx-auto">
+      <section className="py-12 px-4 bg-cream text-center border-t-4 border-forest-green">
+        <p className="text-lg text-forest-green max-w-2xl mx-auto">
           <span className="font-bold">BE A DAD. PROTECT YOUR CUBS AND YOUR QUEEN.</span>
           <br />
           <br />
           Cherish your home. Cherish your land. Demand accountability from those who failed your family.
           <br />
           <br />
-          <span className="text-red-400">LOVE DAD</span>
+          <span className="text-amber-orange">LOVE DAD</span>
         </p>
       </section>
     </div>
