@@ -37,6 +37,9 @@ import PerformativeActivismExposed from "./pages/PerformativeActivismExposed";
 import HumanRightsEducation from "./pages/HumanRightsEducation";
 import LegalViolationsFramework from "./pages/LegalViolationsFramework";
 import HallOfShame from "./pages/HallOfShame";
+import HowToDocumentYourCase from "./pages/HowToDocumentYourCase";
+import OrangeShirtDayInvestigation from "./pages/OrangeShirtDayInvestigation";
+import CallLogDocumentation from "./pages/CallLogDocumentation";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -74,6 +77,9 @@ function Router() {
       <Route path={"/human-rights-education"} component={HumanRightsEducation} />
       <Route path={"/legal-violations-framework"} component={LegalViolationsFramework} />
       <Route path={"/hall-of-shame"} component={HallOfShame} />
+      <Route path={"/how-to-document-your-case"} component={HowToDocumentYourCase} />
+      <Route path={"/orange-shirt-day-investigation"} component={OrangeShirtDayInvestigation} />
+      <Route path={"/call-log-documentation"} component={CallLogDocumentation} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
