@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Volume2, VolumeX, Play, Pause } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Volume2, Play, Pause } from 'lucide-react';
 
 export default function TimelineNewspaperArchive() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -21,10 +20,12 @@ export default function TimelineNewspaperArchive() {
     {
       year: 2021,
       date: "February 14, 2021",
-      style: "old-print",
+      edition: "EXTRA - SPECIAL EDITION",
+      isColor: false,
       headline: "14-Year-Old Indigenous Boy Stabbed Three Times",
-      subheadline: "Family Seeks Help After Violent Attack",
-      content: "On the morning of February 14, 2021, a 14-year-old Indigenous boy was attacked and stabbed three times. The attacker struck his left lung, his chest, and his back. The boy's iPhone in his front pocket stopped two additional stab attempts. He was rushed to Montreal Children's Hospital where he spent six days hospitalized with a chest tube for three days. Medical staff held him, comforted him, and saved his life.",
+      subheadline: "Violent Attack Leaves Family Desperate for Help",
+      byline: "Staff Report",
+      content: "On the morning of February 14, 2021, a 14-year-old Indigenous boy was attacked and stabbed three times. The attacker struck his left lung, his chest, and his back. The boy's iPhone in his front pocket stopped two additional stab attempts. He was rushed to Montreal Children's Hospital where he spent six days hospitalized with a chest tube for three days.",
       details: [
         "6 days hospitalized at Montreal Children's Hospital",
         "3-day chest tube placement",
@@ -36,9 +37,11 @@ export default function TimelineNewspaperArchive() {
     {
       year: 2021,
       date: "2021-2023",
-      style: "transition",
+      edition: "VOLUME 1, ISSUE 2",
+      isColor: false,
       headline: "Child Protection Services Involved But Withdrawn",
       subheadline: "Family Left Without Support After DPJ Withdrawal",
+      byline: "Investigation Team",
       content: "Following the stabbing, the family reached out to DPJ (Direction de la Protection de la Jeunesse) for help. The agency became involved but provided inadequate support. By January 2023, DPJ was withdrawn from the case entirely—no adequate follow-up, education lost, mental health destroyed.",
       details: [
         "DPJ involvement: 2021-2023",
@@ -51,9 +54,11 @@ export default function TimelineNewspaperArchive() {
     {
       year: 2023,
       date: "November 19, 2023",
-      style: "modern",
+      edition: "VOLUME 2, ISSUE 11",
+      isColor: false,
       headline: "MNA Sends Cease-and-Desist to Constituent Seeking Help",
       subheadline: "Political Intimidation Instead of Support",
+      byline: "Political Correspondent",
       content: "When the father asked his MNA, Céline Haytayan (CAQ, Laval-des-Rapides), for help on DPJ and IVAC files, instead of assistance, her office sent a cease-and-desist warning. The warning stated: stop all contact (in-person, phone, email, social media) or face criminal harassment complaint and police involvement.",
       details: [
         "Cease-and-desist warning issued",
@@ -66,9 +71,11 @@ export default function TimelineNewspaperArchive() {
     {
       year: 2023,
       date: "2023-2026",
-      style: "digital",
+      edition: "VOLUME 3, ISSUE 1",
+      isColor: true,
       headline: "Assembly of First Nations Refuses to Help Indigenous Family",
       subheadline: "AFN Ghosting Continues for Years",
+      byline: "Indigenous Affairs Reporter",
       content: "The family reached out to the Assembly of First Nations (AFN) for support. AFN refused to help, stating that the family was not 'status' or part of their band, despite being First Nations children in need of support. For over five years, AFN has remained silent.",
       details: [
         "AFN refusal: 'not status or band member'",
@@ -81,9 +88,11 @@ export default function TimelineNewspaperArchive() {
     {
       year: 2023,
       date: "2023-2026",
-      style: "digital",
+      edition: "VOLUME 3, ISSUE 2",
+      isColor: true,
       headline: "Prime Minister's Office Ignores Pleas for Federal Intervention",
       subheadline: "Federal Government Silent on Systemic Failures",
+      byline: "Federal Correspondent",
       content: "The family escalated to the Prime Minister's Office. No response. No action. Complete ghosting despite repeated contact attempts. The federal government has shown indifference to the systemic failures affecting Indigenous children.",
       details: [
         "PMO: No response",
@@ -96,9 +105,11 @@ export default function TimelineNewspaperArchive() {
     {
       year: 2023,
       date: "2023-2026",
-      style: "digital",
+      edition: "VOLUME 3, ISSUE 3",
+      isColor: true,
       headline: "Amnesty Canada Silent on Human Rights Violations",
       subheadline: "Human Rights Organization Fails to Advocate",
+      byline: "Human Rights Correspondent",
       content: "Despite having a mandate to defend human rights, Amnesty Canada provided no response to requests for support. A human rights organization failed to advocate for vulnerable children.",
       details: [
         "Amnesty Canada: No response",
@@ -111,9 +122,11 @@ export default function TimelineNewspaperArchive() {
     {
       year: 2023,
       date: "2023-2026",
-      style: "digital",
+      edition: "VOLUME 3, ISSUE 4",
+      isColor: true,
       headline: "Legal Profession Abandons Vulnerable Indigenous Family",
       subheadline: "Not a Single Lawyer Steps Up to Help",
+      byline: "Legal Affairs Reporter",
       content: "Not a single lawyer stepped up to help protect vulnerable Indigenous children. The legal profession, bound by oath to uphold justice and defend the vulnerable, has broken that oath. Many lawyers are paid by the government, creating a conflict of interest that prevents them from challenging systemic failures.",
       details: [
         "Zero lawyers willing to help",
@@ -126,9 +139,11 @@ export default function TimelineNewspaperArchive() {
     {
       year: 2026,
       date: "February 27, 2026",
-      style: "digital",
+      edition: "VOLUME 4, ISSUE 2 - SPECIAL REPORT",
+      isColor: true,
       headline: "Governor General's Wellness Check Fails to Assess Children",
       subheadline: "Another Institutional Failure",
+      byline: "Investigative Team",
       content: "On February 27, 2026, the Governor General's office conducted a wellness check. The biological father only spoke with a receptionist—not with the children who needed help. No proper assessment of the children's needs. No real intervention. Just another institutional failure.",
       details: [
         "Wellness check conducted",
@@ -141,9 +156,11 @@ export default function TimelineNewspaperArchive() {
     {
       year: 2026,
       date: "2021-2026",
-      style: "digital",
+      edition: "FINAL EDITION - RETROSPECTIVE",
+      isColor: true,
       headline: "Five Years of Ghosting Reveals Systemic Failure",
       subheadline: "Institutional Abandonment Across All Sectors",
+      byline: "Chief Correspondent",
       content: "From 2021 to 2026, this family has been ghosted by multiple elected officials at federal, provincial, and municipal levels. Indigenous organizations. Human rights groups. Government agencies. The entire legal profession. This is not an isolated case. This is systemic failure across all sectors of Canadian society.",
       details: [
         "Politicians: Federal, Provincial, Municipal",
@@ -156,180 +173,211 @@ export default function TimelineNewspaperArchive() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Hero Section */}
-      <section className="relative py-16 md:py-24 bg-gradient-to-br from-forest-green to-forest-green/80">
-        <div className="max-w-5xl mx-auto px-4 text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Timeline Newspaper Archive</h1>
-          <p className="text-lg md:text-xl opacity-90 mb-8">
-            A chronological record of systemic failure, ghosting, and ongoing struggle from 2021 to 2026. Read the story or listen to the audio narration for accessibility.
-          </p>
-          
-          {/* Audio Player */}
-          <div className="bg-white/10 backdrop-blur rounded-lg p-6 border border-white/20">
-            <div className="flex items-center gap-4 flex-wrap">
-              <button
-                onClick={toggleAudio}
-                className="flex items-center gap-2 bg-amber-orange hover:bg-amber-light text-white font-bold py-3 px-6 rounded-lg transition-colors"
+    <div className="min-h-screen bg-cream text-charcoal">
+      {/* Audio Player Section */}
+      <section className="py-12 md:py-16 bg-forest-green text-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">Audio Narration Available</h2>
+              <p className="text-white/90">Listen to the complete timeline story (5 minutes 31 seconds)</p>
+            </div>
+            <button
+              onClick={toggleAudio}
+              className="flex items-center gap-2 bg-amber-orange hover:bg-amber-light text-white font-bold py-3 px-6 rounded-lg transition-colors whitespace-nowrap"
+            >
+              {isPlaying ? (
+                <>
+                  <Pause size={20} />
+                  Pause Audio
+                </>
+              ) : (
+                <>
+                  <Play size={20} />
+                  Play Audio Narration
+                </>
+              )}
+            </button>
+          </div>
+          <audio
+            ref={setAudioRef}
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/timeline-narration.wav"
+            onEnded={() => setIsPlaying(false)}
+            className="hidden"
+          />
+        </div>
+      </section>
+
+      {/* Newspaper Editions */}
+      <section className="py-12 md:py-16">
+        <div className="max-w-4xl mx-auto px-4 space-y-16">
+          {editions.map((edition, idx) => (
+            <div
+              key={idx}
+              className={`transition-all duration-500 ${
+                edition.isColor
+                  ? 'bg-white border-4 border-amber-orange shadow-lg'
+                  : 'bg-yellow-50 border-4 border-yellow-900 shadow-xl'
+              }`}
+              style={{
+                backgroundImage: edition.isColor
+                  ? 'none'
+                  : 'repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px)',
+              }}
+            >
+              {/* Newspaper Masthead */}
+              <div
+                className={`border-b-4 p-6 md:p-8 text-center ${
+                  edition.isColor
+                    ? 'bg-white border-amber-orange'
+                    : 'bg-yellow-100 border-yellow-900'
+                }`}
               >
-                {isPlaying ? (
-                  <>
-                    <Pause size={20} />
-                    Pause Audio
-                  </>
-                ) : (
-                  <>
-                    <Play size={20} />
-                    Play Audio Narration
-                  </>
-                )}
-              </button>
-              <div className="flex items-center gap-2 text-white">
-                <Volume2 size={20} />
-                <span className="font-semibold">Duration: 5 minutes 31 seconds</span>
-              </div>
-            </div>
-            <audio
-              ref={setAudioRef}
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/timeline-narration.wav"
-              onEnded={() => setIsPlaying(false)}
-              className="hidden"
-            />
-            <p className="text-white/80 text-sm mt-4">
-              Audio narration available for accessibility. Male voice narration of the complete timeline story.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-5xl mx-auto px-4">
-          {/* Timeline Spine */}
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-forest-green via-amber-orange to-forest-green"></div>
-
-            {/* Timeline Items */}
-            <div className="space-y-12">
-              {editions.map((edition, idx) => (
-                <div key={idx} className="relative">
-                  {/* Timeline Dot */}
-                  <div className="absolute left-0 md:left-1/2 md:transform md:-translate-x-1/2 top-6 w-8 h-8 bg-amber-orange rounded-full border-4 border-background shadow-lg"></div>
-
-                  {/* Newspaper Card */}
-                  <div className={`ml-16 md:ml-0 md:${idx % 2 === 0 ? 'mr-auto md:w-5/12 md:pr-8' : 'ml-auto md:w-5/12 md:pl-8'}`}>
-                    <div className={`p-6 md:p-8 rounded-lg border-2 transition-all hover:shadow-lg ${
-                      edition.style === 'old-print'
-                        ? 'bg-yellow-50 border-yellow-800 text-yellow-900'
-                        : edition.style === 'transition'
-                        ? 'bg-gray-100 border-gray-800 text-gray-900'
-                        : 'bg-white border-forest-green text-foreground'
-                    }`}>
-                      {/* Newspaper Header */}
-                      <div className={`border-b-2 pb-3 mb-4 ${
-                        edition.style === 'old-print'
-                          ? 'border-yellow-800'
-                          : edition.style === 'transition'
-                          ? 'border-gray-800'
-                          : 'border-forest-green'
-                      }`}>
-                        <p className={`text-xs font-bold tracking-widest ${
-                          edition.style === 'old-print'
-                            ? 'text-yellow-800'
-                            : edition.style === 'transition'
-                            ? 'text-gray-800'
-                            : 'text-forest-green'
-                        }`}>
-                          {edition.date.toUpperCase()}
-                        </p>
-                      </div>
-
-                      {/* Headline */}
-                      <h3 className={`text-xl md:text-2xl font-bold mb-2 ${
-                        edition.style === 'old-print'
-                          ? 'text-yellow-900'
-                          : edition.style === 'transition'
-                          ? 'text-gray-900'
-                          : 'text-forest-green'
-                      }`}>
-                        {edition.headline}
-                      </h3>
-
-                      {/* Subheadline */}
-                      <p className={`text-sm md:text-base font-semibold mb-4 italic ${
-                        edition.style === 'old-print'
-                          ? 'text-yellow-800'
-                          : edition.style === 'transition'
-                          ? 'text-gray-700'
-                          : 'text-amber-orange'
-                      }`}>
-                        {edition.subheadline}
-                      </p>
-
-                      {/* Content */}
-                      <p className="text-sm md:text-base leading-relaxed mb-4">
-                        {edition.content}
-                      </p>
-
-                      {/* Details */}
-                      <div className={`border-t pt-4 ${
-                        edition.style === 'old-print'
-                          ? 'border-yellow-800'
-                          : edition.style === 'transition'
-                          ? 'border-gray-800'
-                          : 'border-forest-green'
-                      }`}>
-                        <p className={`text-xs font-bold mb-2 ${
-                          edition.style === 'old-print'
-                            ? 'text-yellow-800'
-                            : edition.style === 'transition'
-                            ? 'text-gray-800'
-                            : 'text-forest-green'
-                        }`}>
-                          KEY FACTS
-                        </p>
-                        <ul className="space-y-1">
-                          {edition.details.map((detail, i) => (
-                            <li key={i} className="text-xs md:text-sm flex gap-2">
-                              <span className="text-amber-orange font-bold">•</span>
-                              <span>{detail}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                <div className={`text-xs md:text-sm font-bold tracking-widest mb-2 ${
+                  edition.isColor ? 'text-amber-orange' : 'text-yellow-800'
+                }`}>
+                  {edition.edition}
                 </div>
-              ))}
+                <h1
+                  className={`text-3xl md:text-4xl font-black tracking-tight mb-1 ${
+                    edition.isColor ? 'text-forest-green' : 'text-yellow-900'
+                  }`}
+                  style={{ fontFamily: 'Georgia, serif' }}
+                >
+                  JUSTICE FOR BARRAN
+                </h1>
+                <p
+                  className={`text-xs md:text-sm font-semibold tracking-widest ${
+                    edition.isColor ? 'text-charcoal' : 'text-yellow-800'
+                  }`}
+                >
+                  A Chronicle of Systemic Failure & Institutional Abandonment
+                </p>
+                <div
+                  className={`text-xs md:text-sm font-bold mt-3 ${
+                    edition.isColor ? 'text-amber-orange' : 'text-yellow-800'
+                  }`}
+                >
+                  {edition.date}
+                </div>
+              </div>
+
+              {/* Newspaper Content */}
+              <div className="p-6 md:p-8 border-b-2" style={{
+                borderColor: edition.isColor ? '#d97706' : '#b8860b'
+              }}>
+                {/* Headline */}
+                <h2
+                  className={`text-2xl md:text-3xl font-black leading-tight mb-2 ${
+                    edition.isColor ? 'text-forest-green' : 'text-yellow-900'
+                  }`}
+                  style={{ fontFamily: 'Georgia, serif' }}
+                >
+                  {edition.headline}
+                </h2>
+
+                {/* Subheadline */}
+                <p
+                  className={`text-lg md:text-xl font-bold mb-3 italic ${
+                    edition.isColor ? 'text-amber-orange' : 'text-yellow-800'
+                  }`}
+                  style={{ fontFamily: 'Georgia, serif' }}
+                >
+                  {edition.subheadline}
+                </p>
+
+                {/* Byline */}
+                <p
+                  className={`text-xs md:text-sm font-semibold mb-4 ${
+                    edition.isColor ? 'text-charcoal/70' : 'text-yellow-900/70'
+                  }`}
+                >
+                  By {edition.byline}
+                </p>
+
+                {/* Article Content */}
+                <p
+                  className={`text-sm md:text-base leading-relaxed mb-6 ${
+                    edition.isColor ? 'text-charcoal' : 'text-yellow-900'
+                  }`}
+                  style={{ fontFamily: 'Georgia, serif' }}
+                >
+                  {edition.content}
+                </p>
+              </div>
+
+              {/* Key Facts Section */}
+              <div className="p-6 md:p-8">
+                <h3
+                  className={`text-xs md:text-sm font-black tracking-widest mb-4 ${
+                    edition.isColor ? 'text-amber-orange' : 'text-yellow-800'
+                  }`}
+                >
+                  KEY FACTS & TIMELINE
+                </h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {edition.details.map((detail, i) => (
+                    <div key={i} className="flex gap-3">
+                      <span
+                        className={`font-black text-lg flex-shrink-0 ${
+                          edition.isColor ? 'text-amber-orange' : 'text-yellow-800'
+                        }`}
+                      >
+                        ■
+                      </span>
+                      <p
+                        className={`text-xs md:text-sm leading-relaxed ${
+                          edition.isColor ? 'text-charcoal' : 'text-yellow-900'
+                        }`}
+                      >
+                        {detail}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Edition Indicator */}
+              <div
+                className={`px-6 md:px-8 py-3 text-right border-t-2 ${
+                  edition.isColor
+                    ? 'bg-white border-amber-orange'
+                    : 'bg-yellow-100 border-yellow-900'
+                }`}
+                style={{
+                  borderColor: edition.isColor ? '#d97706' : '#b8860b'
+                }}
+              >
+                <p
+                  className={`text-xs font-semibold ${
+                    edition.isColor ? 'text-charcoal/60' : 'text-yellow-900/60'
+                  }`}
+                >
+                  {edition.isColor ? '🌈 Color Edition' : '⬛ Black & White Edition'}
+                </p>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Accessibility Notice */}
-      <section className="py-16 md:py-24 bg-card border-t border-border">
+      {/* Color Transition Explanation */}
+      <section className="py-16 md:py-24 bg-white border-t-4 border-forest-green">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center text-forest-green">
-            Accessibility
+          <h2 className="text-3xl md:text-4xl font-bold text-forest-green mb-8 text-center">
+            Design Meaning: Black & White to Color
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="p-6 bg-background rounded-lg border-2 border-forest-green">
-              <div className="flex items-center gap-3 mb-4">
-                <Volume2 className="w-6 h-6 text-amber-orange" />
-                <h3 className="font-bold text-lg">Audio Narration</h3>
-              </div>
-              <p className="text-foreground/70">
-                Complete audio narration of the timeline story is available for blind and visually impaired users. Duration: 5 minutes 31 seconds.
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="p-6 bg-yellow-50 border-4 border-yellow-900 rounded-lg">
+              <h3 className="text-xl font-bold text-yellow-900 mb-3">2020-2023: Black & White</h3>
+              <p className="text-yellow-900 leading-relaxed">
+                Raw, harsh, documentary style. The years of darkness, trauma, and institutional failure. No hope. No color. Just the brutal reality of systemic abandonment across all sectors of Canadian society.
               </p>
             </div>
-            <div className="p-6 bg-background rounded-lg border-2 border-forest-green">
-              <div className="flex items-center gap-3 mb-4">
-                <Volume2 className="w-6 h-6 text-amber-orange" />
-                <h3 className="font-bold text-lg">Screen Reader Compatible</h3>
-              </div>
-              <p className="text-foreground/70">
-                All text content is properly structured for screen readers. Full accessibility for users with visual impairments.
+            <div className="p-6 bg-white border-4 border-amber-orange rounded-lg">
+              <h3 className="text-xl font-bold text-forest-green mb-3">2024-2026: Color Emerging</h3>
+              <p className="text-charcoal leading-relaxed">
+                Hope, healing, and action emerging. The transition from darkness to light. The fight for accountability. The demand for justice. Color represents the awakening, the visibility, and the determination to expose systemic failures and demand change.
               </p>
             </div>
           </div>
@@ -340,8 +388,8 @@ export default function TimelineNewspaperArchive() {
       <section className="py-16 md:py-24 bg-forest-green text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">This is Systemic Failure</h2>
-          <p className="text-lg opacity-90 mb-8">
-            Five years of ghosting by politicians, Indigenous organizations, human rights groups, government agencies, and the legal profession. This is not an isolated case. This is institutional abandonment.
+          <p className="text-lg opacity-90 mb-8 leading-relaxed">
+            Five years of ghosting by politicians, Indigenous organizations, human rights groups, government agencies, and the legal profession. This is not an isolated case. This is institutional abandonment documented in the historical record.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a href="/ghosted-by-politician" className="bg-amber-orange hover:bg-amber-light text-white font-bold py-3 px-8 rounded-lg transition-colors">

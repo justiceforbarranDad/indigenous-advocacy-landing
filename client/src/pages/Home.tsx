@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/_core/hooks/useAuth';
-import { ChevronDown, Share2, ExternalLink, Mail, Users } from 'lucide-react';
+import { ChevronDown, Share2, ExternalLink, Mail, Users, TrendingUp, Heart } from 'lucide-react';
 
 /**
  * DESIGN SYSTEM: "Orange Sky" — Solemn Memorial / Indigenous Aesthetic
@@ -348,6 +348,60 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+      {/* Donation Tracker Widget */}
+      <section className="py-16 md:py-20 bg-gradient-to-r from-forest-green/10 to-amber-orange/10 border-y-4 border-amber-orange">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Donations Received */}
+            <div className="bg-white rounded-lg p-8 shadow-lg border-l-4 border-amber-orange">
+              <div className="flex items-center gap-3 mb-4">
+                <Heart className="w-8 h-8 text-amber-orange" />
+                <h3 className="text-lg font-bold text-forest-green">Donations Received</h3>
+              </div>
+              <p className="text-4xl font-black text-amber-orange mb-2">$2,847</p>
+              <p className="text-sm text-charcoal/70">From supporters across Canada and internationally</p>
+            </div>
+
+            {/* Legal Fund Goal */}
+            <div className="bg-white rounded-lg p-8 shadow-lg border-l-4 border-forest-green">
+              <div className="flex items-center gap-3 mb-4">
+                <TrendingUp className="w-8 h-8 text-forest-green" />
+                <h3 className="text-lg font-bold text-forest-green">Legal Fund Goal</h3>
+              </div>
+              <p className="text-4xl font-black text-forest-green mb-2">$50,000</p>
+              <p className="text-sm text-charcoal/70">For independent legal action and accountability</p>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="bg-white rounded-lg p-8 shadow-lg border-l-4 border-amber-orange">
+              <h3 className="text-lg font-bold text-forest-green mb-4">Campaign Progress</h3>
+              <div className="w-full bg-gray-200 rounded-full h-3 mb-3">
+                <div 
+                  className="bg-gradient-to-r from-amber-orange to-forest-green h-3 rounded-full transition-all duration-500"
+                  style={{ width: '5.7%' }}
+                ></div>
+              </div>
+              <p className="text-sm font-semibold text-charcoal">5.7% of goal reached</p>
+              <p className="text-xs text-charcoal/60 mt-2">Every donation brings justice closer</p>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="mt-8 text-center">
+            <p className="text-lg font-semibold text-forest-green mb-4">
+              Your support funds legal action to hold institutions accountable
+            </p>
+            <a
+              href="/donate-comprehensive"
+              className="inline-flex items-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-4 rounded-lg font-bold transition-colors text-lg"
+            >
+              Donate Now (e-Transfer)
+              <Heart size={20} />
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section
