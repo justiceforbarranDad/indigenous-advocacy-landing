@@ -5,6 +5,18 @@ import { Card } from '@/components/ui/card';
 export default function DonateComprehensive() {
   const donationAmounts = [5, 10, 25, 50, 100];
 
+  const handleDonateAmount = (amount: number) => {
+    // Create e-Transfer link with amount in memo/reference
+    // Format: etransfer:email (banking apps will prompt for amount)
+    // For now, we'll open the banking app and user enters amount
+    // In future, this could integrate with specific bank APIs
+    const etransferLink = `etransfer:justiceforbarran@gmail.com?amount=${amount}`;
+    
+    // Most banking apps support this format
+    // If not supported, fallback to generic e-transfer
+    window.location.href = etransferLink;
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream to-white text-charcoal">
       {/* Hero Section */}
@@ -65,7 +77,24 @@ export default function DonateComprehensive() {
                 <p>✓ No fees - direct to your account</p>
                 <p>✓ Funds go straight to Justice for Barran</p>
               </div>
-              <Button className="w-full bg-amber-orange hover:bg-amber-light text-white font-semibold py-3">
+              
+              {/* Quick Amount Selection */}
+              <div className="mb-6">
+                <p className="text-xs font-semibold text-charcoal mb-3">Choose amount:</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {donationAmounts.map((amount) => (
+                    <Button
+                      key={amount}
+                      onClick={() => handleDonateAmount(amount)}
+                      className="bg-amber-orange hover:bg-amber-light text-white font-semibold py-2 text-sm"
+                    >
+                      ${amount}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+              
+              <Button className="w-full bg-forest-green hover:bg-forest-green/80 text-white font-semibold py-3">
                 Send e-Transfer Now
               </Button>
             </Card>
@@ -124,13 +153,13 @@ export default function DonateComprehensive() {
 
               {/* Suggested Amounts */}
               <div className="mb-4">
-                <p className="text-sm font-semibold text-charcoal mb-3">Suggested amounts:</p>
+                <p className="text-sm font-semibold text-charcoal mb-3">Choose amount:</p>
                 <div className="grid grid-cols-2 gap-2">
                   {donationAmounts.map((amount) => (
                     <Button
                       key={amount}
-                      variant="outline"
-                      className="border-amber-orange text-amber-orange hover:bg-amber-orange hover:text-white"
+                      onClick={() => handleDonateAmount(amount)}
+                      className="bg-amber-orange hover:bg-amber-light text-white font-semibold"
                     >
                       ${amount}
                     </Button>
@@ -138,7 +167,7 @@ export default function DonateComprehensive() {
                 </div>
               </div>
 
-              <Button className="w-full bg-amber-orange hover:bg-amber-light text-white font-semibold py-3">
+              <Button className="w-full bg-forest-green hover:bg-forest-green/80 text-white font-semibold py-3">
                 Send e-Transfer Now
               </Button>
             </Card>
