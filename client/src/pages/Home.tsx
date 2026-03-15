@@ -503,7 +503,7 @@ export default function Home() {
               href="/barrans-story"
               className="inline-flex items-center justify-center gap-2 bg-forest-green hover:bg-forest-green/80 text-cream px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-forest-green"
             >
-              Barran's Story (Feb 14, 2020)
+              Barran's Story (Feb 14, 2021)
               <ExternalLink size={20} />
             </a>
             <a

@@ -12,7 +12,7 @@ export default function BarransStory() {
             Barran's Story: The Beginning
           </h1>
           <p className="text-2xl text-charcoal-light font-serif italic mb-6">
-            February 14, 2020 — The Day Everything Changed
+            February 14, 2021 — The Day Everything Changed
           </p>
           <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded">
             <p className="text-lg text-red-800">
@@ -27,7 +27,7 @@ export default function BarransStory() {
           <Card className="p-8 bg-cream-dark border-l-4 border-amber-orange">
             <div className="mb-4">
               <p className="text-sm font-semibold text-charcoal-light uppercase mb-2">
-                CTV Montreal News - February 14, 2020
+                CTV Montreal News - February 14, 2021
               </p>
               <h3 className="text-2xl font-bold text-forest-green mb-4">
                 14-year-old stabbing victim's condition upgraded
@@ -231,7 +231,7 @@ export default function BarransStory() {
             <Card className="p-6 bg-cream-dark">
               <div className="flex gap-4">
                 <div className="text-center flex-shrink-0">
-                  <p className="text-2xl font-bold text-amber-orange">2012-2020</p>
+                  <p className="text-2xl font-bold text-amber-orange">2012-2021</p>
                 </div>
                 <div>
                   <p className="font-semibold text-forest-green">Years of Domestic Violence</p>
@@ -243,7 +243,7 @@ export default function BarransStory() {
             <Card className="p-6 bg-red-50 border-l-4 border-red-500">
               <div className="flex gap-4">
                 <div className="text-center flex-shrink-0">
-                  <p className="text-2xl font-bold text-red-600">Feb 14, 2020</p>
+                  <p className="text-2xl font-bold text-red-600">Feb 14, 2021</p>
                 </div>
                 <div>
                   <p className="font-semibold text-red-700">THE STABBING</p>
@@ -255,7 +255,7 @@ export default function BarransStory() {
             <Card className="p-6 bg-cream-dark">
               <div className="flex gap-4">
                 <div className="text-center flex-shrink-0">
-                  <p className="text-2xl font-bold text-amber-orange">2020-2023</p>
+                  <p className="text-2xl font-bold text-amber-orange">2021-2023</p>
                 </div>
                 <div>
                   <p className="font-semibold text-forest-green">Court Battle for Custody</p>
