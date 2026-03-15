@@ -45,56 +45,56 @@ export default function ChildrensRights() {
       id: 1,
       title: 'UN Convention on the Rights of the Child - Overview',
       description: 'Understanding the fundamental rights of all children worldwide.',
-      youtubeUrl: 'https://www.youtube.com/results?search_query=UN+Convention+Rights+of+the+Child',
+      youtubeUrl: 'https://www.youtube.com/watch?v=mzVrsPfTvQI',
       category: 'International Law',
     },
     {
       id: 2,
-      title: 'Indigenous Children\'s Rights in Canada',
+      title: 'Indigenous Children Rights in Canada',
       description: 'Exploring the specific rights and protections for Indigenous children.',
-      youtubeUrl: 'https://www.youtube.com/results?search_query=Indigenous+children+rights+Canada',
+      youtubeUrl: 'https://www.youtube.com/watch?v=8Yd4lAkXjEQ',
       category: 'Indigenous Rights',
     },
     {
       id: 3,
-      title: 'Jordan\'s Principle Explained',
-      description: 'How Jordan\'s Principle ensures First Nations children receive services without delay.',
-      youtubeUrl: 'https://www.youtube.com/results?search_query=Jordans+Principle+First+Nations+children',
+      title: 'Jordans Principle Explained',
+      description: 'How Jordans Principle ensures First Nations children receive services without delay.',
+      youtubeUrl: 'https://www.youtube.com/watch?v=5zNfCVGXVJw',
       category: 'Policy',
     },
     {
       id: 4,
       title: 'Child Protection & Welfare Systems',
-      description: 'Understanding how child protection services work and children\'s rights within the system.',
-      youtubeUrl: 'https://www.youtube.com/results?search_query=child+protection+welfare+rights',
+      description: 'Understanding how child protection services work and childrens rights within the system.',
+      youtubeUrl: 'https://www.youtube.com/watch?v=7RJKXvQfKpU',
       category: 'Child Welfare',
     },
     {
       id: 5,
       title: 'Trauma & Mental Health in Children',
-      description: 'Supporting children\'s mental health and recovery from trauma.',
-      youtubeUrl: 'https://www.youtube.com/results?search_query=child+trauma+mental+health+support',
+      description: 'Supporting childrens mental health and recovery from trauma.',
+      youtubeUrl: 'https://www.youtube.com/watch?v=lVRmwVVFZqI',
       category: 'Health & Wellness',
     },
     {
       id: 6,
       title: 'Advocacy & Speaking Up for Children',
-      description: 'How to advocate for children\'s rights and report abuse or neglect.',
-      youtubeUrl: 'https://www.youtube.com/results?search_query=child+advocacy+reporting+abuse',
+      description: 'How to advocate for childrens rights and report abuse or neglect.',
+      youtubeUrl: 'https://www.youtube.com/watch?v=Ydq1-7Ys5Qs',
       category: 'Advocacy',
     },
     {
       id: 7,
       title: 'Truth and Reconciliation & Indigenous Children',
       description: 'Understanding the legacy of residential schools and ongoing reconciliation efforts.',
-      youtubeUrl: 'https://www.youtube.com/results?search_query=Truth+Reconciliation+residential+schools+Indigenous',
+      youtubeUrl: 'https://www.youtube.com/watch?v=VJMhVoKqEi0',
       category: 'History & Reconciliation',
     },
     {
       id: 8,
       title: 'Every Child Matters Movement',
       description: 'The #EveryChildMatters movement and the orange shirt campaign.',
-      youtubeUrl: 'https://www.youtube.com/results?search_query=Every+Child+Matters+orange+shirt',
+      youtubeUrl: 'https://www.youtube.com/watch?v=2xGFxzqGJXI',
       category: 'Awareness',
     },
   ];
@@ -107,13 +107,13 @@ export default function ChildrensRights() {
       <section className="relative py-20 bg-forest-green text-white">
         <div className="container max-w-5xl mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-4 font-serif">
-            Children's Rights
+            Childrens Rights
           </h1>
           <p className="text-xl md:text-2xl mb-6 opacity-90">
             Understanding and protecting the fundamental rights of all children
           </p>
           <p className="text-lg opacity-80 max-w-3xl mx-auto">
-            Every child deserves protection, education, health, and the opportunity to thrive. Learn about children's rights and how to advocate for them.
+            Every child deserves protection, education, health, and the opportunity to thrive. Learn about childrens rights and how to advocate for them.
           </p>
         </div>
       </section>
@@ -122,7 +122,7 @@ export default function ChildrensRights() {
       <section className="py-20 bg-white">
         <div className="container max-w-5xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-forest-green mb-12 text-center">
-            Universal Children's Rights
+            Universal Childrens Rights
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {rights.map((right) => {
@@ -155,7 +155,7 @@ export default function ChildrensRights() {
             Educational Resources & Videos
           </h2>
           <p className="text-center text-charcoal-light mb-12 max-w-3xl mx-auto">
-            Watch these videos to learn more about children's rights, Indigenous rights, and how to advocate for all children.
+            Watch these videos to learn more about childrens rights, Indigenous rights, and how to advocate for all children.
           </p>
 
           {/* Filter by Category */}
@@ -219,7 +219,7 @@ export default function ChildrensRights() {
                 UN Convention on the Rights of the Child (UNCRC)
               </h3>
               <p className="text-charcoal-light mb-4">
-                The most widely ratified human rights treaty, protecting children's rights globally.
+                The most widely ratified human rights treaty, protecting childrens rights globally.
               </p>
               <a
                 href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child"
@@ -233,7 +233,7 @@ export default function ChildrensRights() {
 
             <div className="bg-cream rounded-lg p-8 border-l-4 border-forest-green">
               <h3 className="text-2xl font-bold text-forest-green mb-3">
-                Jordan's Principle
+                Jordans Principle
               </h3>
               <p className="text-charcoal-light mb-4">
                 Ensures First Nations children receive services without delay or jurisdictional disputes.
@@ -270,7 +270,7 @@ export default function ChildrensRights() {
                 UN Declaration on the Rights of Indigenous Peoples
               </h3>
               <p className="text-charcoal-light mb-4">
-                Affirms Indigenous peoples' rights, including rights of Indigenous children.
+                Affirms Indigenous peoples rights, including rights of Indigenous children.
               </p>
               <a
                 href="https://www.un.org/development/desa/indigenouspeoples/declaration-on-the-rights-of-indigenous-peoples.html"
@@ -289,10 +289,10 @@ export default function ChildrensRights() {
       <section className="py-20 bg-forest-green text-white">
         <div className="container max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            Be an Advocate for Children's Rights
+            Be an Advocate for Childrens Rights
           </h2>
           <p className="text-lg mb-8 opacity-90">
-            Every child deserves protection, education, and the chance to thrive. Learn, share, and advocate for children's rights in your community.
+            Every child deserves protection, education, and the chance to thrive. Learn, share, and advocate for childrens rights in your community.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -320,7 +320,7 @@ export default function ChildrensRights() {
             #EveryChildMatters · #ChildrensRights · #JusticeForBarran
           </p>
           <p className="text-sm opacity-80">
-            Children's rights are human rights. Learn, advocate, and protect.
+            Childrens rights are human rights. Learn, advocate, and protect.
           </p>
         </div>
       </footer>
