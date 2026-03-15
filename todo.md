@@ -170,3 +170,13 @@
 - [ ] Add native artifact frames around story images
 - [ ] Add prominent "Support This Cause" buttons linking to /donate-comprehensive
 - [ ] Test all story pages with new design
+
+
+## VIDEO GALLERY PAGE (Pending - User collecting videos)
+- [ ] Create Video Gallery page with all YouTube videos
+- [ ] Videos collected so far: 5 videos (waiting for more)
+- [ ] Add video titles, descriptions, and timestamps
+- [ ] Add playlist functionality
+- [ ] Add share buttons for each video
+- [ ] Add links to related story pages
+- [ ] Test and save checkpoint
