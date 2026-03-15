@@ -175,15 +175,26 @@ export default function Home() {
             <span className="hashtag-pill">#JusticeForBarran</span>
             <span className="hashtag-pill">#TruthAndReconciliation</span>
           </div>
-          <a
-            href="https://www.youtube.com/watch?v=xCpn1erz1y8"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-          >
-            Watch Full Video
-            <ExternalLink size={18} />
-          </a>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="https://www.youtube.com/watch?v=xCpn1erz1y8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+            >
+              Watch Full Video
+              <ExternalLink size={18} />
+            </a>
+            <a
+              href="https://www.youtube.com/@justiceforBarran"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+            >
+              Subscribe to Channel
+              <ExternalLink size={18} />
+            </a>
+          </div>
         </div>
 
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -417,6 +428,13 @@ export default function Home() {
               className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
             >
               Accountability Tracker
+              <ExternalLink size={20} />
+            </a>
+            <a
+              href="/dpj-accountability"
+              className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
+            >
+              DPJ Accountability
               <ExternalLink size={20} />
             </a>
             <a

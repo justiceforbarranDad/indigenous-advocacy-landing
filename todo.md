@@ -90,3 +90,14 @@
 - [ ] Music Rebuild - Slow build with native drums, low chant, strings to powerful crescendo
 - [ ] Professional Visual Production - High-quality imagery matching "1 million dollar production" aesthetic
 - [ ] Music Synchronization - Align music with 13-slide emotional arc from start to end
+
+
+## CRITICAL FIXES COMPLETED
+- [x] Fix e-Transfer QR code - NO PASSWORD REQUIRED, direct deposit to account (COMPLETE)
+- [x] YouTube Channel Visibility - Subscribe button added to Home & Donate pages (COMPLETE)
+- [x] DPJ Accountability Page - 13-year timeline with systemic failures documented (COMPLETE)
+- [ ] Governor General Wellness Check - Add Feb 27, 2026 videos with subtitles showing final insult
+- [ ] Simon Jolin-Barrette Correction - Fix who he cried for (not his daughter)
+- [ ] 13 Rights of Users Poster - Add image showing rights children were denied
+- [ ] Native Drumming Music - Replace with original native drums, slow, powerful, minimal chants
+- [ ] Timeline Documentation - 2013 (paternity fight) → 2021 (stabbing) → 2023 (DPJ withdrawn) → 2026 (still fighting) (COMPLETE in DPJ page)

@@ -115,8 +115,8 @@ export default function Donate() {
                     {copied ? <Check size={20} className="text-green-600" /> : <Copy size={20} />}
                   </button>
                 </div>
-                <p className="text-xs text-charcoal-light mb-4">
-                  Security Question Answer: <strong>JUSTICE</strong>
+                <p className="text-xs text-charcoal-light mb-4 text-amber-orange font-semibold">
+                  ✓ NO PASSWORD REQUIRED - Direct Deposit to Account
                 </p>
                 
                 {/* QR Code */}
@@ -124,7 +124,7 @@ export default function Donate() {
                   <p className="text-xs text-charcoal-light font-semibold">Scan to Send e-Transfer</p>
                   <canvas id="qrcode-canvas" className="border-2 border-forest-green rounded" />
                   <p className="text-xs text-charcoal-light text-center">
-                    Use your banking app to scan and send e-Transfer instantly
+                    Scan with your banking app for instant direct deposit
                   </p>
                 </div>
               </div>
@@ -266,6 +266,26 @@ export default function Donate() {
             </CardContent>
           </Card>
         </div>
+
+        {/* YouTube Channel */}
+        <Card className="mt-8 border-red-600/30 bg-red-50">
+          <CardHeader>
+            <CardTitle className="text-lg text-red-700">Follow the Journey on YouTube</CardTitle>
+            <CardDescription>
+              Subscribe to @justiceforBarran for ongoing updates, evidence, and accountability documentation.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <a
+              href="https://www.youtube.com/@justiceforBarran"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+            >
+              Subscribe to @justiceforBarran
+            </a>
+          </CardContent>
+        </Card>
 
         {/* GoFundMe Alternative */}
         <Card className="mt-8 border-border/50">

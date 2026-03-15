@@ -19,6 +19,7 @@ import IndigenousNations from "./pages/IndigenousNations";
 import AccountabilityTracker from "./pages/AccountabilityTracker";
 import SystemicFailures from "./pages/SystemicFailures";
 import Credits from "./pages/Credits";
+import DPJAccountability from "./pages/DPJAccountability";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -38,6 +39,7 @@ function Router() {
       <Route path={"/accountability-tracker"} component={AccountabilityTracker} />
       <Route path={"/systemic-failures"} component={SystemicFailures} />
       <Route path={"/credits"} component={Credits} />
+      <Route path={"/dpj-accountability"} component={DPJAccountability} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
