@@ -196,8 +196,7 @@ export default function Donate() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="etransfer">e-Transfer</SelectItem>
-                      <SelectItem value="gofundme">GoFundMe</SelectItem>
+                      <SelectItem value="etransfer">e-Transfer (Recommended - No Fees)</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
@@ -249,6 +248,32 @@ export default function Donate() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Alternative Donation Methods */}
+        <Card className="mt-8 border-amber-orange/20">
+          <CardHeader className="bg-charcoal-light text-cream">
+            <CardTitle>Alternative Donation Methods</CardTitle>
+            <CardDescription className="text-cream/80">
+              If you prefer other platforms, you can also support through:
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-8">
+            <div className="space-y-4">
+              <a
+                href="https://gofund.me/role.flip.tall"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 border-2 border-amber-orange/30 rounded-lg hover:border-amber-orange hover:bg-cream-dark transition-colors"
+              >
+                <h4 className="font-semibold text-forest-green mb-1">GoFundMe</h4>
+                <p className="text-sm text-charcoal-light mb-3">Support through GoFundMe platform (platform fees apply)</p>
+                <span className="inline-flex items-center gap-2 text-amber-orange font-semibold text-sm">
+                  Visit GoFundMe Campaign →
+                </span>
+              </a>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Impact Section */}
         <Card className="mt-8 border-amber-orange/20">

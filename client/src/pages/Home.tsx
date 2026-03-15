@@ -360,15 +360,7 @@ export default function Home() {
               Donate Now (e-Transfer)
               <ExternalLink size={20} />
             </a>
-            <a
-              href="https://gofund.me/role.flip.tall"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
-            >
-              Support on GoFundMe
-              <ExternalLink size={20} />
-            </a>
+
             <a
               href="/share-story"
               className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
