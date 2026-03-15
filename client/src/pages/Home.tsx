@@ -320,11 +320,11 @@ export default function Home() {
                       <p className="font-semibold text-charcoal mb-3">
                         {slide.poll}
                       </p>
-                      <div className="flex gap-3">
-                        <button className="flex-1 px-4 py-2 bg-amber-orange text-white rounded font-semibold hover:bg-amber-light transition-colors">
+                      <div className="flex gap-3 w-full">
+                        <button className="flex-1 min-w-0 px-4 py-2 bg-amber-orange text-white rounded font-semibold hover:bg-amber-light transition-colors whitespace-nowrap">
                           Yes
                         </button>
-                        <button className="flex-1 px-4 py-2 border-2 border-amber-orange text-amber-orange rounded font-semibold hover:bg-amber-orange hover:text-white transition-colors">
+                        <button className="flex-1 min-w-0 px-4 py-2 border-2 border-amber-orange text-amber-orange rounded font-semibold hover:bg-amber-orange hover:text-white transition-colors whitespace-nowrap">
                           No
                         </button>
                       </div>
