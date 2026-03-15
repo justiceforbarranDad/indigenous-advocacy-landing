@@ -27,8 +27,6 @@ const slides = [
     hashtags: ["#EveryChildMatters", "#JusticeForBarran", "#TruthAndReconciliation"],
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/blooddonuts_28322d94.jpg",
     videoLink: "https://www.youtube.com/watch?v=xCpn1erz1y8",
-    showDonations: true,
-    donationText: "Support this movement. Every contribution fuels justice for Barran and all Indigenous children.",
   },
   {
     id: 3,
@@ -333,28 +331,7 @@ export default function Home() {
                     </div>
                   )}
 
-                  {slide.showDonations && (
-                    <div className="mb-6 p-6 bg-gradient-to-r from-forest-green to-forest-green/80 text-white rounded-lg border-2 border-amber-orange">
-                      <h3 className="text-2xl font-bold mb-2">Support This Movement</h3>
-                      <p className="text-white/90 mb-6">{slide.donationText}</p>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <a
-                          href="https://www.gofundme.com"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-white text-forest-green px-6 py-3 rounded font-bold hover:bg-amber-orange hover:text-white transition-colors text-center"
-                        >
-                          Donate on GoFundMe
-                        </a>
-                        <a
-                          href="/donate-comprehensive"
-                          className="bg-amber-orange text-white px-6 py-3 rounded font-bold hover:bg-amber-light transition-colors text-center"
-                        >
-                          e-Transfer & More
-                        </a>
-                      </div>
-                    </div>
-                  )}
+
 
                   {/* Hashtags */}
                   <div className="flex flex-wrap gap-2">
