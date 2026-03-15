@@ -52,6 +52,7 @@ import LifestyleInequalityReport from "./pages/LifestyleInequalityReport";
 import ParliamentaryReformManifesto from "./pages/ParliamentaryReformManifesto";
 import InMemoriam from "./pages/InMemoriam";
 import AlliesAndOrganizations from "./pages/AlliesAndOrganizations";
+import VideoHub from "./pages/VideoHub";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -104,6 +105,7 @@ function Router() {
       <Route path="/parliamentary-reform-manifesto" component={ParliamentaryReformManifesto} />
       <Route path="/in-memoriam" component={InMemoriam} />
       <Route path="/allies-and-organizations" component={AlliesAndOrganizations} />
+      <Route path="/video-hub" component={VideoHub} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
