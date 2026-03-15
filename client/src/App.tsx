@@ -17,6 +17,8 @@ import StoriesGallery from "./pages/StoriesGallery";
 import ImpactReports from "./pages/ImpactReports";
 import IndigenousNations from "./pages/IndigenousNations";
 import AccountabilityTracker from "./pages/AccountabilityTracker";
+import SystemicFailures from "./pages/SystemicFailures";
+import Credits from "./pages/Credits";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -34,6 +36,8 @@ function Router() {
       <Route path={"/impact-reports"} component={ImpactReports} />
       <Route path={"/indigenous-nations"} component={IndigenousNations} />
       <Route path={"/accountability-tracker"} component={AccountabilityTracker} />
+      <Route path={"/systemic-failures"} component={SystemicFailures} />
+      <Route path={"/credits"} component={Credits} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

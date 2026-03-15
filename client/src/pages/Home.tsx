@@ -420,6 +420,20 @@ export default function Home() {
               <ExternalLink size={20} />
             </a>
             <a
+              href="/systemic-failures"
+              className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
+            >
+              Systemic Failures
+              <ExternalLink size={20} />
+            </a>
+            <a
+              href="/credits"
+              className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
+            >
+              Credits & Acknowledgments
+              <ExternalLink size={20} />
+            </a>
+            <a
               href="mailto:justiceforbarran@gmail.com"
               className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
             >
