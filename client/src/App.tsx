@@ -4,6 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { MusicPlayer } from "./components/MusicPlayer";
 import Home from "./pages/Home";
 import Resources from "./pages/Resources";
 import ShareStory from "./pages/ShareStory";
@@ -39,6 +40,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <MusicPlayer autoplay={false} loop={true} />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
