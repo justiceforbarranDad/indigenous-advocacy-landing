@@ -287,23 +287,42 @@ export default function Donate() {
           </CardContent>
         </Card>
 
-        {/* GoFundMe Alternative */}
-        <Card className="mt-8 border-border/50">
-          <CardHeader>
-            <CardTitle className="text-lg">Alternative: GoFundMe</CardTitle>
-            <CardDescription>
-              If you prefer using GoFundMe, the link is available below. However, e-Transfer is recommended to avoid platform fees.
+        {/* GoFundMe Section */}
+        <Card className="mt-8 border-amber-orange/30 bg-forest-green/5">
+          <CardHeader className="bg-forest-green text-cream">
+            <CardTitle className="text-2xl">✓ GoFundMe Campaign</CardTitle>
+            <CardDescription className="text-cream/80">
+              Scan the QR code to donate via GoFundMe
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <a
-              href="https://gofund.me/role.flip.tall"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-            >
-              Donate on GoFundMe
-            </a>
+          <CardContent className="pt-8">
+            <div className="flex flex-col items-center gap-6">
+              {/* GoFundMe QR Code */}
+              <div className="bg-white p-8 rounded-lg border-4 border-forest-green shadow-lg">
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code(3)_87756ba0.png"
+                  alt="GoFundMe QR Code - Scan to donate to Robert's fundraiser Sunday Bloody Sunday"
+                  className="w-64 h-64 object-contain"
+                />
+              </div>
+              
+              <div className="text-center space-y-3">
+                <p className="text-lg font-semibold text-charcoal">Scan to donate to Robert's fundraiser</p>
+                <p className="text-2xl font-bold text-amber-orange">"Sunday Bloody Sunday"</p>
+                <p className="text-sm text-charcoal-light max-w-md">
+                  Use your phone camera to scan the QR code above, or visit the GoFundMe campaign directly.
+                </p>
+              </div>
+
+              <a
+                href="https://gofund.me/role.flip.tall"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-amber-orange hover:bg-amber-light text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Open GoFundMe Campaign
+              </a>
+            </div>
           </CardContent>
         </Card>
       </div>

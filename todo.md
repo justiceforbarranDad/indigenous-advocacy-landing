@@ -350,3 +350,19 @@ All accountability pages redesigned with vintage newspaper aesthetic (black & wh
 - Vintage paper texture
 - Responsive mobile-first layout
 - Audio narration where applicable
+
+
+## GOFUNDME INTEGRATION (March 15, 2026 - Session 3)
+- [ ] Upload GoFundMe QR code image to CDN
+- [ ] Add GoFundMe donation section to Donate page with QR code display
+- [ ] Add GoFundMe button/link to homepage
+- [ ] Display "Scan to donate" messaging with QR code
+- [ ] Test GoFundMe integration on all pages
+- [ ] Save checkpoint with GoFundMe integration
+
+
+## DONATION TRACKER RESET (March 15, 2026 - Session 3)
+- [x] Reset donation tracker to $0.00 on homepage - COMPLETE
+- [x] Ensure donation widget pulls from real database donations - COMPLETE
+- [x] Test donation tracking with actual submissions - COMPLETE (17 tests passing)
+- [ ] Save checkpoint with reset tracker

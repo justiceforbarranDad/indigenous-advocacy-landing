@@ -359,7 +359,7 @@ export default function Home() {
                 <Heart className="w-8 h-8 text-amber-orange" />
                 <h3 className="text-lg font-bold text-forest-green">Donations Received</h3>
               </div>
-              <p className="text-4xl font-black text-amber-orange mb-2">$2,847</p>
+              <p className="text-4xl font-black text-amber-orange mb-2">$0.00</p>
               <p className="text-sm text-charcoal/70">From supporters across Canada and internationally</p>
             </div>
 
@@ -379,10 +379,10 @@ export default function Home() {
               <div className="w-full bg-gray-200 rounded-full h-3 mb-3">
                 <div 
                   className="bg-gradient-to-r from-amber-orange to-forest-green h-3 rounded-full transition-all duration-500"
-                  style={{ width: '5.7%' }}
+                  style={{ width: '0%' }}
                 ></div>
               </div>
-              <p className="text-sm font-semibold text-charcoal">5.7% of goal reached</p>
+              <p className="text-sm font-semibold text-charcoal">0% of goal reached</p>
               <p className="text-xs text-charcoal/60 mt-2">Every donation brings justice closer</p>
             </div>
           </div>
@@ -426,6 +426,16 @@ export default function Home() {
               className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
             >
               Donate Now (e-Transfer)
+              <ExternalLink size={20} />
+            </a>
+
+            <a
+              href="https://gofund.me/role.flip.tall"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-forest-green hover:bg-forest-green/90 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border-2 border-white"
+            >
+              Donate via GoFundMe
               <ExternalLink size={20} />
             </a>
 
