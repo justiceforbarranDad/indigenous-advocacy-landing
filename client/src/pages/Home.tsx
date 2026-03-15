@@ -389,11 +389,18 @@ export default function Home() {
               <Share2 size={20} />
             </a>
             <a
-              href="/resources"
+              href="/contact-accountability"
               className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
             >
               Resources & References
               <ExternalLink size={20} />
+            </a>
+            <a
+              href="/ghosted-by-politician"
+              className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
+            >
+              Ghosted by a Politician?
+              <Share2 size={20} />
             </a>
             <a
               href="/childrens-rights"

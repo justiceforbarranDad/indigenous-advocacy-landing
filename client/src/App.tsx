@@ -22,7 +22,8 @@ import Credits from "./pages/Credits";
 import DPJAccountability from "./pages/DPJAccountability";
 import WellnessCheck from "./pages/WellnessCheck";
 import OfficialsBlockedYou from "./pages/OfficialsBlockedYou";
-import ContactAccountability from "./pages/ContactAccountability";
+import ContactAccountability from '@/pages/ContactAccountability';
+import GhostedByPolitician from '@/pages/GhostedByPolitician';
 import BarransStory from "./pages/BarransStory";
 import MotherAbuseDPJ from "./pages/MotherAbuseDPJ";
 
@@ -47,7 +48,8 @@ function Router() {
       <Route path={"/dpj-accountability"} component={DPJAccountability} />
       <Route path={"/wellness-check"} component={WellnessCheck} />
       <Route path={"/officials-blocked-you"} component={OfficialsBlockedYou} />
-      <Route path={"/contact-accountability"} component={ContactAccountability} />
+       <Route path="/contact-accountability" component={ContactAccountability} />
+      <Route path="/ghosted-by-politician" component={GhostedByPolitician} />
       <Route path={"/barrans-story"} component={BarransStory} />
       <Route path={"/mother-abuse-dpj"} component={MotherAbuseDPJ} />
       <Route path={"/404"} component={NotFound} />
