@@ -393,6 +393,13 @@ export default function Home() {
               <ExternalLink size={20} />
             </a>
             <a
+              href="/childrens-rights"
+              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
+            >
+              Children's Rights & Education
+              <ExternalLink size={20} />
+            </a>
+            <a
               href="https://www.tiktok.com/@barranneedsjustice"
               target="_blank"
               rel="noopener noreferrer"
