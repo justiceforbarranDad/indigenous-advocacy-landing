@@ -144,3 +144,19 @@
 - [ ] Create phone script for supporters to use
 - [ ] Add legal disclaimers (Charter s.2(b) protection)
 - [ ] Test all contact links and information
+
+
+## COMPREHENSIVE DONATION PAGE (New Feature - March 15, 2026)
+- [ ] Create enhanced Donate page with all 5 payment methods
+- [ ] Add Canadian e-Transfer QR code (for Canadian donors)
+- [ ] Add Wire Transfer instructions section (for US donors)
+- [ ] Add Wise referral link (for US donors - lowest fees)
+- [ ] Add PayPal button placeholder (for US donors - easiest)
+- [ ] Add Stripe credit card processor (for US donors - 2.9% + $0.30)
+- [ ] Add Western Union payment option
+- [ ] Add suggested donation amounts ($5, $10, $25, $50, $100+)
+- [ ] Add donation impact messaging (what donations fund)
+- [ ] Add testimonials from supporters
+- [ ] Add FAQ about donation methods
+- [ ] Test all payment methods
+- [ ] Integrate with home page CTA buttons

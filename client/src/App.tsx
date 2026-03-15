@@ -26,6 +26,7 @@ import ContactAccountability from '@/pages/ContactAccountability';
 import GhostedByPolitician from '@/pages/GhostedByPolitician';
 import BarransStory from "./pages/BarransStory";
 import MotherAbuseDPJ from "./pages/MotherAbuseDPJ";
+import DonateComprehensive from "./pages/DonateComprehensive";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -35,6 +36,7 @@ function Router() {
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
       <Route path={"/donate"} component={Donate} />
+      <Route path={"/donate-comprehensive"} component={DonateComprehensive} />
       <Route path={"/childrens-rights"} component={ChildrensRights} />
       <Route path={"/legal-support"} component={LegalSupport} />
       <Route path={"/parents-involvement"} component={ParentsInvolvement} />
@@ -48,7 +50,7 @@ function Router() {
       <Route path={"/dpj-accountability"} component={DPJAccountability} />
       <Route path={"/wellness-check"} component={WellnessCheck} />
       <Route path={"/officials-blocked-you"} component={OfficialsBlockedYou} />
-       <Route path="/contact-accountability" component={ContactAccountability} />
+      <Route path="/contact-accountability" component={ContactAccountability} />
       <Route path="/ghosted-by-politician" component={GhostedByPolitician} />
       <Route path={"/barrans-story"} component={BarransStory} />
       <Route path={"/mother-abuse-dpj"} component={MotherAbuseDPJ} />
