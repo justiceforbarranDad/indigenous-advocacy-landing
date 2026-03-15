@@ -19,15 +19,7 @@ const slides = [
     hashtags: ["#BloodyHistory", "#SystemicViolence", "#JusticeMatters"],
     link: "https://en.wikipedia.org/wiki/Bloody_Sunday",
   },
-  {
-    id: 2,
-    title: "Sunday Bloody Sunday, Part Two",
-    subtitle: "Picking up where the 2008 apology failed",
-    content: "It started with hope after Harper's 2008 apology for residential schools: 'We are sorry' for cultural genocide, 150k+ kids taken, intergenerational trauma. But in 2025/2026, the same systems still fail Indigenous children. My story proves it.",
-    hashtags: ["#EveryChildMatters", "#JusticeForBarran", "#TruthAndReconciliation"],
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/blooddonuts_28322d94.jpg",
-    videoLink: "https://www.youtube.com/watch?v=xCpn1erz1y8",
-  },
+
   {
     id: 3,
     title: "Slide 3/12",
@@ -259,9 +251,9 @@ export default function Home() {
                     {slide.content}
                   </p>
 
-                  {slide.videoLink && (
+                  {(slide as any).videoLink && (
                     <a
-                      href={slide.videoLink}
+                      href={(slide as any).videoLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-amber-orange hover:text-amber-light font-semibold mb-6 transition-colors"
