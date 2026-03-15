@@ -160,3 +160,13 @@
 - [ ] Add FAQ about donation methods
 - [ ] Test all payment methods
 - [ ] Integrate with home page CTA buttons
+
+
+## STORY PAGE REDESIGN (March 15, 2026)
+- [ ] Remove donation widgets from story pages (BarransStory, MotherAbuseDPJ, WellnessCheck, etc.)
+- [ ] Move all donation CTAs to dedicated donation page only
+- [ ] Darken color scheme on story pages (darker greens, charcoal backgrounds)
+- [ ] Create native artifact decorative elements (geometric patterns, Indigenous designs)
+- [ ] Add native artifact frames around story images
+- [ ] Add prominent "Support This Cause" buttons linking to /donate-comprehensive
+- [ ] Test all story pages with new design

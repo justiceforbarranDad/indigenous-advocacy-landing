@@ -27,6 +27,7 @@ import GhostedByPolitician from '@/pages/GhostedByPolitician';
 import BarransStory from "./pages/BarransStory";
 import MotherAbuseDPJ from "./pages/MotherAbuseDPJ";
 import DonateComprehensive from "./pages/DonateComprehensive";
+import Movement from "./pages/Movement";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -37,6 +38,7 @@ function Router() {
       <Route path={"/share-story"} component={ShareStory} />
       <Route path={"/donate"} component={Donate} />
       <Route path={"/donate-comprehensive"} component={DonateComprehensive} />
+      <Route path={"/movement"} component={Movement} />
       <Route path={"/childrens-rights"} component={ChildrensRights} />
       <Route path={"/legal-support"} component={LegalSupport} />
       <Route path={"/parents-involvement"} component={ParentsInvolvement} />
