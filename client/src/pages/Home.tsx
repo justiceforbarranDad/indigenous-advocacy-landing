@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useAuth } from '@/_core/hooks/useAuth';
 import { ChevronDown, Share2, ExternalLink } from 'lucide-react';
 
 /**
@@ -118,6 +119,10 @@ const slides = [
 ];
 
 export default function Home() {
+  // The userAuth hooks provides authentication state
+  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
+  let { user, loading, error, isAuthenticated, logout } = useAuth();
+
   const [activeSlide, setActiveSlide] = useState(0);
   const [visibleSlides, setVisibleSlides] = useState<number[]>([]);
 
@@ -347,7 +352,14 @@ export default function Home() {
           <p className="text-lg md:text-xl mb-8 leading-relaxed">
             When will there be real action? Independent probe? Jordan's Principle applied? This is my testimony—for justice, not silence.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
+            <a
+              href="/donate"
+              className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
+            >
+              Donate Now (e-Transfer)
+              <ExternalLink size={20} />
+            </a>
             <a
               href="https://gofund.me/role.flip.tall"
               target="_blank"
@@ -356,6 +368,13 @@ export default function Home() {
             >
               Support on GoFundMe
               <ExternalLink size={20} />
+            </a>
+            <a
+              href="/share-story"
+              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
+            >
+              Share Your Story
+              <Share2 size={20} />
             </a>
             <a
               href="https://twitter.com/HelpBarran"

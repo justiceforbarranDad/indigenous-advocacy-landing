@@ -1,0 +1,107 @@
+import { COOKIE_NAME } from "@shared/const";
+import { getSessionCookieOptions } from "./_core/cookies";
+import { systemRouter } from "./_core/systemRouter";
+import { publicProcedure, router } from "./_core/trpc";
+import { z } from "zod";
+import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations } from "./db";
+import { notifyOwner } from "./_core/notification";
+
+export const appRouter = router({
+  system: systemRouter,
+  auth: router({
+    me: publicProcedure.query(opts => opts.ctx.user),
+    logout: publicProcedure.mutation(({ ctx }) => {
+      const cookieOptions = getSessionCookieOptions(ctx.req);
+      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
+      return {
+        success: true,
+      } as const;
+    }),
+  }),
+
+  stories: router({
+    submit: publicProcedure
+      .input(z.object({
+        name: z.string().min(1, "Name is required"),
+        email: z.string().email("Valid email required"),
+        phone: z.string().optional(),
+        story: z.string().min(10, "Story must be at least 10 characters"),
+        category: z.enum(["child_victim", "adult_victim", "family_member", "advocate", "other"]),
+        isPublic: z.enum(["yes", "no"]),
+      }))
+      .mutation(async ({ input }) => {
+        try {
+          await createSurvivorStory({
+            name: input.name,
+            email: input.email,
+            phone: input.phone || null,
+            story: input.story,
+            category: input.category,
+            isPublic: input.isPublic,
+            status: "pending",
+          });
+          
+          await notifyOwner({
+            title: "New Survivor Story Submitted",
+            content: `${input.name} (${input.category}) submitted a story. Public: ${input.isPublic}`,
+          });
+          
+          return { success: true, message: "Story submitted successfully. Thank you for sharing your experience." };
+        } catch (error) {
+          console.error("Error submitting story:", error);
+          throw new Error("Failed to submit story");
+        }
+      }),
+    
+    getPublic: publicProcedure
+      .input(z.object({
+        limit: z.number().default(10),
+        offset: z.number().default(0),
+      }))
+      .query(async ({ input }) => {
+        return await getPublicSurvivorStories(input.limit, input.offset);
+      }),
+  }),
+
+  donations: router({
+    submit: publicProcedure
+      .input(z.object({
+        donorName: z.string().min(1, "Name is required"),
+        donorEmail: z.string().email("Valid email required"),
+        amount: z.number().min(0.01, "Amount must be at least $0.01"),
+        method: z.enum(["etransfer", "gofundme", "other"]),
+        message: z.string().optional(),
+        isAnonymous: z.enum(["yes", "no"]),
+      }))
+      .mutation(async ({ input }) => {
+        try {
+          await createDonation({
+            donorName: input.donorName,
+            donorEmail: input.donorEmail,
+            amount: Math.round(input.amount * 100),
+            method: input.method,
+            message: input.message || null,
+            isAnonymous: input.isAnonymous,
+            status: "pending",
+          });
+          
+          await notifyOwner({
+            title: "New Donation Received",
+            content: `${input.isAnonymous === "yes" ? "Anonymous" : input.donorName} donated $${(input.amount).toFixed(2)} via ${input.method}`,
+          });
+          
+          return { success: true, message: "Thank you for your donation!" };
+        } catch (error) {
+          console.error("Error processing donation:", error);
+          throw new Error("Failed to process donation");
+        }
+      }),
+    
+    getTotal: publicProcedure.query(async () => {
+      const totalCents = await getTotalDonations();
+      return { totalCAD: (totalCents / 100).toFixed(2) };
+    }),
+  }),
+});
+
+export type AppRouter = typeof appRouter;
