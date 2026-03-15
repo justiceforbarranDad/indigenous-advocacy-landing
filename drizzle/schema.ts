@@ -75,3 +75,20 @@ export const legalProfiles = mysqlTable("legal_profiles", {
 
 export type LegalProfile = typeof legalProfiles.$inferSelect;
 export type InsertLegalProfile = typeof legalProfiles.$inferInsert;
+
+// Parent Profiles Table
+export const parentProfiles = mysqlTable("parent_profiles", {
+  id: int("id").autoincrement().primaryKey(),
+  parentName: varchar("parent_name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 20 }),
+  childSituation: text("child_situation").notNull(),
+  involvement: text("involvement").notNull(),
+  message: text("message"),
+  status: mysqlEnum("status", ["pending", "reviewed", "contacted"]).default("pending").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ParentProfile = typeof parentProfiles.$inferSelect;
+export type InsertParentProfile = typeof parentProfiles.$inferInsert;

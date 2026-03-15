@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, legalProfiles, InsertLegalProfile } from "../drizzle/schema";
+import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, legalProfiles, InsertLegalProfile, parentProfiles, InsertParentProfile } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -174,5 +174,26 @@ export async function getLegalProfiles(limit: number = 50, offset: number = 0) {
   }
   
   const result = await db.select().from(legalProfiles).limit(limit).offset(offset);
+  return result;
+}
+
+// Parent Profiles Functions
+export async function createParentProfile(profile: InsertParentProfile) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  const result = await db.insert(parentProfiles).values(profile);
+  return result;
+}
+
+export async function getParentProfiles(limit: number = 50, offset: number = 0) {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select().from(parentProfiles).limit(limit).offset(offset);
   return result;
 }

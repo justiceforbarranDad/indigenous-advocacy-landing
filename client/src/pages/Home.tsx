@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/_core/hooks/useAuth';
-import { ChevronDown, Share2, ExternalLink, Mail } from 'lucide-react';
+import { ChevronDown, Share2, ExternalLink, Mail, Users } from 'lucide-react';
 
 /**
  * DESIGN SYSTEM: "Orange Sky" — Solemn Memorial / Indigenous Aesthetic
@@ -397,6 +397,13 @@ export default function Home() {
             >
               International Legal Support
               <ExternalLink size={20} />
+            </a>
+            <a
+              href="/parents-involvement"
+              className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
+            >
+              Parents & Non-Profit
+              <Users size={20} />
             </a>
             <a
               href="mailto:justiceforbarran@gmail.com"

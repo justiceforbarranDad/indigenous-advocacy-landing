@@ -3,7 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
-import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile } from "./db";
+import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile } from "./db";
 import { notifyOwner } from "./_core/notification";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
 
@@ -124,6 +124,43 @@ export const appRouter = router({
       const totalCents = await getTotalDonations();
       return { totalCAD: (totalCents / 100).toFixed(2) };
     }),
+  }),
+
+  parents: router({
+    submitParentProfile: publicProcedure
+      .input(
+        z.object({
+          parentName: z.string().min(1, "Name is required"),
+          email: z.string().email("Valid email required"),
+          phone: z.string().optional(),
+          childSituation: z.string().min(10, "Please provide details about your situation"),
+          involvement: z.string().min(10, "Please describe how you'd like to get involved"),
+          message: z.string().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        try {
+          await createParentProfile({
+            parentName: input.parentName,
+            email: input.email,
+            phone: input.phone || null,
+            childSituation: input.childSituation,
+            involvement: input.involvement,
+            message: input.message || null,
+            status: "pending",
+          });
+
+          await notifyOwner({
+            title: "New Parent Profile Submission",
+            content: `${input.parentName} (${input.email}) has joined the movement. Involvement: ${input.involvement}`,
+          });
+
+          return { success: true, message: "Your parent profile has been received. We will contact you soon." };
+        } catch (error) {
+          console.error("Error submitting parent profile:", error);
+          throw new Error("Failed to submit parent profile");
+        }
+      }),
   }),
 
   legal: router({
