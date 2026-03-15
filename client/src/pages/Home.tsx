@@ -408,6 +408,15 @@ export default function Home() {
               className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
             >
               Join on Reddit
+            <a
+              href="https://www.instagram.com/justice_for_barran/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
+            >
+              Follow on Instagram
+              <ExternalLink size={20} />
+            </a>
               <ExternalLink size={20} />
             </a>
           </div>
