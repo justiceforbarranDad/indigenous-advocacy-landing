@@ -25,7 +25,7 @@ const slides = [
     subtitle: "Family Trauma & System Failure",
     content: "Since ~2021, my Indigenous family sought help after serious trauma (teen stabbed 3x, major impacts). DPJ (DYP) involved but withdrew Jan 2023—no adequate follow-up, education lost, mental health destroyed. Jordan's Principle (no-delay services for First Nations kids) ignored.",
     hashtags: ["#JordansPrinciple", "#DPJFailure", "#IndigenousRights"],
-    link: "https://www.sac-isc.gc.ca/eng/1100100014395/1572468514744",
+    link: "https://www.canada.ca/en/indigenous-services/services/jordans-principle.html",
   },
   {
     id: 3,
