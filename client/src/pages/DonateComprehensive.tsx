@@ -71,14 +71,14 @@ export default function DonateComprehensive() {
               <div className="bg-gray-50 p-6 rounded-lg text-center mb-6">
                 <p className="text-xs font-semibold text-charcoal mb-4">Scan with your banking app</p>
                 <div className="bg-white p-4 rounded border-2 border-amber-orange inline-block">
-                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/etransfer-interac-qr_a3b50e76.png" alt="Direct e-Transfer QR Code" className="w-40 h-40 rounded" />
+                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/etransfer-universal-qr-hires_10b72ac1.png" alt="Direct e-Transfer QR Code" className="w-40 h-40 rounded" />
                 </div>
               </div>
               <div className="space-y-2 text-xs text-charcoal-light mb-6">
-                <p>✓ Works with all Canadian banks</p>
-                <p>✓ RBC, TD, Scotiabank, BMO, CIBC, Tangerine, EQ Bank, Simplii</p>
-                <p>✓ Auto-populates recipient email</p>
-                <p>✓ You choose the amount in your banking app</p>
+                <p>✓ Works with ALL Canadian banks</p>
+                <p>✓ Bank of Canada, TD, RBC, Scotiabank, BMO, CIBC, Tangerine, EQ Bank, Simplii, Banco Nacional</p>
+                <p>✓ iPhone, Android, all devices</p>
+                <p>✓ Perfect for flyers and bumper stickers</p>
                 <p>✓ No fees - direct to your account</p>
                 <p>✓ Funds go straight to Justice for Barran</p>
               </div>
