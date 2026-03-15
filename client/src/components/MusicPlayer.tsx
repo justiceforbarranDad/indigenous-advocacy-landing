@@ -34,6 +34,14 @@ const ROYALTY_FREE_MUSIC = [
   },
   {
     id: 3,
+    title: 'Wholesome',
+    artist: 'Daniella Ljungsberg',
+    url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    duration: '8:02',
+    description: 'Contemplative middle - soft, solemn ambient track (80 BPM) evoking reflection and healing',
+  },
+  {
+    id: 4,
     title: 'Nighttime Forest Call',
     artist: 'Wilderness Echo',
     url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
