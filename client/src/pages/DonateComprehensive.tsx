@@ -58,11 +58,9 @@ export default function DonateComprehensive() {
                 <QrCode className="w-8 h-8 text-forest-green mx-auto mb-3" />
                 <p className="text-sm font-semibold text-charcoal mb-3">Scan with your banking app</p>
                 <div className="bg-white p-4 rounded border-2 border-forest-green/20 inline-block mb-4">
-                  <div className="w-48 h-48 bg-gray-200 flex items-center justify-center rounded">
-                    <p className="text-xs text-charcoal-light">QR Code Image</p>
-                  </div>
+                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/etransfer-qr-code_3bc972cd.png" alt="Interac e-Transfer QR Code" className="w-48 h-48 rounded" />
                 </div>
-                <p className="text-xs text-charcoal-light">Scan to send e-Transfer directly</p>
+                <p className="text-xs text-charcoal-light">Works with all Canadian banks: RBC, TD, Scotiabank, BMO, CIBC, Tangerine, EQ Bank, and more</p>
               </div>
 
               {/* Manual Entry */}

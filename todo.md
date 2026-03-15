@@ -180,3 +180,27 @@
 - [ ] Add share buttons for each video
 - [ ] Add links to related story pages
 - [ ] Test and save checkpoint
+
+
+## EXPANDED GHOSTING ORGANIZATIONS (March 15, 2026 - New User Request)
+- [ ] Generate native art Slide 2 image (healing/resilience, no people, abstract Indigenous art)
+- [ ] Update Home.tsx with new Slide 2 image
+- [ ] Expand "Ghosted by Politician" page to include organizations:
+  - [ ] AFN (Assembly of First Nations) - Refused to help, said not status/band member
+  - [ ] PMO (Prime Minister's Office) - No response, ghosted
+  - [ ] Amnesty Canada - No response, ghosted
+  - [ ] Legal Aid Quebec - No response, ghosted
+  - [ ] Multiple lawyers - None stepped up to help despite oath to protect children
+- [ ] Create comprehensive "Accountability Tracker" page documenting:
+  - [ ] All government officials who ghosted (federal, provincial, municipal)
+  - [ ] All Indigenous organizations that failed to support
+  - [ ] All legal professionals who refused to help
+  - [ ] Timeline of ghosting (years of no response)
+  - [ ] Evidence of systemic failure across sectors
+- [ ] Document lawyer accountability - "Not 1 lawyer stepping up, shame on all lawyers who don't care of victims"
+- [ ] Add PMO contact information and evidence of ghosting
+- [ ] Add Amnesty Canada contact information and evidence of ghosting
+- [ ] Add AFN contact information and evidence of ghosting
+- [ ] Create "Legal Profession Accountability" section
+- [ ] Test all new pages and links
+- [ ] Save checkpoint with expanded accountability features

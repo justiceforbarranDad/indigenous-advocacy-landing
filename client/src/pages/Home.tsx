@@ -25,7 +25,7 @@ const slides = [
     title: "Slide 2/12",
     subtitle: "The Aftermath - Hospital & Recovery",
     content: "February 14, 2021: A 14-year-old boy stabbed three times—left lung, chest, and back. His iPhone in his front pocket stopped two more stab attempts. Six days hospitalized at Montreal Children's Hospital with a chest tube for three days. The medical staff held him, comforted him, saved his life. At 5 feet 10 inches and 300 lbs, already living with disability and Type 2 diabetes (common in Indigenous communities), Barran showed incredible resilience. Now he has lost weight and is living better, but the trauma remains. He is most comfortable in darkness—the attack happened in the morning. Yet his first words leaving the hospital were: I miss my siblings. Family support sustained him then. Family support sustains him now. Resilience and ongoing struggle, both real.",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/barran-hospital-recovery-4XSsiZuxwsx8hGvKP3s9ug.webp",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/slide2-healing-native-art-MTVpDvrQxTCW2rq9vciQzT.webp",
     hashtags: ["#BarransStory", "#Resilience", "#FamilyMatters", "#EveryChildMatters"],
   },
 

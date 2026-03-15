@@ -28,6 +28,7 @@ import BarransStory from "./pages/BarransStory";
 import MotherAbuseDPJ from "./pages/MotherAbuseDPJ";
 import DonateComprehensive from "./pages/DonateComprehensive";
 import Movement from "./pages/Movement";
+import TimelineNewspaperArchive from "./pages/TimelineNewspaperArchive";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -56,6 +57,7 @@ function Router() {
       <Route path="/ghosted-by-politician" component={GhostedByPolitician} />
       <Route path={"/barrans-story"} component={BarransStory} />
       <Route path={"/mother-abuse-dpj"} component={MotherAbuseDPJ} />
+      <Route path={"/timeline-newspaper-archive"} component={TimelineNewspaperArchive} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
