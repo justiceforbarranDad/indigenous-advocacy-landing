@@ -6,15 +6,18 @@ export default function DonateComprehensive() {
   const donationAmounts = [5, 10, 25, 50, 100];
 
   const handleDonateAmount = (amount: number) => {
-    // Create e-Transfer link with amount in memo/reference
-    // Format: etransfer:email (banking apps will prompt for amount)
-    // For now, we'll open the banking app and user enters amount
-    // In future, this could integrate with specific bank APIs
-    const etransferLink = `etransfer:justiceforbarran@gmail.com?amount=${amount}`;
+    // Use Interac e-Transfer protocol that works with all Canadian banking apps
+    // Format: interac://etransfer?email=justiceforbarran@gmail.com
+    // Banking app will open and user can enter the amount
+    const etransferLink = `interac://etransfer?email=justiceforbarran@gmail.com`;
     
-    // Most banking apps support this format
-    // If not supported, fallback to generic e-transfer
+    // Try to open with banking app
     window.location.href = etransferLink;
+    
+    // Fallback: Show manual entry instructions
+    setTimeout(() => {
+      alert(`Send $${amount} e-Transfer to: justiceforbarran@gmail.com\n\nIf your banking app didn't open, manually enter this email in your bank's e-Transfer form.`);
+    }, 500);
   };
 
   return (
@@ -68,12 +71,14 @@ export default function DonateComprehensive() {
               <div className="bg-gray-50 p-6 rounded-lg text-center mb-6">
                 <p className="text-xs font-semibold text-charcoal mb-4">Scan with your banking app</p>
                 <div className="bg-white p-4 rounded border-2 border-amber-orange inline-block">
-                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/etransfer-direct-qr-code_ab8f0c7a.png" alt="Direct e-Transfer QR Code" className="w-40 h-40 rounded" />
+                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/etransfer-interac-qr_a3b50e76.png" alt="Direct e-Transfer QR Code" className="w-40 h-40 rounded" />
                 </div>
               </div>
               <div className="space-y-2 text-xs text-charcoal-light mb-6">
                 <p>✓ Works with all Canadian banks</p>
-                <p>✓ RBC, TD, Scotiabank, BMO, CIBC, Tangerine, EQ Bank</p>
+                <p>✓ RBC, TD, Scotiabank, BMO, CIBC, Tangerine, EQ Bank, Simplii</p>
+                <p>✓ Auto-populates recipient email</p>
+                <p>✓ You choose the amount in your banking app</p>
                 <p>✓ No fees - direct to your account</p>
                 <p>✓ Funds go straight to Justice for Barran</p>
               </div>
