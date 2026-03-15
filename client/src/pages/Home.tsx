@@ -499,6 +499,20 @@ export default function Home() {
               Contact & Accountability
               <Mail size={20} />
             </a>
+            <a
+              href="/barrans-story"
+              className="inline-flex items-center justify-center gap-2 bg-forest-green hover:bg-forest-green/80 text-cream px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-forest-green"
+            >
+              Barran's Story (Feb 14, 2020)
+              <ExternalLink size={20} />
+            </a>
+            <a
+              href="/mother-abuse-dpj"
+              className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-amber-orange"
+            >
+              Mother's Abuse & DPJ Failure
+              <ExternalLink size={20} />
+            </a>
           </div>
         </div>
       </section>
