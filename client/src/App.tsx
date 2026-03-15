@@ -40,6 +40,7 @@ import HallOfShame from "./pages/HallOfShame";
 import HowToDocumentYourCase from "./pages/HowToDocumentYourCase";
 import OrangeShirtDayInvestigation from "./pages/OrangeShirtDayInvestigation";
 import CallLogDocumentation from "./pages/CallLogDocumentation";
+import InteractiveCallMap from "./pages/InteractiveCallMap";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -80,6 +81,7 @@ function Router() {
       <Route path={"/how-to-document-your-case"} component={HowToDocumentYourCase} />
       <Route path={"/orange-shirt-day-investigation"} component={OrangeShirtDayInvestigation} />
       <Route path={"/call-log-documentation"} component={CallLogDocumentation} />
+      <Route path={"/interactive-call-map"} component={InteractiveCallMap} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
