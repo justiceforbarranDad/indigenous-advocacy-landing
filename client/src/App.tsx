@@ -36,6 +36,7 @@ import InternationalChildCrisis from "./pages/InternationalChildCrisis";
 import PerformativeActivismExposed from "./pages/PerformativeActivismExposed";
 import HumanRightsEducation from "./pages/HumanRightsEducation";
 import LegalViolationsFramework from "./pages/LegalViolationsFramework";
+import HallOfShame from "./pages/HallOfShame";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -72,6 +73,7 @@ function Router() {
       <Route path={"/performative-activism-exposed"} component={PerformativeActivismExposed} />
       <Route path={"/human-rights-education"} component={HumanRightsEducation} />
       <Route path={"/legal-violations-framework"} component={LegalViolationsFramework} />
+      <Route path={"/hall-of-shame"} component={HallOfShame} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
