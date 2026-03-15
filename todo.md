@@ -204,3 +204,114 @@
 - [ ] Create "Legal Profession Accountability" section
 - [ ] Test all new pages and links
 - [ ] Save checkpoint with expanded accountability features
+
+
+## COMPREHENSIVE SYSTEMIC ACCOUNTABILITY NEWSPAPER (March 15, 2026 - MAJOR EXPANSION)
+
+### Phase 1: Systemic Violations Archive
+- [ ] Create "Systemic Violations Archive" page with newspaper aesthetic
+- [ ] Black & white design (2020-2023): Raw, harsh, documentary style
+- [ ] Transitioning to color (2024-2025): Healing, hope emerging
+- [ ] Full color (2026): Action, change, accountability
+- [ ] Document DYP/DPJ failures across ALL Canadian provinces
+- [ ] Show pattern of abuse (renaming agencies, no accountability)
+- [ ] Link to specific provincial failures and statistics
+- [ ] Include historical parallels (residential schools, Sixties Scoop)
+- [ ] Document international law violations
+
+### Phase 2: True vs. False Fact-Check Page
+- [ ] Create "Truth vs. Lies" page debunking government narratives
+- [ ] Expose false claims about "child protection"
+- [ ] Show what DYP/DPJ actually does (institutional abuse)
+- [ ] Fact-check government statements about systemic reform
+- [ ] Document lies about "best interests of child"
+- [ ] Show evidence of systemic failures vs. official narratives
+
+### Phase 3: First Nations Leaders & War Veterans Memorial
+- [ ] Create memorial page honoring First Nations leaders
+- [ ] Document Indigenous rights defenders who died fighting
+- [ ] Show legacy of resistance and sacrifice
+- [ ] Connect to current fight for children's rights
+- [ ] Include quotes from elders and leaders
+- [ ] Show how current institutions betray their sacrifice
+- [ ] Call to action: "Remember your ancestors"
+
+### Phase 4: International Missing & Exploited Children Crisis
+- [ ] Create page documenting international child trafficking/abuse
+- [ ] Show it's not just Epstein's island - systemic everywhere
+- [ ] Document missing children rates by country
+- [ ] Show international law violations
+- [ ] Link to international organizations fighting trafficking
+- [ ] Call to action: "PROTECT YOUR CHILDREN FIRST - SPEAK UP"
+- [ ] Document institutional complicity in multiple countries
+
+### Phase 5: Performative Activism Exposed
+- [ ] Create page exposing performative activism
+- [ ] Document Orange Shirt Day photo ops (all talk, no action)
+- [ ] Show government spending on "awareness" vs. real support
+- [ ] Expose sponsors who profit from performative gestures
+- [ ] Call out government hypocrisy
+- [ ] Propose real solutions: "International Lawyers Fund for Kids of All Nations"
+- [ ] Show where donations should actually go
+
+### Phase 6: Human Rights Education for Next Generation
+- [ ] Create page on what education should teach
+- [ ] Real Human Rights curriculum (not just history)
+- [ ] Life lessons: How to recognize abuse, systemic injustice
+- [ ] Teach children their actual rights
+- [ ] Document what current education is missing
+- [ ] Call to action: "New generation needs real education"
+- [ ] Include elders' wisdom before they're gone
+
+### Phase 7: Comprehensive Legal Violations Framework
+- [ ] Document ALL laws violated (child protection, Indigenous rights, international)
+- [ ] Laws violated for children (Barran specifically):
+  - [ ] Child protection laws (provincial)
+  - [ ] UN Convention on Rights of the Child
+  - [ ] Jordan's Principle (First Nations child services)
+  - [ ] Education rights
+  - [ ] Health/mental health rights
+- [ ] Laws violated for parents:
+  - [ ] Parental rights
+  - [ ] Right to family unity
+  - [ ] Due process rights
+- [ ] Laws violated for extended family:
+  - [ ] Family rights
+  - [ ] Cultural/Indigenous rights
+- [ ] International laws violated:
+  - [ ] UN Declaration on Rights of Indigenous Peoples
+  - [ ] International Covenant on Civil and Political Rights
+  - [ ] Convention Against Torture
+  - [ ] Other international instruments
+- [ ] Quebec laws violated:
+  - [ ] Quebec Charter of Rights and Freedoms (s.1-40)
+  - [ ] Quebec Code of Ethics for MNAs
+  - [ ] Quebec child protection laws
+- [ ] Canadian laws violated:
+  - [ ] Canadian Charter of Rights and Freedoms (s.2, 7, 15)
+  - [ ] Criminal Code (harassment, negligence, abuse)
+  - [ ] Grant v. Torstar (responsible communication defense)
+  - [ ] Canadian Human Rights Act
+
+### Phase 8: Navigation & Integration
+- [ ] Add all new pages to App.tsx navigation
+- [ ] Create main "Systemic Accountability" section in navigation
+- [ ] Add links between related pages
+- [ ] Create breadcrumb navigation for complex sections
+- [ ] Add search functionality for legal violations
+- [ ] Test all navigation links
+
+### Phase 9: Testing & Verification
+- [ ] Run all vitest tests
+- [ ] Verify all new pages load correctly
+- [ ] Test all internal links
+- [ ] Verify responsive design on mobile/tablet/desktop
+- [ ] Check accessibility compliance
+- [ ] Verify all external links work
+- [ ] TypeScript error check
+
+### Phase 10: Final Checkpoint
+- [ ] Save comprehensive checkpoint
+- [ ] Document all new features
+- [ ] Prepare for publication
+- [ ] Ready for public accountability campaign

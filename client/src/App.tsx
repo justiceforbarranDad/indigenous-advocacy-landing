@@ -29,6 +29,13 @@ import MotherAbuseDPJ from "./pages/MotherAbuseDPJ";
 import DonateComprehensive from "./pages/DonateComprehensive";
 import Movement from "./pages/Movement";
 import TimelineNewspaperArchive from "./pages/TimelineNewspaperArchive";
+import SystemicViolationsArchive from "./pages/SystemicViolationsArchive";
+import TruthVsFalse from "./pages/TruthVsFalse";
+import FirstNationsMemorial from "./pages/FirstNationsMemorial";
+import InternationalChildCrisis from "./pages/InternationalChildCrisis";
+import PerformativeActivismExposed from "./pages/PerformativeActivismExposed";
+import HumanRightsEducation from "./pages/HumanRightsEducation";
+import LegalViolationsFramework from "./pages/LegalViolationsFramework";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -58,6 +65,13 @@ function Router() {
       <Route path={"/barrans-story"} component={BarransStory} />
       <Route path={"/mother-abuse-dpj"} component={MotherAbuseDPJ} />
       <Route path={"/timeline-newspaper-archive"} component={TimelineNewspaperArchive} />
+      <Route path={"/systemic-violations-archive"} component={SystemicViolationsArchive} />
+      <Route path={"/truth-vs-false"} component={TruthVsFalse} />
+      <Route path={"/first-nations-memorial"} component={FirstNationsMemorial} />
+      <Route path={"/international-child-crisis"} component={InternationalChildCrisis} />
+      <Route path={"/performative-activism-exposed"} component={PerformativeActivismExposed} />
+      <Route path={"/human-rights-education"} component={HumanRightsEducation} />
+      <Route path={"/legal-violations-framework"} component={LegalViolationsFramework} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
