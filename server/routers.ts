@@ -5,6 +5,7 @@ import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations } from "./db";
 import { notifyOwner } from "./_core/notification";
+import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
 
 export const appRouter = router({
   system: systemRouter,
@@ -46,7 +47,18 @@ export const appRouter = router({
             content: `${input.name} (${input.category}) submitted a story. Public: ${input.isPublic}`,
           });
           
-          return { success: true, message: "Story submitted successfully. Thank you for sharing your experience." };
+          // Send confirmation email to submitter
+          const htmlEmail = generateStoryConfirmationEmail(input.name, input.category, input.isPublic === 'yes');
+          const textEmail = generateStoryConfirmationText(input.name, input.category, input.isPublic === 'yes');
+          
+          await sendEmail({
+            to: input.email,
+            subject: 'Story Submission Confirmed - Sunday Bloody Sunday',
+            htmlContent: htmlEmail,
+            textContent: textEmail,
+          });
+          
+          return { success: true, message: "Story submitted successfully. Thank you for sharing your experience. A confirmation email has been sent to you." };
         } catch (error) {
           console.error("Error submitting story:", error);
           throw new Error("Failed to submit story");
@@ -90,7 +102,18 @@ export const appRouter = router({
             content: `${input.isAnonymous === "yes" ? "Anonymous" : input.donorName} donated $${(input.amount).toFixed(2)} via ${input.method}`,
           });
           
-          return { success: true, message: "Thank you for your donation!" };
+          // Send confirmation email to donor
+          const htmlEmail = generateDonationConfirmationEmail(input.donorName, input.amount, input.method, input.isAnonymous === 'yes', input.message);
+          const textEmail = generateDonationConfirmationText(input.donorName, input.amount, input.method, input.isAnonymous === 'yes', input.message);
+          
+          await sendEmail({
+            to: input.donorEmail,
+            subject: 'Donation Confirmation - Sunday Bloody Sunday',
+            htmlContent: htmlEmail,
+            textContent: textEmail,
+          });
+          
+          return { success: true, message: "Thank you for your donation! A confirmation email has been sent to you." };
         } catch (error) {
           console.error("Error processing donation:", error);
           throw new Error("Failed to process donation");

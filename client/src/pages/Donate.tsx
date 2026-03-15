@@ -89,10 +89,10 @@ export default function Donate() {
                 <p className="text-sm text-charcoal-light mb-3">Send e-Transfer to:</p>
                 <div className="flex items-center gap-2 mb-4">
                   <code className="flex-1 bg-white p-3 rounded font-mono text-sm break-all">
-                    justice.barran@email.com
+                    justiceforbarran@gmail.com
                   </code>
                   <button
-                    onClick={() => copyToClipboard('justice.barran@email.com')}
+                    onClick={() => copyToClipboard('justiceforbarran@gmail.com')}
                     className="p-2 hover:bg-amber-orange/20 rounded transition-colors"
                   >
                     {copied ? <Check size={20} className="text-green-600" /> : <Copy size={20} />}
