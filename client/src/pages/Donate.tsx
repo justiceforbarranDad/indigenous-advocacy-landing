@@ -79,9 +79,9 @@ export default function Donate() {
           {/* e-Transfer Section */}
           <Card className="border-amber-orange/20 h-fit">
             <CardHeader className="bg-forest-green text-cream">
-              <CardTitle className="text-2xl">Direct e-Transfer (Canada)</CardTitle>
+              <CardTitle className="text-2xl">✓ Direct e-Transfer (Canada)</CardTitle>
               <CardDescription className="text-cream/80">
-                No fees - funds go directly to support
+                100% of your donation goes directly to justice — NO PLATFORM FEES
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-8 space-y-6">
@@ -104,30 +104,37 @@ export default function Donate() {
               </div>
 
               <div className="space-y-3">
-                <h4 className="font-semibold text-charcoal">Why e-Transfer?</h4>
+                <h4 className="font-semibold text-charcoal">Why Direct e-Transfer?</h4>
                 <ul className="text-sm text-charcoal-light space-y-2">
                   <li className="flex gap-2">
-                    <span className="text-amber-orange">✓</span>
-                    <span>No platform fees - 100% reaches the cause</span>
+                    <span className="text-amber-orange font-bold">✓</span>
+                    <span><strong>100% of funds</strong> go directly to justice efforts</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-amber-orange">✓</span>
-                    <span>Direct support to Indigenous advocacy</span>
+                    <span className="text-amber-orange font-bold">✓</span>
+                    <span><strong>ZERO platform fees</strong> (vs. 2-3% on other platforms)</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-amber-orange">✓</span>
+                    <span className="text-amber-orange font-bold">✓</span>
                     <span>Available to all Canadian banks</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-amber-orange">✓</span>
+                    <span className="text-amber-orange font-bold">✓</span>
                     <span>Instant transfer confirmation</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-amber-orange font-bold">✓</span>
+                    <span>Direct support for accountability & justice</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-cream-dark p-4 rounded-lg border-l-4 border-amber-orange">
-                <p className="text-xs text-charcoal">
-                  <strong>Privacy:</strong> e-Transfer donations are tracked separately for transparency and accountability.
+              <div className="bg-amber-orange/10 p-4 rounded-lg border-l-4 border-amber-orange">
+                <p className="text-sm text-charcoal font-semibold mb-2">
+                  💰 Save 2-3% in fees compared to other platforms
+                </p>
+                <p className="text-xs text-charcoal-light">
+                  Every dollar counts. Direct e-Transfer ensures maximum impact for justice and accountability.
                 </p>
               </div>
             </CardContent>
