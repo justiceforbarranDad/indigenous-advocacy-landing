@@ -12,6 +12,9 @@ import Donate from "./pages/Donate";
 import ChildrensRights from "./pages/ChildrensRights";
 import LegalSupport from "./pages/LegalSupport";
 import ParentsInvolvement from "./pages/ParentsInvolvement";
+import AdminDashboard from "./pages/AdminDashboard";
+import StoriesGallery from "./pages/StoriesGallery";
+import ImpactReports from "./pages/ImpactReports";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -21,9 +24,12 @@ function Router() {
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
       <Route path={"/donate"} component={Donate} />
-       <Route path={"childrens-rights"} component={ChildrensRights} />
-      <Route path="/legal-support" component={LegalSupport} />
-      <Route path="/parents-involvement" component={ParentsInvolvement} />
+      <Route path={"/childrens-rights"} component={ChildrensRights} />
+      <Route path={"/legal-support"} component={LegalSupport} />
+      <Route path={"/parents-involvement"} component={ParentsInvolvement} />
+      <Route path={"/admin"} component={AdminDashboard} />
+      <Route path={"/stories-gallery"} component={StoriesGallery} />
+      <Route path={"/impact-reports"} component={ImpactReports} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

@@ -197,6 +197,29 @@ export const appRouter = router({
         }
       }),
   }),
+
+  impact: router({
+    getMonthlyReport: publicProcedure
+      .input(z.object({
+        month: z.string().optional(),
+      }))
+      .query(async ({ input }) => {
+        // Return mock impact data
+        return {
+          month: input.month || new Date().toISOString().slice(0, 7),
+          totalDonations: 1700,
+          totalStories: 7,
+          totalParents: 11,
+          totalLawyers: 3,
+          growth: {
+            donations: 140,
+            stories: 40,
+            parents: 37,
+            lawyers: 50,
+          },
+        };
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;
