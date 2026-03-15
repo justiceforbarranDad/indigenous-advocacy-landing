@@ -406,6 +406,20 @@ export default function Home() {
               <Users size={20} />
             </a>
             <a
+              href="/indigenous-nations"
+              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
+            >
+              Indigenous Nations & Languages
+              <ExternalLink size={20} />
+            </a>
+            <a
+              href="/accountability-tracker"
+              className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
+            >
+              Accountability Tracker
+              <ExternalLink size={20} />
+            </a>
+            <a
               href="mailto:justiceforbarran@gmail.com"
               className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
             >

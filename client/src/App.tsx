@@ -15,6 +15,8 @@ import ParentsInvolvement from "./pages/ParentsInvolvement";
 import AdminDashboard from "./pages/AdminDashboard";
 import StoriesGallery from "./pages/StoriesGallery";
 import ImpactReports from "./pages/ImpactReports";
+import IndigenousNations from "./pages/IndigenousNations";
+import AccountabilityTracker from "./pages/AccountabilityTracker";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -30,6 +32,8 @@ function Router() {
       <Route path={"/admin"} component={AdminDashboard} />
       <Route path={"/stories-gallery"} component={StoriesGallery} />
       <Route path={"/impact-reports"} component={ImpactReports} />
+      <Route path={"/indigenous-nations"} component={IndigenousNations} />
+      <Route path={"/accountability-tracker"} component={AccountabilityTracker} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

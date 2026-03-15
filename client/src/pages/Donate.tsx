@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 import { trpc } from '@/lib/trpc';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,10 +9,26 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { toast } from 'sonner';
 import { ChevronLeft, Copy, Check } from 'lucide-react';
 import { useLocation } from 'wouter';
+import QRCode from 'qrcode';
 
 export default function Donate() {
   const [, setLocation] = useLocation();
   const [copied, setCopied] = useState(false);
+
+  // Generate QR code on mount
+  React.useEffect(() => {
+    const canvas = document.getElementById('qrcode-canvas') as HTMLCanvasElement;
+    if (canvas) {
+      QRCode.toCanvas(canvas, 'etransfer:justiceforbarran@gmail.com', {
+        width: 200,
+        margin: 2,
+        color: {
+          dark: '#2D5016',
+          light: '#FFFEF5',
+        },
+      });
+    }
+  }, []);
   const [formData, setFormData] = useState<{
     donorName: string;
     donorEmail: string;
@@ -98,9 +115,18 @@ export default function Donate() {
                     {copied ? <Check size={20} className="text-green-600" /> : <Copy size={20} />}
                   </button>
                 </div>
-                <p className="text-xs text-charcoal-light">
+                <p className="text-xs text-charcoal-light mb-4">
                   Security Question Answer: <strong>JUSTICE</strong>
                 </p>
+                
+                {/* QR Code */}
+                <div className="flex flex-col items-center gap-3 bg-white p-4 rounded-lg">
+                  <p className="text-xs text-charcoal-light font-semibold">Scan to Send e-Transfer</p>
+                  <canvas id="qrcode-canvas" className="border-2 border-forest-green rounded" />
+                  <p className="text-xs text-charcoal-light text-center">
+                    Use your banking app to scan and send e-Transfer instantly
+                  </p>
+                </div>
               </div>
 
               <div className="space-y-3">
@@ -151,74 +177,63 @@ export default function Donate() {
             <CardContent className="pt-8">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-charcoal mb-2">
-                    Your Name *
-                  </label>
+                  <label className="block text-sm font-semibold mb-2">Your Name</label>
                   <Input
                     type="text"
-                    placeholder="Full name"
+                    placeholder="Your name (or leave blank for anonymous)"
                     value={formData.donorName}
                     onChange={(e) => setFormData({ ...formData, donorName: e.target.value })}
-                    required
-                    className="border-amber-orange/30"
+                    className="bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-charcoal mb-2">
-                    Email Address *
-                  </label>
+                  <label className="block text-sm font-semibold mb-2">Email</label>
                   <Input
                     type="email"
-                    placeholder="your.email@example.com"
+                    placeholder="your@email.com"
                     value={formData.donorEmail}
                     onChange={(e) => setFormData({ ...formData, donorEmail: e.target.value })}
                     required
-                    className="border-amber-orange/30"
+                    className="bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-charcoal mb-2">
-                    Amount (CAD) *
-                  </label>
+                  <label className="block text-sm font-semibold mb-2">Donation Amount (CAD)</label>
                   <Input
                     type="number"
                     placeholder="25.00"
-                    step="0.01"
-                    min="0.01"
                     value={formData.amount}
                     onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
                     required
-                    className="border-amber-orange/30"
+                    step="0.01"
+                    min="0"
+                    className="bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-charcoal mb-2">
-                    Donation Method *
-                  </label>
+                  <label className="block text-sm font-semibold mb-2">Donation Method</label>
                   <Select value={formData.method} onValueChange={(value: any) => setFormData({ ...formData, method: value })}>
-                    <SelectTrigger className="border-amber-orange/30">
-                      <SelectValue />
+                    <SelectTrigger className="bg-white">
+                      <SelectValue placeholder="Select method" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="etransfer">e-Transfer (Recommended - No Fees)</SelectItem>
+                      <SelectItem value="etransfer">e-Transfer (Recommended)</SelectItem>
+                      <SelectItem value="gofundme">GoFundMe</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-charcoal mb-2">
-                    Message (Optional)
-                  </label>
+                  <label className="block text-sm font-semibold mb-2">Message (Optional)</label>
                   <Textarea
-                    placeholder="Leave a message of support..."
+                    placeholder="Share why you're supporting this cause..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    rows={3}
-                    className="border-amber-orange/30 resize-none"
+                    className="bg-white"
                   />
                 </div>
 
@@ -228,80 +243,47 @@ export default function Donate() {
                     id="anonymous"
                     checked={formData.isAnonymous === 'yes'}
                     onChange={(e) => setFormData({ ...formData, isAnonymous: e.target.checked ? 'yes' : 'no' })}
-                    className="rounded"
+                    className="w-4 h-4"
                   />
-                  <label htmlFor="anonymous" className="text-sm text-charcoal">
-                    Keep my donation anonymous
-                  </label>
+                  <label htmlFor="anonymous" className="text-sm">Keep my donation anonymous</label>
                 </div>
 
                 <Button
                   type="submit"
+                  className="w-full bg-amber-orange hover:bg-amber-light text-white font-semibold py-3"
                   disabled={submitDonation.isPending}
-                  className="w-full bg-amber-orange hover:bg-amber-light text-white py-3 font-semibold"
                 >
-                  {submitDonation.isPending ? 'Processing...' : 'Record Donation'}
+                  {submitDonation.isPending ? 'Processing...' : 'Submit Donation'}
                 </Button>
               </form>
 
               {totalData && (
-                <div className="mt-6 p-4 bg-cream-dark rounded-lg text-center">
-                  <p className="text-xs text-charcoal-light mb-1">Total Donations Received</p>
-                  <p className="text-2xl font-bold text-amber-orange">
-                    ${totalData.totalCAD}
-                  </p>
+                <div className="mt-6 p-4 bg-forest-green/10 rounded-lg text-center">
+                  <p className="text-sm text-charcoal-light mb-1">Total Raised</p>
+                  <p className="text-2xl font-bold text-amber-orange">${totalData.totalCAD}</p>
                 </div>
               )}
             </CardContent>
           </Card>
         </div>
 
-        {/* Alternative Donation Methods */}
-        <Card className="mt-8 border-amber-orange/20">
-          <CardHeader className="bg-charcoal-light text-cream">
-            <CardTitle>Alternative Donation Methods</CardTitle>
-            <CardDescription className="text-cream/80">
-              If you prefer other platforms, you can also support through:
+        {/* GoFundMe Alternative */}
+        <Card className="mt-8 border-border/50">
+          <CardHeader>
+            <CardTitle className="text-lg">Alternative: GoFundMe</CardTitle>
+            <CardDescription>
+              If you prefer using GoFundMe, the link is available below. However, e-Transfer is recommended to avoid platform fees.
             </CardDescription>
           </CardHeader>
-          <CardContent className="pt-8">
-            <div className="space-y-4">
-              <a
-                href="https://gofund.me/role.flip.tall"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block p-4 border-2 border-amber-orange/30 rounded-lg hover:border-amber-orange hover:bg-cream-dark transition-colors"
-              >
-                <h4 className="font-semibold text-forest-green mb-1">GoFundMe</h4>
-                <p className="text-sm text-charcoal-light mb-3">Support through GoFundMe platform (platform fees apply)</p>
-                <span className="inline-flex items-center gap-2 text-amber-orange font-semibold text-sm">
-                  Visit GoFundMe Campaign →
-                </span>
-              </a>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Impact Section */}
-        <Card className="mt-8 border-amber-orange/20">
-          <CardHeader className="bg-forest-green text-cream">
-            <CardTitle>Your Impact</CardTitle>
-          </CardHeader>
-          <CardContent className="pt-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <p className="text-3xl font-bold text-amber-orange mb-2">$25</p>
-                <p className="text-sm text-charcoal-light">Supports legal documentation</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl font-bold text-amber-orange mb-2">$100</p>
-                <p className="text-sm text-charcoal-light">Funds advocacy materials</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl font-bold text-amber-orange mb-2">$500+</p>
-                <p className="text-sm text-charcoal-light">Supports public awareness campaign</p>
-              </div>
-            </div>
+          <CardContent>
+            <a
+              href="https://gofund.me/role.flip.tall"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+            >
+              Donate on GoFundMe
+            </a>
           </CardContent>
         </Card>
       </div>
