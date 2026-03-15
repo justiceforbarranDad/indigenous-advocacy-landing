@@ -392,6 +392,24 @@ export default function Home() {
               Resources & References
               <ExternalLink size={20} />
             </a>
+            <a
+              href="https://www.tiktok.com/@barranneedsjustice"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
+            >
+              Follow on TikTok
+              <ExternalLink size={20} />
+            </a>
+            <a
+              href="https://www.reddit.com/user/Dear-Pudding3666"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
+            >
+              Join on Reddit
+              <ExternalLink size={20} />
+            </a>
           </div>
         </div>
       </section>
