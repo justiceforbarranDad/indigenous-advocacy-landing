@@ -283,7 +283,7 @@ export default function BarransStory() {
                 </div>
                 <div>
                   <p className="font-semibold text-forest-green">Governor General's Wellness Check</p>
-                  <p className="text-charcoal-light">THE TRIGGER EVENT: GG office only speaks to receptionist, not to children. Final insult.</p>
+                  <p className="text-charcoal-light">THE TRIGGER EVENT: Dad only spoke with receptionist, not with children. Final insult.</p>
                 </div>
               </div>
             </Card>

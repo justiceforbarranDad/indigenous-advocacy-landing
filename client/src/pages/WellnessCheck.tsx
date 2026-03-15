@@ -15,8 +15,8 @@ export default function WellnessCheck() {
             February 27, 2026 — Governor General's Office Wellness Check
           </p>
           <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded">
-            <p className="text-lg text-red-800">
-              <strong>This wellness check was the final insult that made the decision to publicly expose the systemic failures.</strong> After 5 years of being ghosted by every level of government, the Governor General's office sent a wellness check that only spoke to a receptionist—not to the children who needed help.
+              <p className="text-lg text-red-800">
+              <strong>This wellness check was the final insult that made the decision to publicly expose the systemic failures.</strong> After 5 years of being ghosted by every level of government, the Governor General's office sent a wellness check. The dad only spoke with a receptionist—not with the children who needed help.
             </p>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function WellnessCheck() {
                     <strong>Governor General's Office Sends Wellness Check</strong>
                   </p>
                   <p className="text-charcoal">
-                    Instead of providing guidance or support, the Governor General's office sent a wellness check. However, when it arrived, the office staff only spoke to a receptionist—not to the biological father or the children who needed help.
+                    Instead of providing guidance or support, the Governor General's office sent a wellness check. However, when it arrived, the biological father only spoke with a receptionist—not with the children who needed help.
                   </p>
                   <p className="text-red-600 font-semibold mt-3">
                     This was the final insult. The highest office in the land couldn't even ensure the children were properly checked on.
@@ -162,7 +162,7 @@ export default function WellnessCheck() {
             <ul className="space-y-3 text-charcoal">
               <li className="flex gap-3">
                 <span className="text-red-500 font-bold">✗</span>
-                <span>The office staff only spoke to a <strong>receptionist</strong>, not the biological father</span>
+                <span>The biological father only spoke with a <strong>receptionist</strong>, not with the children</span>
               </li>
               <li className="flex gap-3">
                 <span className="text-red-500 font-bold">✗</span>
