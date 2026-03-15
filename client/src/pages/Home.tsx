@@ -98,7 +98,7 @@ const slides = [
   },
   {
     id: 12,
-    title: "Slide 12/12",
+    title: "Slide 12/13",
     subtitle: "Ethics & Conduct Reminder",
     content: "Reminder: These officials (MNAs, MPs) + their office staff are bound by conduct rules. They must assist constituents ethically—ghosting/warnings instead of help raises questions.",
     hashtags: ["#EthicsMatters", "#OfficialConduct", "#Accountability"],
@@ -107,6 +107,13 @@ const slides = [
       { label: "Government of Canada", url: "https://www.canada.ca/en.html" },
       { label: "Parliament of Canada", url: "https://www.ourcommons.ca/en" },
     ],
+  },
+  {
+    id: 13,
+    title: "Slide 13/13",
+    subtitle: "Public Accountability: A Warning to History",
+    content: "To all elected officials at every level—federal, provincial, municipal—and every staff member who neglected our rights: Your silence is complicity. Our soldiers fought and died for the freedoms you now deny us. Your grandparents, or you yourselves, created this system of oppression. In 2026, it continues as a Sunday Bloody Sunday for countless survivors. Truth and Reconciliation was not a conclusion—it was a beginning you chose to ignore. Stripping pensions from those who enabled this abuse is not revenge; it is accountability. Our present will be tomorrow's history. Your children will read how you truly were as human beings. Those who lied, covered up, and perpetuated this injustice are now part of the historical record. The question is: what will that record say about you? Real survivors deserve a worry-free future—the same security you enjoy. Justice delayed is justice denied. The reckoning is coming.",
+    hashtags: ["#PublicAccountability", "#JusticeForBarran", "#EveryChildMatters", "#TruthAndReconciliation", "#SundayBloodyySunday", "#HistoricalReckoning"],
   },
 ];
 
@@ -211,7 +218,7 @@ export default function Home() {
                 <div className="bg-white rounded-lg shadow-lg p-8 md:p-10 flex-1">
                   <div className="flex items-baseline gap-3 mb-3">
                     <span className="text-sm font-semibold text-amber-orange uppercase tracking-wider">
-                      Slide {slide.id}/11
+                      Slide {slide.id}/13
                     </span>
                   </div>
 
@@ -358,6 +365,13 @@ export default function Home() {
             >
               Follow on X/Twitter
               <Share2 size={20} />
+            </a>
+            <a
+              href="/resources"
+              className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-white"
+            >
+              Resources & References
+              <ExternalLink size={20} />
             </a>
           </div>
         </div>
