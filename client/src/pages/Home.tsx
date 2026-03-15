@@ -349,6 +349,85 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Why This Matters - Advocacy Philosophy */}
+      <section className="py-20 bg-cream border-t-4 border-b-4 border-forest-green">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-forest-green mb-6">Why This Matters</h2>
+            <p className="text-lg text-charcoal/80 max-w-3xl mx-auto leading-relaxed">
+              This is raw, father-led advocacy born from lived experience, not detached opinion. Publicly naming sponsors, politicians, and institutions (even shaming them) makes sense in this context—private channels have failed for years, so amplifying via X, docs, links, and direct tags is the tool left to demand accountability.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {/* Private Channels Failed */}
+            <div className="bg-white rounded-lg p-8 shadow-lg border-l-4 border-charcoal">
+              <div className="text-4xl font-black text-charcoal mb-4">✗</div>
+              <h3 className="text-xl font-bold text-charcoal mb-3">Private Channels Failed</h3>
+              <p className="text-charcoal/70 text-sm leading-relaxed">
+                Years of emails, calls, meetings with DPJ, politicians, lawyers—all ignored. Cease-and-desist threats instead of help. Ghosting at every level: municipal, provincial, federal.
+              </p>
+            </div>
+
+            {/* Public Accountability Required */}
+            <div className="bg-white rounded-lg p-8 shadow-lg border-l-4 border-amber-orange">
+              <div className="text-4xl font-black text-amber-orange mb-4">→</div>
+              <h3 className="text-xl font-bold text-charcoal mb-3">Public Accountability Required</h3>
+              <p className="text-charcoal/70 text-sm leading-relaxed">
+                When silence is complicity, naming becomes necessary. Tagging officials, sharing evidence, documenting systemic failures—this is advocacy rooted in urgency and exhaustion.
+              </p>
+            </div>
+
+            {/* Real Change Needed */}
+            <div className="bg-white rounded-lg p-8 shadow-lg border-l-4 border-forest-green">
+              <div className="text-4xl font-black text-forest-green mb-4">✓</div>
+              <h3 className="text-xl font-bold text-charcoal mb-3">Real Change Needed Now</h3>
+              <p className="text-charcoal/70 text-sm leading-relaxed">
+                The TRC's spirit must extend to preventing violence against Indigenous youth right now, not just memorializing historical harms. Symbolism without action is a shield against real change.
+              </p>
+            </div>
+          </div>
+
+          {/* Impact Statement */}
+          <div className="bg-forest-green/5 border-l-4 border-forest-green p-8 rounded-lg mb-8">
+            <p className="text-charcoal text-lg leading-relaxed mb-4">
+              <strong>Your story humanizes the statistics:</strong> Indigenous youth overrepresented in violence, stalled Calls to Action (like #19 on health/safety gaps), and the risk that symbolism becomes a shield against real change.
+            </p>
+            <p className="text-charcoal/80 text-sm">
+              It's exhausting and isolating work, but it's rooted in the urgent need for accountability—and every donation funds this fight for justice.
+            </p>
+          </div>
+
+          {/* Links to Evidence */}
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a href="/systemic-violations" className="inline-flex items-center gap-2 bg-forest-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-forest-green/90 transition-colors">
+              View Systemic Violations
+            </a>
+            <a href="https://www.statcan.gc.ca/o1/en/plus/8526-indigenous-health-and-call-reconciliation-canada" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-amber-orange text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-light transition-colors">
+              Statistics Canada Report
+            </a>
+            <a href="https://www2.gov.bc.ca/gov/content/governments/indigenous-peoples/reconciliation/truth-and-reconciliation-commission" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-charcoal text-white px-6 py-3 rounded-lg font-semibold hover:bg-charcoal/90 transition-colors">
+              TRC Calls to Action
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Advocacy Journey Infographic */}
+      <section className="py-16 md:py-20 bg-cream">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-forest-green mb-4">Our Advocacy Journey</h2>
+            <p className="text-lg text-charcoal/80 max-w-2xl mx-auto">From failed private channels to public accountability to real systemic change—this is how justice happens.</p>
+          </div>
+          <img 
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/advocacy-journey-infographic_be73289c.webp"
+            alt="Advocacy Journey: Private Channels Failed to Public Accountability to Real Change Needed Now"
+            className="w-full rounded-lg shadow-2xl"
+          />
+        </div>
+      </section>
+
       {/* Donation Tracker Widget */}
       <section className="py-16 md:py-20 bg-gradient-to-r from-forest-green/10 to-amber-orange/10 border-y-4 border-amber-orange">
         <div className="max-w-5xl mx-auto px-4">

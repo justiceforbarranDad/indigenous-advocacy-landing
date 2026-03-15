@@ -366,3 +366,31 @@ All accountability pages redesigned with vintage newspaper aesthetic (black & wh
 - [x] Ensure donation widget pulls from real database donations - COMPLETE
 - [x] Test donation tracking with actual submissions - COMPLETE (17 tests passing)
 - [ ] Save checkpoint with reset tracker
+
+
+## ADVOCACY PHILOSOPHY & IMPACT STATEMENT (March 15, 2026 - Session 4)
+- [ ] Add "Why This Matters" section on homepage with advocacy philosophy statement
+- [ ] Create visual infographic: Private Channels Failed → Public Accountability → Real Change
+- [ ] Connect statement to Systemic Violations documentation with links
+- [ ] Link to Statistics Canada Indigenous health data
+- [ ] Link to TRC Calls to Action (especially #19)
+- [ ] Position advocacy statement before donation CTA to show why support matters
+- [ ] Test all changes and save checkpoint
+
+
+## INDIGENOUS CHILDREN RIGHTS IN CANADA PAGE (March 15, 2026 - Session 5)
+- [x] Create Indigenous Children Rights in Canada page with newspaper format - COMPLETE
+- [x] Document specific rights and protections for Indigenous children - COMPLETE
+- [x] Include current gaps and systemic failures - COMPLETE
+- [x] Add links to legal frameworks (UN Convention, Canadian law, TRC) - COMPLETE
+- [x] Connect to advocacy story and systemic violations - COMPLETE
+- [x] Test and save checkpoint - COMPLETE (17 tests passing)
+
+
+## HOMEPAGE NEWSPAPER FRONT PAGE REDESIGN (March 15, 2026 - Session 6)
+- [x] Redesign Home.tsx as true newspaper front page with masthead - COMPLETE
+- [x] Create multi-column layout with key stories - COMPLETE
+- [x] Add obituary section honoring fallen Indigenous heroes and land defenders - COMPLETE
+- [x] Integrate powerful headlines and pull quotes - COMPLETE
+- [x] Test all changes and verify functionality - COMPLETE (17 tests passing)
+- [ ] Save checkpoint with newspaper front page

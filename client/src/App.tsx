@@ -42,6 +42,9 @@ import HowToDocumentYourCase from "./pages/HowToDocumentYourCase";
 import OrangeShirtDayInvestigation from "./pages/OrangeShirtDayInvestigation";
 import CallLogDocumentation from "./pages/CallLogDocumentation";
 import InteractiveCallMap from "./pages/InteractiveCallMap";
+import IndigenousChildrenRights from "./pages/IndigenousChildrenRights";
+import Shop from "./pages/Shop";
+import NewspaperFrontPage from "./pages/NewspaperFrontPage";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -81,10 +84,13 @@ function Router() {
       <Route path={"/legal-violations-framework"} component={LegalViolationsFramework} />
       <Route path={"/hall-of-shame"} component={HallOfShame} />
       <Route path={"/how-to-document-your-case"} component={HowToDocumentYourCase} />
-      <Route path={"/orange-shirt-day-investigation"} component={OrangeShirtDayInvestigation} />
-      <Route path={"/call-log-documentation"} component={CallLogDocumentation} />
-      <Route path={"/interactive-call-map"} component={InteractiveCallMap} />
-      <Route path={"/404"} component={NotFound} />
+      <Route path={"orange-shirt-day-investigation"} component={OrangeShirtDayInvestigation} />
+      <Route path="/call-log-documentation" component={CallLogDocumentation} />
+      <Route path="/interactive-call-map" component={InteractiveCallMap} />
+      <Route path="/indigenous-children-rights" component={IndigenousChildrenRights} />
+      <Route path="/shop" component={Shop} />
+      <Route path="/newspaper-front-page" component={NewspaperFrontPage} />
+      <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
