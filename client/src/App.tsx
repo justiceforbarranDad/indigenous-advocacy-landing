@@ -26,7 +26,8 @@ import ContactAccountability from '@/pages/ContactAccountability';
 import GhostedByPolitician from '@/pages/GhostedByPolitician';
 import BarransStory from "./pages/BarransStory";
 import MotherAbuseDPJ from "./pages/MotherAbuseDPJ";
-import DonateComprehensive from "./pages/DonateComprehensive";
+import DonateComprehensive from '@/pages/DonateComprehensive';
+import DonationInstructions from '@/pages/DonationInstructions';
 import Movement from "./pages/Movement";
 import TimelineNewspaperArchive from "./pages/TimelineNewspaperArchive";
 import SystemicViolationsArchive from "./pages/SystemicViolationsArchive";
@@ -51,6 +52,7 @@ function Router() {
       <Route path={"/share-story"} component={ShareStory} />
       <Route path={"/donate"} component={Donate} />
       <Route path={"/donate-comprehensive"} component={DonateComprehensive} />
+      <Route path={"/donation-instructions"} component={DonationInstructions} />
       <Route path={"/movement"} component={Movement} />
       <Route path={"/childrens-rights"} component={ChildrensRights} />
       <Route path={"/legal-support"} component={LegalSupport} />
