@@ -101,3 +101,46 @@
 - [ ] 13 Rights of Users Poster - Add image showing rights children were denied
 - [ ] Native Drumming Music - Replace with original native drums, slow, powerful, minimal chants
 - [ ] Timeline Documentation - 2013 (paternity fight) → 2021 (stabbing) → 2023 (DPJ withdrawn) → 2026 (still fighting) (COMPLETE in DPJ page)
+
+
+## SOCIAL MEDIA SHARE INTEGRATION (New Feature)
+- [ ] Create social media share utility with pre-written posts
+- [ ] Add ShareButtons component to Home page
+- [ ] Add ShareButtons component to DPJ Accountability page
+- [ ] Add ShareButtons component to Systemic Failures page
+- [ ] Add ShareButtons component to Accountability Tracker page
+- [ ] Test all share functionality
+- [ ] Optimize posts for each platform (X, Facebook, TikTok, Instagram, Reddit)
+
+
+## MUSIC LICENSING REQUIREMENT
+- [ ] Find native soft drums music with explicit royalty-free license for ALL platforms
+- [ ] License must allow: commercial use, social media, YouTube, streaming, no attribution required
+- [ ] Verify Creative Commons 0 (CC0) or Pixabay/Freepik equivalent license
+- [ ] Download and integrate into Home page
+
+
+## CRITICAL NEW FEATURES (Latest User Request - Feb 27, 2026 Trigger Event)
+- [ ] Mask personal information - emails (jamesrobertmcgovern@hotmail.com, christie.perpignan@gmail.com), phone (438-926-3636)
+- [ ] Wellness Check Page - Feb 27, 2026 Governor General's office wellness check (THE TRIGGER EVENT)
+- [ ] Officials Who Blocked You - Valérie Schmaltz, Annie Koutrakis, Ian Lafrenière
+- [ ] Ian Lafrenière accountability - Quebec Indian Affairs Minister & Public Safety Minister
+- [ ] More ghosting documentation - Email evidence from officials
+- [ ] Injury evidence documentation - Photo of child's stabbing injury (serious attack)
+- [ ] Call log evidence - Feb 27, 2026 11:15 AM 18-minute call
+- [ ] Verify all evidence is in story - Double-check nothing is missing
+
+
+## CONTACT & PUBLIC ACCOUNTABILITY CAMPAIGN (New Feature)
+- [ ] Add all official contact emails to Officials Blocked You page
+- [ ] Add all official phone numbers to Officials Blocked You page
+- [ ] Add all official mailing addresses to Officials Blocked You page
+- [ ] Create pre-written talking points for supporters to use
+- [ ] Add "Call to Action" messaging encouraging public pressure
+- [ ] Add social media handles for each official
+- [ ] Create "Contact & Accountability" CTA button on home page
+- [ ] Add contact information to Accountability Tracker page
+- [ ] Create email template for supporters to send
+- [ ] Create phone script for supporters to use
+- [ ] Add legal disclaimers (Charter s.2(b) protection)
+- [ ] Test all contact links and information

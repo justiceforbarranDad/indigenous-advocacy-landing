@@ -431,6 +431,13 @@ export default function Home() {
               <ExternalLink size={20} />
             </a>
             <a
+              href="/wellness-check"
+              className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
+            >
+              The Trigger Event (Feb 27)
+              <ExternalLink size={20} />
+            </a>
+            <a
               href="/dpj-accountability"
               className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
             >
@@ -484,6 +491,13 @@ export default function Home() {
             >
               Follow on Instagram
               <ExternalLink size={20} />
+            </a>
+            <a
+              href="/contact-accountability"
+              className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg border border-red-600"
+            >
+              Contact & Accountability
+              <Mail size={20} />
             </a>
           </div>
         </div>

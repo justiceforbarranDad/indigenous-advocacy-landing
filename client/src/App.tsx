@@ -20,6 +20,9 @@ import AccountabilityTracker from "./pages/AccountabilityTracker";
 import SystemicFailures from "./pages/SystemicFailures";
 import Credits from "./pages/Credits";
 import DPJAccountability from "./pages/DPJAccountability";
+import WellnessCheck from "./pages/WellnessCheck";
+import OfficialsBlockedYou from "./pages/OfficialsBlockedYou";
+import ContactAccountability from "./pages/ContactAccountability";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -40,6 +43,9 @@ function Router() {
       <Route path={"/systemic-failures"} component={SystemicFailures} />
       <Route path={"/credits"} component={Credits} />
       <Route path={"/dpj-accountability"} component={DPJAccountability} />
+      <Route path={"/wellness-check"} component={WellnessCheck} />
+      <Route path={"/officials-blocked-you"} component={OfficialsBlockedYou} />
+      <Route path={"/contact-accountability"} component={ContactAccountability} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
