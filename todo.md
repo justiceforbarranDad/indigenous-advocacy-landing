@@ -468,3 +468,93 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - Allies & Organizations page ready for grassroots amplification
 - Merchandise Coming Soon messaging in place
 - Movement ready for full launch and social media amplification
+
+
+## HYBRID NAVIGATION OPTIMIZATION (March 15, 2026 - In Progress)
+
+### Navigation Strategy
+- [ ] Create sticky "Quick Access" button component for top-right corner
+- [ ] Create BreadcrumbNavigation component for top of pages
+- [ ] Update all story pages with hybrid navigation
+- [ ] Test navigation across mobile and desktop
+- [ ] Ensure sticky button doesn't interfere with content
+- [ ] Verify breadcrumb links work correctly
+
+### Quick Access Button Features
+- [ ] Sticky positioning (top-right corner)
+- [ ] Minimalist design (doesn't distract)
+- [ ] Quick links: Resources, Legal Support, Share Story, Donate
+- [ ] Smooth animations on hover
+- [ ] Mobile-responsive (collapses on small screens)
+
+### Breadcrumb Navigation
+- [ ] Shows: Home > Story Title > Current Section
+- [ ] Clickable links to navigate back
+- [ ] Responsive design
+- [ ] Consistent styling across all pages
+
+### Pages to Update
+- [ ] BarransStory.tsx
+- [ ] MotherAbuseDPJ.tsx
+- [ ] WellnessCheck.tsx
+- [ ] DPJAccountability.tsx
+- [ ] SystemicFailures.tsx
+- [ ] OfficialsBlockedYou.tsx
+- [ ] GhostedByPolitician.tsx
+- [ ] All other story pages
+
+### Status: Hybrid Navigation In Progress
+
+
+## COMPLETE NEWSPAPER FORMAT TRANSFORMATION (March 15, 2026 - In Progress)
+
+### Newspaper Components Created
+- [x] NewspaperHeader component - Masthead with title, subtitle, date, byline
+- [x] NewspaperLayout wrapper - Vintage borders, consistent styling
+- [x] QuickAccessButton component - Sticky corner navigation
+- [x] BreadcrumbNavigation component - Top navigation breadcrumbs
+
+### Pages to Update with Newspaper Format
+- [ ] Home page - Main masthead with hero
+- [ ] All story pages (BarransStory, MotherAbuseDPJ, WellnessCheck, etc.)
+- [ ] All reform pages (Electoral Reform, Broken Promises, etc.)
+- [ ] Accountability pages (DPJAccountability, SystemicFailures, etc.)
+- [ ] Resource pages (Resources, HumanRightsEducation, etc.)
+- [ ] Memorial pages (InMemoriam, FirstNationsMemorial, etc.)
+
+### Newspaper Aesthetic Elements
+- [x] Vintage borders (top and bottom black lines)
+- [x] Serif typography for headlines
+- [x] Masthead with publication name
+- [x] Date and byline metadata
+- [x] Section headers
+- [x] Cream/black/forest green color scheme
+- [ ] Column-based layouts for content
+- [ ] Evidence boxes styled as newspaper clippings
+- [ ] Decorative dividers and ornaments
+
+### Multi-Track Music System (Royalty-Free)
+
+#### Main Theme (Homepage)
+- Source: Pixabay Music or Kevin MacLeod
+- Style: Investigative journalism, dramatic opening
+- Duration: 2-3 minutes
+- License: CC0 / Royalty-free
+
+#### Background Tracks by Page Type
+- **Story Pages**: Dramatic, emotional (Pixabay Investigation tracks)
+- **Reform Pages**: Powerful, urgent (Documentary music)
+- **Resource Pages**: Informative, steady (Background instrumental)
+- **Memorial Pages**: Solemn, respectful (Ambient, quiet)
+
+#### Music Sources
+- [ ] Download from Pixabay Music (pixabay.com/music)
+- [ ] Download from Kevin MacLeod (incompetech.com)
+- [ ] Download from Fesliyan Studios (fesliyanstudios.com)
+- [ ] Verify all licenses are CC0 or royalty-free
+- [ ] Test playback across all browsers
+
+### Status: Newspaper Format Transformation In Progress
+- Components created and ready
+- Music sources identified
+- Ready to integrate across all pages
