@@ -55,6 +55,7 @@ import AlliesAndOrganizations from "./pages/AlliesAndOrganizations";
 import VideoHub from "./pages/VideoHub";
 import AFNAccountability from "./pages/AFNAccountability";
 import SafetyResourcesSystemicFailure from "./pages/SafetyResourcesSystemicFailure";
+import { NavigationSidebar } from "./components/NavigationSidebar";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -131,6 +132,7 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
+          <NavigationSidebar />
           <Router />
           <MusicPlayer autoplay={false} loop={true} />
         </TooltipProvider>
