@@ -92,3 +92,17 @@ export const parentProfiles = mysqlTable("parent_profiles", {
 
 export type ParentProfile = typeof parentProfiles.$inferSelect;
 export type InsertParentProfile = typeof parentProfiles.$inferInsert;
+
+// Video Views Table
+export const videoViews = mysqlTable("video_views", {
+  id: int("id").autoincrement().primaryKey(),
+  videoId: varchar("video_id", { length: 255 }).notNull(),
+  videoTitle: varchar("video_title", { length: 255 }).notNull(),
+  viewCount: int("view_count").default(0).notNull(),
+  lastViewedAt: timestamp("last_viewed_at").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type VideoView = typeof videoViews.$inferSelect;
+export type InsertVideoView = typeof videoViews.$inferInsert;

@@ -1,9 +1,9 @@
-import { COOKIE_NAME } from "@shared/const";
+import { COOKIE_NAME } from "../shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
-import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile } from "./db";
+import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile, incrementVideoView, getVideoViews, getAllVideoViews } from "./db";
 import { notifyOwner } from "./_core/notification";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
 
@@ -219,6 +219,47 @@ export const appRouter = router({
           },
         };
       }),
+  }),
+
+  videos: router({
+    recordView: publicProcedure
+      .input(z.object({
+        videoId: z.string().min(1, "Video ID is required"),
+        videoTitle: z.string().min(1, "Video title is required"),
+      }))
+      .mutation(async ({ input }) => {
+        try {
+          await incrementVideoView(input.videoId, input.videoTitle);
+          return { success: true, message: "View recorded" };
+        } catch (error) {
+          console.error("Error recording video view:", error);
+          throw new Error("Failed to record view");
+        }
+      }),
+
+    getViews: publicProcedure
+      .input(z.object({
+        videoId: z.string().min(1, "Video ID is required"),
+      }))
+      .query(async ({ input }) => {
+        try {
+          const views = await getVideoViews(input.videoId);
+          return views || { videoId: input.videoId, viewCount: 0 };
+        } catch (error) {
+          console.error("Error fetching video views:", error);
+          return { videoId: input.videoId, viewCount: 0 };
+        }
+      }),
+
+    getAllViews: publicProcedure.query(async () => {
+      try {
+        const views = await getAllVideoViews();
+        return views;
+      } catch (error) {
+        console.error("Error fetching all video views:", error);
+        return [];
+      }
+    }),
   }),
 });
 

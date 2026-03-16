@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, legalProfiles, InsertLegalProfile, parentProfiles, InsertParentProfile } from "../drizzle/schema";
+import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, legalProfiles, InsertLegalProfile, parentProfiles, InsertParentProfile, videoViews, InsertVideoView } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -195,5 +195,57 @@ export async function getParentProfiles(limit: number = 50, offset: number = 0) 
   }
   
   const result = await db.select().from(parentProfiles).limit(limit).offset(offset);
+  return result;
+}
+
+// Video Views Functions
+export async function incrementVideoView(videoId: string, videoTitle: string) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  // Check if video view record exists
+  const existing = await db.select().from(videoViews).where(eq(videoViews.videoId, videoId)).limit(1);
+  
+  if (existing.length > 0) {
+    // Update existing record
+    await db.update(videoViews)
+      .set({
+        viewCount: existing[0].viewCount + 1,
+        lastViewedAt: new Date(),
+        updatedAt: new Date(),
+      })
+      .where(eq(videoViews.videoId, videoId));
+  } else {
+    // Create new record
+    await db.insert(videoViews).values({
+      videoId,
+      videoTitle,
+      viewCount: 1,
+      lastViewedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+  }
+}
+
+export async function getVideoViews(videoId: string) {
+  const db = await getDb();
+  if (!db) {
+    return null;
+  }
+  
+  const result = await db.select().from(videoViews).where(eq(videoViews.videoId, videoId)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function getAllVideoViews() {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select().from(videoViews).orderBy(videoViews.viewCount);
   return result;
 }

@@ -29,6 +29,13 @@
       "when": 1773541473728,
       "tag": "0003_smart_wildside",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1773619545478,
+      "tag": "0004_cuddly_goliath",
+      "breakpoints": true
     }
   ]
 }

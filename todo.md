@@ -582,3 +582,15 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Add French subtitles to YouTube videos (manual step)
 - [ ] Test subtitle display on all platforms
 - [ ] Save checkpoint with French subtitles complete
+
+
+## VIDEO VIEW COUNTER FEATURE (March 15, 2026 - COMPLETE)
+- [x] Create video_views table in database schema
+- [x] Add tRPC procedure to increment video view count
+- [x] Add tRPC procedure to get video statistics
+- [x] Update VideoHub.tsx to display view counts with Eye icon
+- [x] Add view tracking on video watch button click
+- [x] Add sorting by views on VideoHub page
+- [x] Write vitest tests for view counter logic (4 tests passing)
+- [x] Test view counter functionality (all tests passing)
+- [ ] Save checkpoint with view counter complete
