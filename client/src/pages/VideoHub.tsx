@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Download, Play, Eye } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
+import { ShareButtons } from '@/components/ShareButtons';
 
 const VideoHub = () => {
   const [viewCounts, setViewCounts] = useState<Record<string, number>>({});
@@ -91,28 +92,24 @@ const VideoHub = () => {
   const handleWatch = (videoId: string, videoTitle: string) => {
     recordViewMutation.mutate({ videoId, videoTitle }, {
       onSuccess: () => {
-        // Update local view count
         setViewCounts(prev => ({
           ...prev,
           [videoId]: (prev[videoId] || 0) + 1
         }));
       }
     });
-    // Open video in new tab
     window.open(documentary.url, '_blank');
   };
 
   const handleWatchClip = (videoId: string, videoTitle: string, url: string) => {
     recordViewMutation.mutate({ videoId, videoTitle }, {
       onSuccess: () => {
-        // Update local view count
         setViewCounts(prev => ({
           ...prev,
           [videoId]: (prev[videoId] || 0) + 1
         }));
       }
     });
-    // Open video in new tab
     window.open(url, '_blank');
   };
 
@@ -152,22 +149,29 @@ const VideoHub = () => {
                   <span>{viewCounts[documentary.id] || 0} views</span>
                 </div>
 
-                <div className="flex gap-4">
-                  <button
-                    onClick={() => handleWatch(documentary.id, documentary.title)}
-                    className="inline-flex items-center gap-2 bg-forest-green hover:bg-amber-orange text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-                  >
-                    <Play size={18} />
-                    Watch
-                  </button>
-                  <a
-                    href={documentary.url}
-                    download
-                    className="inline-flex items-center gap-2 bg-amber-orange hover:bg-forest-green text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-                  >
-                    <Download size={18} />
-                    Download
-                  </a>
+                <div className="flex flex-col gap-4">
+                  <div className="flex gap-4">
+                    <button
+                      onClick={() => handleWatch(documentary.id, documentary.title)}
+                      className="inline-flex items-center gap-2 bg-forest-green hover:bg-amber-orange text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                    >
+                      <Play size={18} />
+                      Watch
+                    </button>
+                    <a
+                      href={documentary.url}
+                      download
+                      className="inline-flex items-center gap-2 bg-amber-orange hover:bg-forest-green text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                    >
+                      <Download size={18} />
+                      Download
+                    </a>
+                  </div>
+                  <ShareButtons 
+                    videoTitle={documentary.title}
+                    videoUrl="/video-hub"
+                    hashtags={['#JusticeForBarran', '#EveryChildMatters', '#SundayBloodySunday']}
+                  />
                 </div>
               </div>
             </div>
@@ -204,22 +208,29 @@ const VideoHub = () => {
                   <span>{viewCounts[clip.id] || 0} views</span>
                 </div>
 
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => handleWatchClip(clip.id, clip.title, clip.url)}
-                    className="inline-flex items-center gap-2 bg-forest-green hover:bg-amber-orange text-white px-4 py-2 rounded font-semibold transition-colors text-sm"
-                  >
-                    <Play size={16} />
-                    Watch
-                  </button>
-                  <a
-                    href={clip.url}
-                    download
-                    className="inline-flex items-center gap-2 bg-amber-orange hover:bg-forest-green text-white px-4 py-2 rounded font-semibold transition-colors text-sm"
-                  >
-                    <Download size={16} />
-                    Download
-                  </a>
+                <div className="flex flex-col gap-3">
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => handleWatchClip(clip.id, clip.title, clip.url)}
+                      className="inline-flex items-center gap-2 bg-forest-green hover:bg-amber-orange text-white px-4 py-2 rounded font-semibold transition-colors text-sm flex-1"
+                    >
+                      <Play size={16} />
+                      Watch
+                    </button>
+                    <a
+                      href={clip.url}
+                      download
+                      className="inline-flex items-center gap-2 bg-amber-orange hover:bg-forest-green text-white px-4 py-2 rounded font-semibold transition-colors text-sm flex-1"
+                    >
+                      <Download size={16} />
+                      Download
+                    </a>
+                  </div>
+                  <ShareButtons 
+                    videoTitle={clip.title}
+                    videoUrl="/video-hub"
+                    hashtags={['#JusticeForBarran', '#EveryChildMatters']}
+                  />
                 </div>
               </div>
             ))}

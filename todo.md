@@ -594,3 +594,20 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Write vitest tests for view counter logic (4 tests passing)
 - [x] Test view counter functionality (all tests passing)
 - [ ] Save checkpoint with view counter complete
+
+
+## SOCIAL MEDIA SHARING INTEGRATION (March 15, 2026 - IN PROGRESS)
+- [x] Create ShareButtons component with Twitter, Facebook, LinkedIn, Email
+- [x] Add share buttons to each video card on VideoHub
+- [x] Add share buttons to documentary section
+- [x] Implement pre-filled share messages with video titles and hashtags
+- [ ] Add share tracking to database (optional analytics)
+- [ ] Write vitest tests for share functionality
+- [ ] Test all social media share buttons
+- [ ] Save checkpoint with social sharing complete
+
+## VIDEO HUB NAVIGATION (March 15, 2026 - COMPLETE)
+- [x] Add "Video Hub (All 9 Videos)" button to home page hero
+- [x] Make VideoHub easily discoverable from main page
+- [x] Test navigation link on dev server
+- [ ] Publish to live site

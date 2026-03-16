@@ -178,6 +178,12 @@ export default function Home() {
           </div>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
+              href="/video-hub"
+              className="inline-flex items-center gap-2 bg-forest-green hover:bg-amber-orange text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+            >
+              Video Hub (All 9 Videos)
+            </a>
+            <a
               href="https://www.youtube.com/watch?v=xCpn1erz1y8"
               target="_blank"
               rel="noopener noreferrer"
