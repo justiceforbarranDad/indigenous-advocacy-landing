@@ -40,6 +40,54 @@ const fallenHeroes = [
     legacy: '4,000+ Indigenous women and girls murdered or missing. Systemic violence, police negligence, and institutional failure. Their names must be remembered. Their killers must be held accountable.',
     image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/mmiwg-memorial.jpg',
   },
+  {
+    id: 5,
+    name: 'Francis Pegahmagabow',
+    dates: '1889 - 1952',
+    nation: 'Parry Island First Nation',
+    legacy: 'Decorated WWI sniper and war hero. Credited with 378 confirmed kills, making him one of Canada\'s most effective soldiers. Fought for Indigenous rights and veterans\' recognition after returning home. His courage in battle and advocacy for Indigenous peoples remains a legacy of resistance.',
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/francis-pegahmagabow-memorial.jpg',
+  },
+  {
+    id: 6,
+    name: 'Thomas George "Tommy" Prince',
+    dates: '1915 - 1977',
+    nation: 'Brokenhead Ojibway Nation',
+    legacy: 'Highly decorated WWII and Korean War veteran. Served with distinction in multiple theaters of war. Despite his heroic service, faced discrimination and systemic racism upon returning home. His fight for Indigenous veterans\' rights exposed the hypocrisy of a nation that honored Indigenous soldiers in war but abandoned them in peace.',
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/tommy-prince-memorial.jpg',
+  },
+  {
+    id: 7,
+    name: 'Henry Norwest',
+    dates: '1884 - 1918',
+    nation: 'Métis',
+    legacy: 'Legendary WWI sniper credited with 115 confirmed kills. Former rodeo performer who became one of Canada\'s most feared soldiers. Killed in action near the war\'s end. His legacy represents the courage and sacrifice of Indigenous soldiers who fought for a country that did not fully recognize their citizenship.',
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/henry-norwest-memorial.jpg',
+  },
+  {
+    id: 8,
+    name: 'Harriet Nahanee',
+    dates: '1930 - 2007',
+    nation: 'Squamish Nation',
+    legacy: 'Civil rights activist, residential school survivor, and environmentalist. Fought tirelessly for Indigenous rights, environmental protection, and justice for survivors of residential schools. Her activism exposed systemic abuse and institutional failure. She refused to be silenced and demanded accountability.',
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/harriet-nahanee-memorial.jpg',
+  },
+  {
+    id: 9,
+    name: 'Alanis Obomsawin',
+    dates: 'Born 1932',
+    nation: 'Abenaki',
+    legacy: 'Documentary filmmaker, artist, and activist. Through powerful filmmaking, she has documented Indigenous struggles, residential school trauma, and systemic injustice. Her work gives voice to the voiceless and demands that Canada confront its colonial past and ongoing systemic failures.',
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/alanis-obomsawin-memorial.jpg',
+  },
+  {
+    id: 10,
+    name: 'Indigenous Veterans of Canada',
+    dates: '1914 - Present',
+    nation: 'All Nations',
+    legacy: 'Over 4,000 Indigenous soldiers served in WWI, over 3,000 in WWII, and many in the Korean War. Despite their sacrifice and heroism, they returned home to discrimination, denied veterans\' benefits, and systemic racism. Their legacy exposes the contradiction of a nation that honored Indigenous soldiers in uniform but denied them basic rights as citizens.',
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/indigenous-veterans-memorial.jpg',
+  },
 ];
 
 export default function NewspaperFrontPage() {
@@ -71,6 +119,27 @@ export default function NewspaperFrontPage() {
           </div>
         </div>
       </header>
+
+      {/* EMBEDDED DOCUMENTARY VIDEO */}
+      <section className="bg-black py-12 border-b-4 border-amber-orange">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-white text-3xl font-bold mb-6 text-center">WATCH THE DOCUMENTARY</h2>
+          <div className="aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
+            <video
+              controls
+              className="w-full h-full"
+              poster="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp"
+            >
+              <source
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/sunday-bloody-sunday-documentary-8min_39949c66.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p className="text-white text-center mt-4 text-sm italic">8-minute documentary: Sunday Bloody Sunday, Part Two - Indigenous Justice Advocacy</p>
+        </div>
+      </section>
 
       {/* FRONT PAGE HEADLINE */}
       <section className="bg-white border-b-4 border-black py-8">
@@ -143,6 +212,75 @@ export default function NewspaperFrontPage() {
         </div>
       </section>
 
+      {/* COMPREHENSIVE LINKS & RESOURCES */}
+      <section className="py-12 bg-forest-green/5 border-b-4 border-black">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-12 text-center">ADVOCACY & RESOURCES</h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {/* Our Story Links */}
+            <div className="bg-white border-4 border-forest-green p-6 rounded">
+              <h3 className="text-xl font-bold text-forest-green mb-4">OUR STORY</h3>
+              <ul className="space-y-2">
+                <li><a href="/barrans-story" className="text-amber-orange hover:text-amber-light font-semibold">→ Barran's Story (Feb 14, 2021)</a></li>
+                <li><a href="/trigger-event" className="text-amber-orange hover:text-amber-light font-semibold">→ The Trigger Event (Feb 27)</a></li>
+                <li><a href="/mother-abuse-dpj" className="text-amber-orange hover:text-amber-light font-semibold">→ Mother's Abuse & DPJ Failure</a></li>
+              </ul>
+            </div>
+
+            {/* Accountability Links */}
+            <div className="bg-white border-4 border-red-600 p-6 rounded">
+              <h3 className="text-xl font-bold text-red-600 mb-4">ACCOUNTABILITY</h3>
+              <ul className="space-y-2">
+                <li><a href="/dpj-accountability" className="text-amber-orange hover:text-amber-light font-semibold">→ DPJ Accountability</a></li>
+                <li><a href="/ghosted-by-politician" className="text-amber-orange hover:text-amber-light font-semibold">→ Ghosted by Politician</a></li>
+                <li><a href="/systemic-failures" className="text-amber-orange hover:text-amber-light font-semibold">→ Systemic Failures</a></li>
+              </ul>
+            </div>
+
+            {/* Resources Links */}
+            <div className="bg-white border-4 border-amber-orange p-6 rounded">
+              <h3 className="text-xl font-bold text-amber-orange mb-4">RESOURCES</h3>
+              <ul className="space-y-2">
+                <li><a href="/resources" className="text-amber-orange hover:text-amber-light font-semibold">→ Resources & References</a></li>
+                <li><a href="/childrens-rights" className="text-amber-orange hover:text-amber-light font-semibold">→ Children's Rights & Education</a></li>
+                <li><a href="/international-legal" className="text-amber-orange hover:text-amber-light font-semibold">→ International Legal Support</a></li>
+              </ul>
+            </div>
+
+            {/* Support Links */}
+            <div className="bg-white border-4 border-green-600 p-6 rounded">
+              <h3 className="text-xl font-bold text-green-600 mb-4">SUPPORT</h3>
+              <ul className="space-y-2">
+                <li><a href="/donate-etransfer" className="text-amber-orange hover:text-amber-light font-semibold">→ Donate via e-Transfer</a></li>
+                <li><a href="https://www.gofundme.com/f/justice-for-barran" target="_blank" rel="noopener noreferrer" className="text-amber-orange hover:text-amber-light font-semibold">→ Donate via GoFundMe</a></li>
+                <li><a href="/share-story" className="text-amber-orange hover:text-amber-light font-semibold">→ Share Your Story</a></li>
+              </ul>
+            </div>
+
+            {/* Video & Media */}
+            <div className="bg-white border-4 border-blue-600 p-6 rounded">
+              <h3 className="text-xl font-bold text-blue-600 mb-4">MEDIA & VIDEOS</h3>
+              <ul className="space-y-2">
+                <li><a href="/video-hub" className="text-amber-orange hover:text-amber-light font-semibold">→ Video Hub (All 9 Videos)</a></li>
+                <li><a href="/newspaper-front-page" className="text-amber-orange hover:text-amber-light font-semibold">→ Newspaper Front Page</a></li>
+                <li><a href="/timeline-newspaper-archive" className="text-amber-orange hover:text-amber-light font-semibold">→ Timeline Archive</a></li>
+              </ul>
+            </div>
+
+            {/* Connect */}
+            <div className="bg-white border-4 border-purple-600 p-6 rounded">
+              <h3 className="text-xl font-bold text-purple-600 mb-4">CONNECT</h3>
+              <ul className="space-y-2">
+                <li><a href="https://x.com/helpbarran?s=21" target="_blank" rel="noopener noreferrer" className="text-amber-orange hover:text-amber-light font-semibold">→ Follow on X/Twitter</a></li>
+                <li><a href="https://www.tiktok.com/@barranneedsjustice" target="_blank" rel="noopener noreferrer" className="text-amber-orange hover:text-amber-light font-semibold">→ Follow on TikTok</a></li>
+                <li><a href="https://www.instagram.com/justiceforbarran" target="_blank" rel="noopener noreferrer" className="text-amber-orange hover:text-amber-light font-semibold">→ Follow on Instagram</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* OBITUARY SECTION - FALLEN HEROES */}
       <section className="py-12 bg-charcoal/5 border-b-4 border-black">
         <div className="max-w-6xl mx-auto px-4">
@@ -156,7 +294,7 @@ export default function NewspaperFrontPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
             {fallenHeroes.map((hero) => (
               <div key={hero.id} className="bg-white border-4 border-black p-6 hover:shadow-lg transition-shadow">
                 {hero.image && (
@@ -192,7 +330,7 @@ export default function NewspaperFrontPage() {
             <p className="text-lg leading-relaxed mb-6">
               Every Indigenous child deserves protection. Every victim deserves justice. Every family deserves accountability. We honor the fallen by continuing their fight for systemic change. We demand that institutions be held accountable. We refuse silence. We demand justice.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
               <a
                 href="/how-to-document-your-case"
                 className="inline-flex items-center justify-center gap-2 bg-forest-green hover:bg-forest-green/90 text-white px-8 py-3 rounded font-bold transition-colors"
@@ -200,11 +338,23 @@ export default function NewspaperFrontPage() {
                 Document Your Case
               </a>
               <a
-                href="/donate"
+                href="/donate-etransfer"
                 className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded font-bold transition-colors"
               >
                 <Heart size={20} />
                 Fund Legal Action
+              </a>
+              <a
+                href="/video-hub"
+                className="inline-flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-8 py-3 rounded font-bold transition-colors"
+              >
+                Watch Videos
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded font-bold transition-colors"
+              >
+                Get Involved
               </a>
             </div>
           </div>

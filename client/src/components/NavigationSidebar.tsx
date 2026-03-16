@@ -8,26 +8,26 @@ export function NavigationSidebar() {
     {
       title: 'Support',
       links: [
-        { label: 'Donate Now (e-Transfer)', href: 'mailto:support@justiceforbarran.org?subject=Donation%20Request' },
-        { label: 'Donate via GoFundMe', href: '#' },
+        { label: 'Donate Now (e-Transfer)', href: '/donate-etransfer' },
+        { label: 'Donate via GoFundMe', href: 'https://www.gofundme.com/f/justice-for-barran' },
         { label: 'Share Your Story', href: '#' },
       ],
     },
     {
       title: 'Resources',
       links: [
-        { label: 'Resources & References', href: '#' },
-        { label: 'Ghosted by a Politician?', href: '#' },
-        { label: 'Children\'s Rights & Education', href: '#' },
-        { label: 'International Legal Support', href: '#' },
-        { label: 'Parents & Non-Profit', href: '#' },
-        { label: 'Indigenous Nations & Languages', href: '#' },
+        { label: 'Resources & References', href: '/resources' },
+        { label: 'Ghosted by a Politician?', href: '/ghosted-by-politician' },
+        { label: 'Children\'s Rights & Education', href: '/childrens-rights' },
+        { label: 'International Legal Support', href: '/international-legal' },
+        { label: 'Parents & Non-Profit', href: '/parents-nonprofits' },
+        { label: 'Indigenous Nations & Languages', href: '/indigenous-nations' },
       ],
     },
     {
       title: 'Our Story',
       links: [
-        { label: 'The Trigger Event (Feb 27)', href: '#' },
+        { label: 'The Trigger Event (Feb 27)', href: '/trigger-event' },
         { label: 'Barran\'s Story (Feb 14, 2021)', href: '#' },
         { label: 'Mother\'s Abuse & DPJ Failure', href: '#' },
         { label: 'DPJ Accountability', href: '/dpj-accountability' },
@@ -38,18 +38,18 @@ export function NavigationSidebar() {
     {
       title: 'Connect',
       links: [
-        { label: 'Follow on X/Twitter', href: 'https://twitter.com/justiceforbarran' },
-        { label: 'Follow on TikTok', href: 'https://tiktok.com/@justiceforbarran' },
-        { label: 'Follow on Instagram', href: 'https://instagram.com/justiceforbarran' },
-        { label: 'Join on Reddit', href: 'https://reddit.com/r/justiceforbarran' },
+        { label: 'Follow on X/Twitter', href: 'https://x.com/helpbarran?s=21' },
+        { label: 'Follow on TikTok', href: 'https://www.tiktok.com/@barranneedsjustice' },
+        { label: 'Follow on Instagram', href: 'https://www.instagram.com/justiceforbarran' },
+        { label: 'Follow on Facebook', href: 'https://www.facebook.com/share/1JbsMBESqK/?mibextid=wwXIfr' },
         { label: 'Contact via Email', href: 'mailto:contact@justiceforbarran.org' },
       ],
     },
     {
       title: 'Info',
       links: [
-        { label: 'Contact & Accountability', href: '#' },
-        { label: 'Credits & Acknowledgments', href: '#' },
+        { label: 'Contact & Accountability', href: '/contact' },
+        { label: 'Credits & Acknowledgments', href: '/credits' },
       ],
     },
   ];

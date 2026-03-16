@@ -55,6 +55,7 @@ import AlliesAndOrganizations from "./pages/AlliesAndOrganizations";
 import VideoHub from "./pages/VideoHub";
 import AFNAccountability from "./pages/AFNAccountability";
 import SafetyResourcesSystemicFailure from "./pages/SafetyResourcesSystemicFailure";
+import DonateETransfer from "./pages/DonateETransfer";
 import { NavigationSidebar } from "./components/NavigationSidebar";
 
 function Router() {
@@ -111,6 +112,7 @@ function Router() {
       <Route path="/video-hub" component={VideoHub} />
       <Route path="/afn-accountability" component={AFNAccountability} />
       <Route path="/safety-resources-systemic-failure" component={SafetyResourcesSystemicFailure} />
+      <Route path="/donate-etransfer" component={DonateETransfer} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
