@@ -572,3 +572,13 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Update navigation with Video Hub link
 - [ ] Test video page functionality
 - [ ] Save checkpoint with video hosting complete
+
+
+## FRENCH SUBTITLES FOR ALL VIDEOS (March 15, 2026 - COMPLETE)
+- [x] Transcribe English narration from all 9 videos
+- [x] Translate to French
+- [x] Create .srt subtitle files for each video (9 files created)
+- [x] Upload subtitle files to S3 (all 9 files uploaded to CDN)
+- [ ] Add French subtitles to YouTube videos (manual step)
+- [ ] Test subtitle display on all platforms
+- [ ] Save checkpoint with French subtitles complete
