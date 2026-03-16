@@ -176,20 +176,34 @@ export default function Home() {
             <span className="hashtag-pill">#JusticeForBarran</span>
             <span className="hashtag-pill">#TruthAndReconciliation</span>
           </div>
+          <div className="mb-8 max-w-2xl mx-auto">
+            <div className="relative w-full bg-black rounded-lg overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
+              <video
+                controls
+                className="absolute inset-0 w-full h-full"
+                poster="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp"
+              >
+                <source src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/sunday-bloody-sunday-full-documentary-12min.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="/video-hub"
-              className="inline-flex items-center gap-2 bg-forest-green hover:bg-amber-orange text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-            >
-              Video Hub (All 9 Videos)
-            </a>
-            <a
-              href="https://www.youtube.com/watch?v=xCpn1erz1y8"
+              href="https://www.paypal.com/donate"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-amber-orange hover:bg-amber-light text-white px-6 py-3 rounded-lg font-semibold transition-colors"
             >
-              Watch Full Video
+              <Heart size={18} />
+              Donate Now
+            </a>
+            <a
+              href="/video-hub"
+              className="inline-flex items-center gap-2 bg-forest-green hover:bg-forest-green/80 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+            >
+              More Videos
               <ExternalLink size={18} />
             </a>
             <a
@@ -198,7 +212,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
             >
-              Subscribe to Channel
+              Subscribe
               <ExternalLink size={18} />
             </a>
           </div>
