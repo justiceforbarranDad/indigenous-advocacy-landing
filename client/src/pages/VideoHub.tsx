@@ -85,8 +85,8 @@ const VideoHub = () => {
   const documentary = {
     id: 'doc-01',
     title: "Sunday Bloody Sunday Part Two - Full Documentary",
-    duration: "12 min",
-    url: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/full-documentary-sunday-bloody-sunday_1369f384.mp4",
+    duration: "8 min",
+    url: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/sunday-bloody-sunday-documentary-8min_39949c66.mp4",
     format: "16:9 (Widescreen)"
   };
 
