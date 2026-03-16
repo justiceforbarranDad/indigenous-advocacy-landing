@@ -11,7 +11,7 @@ export default function GhostedByPolitician() {
     { name: 'Sean Fraser', handle: 'SeanFraserMP', title: 'MP, Central Nova', level: 'Federal', year: 2023, isColor: false },
     { name: 'François Legault', handle: 'francoislegault', title: 'Premier of Quebec', level: 'Provincial', year: 2023, isColor: false },
     { name: 'Bernard Drainville', handle: 'BDrainvilleQc', title: 'Minister of Education', level: 'Provincial', year: 2023, isColor: false },
-    { name: 'Luc Ferrandez', handle: 'LucFerrandez', title: 'Montreal City Councillor', level: 'Municipal', year: 2024, isColor: true },
+    { name: 'Ian Lafrenière', handle: 'IanLafreniere', title: 'Minister of Indigenous Affairs & Public Safety', level: 'Provincial', year: 2023, isColor: true },
   ];
 
   const organizations = [
