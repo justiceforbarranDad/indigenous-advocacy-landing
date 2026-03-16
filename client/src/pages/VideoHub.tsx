@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Download, Play, Eye } from 'lucide-react';
+import { Download, Play, Eye, X } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 import { ShareButtons } from '@/components/ShareButtons';
 
 const VideoHub = () => {
   const [viewCounts, setViewCounts] = useState<Record<string, number>>({});
   const [sortBy, setSortBy] = useState<'title' | 'views'>('title');
+  const [selectedVideo, setSelectedVideo] = useState<{ id: string; url: string; title: string } | null>(null);
 
   // Fetch all video views on mount
   const allViewsQuery = trpc.videos.getAllViews.useQuery();
@@ -89,7 +90,7 @@ const VideoHub = () => {
     format: "16:9 (Widescreen)"
   };
 
-  const handleWatch = (videoId: string, videoTitle: string) => {
+  const handleWatch = (videoId: string, videoTitle: string, url: string) => {
     recordViewMutation.mutate({ videoId, videoTitle }, {
       onSuccess: () => {
         setViewCounts(prev => ({
@@ -98,19 +99,7 @@ const VideoHub = () => {
         }));
       }
     });
-    window.open(documentary.url, '_blank');
-  };
-
-  const handleWatchClip = (videoId: string, videoTitle: string, url: string) => {
-    recordViewMutation.mutate({ videoId, videoTitle }, {
-      onSuccess: () => {
-        setViewCounts(prev => ({
-          ...prev,
-          [videoId]: (prev[videoId] || 0) + 1
-        }));
-      }
-    });
-    window.open(url, '_blank');
+    setSelectedVideo({ id: videoId, url, title: videoTitle });
   };
 
   const sortedClips = [...shortClips].sort((a, b) => {
@@ -122,6 +111,34 @@ const VideoHub = () => {
 
   return (
     <div className="min-h-screen bg-cream text-charcoal">
+      {/* Video Modal */}
+      {selectedVideo && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <div className="bg-black rounded-lg shadow-2xl max-w-4xl w-full">
+            <div className="flex justify-between items-center p-4 border-b border-gray-700">
+              <h3 className="text-white font-bold text-lg">{selectedVideo.title}</h3>
+              <button
+                onClick={() => setSelectedVideo(null)}
+                className="text-white hover:bg-gray-700 p-2 rounded-lg transition-colors"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <div className="relative bg-black">
+              <video
+                controls
+                autoPlay
+                className="w-full"
+                style={{ aspectRatio: '16/9' }}
+              >
+                <source src={selectedVideo.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="bg-forest-green text-white py-12 px-4">
         <div className="max-w-6xl mx-auto">
@@ -152,7 +169,7 @@ const VideoHub = () => {
                 <div className="flex flex-col gap-4">
                   <div className="flex gap-4">
                     <button
-                      onClick={() => handleWatch(documentary.id, documentary.title)}
+                      onClick={() => handleWatch(documentary.id, documentary.title, documentary.url)}
                       className="inline-flex items-center gap-2 bg-forest-green hover:bg-amber-orange text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                     >
                       <Play size={18} />
@@ -198,63 +215,41 @@ const VideoHub = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {sortedClips.map((clip) => (
-              <div key={clip.id} className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-amber-orange hover:shadow-xl transition-shadow">
+              <div key={clip.id} className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-amber-orange">
                 <h3 className="text-xl font-bold text-charcoal mb-2">{clip.title}</h3>
-                <p className="text-gray-600 mb-3">{clip.format} • {clip.duration}</p>
+                <p className="text-gray-600 mb-4">{clip.format} • {clip.duration}</p>
                 
                 {/* View Counter */}
-                <div className="flex items-center gap-2 mb-4 text-amber-orange font-semibold">
-                  <Eye size={18} />
+                <div className="flex items-center gap-2 mb-6 text-amber-orange font-semibold">
+                  <Eye size={20} />
                   <span>{viewCounts[clip.id] || 0} views</span>
                 </div>
 
-                <div className="flex flex-col gap-3">
-                  <div className="flex gap-3">
+                <div className="flex flex-col gap-4">
+                  <div className="flex gap-4">
                     <button
-                      onClick={() => handleWatchClip(clip.id, clip.title, clip.url)}
-                      className="inline-flex items-center gap-2 bg-forest-green hover:bg-amber-orange text-white px-4 py-2 rounded font-semibold transition-colors text-sm flex-1"
+                      onClick={() => handleWatch(clip.id, clip.title, clip.url)}
+                      className="inline-flex items-center gap-2 bg-forest-green hover:bg-amber-orange text-white px-6 py-3 rounded-lg font-semibold transition-colors flex-1"
                     >
-                      <Play size={16} />
+                      <Play size={18} />
                       Watch
                     </button>
                     <a
                       href={clip.url}
                       download
-                      className="inline-flex items-center gap-2 bg-amber-orange hover:bg-forest-green text-white px-4 py-2 rounded font-semibold transition-colors text-sm flex-1"
+                      className="inline-flex items-center gap-2 bg-amber-orange hover:bg-forest-green text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                     >
-                      <Download size={16} />
-                      Download
+                      <Download size={18} />
                     </a>
                   </div>
                   <ShareButtons 
                     videoTitle={clip.title}
                     videoUrl="/video-hub"
-                    hashtags={['#JusticeForBarran', '#EveryChildMatters']}
+                    hashtags={['#JusticeForBarran', '#EveryChildMatters', '#SundayBloodySunday']}
                   />
                 </div>
               </div>
             ))}
-          </div>
-        </section>
-
-        {/* Guides Section */}
-        <section className="mt-16 bg-forest-green text-white rounded-lg p-8">
-          <h2 className="text-3xl font-bold mb-6">Publishing Guides</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/10 rounded-lg p-6">
-              <h3 className="text-xl font-bold mb-3">YouTube Upload Guide</h3>
-              <p className="mb-4 text-amber-light">Step-by-step instructions for uploading all videos to YouTube with proper titles, descriptions, and tags.</p>
-              <a href="/resources" className="inline-block bg-amber-orange hover:bg-amber-light text-white px-4 py-2 rounded font-semibold transition-colors">
-                View Guide
-              </a>
-            </div>
-            <div className="bg-white/10 rounded-lg p-6">
-              <h3 className="text-xl font-bold mb-3">Social Media Publishing Kit</h3>
-              <p className="mb-4 text-amber-light">Complete captions, hashtags, and posting strategy for TikTok, Instagram, Facebook, and Twitter.</p>
-              <a href="/resources" className="inline-block bg-amber-orange hover:bg-amber-light text-white px-4 py-2 rounded font-semibold transition-colors">
-                View Kit
-              </a>
-            </div>
           </div>
         </section>
       </div>
