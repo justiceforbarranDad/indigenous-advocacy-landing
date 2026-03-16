@@ -183,7 +183,7 @@ export default function Home() {
                 className="absolute inset-0 w-full h-full"
                 poster="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp"
               >
-                <source src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/sunday-bloody-sunday-full-documentary-12min.mp4" type="video/mp4" />
+                <source src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/full-documentary-sunday-bloody-sunday_ff634369.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
