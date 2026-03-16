@@ -611,3 +611,14 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Make VideoHub easily discoverable from main page
 - [x] Test navigation link on dev server
 - [ ] Publish to live site
+
+
+## AFN ACCOUNTABILITY FACT-CHECK PAGE (March 16, 2026)
+- [ ] Research AFN public claims vs. actual response to families
+- [ ] Document personal experience of being ignored by AFN
+- [ ] Create AFNAccountability.tsx page component
+- [ ] Add fact-check sections with evidence
+- [ ] Include personal testimony about AFN's failure to help
+- [ ] Add page to App.tsx routing
+- [ ] Test page functionality
+- [ ] Save checkpoint with AFN accountability page complete
