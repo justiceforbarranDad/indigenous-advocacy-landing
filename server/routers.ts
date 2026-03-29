@@ -7,6 +7,7 @@ import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotal
 import { notifyOwner } from "./_core/notification";
 import { exportSurveyAsCSV, exportAnalyticsSummaryAsCSV, generateAnalyticsReport } from "./dataExport";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
+import { subscriptionRouter } from "./routers/subscriptions";
 
 export const appRouter = router({
   system: systemRouter,
@@ -410,5 +411,6 @@ export const appRouter = router({
       return await generateAnalyticsReport();
     }),
   }),
+  subscriptions: router(subscriptionRouter),
 });
 export type AppRouter = typeof appRouter;

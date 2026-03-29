@@ -23,6 +23,7 @@ export function HamburgerMenu() {
     {
       title: '💪 TAKE ACTION',
       links: [
+        { label: 'Monthly Recurring Donation', href: '/donate-recurring' },
         { label: 'Donation Hub (All Methods)', href: '/donation-hub' },
         { label: 'Donate via e-Transfer', href: '/donate-etransfer' },
         { label: 'See Donation Impact', href: '/donation-impact' },

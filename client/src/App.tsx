@@ -93,6 +93,8 @@ import NewspaperReader from "./pages/NewspaperReader";
 import DonationImpact from "./pages/DonationImpact";
 import DonateETransferInteractive from "./pages/DonateETransferInteractive";
 import DonationHub from "./pages/DonationHub";
+import DonateRecurring from "./pages/DonateRecurring";
+import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 
@@ -185,6 +187,8 @@ function Router() {
       <Route path="/donation-impact" component={DonationImpact} />
       <Route path="/donate-etransfer" component={DonateETransferInteractive} />
       <Route path="/donation-hub" component={DonationHub} />
+      <Route path="/donate-recurring" component={DonateRecurring} />
+      <Route path="/subscription-success" component={SubscriptionSuccess} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
