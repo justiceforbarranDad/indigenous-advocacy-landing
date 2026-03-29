@@ -640,3 +640,65 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Implement Download functionality for episodes - COMPLETE
 - [x] Implement Share functionality for episodes - COMPLETE
 - [x] Test all podcast audio playback - COMPLETE
+
+
+## AUTHENTIC VINTAGE NEWSPAPER REDESIGN - MARCH 28, 2026 (IN PROGRESS)
+### Goal: Refocus on Justice for Barran with classic newspaper aesthetic
+
+#### Phase 1: Design System
+- [ ] Create vintage newspaper CSS theme with serif fonts (Georgia, Times New Roman)
+- [ ] Implement multi-column layouts for content
+- [ ] Add classic newspaper borders, dividers, and frames
+- [ ] Create masthead component with publication name and date
+- [ ] Add byline and dateline styling
+- [ ] Implement vintage color scheme (cream, black, accent colors)
+- [ ] Create "classified ads" style sections for secondary content
+
+#### Phase 2: Homepage Redesign (Front Page)
+- [x] Redesign homepage as newspaper front page
+- [x] Make Barran's story the PRIMARY headline (above the fold)
+- [x] Create newspaper masthead: "JUSTICE FOR BARRAN"
+- [x] Add publication date and tagline
+- [x] Reorganize content into newspaper sections:
+  - [x] Main story (Barran's case)
+  - [x] Breaking news (UN Letter, systemic failures)
+  - [x] Supporting columns (podcast, resources)
+  - [x] Memorials section (secondary, supporting context)
+- [x] Remove visual clutter - focus on clear hierarchy
+- [x] Use proper newspaper column layout
+
+#### Phase 3: Navigation Reorganization
+- [x] Reorder sidebar sections to prioritize Justice for Barran
+- [x] Move Memorials to bottom of navigation (supporting context)
+- [x] Create clear section hierarchy:
+  1. Justice for Barran (primary)
+  2. Our Story (supporting)
+  3. Resources (supporting)
+  4. Memorials (historical context)
+  5. Support & Connect (CTAs)
+- [x] Simplify navigation to reduce overwhelm
+- [ ] Add breadcrumb navigation for clarity
+
+#### Phase 4: Page-by-Page Styling
+- [ ] Apply newspaper layout to all pages
+- [ ] Ensure consistent typography (serif headers, readable body)
+- [ ] Add vintage borders and section dividers
+- [ ] Implement proper content hierarchy on each page
+- [ ] Reduce visual complexity while maintaining professionalism
+- [ ] Test readability and clarity
+
+#### Phase 5: Message Clarity Testing
+- [ ] Verify Barran's story is the clear focal point
+- [ ] Ensure memorial pages support (not compete with) main message
+- [ ] Test navigation flow - can users find Justice for Barran easily?
+- [ ] Verify all CTAs point to supporting Barran's cause
+- [ ] Check that secondary features don't distract from main message
+
+#### Phase 6: Final Testing & Deployment
+- [ ] Run all vitest tests
+- [ ] Test responsive design (mobile/tablet/desktop)
+- [ ] Verify all links work correctly
+- [ ] Check accessibility compliance
+- [ ] Verify message clarity and visual hierarchy
+- [ ] Save final checkpoint
+- [ ] Ready for publication
