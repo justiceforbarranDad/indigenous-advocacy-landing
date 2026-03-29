@@ -75,7 +75,7 @@ import Obituaries from "./pages/Obituaries";
 import FallenSoldiers from "./pages/FallenSoldiers";
 import Newspaper from "./pages/Newspaper";
 import { LiveChat } from "./components/LiveChat";
-import { NavigationSidebar } from "./components/NavigationSidebar";
+import { HamburgerMenu } from "./components/HamburgerMenu";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -171,7 +171,7 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
-          <NavigationSidebar />
+          <HamburgerMenu />
           <Router />
           <LiveChat />
 
