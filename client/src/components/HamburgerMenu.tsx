@@ -75,23 +75,23 @@ export function HamburgerMenu() {
       {/* 3-Dot Menu Button - Top Right */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 right-4 z-50 p-2 hover:bg-gray-200 rounded-lg transition-colors"
+        className="fixed top-4 right-4 z-50 p-2 hover:bg-gray-100 rounded-lg transition-colors border-2 border-black"
         aria-label="Toggle menu"
       >
         {isOpen ? (
-          <X size={28} className="text-forest-green" />
+          <X size={28} className="text-black" />
         ) : (
-          <MoreVertical size={28} className="text-forest-green" />
+          <MoreVertical size={28} className="text-black" />
         )}
       </button>
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="fixed top-16 right-4 z-40 bg-white rounded-lg shadow-2xl border-2 border-forest-green w-72 max-h-[calc(100vh-100px)] overflow-y-auto">
+        <div className="fixed top-16 right-4 z-40 bg-white rounded-lg shadow-2xl border-4 border-black w-72 max-h-[calc(100vh-100px)] overflow-y-auto">
           <div className="p-6 space-y-6">
             {sections.map((section, idx) => (
               <div key={idx}>
-                <h4 className="font-bold text-forest-green text-xs uppercase tracking-wider mb-3">
+                <h4 className="font-bold text-black text-xs uppercase tracking-wider mb-3 border-b-2 border-black pb-2">
                   {section.title}
                 </h4>
                 <ul className="space-y-2">
@@ -102,7 +102,7 @@ export function HamburgerMenu() {
                         target={link.href.startsWith('http') ? '_blank' : undefined}
                         rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         onClick={() => setIsOpen(false)}
-                        className="text-sm text-charcoal hover:text-forest-green transition-colors block py-1 hover:pl-1"
+                        className="text-sm text-black hover:font-bold transition-colors block py-1 hover:pl-1"
                       >
                         {link.label}
                       </a>

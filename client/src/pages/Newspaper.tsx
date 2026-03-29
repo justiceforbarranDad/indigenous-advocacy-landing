@@ -12,7 +12,7 @@ export default function Newspaper() {
         <div className="space-y-6">
           {/* Main Story */}
           <div>
-            <p className="text-xs font-bold tracking-widest uppercase mb-2 text-red-700">BREAKING NEWS</p>
+            <p className="text-xs font-bold tracking-widest uppercase mb-2 text-black">BREAKING NEWS</p>
             <h2 className="text-3xl font-black mb-3" style={{ fontFamily: 'Georgia, serif' }}>
               Five Years of Systemic Failure: Justice for Barran
             </h2>
@@ -31,7 +31,7 @@ export default function Newspaper() {
           </div>
 
           {/* Key Facts Box */}
-          <div className="bg-black text-amber-50 p-4 border-2 border-black">
+          <div className="bg-black text-white p-4 border-2 border-black">
             <p className="text-xs font-bold tracking-widest uppercase mb-3">KEY FACTS</p>
             <ul className="space-y-2 text-xs leading-relaxed">
               <li><span className="font-bold">Feb 27, 2021:</span> Attempted murder attack</li>
@@ -45,7 +45,7 @@ export default function Newspaper() {
 
           {/* Secondary Stories */}
           <div className="border-t-2 border-black pt-4">
-            <p className="text-xs font-bold tracking-widest uppercase mb-2 text-blue-700">MULTIMEDIA</p>
+            <p className="text-xs font-bold tracking-widest uppercase mb-2 text-black">MULTIMEDIA</p>
             <h3 className="text-xl font-black mb-2" style={{ fontFamily: 'Georgia, serif' }}>
               French Podcast Series
             </h3>
@@ -55,7 +55,7 @@ export default function Newspaper() {
           </div>
 
           <div className="border-t-2 border-black pt-4">
-            <p className="text-xs font-bold tracking-widest uppercase mb-2 text-green-700">PETITION</p>
+            <p className="text-xs font-bold tracking-widest uppercase mb-2 text-black">PETITION</p>
             <h3 className="text-xl font-black mb-2" style={{ fontFamily: 'Georgia, serif' }}>
               Sign the Petition
             </h3>
@@ -226,7 +226,7 @@ export default function Newspaper() {
             </div>
           </div>
 
-          <div className="border-4 border-black p-6 bg-black text-amber-50">
+          <div className="border-4 border-black p-6 bg-black text-white">
             <h3 className="text-2xl font-black mb-3" style={{ fontFamily: 'Georgia, serif' }}>
               Remember Their Legacy
             </h3>
@@ -247,7 +247,7 @@ export default function Newspaper() {
       pages={pages}
       masthead="JUSTICE FOR BARRAN"
       tagline="A Newspaper of Indigenous Rights & Systemic Accountability"
-      date="MARCH 28, 2026 — VOLUME 1, ISSUE 1"
+      date="MARCH 28, 2026 — VOLUME 1, ISSUE 3"
     />
   );
 }
