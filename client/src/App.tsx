@@ -90,6 +90,7 @@ import EmailAlerts from "./pages/EmailAlerts";
 import AdminAlertDashboard from "./pages/AdminAlertDashboard";
 import PodcastHub from "./pages/PodcastHub";
 import NewspaperReader from "./pages/NewspaperReader";
+import DonationImpact from "./pages/DonationImpact";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 
@@ -180,6 +181,7 @@ function Router() {
       <Route path="/admin/alerts" component={AdminAlertDashboard} />
       <Route path="/podcast-hub" component={PodcastHub} />
       <Route path="/newspaper-reader" component={NewspaperReader} />
+      <Route path="/donation-impact" component={DonationImpact} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>

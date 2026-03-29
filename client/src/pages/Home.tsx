@@ -158,6 +158,7 @@ export default function Home() {
             </div>
             <p className="text-xs mb-4"><strong>Email:</strong> justiceforbarran@gmail.com</p>
             <p className="text-xs text-gray-600 mb-6">Scan to send e-Transfer directly (no password required)</p>
+            <a href="/donation-impact" className="text-xs font-bold text-black hover:underline border-b-2 border-black pb-1">See where your donation goes →</a>
           </div>
 
           {/* BOTTOM SECTION - CALL TO ACTION */}
