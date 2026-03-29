@@ -148,16 +148,16 @@ export default function Home() {
           <div className="border-t-4 border-black pt-6 mt-6 text-center">
             <p className="text-sm font-bold uppercase tracking-wider mb-4">Quick Donate via E-Transfer</p>
             <div className="flex justify-center mb-6">
-              <div className="bg-white p-4 border-2 border-black rounded-lg">
+              <a href="/donate-etransfer" className="bg-white p-4 border-2 border-black rounded-lg hover:shadow-lg transition-shadow">
                 <img 
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/etransfer-qr-code_ff93fad3.png" 
-                  alt="E-Transfer QR Code" 
-                  className="w-48 h-48"
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/etransfer-qr-code_96d6276a.png" 
+                  alt="E-Transfer QR Code - Click to donate" 
+                  className="w-48 h-48 cursor-pointer"
                 />
-              </div>
+              </a>
             </div>
-            <p className="text-xs mb-4"><strong>Email:</strong> justiceforbarran@gmail.com</p>
-            <p className="text-xs text-gray-600 mb-6">Scan to send e-Transfer directly (no password required)</p>
+            <p className="text-xs mb-2"><strong>Scan or click to donate</strong></p>
+            <p className="text-xs text-gray-600 mb-6">Opens interactive e-Transfer donation page with all Canadian banks</p>
             <a href="/donation-impact" className="text-xs font-bold text-black hover:underline border-b-2 border-black pb-1">See where your donation goes →</a>
           </div>
 
