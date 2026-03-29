@@ -1,5 +1,4 @@
-import { Link } from 'wouter';
-import { AlertCircle, FileText, Globe, Play, Heart, Signature } from 'lucide-react';
+import { AlertCircle, FileText, Globe, Play, Heart, Signature, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { SurveyBox } from '@/components/SurveyBox';
 import { useAuth } from '@/_core/hooks/useAuth';
@@ -13,13 +12,15 @@ export default function Home() {
   const [expandedLetter, setExpandedLetter] = useState('en');
 
   return (
-    <div className="min-h-screen bg-amber-50 text-black" style={{ fontFamily: 'Georgia, serif' }}>
-      {/* NEWSPAPER MASTHEAD */}
-      <div className="w-full bg-black text-amber-50 py-8 px-4 border-b-8 border-black">
-        <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
+      {/* SINGLE PAGE NEWSPAPER LAYOUT */}
+      <div className="max-w-4xl mx-auto bg-white">
+        
+        {/* NEWSPAPER MASTHEAD */}
+        <div className="w-full bg-black text-white py-8 px-6 border-b-8 border-black">
           {/* Canadian Flag with Message */}
           <div className="flex justify-center mb-6">
-            <div className="relative w-full max-w-md">
+            <div className="relative w-full max-w-sm">
               <img 
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/canadian-flag-truth-reconciliation_4319a979.png" 
                 alt="Canadian Flag - Current Truth Before Reconciliation" 
@@ -30,199 +31,155 @@ export default function Home() {
           
           {/* Publication Name */}
           <div className="text-center mb-4">
-            <h1 className="text-6xl md:text-7xl font-black tracking-widest" style={{ fontFamily: 'Georgia, serif', letterSpacing: '0.15em' }}>
+            <h1 className="text-5xl md:text-6xl font-black tracking-widest" style={{ fontFamily: 'Georgia, serif', letterSpacing: '0.15em' }}>
               JUSTICE FOR BARRAN
             </h1>
-            <div className="h-1 bg-amber-50 my-3 w-32 mx-auto"></div>
+            <div className="h-1 bg-white my-3 w-32 mx-auto"></div>
           </div>
           
           {/* Tagline and Date */}
           <div className="text-center">
-            <p className="text-lg md:text-xl tracking-wide mb-2">
+            <p className="text-base md:text-lg tracking-wide mb-2">
               A Newspaper of Indigenous Rights & Systemic Accountability
             </p>
-            <p className="text-sm md:text-base tracking-widest">
-              MARCH 28, 2026 — VOLUME 1, ISSUE 1
+            <p className="text-xs md:text-sm tracking-widest">
+              MARCH 29, 2026 — VOLUME 1, ISSUE 3
             </p>
           </div>
         </div>
-      </div>
 
-      {/* LATEST UPDATES TICKER */}
-      <LatestUpdatesTicker />
+        {/* LATEST UPDATES TICKER */}
+        <LatestUpdatesTicker />
 
-      {/* BIRTHDAY BANNER - Subtle, not overwhelming */}
-      <div className="w-full bg-amber-100 text-black py-3 px-4 border-b-2 border-black">
-        <div className="max-w-6xl mx-auto text-center text-sm md:text-base">
-          <p className="font-bold">🎉 Today marks Barran's 20th birthday — A new chapter begins in the fight for justice</p>
-        </div>
-      </div>
-
-      {/* MAIN CONTENT AREA - Newspaper Layout */}
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        
-        {/* TOP STORY - Main Headline */}
-        <div className="mb-8 pb-8 border-b-4 border-black">
-          <div className="mb-4">
-            <p className="text-xs font-bold tracking-widest uppercase mb-2">FRONT PAGE STORY</p>
-            <h2 className="text-4xl md:text-5xl font-black leading-tight mb-4">
-              Five Years of Systemic Failure: Justice for Barran
+        {/* NEWSPAPER CONTENT - SINGLE PAGE */}
+        <div className="px-6 py-8 space-y-6">
+          
+          {/* MAIN HEADLINE STORY */}
+          <div className="border-b-4 border-black pb-6">
+            <p className="text-xs font-bold uppercase tracking-wider mb-2">FRONT PAGE STORY</p>
+            <h2 className="text-4xl font-bold mb-4" style={{ fontFamily: 'Georgia, serif' }}>
+              Five Years of Systemic Abandonment
             </h2>
-            <p className="text-lg md:text-xl italic text-gray-700 mb-4">
-              Indigenous child victim of attempted murder denied psychological services, justice system fails at every level
+            <p className="text-sm font-bold mb-4">
+              Indigenous Family Demands Justice After DPJ Failure, Political Silence, and Corporate Hypocrisy
+            </p>
+            <div className="grid grid-cols-3 gap-4 mb-4">
+              <div className="border-l-4 border-black pl-3">
+                <p className="text-xs font-bold">FAMILY TRAUMA</p>
+                <p className="text-sm">Teen stabbed 3x, major impacts, mental health destroyed</p>
+              </div>
+              <div className="border-l-4 border-black pl-3">
+                <p className="text-xs font-bold">SYSTEM FAILURE</p>
+                <p className="text-sm">DPJ withdrew Jan 2023, no follow-up, Jordan's Principle ignored</p>
+              </div>
+              <div className="border-l-4 border-black pl-3">
+                <p className="text-xs font-bold">POLITICAL SILENCE</p>
+                <p className="text-sm">50+ officials contacted, zero adequate responses</p>
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed mb-3">
+              Since 2021, our Indigenous family has fought for justice after serious trauma. A teenager stabbed three times. Major impacts. Mental health destroyed. The system that promised to protect vulnerable children abandoned us instead.
+            </p>
+            <p className="text-sm leading-relaxed">
+              The Direction de la Protection de la Jeunesse (DPJ) became involved but withdrew in January 2023 - with no adequate follow-up, no education, no mental health support. Jordan's Principle - which guarantees no-delay services for First Nations children - was completely ignored.
             </p>
           </div>
 
-          {/* Two-Column Layout */}
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-base leading-relaxed mb-4">
-                <span className="font-bold">QUEBEC, CANADA</span> — For five years, a First Nations youth has fought for justice following a near-fatal stabbing attack. Despite promises of protection and healing, systemic failures at every government level have compounded the trauma.
-              </p>
-              <p className="text-base leading-relaxed mb-4">
-                The case exposes deep institutional racism, political intimidation, and the systematic denial of services guaranteed under Jordan's Principle—a federal legal obligation to ensure Indigenous children receive equal services.
-              </p>
-              <p className="text-base leading-relaxed">
-                <span className="font-bold">Read the full story:</span> This newspaper documents the timeline of failure, the officials who ghosted, and the fight for accountability that continues today.
-              </p>
+          {/* TWO COLUMN LAYOUT */}
+          <div className="grid grid-cols-2 gap-6">
+            
+            {/* LEFT COLUMN */}
+            <div className="space-y-6">
+              
+              {/* GOVERNMENT SILENCE */}
+              <div className="border-l-4 border-black pl-4">
+                <p className="text-xs font-bold uppercase tracking-wider mb-2">POLITICAL ACCOUNTABILITY</p>
+                <h3 className="text-xl font-bold mb-2">Government Silence = Complicity</h3>
+                <p className="text-xs leading-relaxed mb-2">
+                  We escalated to federal MPs - same silence. Our MNA sent a cease-and-desist warning instead of assistance. This is what happens when a constituent asks for help.
+                </p>
+                <a href="/government-accountability" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
+                  Demand Accountability <ChevronRight size={14} />
+                </a>
+              </div>
+
+              {/* PODCAST */}
+              <div className="border-l-4 border-black pl-4">
+                <p className="text-xs font-bold uppercase tracking-wider mb-2">LISTEN</p>
+                <h3 className="text-xl font-bold mb-2">Le Silence des Politiciens</h3>
+                <p className="text-xs mb-3">Épisode 3 - 14:15</p>
+                <a href="/podcast-hub" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
+                  Play Podcast <Play size={14} />
+                </a>
+              </div>
+
             </div>
 
-            <div className="bg-black text-amber-50 p-6 border-2 border-black">
-              <p className="text-xs font-bold tracking-widest uppercase mb-3">KEY FACTS</p>
-              <ul className="space-y-3 text-sm leading-relaxed">
-                <li><span className="font-bold">Feb 27, 2021:</span> Attempted murder attack</li>
-                <li><span className="font-bold">2021-2023:</span> DPJ involvement, then withdrawal</li>
-                <li><span className="font-bold">5 Years:</span> Denial of psychological services</li>
-                <li><span className="font-bold">All Levels:</span> Federal, provincial, municipal silence</li>
-                <li><span className="font-bold">March 27, 2026:</span> UN complaint filed</li>
-                <li><span className="font-bold">March 28, 2026:</span> 20th birthday — justice still pending</li>
-              </ul>
+            {/* RIGHT COLUMN */}
+            <div className="space-y-6">
+              
+              {/* CORPORATE HYPOCRISY */}
+              <div className="border-l-4 border-black pl-4">
+                <p className="text-xs font-bold uppercase tracking-wider mb-2">CORPORATE ACCOUNTABILITY</p>
+                <h3 className="text-xl font-bold mb-2">Who Profits from Reconciliation?</h3>
+                <p className="text-xs leading-relaxed mb-2">
+                  RBC, TD Bank, Scotiabank, CIBC, Canadian Tire, Walmart Canada, NHL teams - all sponsor Orange Shirt Day while systemic failures continue.
+                </p>
+                <a href="/corporate-accountability" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
+                  See Full List <ChevronRight size={14} />
+                </a>
+              </div>
+
+              {/* PETITION */}
+              <div className="border-l-4 border-black pl-4">
+                <p className="text-xs font-bold uppercase tracking-wider mb-2">TAKE ACTION</p>
+                <h3 className="text-xl font-bold mb-2">Sign the Petition</h3>
+                <p className="text-xs mb-3">28,300+ signatures demanding independent inquiry</p>
+                <a href="/accountability-petition" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
+                  Sign Now <Signature size={14} />
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* BOTTOM SECTION - CALL TO ACTION */}
+          <div className="border-t-4 border-black pt-6 mt-6">
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <a href="/donate" className="border-2 border-black p-4 hover:bg-black hover:text-white transition-colors">
+                <Heart size={20} className="mx-auto mb-2" />
+                <p className="text-xs font-bold">DONATE</p>
+                <p className="text-xs">Support Legal Fund</p>
+              </a>
+              <a href="/newspaper-reader" className="border-2 border-black p-4 hover:bg-black hover:text-white transition-colors">
+                <FileText size={20} className="mx-auto mb-2" />
+                <p className="text-xs font-bold">READ FULL NEWSPAPER</p>
+                <p className="text-xs">4-Page Spread</p>
+              </a>
+              <a href="/contact" className="border-2 border-black p-4 hover:bg-black hover:text-white transition-colors">
+                <Globe size={20} className="mx-auto mb-2" />
+                <p className="text-xs font-bold">CONTACT</p>
+                <p className="text-xs">Get Involved</p>
+              </a>
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/donate" className="bg-black text-amber-50 hover:bg-gray-800 px-6 py-2 font-bold border-2 border-black transition-colors">
-              💝 SUPPORT THIS CAUSE
-            </Link>
-            <Link href="/petition" className="bg-black text-amber-50 hover:bg-gray-800 px-6 py-2 font-bold border-2 border-black transition-colors">
-              ✍️ SIGN PETITION
-            </Link>
-            <Link href="/contact" className="bg-black text-amber-50 hover:bg-gray-800 px-6 py-2 font-bold border-2 border-black transition-colors">
-              📢 DEMAND ACCOUNTABILITY
-            </Link>
+          {/* SOCIAL SHARING */}
+          <div className="border-t-4 border-black pt-6">
+            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">SHARE THIS STORY</p>
+            <SocialShareButtons title="Justice for Barran" text="Five Years of Systemic Abandonment - Demand accountability for Indigenous justice" />
           </div>
+
         </div>
 
-        {/* SECONDARY STORIES - Two Column Layout */}
-        <div className="grid md:grid-cols-2 gap-8 mb-8 pb-8 border-b-4 border-black">
-          
-          {/* Breaking News Column */}
-          <div>
-            <p className="text-xs font-bold tracking-widest uppercase mb-2 text-red-700">BREAKING NEWS</p>
-            <h3 className="text-2xl md:text-3xl font-black mb-4">UN Letter Submitted</h3>
-            <p className="text-sm mb-3">
-              <span className="font-bold">March 27, 2026</span> — Formal complaint filed with UN Special Rapporteurs documenting systemic failure and institutional obstruction.
-            </p>
-            <p className="text-xs mb-4 text-gray-600">
-              Reference: CHRC 100021349 | Inquiry: I2303084
-            </p>
-            <Link href="/" className="text-black font-bold hover:underline text-sm">
-              Read full UN letter →
-            </Link>
-          </div>
-
-          {/* French Podcast Column */}
-          <div>
-            <p className="text-xs font-bold tracking-widest uppercase mb-2 text-blue-700">MULTIMEDIA</p>
-            <h3 className="text-2xl md:text-3xl font-black mb-4">French Podcast Series</h3>
-            <p className="text-sm mb-3">
-              Five-episode podcast in French documenting systemic failures and the fight for Indigenous justice. With transcripts in both French and English.
-            </p>
-            <Link href="/french-podcast" className="text-black font-bold hover:underline text-sm">
-              Listen to episodes →
-            </Link>
-          </div>
+        {/* FOOTER */}
+        <div className="bg-black text-white py-6 px-6 text-center border-t-8 border-black">
+          <p className="text-xs font-bold tracking-wider mb-2">JUSTICE FOR BARRAN - PART 3</p>
+          <p className="text-xs">Current Truth Before Reconciliation</p>
+          <p className="text-xs mt-3 text-gray-400">indigenousadv-ahjdmzis.manus.space</p>
         </div>
 
-        {/* SUPPORTING SECTIONS - Three Column Layout */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8 pb-8 border-b-4 border-black">
-          
-          <div className="border-2 border-black p-4">
-            <p className="text-xs font-bold tracking-widest uppercase mb-2">RESOURCES</p>
-            <h4 className="text-lg font-black mb-3">Know Your Rights</h4>
-            <p className="text-sm mb-4">
-              Educational materials on children's rights, Indigenous rights, and how to document systemic failures.
-            </p>
-            <Link href="/resources" className="text-black font-bold hover:underline text-sm">
-              View resources →
-            </Link>
-          </div>
-
-          <div className="border-2 border-black p-4">
-            <p className="text-xs font-bold tracking-widest uppercase mb-2">ACCOUNTABILITY</p>
-            <h4 className="text-lg font-black mb-3">Officials Who Failed</h4>
-            <p className="text-sm mb-4">
-              Complete list of government officials, organizations, and lawyers who ghosted or obstructed justice.
-            </p>
-            <Link href="/accountability-tracker" className="text-black font-bold hover:underline text-sm">
-              View tracker →
-            </Link>
-          </div>
-
-          <div className="border-2 border-black p-4">
-            <p className="text-xs font-bold tracking-widest uppercase mb-2">MEMORIALS</p>
-            <h4 className="text-lg font-black mb-3">Historical Context</h4>
-            <p className="text-sm mb-4">
-              Honoring human rights activists and Indigenous soldiers who fought for freedom and justice.
-            </p>
-            <Link href="/obituaries" className="text-black font-bold hover:underline text-sm">
-              View memorials →
-            </Link>
-          </div>
-        </div>
-
-        {/* SURVEY SECTION */}
-        <div className="mb-8 pb-8 border-b-4 border-black">
-          <p className="text-xs font-bold tracking-widest uppercase mb-4 text-gray-700">READER SURVEY</p>
-          <h3 className="text-2xl font-black mb-4">Have You Experienced Similar Systemic Failures?</h3>
-          <p className="text-sm mb-4 text-gray-700">
-            Help us document the pattern of systemic abuse across Canada. Your anonymous response helps build the case for accountability.
-          </p>
-          <SurveyBox />
-        </div>
-
-        {/* SOCIAL SHARE SECTION */}
-        <div className="mb-8 pb-8 border-b-4 border-black">
-          <SocialShareButtons
-            title="Justice for Barran - Indigenous Youth Fighting for Systemic Accountability"
-            text="Five years of systemic failure. A First Nations youth denied justice after attempted murder. UN complaint filed. Help amplify this story and demand accountability."
-            hashtags={['JusticeForBarran', 'IndigenousRights', 'EveryChildMatters', 'SystemicFailure']}
-            showLabel={true}
-            variant="horizontal"
-          />
-        </div>
-
-        {/* FOOTER SECTION - Call to Action */}
-        <div className="bg-black text-amber-50 p-8 border-4 border-black">
-          <h3 className="text-2xl font-black mb-4">HOW YOU CAN HELP</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <p className="font-bold mb-2">💰 Financial Support</p>
-              <p className="text-sm mb-3">Donate via e-Transfer to support legal action and healing services.</p>
-              <Link href="/donate" className="text-amber-50 font-bold hover:underline text-sm">
-                Donate now →
-              </Link>
-            </div>
-            <div>
-              <p className="font-bold mb-2">📣 Amplify the Message</p>
-              <p className="text-sm mb-3">Share this story on social media. Demand accountability from officials.</p>
-              <Link href="/petition" className="text-amber-50 font-bold hover:underline text-sm">
-                Sign petition →
-              </Link>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
