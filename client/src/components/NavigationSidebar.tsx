@@ -17,7 +17,6 @@ export function NavigationSidebar() {
       title: 'Resources',
       links: [
         { label: 'Resources & References', href: '/resources' },
-        { label: 'French Documentary 🎬', href: '/french-documentary' },
         { label: 'French Podcast 🎙️', href: '/french-podcast' },
         { label: 'Ghosted by a Politician?', href: '/ghosted-by-politician' },
         { label: 'Children\'s Rights & Education', href: '/childrens-rights' },
