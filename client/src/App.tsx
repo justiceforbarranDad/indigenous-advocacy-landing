@@ -60,6 +60,7 @@ import FrenchPodcast from "./pages/FrenchPodcast";
 import SurveyMap from "./pages/SurveyMap";
 import AdminAnalytics from "./pages/AdminAnalytics";
 import CanadaMap from "./pages/CanadaMap";
+import ProvinceResources from "./pages/ProvinceResources";
 import { NavigationSidebar } from "./components/NavigationSidebar";
 
 function Router() {
@@ -121,6 +122,7 @@ function Router() {
       <Route path="/survey-map" component={SurveyMap} />
       <Route path="/admin/analytics" component={AdminAnalytics} />
       <Route path="/canada-map" component={CanadaMap} />
+      <Route path="/province-resources" component={ProvinceResources} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

@@ -5,6 +5,7 @@ import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile, incrementVideoView, getVideoViews, getAllVideoViews, subscribeEmail, getEmailSubscriber, unsubscribeEmail, getActiveSubscribers, createNewsUpdate, getPublishedNews, createEmailCampaign, submitSurveyResponse, getSurveyStats, getSurveyResponses } from "./db";
 import { notifyOwner } from "./_core/notification";
+import { exportSurveyAsCSV, exportAnalyticsSummaryAsCSV, generateAnalyticsReport } from "./dataExport";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
 
 export const appRouter = router({
@@ -397,7 +398,17 @@ export const appRouter = router({
           return [];
         }
       }),
+   }),
+  export: router({
+    surveyCSV: publicProcedure.query(async () => {
+      return await exportSurveyAsCSV();
+    }),
+    analyticsSummaryCSV: publicProcedure.query(async () => {
+      return await exportAnalyticsSummaryAsCSV();
+    }),
+    analyticsReport: publicProcedure.query(async () => {
+      return await generateAnalyticsReport();
+    }),
   }),
 });
-
 export type AppRouter = typeof appRouter;
