@@ -7,7 +7,7 @@ export function HamburgerMenu() {
   const [location] = useLocation();
 
   // Hide menu on newspaper page for full-width reading
-  if (location === '/newspaper') {
+  if (location === '/newspaper' || location === '/newspaper-reader') {
     return null;
   }
 
@@ -80,6 +80,7 @@ export function HamburgerMenu() {
         { label: 'SMS Alerts - Get Urgent Notifications', href: '/sms-alerts' },
         { label: 'Email Alerts - Detailed Updates', href: '/email-alerts' },
         { label: 'Podcast Hub - Listen to Episodes', href: '/podcast-hub' },
+        { label: 'Read Newspaper (2-Page Spread)', href: '/newspaper-reader' },
         { label: 'Timeline: 5 Years of Abandonment', href: '/timeline' },
         { label: 'Media Kit & Press Releases', href: '/media-kit' },
       ],

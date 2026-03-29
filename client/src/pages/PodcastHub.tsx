@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { PodcastPlayer } from '@/components/PodcastPlayer';
-import { podcastEpisodes, getPodcastsByLanguage } from '@/data/podcasts';
+import { TranscriptViewer } from '@/components/TranscriptViewer';
+import { PodcastSubscription } from '@/components/PodcastSubscription';
+import { podcastEpisodes, getPodcastsByLanguage, getTranscript } from '@/data/podcasts';
 
 export default function PodcastHub() {
   const [selectedLanguage, setSelectedLanguage] = useState<'EN' | 'FR'>('EN');
@@ -61,15 +63,22 @@ export default function PodcastHub() {
             <div className="space-y-6">
               {episodes.map((episode) => (
                 <div key={episode.id} className="border-4 border-black p-6 rounded-lg bg-white hover:shadow-lg transition-shadow">
-                  <PodcastPlayer
-                    title={episode.title}
-                    description={episode.description}
-                    audioUrl={episode.audioUrl}
-                    duration={episode.duration}
-                    language={episode.language}
-                    episodeNumber={episode.episodeNumber}
-                    date={episode.date}
-                  />
+                  {episode.audioUrl && (
+                    <PodcastPlayer
+                      title={episode.title}
+                      description={episode.description}
+                      audioUrl={episode.audioUrl}
+                      duration={episode.duration}
+                      language={episode.language}
+                      episodeNumber={episode.episodeNumber}
+                      date={episode.date}
+                    />
+                  )}
+                  {!episode.audioUrl && (
+                    <div className="bg-gray-100 border-2 border-black p-6 rounded-lg text-center">
+                      <p className="text-gray-700 font-bold">{selectedLanguage === 'EN' ? 'Audio coming soon' : 'Audio à venir'}</p>
+                    </div>
+                  )}
                   
                   {/* Tags */}
                   <div className="mt-4 flex flex-wrap gap-2">
@@ -83,11 +92,15 @@ export default function PodcastHub() {
                     ))}
                   </div>
 
-                  {/* Transcript Link */}
+                  {/* Transcript Viewer */}
                   {episode.transcript && (
-                    <button className="mt-4 text-sm font-bold text-black hover:underline border-b-2 border-black pb-1">
-                      {selectedLanguage === 'EN' ? 'View Transcript' : 'Voir la Transcription'}
-                    </button>
+                    <div className="mt-6">
+                      <TranscriptViewer
+                        transcript={getTranscript(episode, selectedLanguage)}
+                        title={episode.title}
+                        language={selectedLanguage}
+                      />
+                    </div>
                   )}
                 </div>
               ))}
@@ -107,18 +120,23 @@ export default function PodcastHub() {
           </p>
         </div>
 
-        {/* Subscribe Section */}
+        {/* Podcast Subscription */}
+        <div className="mt-12">
+          <PodcastSubscription language={selectedLanguage} />
+        </div>
+
+        {/* Email Alerts */}
         <div className="bg-black text-white border-4 border-black p-8 rounded-lg mt-8">
           <h3 className="text-2xl font-bold mb-4">
-            {selectedLanguage === 'EN' ? 'Subscribe to Updates' : 'S\'abonner aux Mises à Jour'}
+            {selectedLanguage === 'EN' ? 'Email Notifications' : 'Notifications par Email'}
           </h3>
           <p className="mb-4">
             {selectedLanguage === 'EN'
-              ? 'Get notified when new episodes are released.'
-              : 'Recevez une notification lorsque de nouveaux épisodes sont publiés.'}
+              ? 'Get email alerts when new episodes are released.'
+              : 'Recevez des alertes par email lorsque de nouveaux épisodes sont publiés.'}
           </p>
           <a
-            href={selectedLanguage === 'EN' ? '/email-alerts' : '/email-alerts'}
+            href="/email-alerts"
             className="inline-block bg-white text-black px-6 py-3 font-bold rounded-lg hover:bg-gray-100 transition-colors border-2 border-white"
           >
             {selectedLanguage === 'EN' ? 'Subscribe Now' : 'S\'abonner Maintenant'}
