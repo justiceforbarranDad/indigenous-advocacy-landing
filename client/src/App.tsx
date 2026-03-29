@@ -78,6 +78,7 @@ import Sponsorship from "./pages/Sponsorship";
 import IssueArchive from "./pages/IssueArchive";
 import CorporateAccountability from "./pages/CorporateAccountability";
 import AccountabilityPetition from "./pages/AccountabilityPetition";
+import GovernmentAccountability from "./pages/GovernmentAccountability";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 
@@ -158,6 +159,7 @@ function Router() {
       <Route path="/issue-archive" component={IssueArchive} />
       <Route path="/corporate-accountability" component={CorporateAccountability} />
       <Route path="/accountability-petition" component={AccountabilityPetition} />
+      <Route path="/government-accountability" component={GovernmentAccountability} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
