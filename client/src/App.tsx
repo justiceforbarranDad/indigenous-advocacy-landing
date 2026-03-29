@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import Resources from "./pages/Resources";
 import ShareStory from "./pages/ShareStory";
 import Donate from "./pages/Donate";
+import DonateWithSharing from "./pages/DonateWithSharing";
+import PetitionWithSharing from "./pages/PetitionWithSharing";
 import ChildrensRights from "./pages/ChildrensRights";
 import LegalSupport from "./pages/LegalSupport";
 import ParentsInvolvement from "./pages/ParentsInvolvement";
@@ -93,7 +95,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
-      <Route path={"/donate"} component={Donate} />
+      <Route path="/donate" component={DonateWithSharing} />
       <Route path={"/donate-comprehensive"} component={DonateComprehensive} />
       <Route path={"/donation-instructions"} component={DonationInstructions} />
       <Route path={"/movement"} component={Movement} />
@@ -155,7 +157,7 @@ function Router() {
       <Route path="/case-tracker" component={CaseTracker} />
       <Route path="/human-rights" component={HumanRights} />
       <Route path="/video-testimonials" component={VideoTestimonials} />
-      <Route path="/petition" component={Petition} />
+      <Route path="/petition" component={PetitionWithSharing} />
       <Route path="/obituaries" component={Obituaries} />
       <Route path="/fallen-soldiers" component={FallenSoldiers} />
       <Route path="/newspaper" component={Newspaper} />
