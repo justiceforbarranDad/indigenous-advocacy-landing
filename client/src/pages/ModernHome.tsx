@@ -40,9 +40,9 @@ export default function ModernHome() {
             By Robert McGovern · Quebec, Canada · Ongoing since February 14, 2021
           </p>
           <div className="flex gap-4">
-            <button className="bg-red-700 hover:bg-red-800 text-white px-6 py-3 font-bold flex items-center gap-2">
+            <a href="/donate-via-bank" className="bg-red-700 hover:bg-red-800 text-white px-6 py-3 font-bold flex items-center gap-2 no-underline">
               <Heart size={20} /> SUPPORT THIS CAUSE
-            </button>
+            </a>
             <button className="bg-green-700 hover:bg-green-800 text-white px-6 py-3 font-bold flex items-center gap-2">
               <Share2 size={20} /> SHARE STORY
             </button>
@@ -164,26 +164,27 @@ export default function ModernHome() {
                   <div className="bg-white p-4 rounded border border-red-200">
                     <p className="font-bold text-gray-900 mb-2">E-Transfer (Canada)</p>
                     <p className="text-sm text-gray-700 mb-3">Send e-Transfer to:</p>
-                    <p className="font-mono text-sm bg-gray-100 p-2 rounded mb-2">
+                    <p className="font-mono text-sm bg-gray-100 p-2 rounded mb-3">
                       justiceforbarran@gmail.com
                     </p>
-                    <p className="text-xs text-gray-600">No password required — Direct deposit</p>
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/donate-banks-qr-code_cb3cfad5.png" alt="Donate via Bank QR Code" className="w-full rounded mb-2 cursor-pointer" onClick={() => window.location.href = '/donate-via-bank'} />
+                    <p className="text-xs text-gray-600">Scan QR to see all bank options. Click to view.</p>
                   </div>
 
                   {/* STRIPE */}
-                  <button className="w-full bg-green-700 hover:bg-green-800 text-white py-3 rounded font-bold flex items-center justify-center gap-2">
+                  <button className="w-full bg-green-700 hover:bg-green-800 text-white py-3 rounded font-bold flex items-center justify-center gap-2" onClick={() => window.location.href = '/donate'}>
                     <DollarSign size={20} /> DONATE VIA CARD
                   </button>
 
                   {/* RECURRING */}
-                  <button className="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded font-bold">
+                  <button className="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded font-bold" onClick={() => window.location.href = '/donate-recurring'}>
                     MONTHLY RECURRING
                   </button>
 
                   {/* CONTACT */}
-                  <a href="mailto:justiceforbarran@gmail.com" className="w-full bg-gray-700 hover:bg-gray-800 text-white py-3 rounded font-bold flex items-center justify-center gap-2">
-                    <Mail size={20} /> EMAIL US
-                  </a>
+                  <button className="w-full bg-gray-700 hover:bg-gray-800 text-white py-3 rounded font-bold flex items-center justify-center gap-2" onClick={() => window.location.href = '/contact'}>
+                    <Mail size={20} /> CONTACT US
+                  </button>
                 </div>
 
                 <p className="text-xs text-gray-600 mt-4">

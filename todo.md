@@ -96,6 +96,9 @@
 - [x] Fix e-Transfer QR code - NO PASSWORD REQUIRED, direct deposit to account (COMPLETE)
 - [x] YouTube Channel Visibility - Subscribe button added to Home & Donate pages (COMPLETE)
 - [x] DPJ Accountability Page - 13-year timeline with systemic failures documented (COMPLETE)
+- [x] QR code uploaded to CDN - donate-banks-qr-code.png with permanent URL (COMPLETE)
+- [x] ModernHome.tsx updated - QR code displays with CDN URL, all buttons functional (COMPLETE)
+- [x] DonateViaBank route registered - /donate-via-bank fully configured in App.tsx (COMPLETE)
 - [ ] Governor General Wellness Check - Add Feb 27, 2026 videos with subtitles showing final insult
 - [ ] Simon Jolin-Barrette Correction - Fix who he cried for (not his daughter)
 - [ ] 13 Rights of Users Poster - Add image showing rights children were denied
@@ -147,19 +150,19 @@
 
 
 ## COMPREHENSIVE DONATION PAGE (New Feature - March 15, 2026)
-- [ ] Create enhanced Donate page with all 5 payment methods
-- [ ] Add Canadian e-Transfer QR code (for Canadian donors)
-- [ ] Add Wire Transfer instructions section (for US donors)
-- [ ] Add Wise referral link (for US donors - lowest fees)
-- [ ] Add PayPal button placeholder (for US donors - easiest)
-- [ ] Add Stripe credit card processor (for US donors - 2.9% + $0.30)
-- [ ] Add Western Union payment option
-- [ ] Add suggested donation amounts ($5, $10, $25, $50, $100+)
-- [ ] Add donation impact messaging (what donations fund)
-- [ ] Add testimonials from supporters
-- [ ] Add FAQ about donation methods
-- [ ] Test all payment methods
-- [ ] Integrate with home page CTA buttons
+- [x] Create enhanced Donate page with all 5 payment methods
+- [x] Add Canadian e-Transfer QR code (for Canadian donors)
+- [x] Add Wire Transfer instructions section (for US donors)
+- [x] Add Wise referral link (for US donors - lowest fees)
+- [x] Add PayPal button placeholder (for US donors - easiest)
+- [x] Add Stripe credit card processor (for US donors - 2.9% + $0.30)
+- [x] Add Western Union payment option
+- [x] Add suggested donation amounts ($5, $10, $25, $50, $100+)
+- [x] Add donation impact messaging (what donations fund)
+- [x] Add testimonials from supporters
+- [x] Add FAQ about donation methods
+- [x] Test all payment methods
+- [x] Integrate with home page CTA buttons
 
 
 ## STORY PAGE REDESIGN (March 15, 2026)
