@@ -1,4 +1,4 @@
-import { Share2, MessageCircle, Mail, Link2 } from 'lucide-react';
+import { Share2, MessageCircle, Mail, Link2, Twitter, Facebook, Linkedin } from 'lucide-react';
 import { useState } from 'react';
 
 interface ShareButtonsProps {
@@ -7,7 +7,8 @@ interface ShareButtonsProps {
   url?: string;
   hashtags?: string[];
   showLabel?: boolean;
-  variant?: 'horizontal' | 'vertical';
+  variant?: 'horizontal' | 'vertical' | 'compact';
+  highlightTitle?: string;
 }
 
 export function SocialShareButtons({
@@ -16,7 +17,8 @@ export function SocialShareButtons({
   url = typeof window !== 'undefined' ? window.location.href : '',
   hashtags = ['JusticeForBarran', 'IndigenousRights', 'EveryChildMatters'],
   showLabel = true,
-  variant = 'horizontal'
+  variant = 'horizontal',
+  highlightTitle
 }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
@@ -46,14 +48,16 @@ export function SocialShareButtons({
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const containerClass = variant === 'vertical' ? 'flex flex-col gap-2' : 'flex flex-wrap gap-2';
-  const buttonClass = 'flex items-center gap-2 px-3 py-2 rounded border-2 border-black bg-black text-amber-50 hover:bg-gray-800 transition-colors font-bold text-sm';
+  const containerClass = variant === 'vertical' ? 'flex flex-col gap-2' : variant === 'compact' ? 'flex gap-1' : 'flex flex-wrap gap-2';
+  const buttonClass = variant === 'compact' 
+    ? 'p-2 hover:bg-gray-200 rounded transition-colors'
+    : 'flex items-center gap-2 px-3 py-2 rounded border-2 border-black bg-black text-amber-50 hover:bg-gray-800 transition-colors font-bold text-sm';
 
   return (
     <div className={containerClass}>
       {showLabel && (
         <p className="text-xs font-bold tracking-widest uppercase mb-2 text-gray-700">
-          📢 Share This Story
+          {highlightTitle ? `📢 Share: ${highlightTitle}` : '📢 Share This Story'}
         </p>
       )}
       
@@ -61,51 +65,62 @@ export function SocialShareButtons({
         href={shareUrls.twitter()}
         target="_blank"
         rel="noopener noreferrer"
-        className={buttonClass}
+        className={`${buttonClass} ${variant === 'compact' ? 'text-blue-500' : ''}`}
         title="Share on Twitter/X"
       >
-        <MessageCircle size={16} />
-        <span>X/Twitter</span>
+        <Twitter size={variant === 'compact' ? 18 : 16} />
+        {variant !== 'compact' && <span>X/Twitter</span>}
       </a>
 
       <a
         href={shareUrls.facebook()}
         target="_blank"
         rel="noopener noreferrer"
-        className={buttonClass}
+        className={`${buttonClass} ${variant === 'compact' ? 'text-blue-600' : ''}`}
         title="Share on Facebook"
       >
-        <Share2 size={16} />
-        <span>Facebook</span>
+        <Facebook size={variant === 'compact' ? 18 : 16} />
+        {variant !== 'compact' && <span>Facebook</span>}
       </a>
 
       <a
         href={shareUrls.whatsapp()}
         target="_blank"
         rel="noopener noreferrer"
-        className={buttonClass}
+        className={`${buttonClass} ${variant === 'compact' ? 'text-green-500' : ''}`}
         title="Share on WhatsApp"
       >
-        <MessageCircle size={16} />
-        <span>WhatsApp</span>
+        <MessageCircle size={variant === 'compact' ? 18 : 16} />
+        {variant !== 'compact' && <span>WhatsApp</span>}
       </a>
 
       <a
         href={shareUrls.email()}
-        className={buttonClass}
+        className={`${buttonClass} ${variant === 'compact' ? 'text-gray-600' : ''}`}
         title="Share via Email"
       >
-        <Mail size={16} />
-        <span>Email</span>
+        <Mail size={variant === 'compact' ? 18 : 16} />
+        {variant !== 'compact' && <span>Email</span>}
+      </a>
+
+      <a
+        href={shareUrls.linkedin()}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${buttonClass} ${variant === 'compact' ? 'text-blue-700' : ''}`}
+        title="Share on LinkedIn"
+      >
+        <Linkedin size={variant === 'compact' ? 18 : 16} />
+        {variant !== 'compact' && <span>LinkedIn</span>}
       </a>
 
       <button
         onClick={copyToClipboard}
-        className={buttonClass}
+        className={`${buttonClass} ${variant === 'compact' ? 'text-gray-600' : ''}`}
         title="Copy link to clipboard"
       >
-        <Link2 size={16} />
-        <span>{copied ? 'Copied!' : 'Copy Link'}</span>
+        <Link2 size={variant === 'compact' ? 18 : 16} />
+        {variant !== 'compact' && <span>{copied ? 'Copied!' : 'Copy Link'}</span>}
       </button>
     </div>
   );

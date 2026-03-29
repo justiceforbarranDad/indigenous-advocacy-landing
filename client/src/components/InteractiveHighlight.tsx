@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { X, ExternalLink } from 'lucide-react';
+import { SocialShareButtons } from './SocialShareButtons';
 
 export interface HighlightData {
   id: string;
@@ -99,14 +100,26 @@ export function InteractiveHighlight({ highlight, children }: InteractiveHighlig
               )}
             </div>
 
-            {/* Footer */}
-            <div className="sticky bottom-0 p-4 border-t-2 bg-white/80 backdrop-blur flex justify-end gap-2">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-900 rounded font-semibold transition-colors"
-              >
-                Close
-              </button>
+            {/* Footer with Share Buttons */}
+            <div className="sticky bottom-0 p-4 border-t-2 bg-white/80 backdrop-blur">
+              <div className="mb-4">
+                <SocialShareButtons
+                  title={highlight.title}
+                  text={highlight.description}
+                  hashtags={['JusticeForBarran', 'IndigenousRights', 'EveryChildMatters']}
+                  variant="compact"
+                  showLabel={true}
+                  highlightTitle={highlight.title}
+                />
+              </div>
+              <div className="flex justify-end">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-900 rounded font-semibold transition-colors"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
