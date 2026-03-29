@@ -167,6 +167,8 @@ export const surveyResponses = mysqlTable("survey_responses", {
   response: mysqlEnum("response", ["yes", "no"]).notNull(),
   email: varchar("email", { length: 320 }),
   name: varchar("name", { length: 255 }),
+  city: varchar("city", { length: 100 }),
+  province: varchar("province", { length: 100 }),
   additionalInfo: text("additional_info"),
   ipAddress: varchar("ip_address", { length: 45 }),
   userAgent: varchar("user_agent", { length: 500 }),

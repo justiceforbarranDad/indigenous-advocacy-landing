@@ -10,6 +10,8 @@ export function SurveyBox() {
   const [showForm, setShowForm] = useState(false);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [city, setCity] = useState('');
+  const [province, setProvince] = useState('');
 
   const submitSurvey = trpc.survey.submit.useMutation();
   const surveyStats = trpc.survey.getStats.useQuery();
@@ -25,11 +27,15 @@ export function SurveyBox() {
         response: selectedResponse!,
         email: email || undefined,
         name: name || undefined,
+        city: city || undefined,
+        province: province || undefined,
       });
       setHasResponded(true);
       setShowForm(false);
       setEmail('');
       setName('');
+      setCity('');
+      setProvince('');
     } catch (error) {
       console.error('Error submitting survey:', error);
     }
@@ -103,6 +109,32 @@ export function SurveyBox() {
               placeholder="your@email.com"
               className="w-full px-3 py-2 border border-amber-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <label className="block text-sm font-medium text-amber-900 mb-1">
+                City (optional)
+              </label>
+              <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="e.g., Montreal"
+                className="w-full px-3 py-2 border border-amber-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-amber-900 mb-1">
+                Province (optional)
+              </label>
+              <input
+                type="text"
+                value={province}
+                onChange={(e) => setProvince(e.target.value)}
+                placeholder="e.g., Quebec"
+                className="w-full px-3 py-2 border border-amber-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
           </div>
           <div className="flex gap-2">
             <Button

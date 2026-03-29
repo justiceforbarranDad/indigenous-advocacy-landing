@@ -57,6 +57,7 @@ import AFNAccountability from "./pages/AFNAccountability";
 import SafetyResourcesSystemicFailure from "./pages/SafetyResourcesSystemicFailure";
 import DonateETransfer from "./pages/DonateETransfer";
 import FrenchPodcast from "./pages/FrenchPodcast";
+import SurveyMap from "./pages/SurveyMap";
 import { NavigationSidebar } from "./components/NavigationSidebar";
 
 function Router() {
@@ -115,6 +116,7 @@ function Router() {
       <Route path="/safety-resources-systemic-failure" component={SafetyResourcesSystemicFailure} />
       <Route path="/donate-etransfer" component={DonateETransfer} />
       <Route path="/french-podcast" component={FrenchPodcast} />
+      <Route path="/survey-map" component={SurveyMap} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

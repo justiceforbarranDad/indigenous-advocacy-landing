@@ -344,6 +344,8 @@ export const appRouter = router({
         response: z.enum(["yes", "no"]),
         email: z.string().email().optional(),
         name: z.string().optional(),
+        city: z.string().optional(),
+        province: z.string().optional(),
         additionalInfo: z.string().optional(),
       }))
       .mutation(async ({ input, ctx }) => {
@@ -352,6 +354,8 @@ export const appRouter = router({
             response: input.response,
             email: input.email,
             name: input.name,
+            city: input.city,
+            province: input.province,
             additionalInfo: input.additionalInfo,
             ipAddress: ctx.req.ip || "unknown",
             userAgent: ctx.req.get("user-agent") || "unknown",
