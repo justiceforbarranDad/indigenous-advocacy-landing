@@ -66,6 +66,8 @@ export function HamburgerMenu() {
       title: 'Support',
       links: [
         { label: 'Sponsorship & Pro Bono Legal', href: '/sponsorship' },
+        { label: 'Corporate Accountability', href: '/corporate-accountability' },
+        { label: 'Accountability Petition', href: '/accountability-petition' },
         { label: 'Contact & Accountability', href: '/contact' },
         { label: 'Credits & Acknowledgments', href: '/credits' },
       ],
