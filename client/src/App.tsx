@@ -48,6 +48,7 @@ import IndigenousChildrenRights from "./pages/IndigenousChildrenRights";
 import Shop from "./pages/Shop";
 import NewspaperFrontPage from "./pages/NewspaperFrontPage";
 import ElectoralReformDemands from "./pages/ElectoralReformDemands";
+import NewsletterSignup from "./pages/NewsletterSignup";
 import BrokenPromises from "./pages/BrokenPromises";
 import AccountabilityFramework from "./pages/AccountabilityFramework";
 import LifestyleInequalityReport from "./pages/LifestyleInequalityReport";
@@ -163,6 +164,7 @@ function Router() {
       <Route path="/mcgovern-institute" component={McGovernInstitute} />
       <Route path="/resource-kit" component={ResourceKit} />
       <Route path="/newsletter" component={Newsletter} />
+      <Route path="/newsletter-signup" component={NewsletterSignup} />
       <Route path="/volunteer" component={Volunteer} />
       <Route path="/case-tracker" component={CaseTracker} />
       <Route path="/human-rights" component={HumanRights} />
