@@ -69,6 +69,9 @@ import Newsletter from "./pages/Newsletter";
 import Volunteer from "./pages/Volunteer";
 import CaseTracker from "./pages/CaseTracker";
 import HumanRights from "./pages/HumanRights";
+import SmsAlerts from "./pages/SmsAlerts";
+import VideoTestimonials from "./pages/VideoTestimonials";
+import Petition from "./pages/Petition";
 import { LiveChat } from "./components/LiveChat";
 import { NavigationSidebar } from "./components/NavigationSidebar";
 
@@ -140,6 +143,9 @@ function Router() {
       <Route path="/volunteer" component={Volunteer} />
       <Route path="/case-tracker" component={CaseTracker} />
       <Route path="/human-rights" component={HumanRights} />
+      <Route path="/sms-alerts" component={SmsAlerts} />
+      <Route path="/video-testimonials" component={VideoTestimonials} />
+      <Route path="/petition" component={Petition} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
