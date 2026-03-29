@@ -2,7 +2,7 @@ import { Heart, Share2, BookOpen, Users, AlertCircle, Mail, Instagram, Twitter, 
 import { useState } from 'react';
 
 export function NavigationSidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const sections = [
     {
