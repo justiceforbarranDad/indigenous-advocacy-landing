@@ -1,0 +1,315 @@
+/* Vintage Newspaper Styling - 1920s-1940s Aesthetic */
+
+:root {
+  --paper-bg: #f5f1e8;
+  --paper-dark: #e8dcc8;
+  --ink-black: #1a1a1a;
+  --ink-gray: #333333;
+  --border-color: #4a4a4a;
+}
+
+body {
+  background-color: var(--paper-bg);
+  color: var(--ink-black);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+/* Aged Paper Texture */
+.vintage-paper {
+  background-color: var(--paper-bg);
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+  position: relative;
+}
+
+.vintage-paper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(ellipse at 20% 50%, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(0, 0, 0, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Masthead */
+.newspaper-masthead {
+  text-align: center;
+  border-top: 4px solid var(--ink-black);
+  border-bottom: 3px solid var(--ink-black);
+  padding: 20px 0;
+  margin: 20px 0;
+  font-family: 'Georgia', serif;
+  position: relative;
+}
+
+.masthead-title {
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin: 10px 0;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+.masthead-subtitle {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  font-style: italic;
+  margin: 5px 0;
+  text-transform: uppercase;
+}
+
+.masthead-date {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  border-top: 1px solid var(--ink-black);
+  border-bottom: 1px solid var(--ink-black);
+  padding: 5px 0;
+}
+
+/* Ornamental Dividers */
+.divider-ornamental {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 1.2rem;
+  letter-spacing: 8px;
+  color: var(--ink-gray);
+}
+
+.divider-line {
+  border: none;
+  border-top: 2px solid var(--ink-black);
+  margin: 15px 0;
+}
+
+.divider-double {
+  border: none;
+  border-top: 3px double var(--ink-black);
+  margin: 15px 0;
+}
+
+/* Column Layout */
+.newspaper-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.newspaper-columns-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.column {
+  border: 2px solid var(--ink-black);
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Headlines */
+.headline-main {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  margin: 10px 0;
+  text-transform: uppercase;
+  border-bottom: 3px solid var(--ink-black);
+  padding-bottom: 10px;
+}
+
+.headline-secondary {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+
+.headline-tertiary {
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 8px 0;
+  text-transform: uppercase;
+}
+
+.subheading {
+  font-size: 0.95rem;
+  font-style: italic;
+  margin: 5px 0;
+  color: var(--ink-gray);
+}
+
+/* Body Text */
+.article-text {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  text-align: justify;
+  column-count: 2;
+  column-gap: 15px;
+  column-rule: 1px solid var(--border-color);
+}
+
+.article-text-single {
+  column-count: 1;
+}
+
+.byline {
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+
+.dateline {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Decorative Elements */
+.ornament {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 10px 0;
+  letter-spacing: 4px;
+}
+
+.drop-cap {
+  float: left;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+/* Boxes & Callouts */
+.news-box {
+  border: 2px solid var(--ink-black);
+  padding: 15px;
+  margin: 15px 0;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.news-box-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--ink-black);
+  padding-bottom: 5px;
+}
+
+.sidebar {
+  border-left: 4px solid var(--ink-black);
+  padding-left: 15px;
+  margin: 15px 0;
+}
+
+/* Images */
+.article-image {
+  border: 2px solid var(--ink-black);
+  margin: 10px 0;
+  display: block;
+  width: 100%;
+  filter: grayscale(100%);
+}
+
+.image-caption {
+  font-size: 0.75rem;
+  text-align: center;
+  margin-top: 5px;
+  font-style: italic;
+  border-bottom: 1px solid var(--ink-black);
+  padding-bottom: 5px;
+}
+
+/* Lists */
+.article-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.article-list li {
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.article-list li:before {
+  content: '▪';
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Ads/Notices */
+.classified-ad {
+  border: 2px solid var(--ink-black);
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.ad-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .newspaper-columns,
+  .newspaper-columns-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .article-text {
+    column-count: 1;
+  }
+
+  .masthead-title {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+  }
+
+  .headline-main {
+    font-size: 1.8rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background-color: white;
+  }
+
+  .vintage-paper {
+    background-color: white;
+  }
+}

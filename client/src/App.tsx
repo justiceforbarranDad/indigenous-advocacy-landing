@@ -96,14 +96,14 @@ import DonationHub from "./pages/DonationHub";
 import DonateRecurring from "./pages/DonateRecurring";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 import NewspaperHome from "./pages/NewspaperHome";
+import ModernHome from "./pages/ModernHome";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
-    <Switch>
-      <Route path={"/"} component={NewspaperHome} />
+    <Switch>      <Route path={"/"} component={ModernHome} />
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
       <Route path="/donate" component={DonateWithSharing} />

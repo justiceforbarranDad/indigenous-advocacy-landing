@@ -290,6 +290,85 @@ export default function BarransStory() {
           </div>
         </div>
 
+        {/* Supporting Documents Section */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-forest-green mb-6">Supporting Documents & Evidence</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Cease-and-Desist Letter */}
+            <Card className="p-6 bg-red-50 border-2 border-red-500">
+              <h3 className="text-xl font-bold text-red-700 mb-2">Cease-and-Desist Letter</h3>
+              <p className="text-sm text-charcoal-light mb-4">November 19, 2023</p>
+              <p className="text-charcoal mb-4">
+                Official warning from MNA Céline Haytayan threatening criminal harassment charges.
+              </p>
+              <Button className="w-full bg-red-700 hover:bg-red-800 text-white">
+                View Document
+              </Button>
+            </Card>
+
+            {/* Email Evidence */}
+            <Card className="p-6 bg-blue-50 border-2 border-blue-500">
+              <h3 className="text-xl font-bold text-blue-700 mb-2">Email Evidence</h3>
+              <p className="text-sm text-charcoal-light mb-4">50+ emails to officials</p>
+              <p className="text-charcoal mb-4">
+                Complete correspondence showing repeated contact attempts and official silence.
+              </p>
+              <Button className="w-full bg-blue-700 hover:bg-blue-800 text-white">
+                View Evidence
+              </Button>
+            </Card>
+
+            {/* Call Log Records */}
+            <Card className="p-6 bg-orange-50 border-2 border-orange-500">
+              <h3 className="text-xl font-bold text-orange-700 mb-2">Call Log & Records</h3>
+              <p className="text-sm text-charcoal-light mb-4">Feb 27, 2026 - Governor General</p>
+              <p className="text-charcoal mb-4">
+                Documentation of phone calls including the 18-minute wellness check.
+              </p>
+              <Button className="w-full bg-orange-700 hover:bg-orange-800 text-white">
+                View Records
+              </Button>
+            </Card>
+
+            {/* Medical Records */}
+            <Card className="p-6 bg-green-50 border-2 border-green-500">
+              <h3 className="text-xl font-bold text-green-700 mb-2">Medical Documentation</h3>
+              <p className="text-sm text-charcoal-light mb-4">Montreal Children's Hospital</p>
+              <p className="text-charcoal mb-4">
+                Hospital records documenting the stabbing injuries and trauma treatment.
+              </p>
+              <Button className="w-full bg-green-700 hover:bg-green-800 text-white">
+                View Records
+              </Button>
+            </Card>
+
+            {/* CDPDJ Report */}
+            <Card className="p-6 bg-purple-50 border-2 border-purple-500">
+              <h3 className="text-xl font-bold text-purple-700 mb-2">CDPDJ Nunavik Inquiry</h3>
+              <p className="text-sm text-charcoal-light mb-4">Quebec Human Rights Commission</p>
+              <p className="text-charcoal mb-4">
+                Systemic inquiry documenting DPJ failures affecting Indigenous children.
+              </p>
+              <Button className="w-full bg-purple-700 hover:bg-purple-800 text-white">
+                View Report
+              </Button>
+            </Card>
+
+            {/* Legal References */}
+            <Card className="p-6 bg-indigo-50 border-2 border-indigo-500">
+              <h3 className="text-xl font-bold text-indigo-700 mb-2">Legal References</h3>
+              <p className="text-sm text-charcoal-light mb-4">Charter & International Law</p>
+              <p className="text-charcoal mb-4">
+                Legal framework protecting this advocacy and documenting systemic violations.
+              </p>
+              <Button className="w-full bg-indigo-700 hover:bg-indigo-800 text-white">
+                View References
+              </Button>
+            </Card>
+          </div>
+        </div>
+
         {/* Call to Action */}
         <div className="bg-forest-green text-cream p-8 rounded-lg text-center">
           <h3 className="text-2xl font-bold mb-4">

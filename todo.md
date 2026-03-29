@@ -883,3 +883,30 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Test donation success confirmations
 - [ ] Verify all donation data is stored correctly
 - [ ] Test admin dashboard donation tracking
+
+
+## MODERN PROFESSIONAL REDESIGN - VIEWER OPTIMIZED (March 29, 2026)
+
+- [ ] Create modern professional CSS with red/green color scheme (#C41E3A red, green accents)
+- [ ] Design hero section with compelling background image and overlay
+- [ ] Add embedded YouTube video player on homepage
+- [ ] Implement top navigation bar (FRONT PAGE, BARRAN'S STORY, DONATE, CONTACT)
+- [ ] Create single-column layout with right sidebar
+- [ ] Build prominent "Support Justice" donation box with e-Transfer info
+- [ ] Add "SYSTEMIC FAILURES" sidebar section with key points
+- [ ] Create key references section with external links
+- [ ] Implement mobile-responsive design (works on all devices)
+- [ ] Add social sharing buttons throughout site
+- [ ] Optimize all images for fast loading
+- [ ] Remove old newspaper spread layout and page navigation
+- [ ] Remove QR code (non-functional)
+- [ ] Reset all donation metrics to 0 (accurate statements only)
+- [ ] Add professional byline and publication date
+- [ ] Create compelling headline and subheading
+- [ ] Add author information (Robert McGovern)
+- [ ] Implement smooth scrolling and animations
+- [ ] Test on desktop, tablet, and mobile devices
+- [ ] Test all donation methods (e-Transfer, Stripe, recurring)
+- [ ] Test all navigation links and CTAs
+- [ ] Verify all content is accurate and verified
+- [ ] Deploy modern professional version
