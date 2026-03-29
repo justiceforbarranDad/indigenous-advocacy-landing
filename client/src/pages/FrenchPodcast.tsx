@@ -8,6 +8,8 @@ interface PodcastEpisode {
   duration: string;
   date: string;
   audioUrl?: string;
+  transcriptFr?: string;
+  transcriptEn?: string;
   language: 'fr' | 'en';
 }
 
@@ -19,6 +21,8 @@ const episodes: PodcastEpisode[] = [
     duration: "12:34",
     date: "2024-03-01",
     audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep1-justice-pour-barran-v2_4328a36d.wav",
+    transcriptFr: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/transcript-ep1-justice-pour-barran-fr_850e1e2e.md",
+    transcriptEn: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/transcript-ep1-justice-for-barran-en_cdbf24df.md",
     language: 'fr',
   },
   {
@@ -28,6 +32,7 @@ const episodes: PodcastEpisode[] = [
     duration: "15:22",
     date: "2024-03-08",
     audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep2-dimanche-sanglant-v2_cfabc04f.wav",
+    transcriptFr: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/transcript-ep2-dimanche-sanglant-fr_2aead226.md",
     language: 'fr',
   },
   {
@@ -37,6 +42,7 @@ const episodes: PodcastEpisode[] = [
     duration: "14:15",
     date: "2024-03-15",
     audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep3-silence-politiciens-v2_88210269.wav",
+    transcriptFr: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/transcript-ep3-silence-politiciens-fr_fa2ce2ad.md",
     language: 'fr',
   },
   {
@@ -46,6 +52,7 @@ const episodes: PodcastEpisode[] = [
     duration: "11:45",
     date: "2024-03-22",
     audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep4-principes-jordan-v2_e2553f9e.wav",
+    transcriptFr: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/transcript-ep4-principes-jordan-fr_e345e6ca.md",
     language: 'fr',
   },
   {
@@ -55,6 +62,7 @@ const episodes: PodcastEpisode[] = [
     duration: "18:30",
     date: "2024-03-29",
     audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep5-voix-survivants-v2_32e874a2.wav",
+    transcriptFr: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/transcript-ep5-voix-survivants-fr_050cdf4c.md",
     language: 'fr',
   },
 ];
@@ -68,17 +76,14 @@ export default function FrenchPodcast() {
     if (!audioUrl) return;
 
     if (playingId === episodeId) {
-      // Pause current
       if (audioRefs.current[episodeId]) {
         audioRefs.current[episodeId].pause();
       }
       setPlayingId(null);
     } else {
-      // Stop previous if playing
       if (playingId !== null && audioRefs.current[playingId]) {
         audioRefs.current[playingId].pause();
       }
-      // Play new
       if (audioRefs.current[episodeId]) {
         audioRefs.current[episodeId].play();
       }
@@ -105,7 +110,6 @@ export default function FrenchPodcast() {
         url: window.location.href,
       });
     } else {
-      // Fallback: copy to clipboard
       navigator.clipboard.writeText(text);
       alert('Lien copié!');
     }
@@ -219,7 +223,7 @@ export default function FrenchPodcast() {
                   key={episode.id}
                   className="bg-card rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-amber-orange"
                 >
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div className="flex flex-col gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="inline-block bg-forest-green text-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -245,36 +249,56 @@ export default function FrenchPodcast() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex gap-3 md:flex-col">
+                    <div className="flex flex-wrap gap-2 justify-start">
                       <button
                         onClick={() => togglePlay(episode.id, episode.audioUrl)}
-                        className="flex items-center justify-center gap-2 bg-forest-green hover:bg-forest-green/90 text-white px-4 py-2 rounded-lg transition-colors"
+                        className="flex items-center justify-center gap-2 bg-forest-green hover:bg-forest-green/90 text-white px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
                       >
                         {playingId === episode.id ? (
                           <>
                             <Pause size={18} />
-                            <span className="hidden sm:inline">Pause</span>
+                            <span>Pause</span>
                           </>
                         ) : (
                           <>
                             <Play size={18} />
-                            <span className="hidden sm:inline">Écouter</span>
+                            <span>Écouter</span>
                           </>
                         )}
                       </button>
                       <button
                         onClick={() => downloadEpisode(episode)}
-                        className="flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-orange/90 text-white px-4 py-2 rounded-lg transition-colors"
+                        className="flex items-center justify-center gap-2 bg-amber-orange hover:bg-amber-orange/90 text-white px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
                       >
                         <Download size={18} />
-                        <span className="hidden sm:inline">Télécharger</span>
+                        <span>Audio</span>
                       </button>
+                      {episode.transcriptFr && (
+                        <a
+                          href={episode.transcriptFr}
+                          download
+                          className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
+                        >
+                          <Download size={18} />
+                          <span>Texte FR</span>
+                        </a>
+                      )}
+                      {episode.transcriptEn && (
+                        <a
+                          href={episode.transcriptEn}
+                          download
+                          className="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
+                        >
+                          <Download size={18} />
+                          <span>Texte EN</span>
+                        </a>
+                      )}
                       <button
                         onClick={() => shareEpisode(episode)}
-                        className="flex items-center justify-center gap-2 bg-charcoal hover:bg-charcoal/90 text-white px-4 py-2 rounded-lg transition-colors"
+                        className="flex items-center justify-center gap-2 bg-charcoal hover:bg-charcoal/90 text-white px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
                       >
                         <Share2 size={18} />
-                        <span className="hidden sm:inline">Partager</span>
+                        <span>Partager</span>
                       </button>
                     </div>
 
