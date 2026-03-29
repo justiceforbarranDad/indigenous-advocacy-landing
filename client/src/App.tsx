@@ -66,6 +66,9 @@ import LegalCaseTracker from "./pages/LegalCaseTracker";
 import McGovernInstitute from "./pages/McGovernInstitute";
 import ResourceKit from "./pages/ResourceKit";
 import Newsletter from "./pages/Newsletter";
+import Volunteer from "./pages/Volunteer";
+import CaseTracker from "./pages/CaseTracker";
+import HumanRights from "./pages/HumanRights";
 import { LiveChat } from "./components/LiveChat";
 import { NavigationSidebar } from "./components/NavigationSidebar";
 
@@ -134,6 +137,9 @@ function Router() {
       <Route path="/mcgovern-institute" component={McGovernInstitute} />
       <Route path="/resource-kit" component={ResourceKit} />
       <Route path="/newsletter" component={Newsletter} />
+      <Route path="/volunteer" component={Volunteer} />
+      <Route path="/case-tracker" component={CaseTracker} />
+      <Route path="/human-rights" component={HumanRights} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
