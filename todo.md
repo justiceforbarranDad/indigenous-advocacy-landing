@@ -322,6 +322,13 @@
 - [x] Newspaper-Style Timeline Redesign - Vintage newspaper aesthetic with black & white (2020-2023) transitioning to color (2024-2026) - COMPLETE
 - [x] Donation Tracker Widget - Real-time counter on homepage showing total donations and progress toward legal fund goals - COMPLETE
 
+## MEMORIAL PAGES - MARCH 28, 2026 (COMPLETE)
+- [x] Enhanced Obituaries page with 10 human rights activists (Martin Luther King Jr., Viola Desmond, Mahatma Gandhi, Donald Marshall Jr., Harriet Tubman, Nelson Mandela, Chief Dan George, Gord Downie, Rosa Parks, Thurgood Marshall)
+- [x] Enhanced FallenSoldiers page with 10 Indigenous soldiers and advocates (Tommy Prince, Henry Norwest, Norbert Beaumont, Joseph Dion, Elijah Harper, James Gladstone, Fred Gaffen, Ovide Mercredi, Unnamed soldiers, Chanie Wenjack)
+- [x] Added detailed biographical information and names to all obituaries
+- [x] Added Memorials section to navigation sidebar with links to obituaries and fallen soldiers
+- [x] Integrated both memorial pages into main App.tsx routing
+
 
 ## COMPREHENSIVE NEWSPAPER REDESIGN PROJECT (March 15, 2026 - Session 2)
 All accountability pages redesigned with vintage newspaper aesthetic (black & white 2020-2023 → color 2024-2026)

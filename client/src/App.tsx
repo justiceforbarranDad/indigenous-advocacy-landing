@@ -4,7 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import { MusicPlayer } from "./components/MusicPlayer";
+
 import Home from "./pages/Home";
 import Resources from "./pages/Resources";
 import ShareStory from "./pages/ShareStory";
@@ -69,9 +69,10 @@ import Newsletter from "./pages/Newsletter";
 import Volunteer from "./pages/Volunteer";
 import CaseTracker from "./pages/CaseTracker";
 import HumanRights from "./pages/HumanRights";
-import SmsAlerts from "./pages/SmsAlerts";
-import VideoTestimonials from "./pages/VideoTestimonials";
 import Petition from "./pages/Petition";
+import VideoTestimonials from "./pages/VideoTestimonials";
+import Obituaries from "./pages/Obituaries";
+import FallenSoldiers from "./pages/FallenSoldiers";
 import { LiveChat } from "./components/LiveChat";
 import { NavigationSidebar } from "./components/NavigationSidebar";
 
@@ -143,9 +144,10 @@ function Router() {
       <Route path="/volunteer" component={Volunteer} />
       <Route path="/case-tracker" component={CaseTracker} />
       <Route path="/human-rights" component={HumanRights} />
-      <Route path="/sms-alerts" component={SmsAlerts} />
       <Route path="/video-testimonials" component={VideoTestimonials} />
       <Route path="/petition" component={Petition} />
+      <Route path="/obituaries" component={Obituaries} />
+      <Route path="/fallen-soldiers" component={FallenSoldiers} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -170,7 +172,7 @@ function App() {
           <NavigationSidebar />
           <Router />
           <LiveChat />
-          <MusicPlayer autoplay={false} loop={true} />
+
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

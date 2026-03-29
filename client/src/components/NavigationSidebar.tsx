@@ -47,6 +47,13 @@ export function NavigationSidebar() {
       ],
     },
     {
+      title: 'Memorials',
+      links: [
+        { label: 'Human Rights Activists', href: '/obituaries' },
+        { label: 'Indigenous Soldiers', href: '/fallen-soldiers' },
+      ],
+    },
+    {
       title: 'Info',
       links: [
         { label: 'Contact & Accountability', href: '/contact' },
