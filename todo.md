@@ -814,3 +814,72 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Validate HTML/CSS
 - [ ] Save checkpoint with all fixes
 - [ ] Deploy to production
+
+
+## COMPREHENSIVE DONATION SYSTEM (March 29, 2026 - NEW)
+
+### Phase 1: Interactive e-Transfer Donation Page
+- [ ] Create DonateETransferInteractive.tsx page with step-by-step instructions
+- [ ] Add visual guide showing how to send e-Transfer to justiceforbarran@gmail.com
+- [ ] Add copy-to-clipboard button for email address
+- [ ] Add suggested donation amounts ($25, $50, $100, $250, $500+)
+- [ ] Add donation impact messaging (what each amount funds)
+- [ ] Add testimonials from donors
+- [ ] Add FAQ section for e-Transfer questions
+
+### Phase 2: Stripe Payment Integration
+- [ ] Set up Stripe API keys and webhooks
+- [ ] Create Stripe checkout session endpoint
+- [ ] Create Stripe payment button component
+- [ ] Add one-time donation option
+- [ ] Add recurring monthly donation option
+- [ ] Create payment success/confirmation page
+- [ ] Create payment error handling page
+- [ ] Add donation receipt generation
+- [ ] Test all Stripe payment flows
+
+### Phase 3: Enhanced QR Code with Instructions
+- [ ] Create QR code overlay with step-by-step instructions
+- [ ] Add numbered steps (1. Open your bank app, 2. Select e-Transfer, etc.)
+- [ ] Add visual indicators showing where to click
+- [ ] Make QR code scannable with instructions visible
+- [ ] Add "No password required" badge
+- [ ] Add "Direct to account" confirmation text
+- [ ] Test QR code scanning on multiple devices
+
+### Phase 4: Unified Donation Hub
+- [ ] Create DonationHub.tsx page with all payment methods
+- [ ] Add tabs for: e-Transfer, Credit Card (Stripe), Bank Transfer, Other
+- [ ] Add comparison table showing fees, speed, and ease for each method
+- [ ] Add security badges and trust indicators
+- [ ] Add donation tracking (total raised, progress to goal)
+- [ ] Add donor testimonials section
+- [ ] Add FAQ for all payment methods
+- [ ] Add "Most Popular" badge to recommended method
+
+### Phase 5: Homepage Integration
+- [ ] Update Home.tsx with new donation CTA buttons
+- [ ] Add "Donate Now" button linking to DonationHub
+- [ ] Add "Quick Donate via e-Transfer" button with QR code
+- [ ] Add "Donate with Credit Card" button linking to Stripe
+- [ ] Update QR code section with enhanced instructions
+- [ ] Add donation impact messaging to homepage
+- [ ] Add donation progress bar showing funds raised
+
+### Phase 6: Admin Dashboard Updates
+- [ ] Add donation tracking to admin dashboard
+- [ ] Show total donations by method (e-Transfer, Stripe, etc.)
+- [ ] Show donation trends over time
+- [ ] Show top donation amounts
+- [ ] Show donor testimonials queue for approval
+- [ ] Add donation receipt generation tool
+
+### Phase 7: Testing & Deployment
+- [ ] Test e-Transfer instructions on mobile and desktop
+- [ ] Test Stripe payments with test card (4242 4242 4242 4242)
+- [ ] Test QR code scanning on iOS and Android
+- [ ] Test all payment flows end-to-end
+- [ ] Test error handling for failed payments
+- [ ] Test donation success confirmations
+- [ ] Verify all donation data is stored correctly
+- [ ] Test admin dashboard donation tracking

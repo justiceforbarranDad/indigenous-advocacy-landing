@@ -23,7 +23,9 @@ export function HamburgerMenu() {
     {
       title: '💪 TAKE ACTION',
       links: [
-        { label: 'Donate Now', href: '/donate-etransfer' },
+        { label: 'Donation Hub (All Methods)', href: '/donation-hub' },
+        { label: 'Donate via e-Transfer', href: '/donate-etransfer' },
+        { label: 'See Donation Impact', href: '/donation-impact' },
         { label: 'Sign Petition', href: '/accountability-petition' },
         { label: 'Share Your Story', href: '/share-story' },
         { label: 'Get Alerts', href: '/email-alerts' },

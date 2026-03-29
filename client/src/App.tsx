@@ -91,6 +91,8 @@ import AdminAlertDashboard from "./pages/AdminAlertDashboard";
 import PodcastHub from "./pages/PodcastHub";
 import NewspaperReader from "./pages/NewspaperReader";
 import DonationImpact from "./pages/DonationImpact";
+import DonateETransferInteractive from "./pages/DonateETransferInteractive";
+import DonationHub from "./pages/DonationHub";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 
@@ -148,7 +150,6 @@ function Router() {
       <Route path="/video-hub" component={VideoHub} />
       <Route path="/afn-accountability" component={AFNAccountability} />
       <Route path="/safety-resources-systemic-failure" component={SafetyResourcesSystemicFailure} />
-      <Route path="/donate-etransfer" component={DonateETransfer} />
       <Route path="/french-podcast" component={FrenchPodcast} />
       <Route path="/survey-map" component={SurveyMap} />
       <Route path="/admin/analytics" component={AdminAnalytics} />
@@ -182,6 +183,8 @@ function Router() {
       <Route path="/podcast-hub" component={PodcastHub} />
       <Route path="/newspaper-reader" component={NewspaperReader} />
       <Route path="/donation-impact" component={DonationImpact} />
+      <Route path="/donate-etransfer" component={DonateETransferInteractive} />
+      <Route path="/donation-hub" component={DonationHub} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
