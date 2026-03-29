@@ -199,3 +199,93 @@
     line-height: 1.6;
   }
 }
+
+
+/* ============================================================
+   PRINT STYLES - Optimize newspaper for printing
+   ============================================================ */
+
+@media print {
+  /* Hide navigation and interactive elements */
+  nav, 
+  .hamburger-menu,
+  button:not(.print-visible),
+  .fixed,
+  .sticky,
+  .live-chat {
+    display: none !important;
+  }
+
+  /* Optimize page background */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Newspaper container */
+  .bg-gradient-to-b,
+  .shadow-2xl,
+  .blur-xl {
+    background: white !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  /* Ensure all text is black on white */
+  * {
+    background-color: white !important;
+    color: black !important;
+    border-color: black !important;
+  }
+
+  /* Preserve newspaper structure */
+  .border-4,
+  .border-2,
+  .border-b-4,
+  .border-b-2,
+  .border-t-2,
+  .border-l-4 {
+    border: 1px solid black !important;
+  }
+
+  /* Page breaks */
+  .newspaper-page {
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+
+  /* Optimize images */
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+
+  /* Remove shadows and effects */
+  .shadow-lg,
+  .shadow-2xl,
+  .shadow-md {
+    box-shadow: none !important;
+  }
+
+  /* Optimize text for printing */
+  a {
+    text-decoration: underline;
+    color: black !important;
+  }
+
+  /* Print-specific margins */
+  @page {
+    margin: 0.5in;
+  }
+
+  /* Ensure masthead prints clearly */
+  h1, h2, h3 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Prevent orphaned text */
+  p {
+    page-break-inside: avoid;
+  }
+}

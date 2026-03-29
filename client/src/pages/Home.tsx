@@ -17,6 +17,17 @@ export default function Home() {
       {/* NEWSPAPER MASTHEAD */}
       <div className="w-full bg-black text-amber-50 py-8 px-4 border-b-8 border-black">
         <div className="max-w-6xl mx-auto">
+          {/* Canadian Flag with Message */}
+          <div className="flex justify-center mb-6">
+            <div className="relative w-full max-w-md">
+              <img 
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/canadian-flag-truth-reconciliation_4319a979.png" 
+                alt="Canadian Flag - Current Truth Before Reconciliation" 
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+          
           {/* Publication Name */}
           <div className="text-center mb-4">
             <h1 className="text-6xl md:text-7xl font-black tracking-widest" style={{ fontFamily: 'Georgia, serif', letterSpacing: '0.15em' }}>

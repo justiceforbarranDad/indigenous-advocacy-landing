@@ -85,6 +85,16 @@ export function InteractiveNewspaper({
               {/* Masthead (only on first page) */}
               {currentPage === 0 && (
                 <div className="mb-8 pb-6 border-b-4 border-black text-center">
+                  <div className="flex justify-center mb-6">
+                    <div className="w-full max-w-xs">
+                      <img 
+                        src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/canadian-flag-truth-reconciliation_4319a979.png" 
+                        alt="Canadian Flag - Current Truth Before Reconciliation" 
+                        className="w-full h-auto rounded-lg shadow-lg"
+                      />
+                    </div>
+                  </div>
+                  <p className="text-sm font-bold tracking-widest uppercase mb-4 text-gray-700">Justice for Barran — Part 3</p>
                   <h1 
                     className="text-6xl md:text-8xl font-black tracking-widest mb-2" 
                     style={{ 

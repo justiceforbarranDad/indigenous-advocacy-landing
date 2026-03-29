@@ -74,6 +74,8 @@ import VideoTestimonials from "./pages/VideoTestimonials";
 import Obituaries from "./pages/Obituaries";
 import FallenSoldiers from "./pages/FallenSoldiers";
 import Newspaper from "./pages/Newspaper";
+import Sponsorship from "./pages/Sponsorship";
+import IssueArchive from "./pages/IssueArchive";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 
@@ -150,6 +152,8 @@ function Router() {
       <Route path="/obituaries" component={Obituaries} />
       <Route path="/fallen-soldiers" component={FallenSoldiers} />
       <Route path="/newspaper" component={Newspaper} />
+      <Route path="/sponsorship" component={Sponsorship} />
+      <Route path="/issue-archive" component={IssueArchive} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

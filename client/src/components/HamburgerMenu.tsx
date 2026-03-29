@@ -57,13 +57,15 @@ export function HamburgerMenu() {
       title: 'Memorials',
       links: [
         { label: 'Interactive Newspaper', href: '/newspaper' },
+        { label: 'Issue Archive', href: '/issue-archive' },
         { label: 'Human Rights Activists', href: '/obituaries' },
         { label: 'Indigenous Soldiers', href: '/fallen-soldiers' },
       ],
     },
     {
-      title: 'Info',
+      title: 'Support',
       links: [
+        { label: 'Sponsorship & Pro Bono Legal', href: '/sponsorship' },
         { label: 'Contact & Accountability', href: '/contact' },
         { label: 'Credits & Acknowledgments', href: '/credits' },
       ],
