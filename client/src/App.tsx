@@ -85,6 +85,7 @@ import InteractiveTimeline from "./pages/InteractiveTimeline";
 import MediaKit from "./pages/MediaKit";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
+import SMSAlerts from "./pages/SMSAlerts";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 
@@ -170,6 +171,7 @@ function Router() {
       <Route path="/media-kit" component={MediaKit} />
       <Route path="/contact" component={Contact} />
       <Route path="/dashboard" component={Dashboard} />
+      <Route path="/sms-alerts" component={SMSAlerts} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
