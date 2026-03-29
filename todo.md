@@ -913,3 +913,38 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Test all navigation links and CTAs
 - [ ] Verify all content is accurate and verified
 - [ ] Deploy modern professional version
+
+
+## INTERAC-STYLE DONATION INTERFACE REDESIGN (March 29, 2026) - COMPLETE
+- [x] Redesign DonateViaBank.tsx with Interac e-Transfer aesthetic
+- [x] Add clean header with logo and language toggle (FRANÇAIS/ENGLISH)
+- [x] Create large donation amount display section
+- [x] Add custom donation amount input field
+- [x] Implement expandable "Request Details" section
+- [x] Add QR code display (prominent placement)
+- [x] Create bank/financial institution selection grid
+- [x] Add search functionality for banks
+- [x] Implement professional action buttons (Continue, Cancel)
+- [x] Add bilingual support (English/French translations)
+- [x] Ensure mobile-first responsive design
+- [x] Test all features on mobile and desktop
+- [x] Verify QR code functionality and scanning
+- [x] Created InteracDonationInterface.tsx component
+- [x] Registered /donate-interac route in App.tsx
+
+
+## MISE EN DEMEURE LETTER - CORPORATE ACCOUNTABILITY (March 29, 2026) - COMPLETE
+- [x] Created formal legal demand letter to corporate sponsors
+- [x] Document Orange Shirt Day merchandise exploitation
+- [x] Reference Canadian Human Rights Act violations
+- [x] Reference Quebec Charter of Human Rights and Freedoms violations
+- [x] Include unfair/deceptive marketing practices violations
+- [x] Reference intellectual property and trademark violations
+- [x] Include breach of fiduciary duty documentation
+- [x] Reference Truth and Reconciliation Commission Calls to Action
+- [x] Establish specific 30-day compliance deadline
+- [x] Document systemic failures (DPJ, political ghosting, institutional abandonment)
+- [x] Include legal precedent (Grant v. Torstar, Tsilhqot'in Nation, Haida Nation, Delgamuukw)
+- [x] Provide contact information for compliance negotiations
+- [x] Outline consequences for non-compliance
+- [x] File saved: MISE_EN_DEMEURE_CORPORATE_SPONSORS.md
