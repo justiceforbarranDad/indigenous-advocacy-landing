@@ -76,6 +76,7 @@ export function HamburgerMenu() {
     {
       title: 'Resources',
       links: [
+        { label: 'Campaign Dashboard (Live Metrics)', href: '/dashboard' },
         { label: 'Timeline: 5 Years of Abandonment', href: '/timeline' },
         { label: 'Media Kit & Press Releases', href: '/media-kit' },
       ],

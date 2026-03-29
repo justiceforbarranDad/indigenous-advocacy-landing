@@ -82,6 +82,7 @@ import GovernmentAccountability from "./pages/GovernmentAccountability";
 import InteractiveTimeline from "./pages/InteractiveTimeline";
 import MediaKit from "./pages/MediaKit";
 import Contact from "./pages/Contact";
+import Dashboard from "./pages/Dashboard";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 
@@ -166,6 +167,7 @@ function Router() {
       <Route path="/timeline" component={InteractiveTimeline} />
       <Route path="/media-kit" component={MediaKit} />
       <Route path="/contact" component={Contact} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
