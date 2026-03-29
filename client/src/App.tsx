@@ -58,6 +58,8 @@ import SafetyResourcesSystemicFailure from "./pages/SafetyResourcesSystemicFailu
 import DonateETransfer from "./pages/DonateETransfer";
 import FrenchPodcast from "./pages/FrenchPodcast";
 import SurveyMap from "./pages/SurveyMap";
+import AdminAnalytics from "./pages/AdminAnalytics";
+import CanadaMap from "./pages/CanadaMap";
 import { NavigationSidebar } from "./components/NavigationSidebar";
 
 function Router() {
@@ -117,6 +119,8 @@ function Router() {
       <Route path="/donate-etransfer" component={DonateETransfer} />
       <Route path="/french-podcast" component={FrenchPodcast} />
       <Route path="/survey-map" component={SurveyMap} />
+      <Route path="/admin/analytics" component={AdminAnalytics} />
+      <Route path="/canada-map" component={CanadaMap} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
