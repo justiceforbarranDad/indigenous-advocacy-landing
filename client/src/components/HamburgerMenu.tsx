@@ -79,6 +79,7 @@ export function HamburgerMenu() {
         { label: 'Campaign Dashboard (Live Metrics)', href: '/dashboard' },
         { label: 'SMS Alerts - Get Urgent Notifications', href: '/sms-alerts' },
         { label: 'Email Alerts - Detailed Updates', href: '/email-alerts' },
+        { label: 'Podcast Hub - Listen to Episodes', href: '/podcast-hub' },
         { label: 'Timeline: 5 Years of Abandonment', href: '/timeline' },
         { label: 'Media Kit & Press Releases', href: '/media-kit' },
       ],

@@ -88,6 +88,7 @@ import Dashboard from "./pages/Dashboard";
 import SMSAlerts from "./pages/SMSAlerts";
 import EmailAlerts from "./pages/EmailAlerts";
 import AdminAlertDashboard from "./pages/AdminAlertDashboard";
+import PodcastHub from "./pages/PodcastHub";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 
@@ -176,6 +177,7 @@ function Router() {
       <Route path="/sms-alerts" component={SMSAlerts} />
       <Route path="/email-alerts" component={EmailAlerts} />
       <Route path="/admin/alerts" component={AdminAlertDashboard} />
+      <Route path="/podcast-hub" component={PodcastHub} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
