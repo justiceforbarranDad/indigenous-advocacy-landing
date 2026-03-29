@@ -106,3 +106,73 @@ export const videoViews = mysqlTable("video_views", {
 
 export type VideoView = typeof videoViews.$inferSelect;
 export type InsertVideoView = typeof videoViews.$inferInsert;
+
+
+// Email Subscribers Table
+export const emailSubscribers = mysqlTable("email_subscribers", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  name: varchar("name", { length: 255 }),
+  subscriptionType: mysqlEnum("subscription_type", ["all_updates", "news_only", "podcast_only"]).default("all_updates").notNull(),
+  isActive: mysqlEnum("is_active", ["yes", "no"]).default("yes").notNull(),
+  confirmationToken: varchar("confirmation_token", { length: 255 }),
+  isConfirmed: mysqlEnum("is_confirmed", ["yes", "no"]).default("no").notNull(),
+  confirmedAt: timestamp("confirmed_at"),
+  unsubscribedAt: timestamp("unsubscribed_at"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type EmailSubscriber = typeof emailSubscribers.$inferSelect;
+export type InsertEmailSubscriber = typeof emailSubscribers.$inferInsert;
+
+// News Updates Table
+export const newsUpdates = mysqlTable("news_updates", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description").notNull(),
+  content: text("content").notNull(),
+  category: mysqlEnum("category", ["breaking_news", "podcast_episode", "legal_update", "event", "other"]).notNull(),
+  imageUrl: varchar("image_url", { length: 512 }),
+  status: mysqlEnum("status", ["draft", "published", "archived"]).default("draft").notNull(),
+  publishedAt: timestamp("published_at"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type NewsUpdate = typeof newsUpdates.$inferSelect;
+export type InsertNewsUpdate = typeof newsUpdates.$inferInsert;
+
+// Email Campaigns Table
+export const emailCampaigns = mysqlTable("email_campaigns", {
+  id: int("id").autoincrement().primaryKey(),
+  newsUpdateId: int("news_update_id").notNull(),
+  subject: varchar("subject", { length: 255 }).notNull(),
+  recipientCount: int("recipient_count").default(0).notNull(),
+  sentCount: int("sent_count").default(0).notNull(),
+  openCount: int("open_count").default(0).notNull(),
+  clickCount: int("click_count").default(0).notNull(),
+  status: mysqlEnum("status", ["draft", "scheduled", "sent", "failed"]).default("draft").notNull(),
+  sentAt: timestamp("sent_at"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type EmailCampaign = typeof emailCampaigns.$inferSelect;
+export type InsertEmailCampaign = typeof emailCampaigns.$inferInsert;
+
+// Survey Responses Table
+export const surveyResponses = mysqlTable("survey_responses", {
+  id: int("id").autoincrement().primaryKey(),
+  response: mysqlEnum("response", ["yes", "no"]).notNull(),
+  email: varchar("email", { length: 320 }),
+  name: varchar("name", { length: 255 }),
+  additionalInfo: text("additional_info"),
+  ipAddress: varchar("ip_address", { length: 45 }),
+  userAgent: varchar("user_agent", { length: 500 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SurveyResponse = typeof surveyResponses.$inferSelect;
+export type InsertSurveyResponse = typeof surveyResponses.$inferInsert;

@@ -2,6 +2,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Link } from 'wouter';
 import { AlertCircle, FileText, Globe } from 'lucide-react';
 import { useState } from 'react';
+import { SurveyBox } from '@/components/SurveyBox';
 
 export default function Home() {
   const { user, loading, error, isAuthenticated, logout } = useAuth();
@@ -227,6 +228,13 @@ export default function Home() {
               </div>
             )}
           </div>
+        </div>
+      </div>
+
+      {/* Survey Section */}
+      <div className="w-full py-12 px-4 bg-cream">
+        <div className="max-w-2xl mx-auto">
+          <SurveyBox />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, legalProfiles, InsertLegalProfile, parentProfiles, InsertParentProfile, videoViews, InsertVideoView } from "../drizzle/schema";
+import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, legalProfiles, InsertLegalProfile, parentProfiles, InsertParentProfile, videoViews, InsertVideoView, emailSubscribers, InsertEmailSubscriber, newsUpdates, InsertNewsUpdate, emailCampaigns, InsertEmailCampaign, surveyResponses, InsertSurveyResponse } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -247,5 +247,121 @@ export async function getAllVideoViews() {
   }
   
   const result = await db.select().from(videoViews).orderBy(videoViews.viewCount);
+  return result;
+}
+
+// Email Subscribers Functions
+export async function subscribeEmail(subscriber: InsertEmailSubscriber) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  const result = await db.insert(emailSubscribers).values(subscriber);
+  return result;
+}
+
+export async function getEmailSubscriber(email: string) {
+  const db = await getDb();
+  if (!db) {
+    return null;
+  }
+  
+  const result = await db.select().from(emailSubscribers).where(eq(emailSubscribers.email, email)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function getActiveSubscribers() {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select().from(emailSubscribers).where(eq(emailSubscribers.isActive, "yes"));
+  return result;
+}
+
+export async function unsubscribeEmail(email: string) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  await db.update(emailSubscribers)
+    .set({
+      isActive: "no",
+      unsubscribedAt: new Date(),
+      updatedAt: new Date(),
+    })
+    .where(eq(emailSubscribers.email, email));
+}
+
+// News Updates Functions
+export async function createNewsUpdate(update: InsertNewsUpdate) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  const result = await db.insert(newsUpdates).values(update);
+  return result;
+}
+
+export async function getPublishedNews(limit: number = 10, offset: number = 0) {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select().from(newsUpdates).where(eq(newsUpdates.status, "published")).limit(limit).offset(offset);
+  return result;
+}
+
+// Email Campaigns Functions
+export async function createEmailCampaign(campaign: InsertEmailCampaign) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  const result = await db.insert(emailCampaigns).values(campaign);
+  return result;
+}
+
+// Survey Response Functions
+export async function submitSurveyResponse(response: InsertSurveyResponse) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  const result = await db.insert(surveyResponses).values(response);
+  return result;
+}
+
+export async function getSurveyStats() {
+  const db = await getDb();
+  if (!db) {
+    return { yes: 0, no: 0, total: 0 };
+  }
+  
+  const allResponses = await db.select().from(surveyResponses);
+  const yesCount = allResponses.filter(r => r.response === "yes").length;
+  const noCount = allResponses.filter(r => r.response === "no").length;
+  
+  return {
+    yes: yesCount,
+    no: noCount,
+    total: allResponses.length,
+  };
+}
+
+export async function getSurveyResponses(limit: number = 100, offset: number = 0) {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select().from(surveyResponses).limit(limit).offset(offset);
   return result;
 }

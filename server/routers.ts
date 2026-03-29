@@ -3,7 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
-import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile, incrementVideoView, getVideoViews, getAllVideoViews } from "./db";
+import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile, incrementVideoView, getVideoViews, getAllVideoViews, subscribeEmail, getEmailSubscriber, unsubscribeEmail, getActiveSubscribers, createNewsUpdate, getPublishedNews, createEmailCampaign, submitSurveyResponse, getSurveyStats, getSurveyResponses } from "./db";
 import { notifyOwner } from "./_core/notification";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
 
@@ -260,6 +260,139 @@ export const appRouter = router({
         return [];
       }
     }),
+  }),
+
+  email: router({
+    subscribe: publicProcedure
+      .input(z.object({
+        email: z.string().email("Valid email required"),
+        name: z.string().optional(),
+        subscriptionType: z.enum(["all_updates", "news_only", "podcast_only"]).default("all_updates"),
+      }))
+      .mutation(async ({ input }) => {
+        try {
+          const existing = await getEmailSubscriber(input.email);
+          if (existing && existing.isConfirmed === "yes") {
+            return { success: false, message: "Already subscribed" };
+          }
+          
+          await subscribeEmail({
+            email: input.email,
+            name: input.name,
+            subscriptionType: input.subscriptionType,
+            isConfirmed: "yes",
+            confirmedAt: new Date(),
+          });
+          
+          await notifyOwner({
+            title: "New Email Subscriber",
+            content: `${input.email} subscribed to ${input.subscriptionType}`,
+          });
+          
+          return { success: true, message: "Successfully subscribed!" };
+        } catch (error) {
+          console.error("Error subscribing email:", error);
+          throw new Error("Failed to subscribe");
+        }
+      }),
+
+    unsubscribe: publicProcedure
+      .input(z.object({
+        email: z.string().email("Valid email required"),
+      }))
+      .mutation(async ({ input }) => {
+        try {
+          await unsubscribeEmail(input.email);
+          return { success: true, message: "Successfully unsubscribed" };
+        } catch (error) {
+          console.error("Error unsubscribing email:", error);
+          throw new Error("Failed to unsubscribe");
+        }
+      }),
+
+    getSubscribers: publicProcedure.query(async () => {
+      try {
+        const subscribers = await getActiveSubscribers();
+        return subscribers;
+      } catch (error) {
+        console.error("Error fetching subscribers:", error);
+        return [];
+      }
+    }),
+  }),
+
+  news: router({
+    getLatest: publicProcedure
+      .input(z.object({
+        limit: z.number().default(10),
+        offset: z.number().default(0),
+      }))
+      .query(async ({ input }) => {
+        try {
+          const news = await getPublishedNews(input.limit, input.offset);
+          return news;
+        } catch (error) {
+          console.error("Error fetching news:", error);
+          return [];
+        }
+      }),
+  }),
+
+  survey: router({
+    submit: publicProcedure
+      .input(z.object({
+        response: z.enum(["yes", "no"]),
+        email: z.string().email().optional(),
+        name: z.string().optional(),
+        additionalInfo: z.string().optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        try {
+          await submitSurveyResponse({
+            response: input.response,
+            email: input.email,
+            name: input.name,
+            additionalInfo: input.additionalInfo,
+            ipAddress: ctx.req.ip || "unknown",
+            userAgent: ctx.req.get("user-agent") || "unknown",
+          });
+          
+          await notifyOwner({
+            title: "New Survey Response",
+            content: `Survey response: ${input.response}${input.email ? " from " + input.email : ""}`,
+          });
+          
+          return { success: true, message: "Thank you for your response!" };
+        } catch (error) {
+          console.error("Error submitting survey:", error);
+          throw new Error("Failed to submit survey");
+        }
+      }),
+
+    getStats: publicProcedure.query(async () => {
+      try {
+        const stats = await getSurveyStats();
+        return stats;
+      } catch (error) {
+        console.error("Error fetching survey stats:", error);
+        return { yes: 0, no: 0, total: 0 };
+      }
+    }),
+
+    getResponses: publicProcedure
+      .input(z.object({
+        limit: z.number().default(100),
+        offset: z.number().default(0),
+      }))
+      .query(async ({ input }) => {
+        try {
+          const responses = await getSurveyResponses(input.limit, input.offset);
+          return responses;
+        } catch (error) {
+          console.error("Error fetching survey responses:", error);
+          return [];
+        }
+      }),
   }),
 });
 
