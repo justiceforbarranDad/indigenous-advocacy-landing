@@ -22,20 +22,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Full-screen video player */}
-      <div className="w-full h-screen flex items-center justify-center bg-black">
-        <video
-          controls
-          className="w-full h-full"
-          poster="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp"
-        >
-          <source
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/sunday-bloody-sunday-documentary-8min_dc1e3b57.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+
 
       {/* Additional CTA Section Below Video */}
       <div className="w-full bg-amber-50 py-8 px-4 border-t-4 border-amber-600">

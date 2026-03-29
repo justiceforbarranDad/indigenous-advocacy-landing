@@ -1,4 +1,4 @@
-import { ChevronUp, Heart, Share2, BookOpen, Users, AlertCircle, Mail, Music, MessageSquare, Instagram, Twitter } from 'lucide-react';
+import { Heart, Share2, BookOpen, Users, AlertCircle, Mail, Instagram, Twitter, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
 export function NavigationSidebar() {

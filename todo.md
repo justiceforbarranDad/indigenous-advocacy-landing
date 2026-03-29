@@ -622,3 +622,14 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Add page to App.tsx routing
 - [ ] Test page functionality
 - [ ] Save checkpoint with AFN accountability page complete
+
+
+## LATEST UPDATES (March 28, 2026)
+- [x] Remove 8-second intro video from homepage - COMPLETE
+- [x] Generate French audio narration for 5 podcast episodes - COMPLETE
+- [x] Upload all podcast audio files to CDN - COMPLETE
+- [x] Integrate audio players into French Podcast page - COMPLETE
+- [x] Implement Play/Pause functionality - COMPLETE
+- [x] Implement Download functionality for episodes - COMPLETE
+- [x] Implement Share functionality for episodes - COMPLETE
+- [x] Test all podcast audio playback - COMPLETE
