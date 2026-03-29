@@ -73,6 +73,13 @@ export function HamburgerMenu() {
         { label: 'Credits & Acknowledgments', href: '/credits' },
       ],
     },
+    {
+      title: 'Resources',
+      links: [
+        { label: 'Timeline: 5 Years of Abandonment', href: '/timeline' },
+        { label: 'Media Kit & Press Releases', href: '/media-kit' },
+      ],
+    },
   ];
 
   return (
