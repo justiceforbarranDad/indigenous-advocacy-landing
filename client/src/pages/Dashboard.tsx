@@ -1,125 +1,16 @@
-import { TrendingUp, Users, Heart, Target } from 'lucide-react';
-import { useState, useEffect } from 'react';
-
-interface DashboardMetric {
-  label: string;
-  value: number;
-  target: number;
-  icon: React.ReactNode;
-  color: string;
-  unit: string;
-}
+import { Mail, AlertCircle } from 'lucide-react';
 
 export default function Dashboard() {
-  const [metrics, setMetrics] = useState({
-    donations: 0,
-    petitionSignatures: 0,
-    supporters: 0,
-    mediaReaches: 0
-  });
-
-  const [displayMetrics, setDisplayMetrics] = useState({
-    donations: 0,
-    petitionSignatures: 0,
-    supporters: 0,
-    mediaReaches: 0
-  });
-
-  // Simulate real-time data updates
-  useEffect(() => {
-    // Initial data
-    const initialMetrics = {
-      donations: 47500,
-      petitionSignatures: 28340,
-      supporters: 15200,
-      mediaReaches: 2450000
-    };
-
-    setMetrics(initialMetrics);
-    setDisplayMetrics(initialMetrics);
-
-    // Simulate real-time updates every 5 seconds
-    const interval = setInterval(() => {
-      setMetrics(prev => ({
-        donations: prev.donations + Math.floor(Math.random() * 500),
-        petitionSignatures: prev.petitionSignatures + Math.floor(Math.random() * 100),
-        supporters: prev.supporters + Math.floor(Math.random() * 50),
-        mediaReaches: prev.mediaReaches + Math.floor(Math.random() * 50000)
-      }));
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // Animate counter changes
-  useEffect(() => {
-    const animationInterval = setInterval(() => {
-      setDisplayMetrics(prev => ({
-        donations: Math.floor(prev.donations + (metrics.donations - prev.donations) * 0.1),
-        petitionSignatures: Math.floor(prev.petitionSignatures + (metrics.petitionSignatures - prev.petitionSignatures) * 0.1),
-        supporters: Math.floor(prev.supporters + (metrics.supporters - prev.supporters) * 0.1),
-        mediaReaches: Math.floor(prev.mediaReaches + (metrics.mediaReaches - prev.mediaReaches) * 0.1)
-      }));
-    }, 100);
-
-    return () => clearInterval(animationInterval);
-  }, [metrics]);
-
-  const dashboardMetrics: DashboardMetric[] = [
-    {
-      label: 'Total Donations',
-      value: displayMetrics.donations,
-      target: 100000,
-      icon: <Heart size={32} />,
-      color: 'bg-black',
-      unit: '$'
-    },
-    {
-      label: 'Petition Signatures',
-      value: displayMetrics.petitionSignatures,
-      target: 50000,
-      icon: <Users size={32} />,
-      color: 'bg-black',
-      unit: ''
-    },
-    {
-      label: 'Active Supporters',
-      value: displayMetrics.supporters,
-      target: 25000,
-      icon: <TrendingUp size={32} />,
-      color: 'bg-black',
-      unit: ''
-    },
-    {
-      label: 'Media Reach',
-      value: displayMetrics.mediaReaches,
-      target: 5000000,
-      icon: <Target size={32} />,
-      color: 'bg-black',
-      unit: ''
-    }
-  ];
-
-  const getProgressPercentage = (value: number, target: number) => {
-    return Math.min((value / target) * 100, 100);
-  };
-
-  const formatNumber = (num: number) => {
-    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-    if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-    return num.toString();
-  };
-
   return (
     <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
       {/* MASTHEAD */}
       <div className="w-full bg-black text-white py-8 px-4 border-b-8 border-black">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-black tracking-widest mb-4" style={{ letterSpacing: '0.15em' }}>
-            CAMPAIGN DASHBOARD
+            CAMPAIGN STATUS
           </h1>
-          <p className="text-lg md:text-xl mb-2">Real-Time Metrics</p>
-          <p className="text-sm tracking-widest">Justice for Barran - Live Campaign Tracking</p>
+          <p className="text-lg md:text-xl mb-2">Verified Facts Only</p>
+          <p className="text-sm tracking-widest">Justice for Barran - Transparent Updates</p>
         </div>
       </div>
 
@@ -128,147 +19,123 @@ export default function Dashboard() {
         
         {/* INTRODUCTION */}
         <div className="mb-8 pb-8 border-b-4 border-black">
-          <h2 className="text-3xl md:text-4xl font-black mb-4">Campaign Progress</h2>
+          <h2 className="text-3xl md:text-4xl font-black mb-4">What We Know - Verified Facts</h2>
           <p className="text-lg leading-relaxed">
-            Every donation, signature, and supporter brings us closer to justice for Barran and systemic change. Watch our campaign grow in real-time.
+            This page contains only verified, documented facts about Barran's case and our advocacy efforts. We do not speculate or make unverified claims.
           </p>
         </div>
 
-        {/* METRICS GRID */}
-        <div className="grid md:grid-cols-2 gap-8 mb-8">
-          {dashboardMetrics.map((metric, idx) => {
-            const progress = getProgressPercentage(metric.value, metric.target);
-            return (
-              <div key={idx} className="border-4 border-black p-8 bg-white">
-                {/* HEADER */}
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-2xl font-black">{metric.label}</h3>
-                  <div className={`${metric.color} text-white p-3 rounded`}>
-                    {metric.icon}
-                  </div>
-                </div>
-
-                {/* COUNTER */}
-                <div className="mb-6">
-                  <p className="text-5xl md:text-6xl font-black mb-2">
-                    {metric.unit}{formatNumber(metric.value)}
-                  </p>
-                  <p className="text-sm text-gray-700 font-bold uppercase tracking-widest">
-                    of {metric.unit}{formatNumber(metric.target)} goal
-                  </p>
-                </div>
-
-                {/* PROGRESS BAR */}
-                <div className="mb-4">
-                  <div className="w-full bg-gray-200 border-2 border-black h-8">
-                    <div
-                      className="bg-black h-full transition-all duration-500 flex items-center justify-end pr-2"
-                      style={{ width: `${progress}%` }}
-                    >
-                      {progress > 15 && (
-                        <span className="text-white font-bold text-sm">{Math.round(progress)}%</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* MILESTONE MESSAGE */}
-                <p className="text-sm text-gray-700 font-bold">
-                  {progress >= 100
-                    ? '🎉 GOAL REACHED!'
-                    : progress >= 75
-                    ? '⚡ Almost there!'
-                    : progress >= 50
-                    ? '💪 Halfway to goal'
-                    : '🚀 Building momentum'}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* RECENT ACTIVITY */}
+        {/* VERIFIED ACTIONS */}
         <div className="mb-8 pb-8 border-b-4 border-black">
-          <h2 className="text-3xl md:text-4xl font-black mb-6">Recent Activity</h2>
+          <h2 className="text-3xl md:text-4xl font-black mb-6">Actions Taken</h2>
           
           <div className="space-y-4">
             <div className="border-l-4 border-black pl-6 py-4">
-              <p className="text-sm font-bold uppercase tracking-widest text-gray-700 mb-1">Just now</p>
-              <p className="text-lg font-bold">New donation received: $250</p>
-              <p className="text-sm text-gray-700">Supporting legal defense fund</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-gray-700 mb-1">VERIFIED - 2026</p>
+              <p className="text-lg font-bold">Letter Sent to United Nations</p>
+              <p className="text-sm text-gray-700">Official correspondence documenting systemic failures in Barran's case</p>
             </div>
 
             <div className="border-l-4 border-black pl-6 py-4">
-              <p className="text-sm font-bold uppercase tracking-widest text-gray-700 mb-1">2 minutes ago</p>
-              <p className="text-lg font-bold">5 new petition signatures</p>
-              <p className="text-sm text-gray-700">Growing support for systemic change</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-gray-700 mb-1">VERIFIED - 2025-2026</p>
+              <p className="text-lg font-bold">Advocacy Campaign Launched</p>
+              <p className="text-sm text-gray-700">Public awareness and accountability efforts ongoing</p>
             </div>
 
             <div className="border-l-4 border-black pl-6 py-4">
-              <p className="text-sm font-bold uppercase tracking-widest text-gray-700 mb-1">5 minutes ago</p>
-              <p className="text-lg font-bold">Media coverage: 50K impressions</p>
-              <p className="text-sm text-gray-700">Story reaching new audiences</p>
-            </div>
-
-            <div className="border-l-4 border-black pl-6 py-4">
-              <p className="text-sm font-bold uppercase tracking-widest text-gray-700 mb-1">10 minutes ago</p>
-              <p className="text-lg font-bold">New supporter joined campaign</p>
-              <p className="text-sm text-gray-700">Volunteer for accountability efforts</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-gray-700 mb-1">VERIFIED - 2021-2026</p>
+              <p className="text-lg font-bold">Five Years of Systemic Abandonment Documented</p>
+              <p className="text-sm text-gray-700">DPJ involvement, withdrawal, and lack of follow-up services</p>
             </div>
           </div>
         </div>
 
-        {/* CAMPAIGN MILESTONES */}
+        {/* IMPORTANT NOTE */}
+        <div className="mb-8 pb-8 border-b-4 border-black bg-white border-4 border-black p-8">
+          <div className="flex gap-4 items-start">
+            <AlertCircle size={32} className="flex-shrink-0 mt-1" />
+            <div>
+              <h3 className="text-2xl font-black mb-4">No False Claims</h3>
+              <p className="text-lg leading-relaxed mb-4">
+                This website contains only verified information. We do NOT include:
+              </p>
+              <ul className="text-lg space-y-2 ml-4">
+                <li>❌ Unconfirmed court dates</li>
+                <li>❌ Speculative petition numbers</li>
+                <li>❌ Unverified government responses</li>
+                <li>❌ Fabricated media opportunities</li>
+                <li>❌ False donation amounts</li>
+                <li>❌ Unverified supporter counts</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* RECENT ALERTS - VERIFIED ONLY */}
         <div className="mb-8 pb-8 border-b-4 border-black">
-          <h2 className="text-3xl md:text-4xl font-black mb-6">Campaign Milestones</h2>
+          <h2 className="text-3xl md:text-4xl font-black mb-6">Recent Verified Updates</h2>
           
           <div className="space-y-4">
-            {[
-              { milestone: '1,000 Signatures', status: 'completed', date: 'March 1, 2026' },
-              { milestone: '5,000 Signatures', status: 'completed', date: 'March 10, 2026' },
-              { milestone: '10,000 Signatures', status: 'completed', date: 'March 15, 2026' },
-              { milestone: '25,000 Signatures', status: 'in-progress', date: 'Target: March 31, 2026' },
-              { milestone: '50,000 Signatures', status: 'upcoming', date: 'Target: April 30, 2026' },
-              { milestone: '$50,000 Raised', status: 'in-progress', date: 'Current: $47,500' },
-              { milestone: '$100,000 Raised', status: 'upcoming', date: 'Target: May 31, 2026' },
-              { milestone: 'Government Inquiry Launched', status: 'upcoming', date: 'Demanding action' }
-            ].map((item, idx) => (
-              <div key={idx} className="border-2 border-black p-4 flex items-center justify-between">
-                <div>
-                  <p className="text-lg font-black">{item.milestone}</p>
-                  <p className="text-sm text-gray-700">{item.date}</p>
-                </div>
-                <div className="text-right">
-                  {item.status === 'completed' && (
-                    <span className="bg-black text-white px-4 py-2 font-bold text-sm">✓ COMPLETED</span>
-                  )}
-                  {item.status === 'in-progress' && (
-                    <span className="bg-black text-white px-4 py-2 font-bold text-sm">⚡ IN PROGRESS</span>
-                  )}
-                  {item.status === 'upcoming' && (
-                    <span className="border-2 border-black px-4 py-2 font-bold text-sm">UPCOMING</span>
-                  )}
-                </div>
-              </div>
-            ))}
+            <div className="border-2 border-black p-6">
+              <p className="text-sm font-bold uppercase tracking-widest text-gray-700 mb-2">MARCH 2026</p>
+              <p className="text-xl font-black mb-2">Letter to United Nations Sent</p>
+              <p className="text-lg leading-relaxed">
+                Official correspondence documenting systemic failures in Barran's case has been submitted to UN human rights bodies.
+              </p>
+            </div>
+
+            <div className="border-2 border-black p-6">
+              <p className="text-sm font-bold uppercase tracking-widest text-gray-700 mb-2">ONGOING</p>
+              <p className="text-xl font-black mb-2">Advocacy & Accountability Campaign</p>
+              <p className="text-lg leading-relaxed">
+                Demanding transparency, investigation, and systemic change from government officials and institutions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* WHAT WE'RE ASKING FOR */}
+        <div className="mb-8 pb-8 border-b-4 border-black">
+          <h2 className="text-3xl md:text-4xl font-black mb-6">Our Demands</h2>
+          
+          <div className="space-y-4">
+            <div className="border-l-4 border-black pl-6 py-4">
+              <p className="text-lg font-bold">Independent Inquiry</p>
+              <p className="text-sm text-gray-700">Into systemic failures affecting Indigenous children</p>
+            </div>
+
+            <div className="border-l-4 border-black pl-6 py-4">
+              <p className="text-lg font-bold">Application of Jordan's Principle</p>
+              <p className="text-sm text-gray-700">No-delay services for First Nations children</p>
+            </div>
+
+            <div className="border-l-4 border-black pl-6 py-4">
+              <p className="text-lg font-bold">Real Support for Affected Families</p>
+              <p className="text-sm text-gray-700">Beyond apologies - actual systemic change</p>
+            </div>
+
+            <div className="border-l-4 border-black pl-6 py-4">
+              <p className="text-lg font-bold">Government Accountability</p>
+              <p className="text-sm text-gray-700">For abandonment of Indigenous families</p>
+            </div>
           </div>
         </div>
 
         {/* CALL TO ACTION */}
         <div className="bg-black text-white p-8 border-4 border-black text-center">
-          <h2 className="text-3xl font-black mb-4">Help Us Reach Our Goals</h2>
+          <h2 className="text-3xl font-black mb-4">Support Real Change</h2>
           <p className="text-lg mb-6 leading-relaxed">
-            Every contribution matters. Donate, sign the petition, or share your story to amplify the call for justice.
+            Help amplify this message and demand accountability from government and institutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/donate" className="bg-white text-black px-8 py-4 font-bold text-lg hover:bg-gray-200 transition-colors">
-              Donate Now
+            <a href="/government-accountability" className="bg-white text-black px-8 py-4 font-bold text-lg hover:bg-gray-200 transition-colors">
+              Contact Officials
             </a>
-            <a href="/petition" className="bg-white text-black px-8 py-4 font-bold text-lg hover:bg-gray-200 transition-colors">
-              Sign Petition
+            <a href="/corporate-accountability" className="bg-white text-black px-8 py-4 font-bold text-lg hover:bg-gray-200 transition-colors">
+              Corporate Accountability
             </a>
-            <a href="/share-story" className="bg-white text-black px-8 py-4 font-bold text-lg hover:bg-gray-200 transition-colors">
-              Share Your Story
+            <a href="/contact" className="bg-white text-black px-8 py-4 font-bold text-lg hover:bg-gray-200 transition-colors">
+              Get Involved
             </a>
           </div>
         </div>
