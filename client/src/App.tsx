@@ -64,6 +64,9 @@ import ProvinceResources from "./pages/ProvinceResources";
 import MediaGallery from "./pages/MediaGallery";
 import LegalCaseTracker from "./pages/LegalCaseTracker";
 import McGovernInstitute from "./pages/McGovernInstitute";
+import ResourceKit from "./pages/ResourceKit";
+import Newsletter from "./pages/Newsletter";
+import { LiveChat } from "./components/LiveChat";
 import { NavigationSidebar } from "./components/NavigationSidebar";
 
 function Router() {
@@ -129,6 +132,8 @@ function Router() {
       <Route path="/media-gallery" component={MediaGallery} />
       <Route path="/legal-cases" component={LegalCaseTracker} />
       <Route path="/mcgovern-institute" component={McGovernInstitute} />
+      <Route path="/resource-kit" component={ResourceKit} />
+      <Route path="/newsletter" component={Newsletter} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -152,6 +157,7 @@ function App() {
           <Toaster />
           <NavigationSidebar />
           <Router />
+          <LiveChat />
           <MusicPlayer autoplay={false} loop={true} />
         </TooltipProvider>
       </ThemeProvider>
