@@ -49,6 +49,7 @@ export function NavigationSidebar() {
     {
       title: 'Memorials',
       links: [
+        { label: 'Interactive Newspaper', href: '/newspaper' },
         { label: 'Human Rights Activists', href: '/obituaries' },
         { label: 'Indigenous Soldiers', href: '/fallen-soldiers' },
       ],

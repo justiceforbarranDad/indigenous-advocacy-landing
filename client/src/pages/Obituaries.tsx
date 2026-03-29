@@ -1,4 +1,5 @@
-import { Obituary, NewspaperHeader } from '@/components/NewspaperComponents';
+import { Obituary } from '@/components/NewspaperComponents';
+import { SocialShareButtons } from '@/components/SocialShareButtons';
 
 export default function Obituaries() {
   const activists = [
@@ -147,15 +148,28 @@ export default function Obituaries() {
   ];
 
   return (
-    <div className="min-h-screen bg-cream text-charcoal py-8 px-4">
-      <div className="max-w-6xl mx-auto">
-        <NewspaperHeader
-          title="In Memoriam: Champions of Justice"
-          subtitle="Honoring the Legacy of Human Rights Activists Who Fought for Equality"
-          date="March 28, 2026"
-          masthead="JUSTICE FOR BARRAN"
-        />
+    <div className="min-h-screen bg-amber-50 text-black" style={{ fontFamily: 'Georgia, serif' }}>
+      {/* NEWSPAPER MASTHEAD */}
+      <div className="w-full bg-black text-amber-50 py-8 px-4 border-b-8 border-black">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-4">
+            <h1 className="text-5xl md:text-6xl font-black tracking-widest" style={{ fontFamily: 'Georgia, serif', letterSpacing: '0.15em' }}>
+              IN MEMORIAM
+            </h1>
+            <div className="h-1 bg-amber-50 my-3 w-32 mx-auto"></div>
+          </div>
+          <div className="text-center">
+            <p className="text-lg md:text-xl tracking-wide mb-2">
+              Champions of Justice & Human Rights
+            </p>
+            <p className="text-sm md:text-base tracking-widest">
+              MARCH 28, 2026 — SUPPORTING JUSTICE FOR BARRAN
+            </p>
+          </div>
+        </div>
+      </div>
 
+      <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-12 p-6 border-4 border-black bg-white">
           <p className="text-lg leading-relaxed mb-4">
             Throughout history, courageous individuals have stood against injustice, systemic oppression, and the denial of human rights. These activists—many of whom faced imprisonment, violence, and death—refused to accept the status quo. Their struggles paved the way for progress, yet their work remains unfinished. As we continue the fight for justice for Barran and all Indigenous children, we honor those whose sacrifice and dedication remind us why this struggle matters.
@@ -178,6 +192,17 @@ export default function Obituaries() {
               legacy={activist.legacy}
             />
           ))}
+        </div>
+
+        {/* SOCIAL SHARE SECTION */}
+        <div className="mt-12 mb-8 pb-8 border-b-4 border-black">
+          <SocialShareButtons
+            title="In Memoriam: Champions of Justice - Human Rights Activists"
+            text="Honoring the legacy of human rights activists who fought for equality and justice. From Martin Luther King Jr. to Nelson Mandela, their courage continues to inspire the fight for Indigenous rights and systemic accountability."
+            hashtags={['InMemoriam', 'HumanRights', 'JusticeForBarran', 'IndigenousRights']}
+            showLabel={true}
+            variant="horizontal"
+          />
         </div>
 
         <div className="mt-12 p-6 border-4 border-black bg-gray-50">

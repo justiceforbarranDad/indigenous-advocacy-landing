@@ -702,3 +702,18 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Verify message clarity and visual hierarchy
 - [ ] Save final checkpoint
 - [ ] Ready for publication
+
+## INTERACTIVE NEWSPAPER WITH PAGE FLIP (March 29, 2026)
+- [x] Create InteractiveNewspaper component with page flip animation
+- [x] Design 4-page newspaper layout with authentic typography
+- [x] Page 1: Front page with main story and key facts
+- [x] Page 2: In Memoriam - Human Rights Champions
+- [x] Page 3: Fallen Soldiers - Indigenous Warriors
+- [x] Page 4: How to Help - CTAs and social sharing
+- [x] Add paper texture and realistic styling
+- [x] Create page navigation with flip animation
+- [x] Integrate Newspaper route into App.tsx
+- [ ] Write vitest tests for InteractiveNewspaper component
+- [ ] Test page flip animations and navigation
+- [ ] Add newspaper link to navigation sidebar
+- [ ] Verify all pages render correctly

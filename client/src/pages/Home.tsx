@@ -3,6 +3,8 @@ import { AlertCircle, FileText, Globe, Play, Heart, Signature } from 'lucide-rea
 import { useState } from 'react';
 import { SurveyBox } from '@/components/SurveyBox';
 import { useAuth } from '@/_core/hooks/useAuth';
+import { LatestUpdatesTicker } from '@/components/LatestUpdatesTicker';
+import { SocialShareButtons } from '@/components/SocialShareButtons';
 
 const BG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_ljzvky_image_dac505a0.png";
 
@@ -34,6 +36,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* LATEST UPDATES TICKER */}
+      <LatestUpdatesTicker />
 
       {/* BIRTHDAY BANNER - Subtle, not overwhelming */}
       <div className="w-full bg-amber-100 text-black py-3 px-4 border-b-2 border-black">
@@ -174,6 +179,17 @@ export default function Home() {
             Help us document the pattern of systemic abuse across Canada. Your anonymous response helps build the case for accountability.
           </p>
           <SurveyBox />
+        </div>
+
+        {/* SOCIAL SHARE SECTION */}
+        <div className="mb-8 pb-8 border-b-4 border-black">
+          <SocialShareButtons
+            title="Justice for Barran - Indigenous Youth Fighting for Systemic Accountability"
+            text="Five years of systemic failure. A First Nations youth denied justice after attempted murder. UN complaint filed. Help amplify this story and demand accountability."
+            hashtags={['JusticeForBarran', 'IndigenousRights', 'EveryChildMatters', 'SystemicFailure']}
+            showLabel={true}
+            variant="horizontal"
+          />
         </div>
 
         {/* FOOTER SECTION - Call to Action */}
