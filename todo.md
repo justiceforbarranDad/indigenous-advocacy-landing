@@ -717,3 +717,100 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Test page flip animations and navigation
 - [ ] Add newspaper link to navigation sidebar
 - [ ] Verify all pages render correctly
+
+
+## COMPREHENSIVE FIXES & IMPROVEMENTS (March 29, 2026 - URGENT)
+
+### PHASE 1: NAVIGATION & MENU OPTIMIZATION
+- [ ] Reorganize hamburger menu into clear sections (max 5 top-level categories)
+- [ ] Add visual hierarchy to menu items (bold headers, indented subcategories)
+- [ ] Create breadcrumb navigation on all pages for easy backtracking
+- [ ] Add "Back to Home" button on all story pages
+- [ ] Implement sticky navigation bar that stays visible while scrolling
+- [ ] Add search functionality to find pages quickly
+- [ ] Collapse menu on page load (don't keep it open)
+- [ ] Add visual indicator showing current page in menu
+
+### PHASE 2: CONTENT CLARITY & READABILITY
+- [ ] Add clear page titles/headers at top of every page
+- [ ] Implement consistent typography hierarchy (H1, H2, H3)
+- [ ] Add table of contents on long pages (Timeline, Media Kit, etc.)
+- [ ] Break up long text blocks with subheadings every 200-300 words
+- [ ] Add visual dividers between major sections
+- [ ] Ensure adequate line spacing (1.6-1.8 for body text)
+- [ ] Increase font size for better readability (16px+ for body)
+- [ ] Add margin/padding around text blocks for breathing room
+- [ ] Use consistent color scheme for links (underline + color)
+- [ ] Make all links clearly distinguishable from regular text
+
+### PHASE 3: HOMEPAGE IMPROVEMENTS
+- [ ] Simplify homepage - remove overwhelming number of CTAs
+- [ ] Create clear "3-step" user journey (Learn → Support → Share)
+- [ ] Add introductory paragraph explaining what this site is about
+- [ ] Move secondary content below the fold
+- [ ] Add visual progress indicator showing campaign status
+- [ ] Create "Quick Links" section for most-visited pages
+- [ ] Add "Latest News" section with 3-5 most recent updates
+- [ ] Improve visual hierarchy between sections
+
+### PHASE 4: PAGE-SPECIFIC FIXES
+- [ ] Timeline page: Add interactive timeline with expandable sections
+- [ ] Accountability pages: Add filter/sort functionality
+- [ ] Story pages: Add "Continue Reading" links between related stories
+- [ ] Petition page: Show real signature count (or remove if not tracking)
+- [ ] Donation page: Simplify payment options, remove confusing choices
+- [ ] Podcast page: Add episode descriptions and transcripts
+- [ ] Newspaper page: Ensure page flip works smoothly on all devices
+
+### PHASE 5: VISUAL CONSISTENCY
+- [ ] Audit all pages for consistent styling
+- [ ] Ensure all buttons have same style and hover effects
+- [ ] Standardize card layouts across all pages
+- [ ] Fix any broken images or missing content
+- [ ] Verify all links work correctly
+- [ ] Check responsive design on mobile/tablet/desktop
+- [ ] Ensure black & white newspaper aesthetic is consistent
+
+### PHASE 6: PERFORMANCE & LOAD TIME
+- [ ] Optimize images for web (compress, lazy load)
+- [ ] Minimize CSS/JavaScript bundle size
+- [ ] Enable caching for static assets
+- [ ] Test page load times on slow connections
+- [ ] Add loading indicators for slow pages
+- [ ] Optimize podcast player performance
+
+### PHASE 7: ACCESSIBILITY IMPROVEMENTS
+- [ ] Add alt text to all images
+- [ ] Ensure color contrast meets WCAG standards
+- [ ] Add skip navigation links
+- [ ] Test keyboard navigation on all pages
+- [ ] Add focus indicators for interactive elements
+- [ ] Ensure form labels are properly associated
+- [ ] Test with screen readers
+
+### PHASE 8: MOBILE OPTIMIZATION
+- [ ] Test all pages on mobile devices
+- [ ] Ensure hamburger menu works smoothly
+- [ ] Fix any text overflow issues
+- [ ] Optimize touch targets (buttons should be 44px+)
+- [ ] Test form inputs on mobile
+- [ ] Verify video players work on mobile
+- [ ] Check horizontal scrolling issues
+
+### PHASE 9: USER ENGAGEMENT
+- [ ] Add "Share" buttons to all pages (not just homepage)
+- [ ] Create "Related Pages" section on story pages
+- [ ] Add "Subscribe" CTA on key pages
+- [ ] Implement scroll progress indicator on long pages
+- [ ] Add "Print" functionality to pages
+- [ ] Create downloadable PDF versions of key documents
+
+### PHASE 10: FINAL TESTING & DEPLOYMENT
+- [ ] Run all vitest tests
+- [ ] Manual testing on Chrome, Firefox, Safari, Edge
+- [ ] Test on iOS and Android devices
+- [ ] Verify all external links work
+- [ ] Check for console errors
+- [ ] Validate HTML/CSS
+- [ ] Save checkpoint with all fixes
+- [ ] Deploy to production

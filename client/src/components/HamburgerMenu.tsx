@@ -13,76 +13,47 @@ export function HamburgerMenu() {
 
   const sections = [
     {
-      title: 'Support',
+      title: '🏠 JUSTICE FOR BARRAN',
       links: [
-        { label: 'Donate Now (e-Transfer)', href: '/donate-etransfer' },
-        { label: 'Donate via GoFundMe', href: 'https://www.gofundme.com/f/justice-for-barran' },
-        { label: 'Share Your Story', href: '#' },
+        { label: 'Home', href: '/' },
+        { label: 'The Story (Timeline)', href: '/timeline' },
+        { label: 'Read Newspaper', href: '/newspaper-reader' },
       ],
     },
     {
-      title: 'Resources',
+      title: '💪 TAKE ACTION',
       links: [
-        { label: 'Resources & References', href: '/resources' },
-        { label: 'French Podcast 🎙️', href: '/french-podcast' },
-        { label: 'Ghosted by a Politician?', href: '/ghosted-by-politician' },
-        { label: 'Children\'s Rights & Education', href: '/childrens-rights' },
-        { label: 'International Legal Support', href: '/international-legal' },
-        { label: 'Parents & Non-Profit', href: '/parents-nonprofits' },
-        { label: 'Indigenous Nations & Languages', href: '/indigenous-nations' },
+        { label: 'Donate Now', href: '/donate-etransfer' },
+        { label: 'Sign Petition', href: '/accountability-petition' },
+        { label: 'Share Your Story', href: '/share-story' },
+        { label: 'Get Alerts', href: '/email-alerts' },
       ],
     },
     {
-      title: 'Our Story',
+      title: '📚 LEARN MORE',
       links: [
-        { label: 'The Trigger Event (Feb 27)', href: '/trigger-event' },
-        { label: 'Barran\'s Story (Feb 14, 2021)', href: '#' },
-        { label: 'Mother\'s Abuse & DPJ Failure', href: '#' },
+        { label: 'Government Accountability', href: '/government-accountability' },
+        { label: 'Corporate Accountability', href: '/corporate-accountability' },
         { label: 'DPJ Accountability', href: '/dpj-accountability' },
-        { label: 'Systemic Failures', href: '/systemic-failures' },
-        { label: 'Accountability Tracker', href: '#' },
+        { label: 'Podcast Episodes', href: '/podcast-hub' },
+        { label: 'Resources & References', href: '/resources' },
       ],
     },
     {
-      title: 'Connect',
+      title: '🤝 CONNECT',
       links: [
-        { label: 'Follow on X/Twitter', href: 'https://x.com/helpbarran?s=21' },
-        { label: 'Follow on TikTok', href: 'https://www.tiktok.com/@barranneedsjustice' },
+        { label: 'Follow on Twitter/X', href: 'https://x.com/helpbarran?s=21' },
         { label: 'Follow on Instagram', href: 'https://www.instagram.com/justiceforbarran' },
         { label: 'Follow on Facebook', href: 'https://www.facebook.com/share/1JbsMBESqK/?mibextid=wwXIfr' },
-        { label: 'Contact via Email', href: 'mailto:contact@justiceforbarran.org' },
+        { label: 'Contact Us', href: '/contact' },
       ],
     },
     {
-      title: 'Memorials',
+      title: '🕯️ MEMORIALS',
       links: [
-        { label: 'Interactive Newspaper', href: '/newspaper' },
-        { label: 'Issue Archive', href: '/issue-archive' },
         { label: 'Human Rights Activists', href: '/obituaries' },
         { label: 'Indigenous Soldiers', href: '/fallen-soldiers' },
-      ],
-    },
-    {
-      title: 'Support',
-      links: [
-        { label: 'Sponsorship & Pro Bono Legal', href: '/sponsorship' },
-        { label: 'Corporate Accountability', href: '/corporate-accountability' },
-        { label: 'Government Accountability', href: '/government-accountability' },
-        { label: 'Accountability Petition', href: '/accountability-petition' },
-        { label: 'Contact & Accountability', href: '/contact' },
-        { label: 'Credits & Acknowledgments', href: '/credits' },
-      ],
-    },
-    {
-      title: 'Resources',
-      links: [
-        { label: 'Campaign Dashboard (Live Metrics)', href: '/dashboard' },
-        { label: 'SMS Alerts - Get Urgent Notifications', href: '/sms-alerts' },
-        { label: 'Email Alerts - Detailed Updates', href: '/email-alerts' },
-        { label: 'Podcast Hub - Listen to Episodes', href: '/podcast-hub' },
-        { label: 'Read Newspaper (2-Page Spread)', href: '/newspaper-reader' },
-        { label: 'Timeline: 5 Years of Abandonment', href: '/timeline' },
-        { label: 'Media Kit & Press Releases', href: '/media-kit' },
+        { label: 'Media Kit', href: '/media-kit' },
       ],
     },
   ];
@@ -92,23 +63,24 @@ export function HamburgerMenu() {
       {/* 3-Dot Menu Button - Top Right */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 right-4 z-50 p-2 hover:bg-gray-100 rounded-lg transition-colors border-2 border-black"
+        className="fixed top-4 right-4 z-50 p-3 bg-black hover:bg-gray-800 rounded-lg transition-all border-3 border-black shadow-lg hover:shadow-xl transform hover:scale-110"
         aria-label="Toggle menu"
+        title="Menu"
       >
         {isOpen ? (
-          <X size={28} className="text-black" />
+          <X size={32} className="text-white" />
         ) : (
-          <MoreVertical size={28} className="text-black" />
+          <MoreVertical size={32} className="text-white" />
         )}
       </button>
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="fixed top-16 right-4 z-40 bg-white rounded-lg shadow-2xl border-4 border-black w-72 max-h-[calc(100vh-100px)] overflow-y-auto">
+        <div className="fixed top-16 right-4 z-40 bg-white rounded-lg shadow-2xl border-4 border-black w-80 max-h-[calc(100vh-100px)] overflow-y-auto">
           <div className="p-6 space-y-6">
             {sections.map((section, idx) => (
               <div key={idx}>
-                <h4 className="font-bold text-black text-xs uppercase tracking-wider mb-3 border-b-2 border-black pb-2">
+                <h4 className="font-bold text-black text-sm uppercase tracking-wider mb-3 border-b-3 border-black pb-2">
                   {section.title}
                 </h4>
                 <ul className="space-y-2">
@@ -119,7 +91,7 @@ export function HamburgerMenu() {
                         target={link.href.startsWith('http') ? '_blank' : undefined}
                         rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                         onClick={() => setIsOpen(false)}
-                        className="text-sm text-black hover:font-bold transition-colors block py-1 hover:pl-1"
+                        className="text-base text-black hover:font-bold hover:bg-gray-100 transition-colors block py-2 px-2 rounded hover:pl-3"
                       >
                         {link.label}
                       </a>

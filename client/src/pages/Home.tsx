@@ -144,6 +144,22 @@ export default function Home() {
 
           </div>
 
+          {/* QR CODE FOR E-TRANSFER */}
+          <div className="border-t-4 border-black pt-6 mt-6 text-center">
+            <p className="text-sm font-bold uppercase tracking-wider mb-4">Quick Donate via E-Transfer</p>
+            <div className="flex justify-center mb-6">
+              <div className="bg-white p-4 border-2 border-black rounded-lg">
+                <img 
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/etransfer-qr-code_ff93fad3.png" 
+                  alt="E-Transfer QR Code" 
+                  className="w-48 h-48"
+                />
+              </div>
+            </div>
+            <p className="text-xs mb-4"><strong>Email:</strong> justiceforbarran@gmail.com</p>
+            <p className="text-xs text-gray-600 mb-6">Scan to send e-Transfer directly (no password required)</p>
+          </div>
+
           {/* BOTTOM SECTION - CALL TO ACTION */}
           <div className="border-t-4 border-black pt-6 mt-6">
             <div className="grid grid-cols-3 gap-4 text-center">
