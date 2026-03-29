@@ -81,6 +81,7 @@ import AccountabilityPetition from "./pages/AccountabilityPetition";
 import GovernmentAccountability from "./pages/GovernmentAccountability";
 import InteractiveTimeline from "./pages/InteractiveTimeline";
 import MediaKit from "./pages/MediaKit";
+import Contact from "./pages/Contact";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 
@@ -164,6 +165,7 @@ function Router() {
       <Route path="/government-accountability" component={GovernmentAccountability} />
       <Route path="/timeline" component={InteractiveTimeline} />
       <Route path="/media-kit" component={MediaKit} />
+      <Route path="/contact" component={Contact} />
       <Route path={"*"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
