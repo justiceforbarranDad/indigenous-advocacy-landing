@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { ExternalLink, Twitter } from 'lucide-react';
 import { Link } from 'wouter';
 
@@ -190,7 +191,93 @@ const tweetTemplates = [
   }
 ];
 
+// RESPONSE TRACKING DATA
+interface OfficialResponse {
+  id: string;
+  name: string;
+  level: 'federal' | 'provincial' | 'municipal';
+  responseStatus: 'no-response' | 'partial-response' | 'inadequate-response' | 'no-action';
+  lastContactDate: string;
+  contactAttempts: number;
+  notes: string;
+}
+
+const responseTracking: OfficialResponse[] = [
+  {
+    id: 'mp-annie-koutrakis',
+    name: 'Annie Koutrakis (MP)',
+    level: 'federal',
+    responseStatus: 'no-response',
+    lastContactDate: 'March 15, 2026',
+    contactAttempts: 3,
+    notes: 'Multiple emails and phone calls. No response from office.'
+  },
+  {
+    id: 'mna-celine-haytayan',
+    name: 'Céline Haytayan (MNA)',
+    level: 'provincial',
+    responseStatus: 'no-response',
+    lastContactDate: 'November 19, 2023',
+    contactAttempts: 1,
+    notes: 'CEASE-AND-DESIST: Office sent cease-and-desist letter threatening criminal harassment charges.'
+  },
+  {
+    id: 'cdpdj',
+    name: 'CDPDJ (Quebec Human Rights)',
+    level: 'provincial',
+    responseStatus: 'partial-response',
+    lastContactDate: 'March 10, 2026',
+    contactAttempts: 3,
+    notes: 'Rejected investigation requests (2x). Released Nunavik systemic inquiry documenting DPJ failures.'
+  },
+  {
+    id: 'chrc',
+    name: 'Canadian Human Rights Commission',
+    level: 'federal',
+    responseStatus: 'inadequate-response',
+    lastContactDate: 'March 1, 2026',
+    contactAttempts: 2,
+    notes: 'Responded with limited action, claiming jurisdictional limits.'
+  },
+  {
+    id: 'protecteur',
+    name: 'Protecteur du Citoyen',
+    level: 'provincial',
+    responseStatus: 'inadequate-response',
+    lastContactDate: 'February 15, 2026',
+    contactAttempts: 2,
+    notes: 'Responded claiming "limited powers" to intervene in DPJ matters.'
+  }
+];
+
 export default function GovernmentAccountability() {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  
+  const stats = {
+    total: responseTracking.length,
+    noResponse: responseTracking.filter(o => o.responseStatus === 'no-response').length,
+    partialResponse: responseTracking.filter(o => o.responseStatus === 'partial-response').length,
+    inadequateResponse: responseTracking.filter(o => o.responseStatus === 'inadequate-response').length,
+  };
+  
+  const getStatusColor = (status: string) => {
+    switch(status) {
+      case 'no-response': return 'bg-red-100 border-red-500 text-red-700';
+      case 'partial-response': return 'bg-yellow-100 border-yellow-500 text-yellow-700';
+      case 'inadequate-response': return 'bg-orange-100 border-orange-500 text-orange-700';
+      default: return 'bg-gray-100 border-gray-500 text-gray-700';
+    }
+  };
+  
+  const getStatusLabel = (status: string) => {
+    switch(status) {
+      case 'no-response': return 'NO RESPONSE';
+      case 'partial-response': return 'PARTIAL RESPONSE';
+      case 'inadequate-response': return 'INADEQUATE RESPONSE';
+      default: return 'UNKNOWN';
+    }
+  };
+  
   return (
     <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
       {/* MASTHEAD */}
