@@ -3,6 +3,7 @@ export interface PodcastEpisode {
   episodeNumber: number;
   title: string;
   description: string;
+  audioUrl: string;
   speechifyUrl: string;
   duration: string;
   language: string;
@@ -16,6 +17,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     episodeNumber: 1,
     title: "Dix dollars : l'abandon d'une victime",
     description: "Ten dollars per day. This is the amount Quebec's victim compensation program deemed sufficient for a 14-year-old Indigenous boy who survived three knife wounds to the chest and back. This episode explores the systemic abandonment of Barran and how institutions failed to provide adequate care despite legal obligations.",
+    audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep1-justice-pour-barran_84085505.wav",
     speechifyUrl: "https://speechify.app.link/sIQ3mkmPU1b",
     duration: "15:18",
     language: "French / English",
@@ -27,6 +29,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     episodeNumber: 2,
     title: "Jordan's Principle: A Law That Doesn't Protect",
     description: "Jordan's Principle was created to ensure no Indigenous child falls through the cracks between federal and provincial jurisdictions. Yet in 2026, Barran's case proves this principle remains largely unenforced. This episode examines the legal framework, institutional failures, and what real reconciliation would require.",
+    audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep2-dimanche-sanglant_9feaade5.wav",
     speechifyUrl: "https://speechify.app.link/lcpZ2okPU1b",
     duration: "18:45",
     language: "French / English",
@@ -38,6 +41,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     episodeNumber: 3,
     title: "Justice for Barran: The UN Letter",
     description: "A comprehensive testimony exposing five years of institutional abandonment, government retaliation, and corporate performative reconciliation. This episode calls for a National Day of Reckoning and the establishment of a Legal Fund for Voiceless Victims.",
+    audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep3-silence-politiciens_518d07f1.wav",
     speechifyUrl: "https://justiceforbarran.com",
     duration: "28:45",
     language: "English / French",

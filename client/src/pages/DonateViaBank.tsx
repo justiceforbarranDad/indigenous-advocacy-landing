@@ -95,23 +95,15 @@ export default function DonateViaBank() {
             If you're in Canada, use your bank's e-Transfer service to send money to <strong>justiceforbarran@gmail.com</strong>
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {canadianBanks.map((bank, idx) => (
-              <a
-                key={idx}
-                href={bank.etransferUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-red-700 hover:shadow-lg transition-all"
-              >
-                <div className="text-4xl mb-4">{bank.logo}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{bank.name}</h3>
-                <p className="text-gray-600 mb-4">{bank.description}</p>
-                <div className="flex items-center gap-2 text-red-700 font-semibold">
-                  Send e-Transfer <ArrowRight size={18} />
-                </div>
-              </a>
-            ))}
+          <div className="bg-green-50 border-2 border-green-700 rounded-lg p-8">
+            <div className="text-5xl mb-4 text-center">💳</div>
+            <h3 className="text-2xl font-bold text-green-900 mb-4 text-center">All Canadian Banks Support e-Transfer</h3>
+            <p className="text-green-800 text-center text-lg mb-6">
+              Use your bank's e-Transfer service to send money to:
+            </p>
+            <div className="bg-white border-2 border-green-700 rounded-lg p-4 text-center">
+              <p className="text-2xl font-bold text-green-900">justiceforbarran@gmail.com</p>
+            </div>
           </div>
 
           {/* E-TRANSFER INSTRUCTIONS */}
