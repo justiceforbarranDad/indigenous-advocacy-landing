@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Share2, Download, FileText } from 'lucide-react';
+import { LanguageToggle } from './LanguageToggle';
 
 interface PodcastPlayerProps {
   title: string;
@@ -11,6 +12,7 @@ interface PodcastPlayerProps {
   date?: string;
   compact?: boolean;
   speechifyUrl?: string;
+  frenchAudioUrl?: string;
   transcript?: string;
   onShare?: () => void;
 }
@@ -25,6 +27,7 @@ export function PodcastPlayer({
   date,
   compact = false,
   speechifyUrl,
+  frenchAudioUrl,
   transcript,
   onShare
 }: PodcastPlayerProps) {
@@ -36,6 +39,22 @@ export function PodcastPlayer({
   const [isMuted, setIsMuted] = useState(false);
   const [showTranscript, setShowTranscript] = useState(false);
   const [showSpeechify, setShowSpeechify] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState<'english' | 'french'>(language === 'FR' ? 'french' : 'english');
+  const [currentAudioUrl, setCurrentAudioUrl] = useState(audioUrl);
+
+  const handleLanguageChange = (newLanguage: 'english' | 'french') => {
+    setCurrentLanguage(newLanguage);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+      setCurrentTime(0);
+    }
+    if (newLanguage === 'french' && frenchAudioUrl) {
+      setCurrentAudioUrl(frenchAudioUrl);
+    } else {
+      setCurrentAudioUrl(audioUrl);
+    }
+  };
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -116,7 +135,7 @@ export function PodcastPlayer({
   if (compact) {
     return (
       <div className="bg-white border-2 border-black p-3 rounded-lg">
-        <audio ref={audioRef} src={audioUrl} />
+        <audio ref={audioRef} src={currentAudioUrl} />
         
         <div className="flex items-center gap-3">
           <button
@@ -152,7 +171,17 @@ export function PodcastPlayer({
 
   return (
     <div className="bg-white border-4 border-black p-6 rounded-lg shadow-lg">
-      <audio ref={audioRef} src={audioUrl} />
+      <audio ref={audioRef} src={currentAudioUrl} />
+
+      {/* Language Toggle */}
+      {frenchAudioUrl && (
+        <div className="mb-6">
+          <LanguageToggle
+            currentLanguage={currentLanguage}
+            onLanguageChange={handleLanguageChange}
+          />
+        </div>
+      )}
 
       {/* Header */}
       <div className="mb-6">
@@ -164,7 +193,7 @@ export function PodcastPlayer({
             )}
           </div>
           <span className="bg-black text-white px-3 py-1 rounded text-xs font-bold">
-            {language}
+            {currentLanguage === 'english' ? '🇬🇧 English' : '🇫🇷 Français'}
           </span>
         </div>
         {date && <p className="text-sm text-gray-600">{date}</p>}

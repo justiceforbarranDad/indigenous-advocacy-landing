@@ -321,6 +321,13 @@
 - [ ] Ready for public accountability campaign
 
 
+## PODCAST LANGUAGE TOGGLE (March 30, 2026 - NEW)
+- [ ] Create LanguageToggle component for podcast player
+- [ ] Add English/French switcher buttons to each podcast episode
+- [ ] Integrate language switcher into podcast episodes data
+- [ ] Test language switching on all three domains (.ca, .com, .org)
+- [ ] Verify both English and French audio files load correctly
+
 ## NEW FEATURES - MARCH 15, 2026 SESSION 2
 - [x] Newspaper-Style Timeline Redesign - Vintage newspaper aesthetic with black & white (2020-2023) transitioning to color (2024-2026) - COMPLETE
 - [x] Donation Tracker Widget - Real-time counter on homepage showing total donations and progress toward legal fund goals - COMPLETE
