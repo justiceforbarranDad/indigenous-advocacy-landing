@@ -1093,3 +1093,15 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Run all tests and verify passing
 - [ ] Check dev server health
 - [ ] Save checkpoint with all features
+
+
+## STRIPE PAYMENT INTEGRATION (March 30, 2026 - IN PROGRESS)
+- [x] Fix TypeScript errors in webhook handler
+- [ ] Add Stripe checkout procedures to server routers
+- [ ] Create donation checkout button on DonationDashboard
+- [ ] Implement Stripe webhook handler at /api/stripe/webhook
+- [ ] Add payment history tracking in database
+- [ ] Create payment confirmation emails
+- [ ] Add admin payment management panel
+- [ ] Test Stripe integration end-to-end
+- [ ] Save checkpoint with Stripe activated

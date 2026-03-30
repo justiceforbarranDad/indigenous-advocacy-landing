@@ -103,6 +103,7 @@ import PodcastSubscribe from "./pages/PodcastSubscribe";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 import SundayBloodyySundayPart3 from "./pages/SundayBloodyySundayPart3";
+import DonationSuccess from "./pages/DonationSuccess";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -200,6 +201,7 @@ function Router() {
       <Route path="/donate-interac" component={InteracDonationInterface} />
       <Route path="/subscribe" component={PodcastSubscribe} />
       <Route path="/podcast-subscribe" component={PodcastSubscribe} />
+      <Route path="/donation-success" component={DonationSuccess} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>

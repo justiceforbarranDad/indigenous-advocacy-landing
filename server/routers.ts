@@ -10,6 +10,9 @@ import { exportSurveyAsCSV, exportAnalyticsSummaryAsCSV, generateAnalyticsReport
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
 import { subscriptionRouter } from "./routers/subscriptions";
 import { generateRSSFeed, getPodcastFeedConfig, getPodcastEpisodesForRSS } from "./rss-feed";
+import Stripe from "stripe";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "");
 
 export const appRouter = router({
   system: systemRouter,
@@ -76,6 +79,65 @@ export const appRouter = router({
       }))
       .query(async ({ input }) => {
         return await getPublicSurvivorStories(input.limit, input.offset);
+      }),
+  }),
+
+  stripe: router({
+    createCheckoutSession: publicProcedure
+      .input(z.object({
+        amount: z.number().min(0.50, "Minimum donation is $0.50"),
+        donorName: z.string().min(1, "Name is required"),
+        donorEmail: z.string().email("Valid email required"),
+        message: z.string().optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        try {
+          const session = await stripe.checkout.sessions.create({
+            payment_method_types: ["card"],
+            line_items: [
+              {
+                price_data: {
+                  currency: "usd",
+                  product_data: {
+                    name: "Donation - Justice for Barran",
+                    description: input.message || "Support Indigenous Justice Advocacy",
+                  },
+                  unit_amount: Math.round(input.amount * 100),
+                },
+                quantity: 1,
+              },
+            ],
+            mode: "payment",
+            success_url: `${ctx.req.headers.origin}/donation-success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${ctx.req.headers.origin}/donate`,
+            customer_email: input.donorEmail,
+            metadata: {
+              donorName: input.donorName,
+              donorEmail: input.donorEmail,
+              message: input.message || "",
+            },
+          });
+          return { sessionId: session.id, url: session.url };
+        } catch (error) {
+          console.error("Error creating checkout session:", error);
+          throw new Error("Failed to create checkout session");
+        }
+      }),
+
+    getPaymentStatus: publicProcedure
+      .input(z.object({ sessionId: z.string() }))
+      .query(async ({ input }) => {
+        try {
+          const session = await stripe.checkout.sessions.retrieve(input.sessionId);
+          return {
+            status: session.payment_status,
+            amount: (session.amount_total || 0) / 100,
+            currency: session.currency,
+          };
+        } catch (error) {
+          console.error("Error retrieving payment status:", error);
+          throw new Error("Failed to retrieve payment status");
+        }
       }),
   }),
 
