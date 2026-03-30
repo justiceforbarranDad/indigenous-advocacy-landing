@@ -14,6 +14,9 @@ export default function Home() {
   const { user, loading, error, isAuthenticated, logout } = useAuth();
   const [expandedLetter, setExpandedLetter] = useState('en');
 
+  // If theme is switchable in App.tsx, we can implement theme toggling like this:
+  // const { theme, toggleTheme } = useTheme();
+
   return (
     <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
       {/* SINGLE PAGE NEWSPAPER LAYOUT */}

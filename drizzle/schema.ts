@@ -45,13 +45,15 @@ export type InsertSurvivorStory = typeof survivorStories.$inferInsert;
 // Donations Table
 export const donations = mysqlTable("donations", {
   id: int("id").autoincrement().primaryKey(),
+  userId: int("user_id"),
   donorName: varchar("donor_name", { length: 255 }).notNull(),
   donorEmail: varchar("donor_email", { length: 320 }).notNull(),
   amount: int("amount").notNull(), // Amount in cents (CAD)
-  method: mysqlEnum("method", ["etransfer", "gofundme", "other"]).notNull(),
+  method: mysqlEnum("method", ["etransfer", "gofundme", "stripe", "other"]).notNull(),
   message: text("message"),
   isAnonymous: mysqlEnum("is_anonymous", ["yes", "no"]).default("no").notNull(),
   status: mysqlEnum("status", ["pending", "confirmed", "failed"]).default("pending").notNull(),
+  stripePaymentIntentId: varchar("stripe_payment_intent_id", { length: 255 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -195,3 +197,21 @@ export const surveyResponses = mysqlTable("survey_responses", {
 
 export type SurveyResponse = typeof surveyResponses.$inferSelect;
 export type InsertSurveyResponse = typeof surveyResponses.$inferInsert;
+
+// Stripe Payments Table
+export const stripePayments = mysqlTable("stripe_payments", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("user_id"),
+  paymentIntentId: varchar("payment_intent_id", { length: 255 }).notNull().unique(),
+  amount: int("amount").notNull(), // Amount in cents
+  currency: varchar("currency", { length: 3 }).default("CAD").notNull(),
+  status: mysqlEnum("status", ["pending", "succeeded", "failed", "canceled"]).default("pending").notNull(),
+  customerEmail: varchar("customer_email", { length: 320 }).notNull(),
+  customerName: varchar("customer_name", { length: 255 }),
+  metadata: text("metadata"), // JSON metadata
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type StripePayment = typeof stripePayments.$inferSelect;
+export type InsertStripePayment = typeof stripePayments.$inferInsert;

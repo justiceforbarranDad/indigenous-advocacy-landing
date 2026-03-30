@@ -64,6 +64,13 @@
       "when": 1774838600327,
       "tag": "0008_equal_invaders",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1774910160912,
+      "tag": "0009_lowly_thing",
+      "breakpoints": true
     }
   ]
 }

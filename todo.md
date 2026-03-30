@@ -124,7 +124,7 @@
 
 
 ## CRITICAL NEW FEATURES (Latest User Request - Feb 27, 2026 Trigger Event)
-- [ ] Mask personal information - emails (jamesrobertmcgovern@hotmail.com, christie.perpignan@gmail.com), phone (438-926-3636)
+- [x] Mask personal information - removed christie.perpignan@gmail.com (Barran Step Mom), kept jamesrobertmcgovern@hotmail.com and phone (438-926-3636) masked
 - [ ] Wellness Check Page - Feb 27, 2026 Governor General's office wellness check (THE TRIGGER EVENT)
 - [ ] Officials Who Blocked You - Valérie Schmaltz, Annie Koutrakis, Ian Lafrenière
 - [ ] Ian Lafrenière accountability - Quebec Indian Affairs Minister & Public Safety Minister
@@ -913,7 +913,7 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Reset all donation metrics to 0 (accurate statements only)
 - [ ] Add professional byline and publication date
 - [ ] Create compelling headline and subheading
-- [ ] Add author information (Robert McGovern)
+- [x] Add author information (Dad - Biological Father of Barran)
 - [ ] Implement smooth scrolling and animations
 - [ ] Test on desktop, tablet, and mobile devices
 - [ ] Test all donation methods (e-Transfer, Stripe, recurring)
@@ -1046,3 +1046,50 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Add easy domain sharing (.com/.ca) - Share buttons with pre-filled URLs
 - [ ] Enable social sharing buttons - Share to X, Facebook, TikTok, Instagram, Reddit
 - [ ] Create donation dashboard - Real-time tracking of contributions and campaign momentum
+
+
+## PHASE 1: USER AUTHENTICATION UI (March 30, 2026)
+- [ ] Add login button to header (when not authenticated)
+- [ ] Add user profile dropdown to header (when authenticated)
+- [ ] Add logout button in user dropdown
+- [ ] Create user profile page (/profile)
+- [ ] Display user's donation history on profile
+- [ ] Add user settings page
+- [ ] Test authentication flow end-to-end
+
+## PHASE 2: STRIPE PAYMENT INTEGRATION (March 30, 2026)
+- [ ] Create Stripe checkout session endpoint
+- [ ] Add Stripe webhook handler at /api/stripe/webhook
+- [ ] Create donation checkout page
+- [ ] Implement payment success page
+- [ ] Implement payment cancel page
+- [ ] Store donation records in database
+- [ ] Create donation history view
+- [ ] Test payment flow with Stripe test card (4242 4242 4242 4242)
+
+## PHASE 3: EMAIL NOTIFICATIONS (March 30, 2026)
+- [ ] Set up email service integration
+- [ ] Create donation confirmation email template
+- [ ] Create story submission confirmation email
+- [ ] Create admin notification email for new submissions
+- [ ] Implement email sending in tRPC procedures
+- [ ] Test email delivery
+
+## PHASE 4: ADMIN DASHBOARD (March 30, 2026)
+- [ ] Create admin-only dashboard page
+- [ ] Add role-based access control (admin vs user)
+- [ ] Display all donations with filters
+- [ ] Display all story submissions with approval workflow
+- [ ] Display campaign statistics
+- [ ] Add ability to approve/reject stories
+- [ ] Add ability to manage campaigns
+- [ ] Create admin-only routes
+
+## TESTING & DEPLOYMENT (March 30, 2026)
+- [ ] Write vitest tests for auth procedures
+- [ ] Write vitest tests for payment procedures
+- [ ] Write vitest tests for email procedures
+- [ ] Write vitest tests for admin procedures
+- [ ] Run all tests and verify passing
+- [ ] Check dev server health
+- [ ] Save checkpoint with all features
