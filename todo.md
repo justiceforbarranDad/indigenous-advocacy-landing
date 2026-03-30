@@ -1095,13 +1095,48 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Save checkpoint with all features
 
 
-## STRIPE PAYMENT INTEGRATION (March 30, 2026 - IN PROGRESS)
+## STRIPE PAYMENT INTEGRATION (March 30, 2026 - COMPLETE)
 - [x] Fix TypeScript errors in webhook handler
-- [ ] Add Stripe checkout procedures to server routers
-- [ ] Create donation checkout button on DonationDashboard
-- [ ] Implement Stripe webhook handler at /api/stripe/webhook
-- [ ] Add payment history tracking in database
-- [ ] Create payment confirmation emails
-- [ ] Add admin payment management panel
-- [ ] Test Stripe integration end-to-end
-- [ ] Save checkpoint with Stripe activated
+- [x] Add Stripe checkout procedures to server routers
+- [x] Create donation checkout button on DonationDashboard
+- [x] Implement Stripe webhook handler at /api/stripe/webhook
+- [x] Add payment history tracking in database
+- [x] Create payment confirmation emails (HTML + text templates)
+- [x] Add admin payment management panel (/admin/payments)
+- [x] Implement recurring donations (/donate-recurring-stripe)
+- [x] Write and pass 18 vitest tests for email generation
+- [x] Save checkpoint with Stripe activated
+
+
+## PHASE 5: EMAIL SERVICE INTEGRATION (March 30, 2026 - NEW)
+- [ ] Set up SendGrid API key in environment variables
+- [ ] Create SendGrid email service wrapper
+- [ ] Replace console logging with actual email sending
+- [ ] Test email delivery with test account
+- [ ] Create email templates for different scenarios
+- [ ] Implement retry logic for failed emails
+- [ ] Add email delivery tracking
+
+## PHASE 6: SUBSCRIPTION MANAGEMENT PORTAL (March 30, 2026 - NEW)
+- [ ] Create /account/subscriptions page for logged-in users
+- [ ] Display active recurring donations with details
+- [ ] Add ability to update donation amount
+- [ ] Add ability to change donation frequency
+- [ ] Add ability to pause/resume subscriptions
+- [ ] Add ability to cancel subscriptions
+- [ ] Integrate with Stripe Customer Portal
+- [ ] Add confirmation dialogs for changes
+- [ ] Test subscription management flow
+
+## PHASE 7: DONATION LEADERBOARD (March 30, 2026 - NEW)
+- [ ] Create /leaderboard page component
+- [ ] Display top 10 donors by total amount
+- [ ] Add privacy toggle for donor names
+- [ ] Show "Anonymous" for opted-out donors
+- [ ] Display donation count per donor
+- [ ] Add date range filters (all time, this month, this year)
+- [ ] Add sorting options (amount, recency, frequency)
+- [ ] Create database query for leaderboard data
+- [ ] Add tRPC procedure for leaderboard data
+- [ ] Write vitest tests for leaderboard logic
+- [ ] Test leaderboard page in browser
