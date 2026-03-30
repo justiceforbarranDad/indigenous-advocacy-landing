@@ -112,6 +112,13 @@ export function DonationDashboard() {
         </div>
       </div>
 
+      {/* Payment Options Notice */}
+      <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4 rounded mb-4">
+        <p className="text-sm text-gray-800">
+          <span className="font-bold text-yellow-700">💳 Payment Options Coming Soon</span> — Online payment processing will be available soon. Currently, you can donate via <span className="font-semibold">e-transfer</span> or contact us directly.
+        </p>
+      </div>
+
       {/* Impact Message */}
       <div className="bg-red-100 border-l-4 border-red-700 p-4 rounded">
         <p className="text-sm text-gray-800">
