@@ -968,3 +968,33 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 ### Podcast Episodes (Speechify):
 - Episode 1: https://speechify.app.link/sIQ3mkmPU1b
 - Episode 2: https://speechify.app.link/lcpZ2okPU1b
+
+
+## PODCAST ENHANCEMENT (March 29, 2026 - NEW)
+- [ ] Option A: Embed Speechify player directly on site
+- [ ] Option B: Add custom audio player with visible controls
+- [ ] Option C: Add translation/transcription features
+- [ ] Add podcast episode titles and descriptions
+- [ ] Add social media sharing buttons for podcast episodes
+- [ ] Test all podcast playback functionality
+
+
+## PODCAST ENHANCEMENT (March 30, 2026 - COMPLETE)
+- [x] Create custom PodcastPlayer component with play/pause, volume, progress, speed controls
+- [x] Add Speechify embedding with direct links to podcast platform
+- [x] Add transcript/translation toggle feature with full episode transcripts
+- [x] Create podcast episode data structure with metadata (2 episodes with full transcripts)
+- [x] Integrate PodcastPlayer into ModernHome.tsx with episode mapping
+- [x] Add social media sharing functionality for episodes (navigator.share API)
+- [x] Write and run vitest tests for PodcastPlayer component (all tests passing)
+- [x] Test all features in browser:
+  - [x] Play/pause controls working
+  - [x] Progress bar and time display functional
+  - [x] Volume control slider responsive
+  - [x] Playback speed selector (0.75x to 2x) working
+  - [x] Download button functional
+  - [x] Transcript toggle reveals full episode transcripts in French and English
+  - [x] Speechify links open in new tab with correct URLs
+  - [x] Share button triggers native share API
+- [x] Episode 1: "Dix dollars : l'abandon d'une victime" (15:18) - Full transcript with French/English
+- [x] Episode 2: "Jordan's Principle: A Law That Doesn't Protect" (18:45) - Full transcript with French/English

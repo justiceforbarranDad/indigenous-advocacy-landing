@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Share2, Download, FileText } from 'lucide-react';
 
 interface PodcastPlayerProps {
   title: string;
@@ -10,6 +10,9 @@ interface PodcastPlayerProps {
   episodeNumber?: number;
   date?: string;
   compact?: boolean;
+  speechifyUrl?: string;
+  transcript?: string;
+  onShare?: () => void;
 }
 
 export function PodcastPlayer({
@@ -20,7 +23,10 @@ export function PodcastPlayer({
   language = 'EN',
   episodeNumber,
   date,
-  compact = false
+  compact = false,
+  speechifyUrl,
+  transcript,
+  onShare
 }: PodcastPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -28,6 +34,8 @@ export function PodcastPlayer({
   const [totalDuration, setTotalDuration] = useState(duration || 0);
   const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(false);
+  const [showTranscript, setShowTranscript] = useState(false);
+  const [showSpeechify, setShowSpeechify] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -94,6 +102,15 @@ export function PodcastPlayer({
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  const handleDownload = () => {
+    const a = document.createElement('a');
+    a.href = audioUrl;
+    a.download = `${title}.mp3`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   if (compact) {
@@ -232,6 +249,66 @@ export function PodcastPlayer({
           </select>
         </div>
       </div>
+
+      {/* Additional Controls */}
+      <div className="flex gap-3 mt-4 flex-wrap">
+        {/* Download Button */}
+        <button
+          onClick={handleDownload}
+          className="flex items-center gap-2 px-4 py-2 border-2 border-black rounded-lg hover:bg-gray-100 transition-colors font-bold text-sm"
+          title="Download episode"
+        >
+          <Download size={18} />
+          Download
+        </button>
+
+        {/* Share Button */}
+        {onShare && (
+          <button
+            onClick={onShare}
+            className="flex items-center gap-2 px-4 py-2 border-2 border-black rounded-lg hover:bg-gray-100 transition-colors font-bold text-sm"
+            title="Share episode"
+          >
+            <Share2 size={18} />
+            Share
+          </button>
+        )}
+
+        {/* Transcript Button */}
+        {transcript && (
+          <button
+            onClick={() => setShowTranscript(!showTranscript)}
+            className="flex items-center gap-2 px-4 py-2 border-2 border-black rounded-lg hover:bg-gray-100 transition-colors font-bold text-sm"
+            title="Show transcript and translation"
+          >
+            <FileText size={18} />
+            {showTranscript ? 'Hide' : 'Show'} Transcript
+          </button>
+        )}
+
+        {/* Speechify Button */}
+        {speechifyUrl && (
+          <a
+            href={speechifyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 border-2 border-black rounded-lg hover:bg-gray-100 transition-colors font-bold text-sm bg-blue-50"
+            title="Listen on Speechify"
+          >
+            🎙️ Speechify
+          </a>
+        )}
+      </div>
+
+      {/* Transcript Section */}
+      {showTranscript && transcript && (
+        <div className="mt-6 p-4 bg-gray-50 border-2 border-black rounded-lg">
+          <h4 className="font-bold text-lg mb-3 text-black">Transcript & Translation</h4>
+          <div className="text-sm text-gray-800 whitespace-pre-wrap max-h-96 overflow-y-auto">
+            {transcript}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
