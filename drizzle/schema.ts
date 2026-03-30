@@ -59,6 +59,23 @@ export const donations = mysqlTable("donations", {
 export type Donation = typeof donations.$inferSelect;
 export type InsertDonation = typeof donations.$inferInsert;
 
+// Donation Campaign/Goal Table
+export const donationCampaigns = mysqlTable("donation_campaigns", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description").notNull(),
+  goalAmount: int("goal_amount").notNull(), // Amount in cents (CAD)
+  raisedAmount: int("raised_amount").default(0).notNull(), // Amount in cents (CAD)
+  isActive: mysqlEnum("is_active", ["yes", "no"]).default("yes").notNull(),
+  startDate: timestamp("start_date").defaultNow().notNull(),
+  endDate: timestamp("end_date"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type DonationCampaign = typeof donationCampaigns.$inferSelect;
+export type InsertDonationCampaign = typeof donationCampaigns.$inferInsert;
+
 // Legal Profiles Table
 export const legalProfiles = mysqlTable("legal_profiles", {
   id: int("id").autoincrement().primaryKey(),

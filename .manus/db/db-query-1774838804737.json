@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO donation_campaigns (title, description, goal_amount, raised_amount, is_active, start_date, createdAt, updatedAt) VALUES ('Comprehensive Legal Defense for Barran', 'Support independent legal action and systemic accountability efforts for Indigenous justice', 10000000, 0, 'yes', NOW(), NOW(), NOW());",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2qhnpeGcUhfkBQY.root --database AHjdMzisGBtTsV22ZEw3x9 --execute INSERT INTO donation_campaigns (title, description, goal_amount, raised_amount, is_active, start_date, createdAt, updatedAt) VALUES ('Comprehensive Legal Defense for Barran', 'Support independent legal action and systemic accountability efforts for Indigenous justice', 10000000, 0, 'yes', NOW(), NOW(), NOW());",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 127
+}

@@ -46,6 +46,7 @@ export default function Donate() {
   });
 
   const { data: totalData } = trpc.donations.getTotal.useQuery();
+  const { data: campaignData } = trpc.donations.getActiveCampaign.useQuery();
   const submitDonation = trpc.donations.submit.useMutation({
     onSuccess: () => {
       toast.success('Thank you for your donation!');
@@ -257,9 +258,38 @@ export default function Donate() {
                 </Button>
               </form>
 
+              {campaignData && (
+                <div className="mt-6 space-y-3">
+                  <div className="bg-black text-white p-6 rounded-lg">
+                    <h3 className="text-xl font-bold mb-2">{campaignData.title}</h3>
+                    <p className="text-sm text-gray-200 mb-4">{campaignData.description}</p>
+                    
+                    {/* Progress Bar */}
+                    <div className="mb-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-semibold">Raised: ${(campaignData.raisedAmount / 100).toFixed(2)}</span>
+                        <span className="text-sm font-semibold">Goal: ${(campaignData.goalAmount / 100).toFixed(2)}</span>
+                      </div>
+                      <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                        <div 
+                          className="bg-amber-orange h-full transition-all duration-500"
+                          style={{ width: `${Math.min(campaignData.percentageRaised, 100)}%` }}
+                        />
+                      </div>
+                      <p className="text-center text-sm font-bold text-amber-orange mt-2">
+                        {campaignData.percentageRaised}% Funded
+                      </p>
+                    </div>
+                    
+                    <p className="text-xs text-gray-300 text-center">
+                      Remaining: ${((campaignData.goalAmount - campaignData.raisedAmount) / 100).toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              )}
               {totalData && (
                 <div className="mt-6 p-4 bg-forest-green/10 rounded-lg text-center">
-                  <p className="text-sm text-charcoal-light mb-1">Total Raised</p>
+                  <p className="text-sm text-charcoal-light mb-1">Total Raised (All Time)</p>
                   <p className="text-2xl font-bold text-amber-orange">${totalData.totalCAD}</p>
                 </div>
               )}

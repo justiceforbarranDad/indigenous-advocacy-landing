@@ -1,0 +1,8 @@
+{
+  "query": "INSERT INTO donation_campaigns (title, description, goal_amount, raised_amount, is_active, start_date, created_at, updated_at) VALUES ('Comprehensive Legal Defense for Barran', 'Support independent legal action and systemic accountability efforts for Indigenous justice', 10000000, 0, 'yes', NOW(), NOW(), NOW());",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2qhnpeGcUhfkBQY.root --database AHjdMzisGBtTsV22ZEw3x9 --execute INSERT INTO donation_campaigns (title, description, goal_amount, raised_amount, is_active, start_date, created_at, updated_at) VALUES ('Comprehensive Legal Defense for Barran', 'Support independent legal action and systemic accountability efforts for Indigenous justice', 10000000, 0, 'yes', NOW(), NOW(), NOW());",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'created_at' in 'field list'"
+  ]
+}

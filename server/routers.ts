@@ -4,7 +4,7 @@ const COOKIE_NAME = "session";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
-import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile, incrementVideoView, getVideoViews, getAllVideoViews, subscribeEmail, getEmailSubscriber, unsubscribeEmail, getActiveSubscribers, createNewsUpdate, getPublishedNews, createEmailCampaign, submitSurveyResponse, getSurveyStats, getSurveyResponses } from "./db";
+import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile, incrementVideoView, getVideoViews, getAllVideoViews, subscribeEmail, getEmailSubscriber, unsubscribeEmail, getActiveSubscribers, createNewsUpdate, getPublishedNews, createEmailCampaign, submitSurveyResponse, getSurveyStats, getSurveyResponses, getActiveDonationCampaign, getDonationCampaignById, updateDonationCampaignRaisedAmount, getTotalRaisedAmount } from "./db";
 import { notifyOwner } from "./_core/notification";
 import { exportSurveyAsCSV, exportAnalyticsSummaryAsCSV, generateAnalyticsReport } from "./dataExport";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
@@ -128,6 +128,50 @@ export const appRouter = router({
       const totalCents = await getTotalDonations();
       return { totalCAD: (totalCents / 100).toFixed(2) };
     }),
+
+    getActiveCampaign: publicProcedure.query(async () => {
+      try {
+        const campaign = await getActiveDonationCampaign();
+        if (!campaign) {
+          return null;
+        }
+        return {
+          id: campaign.id,
+          title: campaign.title,
+          description: campaign.description,
+          goalAmount: campaign.goalAmount,
+          raisedAmount: campaign.raisedAmount,
+          percentageRaised: Math.round((campaign.raisedAmount / campaign.goalAmount) * 100),
+          isActive: campaign.isActive === "yes",
+        };
+      } catch (error) {
+        console.error("Error fetching donation campaign:", error);
+        return null;
+      }
+    }),
+
+    getCampaignById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        try {
+          const campaign = await getDonationCampaignById(input.id);
+          if (!campaign) {
+            return null;
+          }
+          return {
+            id: campaign.id,
+            title: campaign.title,
+            description: campaign.description,
+            goalAmount: campaign.goalAmount,
+            raisedAmount: campaign.raisedAmount,
+            percentageRaised: Math.round((campaign.raisedAmount / campaign.goalAmount) * 100),
+            isActive: campaign.isActive === "yes",
+          };
+        } catch (error) {
+          console.error("Error fetching donation campaign:", error);
+          return null;
+        }
+      }),
   }),
 
   parents: router({
@@ -428,5 +472,7 @@ export const appRouter = router({
       }
     }),
   }),
+
+
 });
 export type AppRouter = typeof appRouter;

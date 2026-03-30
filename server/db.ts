@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, legalProfiles, InsertLegalProfile, parentProfiles, InsertParentProfile, videoViews, InsertVideoView, emailSubscribers, InsertEmailSubscriber, newsUpdates, InsertNewsUpdate, emailCampaigns, InsertEmailCampaign, surveyResponses, InsertSurveyResponse } from "../drizzle/schema";
+import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, donationCampaigns, DonationCampaign, legalProfiles, InsertLegalProfile, parentProfiles, InsertParentProfile, videoViews, InsertVideoView, emailSubscribers, InsertEmailSubscriber, newsUpdates, InsertNewsUpdate, emailCampaigns, InsertEmailCampaign, surveyResponses, InsertSurveyResponse } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -364,4 +364,49 @@ export async function getSurveyResponses(limit: number = 100, offset: number = 0
   
   const result = await db.select().from(surveyResponses).limit(limit).offset(offset);
   return result;
+}
+
+// Donation Campaign Functions
+export async function getActiveDonationCampaign(): Promise<DonationCampaign | null> {
+  const db = await getDb();
+  if (!db) {
+    return null;
+  }
+  
+  const result = await db.select().from(donationCampaigns).where(eq(donationCampaigns.isActive, "yes")).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function getDonationCampaignById(id: number): Promise<DonationCampaign | null> {
+  const db = await getDb();
+  if (!db) {
+    return null;
+  }
+  
+  const result = await db.select().from(donationCampaigns).where(eq(donationCampaigns.id, id)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function updateDonationCampaignRaisedAmount(campaignId: number, newAmount: number) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  await db.update(donationCampaigns)
+    .set({
+      raisedAmount: newAmount,
+      updatedAt: new Date(),
+    })
+    .where(eq(donationCampaigns.id, campaignId));
+}
+
+export async function getTotalRaisedAmount(): Promise<number> {
+  const db = await getDb();
+  if (!db) {
+    return 0;
+  }
+  
+  const campaign = await getActiveDonationCampaign();
+  return campaign ? campaign.raisedAmount : 0;
 }
