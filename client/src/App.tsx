@@ -102,11 +102,13 @@ import InteracDonationInterface from "./pages/InteracDonationInterface";
 import PodcastSubscribe from "./pages/PodcastSubscribe";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
+import SundayBloodyySundayPart3 from "./pages/SundayBloodyySundayPart3";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>      <Route path={"/"} component={ModernHome} />
+      <Route path="/sunday-bloody-sunday-part-3" component={SundayBloodyySundayPart3} />
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
       <Route path="/donate" component={DonateWithSharing} />
