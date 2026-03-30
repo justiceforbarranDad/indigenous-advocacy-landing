@@ -6,6 +6,7 @@ import { LatestUpdatesTicker } from '@/components/LatestUpdatesTicker';
 import { SocialShareButtons } from '@/components/SocialShareButtons';
 import { DonationDashboard } from '@/components/DonationDashboard';
 import { DomainSharingWidget } from '@/components/DomainSharingWidget';
+import { TransparencyDashboard } from '@/components/TransparencyDashboard';
 
 const BG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_ljzvky_image_dac505a0.png";
 
@@ -198,6 +199,12 @@ export default function Home() {
               description=""
               showLabel={false}
             />
+          </div>
+
+          {/* TRANSPARENCY & ACCOUNTABILITY */}
+          <div className="border-t-4 border-black pt-6 mb-6">
+            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">COMPLETE TRANSPARENCY & ACCOUNTABILITY</p>
+            <TransparencyDashboard />
           </div>
 
           {/* SOCIAL SHARING */}
