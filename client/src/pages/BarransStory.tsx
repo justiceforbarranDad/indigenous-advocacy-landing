@@ -178,6 +178,76 @@ export default function BarransStory() {
           </Card>
         </div>
 
+        {/* Judge Pilon's Ruling: The Cover-Up */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-forest-green mb-6">Judge Pilon's Ruling: The Accountability Failure</h2>
+          
+          <Card className="p-8 bg-blue-50 border-2 border-blue-500">
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-2xl font-bold text-blue-700 mb-4">January 6, 2023 — Judge Dany Pilon Orders DPJ to Close Files</h3>
+                <p className="text-charcoal mb-4">
+                  After a court hearing, Judge Dany Pilon issued a landmark ruling: <strong>The DPJ's involvement with Barran and his sister was to be terminated immediately.</strong>
+                </p>
+                <p className="text-charcoal mb-4">
+                  The DPJ had requested a 6-month extension to continue their involvement. Judge Pilon rejected this request and ordered the files closed.
+                </p>
+              </div>
+
+              <div className="bg-white p-4 rounded border-l-2 border-blue-500">
+                <p className="font-semibold text-blue-700 mb-2">Judge's Key Finding (Point 30):</p>
+                <p className="text-charcoal italic">
+                  "The Court notes that all services obtained for the children were through the father's efforts—NOT DPJ efforts."
+                </p>
+              </div>
+
+              <div className="bg-white p-4 rounded border-l-2 border-blue-500">
+                <p className="font-semibold text-blue-700 mb-2">Judge's Conclusion (Point 39):</p>
+                <p className="text-charcoal italic">
+                  "The only interest in continuing DPJ involvement would be to allow the mother to obtain information about her children, which does not meet the objectives of the Law."
+                </p>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* The Revisor's Refusal to Sign */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-forest-green mb-6">The Revisor's Refusal: Accountability Erased</h2>
+          
+          <Card className="p-8 bg-red-50 border-2 border-red-500">
+            <div className="flex gap-4">
+              <AlertCircle className="w-8 h-8 text-red-600 flex-shrink-0" />
+              <div>
+                <h3 className="text-2xl font-bold text-red-700 mb-4">
+                  The Revisor Refused to Sign Her Name on Court Documents
+                </h3>
+                <div className="space-y-4 text-charcoal">
+                  <p>
+                    <strong>A revisor (legal professional) made the final recommendation to Judge Pilon.</strong> This recommendation led to the judge's decision to close the DPJ files.
+                  </p>
+                  <p>
+                    However, when the court documents were prepared, the revisor—Madame Stéphanie Bonneau (member of OPCQ, the professional order of criminologists in Quebec)—<strong>refused to put her name on the official court documents.</strong>
+                  </p>
+                  <p>
+                    This is extraordinary. A legal professional who influences a judge's decision refuses to sign her name. No accountability. No transparency. No responsibility.
+                  </p>
+                  <div className="bg-white p-4 rounded border-l-2 border-red-500 mt-4">
+                    <p className="font-semibold text-red-700 mb-2">Why This Matters</p>
+                    <ul className="space-y-2 text-sm">
+                      <li>✗ Revisors are ethically bound to sign their professional work</li>
+                      <li>✗ Without a signature, there is no accountability for the recommendation</li>
+                      <li>✗ The judge's decision rests on an unsigned recommendation</li>
+                      <li>✗ This is a procedural violation and breach of professional ethics</li>
+                      <li>✗ It suggests the system is protecting itself, not protecting children</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+
         {/* The Real Crime: System Failure */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-forest-green mb-6">The Real Crime: System Failure</h2>
@@ -301,7 +371,7 @@ export default function BarransStory() {
               <h3 className="text-xl font-bold text-red-700 mb-2">Cease-and-Desist Letter</h3>
               <p className="text-sm text-charcoal-light mb-4">November 19, 2023</p>
               <p className="text-charcoal mb-4">
-                Official warning from MNA Céline Haytayan threatening criminal harassment charges.
+                <strong>UNSIGNED letter</strong> from MNA Céline Haytayan's office (NOT from a lawyer) threatening criminal harassment charges for asking for help.
               </p>
               <Button className="w-full bg-red-700 hover:bg-red-800 text-white">
                 View Document
@@ -344,6 +414,18 @@ export default function BarransStory() {
               </Button>
             </Card>
 
+            {/* Judge Pilon Ruling */}
+            <Card className="p-6 bg-blue-50 border-2 border-blue-500">
+              <h3 className="text-xl font-bold text-blue-700 mb-2">Judge Pilon's Ruling</h3>
+              <p className="text-sm text-charcoal-light mb-4">January 6, 2023 - 2023 QCCQ 930</p>
+              <p className="text-charcoal mb-4">
+                Judge Dany Pilon orders DPJ closure. DPJ wanted 6 more months but judge rejected. "All services obtained through father's efforts."
+              </p>
+              <Button className="w-full bg-blue-700 hover:bg-blue-800 text-white">
+                View Ruling
+              </Button>
+            </Card>
+
             {/* CDPDJ Report */}
             <Card className="p-6 bg-purple-50 border-2 border-purple-500">
               <h3 className="text-xl font-bold text-purple-700 mb-2">CDPDJ Nunavik Inquiry</h3>
@@ -368,6 +450,149 @@ export default function BarransStory() {
               </Button>
             </Card>
           </div>
+        </div>
+
+        {/* Lawyer Accountability Section */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-forest-green mb-6">Lawyer Accountability: When Those Sworn to Protect Abandon Their Duty</h2>
+          
+          <div className="space-y-6">
+            {/* Children's Lawyer Abandonment */}
+            <Card className="p-8 bg-red-50 border-2 border-red-500">
+              <div className="flex gap-4">
+                <AlertCircle className="w-8 h-8 text-red-600 flex-shrink-0" />
+                <div>
+                  <h3 className="text-2xl font-bold text-red-700 mb-4">The Children's Lawyer Stepped Down One Month Before the Critical Hearing</h3>
+                  <div className="space-y-4 text-charcoal">
+                    <p>
+                      <strong>The teen had a lawyer appointed to represent his rights.</strong> This lawyer's job was to advocate for him in court. To protect his interests. To fight for him.
+                    </p>
+                    <p>
+                      One month before the January 6, 2023 hearing—the most critical hearing in the case—this lawyer stepped down.
+                    </p>
+                    <div className="bg-white p-4 rounded border-l-2 border-red-500">
+                      <p className="font-semibold text-red-700 mb-2">This lawyer never:</p>
+                      <ul className="space-y-1 text-sm">
+                        <li>✗ Asked why psychological services were denied</li>
+                        <li>✗ Challenged the DPJ's refusal to help</li>
+                        <li>✗ Fought for the services the court ordered</li>
+                        <li>✗ Advocated for the teen's rights in court</li>
+                      </ul>
+                    </div>
+                    <p className="font-semibold text-red-700">
+                      When the judge heard the case, the teen had NO lawyer protecting his interests. This is professional negligence. This is abandonment.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* Father's Lawyer Betrayal */}
+            <Card className="p-8 bg-red-50 border-2 border-red-500">
+              <div className="flex gap-4">
+                <AlertCircle className="w-8 h-8 text-red-600 flex-shrink-0" />
+                <div>
+                  <h3 className="text-2xl font-bold text-red-700 mb-4">The Father's Lawyer Quit Without Warning After 12 Years</h3>
+                  <div className="space-y-4 text-charcoal">
+                    <p>
+                      <strong>After 12 years of representation, the father's lawyer quit without warning.</strong> No explanation. No transition. Just gone.
+                    </p>
+                    <div className="bg-white p-4 rounded border-l-2 border-red-500">
+                      <p className="font-semibold text-red-700 mb-2">This lawyer:</p>
+                      <ul className="space-y-1 text-sm">
+                        <li>✗ Refused to provide case files</li>
+                        <li>✗ Refused to present the father's letter to the court</li>
+                        <li>✗ Left the father to represent himself at critical court dates</li>
+                        <li>✗ Never asked why the DPJ refused to help</li>
+                      </ul>
+                    </div>
+                    <p>
+                      The father had to do ALL the work himself. The judge later confirmed: <strong>"All services were obtained through the father's efforts—NOT the system's efforts."</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        {/* Ongoing Battles Section */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-forest-green mb-6">The Ongoing Battles: Twelve Years and Still Fighting</h2>
+          
+          <Card className="p-8 bg-orange-50 border-2 border-orange-500">
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-2xl font-bold text-orange-700 mb-4">12 Years of Court Battles</h3>
+                <div className="space-y-4 text-charcoal">
+                  <p>
+                    Since 2012, the family has been fighting in court: over 15 court appearances, over 500 hours of legal representation, custody battles that continue to 2026.
+                  </p>
+                  <p>
+                    The mother keeps changing lawyers. Every time the case moves forward, she changes attorneys. Buys more time. Forces postponements.
+                  </p>
+                  <p className="font-semibold text-orange-700">
+                    "She keeps buying time and changing lawyers. It's not fair for us, the victims."
+                  </p>
+                </div>
+              </div>
+
+              <div className="border-t-2 border-orange-300 pt-6">
+                <h3 className="text-2xl font-bold text-orange-700 mb-4">The Children's Wishes Are Clear</h3>
+                <div className="bg-white p-4 rounded border-l-2 border-orange-500">
+                  <ul className="space-y-2 text-charcoal">
+                    <li>✓ NO contact with their mother</li>
+                    <li>✓ Want to END all court proceedings</li>
+                    <li>✓ Need therapy and recovery</li>
+                    <li>✓ Are traumatized by ongoing legal battles</li>
+                  </ul>
+                  <p className="mt-4 text-sm text-orange-700 font-semibold">
+                    The DPJ confirmed this. The tribunal confirmed this. The judge confirmed this. But the legal battles continue.
+                  </p>
+                </div>
+              </div>
+
+              <div className="border-t-2 border-orange-300 pt-6">
+                <h3 className="text-2xl font-bold text-orange-700 mb-4">Political Intimidation</h3>
+                <div className="space-y-4 text-charcoal">
+                  <p>
+                    The father tried to ask his elected representative for help. The politician's office responded with an <strong>UNSIGNED cease-and-desist letter</strong> threatening criminal harassment charges if he contacts them again.
+                  </p>
+                  <p className="font-semibold text-orange-700">
+                    A concerned father asking for help was threatened with arrest. This is suppression of free speech. This is intimidation.
+                  </p>
+                </div>
+              </div>
+
+              <div className="border-t-2 border-orange-300 pt-6">
+                <h3 className="text-2xl font-bold text-orange-700 mb-4">IVAC's Refusal to Help Disabled Victim</h3>
+                <div className="space-y-4 text-charcoal">
+                  <p>
+                    The teen is now 18 years old and disabled. He was a victim of violent crime. He should be eligible for crime victim compensation.
+                  </p>
+                  <p>
+                    IVAC refused to help financially. Instead, he's forced to apply for welfare. An advocacy organization (CRARR) is now suing for discrimination.
+                  </p>
+                </div>
+              </div>
+
+              <div className="border-t-2 border-orange-300 pt-6">
+                <h3 className="text-2xl font-bold text-orange-700 mb-4">The Family in Crisis</h3>
+                <div className="bg-white p-4 rounded border-l-2 border-orange-500">
+                  <ul className="space-y-2 text-charcoal text-sm">
+                    <li>• Family of 9 on welfare</li>
+                    <li>• Cannot find housing</li>
+                    <li>• Teen broke foot months ago</li>
+                    <li>• Ongoing legal issues for 5+ years</li>
+                    <li>• All children suffering mental health impacts</li>
+                  </ul>
+                  <p className="mt-4 text-orange-700 font-semibold">
+                    The system that was supposed to help has destroyed this family.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Card>
         </div>
 
         {/* Social Sharing Section */}
