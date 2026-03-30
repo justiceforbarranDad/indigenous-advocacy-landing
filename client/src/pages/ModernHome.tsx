@@ -25,35 +25,36 @@ export default function ModernHome() {
     <div className="min-h-screen bg-white">
       {/* TOP NAVIGATION */}
       <nav className="bg-white border-b-4 border-red-700 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-gray-900">
+        <div className="max-w-7xl mx-auto px-3 md:px-4 py-3 md:py-4 flex justify-between items-center">
+          <div className="text-lg md:text-2xl font-bold text-gray-900">
             Justice for Barran
           </div>
-          <div className="flex gap-8">
-            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold">FRONT PAGE</a>
-            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold">BARRAN'S STORY</a>
-            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold">DONATE</a>
-            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold">CONTACT</a>
+          <div className="hidden md:flex gap-4 lg:gap-8">
+            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">FRONT PAGE</a>
+            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">BARRAN'S STORY</a>
+            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">DONATE</a>
+            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">CONTACT</a>
           </div>
+          <div className="md:hidden text-2xl">☰</div>
         </div>
       </nav>
 
       {/* HERO SECTION */}
-      <div className="relative h-96 bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden">
+      <div className="relative h-64 md:h-96 bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1557804506-669714d2e9d8?w=1200&h=400&fit=crop')`
           }}
         />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 h-full flex flex-col justify-center">
-          <h1 className="text-5xl font-bold text-white mb-4">
+        <div className="relative z-10 max-w-7xl mx-auto px-3 md:px-4 h-full flex flex-col justify-center">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">
             Sunday Bloody Sunday, Part Two
           </h1>
-          <p className="text-xl text-gray-200 mb-6 max-w-2xl">
+          <p className="text-sm md:text-lg lg:text-xl text-gray-200 mb-4 md:mb-6 max-w-2xl">
             Indigenous Teen Stabbed Three Times — System Failed Him For Five Years
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
             <a href="/donate-via-bank" className="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 font-bold rounded hover:bg-red-800 transition-colors">
               <Heart size={20} />
               SUPPORT THIS CAUSE
@@ -67,10 +68,10 @@ export default function ModernHome() {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* LEFT COLUMN - STORY */}
-          <div className="col-span-2">
+          <div className="md:col-span-2">
             <div className="mb-8">
               <span className="bg-red-700 text-white px-3 py-1 text-sm font-bold rounded">DEVELOPING STORY</span>
               <h2 className="text-3xl font-bold mt-4 mb-4">Indigenous Teen Stabbed Three Times — System Failed Him For Five Years</h2>
@@ -119,45 +120,46 @@ export default function ModernHome() {
 
           {/* RIGHT COLUMN - DONATION BOX */}
           <div>
-            <div className="bg-white border-4 border-red-700 p-6 rounded-lg sticky top-24">
-              <h3 className="text-2xl font-bold text-red-700 mb-4">Support Justice</h3>
-              <p className="text-gray-700 mb-6">100% of donations go directly to legal and advocacy efforts. No administrative fees.</p>
+            <div className="bg-white border-4 border-red-700 p-4 md:p-6 rounded-lg md:sticky md:top-24">
+              <h3 className="text-xl md:text-2xl font-bold text-red-700 mb-3 md:mb-4">Support Justice</h3>
+              <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6">100% of donations go directly to legal and advocacy efforts. No administrative fees.</p>
               
-              <div className="mb-6">
-                <h4 className="font-bold text-gray-900 mb-2">E-Transfer (Canada)</h4>
-                <p className="text-sm text-gray-700 mb-2">Send e-Transfer to:</p>
+              <div className="mb-4 md:mb-6">
+                <h4 className="font-bold text-gray-900 mb-2 text-sm md:text-base">E-Transfer (Canada)</h4>
+                <p className="text-xs md:text-sm text-gray-700 mb-2">Send e-Transfer to:</p>
                 <p className="font-mono text-sm bg-gray-100 p-2 rounded mb-4">justiceforbarran@gmail.com</p>
-                <div className="border-4 border-red-700 p-3 rounded mb-4">
-                  <p className="text-xs text-gray-600 mb-2">Scan QR to see all bank options. Click to view.</p>
+                <div className="border-4 border-red-700 p-4 rounded mb-4 bg-gray-50">
+                  <p className="text-sm font-bold text-gray-900 mb-3 text-center">Scan QR to see all bank options</p>
                   <a href="/donate-via-bank" className="block cursor-pointer hover:opacity-80 transition-opacity">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-donation_a272743f.png" alt="QR Code for Donations" className="w-full rounded" />
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-donation_a272743f.png" alt="QR Code for Donations" className="w-full h-auto max-w-sm mx-auto rounded" />
                   </a>
+                  <p className="text-xs text-gray-600 mt-3 text-center">Click to view all payment options</p>
                 </div>
               </div>
 
-              <a href="/donate" className="block w-full bg-green-600 text-white py-3 font-bold rounded hover:bg-green-700 transition-colors mb-3 text-center">
-                <DollarSign size={20} className="inline mr-2" />
+              <a href="/donate" className="block w-full bg-green-600 text-white py-2 md:py-3 font-bold rounded hover:bg-green-700 transition-colors mb-2 md:mb-3 text-sm md:text-base text-center">
+                <DollarSign size={18} className="inline mr-2" />
                 DONATE VIA CARD
               </a>
-              <a href="/donate-recurring" className="block w-full bg-blue-600 text-white py-3 font-bold rounded hover:bg-blue-700 transition-colors mb-3 text-center">
+              <a href="/donate-recurring" className="block w-full bg-blue-600 text-white py-2 md:py-3 font-bold rounded hover:bg-blue-700 transition-colors mb-2 md:mb-3 text-sm md:text-base text-center">
                 MONTHLY RECURRING
               </a>
-              <a href="/contact" className="block w-full bg-gray-700 text-white py-3 font-bold rounded hover:bg-gray-800 transition-colors text-center">
-                <Mail size={20} className="inline mr-2" />
+              <a href="/contact" className="block w-full bg-gray-700 text-white py-2 md:py-3 font-bold rounded hover:bg-gray-800 transition-colors text-sm md:text-base text-center">
+                <Mail size={18} className="inline mr-2" />
                 CONTACT US
               </a>
 
-              <p className="text-xs text-gray-600 mt-4">✓ Verified donations only  ✓ Transparent allocation  ✓ Legal & advocacy focused</p>
+              <p className="text-xs text-gray-600 mt-3 md:mt-4">✓ Verified donations only  ✓ Transparent allocation  ✓ Legal & advocacy focused</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* PODCAST SECTION */}
-      <section className="bg-white py-16 mt-16 border-t-4 border-b-4 border-red-700">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-4 text-gray-900">LISTEN TO OUR PODCAST</h2>
-          <p className="text-lg mb-8 text-gray-700">Hear stories of Indigenous advocacy, systemic failures, and the fight for justice. Each episode features full transcripts and translations.</p>
+      <section className="bg-white py-8 md:py-16 mt-8 md:mt-16 border-t-4 border-b-4 border-red-700">
+        <div className="max-w-7xl mx-auto px-3 md:px-4">
+          <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 text-gray-900">LISTEN TO OUR PODCAST</h2>
+          <p className="text-sm md:text-lg mb-6 md:mb-8 text-gray-700">Hear stories of Indigenous advocacy, systemic failures, and the fight for justice. Each episode features full transcripts and translations.</p>
           <div className="grid grid-cols-1 gap-8">
             {podcastEpisodes.map((episode) => (
               <PodcastPlayer
