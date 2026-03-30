@@ -54,14 +54,14 @@ export default function ModernHome() {
             Indigenous Teen Stabbed Three Times — System Failed Him For Five Years
           </p>
           <div className="flex gap-4">
-            <button className="bg-red-700 text-white px-6 py-3 font-bold rounded hover:bg-red-800 transition-colors flex items-center gap-2">
+            <a href="/donate-via-bank" className="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 font-bold rounded hover:bg-red-800 transition-colors">
               <Heart size={20} />
               SUPPORT THIS CAUSE
-            </button>
-            <button className="bg-green-600 text-white px-6 py-3 font-bold rounded hover:bg-green-700 transition-colors flex items-center gap-2">
+            </a>
+            <a href="#" className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 font-bold rounded hover:bg-green-700 transition-colors">
               <Share2 size={20} />
               SHARE STORY
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -129,21 +129,23 @@ export default function ModernHome() {
                 <p className="font-mono text-sm bg-gray-100 p-2 rounded mb-4">justiceforbarran@gmail.com</p>
                 <div className="border-4 border-red-700 p-3 rounded mb-4">
                   <p className="text-xs text-gray-600 mb-2">Scan QR to see all bank options. Click to view.</p>
-                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/donate-qr-code-complete-SwTST6mJuUeF4wjZou3N67.webp" alt="QR Code for Donations" className="w-full rounded" />
+                  <a href="/donate-via-bank" className="block cursor-pointer hover:opacity-80 transition-opacity">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/donate-qr-code-complete-SwTST6mJuUeF4wjZou3N67.webp" alt="QR Code for Donations" className="w-full rounded" />
+                  </a>
                 </div>
               </div>
 
-              <button className="w-full bg-green-600 text-white py-3 font-bold rounded hover:bg-green-700 transition-colors mb-3 flex items-center justify-center gap-2">
-                <DollarSign size={20} />
+              <a href="/donate" className="block w-full bg-green-600 text-white py-3 font-bold rounded hover:bg-green-700 transition-colors mb-3 text-center">
+                <DollarSign size={20} className="inline mr-2" />
                 DONATE VIA CARD
-              </button>
-              <button className="w-full bg-blue-600 text-white py-3 font-bold rounded hover:bg-blue-700 transition-colors mb-3">
+              </a>
+              <a href="/donate-recurring" className="block w-full bg-blue-600 text-white py-3 font-bold rounded hover:bg-blue-700 transition-colors mb-3 text-center">
                 MONTHLY RECURRING
-              </button>
-              <button className="w-full bg-gray-700 text-white py-3 font-bold rounded hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
-                <Mail size={20} />
+              </a>
+              <a href="/contact" className="block w-full bg-gray-700 text-white py-3 font-bold rounded hover:bg-gray-800 transition-colors text-center">
+                <Mail size={20} className="inline mr-2" />
                 CONTACT US
-              </button>
+              </a>
 
               <p className="text-xs text-gray-600 mt-4">✓ Verified donations only  ✓ Transparent allocation  ✓ Legal & advocacy focused</p>
             </div>
