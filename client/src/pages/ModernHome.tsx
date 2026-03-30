@@ -154,17 +154,17 @@ export default function ModernHome() {
       </div>
 
       {/* PODCAST SECTION */}
-      <section className="bg-gradient-to-r from-red-700 to-red-800 text-white py-16 mt-16">
+      <section className="bg-white py-16 mt-16 border-t-4 border-b-4 border-red-700">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-4">LISTEN TO OUR PODCAST</h2>
-          <p className="text-lg mb-8 text-red-100">Hear stories of Indigenous advocacy, systemic failures, and the fight for justice. Each episode features full transcripts and translations.</p>
+          <h2 className="text-4xl font-bold mb-4 text-gray-900">LISTEN TO OUR PODCAST</h2>
+          <p className="text-lg mb-8 text-gray-700">Hear stories of Indigenous advocacy, systemic failures, and the fight for justice. Each episode features full transcripts and translations.</p>
           <div className="grid grid-cols-1 gap-8">
             {podcastEpisodes.map((episode) => (
               <PodcastPlayer
                 key={episode.id}
                 title={episode.title}
                 description={episode.description}
-                audioUrl=""
+                audioUrl={episode.audioUrl}
                 duration={parseInt(episode.duration)}
                 language={episode.language}
                 episodeNumber={episode.episodeNumber}
