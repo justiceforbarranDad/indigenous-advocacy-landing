@@ -104,6 +104,8 @@ import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 import SundayBloodyySundayPart3 from "./pages/SundayBloodyySundayPart3";
 import DonationSuccess from "./pages/DonationSuccess";
+import AdminPaymentHistory from "./pages/AdminPaymentHistory";
+import DonateRecurringStripe from "./pages/DonateRecurringStripe";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -202,6 +204,8 @@ function Router() {
       <Route path="/subscribe" component={PodcastSubscribe} />
       <Route path="/podcast-subscribe" component={PodcastSubscribe} />
       <Route path="/donation-success" component={DonationSuccess} />
+      <Route path="/admin/payments" component={AdminPaymentHistory} />
+      <Route path="/donate-recurring-stripe" component={DonateRecurringStripe} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>

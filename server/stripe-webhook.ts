@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import Stripe from 'stripe';
 import { getDb } from './db';
 import { donations } from '../drizzle/schema';
+import { sendEmail, generateStripeDonationConfirmationEmail, generateStripeDonationConfirmationText } from './_core/emailService';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   apiVersion: '2026-03-25.dahlia',
@@ -39,17 +40,35 @@ export async function handleStripeWebhook(req: Request, res: Response) {
         const session = event.data.object as Stripe.Checkout.Session;
         
         // Save donation to database
+        const donorName = session.customer_details?.name || 'Anonymous Supporter';
+        const donorEmail = session.customer_details?.email || '';
+        const amount = session.amount_total || 0;
+        const msg = session.metadata?.message as string | undefined;
+
         await db.insert(donations).values({
-          amount: session.amount_total || 0, // Amount in cents
-          donorName: session.customer_details?.name || 'Anonymous',
-          donorEmail: session.customer_details?.email || '',
+          amount,
+          donorName,
+          donorEmail,
           method: 'stripe',
           stripePaymentIntentId: session.payment_intent as string,
           status: 'confirmed',
-          message: session.metadata?.message as string | undefined,
+          message: msg,
         });
 
-        console.log(`[Webhook] Donation recorded: ${session.id}`);
+        // Send confirmation email
+        if (donorEmail) {
+          const htmlEmail = generateStripeDonationConfirmationEmail(donorName, amount, session.id, msg);
+          const textEmail = generateStripeDonationConfirmationText(donorName, amount, session.id, msg);
+          
+          await sendEmail({
+            to: donorEmail,
+            subject: 'Donation Confirmed - Justice for Barran',
+            htmlContent: htmlEmail,
+            textContent: textEmail,
+          });
+        }
+
+        console.log(`[Webhook] Donation recorded and confirmation email sent: ${session.id}`);
         break;
       }
 
