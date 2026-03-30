@@ -99,6 +99,7 @@ import NewspaperHome from "./pages/NewspaperHome";
 import ModernHome from "./pages/ModernHome";
 import DonateViaBank from "./pages/DonateViaBank";
 import InteracDonationInterface from "./pages/InteracDonationInterface";
+import PodcastSubscribe from "./pages/PodcastSubscribe";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 
@@ -195,6 +196,8 @@ function Router() {
       <Route path="/subscription-success" component={SubscriptionSuccess} />
       <Route path="/donate-via-bank" component={DonateViaBank} />
       <Route path="/donate-interac" component={InteracDonationInterface} />
+      <Route path="/subscribe" component={PodcastSubscribe} />
+      <Route path="/podcast-subscribe" component={PodcastSubscribe} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>

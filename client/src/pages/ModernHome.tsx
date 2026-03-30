@@ -128,7 +128,7 @@ export default function ModernHome() {
                 <p className="font-mono text-sm bg-gray-100 p-2 rounded mb-4">justiceforbarran@gmail.com</p>
                 <div className="border-4 border-red-700 p-3 rounded mb-4">
                   <p className="text-xs text-gray-600 mb-2">Scan QR to see all bank options. Click to view.</p>
-                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/donate-banks-qr-code_4e8d8d0e.png" alt="QR Code" className="w-full rounded" />
+                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/donate-qr-code-complete-SwTST6mJuUeF4wjZou3N67.webp" alt="QR Code for Donations" className="w-full rounded" />
                 </div>
               </div>
 

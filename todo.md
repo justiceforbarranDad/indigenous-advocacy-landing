@@ -1020,3 +1020,16 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Verify RSS feed contains iTunes, Google Play, and Spotify namespaces
 - [x] Verify episodes in reverse chronological order
 - [x] Provide distribution instructions to user
+
+
+## PODCAST SUBSCRIPTION PAGE (March 30, 2026)
+- [ ] Create PodcastSubscribe page component with platform links
+- [ ] Add podcast subscription data with platform URLs
+- [ ] Add Subscribe page route to App.tsx navigation
+- [ ] Style page with podcast branding and CTA buttons
+- [ ] Add links to Apple Podcasts, Spotify, Google Podcasts
+- [ ] Add links to other platforms (Amazon Music, iHeartRadio, etc.)
+- [ ] Add email subscription form
+- [ ] Test all platform links in browser
+- [ ] Write vitest tests for subscription page
+- [ ] Save checkpoint
