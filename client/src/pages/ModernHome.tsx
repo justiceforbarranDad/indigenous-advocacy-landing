@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, Share2, Heart, DollarSign, Mail, Phone } from 'lucide-react';
 import { PodcastPlayer } from '../components/PodcastPlayer';
 import { podcastEpisodes } from '../data/podcastEpisodes';
+import TestimonialsSection from '../components/TestimonialsSection';
 
 export default function ModernHome() {
   const [showDonationBox, setShowDonationBox] = useState(true);
@@ -186,6 +187,9 @@ export default function ModernHome() {
           </div>
         </div>
       </section>
+
+      {/* TESTIMONIALS SECTION */}
+      <TestimonialsSection />
 
       {/* FOOTER */}
       <footer className="bg-gray-900 text-white mt-0 py-12">
