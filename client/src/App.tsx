@@ -72,7 +72,6 @@ import Newsletter from "./pages/Newsletter";
 import Volunteer from "./pages/Volunteer";
 import CaseTracker from "./pages/CaseTracker";
 import HumanRights from "./pages/HumanRights";
-import Petition from "./pages/Petition";
 import VideoTestimonials from "./pages/VideoTestimonials";
 import Obituaries from "./pages/Obituaries";
 import FallenSoldiers from "./pages/FallenSoldiers";

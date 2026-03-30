@@ -948,3 +948,23 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Provide contact information for compliance negotiations
 - [x] Outline consequences for non-compliance
 - [x] File saved: MISE_EN_DEMEURE_CORPORATE_SPONSORS.md
+
+
+## SOCIAL MEDIA & PODCAST INTEGRATION (March 29, 2026)
+- [ ] Fix social media buttons in footer (TikTok, Twitter/X, Instagram, Facebook, YouTube)
+- [ ] Add podcast section to homepage
+- [ ] Integrate Speechify podcast episodes (2 episodes)
+- [ ] Test all social media links
+- [ ] Test podcast player/links
+- [ ] Deploy to justiceforbarran.com
+
+### Social Media Handles:
+- TikTok: @barranneedsjustice
+- Twitter/X: @HelpBarran
+- Instagram: @justiceforbarran
+- Facebook: no.fx.716
+- YouTube: @justiceforBarran
+
+### Podcast Episodes (Speechify):
+- Episode 1: https://speechify.app.link/sIQ3mkmPU1b
+- Episode 2: https://speechify.app.link/lcpZ2okPU1b

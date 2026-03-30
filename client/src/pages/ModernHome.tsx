@@ -244,8 +244,32 @@ export default function ModernHome() {
         </div>
       </div>
 
+      {/* PODCAST SECTION */}
+      <section className="bg-gradient-to-r from-red-700 to-red-800 text-white py-16 mt-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold mb-4">LISTEN TO OUR PODCAST</h2>
+          <p className="text-lg mb-8 text-red-100">Hear stories of Indigenous advocacy, systemic failures, and the fight for justice.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-red-900 p-6 rounded-lg">
+              <h3 className="text-2xl font-bold mb-3">Episode 1</h3>
+              <p className="text-red-100 mb-4">Listen to our first podcast episode on Speechify</p>
+              <a href="https://speechify.app.link/sIQ3mkmPU1b" target="_blank" rel="noopener noreferrer" className="bg-white text-red-700 px-6 py-3 font-bold rounded hover:bg-red-100 inline-block">
+                Listen Now →
+              </a>
+            </div>
+            <div className="bg-red-900 p-6 rounded-lg">
+              <h3 className="text-2xl font-bold mb-3">Episode 2</h3>
+              <p className="text-red-100 mb-4">Listen to our second podcast episode on Speechify</p>
+              <a href="https://speechify.app.link/lcpZ2okPU1b" target="_blank" rel="noopener noreferrer" className="bg-white text-red-700 px-6 py-3 font-bold rounded hover:bg-red-100 inline-block">
+                Listen Now →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
-      <footer className="bg-gray-900 text-white mt-16 py-12">
+      <footer className="bg-gray-900 text-white mt-0 py-12">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-4 gap-8 mb-8">
             <div>
@@ -260,10 +284,11 @@ export default function ModernHome() {
             <div>
               <h5 className="font-bold mb-4">FOLLOW US</h5>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-red-400">X / Twitter</a></li>
-                <li><a href="#" className="hover:text-red-400">TikTok</a></li>
-                <li><a href="#" className="hover:text-red-400">Instagram</a></li>
-                <li><a href="#" className="hover:text-red-400">YouTube</a></li>
+                <li><a href="https://x.com/HelpBarran" target="_blank" rel="noopener noreferrer" className="hover:text-red-400">X / Twitter</a></li>
+                <li><a href="https://www.tiktok.com/@barranneedsjustice" target="_blank" rel="noopener noreferrer" className="hover:text-red-400">TikTok</a></li>
+                <li><a href="https://www.instagram.com/justiceforbarran/" target="_blank" rel="noopener noreferrer" className="hover:text-red-400">Instagram</a></li>
+                <li><a href="https://www.youtube.com/@justiceforBarran" target="_blank" rel="noopener noreferrer" className="hover:text-red-400">YouTube</a></li>
+                <li><a href="https://www.facebook.com/no.fx.716" target="_blank" rel="noopener noreferrer" className="hover:text-red-400">Facebook</a></li>
               </ul>
             </div>
             <div>
