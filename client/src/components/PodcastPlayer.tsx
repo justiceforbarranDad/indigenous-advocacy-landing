@@ -255,7 +255,7 @@ export function PodcastPlayer({
         {/* Download Button */}
         <button
           onClick={handleDownload}
-          className="flex items-center gap-2 px-4 py-2 border-2 border-black rounded-lg hover:bg-gray-100 transition-colors font-bold text-sm"
+          className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-bold text-sm border-2 border-black"
           title="Download episode"
         >
           <Download size={18} />
@@ -266,7 +266,7 @@ export function PodcastPlayer({
         {onShare && (
           <button
             onClick={onShare}
-            className="flex items-center gap-2 px-4 py-2 border-2 border-black rounded-lg hover:bg-gray-100 transition-colors font-bold text-sm"
+            className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-bold text-sm border-2 border-black"
             title="Share episode"
           >
             <Share2 size={18} />
@@ -278,7 +278,7 @@ export function PodcastPlayer({
         {transcript && (
           <button
             onClick={() => setShowTranscript(!showTranscript)}
-            className="flex items-center gap-2 px-4 py-2 border-2 border-black rounded-lg hover:bg-gray-100 transition-colors font-bold text-sm"
+            className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-bold text-sm border-2 border-black"
             title="Show transcript and translation"
           >
             <FileText size={18} />
@@ -292,7 +292,7 @@ export function PodcastPlayer({
             href={speechifyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 border-2 border-black rounded-lg hover:bg-gray-100 transition-colors font-bold text-sm bg-blue-50"
+            className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-bold text-sm border-2 border-black"
             title="Listen on Speechify"
           >
             🎙️ Speechify

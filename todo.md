@@ -998,3 +998,12 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
   - [x] Share button triggers native share API
 - [x] Episode 1: "Dix dollars : l'abandon d'une victime" (15:18) - Full transcript with French/English
 - [x] Episode 2: "Jordan's Principle: A Law That Doesn't Protect" (18:45) - Full transcript with French/English
+
+
+## PODCAST BUTTON FIXES (March 30, 2026 - COMPLETE)
+- [x] Update PodcastPlayer buttons with black background and white text for visibility
+- [x] Verify all buttons visible: Download, Share, Show Transcript, Speechify
+- [x] Confirm QR code displays in donation section
+- [x] Test button functionality in browser (all working)
+- [x] Verify transcript toggle works properly
+- [x] Test Speechify links open correctly
