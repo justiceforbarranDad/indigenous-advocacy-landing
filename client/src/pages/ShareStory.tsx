@@ -8,6 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { toast } from 'sonner';
 import { ChevronLeft } from 'lucide-react';
 import { useLocation } from 'wouter';
+import { DomainSharingWidget } from '@/components/DomainSharingWidget';
+import { SocialShareButtons } from '@/components/SocialShareButtons';
 
 export default function ShareStory() {
   const [, setLocation] = useLocation();
@@ -172,6 +174,43 @@ export default function ShareStory() {
                 {submitStory.isPending ? 'Submitting...' : 'Submit Your Story'}
               </Button>
             </form>
+          </CardContent>
+        </Card>
+
+        {/* Domain Sharing Widget */}
+        <Card className="mt-8 border-amber-orange/30 bg-amber-orange/5">
+          <CardHeader className="bg-forest-green text-cream">
+            <CardTitle className="text-2xl">🌐 Share This Campaign</CardTitle>
+            <CardDescription className="text-cream/80">
+              Help supporters find the right domain for their region
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-8">
+            <DomainSharingWidget
+              title="Choose Your Domain"
+              description="Share the Justice for Barran campaign with your network using the right domain for your region"
+              showLabel={true}
+            />
+          </CardContent>
+        </Card>
+
+        {/* Social Sharing Section */}
+        <Card className="mt-8 border-amber-orange/30 bg-amber-orange/5">
+          <CardHeader className="bg-forest-green text-cream">
+            <CardTitle className="text-2xl">📢 Share on Social Media</CardTitle>
+            <CardDescription className="text-cream/80">
+              Help amplify the message by sharing with your network
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-8">
+            <SocialShareButtons
+              title="Justice for Barran - Share Your Story"
+              text="Share your story of systemic failure and injustice. Help us document accountability and advocate for change for Indigenous families. #JusticeForBarran #EveryChildMatters"
+              hashtags={['JusticeForBarran', 'IndigenousRights', 'EveryChildMatters', 'TruthAndReconciliation']}
+              variant="horizontal"
+              showLabel={true}
+              highlightTitle="Story Campaign"
+            />
           </CardContent>
         </Card>
       </div>

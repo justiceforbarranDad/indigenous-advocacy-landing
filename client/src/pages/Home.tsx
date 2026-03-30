@@ -4,6 +4,8 @@ import { SurveyBox } from '@/components/SurveyBox';
 import { useAuth } from '@/_core/hooks/useAuth';
 import { LatestUpdatesTicker } from '@/components/LatestUpdatesTicker';
 import { SocialShareButtons } from '@/components/SocialShareButtons';
+import { DonationDashboard } from '@/components/DonationDashboard';
+import { DomainSharingWidget } from '@/components/DomainSharingWidget';
 
 const BG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_ljzvky_image_dac505a0.png";
 
@@ -180,6 +182,22 @@ export default function Home() {
                 <p className="text-xs">Get Involved</p>
               </a>
             </div>
+          </div>
+
+          {/* DONATION DASHBOARD */}
+          <div className="border-t-4 border-black pt-6 mb-6">
+            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">CAMPAIGN PROGRESS</p>
+            <DonationDashboard />
+          </div>
+
+          {/* DOMAIN SHARING */}
+          <div className="border-t-4 border-black pt-6 mb-6">
+            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">SHARE WITH YOUR NETWORK</p>
+            <DomainSharingWidget
+              title=""
+              description=""
+              showLabel={false}
+            />
           </div>
 
           {/* SOCIAL SHARING */}

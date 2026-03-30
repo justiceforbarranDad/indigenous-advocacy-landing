@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import { trpc } from '@/lib/trpc';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,6 +9,7 @@ import { toast } from 'sonner';
 import { ChevronLeft, Copy, Check } from 'lucide-react';
 import { useLocation } from 'wouter';
 import QRCode from 'qrcode';
+import { SocialShareButtons } from '@/components/SocialShareButtons';
 
 export default function Donate() {
   const [, setLocation] = useLocation();
@@ -353,6 +353,26 @@ export default function Donate() {
                 Open GoFundMe Campaign
               </a>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Social Sharing Section */}
+        <Card className="mt-8 border-amber-orange/30 bg-amber-orange/5">
+          <CardHeader className="bg-forest-green text-cream">
+            <CardTitle className="text-2xl">📢 Share This Campaign</CardTitle>
+            <CardDescription className="text-cream/80">
+              Help amplify the message by sharing with your network
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-8">
+            <SocialShareButtons
+              title="Justice for Barran - Support Indigenous Rights"
+              text="Support Justice for Barran's campaign for Indigenous rights and accountability. Help us reach our $100,000 goal for comprehensive legal defense. Every donation counts. #JusticeForBarran #EveryChildMatters"
+              hashtags={['JusticeForBarran', 'IndigenousRights', 'EveryChildMatters', 'TruthAndReconciliation']}
+              variant="horizontal"
+              showLabel={true}
+              highlightTitle="Donation Campaign"
+            />
           </CardContent>
         </Card>
       </div>

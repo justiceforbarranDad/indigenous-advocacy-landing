@@ -1033,3 +1033,9 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Test all platform links in browser
 - [ ] Write vitest tests for subscription page
 - [ ] Save checkpoint
+
+
+## NEW FEATURES - MARCH 30, 2026 (User Requested)
+- [ ] Add easy domain sharing (.com/.ca) - Share buttons with pre-filled URLs
+- [ ] Enable social sharing buttons - Share to X, Facebook, TikTok, Instagram, Reddit
+- [ ] Create donation dashboard - Real-time tracking of contributions and campaign momentum

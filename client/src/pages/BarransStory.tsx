@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AlertCircle, Heart, Clock, MapPin, Users } from "lucide-react";
+import { SocialShareButtons } from "@/components/SocialShareButtons";
 
 export default function BarransStory() {
   return (
@@ -367,6 +368,21 @@ export default function BarransStory() {
               </Button>
             </Card>
           </div>
+        </div>
+
+        {/* Social Sharing Section */}
+        <div className="bg-amber-orange/10 p-8 rounded-lg border-2 border-amber-orange mb-8">
+          <h3 className="text-2xl font-bold text-forest-green mb-6">📢 Share Barran's Story</h3>
+          <p className="text-charcoal mb-6">
+            Help amplify this story. Share it with your network to raise awareness about systemic failures affecting Indigenous children.
+          </p>
+          <SocialShareButtons
+            title="Barran's Story: The Beginning - Justice for Barran"
+            text="Read Barran's story - a 14-year-old stabbed three times and failed by the system. This is why we fight for Indigenous justice and accountability. #JusticeForBarran #EveryChildMatters"
+            hashtags={['JusticeForBarran', 'IndigenousRights', 'EveryChildMatters', 'BarransStory']}
+            variant="horizontal"
+            showLabel={false}
+          />
         </div>
 
         {/* Call to Action */}
