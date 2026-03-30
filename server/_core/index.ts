@@ -7,6 +7,7 @@ import { registerOAuthRoutes } from "./oauth";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
+import { generateRSSFeed, getPodcastFeedConfig, getPodcastEpisodesForRSS } from "../rss-feed";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -35,6 +36,21 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
+  
+  // RSS Feed for podcast distribution
+  app.get("/api/podcast/feed.xml", (req, res) => {
+    try {
+      const config = getPodcastFeedConfig();
+      const episodes = getPodcastEpisodesForRSS();
+      const rssFeed = generateRSSFeed(config, episodes);
+      res.type("application/rss+xml");
+      res.send(rssFeed);
+    } catch (error) {
+      console.error("Error generating RSS feed:", error);
+      res.status(500).send("Error generating RSS feed");
+    }
+  });
+  
   // tRPC API
   app.use(
     "/api/trpc",

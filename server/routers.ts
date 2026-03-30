@@ -1,5 +1,6 @@
-import { COOKIE_NAME } from "../shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
+
+const COOKIE_NAME = "session";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
@@ -8,6 +9,7 @@ import { notifyOwner } from "./_core/notification";
 import { exportSurveyAsCSV, exportAnalyticsSummaryAsCSV, generateAnalyticsReport } from "./dataExport";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
 import { subscriptionRouter } from "./routers/subscriptions";
+import { generateRSSFeed, getPodcastFeedConfig, getPodcastEpisodesForRSS } from "./rss-feed";
 
 export const appRouter = router({
   system: systemRouter,
@@ -412,5 +414,19 @@ export const appRouter = router({
     }),
   }),
   subscriptions: router(subscriptionRouter),
+  
+  podcast: router({
+    feed: publicProcedure.query(() => {
+      try {
+        const config = getPodcastFeedConfig();
+        const episodes = getPodcastEpisodesForRSS();
+        const rssFeed = generateRSSFeed(config, episodes);
+        return rssFeed;
+      } catch (error) {
+        console.error("Error generating RSS feed:", error);
+        throw new Error("Failed to generate RSS feed");
+      }
+    }),
+  }),
 });
 export type AppRouter = typeof appRouter;

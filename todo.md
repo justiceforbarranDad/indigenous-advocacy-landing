@@ -1007,3 +1007,16 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Test button functionality in browser (all working)
 - [x] Verify transcript toggle works properly
 - [x] Test Speechify links open correctly
+
+
+## RSS FEED GENERATION (March 30, 2026 - COMPLETE)
+- [x] Create RSS feed generator utility with proper XML formatting
+- [x] Create podcast feed data with all episode metadata
+- [x] Create API endpoint at /api/podcast/feed.xml
+- [x] Add RSS feed link to website header and footer
+- [x] Add sitemap.xml with RSS feed entry
+- [x] Write comprehensive vitest tests for RSS feed (13 tests)
+- [x] Test RSS feed validation - all tests passing
+- [x] Verify RSS feed contains iTunes, Google Play, and Spotify namespaces
+- [x] Verify episodes in reverse chronological order
+- [x] Provide distribution instructions to user

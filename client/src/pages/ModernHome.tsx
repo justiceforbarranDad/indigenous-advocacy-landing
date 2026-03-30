@@ -1,10 +1,24 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ChevronDown, Share2, Heart, DollarSign, Mail, Phone } from 'lucide-react';
 import { PodcastPlayer } from '../components/PodcastPlayer';
 import { podcastEpisodes } from '../data/podcastEpisodes';
 
 export default function ModernHome() {
   const [showDonationBox, setShowDonationBox] = useState(true);
+  
+  // Add RSS feed link to document head
+  React.useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'alternate';
+    link.type = 'application/rss+xml';
+    link.title = 'Justice for Barran Podcast';
+    link.href = '/api/podcast/feed.xml';
+    document.head.appendChild(link);
+    
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
