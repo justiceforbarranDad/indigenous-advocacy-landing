@@ -122,6 +122,9 @@ import FoundationSetup from "./pages/FoundationSetup";
 import FoundationGovernance from "./pages/FoundationGovernance";
 import PublishingLegacy from "./pages/PublishingLegacy";
 import OperationsBudget from "./pages/OperationsBudget";
+import FoundationHub from "./pages/FoundationHub";
+import DonationMilestones from "./pages/DonationMilestones";
+import EmergencySuccessionPlan from "./pages/EmergencySuccessionPlan";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -237,6 +240,9 @@ function Router() {
       <Route path="/foundation-governance" component={FoundationGovernance} />
       <Route path="/publishing-legacy" component={PublishingLegacy} />
       <Route path="/operations-budget" component={OperationsBudget} />
+      <Route path="/foundation-hub" component={FoundationHub} />
+      <Route path="/donation-milestones" component={DonationMilestones} />
+      <Route path="/emergency-succession-plan" component={EmergencySuccessionPlan} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
