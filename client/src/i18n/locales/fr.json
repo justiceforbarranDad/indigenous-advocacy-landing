@@ -71,6 +71,40 @@
     "contactInfo": "Informations de contact",
     "followUs": "Nous suivre"
   },
+  "newspaper": {
+    "masthead": "JUSTICE POUR BARRAN",
+    "tagline": "Plaidoyer pour la justice autochtone | Vérité et réconciliation | Changement systémique",
+    "volume": "VOLUME 1 • NUMÉRO 1 • MARS 2026",
+    "quote": "Quand le silence est complicité, nommer devient nécessaire.",
+    "subquote": "Plaidoyer enraciné dans l'expérience vécue et l'urgence",
+    "breaking": "NOUVELLES",
+    "systemicFailure": "ÉCHEC SYSTÉMIQUE",
+    "governmentSilence": "SILENCE GOUVERNEMENTAL",
+    "advocacy": "PLAIDOYER",
+    "support": "SOUTIEN",
+    "resources": "RESSOURCES"
+  },
+  "obituaries": {
+    "title": "NÉCROLOGIES - HONORER CEUX QUI ONT COMBATTU POUR NOS DROITS",
+    "coltenBoushie": "Colten Boushie (1994 - 2016) - Tiré par un fermier de la Saskatchewan. Sa mort a suscité un tollé national concernant le racisme systémique dans le système judiciaire canadien.",
+    "tinaFontaine": "Tina Fontaine (1999 - 2014) - Assassinée à Winnipeg à l'âge de 15 ans. Son corps retrouvé enveloppé dans une couette dans la rivière Rouge.",
+    "francisP": "Francis Pegahmagabow (1889 - 1952) - Tireur d'élite décoré de la Première Guerre mondiale. Crédité de 378 morts confirmés.",
+    "tommyPrince": "Thomas George 'Tommy' Prince (1915 - 1977) - Vétéran hautement décoré de la Seconde Guerre mondiale et de la guerre de Corée.",
+    "henryNorwest": "Henry Norwest (1884 - 1918) - Légendaire tireur d'élite de la Première Guerre mondiale crédité de 115 morts confirmés.",
+    "harrietNahanee": "Harriet Nahanee (1930 - 2007) - Militante des droits civiques, survivante des pensionnats indiens, et environnementaliste.",
+    "alanis": "Alanis Obomsawin (née en 1932) - Cinéaste documentariste, artiste et militante.",
+    "mmiwg": "Femmes et filles autochtones disparues et assassinées (FFADA) (années 1980 - Présent) - Plus de 4 000 femmes et filles autochtones assassinées ou disparues."
+  },
+  "frontPage": {
+    "headline": "LA VIOLENCE SYSTÉMIQUE CONTINUE",
+    "subheadline": "Les familles autochtones exigent la responsabilité de tous les niveaux de gouvernement",
+    "mainStory": "Après des années d'abandon, de menaces de cessation et d'échecs institutionnels, les familles autochtones à travers le Canada prennent les choses en main. Les canaux privés ont échoué. La responsabilité publique est maintenant le seul chemin vers la justice.",
+    "readMore": "Lire l'enquête complète",
+    "supportLegal": "Soutenir l'action juridique",
+    "accountabilityTracker": "Suivi de la responsabilité",
+    "hallOfShame": "Mur de la honte",
+    "systemicViolations": "Violations systémiques"
+  },
   "footer": {
     "copyright": "© 2026 Justice pour Barran. Tous droits réservés.",
     "privacy": "Politique de confidentialité",

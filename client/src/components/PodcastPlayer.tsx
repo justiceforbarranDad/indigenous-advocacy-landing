@@ -176,10 +176,7 @@ export function PodcastPlayer({
       {/* Language Toggle */}
       {frenchAudioUrl && (
         <div className="mb-6">
-          <LanguageToggle
-            currentLanguage={currentLanguage}
-            onLanguageChange={handleLanguageChange}
-          />
+          <LanguageToggle />
         </div>
       )}
 
