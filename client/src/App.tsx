@@ -118,6 +118,10 @@ import DNSWarningBanner from "./components/DNSWarningBanner";
 import FinancialTransparency from "./pages/FinancialTransparency";
 import FamilyCaseDocumentation from "./pages/FamilyCaseDocumentation";
 import UNComplaint from "./pages/UNComplaint";
+import FoundationSetup from "./pages/FoundationSetup";
+import FoundationGovernance from "./pages/FoundationGovernance";
+import PublishingLegacy from "./pages/PublishingLegacy";
+import OperationsBudget from "./pages/OperationsBudget";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -229,6 +233,10 @@ function Router() {
       <Route path="/financial-transparency" component={FinancialTransparency} />
       <Route path="/family-case-documentation" component={FamilyCaseDocumentation} />
       <Route path="/un-complaint" component={UNComplaint} />
+      <Route path="/foundation-setup" component={FoundationSetup} />
+      <Route path="/foundation-governance" component={FoundationGovernance} />
+      <Route path="/publishing-legacy" component={PublishingLegacy} />
+      <Route path="/operations-budget" component={OperationsBudget} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
