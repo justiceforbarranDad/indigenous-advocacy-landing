@@ -115,6 +115,7 @@ import SponsorResponseTracker from "./pages/SponsorResponseTracker";
 import DonorTestimonials from "./pages/DonorTestimonials";
 import SubmitDonorTestimonial from "./pages/SubmitDonorTestimonial";
 import DNSWarningBanner from "./components/DNSWarningBanner";
+import FinancialTransparency from "./pages/FinancialTransparency";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -223,6 +224,7 @@ function Router() {
       <Route path="/sponsor-response-tracker" component={SponsorResponseTracker} />
       <Route path="/donor-testimonials" component={DonorTestimonials} />
       <Route path="/submit-testimonial" component={SubmitDonorTestimonial} />
+      <Route path="/financial-transparency" component={FinancialTransparency} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>

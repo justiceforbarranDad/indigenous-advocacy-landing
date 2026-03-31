@@ -57,6 +57,22 @@ export default function Home() {
         {/* LATEST UPDATES TICKER */}
         <LatestUpdatesTicker />
 
+        {/* TRANSPARENCY & DISABILITY BENEFITS PROTECTION BANNER */}
+        <div className="bg-amber-50 border-l-4 border-amber-600 p-4 mx-6 mt-4">
+          <div className="flex gap-3">
+            <div className="text-amber-600 font-bold text-lg">🛡️</div>
+            <div>
+              <p className="font-bold text-sm mb-1">100% TRANSPARENT - YOUR BENEFITS ARE PROTECTED</p>
+              <p className="text-xs leading-relaxed">
+                All donations go directly to McGovern Institute Foundation Trust Account. Funds are NOT personal income and will NOT affect disability benefits. We operate with full legal transparency and comply with all disability program regulations.
+              </p>
+              <a href="/financial-transparency" className="text-xs font-bold text-amber-600 hover:underline mt-2 inline-block">
+                View Financial Transparency →
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* NEWSPAPER CONTENT - SINGLE PAGE */}
         <div className="px-6 py-8 space-y-6">
           
