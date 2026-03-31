@@ -4,36 +4,53 @@ export default function DonationImpact() {
   const impactAreas = [
     {
       icon: <Scale size={32} />,
-      title: 'Legal Representation',
-      percentage: 40,
+      title: 'Non-Profit Registration & Legal Setup',
+      percentage: 8,
       amount: '$40,000',
+      description: 'Establishing Justice for Barran as a registered non-profit institute for Education on Human Rights and Canadian Rights. Legal entity formation, federal and provincial registration, governance setup, and compliance infrastructure.',
+      items: [
+        'Federal non-profit incorporation',
+        'Provincial registration and licensing',
+        'Legal governance documents',
+        'Charity registration and tax status',
+        'Compliance and audit infrastructure',
+        'Board establishment and training'
+      ]
+    },
+    {
+      icon: <Scale size={32} />,
+      title: 'Legal Representation',
+      percentage: 32,
+      amount: '$160,000',
       description: 'Professional legal fees for independent inquiry, court proceedings, and expert testimony. Securing pro bono lawyers and covering their administrative costs.',
       items: [
         'Independent legal counsel',
         'Court filing fees',
         'Expert witness testimony',
-        'Legal research and documentation'
+        'Legal research and documentation',
+        'Constitutional challenge preparation'
       ]
     },
     {
       icon: <Megaphone size={32} />,
       title: 'Media & Advocacy Campaign',
-      percentage: 25,
-      amount: '$25,000',
+      percentage: 20,
+      amount: '$100,000',
       description: 'Professional video production, podcast hosting, social media amplification, and media outreach to ensure the story reaches decision-makers and the public.',
       items: [
         'Video production and editing',
         'Podcast production and hosting',
         'Social media advertising',
         'Press release distribution',
-        'Media kit creation'
+        'Media kit creation',
+        'Documentary production'
       ]
     },
     {
       icon: <Megaphone size={32} />,
       title: 'Government Accountability Campaign',
-      percentage: 15,
-      amount: '$15,000',
+      percentage: 12,
+      amount: '$60,000',
       description: 'Direct outreach to elected officials, government agencies, and international bodies. Travel costs for in-person advocacy and documentation of systemic failures.',
       items: [
         'Travel to government offices',
@@ -46,8 +63,8 @@ export default function DonationImpact() {
     {
       icon: <Users size={32} />,
       title: 'Support for Affected Families',
-      percentage: 12,
-      amount: '$12,000',
+      percentage: 10,
+      amount: '$50,000',
       description: 'Direct support for Barran and other families affected by systemic failures. Mental health services, education support, and emergency assistance.',
       items: [
         'Mental health counseling',
@@ -60,8 +77,8 @@ export default function DonationImpact() {
     {
       icon: <Globe size={32} />,
       title: 'International & Indigenous Rights',
-      percentage: 5,
-      amount: '$5,000',
+      percentage: 10,
+      amount: '$50,000',
       description: 'Support for international human rights organizations, Indigenous advocacy groups, and legal frameworks protecting children\'s rights globally.',
       items: [
         'UN submissions and advocacy',
@@ -74,8 +91,8 @@ export default function DonationImpact() {
     {
       icon: <FileText size={32} />,
       title: 'Platform & Operations',
-      percentage: 3,
-      amount: '$3,000',
+      percentage: 8,
+      amount: '$40,000',
       description: 'Website hosting, domain registration, email services, and operational costs to keep the campaign running 24/7.',
       items: [
         'Website hosting and maintenance',
@@ -87,8 +104,8 @@ export default function DonationImpact() {
     }
   ];
 
-  const totalGoal = 100000;
-  const currentRaised = 47500;
+  const totalGoal = 500000;
+  const currentRaised = 0;
 
   return (
     <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
@@ -98,7 +115,7 @@ export default function DonationImpact() {
           <h1 className="text-4xl md:text-5xl font-black tracking-widest mb-4">WHERE YOUR DONATION GOES</h1>
           <div className="h-1 bg-white my-3 w-32"></div>
           <p className="text-base md:text-lg tracking-wide mb-2">Transparent Breakdown of Campaign Funding</p>
-          <p className="text-xs md:text-sm tracking-widest">MARCH 29, 2026</p>
+          <p className="text-xs md:text-sm tracking-widest">MARCH 31, 2026</p>
         </div>
       </div>
 
@@ -107,7 +124,8 @@ export default function DonationImpact() {
         
         {/* CAMPAIGN GOAL */}
         <div className="bg-gray-50 border-4 border-black p-8 mb-12">
-          <h2 className="text-2xl font-bold mb-6">Campaign Goal: $100,000</h2>
+          <h2 className="text-2xl font-bold mb-6">McGovern Institute Campaign Goal: $500,000</h2>
+          <p className="text-sm text-gray-600 mb-4"><em>Establishing the McGovern Institute for Human Rights and Canadian Rights</em></p>
           
           <div className="mb-6">
             <div className="flex justify-between mb-2">
@@ -123,7 +141,7 @@ export default function DonationImpact() {
           </div>
 
           <p className="text-sm text-gray-700">
-            Every dollar raised goes directly toward securing justice for Barran and all voiceless victims of systemic failure. We operate with complete transparency and accountability.
+            Every dollar raised goes directly toward securing justice for Barran and all voiceless victims of systemic failure. We operate with complete transparency and accountability. Monthly updates on fund allocation will be published on this page.
           </p>
         </div>
 
@@ -232,10 +250,16 @@ export default function DonationImpact() {
         {/* FOOTER NOTE */}
         <div className="border-t-4 border-black mt-12 pt-8 text-center text-sm text-gray-600">
           <p>
+            <strong>McGovern Institute for Human Rights and Canadian Rights</strong>
+          </p>
+          <p className="mt-2">
+            Founded through the Justice for Barran Campaign
+          </p>
+          <p className="mt-4">
             For detailed financial reports and audit information, contact us at <strong>justiceforbarran@gmail.com</strong>
           </p>
           <p className="mt-2">
-            Last updated: March 29, 2026 | Campaign Goal: $100,000 | Current Raised: ${currentRaised.toLocaleString()}
+            Last updated: March 31, 2026 | Campaign Goal: $500,000 | Current Raised: ${currentRaised.toLocaleString()}
           </p>
         </div>
 

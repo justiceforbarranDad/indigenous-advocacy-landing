@@ -1188,3 +1188,19 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Add French translations to all components
 - [ ] Test all pages in both languages
 - [ ] Optimize performance for bilingual site
+
+
+## CAMPAIGN UPDATES (March 31, 2026 - Current Session)
+- [x] Update campaign goal from $100,000 to $500,000
+- [x] Update current donations from $47,500 to $0 (accurate, just launched)
+- [x] Add non-profit registration costs to budget breakdown ($40,000 for legal setup)
+- [x] Create Legal Rights & Constitution section with:
+  - [x] Canadian Constitution excerpts (Sections 1, 2(b), 7, 15, 35)
+  - [x] UN Convention on the Rights of the Child (Articles 3, 6, 8, 9, 19, 37)
+  - [x] UN Universal Declaration of Human Rights (Articles 1, 3, 5, 8, 19)
+  - [x] UN Declaration on the Rights of Indigenous Peoples (Articles 1, 3, 7, 8, 22, 26)
+  - [x] Jordan's Principle section
+  - [x] Truth and Reconciliation Commission Calls to Action
+  - [x] Legal protection for advocacy (Charter s.2(b), responsible communication, Indigenous rights)
+- [ ] Fix 404 error on /donate page route
+- [ ] Test all donation pages end-to-end

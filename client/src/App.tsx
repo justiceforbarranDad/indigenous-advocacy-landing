@@ -106,6 +106,10 @@ import SundayBloodyySundayPart3 from "./pages/SundayBloodyySundayPart3";
 import DonationSuccess from "./pages/DonationSuccess";
 import AdminPaymentHistory from "./pages/AdminPaymentHistory";
 import DonateRecurringStripe from "./pages/DonateRecurringStripe";
+import LegalRightsAndConstitutionBilingual from "./pages/LegalRightsAndConstitutionBilingual";
+import HistoricalJurisprudenceBilingual from "./pages/HistoricalJurisprudenceBilingual";
+import InstitutionMission from "./pages/InstitutionMission";
+import RightsEducationInSchools from "./pages/RightsEducationInSchoolsBilingual";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -206,6 +210,10 @@ function Router() {
       <Route path="/donation-success" component={DonationSuccess} />
       <Route path="/admin/payments" component={AdminPaymentHistory} />
       <Route path="/donate-recurring-stripe" component={DonateRecurringStripe} />
+      <Route path="/legal-rights-constitution" component={LegalRightsAndConstitutionBilingual} />
+      <Route path="/historical-jurisprudence" component={HistoricalJurisprudenceBilingual} />
+      <Route path="/institution-mission" component={InstitutionMission} />
+      <Route path="/rights-education-schools" component={RightsEducationInSchools} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
