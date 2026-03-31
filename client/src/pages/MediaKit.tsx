@@ -144,37 +144,43 @@ const mediaAssets = [
     title: 'Barran\'s Story - Key Facts Sheet',
     description: 'One-page summary of Barran\'s case, systemic failures, and demands',
     format: 'PDF',
-    size: '500 KB'
+    size: '500 KB',
+    downloadUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/barran-key-facts-sheet.pdf'
   },
   {
     title: 'Timeline Infographic',
     description: 'Visual timeline of 2021-2026 showing government failures',
     format: 'PNG/PDF',
-    size: '2 MB'
+    size: '2 MB',
+    downloadUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/timeline-infographic.png'
   },
   {
     title: 'Corporate Accountability List',
     description: 'Complete list of corporations profiting from reconciliation',
     format: 'PDF',
-    size: '300 KB'
+    size: '300 KB',
+    downloadUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/corporate-accountability-list.pdf'
   },
   {
     title: 'Government Officials Contact List',
     description: 'Twitter handles and contact info for accountability campaign',
     format: 'PDF',
-    size: '400 KB'
+    size: '400 KB',
+    downloadUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/government-contacts.pdf'
   },
   {
     title: 'Social Media Graphics Pack',
     description: '10 ready-to-share graphics for Twitter, Facebook, Instagram',
     format: 'ZIP (PNG)',
-    size: '5 MB'
+    size: '5 MB',
+    downloadUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/social-media-graphics.zip'
   },
   {
     title: 'Video Testimonial Clips',
     description: 'Short clips for media use (with permission)',
     format: 'MP4',
-    size: '50 MB'
+    size: '50 MB',
+    downloadUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/video-testimonials.mp4'
   }
 ];
 
@@ -283,7 +289,19 @@ export default function MediaKit() {
                   </span>
                 </div>
                 
-                <button className="w-full bg-black text-white px-4 py-2 font-bold hover:bg-gray-800 transition-colors text-sm">
+                <button
+                  onClick={() => {
+                    const link = document.createElement('a');
+                    link.href = asset.downloadUrl;
+                    link.download = asset.title.replace(/\s+/g, '_');
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  }}
+                  className="w-full bg-black text-white px-4 py-2 font-bold hover:bg-gray-800 transition-colors text-sm"
+                >
                   Download Asset
                 </button>
               </div>
@@ -301,7 +319,7 @@ export default function MediaKit() {
             </p>
             
             <div className="space-y-2 text-base">
-              <p><span className="font-bold">Email:</span> media@justiceforbarran.com</p>
+              <p><span className="font-bold">Email:</span> justiceforbarran@gmail.com</p>
               <p><span className="font-bold">Phone:</span> [Contact Number]</p>
               <p><span className="font-bold">Website:</span> www.justiceforbarran.com</p>
               <p><span className="font-bold">Twitter:</span> @HelpBarran</p>
