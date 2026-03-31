@@ -110,6 +110,7 @@ import LegalRightsAndConstitutionBilingual from "./pages/LegalRightsAndConstitut
 import HistoricalJurisprudenceBilingual from "./pages/HistoricalJurisprudenceBilingual";
 import InstitutionMission from "./pages/InstitutionMission";
 import RightsEducationInSchools from "./pages/RightsEducationInSchoolsBilingual";
+import OrangeShirtDayAccountability from "./pages/OrangeShirtDayAccountability";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -214,6 +215,7 @@ function Router() {
       <Route path="/historical-jurisprudence" component={HistoricalJurisprudenceBilingual} />
       <Route path="/institution-mission" component={InstitutionMission} />
       <Route path="/rights-education-schools" component={RightsEducationInSchools} />
+      <Route path="/orange-shirt-day-accountability" component={OrangeShirtDayAccountability} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
