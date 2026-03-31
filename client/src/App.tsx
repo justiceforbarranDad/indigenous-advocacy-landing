@@ -114,6 +114,7 @@ import OrangeShirtDayAccountability from "./pages/OrangeShirtDayAccountability";
 import SponsorResponseTracker from "./pages/SponsorResponseTracker";
 import DonorTestimonials from "./pages/DonorTestimonials";
 import SubmitDonorTestimonial from "./pages/SubmitDonorTestimonial";
+import DNSWarningBanner from "./components/DNSWarningBanner";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -241,6 +242,7 @@ function App() {
         // switchable
       >
         <TooltipProvider>
+          <DNSWarningBanner />
           <Toaster />
           <HamburgerMenu />
           <Router />
