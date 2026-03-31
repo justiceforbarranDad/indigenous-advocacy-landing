@@ -105,13 +105,13 @@ export default function Donate() {
             <CardContent className="pt-8 space-y-6">
               <div className="bg-amber-orange/10 p-6 rounded-lg border-2 border-amber-orange">
                 <p className="text-sm text-charcoal-light mb-3">Send e-Transfer to:</p>
-                <div className="flex items-center gap-2 mb-4">
-                  <code className="flex-1 bg-white p-3 rounded font-mono text-sm break-all">
+                <div className="flex flex-col md:flex-row items-center gap-2 mb-4">
+                  <code className="w-full md:flex-1 bg-white p-3 rounded font-mono text-xs md:text-sm break-words overflow-hidden">
                     justiceforbarran@gmail.com
                   </code>
                   <button
                     onClick={() => copyToClipboard('justiceforbarran@gmail.com')}
-                    className="p-2 hover:bg-amber-orange/20 rounded transition-colors"
+                    className="p-2 hover:bg-amber-orange/20 rounded transition-colors flex-shrink-0"
                   >
                     {copied ? <Check size={20} className="text-green-600" /> : <Copy size={20} />}
                   </button>

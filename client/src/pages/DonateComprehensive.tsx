@@ -150,7 +150,7 @@ export default function DonateComprehensive() {
               {/* Manual Entry */}
               <div className="bg-amber-orange/10 p-4 rounded-lg mb-6">
                 <p className="text-sm font-semibold text-forest-green mb-2">Send to:</p>
-                <p className="text-lg font-mono bg-white p-3 rounded border border-amber-orange text-center">
+                <p className="text-xs md:text-lg font-mono bg-white p-3 rounded border border-amber-orange text-center break-words overflow-hidden">
                   justiceforbarran@gmail.com
                 </p>
                 <p className="text-xs text-charcoal-light mt-2">✓ NO PASSWORD REQUIRED - Direct Deposit</p>

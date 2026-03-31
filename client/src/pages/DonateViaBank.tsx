@@ -101,8 +101,8 @@ export default function DonateViaBank() {
             <p className="text-green-800 text-center text-lg mb-6">
               Use your bank's e-Transfer service to send money to:
             </p>
-            <div className="bg-white border-2 border-green-700 rounded-lg p-4 text-center">
-              <p className="text-2xl font-bold text-green-900">justiceforbarran@gmail.com</p>
+            <div className="bg-white border-2 border-green-700 rounded-lg p-4 text-center overflow-hidden">
+              <p className="text-xs md:text-2xl font-bold text-green-900 break-words">justiceforbarran@gmail.com</p>
             </div>
           </div>
 
