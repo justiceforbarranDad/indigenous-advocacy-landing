@@ -1339,3 +1339,121 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - All story pages identified
 - Transparency dashboard planned
 - Legal documentation framework ready
+
+
+## COMPREHENSIVE FAMILY CASE DOCUMENTATION (March 31, 2026 - CRITICAL)
+### 25 Family Members Affected Over Years - Systemic Negligence Since 2011
+
+### Phase 1: Family Impact Documentation Page
+- [ ] Create FamilyCaseDocumentation.tsx page
+- [ ] Document all 25 family members affected (without personal names per legal guidelines)
+- [ ] Show systemic impact across entire family unit
+- [ ] Timeline: 2011 arrival in Montreal → 2026 ongoing negligence
+- [ ] Document negligence from day 1 of arrival
+- [ ] Show how system punished family for being vulnerable
+- [ ] Include master file references (documentation saved)
+- [ ] Add Human Rights violation framework
+- [ ] Create visual family impact infographic
+- [ ] Link to legal documentation
+
+### Phase 2: Systemic Negligence Timeline (2011-2026)
+- [ ] Create SystemicNegligenceTimeline.tsx page
+- [ ] Document 15-year pattern of institutional failure
+- [ ] 2011: Family arrival in Montreal - initial system failures
+- [ ] 2011-2021: Years of negligence and institutional abandonment
+- [ ] 2021: Critical incident (stabbing) - system failure
+- [ ] 2021-2023: DPJ involvement then withdrawal
+- [ ] 2023-2026: Continued abandonment and political silence
+- [ ] Show pattern across all government agencies
+- [ ] Document each failure with evidence references
+- [ ] Show cumulative impact on family
+
+### Phase 3: Human Rights Violations Framework
+- [ ] Create HumanRightsViolationsFramework.tsx page
+- [ ] Document violations of:
+  - [ ] UN Convention on Rights of the Child
+  - [ ] UN Declaration on Rights of Indigenous Peoples
+  - [ ] Canadian Charter of Rights and Freedoms
+  - [ ] Quebec Charter of Rights and Freedoms
+  - [ ] International Covenant on Civil and Political Rights
+  - [ ] Convention Against Torture
+- [ ] Show how system punished family for vulnerability
+- [ ] Document discrimination based on:
+  - [ ] Indigenous status
+  - [ ] Immigrant/refugee status
+  - [ ] Disability status
+  - [ ] Socioeconomic status
+- [ ] Connect to systemic negligence timeline
+- [ ] Add legal citations and references
+
+### Phase 4: Master Files & Documentation
+- [ ] Create MasterFilesDocumentation.tsx page
+- [ ] Explain what master files contain
+- [ ] Document evidence preservation
+- [ ] Show chain of custody for all documentation
+- [ ] List categories of evidence:
+  - [ ] DPJ correspondence and records
+  - [ ] Medical documentation
+  - [ ] School records
+  - [ ] Government communications
+  - [ ] Police reports
+  - [ ] Witness statements
+  - [ ] Timeline documentation
+- [ ] Explain legal protection of master files
+- [ ] Add access procedures for lawyers
+
+### Phase 5: Temporary Account Structure Transparency
+- [ ] Update FinancialTransparency.tsx with temporary account explanation
+- [ ] Explain why temporary account needed (legal paperwork pending)
+- [ ] Document account holder and trustee information
+- [ ] Show transition plan to official Foundation bank account
+- [ ] Add Solidarity Social notification information
+- [ ] Add Quebec Ombudsman notification information
+- [ ] Explain legal compliance of temporary structure
+- [ ] Add timeline for official account opening
+
+### Phase 6: Solidarity Social & Ombudsman Notification
+- [ ] Create NotificationLog.tsx page
+- [ ] Document Solidarity Social notification (copy of account link)
+- [ ] Document Quebec Ombudsman notification (cc'd)
+- [ ] Show notification dates and recipients
+- [ ] Explain purpose of notifications
+- [ ] Add transparency about external oversight
+- [ ] Show commitment to accountability
+- [ ] Add contact information for verification
+
+### Phase 7: Legal Defense Fund Structure
+- [ ] Create LegalDefenseFundStructure.tsx page
+- [ ] Explain how funds are used for legal action
+- [ ] Document legal team formation process
+- [ ] Show timeline to legal paperwork completion
+- [ ] Explain 40% allocation to legal (from budget breakdown)
+- [ ] Document lawyer recruitment process
+- [ ] Show case preparation timeline
+- [ ] Add legal strategy overview
+- [ ] Explain international advocacy component
+
+### Phase 8: Integration & Navigation
+- [ ] Add all new pages to App.tsx routing
+- [ ] Create "Case Documentation" section in navigation
+- [ ] Add links between related pages
+- [ ] Create breadcrumb navigation
+- [ ] Add "View Master Files Documentation" links throughout
+- [ ] Update Home page with family impact messaging
+- [ ] Add "25 Family Members Affected" to all key pages
+
+### Phase 9: Testing & Verification
+- [ ] Test all new pages load correctly
+- [ ] Verify all links work
+- [ ] Check responsive design
+- [ ] Verify legal compliance of all content
+- [ ] Test navigation across all pages
+- [ ] Save checkpoint with comprehensive documentation
+
+### Status: Family Case Documentation - Ready to Implement
+- 25 family members impact documented
+- 15-year timeline (2011-2026) prepared
+- Human Rights violations framework ready
+- Master files documentation planned
+- Temporary account structure explained
+- External oversight (Solidarity Social, Ombudsman) documented
