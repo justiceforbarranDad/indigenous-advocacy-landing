@@ -312,8 +312,8 @@ export function TransparencyDashboard() {
         </div>
 
         <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-          <p className="text-sm text-blue-800">
-            <strong>📋 Full Transaction History:</strong> This log shows the 5 most recent transactions. A complete audit trail with all historical transactions is available upon request. Contact us at <strong>justiceforbarran@gmail.com</strong> for full documentation.
+          <p className="text-sm text-blue-800 break-words overflow-hidden">
+            <strong>📋 Full Transaction History:</strong> This log shows the 5 most recent transactions. A complete audit trail with all historical transactions is available upon request. Contact us at <strong className="block md:inline text-xs md:text-sm">justiceforbarran@gmail.com</strong> for full documentation.
           </p>
         </div>
       </div>

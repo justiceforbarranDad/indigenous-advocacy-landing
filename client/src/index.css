@@ -289,3 +289,28 @@
     page-break-inside: avoid;
   }
 }
+
+
+/* Hide browser menu button on mobile devices */
+@media (max-width: 768px) {
+  /* Hide any overflow elements that might appear as overlays */
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Ensure donation card content is not obscured */
+  .donation-card-container {
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+  }
+  
+  /* Prevent any fixed positioning elements from overlaying content */
+  [role="menuitem"],
+  [role="menu"],
+  .browser-menu {
+    display: none !important;
+  }
+}
