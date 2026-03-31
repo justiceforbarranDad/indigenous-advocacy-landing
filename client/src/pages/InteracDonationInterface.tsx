@@ -178,7 +178,7 @@ export default function InteracDonationInterface() {
             <h3 className="text-lg font-bold mb-4">{t.qrCode}</h3>
             <div className="flex justify-center mb-4">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/donate-qr-manus_8d3208b4.png"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/justice-for-barran-qr-code_ae3aa20e.png"
                 alt="Donation QR Code"
                 className="w-48 h-48 border-4 border-white shadow-lg rounded"
               />
