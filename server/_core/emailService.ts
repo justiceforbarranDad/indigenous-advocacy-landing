@@ -99,15 +99,19 @@ export function generateStoryConfirmationEmail(
 }
 
 /**
- * Generate HTML email for donation confirmation
+ * Generate HTML email for donation confirmation (Bilingual)
  */
 export function generateDonationConfirmationEmail(
   donorName: string,
   amount: number,
   method: string,
   isAnonymous: boolean,
-  message?: string
+  message?: string,
+  language: 'en' | 'fr' = 'en'
 ): string {
+  if (language === 'fr') {
+    return generateDonationConfirmationEmailFR(donorName, amount, method, isAnonymous, message);
+  }
   const displayName = isAnonymous ? "Anonymous Supporter" : donorName;
   
   return `
@@ -222,15 +226,19 @@ This is an automated confirmation email. Please do not reply directly to this me
 }
 
 /**
- * Generate plain text version of donation confirmation
+ * Generate plain text version of donation confirmation (Bilingual)
  */
 export function generateDonationConfirmationText(
   donorName: string,
   amount: number,
   method: string,
   isAnonymous: boolean,
-  message?: string
+  message?: string,
+  language: 'en' | 'fr' = 'en'
 ): string {
+  if (language === 'fr') {
+    return generateDonationConfirmationTextFR(donorName, amount, method, isAnonymous, message);
+  }
   const displayName = isAnonymous ? "Anonymous Supporter" : donorName;
   
   return `
@@ -404,5 +412,275 @@ Sunday Bloody Sunday - Indigenous Justice Advocacy
 ---
 This is an automated confirmation email. Please do not reply directly to this message.
 © 2026 Indigenous Justice Advocacy. All rights reserved.
+  `;
+}
+
+
+/**
+ * Generate French HTML email for donation confirmation
+ */
+function generateDonationConfirmationEmailFR(
+  donorName: string,
+  amount: number,
+  method: string,
+  isAnonymous: boolean,
+  message?: string
+): string {
+  const displayName = isAnonymous ? "Partisan Anonyme" : donorName;
+  
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #2d5016 0%, #d4843a 100%); color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; }
+    .content { background: #f9f7f4; padding: 30px; border-radius: 0 0 8px 8px; }
+    .amount-box { background: white; border-left: 4px solid #d4843a; padding: 20px; margin: 20px 0; border-radius: 4px; }
+    .amount { font-size: 32px; color: #d4843a; font-weight: bold; }
+    .footer { text-align: center; margin-top: 20px; font-size: 12px; color: #666; }
+    .highlight { color: #d4843a; font-weight: bold; }
+    .impact-list { background: white; padding: 15px; border-radius: 4px; margin: 15px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Merci pour Votre Soutien</h1>
+    </div>
+    <div class="content">
+      <p>Cher(e) ${displayName},</p>
+      
+      <p>Nous avons reçu votre généreux don de <strong>$${amount.toFixed(2)} CAD</strong>. Merci de vous joindre à nous dans la lutte pour la justice, la responsabilité et les droits des Autochtones.</p>
+      
+      <p><strong>Détails du Virement Interac :</strong></p>
+      <p>Si vous avez envoyé votre don par virement Interac, veuillez l'envoyer à : <code style="background: #f0f0f0; padding: 5px 10px; border-radius: 3px;">justiceforbarran@gmail.com</code></p>
+      <p style="font-size: 12px; color: #666;">C'est un compte de dépôt automatique direct - aucune question de sécurité requise.</p>
+      
+      <div class="amount-box">
+        <div class="amount">$${amount.toFixed(2)} CAD</div>
+        <p><strong>Méthode de Don :</strong> ${method.replace(/_/g, ' ').toUpperCase()}</p>
+        <p><strong>Date :</strong> ${new Date().toLocaleDateString('fr-CA')}</p>
+        <p><strong>Statut :</strong> <span class="highlight">Reçu et Confirmé</span></p>
+      </div>
+      
+      <h3>Votre Impact :</h3>
+      <div class="impact-list">
+        <p>Votre don soutient directement :</p>
+        <ul>
+          <li>📋 La documentation juridique et les efforts de plaidoyer</li>
+          <li>📢 Les campagnes de sensibilisation du public</li>
+          <li>🤝 Le soutien aux témoignages des survivants</li>
+          <li>⚖️ Les initiatives de responsabilité</li>
+        </ul>
+      </div>
+      
+      ${message ? `<p><strong>Votre Message :</strong></p><p style="font-style: italic; border-left: 3px solid #d4843a; padding-left: 15px;">"${message}"</p>` : ''}
+      
+      <p>Chaque dollar contribue à notre mission de documenter les défaillances systémiques, d'amplifier les voix des survivants et de tenir les responsables accountables.</p>
+      
+      <p><strong>Reçu Fiscal :</strong> Un reçu fiscal sera émis dans les 5 jours ouvrables (le cas échéant).</p>
+      
+      <p>Merci de faire partie de ce mouvement pour la justice.</p>
+      
+      <p>En solidarité,<br>
+      <strong>Sunday Bloody Sunday - Plaidoyer pour la Justice Autochtone</strong></p>
+      
+      <div class="footer">
+        <p>Ceci est un courriel de confirmation automatisé. Veuillez ne pas répondre directement à ce message.</p>
+        <p>&copy; 2026 Indigenous Justice Advocacy. Tous droits réservés.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}
+
+/**
+ * Generate French plain text version of donation confirmation
+ */
+function generateDonationConfirmationTextFR(
+  donorName: string,
+  amount: number,
+  method: string,
+  isAnonymous: boolean,
+  message?: string
+): string {
+  const displayName = isAnonymous ? "Partisan Anonyme" : donorName;
+  
+  return `
+Merci pour Votre Soutien
+
+Cher(e) ${displayName},
+
+Nous avons reçu votre généreux don de $${amount.toFixed(2)} CAD via ${method.replace(/_/g, ' ').toUpperCase()}.
+
+Merci de vous joindre à nous dans la lutte pour la justice, la responsabilité et les droits des Autochtones.
+
+DÉTAILS DU DON :
+- Montant : $${amount.toFixed(2)} CAD
+- Méthode : ${method.replace(/_/g, ' ').toUpperCase()}
+- Date : ${new Date().toLocaleDateString('fr-CA')}
+- Statut : Reçu et Confirmé
+
+VOTRE IMPACT :
+Votre don soutient directement :
+- La documentation juridique et les efforts de plaidoyer
+- Les campagnes de sensibilisation du public
+- Le soutien aux témoignages des survivants
+- Les initiatives de responsabilité
+
+${message ? `VOTRE MESSAGE :\n"${message}"\n\n` : ''}
+Chaque dollar contribue à notre mission de documenter les défaillances systémiques, d'amplifier les voix des survivants et de tenir les responsables accountables.
+
+REÇU FISCAL :
+Un reçu fiscal sera émis dans les 5 jours ouvrables (le cas échéant).
+
+Merci de faire partie de ce mouvement pour la justice.
+
+En solidarité,
+Sunday Bloody Sunday - Plaidoyer pour la Justice Autochtone
+
+---
+Ceci est un courriel de confirmation automatisé. Veuillez ne pas répondre directement à ce message.
+© 2026 Indigenous Justice Advocacy. Tous droits réservés.
+  `;
+}
+
+/**
+ * Generate French HTML email for Stripe donation confirmation
+ */
+export function generateStripeDonationConfirmationEmailFR(
+  donorName: string,
+  amount: number,
+  sessionId: string,
+  message?: string
+): string {
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #2d5016 0%, #d4843a 100%); color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; }
+    .content { background: #f9f7f4; padding: 30px; border-radius: 0 0 8px 8px; }
+    .amount-box { background: white; border-left: 4px solid #d4843a; padding: 20px; margin: 20px 0; border-radius: 4px; }
+    .amount { font-size: 32px; color: #d4843a; font-weight: bold; }
+    .footer { text-align: center; margin-top: 20px; font-size: 12px; color: #666; }
+    .highlight { color: #d4843a; font-weight: bold; }
+    .impact-list { background: white; padding: 15px; border-radius: 4px; margin: 15px 0; }
+    .receipt-id { background: #f0f0f0; padding: 10px; border-radius: 4px; font-family: monospace; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎉 Merci pour Votre Soutien</h1>
+    </div>
+    <div class="content">
+      <p>Cher(e) ${donorName},</p>
+      
+      <p>Nous avons reçu votre généreux don de <strong>$${(amount / 100).toFixed(2)} USD</strong>. Merci de vous joindre à nous dans la lutte pour la justice, la responsabilité et les droits des Autochtones.</p>
+      
+      <div class="amount-box">
+        <div class="amount">$${(amount / 100).toFixed(2)}</div>
+        <p><strong>Méthode de Paiement :</strong> Carte de Crédit (Stripe)</p>
+        <p><strong>Date :</strong> ${new Date().toLocaleDateString('fr-CA')}</p>
+        <p><strong>Statut :</strong> <span class="highlight">✓ Paiement Confirmé</span></p>
+        <p><strong>Numéro de Reçu :</strong></p>
+        <div class="receipt-id">${sessionId}</div>
+      </div>
+      
+      <h3>Votre Impact :</h3>
+      <div class="impact-list">
+        <p>Votre don soutient directement :</p>
+        <ul>
+          <li>📋 La documentation juridique et les efforts de plaidoyer</li>
+          <li>📢 Les campagnes de sensibilisation du public</li>
+          <li>🤝 Le soutien aux témoignages des survivants</li>
+          <li>⚖️ Les initiatives de responsabilité</li>
+          <li>🎙️ La production et la distribution de balados</li>
+        </ul>
+      </div>
+      
+      ${message ? `<p><strong>Votre Message :</strong></p><p style="font-style: italic; border-left: 3px solid #d4843a; padding-left: 15px;">"${message}"</p>` : ''}
+      
+      <p>Chaque dollar contribue à notre mission de documenter les défaillances systémiques, d'amplifier les voix des survivants et de tenir les responsables accountables.</p>
+      
+      <p><strong>Reçu Fiscal :</strong> Un reçu fiscal sera émis dans les 5 jours ouvrables (le cas échéant dans votre juridiction).</p>
+      
+      <p><strong>Questions ?</strong> Répondez à ce courriel ou visitez <strong>www.justiceforbarran.com</strong></p>
+      
+      <p>Merci de faire partie de ce mouvement pour la justice.</p>
+      
+      <p>En solidarité,<br>
+      <strong>Sunday Bloody Sunday - Plaidoyer pour la Justice Autochtone</strong></p>
+      
+      <div class="footer">
+        <p>Ceci est un courriel de confirmation automatisé. Veuillez ne pas répondre directement à ce message.</p>
+        <p>&copy; 2026 Indigenous Justice Advocacy. Tous droits réservés.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}
+
+/**
+ * Generate French plain text version of Stripe donation confirmation
+ */
+export function generateStripeDonationConfirmationTextFR(
+  donorName: string,
+  amount: number,
+  sessionId: string,
+  message?: string
+): string {
+  return `
+Merci pour Votre Soutien
+
+Cher(e) ${donorName},
+
+Nous avons reçu votre généreux don de $${(amount / 100).toFixed(2)} USD par carte de crédit.
+
+Merci de vous joindre à nous dans la lutte pour la justice, la responsabilité et les droits des Autochtones.
+
+DÉTAILS DU DON :
+- Montant : $${(amount / 100).toFixed(2)} USD
+- Méthode de Paiement : Carte de Crédit (Stripe)
+- Date : ${new Date().toLocaleDateString('fr-CA')}
+- Statut : ✓ Paiement Confirmé
+- Numéro de Reçu : ${sessionId}
+
+VOTRE IMPACT :
+Votre don soutient directement :
+- La documentation juridique et les efforts de plaidoyer
+- Les campagnes de sensibilisation du public
+- Le soutien aux témoignages des survivants
+- Les initiatives de responsabilité
+- La production et la distribution de balados
+
+${message ? `VOTRE MESSAGE :\n"${message}"\n\n` : ''}
+Chaque dollar contribue à notre mission de documenter les défaillances systémiques, d'amplifier les voix des survivants et de tenir les responsables accountables.
+
+REÇU FISCAL :
+Un reçu fiscal sera émis dans les 5 jours ouvrables (le cas échéant dans votre juridiction).
+
+QUESTIONS ?
+Répondez à ce courriel ou visitez www.justiceforbarran.com
+
+Merci de faire partie de ce mouvement pour la justice.
+
+En solidarité,
+Sunday Bloody Sunday - Plaidoyer pour la Justice Autochtone
+
+---
+Ceci est un courriel de confirmation automatisé. Veuillez ne pas répondre directement à ce message.
+© 2026 Indigenous Justice Advocacy. Tous droits réservés.
   `;
 }
