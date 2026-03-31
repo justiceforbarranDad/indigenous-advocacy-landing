@@ -121,9 +121,11 @@ export default function Donate() {
                 </p>
                 
                 {/* QR Code */}
-                <div className="flex flex-col items-center gap-3 bg-white p-4 rounded-lg">
+                <div className="flex flex-col items-center gap-3 bg-white p-4 rounded-lg overflow-hidden">
                   <p className="text-xs text-charcoal-light font-semibold">Scan to Send e-Transfer</p>
-                  <img src="/etransfer-qr.png" alt="e-Transfer QR Code" className="w-48 h-48 border-2 border-forest-green rounded" />
+                  <div className="w-full flex justify-center">
+                    <img src="/etransfer-qr.png" alt="e-Transfer QR Code" className="w-40 h-40 border-2 border-forest-green rounded" />
+                  </div>
                   <p className="text-xs text-charcoal-light text-center">
                     Scan with your banking app for instant direct deposit
                   </p>
