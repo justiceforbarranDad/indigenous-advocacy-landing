@@ -6,10 +6,8 @@ export function LanguageToggle() {
 
   const toggleLanguage = (lang: 'en' | 'fr') => {
     i18n.changeLanguage(lang);
-    // Update URL if using URL-based routing
-    const currentPath = window.location.pathname;
-    const pathWithoutLang = currentPath.replace(/^\/(en|fr)/, '');
-    window.history.pushState({}, '', `/${lang}${pathWithoutLang}`);
+    // Store language preference in localStorage (no URL changes)
+    localStorage.setItem('preferredLanguage', lang);
   };
 
   return (
