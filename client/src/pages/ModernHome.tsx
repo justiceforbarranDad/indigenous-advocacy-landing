@@ -127,7 +127,7 @@ export default function ModernHome() {
               <div className="mb-4 md:mb-6">
                 <h4 className="font-bold text-gray-900 mb-2 text-sm md:text-base">E-Transfer (Canada)</h4>
                 <p className="text-xs md:text-sm text-gray-700 mb-2">Send e-Transfer to:</p>
-                <p className="font-mono text-sm bg-gray-100 p-2 rounded mb-4">justiceforbarran@gmail.com</p>
+                <p className="font-mono text-xs md:text-sm bg-gray-100 p-2 rounded mb-4 break-words overflow-hidden">justiceforbarran@gmail.com</p>
                 <div className="border-4 border-red-700 p-4 rounded mb-4 bg-gray-50">
                   <p className="text-sm font-bold text-gray-900 mb-3 text-center">Scan QR to see all bank options</p>
                   <a href="/donate-via-bank" className="block cursor-pointer hover:opacity-80 transition-opacity">
