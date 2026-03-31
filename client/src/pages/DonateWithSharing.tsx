@@ -2,6 +2,7 @@ import { Heart, DollarSign } from 'lucide-react';
 import { useState } from 'react';
 import { ShareSuccess } from '@/components/ShareSuccess';
 import { DonationTracker } from '@/components/DonationTracker';
+import { DonationWithQR } from '@/components/DonationWithQR';
 
 export default function DonateWithSharing() {
   const [selectedAmount, setSelectedAmount] = useState<string | null>(null);
@@ -48,6 +49,12 @@ export default function DonateWithSharing() {
             Every dollar donated goes directly to legal defense, advocacy, and systemic change efforts. Your contribution helps us demand accountability from government and corporate institutions.
           </p>
           <DonationTracker />
+        </div>
+
+        {/* QR CODE DONATION */}
+        <div className="mb-12 pb-8 border-b-4 border-black">
+          <h2 className="text-3xl md:text-4xl font-black mb-6">💳 Donate Instantly via QR Code</h2>
+          <DonationWithQR />
         </div>
 
         {/* DONATION AMOUNTS */}
