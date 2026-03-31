@@ -55,9 +55,9 @@ export default function ModernHome() {
             Indigenous Teen Stabbed Three Times — System Failed Him For Five Years
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-            <a href="/donate-via-bank" className="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 font-bold rounded hover:bg-red-800 transition-colors">
+            <a href="/donate" className="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 font-bold rounded hover:bg-red-800 transition-colors animate-pulse">
               <Heart size={20} />
-              SUPPORT THIS CAUSE
+              DONATE NOW
             </a>
             <a href="#" className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 font-bold rounded hover:bg-green-700 transition-colors">
               <Share2 size={20} />
@@ -137,9 +137,9 @@ export default function ModernHome() {
                 </div>
               </div>
 
-              <a href="/donate" className="block w-full bg-green-600 text-white py-2 md:py-3 font-bold rounded hover:bg-green-700 transition-colors mb-2 md:mb-3 text-sm md:text-base text-center">
-                <DollarSign size={18} className="inline mr-2" />
-                DONATE VIA CARD
+              <a href="/donate" className="block w-full bg-red-600 text-white py-2 md:py-3 font-bold rounded hover:bg-red-700 transition-colors mb-2 md:mb-3 text-sm md:text-base text-center font-bold">
+                <Heart size={18} className="inline mr-2" />
+                DONATE NOW
               </a>
               <a href="/donate-recurring" className="block w-full bg-blue-600 text-white py-2 md:py-3 font-bold rounded hover:bg-blue-700 transition-colors mb-2 md:mb-3 text-sm md:text-base text-center">
                 MONTHLY RECURRING

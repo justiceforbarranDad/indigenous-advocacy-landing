@@ -29,6 +29,7 @@ import GhostedByPolitician from '@/pages/GhostedByPolitician';
 import BarransStory from "./pages/BarransStory";
 import MotherAbuseDPJ from "./pages/MotherAbuseDPJ";
 import DonateComprehensive from '@/pages/DonateComprehensive';
+import DonateQuick from '@/pages/DonateQuick';
 import DonationInstructions from '@/pages/DonationInstructions';
 import Movement from "./pages/Movement";
 import TimelineNewspaperArchive from "./pages/TimelineNewspaperArchive";
@@ -134,7 +135,7 @@ function Router() {
       <Route path="/sunday-bloody-sunday-part-3" component={SundayBloodyySundayPart3} />
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
-      <Route path="/donate" component={DonateWithSharing} />
+      <Route path="/donate" component={DonateQuick} />
       <Route path={"/donate-comprehensive"} component={DonateComprehensive} />
       <Route path={"/donation-instructions"} component={DonationInstructions} />
       <Route path={"/movement"} component={Movement} />
