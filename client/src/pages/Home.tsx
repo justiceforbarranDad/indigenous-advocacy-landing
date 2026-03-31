@@ -8,7 +8,8 @@ import { DonationDashboard } from '@/components/DonationDashboard';
 import { DomainSharingWidget } from '@/components/DomainSharingWidget';
 import { TransparencyDashboard } from '@/components/TransparencyDashboard';
 
-const BG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_ljzvky_image_dac505a0.png";
+const BG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp";
+const ORANGE_SHIRT_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/orange-shirt-sunset-forest.jpg";
 
 export default function Home() {
   const { user, loading, error, isAuthenticated, logout } = useAuth();
@@ -19,22 +20,46 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
+      {/* HERO SECTION - ORANGE SHIRT & SUNSET */}
+      <div className="relative h-screen flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp')`,
+          }}
+        >
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div className="relative z-10 text-center px-4 max-w-4xl">
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 leading-tight">
+            Sunday Bloody Sunday
+          </h1>
+          <h2 className="text-3xl md:text-4xl text-amber-300 mb-6 font-serif italic">
+            Part Two
+          </h2>
+          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Indigenous Justice Advocacy — Systemic Accountability — 15 Years of Documented Failure
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center mb-8">
+            <span className="bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold">Indigenous Rights</span>
+            <span className="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold">Justice for Barran</span>
+            <span className="bg-blue-900 text-white px-4 py-2 rounded-lg font-semibold">Accountability</span>
+          </div>
+          <a
+            href="#story"
+            className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+          >
+            Read Our Story →
+          </a>
+        </div>
+      </div>
+
       {/* SINGLE PAGE NEWSPAPER LAYOUT */}
       <div className="max-w-4xl mx-auto bg-white">
         
         {/* NEWSPAPER MASTHEAD */}
         <div className="w-full bg-black text-white py-8 px-6 border-b-8 border-black">
-          {/* Canadian Flag with Message */}
-          <div className="flex justify-center mb-6">
-            <div className="relative w-full max-w-sm">
-              <img 
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/canadian-flag-truth-reconciliation_4319a979.png" 
-                alt="Canadian Flag - Current Truth Before Reconciliation" 
-                className="w-full h-auto rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-          
           {/* Publication Name */}
           <div className="text-center mb-4">
             <h1 className="text-5xl md:text-6xl font-black tracking-widest" style={{ fontFamily: 'Georgia, serif', letterSpacing: '0.15em' }}>
@@ -49,7 +74,7 @@ export default function Home() {
               A Newspaper of Indigenous Rights & Systemic Accountability
             </p>
             <p className="text-xs md:text-sm tracking-widest">
-              MARCH 29, 2026 — VOLUME 1, ISSUE 3
+              MARCH 31, 2026 — VOLUME 1, ISSUE 4
             </p>
           </div>
         </div>
@@ -77,10 +102,10 @@ export default function Home() {
         <div className="px-6 py-8 space-y-6">
           
           {/* MAIN HEADLINE STORY */}
-          <div className="border-b-4 border-black pb-6">
+          <div id="story" className="border-b-4 border-black pb-6">
             <p className="text-xs font-bold uppercase tracking-wider mb-2">FRONT PAGE STORY</p>
             <h2 className="text-4xl font-bold mb-4" style={{ fontFamily: 'Georgia, serif' }}>
-              Five Years of Systemic Abandonment
+              Sunday Bloody Sunday, Part Two: 15 Years of Systemic Abandonment
             </h2>
             <p className="text-sm font-bold mb-4">
               Indigenous Family Demands Justice After DPJ Failure, Political Silence, and Corporate Hypocrisy
