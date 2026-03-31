@@ -113,6 +113,7 @@ import RightsEducationInSchools from "./pages/RightsEducationInSchoolsBilingual"
 import OrangeShirtDayAccountability from "./pages/OrangeShirtDayAccountability";
 import SponsorResponseTracker from "./pages/SponsorResponseTracker";
 import DonorTestimonials from "./pages/DonorTestimonials";
+import SubmitDonorTestimonial from "./pages/SubmitDonorTestimonial";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -220,6 +221,7 @@ function Router() {
       <Route path="/orange-shirt-day-accountability" component={OrangeShirtDayAccountability} />
       <Route path="/sponsor-response-tracker" component={SponsorResponseTracker} />
       <Route path="/donor-testimonials" component={DonorTestimonials} />
+      <Route path="/submit-testimonial" component={SubmitDonorTestimonial} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
