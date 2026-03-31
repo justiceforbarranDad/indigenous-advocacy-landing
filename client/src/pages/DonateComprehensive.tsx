@@ -116,7 +116,7 @@ export default function DonateComprehensive() {
               <div className="bg-gray-50 p-6 rounded-lg text-center mb-6">
                 <p className="text-xs font-semibold text-charcoal mb-4">Scan to visit donation page</p>
                 <div className="bg-white p-4 rounded border-2 border-forest-green inline-block">
-                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/donate-link-qr-code_27a0ee4c.png" alt="Donation Page QR Code" className="w-40 h-40 rounded" />
+                  <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/donate-qr-manus_8d3208b4.png" alt="Donation Page QR Code" className="w-40 h-40 rounded" />
                 </div>
               </div>
               <div className="space-y-2 text-xs text-charcoal-light mb-6">

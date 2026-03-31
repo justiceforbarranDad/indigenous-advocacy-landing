@@ -1484,3 +1484,63 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Add milestone celebration messaging to UI
 - [ ] Test email delivery at each milestone
 - [ ] Verify donor notification system works correctly
+
+
+## PHASE 4: COMPREHENSIVE IMPROVEMENTS (March 31, 2026)
+
+### Podcast Episodes - New Content
+- [ ] Episode 4: Add new podcast episode (details TBD)
+- [ ] Episode 5: Add new podcast episode (details TBD)
+- [ ] Update PodcastHub.tsx with new episodes
+- [ ] Test podcast player functionality
+- [ ] Verify bilingual audio files work
+
+### Newspaper Design - Apply to All Pages
+- [ ] Apply NewspaperLayout to priority 20 pages
+- [ ] Update AccountabilityTracker.tsx with newspaper design
+- [ ] Update DPJAccountability.tsx with newspaper design
+- [ ] Update DonateComprehensive.tsx with newspaper design
+- [ ] Update BarransStory.tsx with newspaper design
+- [ ] Update SystemicFailures.tsx with newspaper design
+- [ ] Apply design to remaining 115 pages systematically
+- [ ] Test responsive design on mobile/tablet/desktop
+- [ ] Verify masthead displays correctly on all pages
+- [ ] Verify footer displays correctly on all pages
+
+### French Translations - All Pages
+- [ ] Add French translations to 20 priority pages
+- [ ] Create bilingual content objects for all pages
+- [ ] Test language toggle on all pages
+- [ ] Verify French text displays correctly
+- [ ] Add French metadata/SEO
+- [ ] Test localStorage persistence for language preference
+- [ ] Add French translations to remaining 101 pages
+
+### Expense/Receipt Tracking System
+- [ ] Create ExpenseTracker.tsx admin page
+- [ ] Add database schema for expenses (amount, date, category, receipt_url)
+- [ ] Create receipt upload functionality
+- [ ] Add expense categorization (fuel, supplies, travel, etc.)
+- [ ] Create expense reporting dashboard
+- [ ] Add expense filtering by date range
+- [ ] Add expense filtering by category
+- [ ] Create monthly expense summary
+- [ ] Add expense export to CSV
+- [ ] Integrate with admin dashboard
+- [ ] Test receipt upload and storage
+- [ ] Test expense calculations and reporting
+
+### Testing & Verification
+- [ ] Run all vitest tests
+- [ ] Test podcast playback on all devices
+- [ ] Test newspaper design on mobile
+- [ ] Test French language toggle on all pages
+- [ ] Test expense tracker functionality
+- [ ] Verify no TypeScript errors
+- [ ] Check dev server health
+- [ ] Test all new features in browser
+
+### Final Checkpoint
+- [ ] Save comprehensive checkpoint
+- [ ] Document all improvements
+- [ ] Prepare final report for user
