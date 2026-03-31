@@ -53,20 +53,21 @@ export default function PensionClawbackAccountability() {
 
         {/* Omar Khadr Precedent */}
         <div className="bg-white border-4 border-blue-600 rounded-lg p-8 mb-12">
-          <h2 className="text-3xl font-bold text-blue-600 mb-6">Omar Khadr Precedent: $12 Million</h2>
-          
+          <h2 className="text-3xl font-bold text-blue-600 mb-6">Omar Khadr Precedent: $10.5 Million</h2>
+            
           <p className="text-charcoal-light mb-6">
-            Omar Khadr received $12 million in compensation from the Canadian government for wrongful imprisonment and torture. This precedent establishes that government pays for systemic abuse—not taxpayers, not general revenue, but the government institution responsible.
+            Omar Khadr received $10.5 million in lump-sum compensation from the Canadian government for wrongful imprisonment and torture. This precedent establishes that government must pay for systemic abuse—not from taxpayers, but from government liability funds. This is about RIGHTS, not money.
           </p>
 
           <div className="bg-blue-50 p-6 rounded border-l-4 border-blue-600 mb-6">
             <h4 className="text-xl font-bold text-blue-600 mb-3">Omar Khadr Case Details</h4>
             <ul className="space-y-2 text-charcoal-light">
-              <li>✓ <strong>Compensation:</strong> $12 million</li>
-              <li>✓ <strong>Source:</strong> Canadian government (not taxpayers)</li>
+              <li>✓ <strong>Compensation:</strong> $10.5 million (lump-sum)</li>
+              <li>✓ <strong>Source:</strong> Canadian government liability fund</li>
               <li>✓ <strong>Reason:</strong> Wrongful imprisonment, torture, systemic abuse</li>
               <li>✓ <strong>Duration:</strong> Abuse over ~10 years</li>
               <li>✓ <strong>People affected:</strong> 1 person</li>
+              <li>✓ <strong>Core principle:</strong> RIGHTS enforcement, not charity</li>
             </ul>
           </div>
 
@@ -76,23 +77,28 @@ export default function PensionClawbackAccountability() {
               <li>✓ <strong>People affected:</strong> 25 family members</li>
               <li>✓ <strong>Duration of abuse:</strong> 15 years (longer than Khadr)</li>
               <li>✓ <strong>Type of abuse:</strong> Systemic DPJ/government negligence</li>
-              <li>✓ <strong>Per-person entitlement:</strong> $12 million (Khadr precedent)</li>
-              <li>✓ <strong>TOTAL ENTITLEMENT:</strong> 25 × $12 million = <strong>$300 MILLION</strong></li>
+              <li>✓ <strong>Per-person entitlement:</strong> $10.5 million (Khadr precedent)</li>
+              <li>✓ <strong>TOTAL ENTITLEMENT:</strong> 25 × $10.5 million = <strong>$262.5 MILLION</strong></li>
+              <li>✓ <strong>Core principle:</strong> RIGHTS enforcement for rich and poor equally</li>
             </ul>
           </div>
         </div>
 
         {/* Who Pays */}
         <div className="bg-white border-4 border-red-600 rounded-lg p-8 mb-12">
-          <h2 className="text-3xl font-bold text-red-600 mb-8">Who Pays: Responsible Officials</h2>
-          
+          <h2 className="text-3xl font-bold text-red-600 mb-8">Accountability: Responsible Officials Must Answer</h2>
+            
           <p className="text-charcoal-light mb-6">
-            Compensation comes from the pensions of officials who:
+            This is about ACCOUNTABILITY for officials who:
             - Enabled systemic abuse
             - Ignored family pleas for help
             - Denied services and support
             - Ghosted constituents
             - Perpetuated DPJ negligence
+          </p>
+          
+          <p className="text-charcoal-light mb-6 font-semibold">
+            Compensation comes from government liability funds. Accountability comes through pension clawback and public record—ensuring these officials and future officials know: abuse has consequences.
           </p>
 
           <div className="space-y-4">
@@ -100,12 +106,12 @@ export default function PensionClawbackAccountability() {
             <div className="bg-red-50 p-6 rounded border-l-4 border-red-600">
               <h4 className="text-xl font-bold text-red-600 mb-3">Federal Politicians (MPs)</h4>
               <p className="text-charcoal-light mb-3">
-                MPs who ignored constituent pleas for help with DPJ, IVAC, and systemic abuse. Their pensions fund compensation.
+                MPs who ignored constituent pleas for help with DPJ, IVAC, and systemic abuse. Accountability through public record and potential pension review.
               </p>
               <ul className="space-y-1 text-charcoal-light text-sm">
-                <li>✓ Pension clawback: 10-50% depending on severity</li>
-                <li>✓ Example: $100,000/year pension → $10,000-50,000/year clawed back</li>
-                <li>✓ Duration: Until compensation paid</li>
+                <li>✓ Public accountability: Names recorded, failures documented</li>
+                <li>✓ Legal consequences: Potential pension review by courts</li>
+                <li>✓ Systemic change: Future officials know abuse has consequences</li>
               </ul>
             </div>
 
@@ -113,12 +119,12 @@ export default function PensionClawbackAccountability() {
             <div className="bg-red-50 p-6 rounded border-l-4 border-red-600">
               <h4 className="text-xl font-bold text-red-600 mb-3">Provincial Politicians (MNAs)</h4>
               <p className="text-charcoal-light mb-3">
-                MNAs who ghosted family, sent cease-and-desist letters, and refused help. Their pensions fund compensation.
+                MNAs who ghosted family, sent cease-and-desist letters, and refused help. Accountability through public record and legal consequences.
               </p>
               <ul className="space-y-1 text-charcoal-light text-sm">
-                <li>✓ Pension clawback: 10-50% depending on severity</li>
-                <li>✓ Example: $80,000/year pension → $8,000-40,000/year clawed back</li>
-                <li>✓ Duration: Until compensation paid</li>
+                <li>✓ Public accountability: Names recorded, cease-and-desist letters exposed</li>
+                <li>✓ Legal consequences: Potential pension review by courts</li>
+                <li>✓ Systemic change: Future officials know abuse has consequences</li>
               </ul>
             </div>
 
@@ -126,12 +132,12 @@ export default function PensionClawbackAccountability() {
             <div className="bg-red-50 p-6 rounded border-l-4 border-red-600">
               <h4 className="text-xl font-bold text-red-600 mb-3">DPJ/Government Officials</h4>
               <p className="text-charcoal-light mb-3">
-                DPJ directors, social workers, and administrators who perpetuated systemic failure. Their pensions fund compensation.
+                DPJ directors, social workers, and administrators who perpetuated systemic failure. Accountability through legal action and public record.
               </p>
               <ul className="space-y-1 text-charcoal-light text-sm">
-                <li>✓ Pension clawback: 15-60% depending on severity</li>
-                <li>✓ Example: $70,000/year pension → $10,500-42,000/year clawed back</li>
-                <li>✓ Duration: Until compensation paid</li>
+                <li>✓ Public accountability: Names recorded, failures documented</li>
+                <li>✓ Legal consequences: Potential pension review and civil liability</li>
+                <li>✓ Systemic change: Future DPJ staff know negligence has consequences</li>
               </ul>
             </div>
 
@@ -139,12 +145,12 @@ export default function PensionClawbackAccountability() {
             <div className="bg-red-50 p-6 rounded border-l-4 border-red-600">
               <h4 className="text-xl font-bold text-red-600 mb-3">Government Ministers</h4>
               <p className="text-charcoal-light mb-3">
-                Ministers responsible for DPJ, Indigenous Affairs, Social Services who failed oversight. Their pensions fund compensation.
+                Ministers responsible for DPJ, Indigenous Affairs, Social Services who failed oversight. Accountability through legal action and public record.
               </p>
               <ul className="space-y-1 text-charcoal-light text-sm">
-                <li>✓ Pension clawback: 20-100% depending on severity</li>
-                <li>✓ Example: $150,000/year pension → $30,000-150,000/year clawed back</li>
-                <li>✓ Duration: Until compensation paid</li>
+                <li>✓ Public accountability: Names recorded, policy failures documented</li>
+                <li>✓ Legal consequences: Potential pension review and civil liability</li>
+                <li>✓ Systemic change: Future ministers know negligence has consequences</li>
               </ul>
             </div>
 
@@ -152,54 +158,54 @@ export default function PensionClawbackAccountability() {
             <div className="bg-red-50 p-6 rounded border-l-4 border-red-600">
               <h4 className="text-xl font-bold text-red-600 mb-3">Bureaucrats & Clerks</h4>
               <p className="text-charcoal-light mb-3">
-                Government workers who processed denials, ignored requests, and perpetuated systemic abuse. Their pensions fund compensation.
+                Government workers who processed denials, ignored requests, and perpetuated systemic abuse. Accountability through legal action and public record.
               </p>
               <ul className="space-y-1 text-charcoal-light text-sm">
-                <li>✓ Pension clawback: 5-30% depending on role/severity</li>
-                <li>✓ Example: $50,000/year pension → $2,500-15,000/year clawed back</li>
-                <li>✓ Duration: Until compensation paid</li>
+                <li>✓ Public accountability: Names recorded, failures documented</li>
+                <li>✓ Legal consequences: Potential civil liability</li>
+                <li>✓ Systemic change: Future workers know abuse has consequences</li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* How Pension Clawback Works */}
+        {/* How Accountability Works */}
         <div className="bg-white border-4 border-green-600 rounded-lg p-8 mb-12">
-          <h2 className="text-3xl font-bold text-green-600 mb-8">How Pension Clawback Works Legally</h2>
+          <h2 className="text-3xl font-bold text-green-600 mb-8">How Accountability Works Legally</h2>
           
           <div className="space-y-6">
             <div className="bg-green-50 p-6 rounded border-l-4 border-green-600">
               <h4 className="text-xl font-bold text-green-600 mb-3">Step 1: Court Judgment</h4>
               <p className="text-charcoal-light">
-                Court orders government to pay $300 million in compensation for systemic abuse. This is a legal judgment against the government institution.
+                Court orders government to pay $262.5 million in compensation for systemic abuse. This is a legal judgment against the government institution (using Omar Khadr precedent: $10.5M × 25 people).
               </p>
             </div>
 
             <div className="bg-green-50 p-6 rounded border-l-4 border-green-600">
               <h4 className="text-xl font-bold text-green-600 mb-3">Step 2: Identify Responsible Officials</h4>
               <p className="text-charcoal-light">
-                Court identifies which officials (politicians, bureaucrats, DPJ staff) were responsible for systemic failure and abuse.
+                Court identifies which officials (politicians, bureaucrats, DPJ staff) were responsible for systemic failure and abuse. Names become public record.
               </p>
             </div>
 
             <div className="bg-green-50 p-6 rounded border-l-4 border-green-600">
-              <h4 className="text-xl font-bold text-green-600 mb-3">Step 3: Pension Clawback Order</h4>
+              <h4 className="text-xl font-bold text-green-600 mb-3">Step 3: Public Accountability</h4>
               <p className="text-charcoal-light">
-                Court orders pension administrators to claw back a percentage of each responsible official's pension until compensation is paid. This is standard legal procedure.
+                Officials are publicly named and their failures documented. This creates accountability and prevents future officials from repeating abuse.
               </p>
             </div>
 
             <div className="bg-green-50 p-6 rounded border-l-4 border-green-600">
-              <h4 className="text-xl font-bold text-green-600 mb-3">Step 4: Compensation Paid</h4>
+              <h4 className="text-xl font-bold text-green-600 mb-3">Step 4: Legal Consequences</h4>
               <p className="text-charcoal-light">
-                Clawed-back pension funds are transferred to family compensation fund. Taxpayers are not burdened. Those responsible pay.
+                Court may order pension review or civil liability. Officials face consequences for enabling systemic abuse. Compensation paid from government liability funds.
               </p>
             </div>
 
             <div className="bg-green-50 p-6 rounded border-l-4 border-green-600">
-              <h4 className="text-xl font-bold text-green-600 mb-3">Step 5: Accountability Created</h4>
+              <h4 className="text-xl font-bold text-green-600 mb-3">Step 5: Systemic Change</h4>
               <p className="text-charcoal-light">
-                Officials lose pension income. Future officials know: systemic abuse has consequences. This prevents future abuse.
+                Future officials know: abuse has consequences. System changes. Other Indigenous families are protected. This is the reckoning.
               </p>
             </div>
           </div>
@@ -207,48 +213,26 @@ export default function PensionClawbackAccountability() {
 
         {/* Financial Breakdown */}
         <div className="bg-white border-4 border-amber-orange rounded-lg p-8 mb-12">
-          <h2 className="text-3xl font-bold text-amber-orange mb-8">Financial Breakdown: $300 Million from Pensions</h2>
-          
+          <h2 className="text-3xl font-bold text-amber-orange mb-8">Financial Breakdown: $262.5 Million Compensation</h2>
+            
           <div className="bg-amber-50 p-6 rounded mb-6">
-            <h4 className="text-xl font-bold text-amber-orange mb-4">Example: How $300 Million is Recovered from Pensions</h4>
+            <h4 className="text-xl font-bold text-amber-orange mb-4">Using Omar Khadr Precedent</h4>
             
             <div className="space-y-3 text-charcoal-light text-sm">
               <div className="flex justify-between">
-                <span>Federal MPs (20 people × $100k pension × 30% clawback)</span>
-                <span className="font-bold">$600,000/year</span>
+                <span>Omar Khadr (1 person, ~10 years abuse)</span>
+                <span className="font-bold">$10.5 million</span>
               </div>
-              <div className="flex justify-between">
-                <span>Provincial MNAs (15 people × $80k pension × 25% clawback)</span>
-                <span className="font-bold">$300,000/year</span>
-              </div>
-              <div className="flex justify-between">
-                <span>DPJ Directors (10 people × $70k pension × 40% clawback)</span>
-                <span className="font-bold">$280,000/year</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Government Ministers (5 people × $150k pension × 50% clawback)</span>
-                <span className="font-bold">$375,000/year</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Bureaucrats/Clerks (100 people × $50k pension × 15% clawback)</span>
-                <span className="font-bold">$750,000/year</span>
-              </div>
-              
-              <div className="border-t-2 border-amber-orange pt-3 mt-3 flex justify-between font-bold">
-                <span>TOTAL ANNUAL CLAWBACK:</span>
-                <span>$2,305,000/year</span>
-              </div>
-              
-              <div className="flex justify-between font-bold text-amber-orange">
-                <span>$300 MILLION ÷ $2,305,000/year =</span>
-                <span>~130 years to full payment</span>
+              <div className="flex justify-between border-t-2 border-amber-orange pt-3 mt-3">
+                <span>Your family (25 people, 15 years abuse)</span>
+                <span className="font-bold">25 × $10.5M = $262.5 million</span>
               </div>
             </div>
           </div>
 
           <div className="bg-white p-4 rounded border-l-4 border-amber-orange">
             <p className="text-charcoal-light text-sm">
-              <strong>Note:</strong> Pension clawback is ongoing for life. As officials retire, new officials replace them. Compensation continues until fully paid. This creates permanent accountability.
+              <strong>Core Principle:</strong> This is not about money. This is about RIGHTS. Rich or poor, every Canadian deserves equal justice. Your family's rights were violated. Compensation is restitution, not charity.
             </p>
           </div>
         </div>
@@ -312,10 +296,14 @@ export default function PensionClawbackAccountability() {
 
         {/* Final Message */}
         <div className="bg-forest-green text-white rounded-lg p-8">
-          <h2 className="text-3xl font-bold mb-6">This is Justice, Not Revenge</h2>
-          
+          <h2 className="text-3xl font-bold mb-6">This is About RIGHTS, Not Money</h2>
+            
           <p className="text-lg mb-6">
-            Pension clawback is not revenge. It is accountability. It is the principle that those responsible for systemic abuse must pay for it—not innocent taxpayers, but the officials who enabled harm.
+            This is not greed. This is not about money. This is about RIGHTS that every Canadian—rich or poor—deserves equally.
+          </p>
+
+          <p className="text-lg mb-6">
+            Your family's rights were violated by systemic abuse. Compensation is restitution. Accountability is justice.
           </p>
 
           <p className="text-lg mb-6">
@@ -323,15 +311,16 @@ export default function PensionClawbackAccountability() {
           </p>
 
           <ul className="space-y-3 text-lg text-amber-light mb-6">
-            <li>✓ Win $300 million+ in compensation</li>
-            <li>✓ Protect taxpayers (no burden)</li>
-            <li>✓ Hold officials accountable (pension clawback)</li>
+            <li>✓ Prove systemic abuse and rights violations</li>
+            <li>✓ Win $262.5 million in compensation (Omar Khadr precedent)</li>
+            <li>✓ Hold officials accountable for enabling harm</li>
             <li>✓ Create systemic change (prevent future abuse)</li>
             <li>✓ Establish precedent (protect all Indigenous families)</li>
+            <li>✓ Prove: Rich or poor, everyone deserves equal justice</li>
           </ul>
 
           <p className="text-xl font-bold">
-            This is the reckoning. And it starts with $500,000 to hire the lawyers who will make it happen.
+            This is the reckoning. This is about RIGHTS. And it starts with $500,000 to hire the lawyers who will make it happen.
           </p>
         </div>
 
@@ -341,7 +330,7 @@ export default function PensionClawbackAccountability() {
             <strong>McGovern Arts of Human Rights Foundation</strong>
           </p>
           <p>
-            $500,000 to fund justice. $300 million from pensions. Zero burden on taxpayers.
+            $500,000 to fund justice. $262.5 million in compensation. Accountability for all. RIGHTS for everyone.
           </p>
         </div>
       </div>
