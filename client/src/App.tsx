@@ -125,6 +125,7 @@ import OperationsBudget from "./pages/OperationsBudget";
 import FoundationHub from "./pages/FoundationHub";
 import DonationMilestones from "./pages/DonationMilestones";
 import EmergencySuccessionPlan from "./pages/EmergencySuccessionPlan";
+import Why500kEssential from "./pages/Why500kEssential";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -243,6 +244,7 @@ function Router() {
       <Route path="/foundation-hub" component={FoundationHub} />
       <Route path="/donation-milestones" component={DonationMilestones} />
       <Route path="/emergency-succession-plan" component={EmergencySuccessionPlan} />
+      <Route path="/why-500k-essential" component={Why500kEssential} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
