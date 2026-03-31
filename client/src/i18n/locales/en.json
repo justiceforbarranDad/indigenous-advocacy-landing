@@ -1,0 +1,81 @@
+{
+  "common": {
+    "language": "English",
+    "home": "Home",
+    "donate": "Donate",
+    "contact": "Contact",
+    "about": "About",
+    "story": "Story",
+    "resources": "Resources",
+    "search": "Search",
+    "menu": "Menu",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "share": "Share",
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "navigation": {
+    "frontPage": "Front Page",
+    "barransStory": "Barran's Story",
+    "donate": "Donate",
+    "contact": "Contact",
+    "resources": "Resources",
+    "podcast": "Podcast",
+    "subscribe": "Subscribe",
+    "shop": "Shop"
+  },
+  "home": {
+    "title": "Sunday Bloody Sunday, Part Two",
+    "subtitle": "Indigenous Teen Stabbed Three Times — System Failed Him For Five Years",
+    "description": "Justice for Barran - Indigenous Justice Advocacy",
+    "supportCause": "Support This Cause",
+    "shareStory": "Share Story",
+    "developingStory": "Developing Story",
+    "everyDollar": "Every dollar donated goes directly to legal defense, advocacy, and systemic change efforts.",
+    "supportJustice": "Support Justice"
+  },
+  "donate": {
+    "title": "Donate Now",
+    "subtitle": "Support Justice for Barran",
+    "description": "Every donation funds legal defense and systemic change",
+    "yourSupportMatters": "Your Support Matters",
+    "supportText": "Every dollar donated goes directly to legal defense, advocacy, and systemic change efforts. Your contribution helps us demand accountability from government and corporate institutions.",
+    "selectAmount": "Select Donation Amount",
+    "customAmount": "Custom Amount",
+    "donate": "Donate",
+    "eTransfer": "E-Transfer",
+    "eTransferText": "Send e-transfer to: justice@barran.ca",
+    "gofundme": "GoFundMe",
+    "cryptocurrency": "Cryptocurrency",
+    "yourImpact": "Your Impact",
+    "impact25": "Funds legal research and documentation",
+    "impact50": "Supports media outreach and social campaigns",
+    "impact100": "Contributes to legal representation fees",
+    "impact500": "Major contribution to comprehensive legal defense"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in Touch",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "sendMessage": "Send Message",
+    "contactInfo": "Contact Information",
+    "followUs": "Follow Us"
+  },
+  "footer": {
+    "copyright": "© 2026 Justice for Barran. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact",
+    "followUs": "Follow Us"
+  }
+}

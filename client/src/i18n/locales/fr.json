@@ -1,0 +1,81 @@
+{
+  "common": {
+    "language": "Français",
+    "home": "Accueil",
+    "donate": "Donner",
+    "contact": "Contact",
+    "about": "À propos",
+    "story": "Histoire",
+    "resources": "Ressources",
+    "search": "Rechercher",
+    "menu": "Menu",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "submit": "Soumettre",
+    "share": "Partager",
+    "copy": "Copier",
+    "copied": "Copié!"
+  },
+  "navigation": {
+    "frontPage": "Page d'accueil",
+    "barransStory": "L'histoire de Barran",
+    "donate": "Donner",
+    "contact": "Contact",
+    "resources": "Ressources",
+    "podcast": "Podcast",
+    "subscribe": "S'abonner",
+    "shop": "Boutique"
+  },
+  "home": {
+    "title": "Dimanche Sanglant, Deuxième Partie",
+    "subtitle": "Adolescent autochtone poignardé trois fois — Le système l'a abandonné pendant cinq ans",
+    "description": "Justice pour Barran - Plaidoyer pour la justice autochtone",
+    "supportCause": "Soutenir cette cause",
+    "shareStory": "Partager l'histoire",
+    "developingStory": "Histoire en développement",
+    "everyDollar": "Chaque dollar donné va directement à la défense juridique, à la défense des droits et aux efforts de changement systémique.",
+    "supportJustice": "Soutenir la justice"
+  },
+  "donate": {
+    "title": "Faire un don",
+    "subtitle": "Soutenir la justice pour Barran",
+    "description": "Chaque don finance la défense juridique et le changement systémique",
+    "yourSupportMatters": "Votre soutien compte",
+    "supportText": "Chaque dollar donné va directement à la défense juridique, à la défense des droits et aux efforts de changement systémique. Votre contribution nous aide à exiger la responsabilité des gouvernements et des institutions.",
+    "selectAmount": "Sélectionner le montant du don",
+    "customAmount": "Montant personnalisé",
+    "donate": "Donner",
+    "eTransfer": "Virement électronique",
+    "eTransferText": "Envoyer un virement électronique à: justice@barran.ca",
+    "gofundme": "GoFundMe",
+    "cryptocurrency": "Cryptomonnaie",
+    "yourImpact": "Votre impact",
+    "impact25": "Finance la recherche juridique et la documentation",
+    "impact50": "Soutient les efforts de sensibilisation médiatique et les campagnes sociales",
+    "impact100": "Contribue aux frais de représentation juridique",
+    "impact500": "Contribution majeure à la défense juridique complète"
+  },
+  "contact": {
+    "title": "Nous contacter",
+    "subtitle": "Entrez en contact",
+    "email": "Courriel",
+    "phone": "Téléphone",
+    "message": "Message",
+    "sendMessage": "Envoyer le message",
+    "contactInfo": "Informations de contact",
+    "followUs": "Nous suivre"
+  },
+  "footer": {
+    "copyright": "© 2026 Justice pour Barran. Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contact": "Contact",
+    "followUs": "Nous suivre"
+  }
+}

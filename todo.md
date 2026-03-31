@@ -1154,3 +1154,37 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Show "Raised: $X | Remaining: $Y" with real data
 - [x] Test with real Stripe test transactions
 - [x] Verify data updates in real-time
+
+
+## BILINGUAL SUPPORT (English/French) (March 31, 2026)
+- [ ] Set up i18n library (react-i18next or similar)
+- [ ] Create language routing system (/en/* and /fr/*)
+- [ ] Add language toggle button to header
+- [ ] Create translation files structure (en.json, fr.json)
+- [ ] Translate all page titles and headings
+- [ ] Translate all body content to French
+- [ ] Translate navigation and UI elements
+- [ ] Implement language persistence (localStorage)
+- [ ] Set up URL-based language routing
+- [ ] Test language switching on all pages
+- [ ] Verify French content displays correctly
+- [ ] Test mobile language switching
+
+## BILINGUAL SUPPORT - PHASE 1 (March 31, 2026)
+- [x] Install i18next and react-i18next libraries
+- [ ] Create i18n configuration and language detection
+- [ ] Create translation files structure (en.json, fr.json)
+- [ ] Extract content from 15 critical pages
+- [ ] Translate critical pages to French using LLM
+- [ ] Add language toggle button to header
+- [ ] Implement language persistence (localStorage)
+- [ ] Set up URL-based language routing (/en/* and /fr/*)
+- [ ] Test language switching on critical pages
+- [ ] Verify French content displays correctly
+- [ ] Test mobile language switching
+
+## BILINGUAL SUPPORT - PHASE 2 (Future)
+- [ ] Translate remaining 90 pages to French
+- [ ] Add French translations to all components
+- [ ] Test all pages in both languages
+- [ ] Optimize performance for bilingual site
