@@ -153,12 +153,12 @@ export default function Home() {
           {/* QR CODE FOR E-TRANSFER */}
           <div className="border-t-4 border-black pt-6 mt-6 text-center">
             <p className="text-sm font-bold uppercase tracking-wider mb-4">Quick Donate via E-Transfer</p>
-            <div className="flex justify-center mb-6">
-              <a href="/donate-etransfer" className="bg-white p-4 border-2 border-black rounded-lg hover:shadow-lg transition-shadow">
+            <div className="flex justify-center mb-6 overflow-hidden">
+              <a href="/donate-etransfer" className="bg-white p-3 border-2 border-black rounded-lg hover:shadow-lg transition-shadow inline-block">
                 <img 
                   src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/etransfer-qr-code_96d6276a.png" 
                   alt="E-Transfer QR Code - Click to donate" 
-                  className="w-48 h-48 cursor-pointer"
+                  className="w-40 h-40 md:w-48 md:h-48 cursor-pointer block"
                 />
               </a>
             </div>
