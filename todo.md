@@ -1141,3 +1141,16 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Add tRPC procedure for leaderboard data
 - [ ] Write vitest tests for leaderboard logic
 - [ ] Test leaderboard page in browser
+
+
+## DYNAMIC DONATION TRACKING (March 31, 2026)
+- [x] Create donations table in database schema (donation_id, amount, status, timestamp)
+- [x] Add tRPC procedure to fetch total donations from Stripe
+- [x] Create DonationTracker component with real-time progress display
+- [x] Remove fake donation numbers from donation pages
+- [x] Integrate Stripe webhook to update donation totals
+- [x] Add donation goal configuration ($500,000 for legal and administration)
+- [x] Display percentage progress bar
+- [x] Show "Raised: $X | Remaining: $Y" with real data
+- [x] Test with real Stripe test transactions
+- [x] Verify data updates in real-time

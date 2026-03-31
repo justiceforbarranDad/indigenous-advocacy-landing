@@ -1,6 +1,7 @@
 import { Heart, DollarSign } from 'lucide-react';
 import { useState } from 'react';
 import { ShareSuccess } from '@/components/ShareSuccess';
+import { DonationTracker } from '@/components/DonationTracker';
 
 export default function DonateWithSharing() {
   const [selectedAmount, setSelectedAmount] = useState<string | null>(null);
@@ -46,10 +47,7 @@ export default function DonateWithSharing() {
           <p className="text-lg leading-relaxed mb-4">
             Every dollar donated goes directly to legal defense, advocacy, and systemic change efforts. Your contribution helps us demand accountability from government and corporate institutions.
           </p>
-          <div className="bg-black text-white p-6 border-4 border-black">
-            <p className="text-lg font-bold">Current Goal: $100,000 for comprehensive legal defense</p>
-            <p className="text-sm mt-2">Raised: $47,500 | Remaining: $52,500</p>
-          </div>
+          <DonationTracker />
         </div>
 
         {/* DONATION AMOUNTS */}

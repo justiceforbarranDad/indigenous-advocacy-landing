@@ -533,6 +533,31 @@ export const appRouter = router({
         throw new Error("Failed to generate RSS feed");
       }
     }),
+
+    getCampaignWithTotals: publicProcedure.query(async () => {
+      try {
+        const { getActiveCampaignWithTotals } = await import('./donations');
+        const campaign = await getActiveCampaignWithTotals();
+        return {
+          goalAmount: Number(campaign.goalAmount),
+          actualRaisedAmount: campaign.actualRaisedAmount,
+          percentageComplete: campaign.percentageComplete,
+          remainingAmount: campaign.remainingAmount,
+          title: campaign.title,
+          description: campaign.description,
+        };
+      } catch (error) {
+        console.error("Error fetching campaign with totals:", error);
+        return {
+          goalAmount: 50000000,
+          actualRaisedAmount: 0,
+          percentageComplete: 0,
+          remainingAmount: 50000000,
+          title: "Legal Defense Fund - International Lawyers",
+          description: "Comprehensive international legal defense against systemic failures at federal and provincial levels",
+        };
+      }
+    }),
   }),
 
 
