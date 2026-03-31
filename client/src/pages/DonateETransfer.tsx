@@ -67,7 +67,7 @@ export default function DonateETransfer() {
                 For other donation methods or to discuss sponsorship opportunities, please reach out.
               </p>
               <a
-                href="mailto:contact@justiceforbarran.org"
+                href="mailto:contact@justiceforbarran.com"
                 className="inline-flex items-center gap-2 bg-forest-green hover:bg-forest-green/90 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
               >
                 Contact Us →

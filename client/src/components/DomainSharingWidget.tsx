@@ -27,12 +27,6 @@ export function DomainSharingWidget({
       url: 'https://www.justiceforbarran.com',
       icon: '🌍',
       description: 'Global reach'
-    },
-    {
-      name: 'Organization (.org)',
-      url: 'https://homepage.justiceforbarran.org',
-      icon: '🏛️',
-      description: 'Non-profit focused'
     }
   ];
 
@@ -111,7 +105,7 @@ export function DomainSharingWidget({
         <div className="flex flex-wrap gap-2">
           <Button
             onClick={() => {
-              const text = `Support Justice for Barran's campaign across all platforms:\n\n🍁 Canada: https://www.justiceforbarran.ca\n🌍 International: https://www.justiceforbarran.com\n🏛️ Non-profit: https://homepage.justiceforbarran.org\n\n#JusticeForBarran #EveryChildMatters`;
+              const text = `Support Justice for Barran's campaign across all platforms:\n\n🍁 Canada: https://www.justiceforbarran.ca\n🌍 International: https://www.justiceforbarran.com\n\n\n#JusticeForBarran #EveryChildMatters`;
               const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
               window.open(twitterUrl, '_blank');
             }}
@@ -121,7 +115,7 @@ export function DomainSharingWidget({
           </Button>
           <Button
             onClick={() => {
-              const text = `Support Justice for Barran's campaign across all platforms:\n\n🍁 Canada: https://www.justiceforbarran.ca\n🌍 International: https://www.justiceforbarran.com\n🏛️ Non-profit: https://homepage.justiceforbarran.org\n\n#JusticeForBarran #EveryChildMatters`;
+              const text = `Support Justice for Barran's campaign across all platforms:\n\n🍁 Canada: https://www.justiceforbarran.ca\n🌍 International: https://www.justiceforbarran.com\n\n\n#JusticeForBarran #EveryChildMatters`;
               const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://www.justiceforbarran.com')}`;
               window.open(facebookUrl, '_blank');
             }}
@@ -131,7 +125,7 @@ export function DomainSharingWidget({
           </Button>
           <Button
             onClick={() => {
-              const text = `Support Justice for Barran's campaign across all platforms:\n\n🍁 Canada: https://www.justiceforbarran.ca\n🌍 International: https://www.justiceforbarran.com\n🏛️ Non-profit: https://homepage.justiceforbarran.org\n\n#JusticeForBarran #EveryChildMatters`;
+              const text = `Support Justice for Barran's campaign across all platforms:\n\n🍁 Canada: https://www.justiceforbarran.ca\n🌍 International: https://www.justiceforbarran.com\n\n\n#JusticeForBarran #EveryChildMatters`;
               const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
               window.open(whatsappUrl, '_blank');
             }}

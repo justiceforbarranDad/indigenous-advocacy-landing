@@ -117,6 +117,7 @@ import SubmitDonorTestimonial from "./pages/SubmitDonorTestimonial";
 import DNSWarningBanner from "./components/DNSWarningBanner";
 import FinancialTransparency from "./pages/FinancialTransparency";
 import FamilyCaseDocumentation from "./pages/FamilyCaseDocumentation";
+import UNComplaint from "./pages/UNComplaint";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -227,6 +228,7 @@ function Router() {
       <Route path="/submit-testimonial" component={SubmitDonorTestimonial} />
       <Route path="/financial-transparency" component={FinancialTransparency} />
       <Route path="/family-case-documentation" component={FamilyCaseDocumentation} />
+      <Route path="/un-complaint" component={UNComplaint} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
