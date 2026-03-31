@@ -1030,15 +1030,16 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 
 
 ## PODCAST SUBSCRIPTION PAGE (March 30, 2026)
-- [ ] Create PodcastSubscribe page component with platform links
-- [ ] Add podcast subscription data with platform URLs
-- [ ] Add Subscribe page route to App.tsx navigation
-- [ ] Style page with podcast branding and CTA buttons
-- [ ] Add links to Apple Podcasts, Spotify, Google Podcasts
-- [ ] Add links to other platforms (Amazon Music, iHeartRadio, etc.)
-- [ ] Add email subscription form
-- [ ] Test all platform links in browser
-- [ ] Write vitest tests for subscription page
+- [x] Create PodcastSubscribe page component with platform links
+- [x] Add podcast subscription data with platform URLs
+- [x] Add Subscribe page route to App.tsx navigation
+- [x] Style page with podcast branding and CTA buttons
+- [x] Add links to Apple Podcasts, Spotify, Google Podcasts
+- [x] Add links to other platforms (Amazon Music, iHeartRadio, etc.)
+- [x] Add email subscription form
+- [x] Test all platform links in browser
+- [x] Write vitest tests for PodcastSubscribe component
+- [x] Write vitest tests for subscription page
 - [ ] Save checkpoint
 
 
