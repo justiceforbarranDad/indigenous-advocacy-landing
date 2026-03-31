@@ -1457,3 +1457,30 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - Master files documentation planned
 - Temporary account structure explained
 - External oversight (Solidarity Social, Ombudsman) documented
+
+
+## PHASE 3: MAJOR IMPROVEMENTS (March 31, 2026 - Current Session)
+
+### 1. Newspaper Design Extension
+- [ ] Audit all 114 pages and identify design patterns
+- [ ] Create reusable newspaper design component system
+- [ ] Apply newspaper design to all 94 remaining pages
+- [ ] Test newspaper styling consistency across all pages
+- [ ] Verify responsive design on mobile/tablet/desktop
+
+### 2. Bilingual Language Toggles (English/French)
+- [ ] Verify i18next infrastructure is properly configured
+- [ ] Create language toggle component for all pages
+- [ ] Add French translations for all 114 pages
+- [ ] Implement language persistence (localStorage)
+- [ ] Test language switching on all pages
+- [ ] Verify French content quality and accuracy
+
+### 3. Milestone Email Alert System
+- [ ] Create milestone alert database schema ($50k, $100k, $250k, $500k)
+- [ ] Build milestone tracking logic in donation handler
+- [ ] Create email template for milestone alerts
+- [ ] Implement email sending service integration
+- [ ] Add milestone celebration messaging to UI
+- [ ] Test email delivery at each milestone
+- [ ] Verify donor notification system works correctly
