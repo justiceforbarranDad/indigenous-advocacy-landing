@@ -112,6 +112,7 @@ import InstitutionMission from "./pages/InstitutionMission";
 import RightsEducationInSchools from "./pages/RightsEducationInSchoolsBilingual";
 import OrangeShirtDayAccountability from "./pages/OrangeShirtDayAccountability";
 import SponsorResponseTracker from "./pages/SponsorResponseTracker";
+import DonorTestimonials from "./pages/DonorTestimonials";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -218,6 +219,7 @@ function Router() {
       <Route path="/rights-education-schools" component={RightsEducationInSchools} />
       <Route path="/orange-shirt-day-accountability" component={OrangeShirtDayAccountability} />
       <Route path="/sponsor-response-tracker" component={SponsorResponseTracker} />
+      <Route path="/donor-testimonials" component={DonorTestimonials} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
