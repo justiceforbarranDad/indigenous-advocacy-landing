@@ -139,6 +139,37 @@ export const appRouter = router({
           throw new Error("Failed to retrieve payment status");
         }
       }),
+
+    createPaymentLink: publicProcedure
+      .input(z.object({
+        amount: z.number().min(0.50),
+        isRecurring: z.boolean().default(false),
+      }))
+      .mutation(async ({ input }) => {
+        try {
+          const paymentLink = await stripe.paymentLinks.create({
+            line_items: [
+              {
+                price_data: {
+                  currency: "usd",
+                  product_data: {
+                    name: input.isRecurring ? "Monthly Donation - Justice for Barran" : "Donation - Justice for Barran",
+                    description: "Support Indigenous Justice Advocacy",
+                  },
+                  unit_amount: Math.round(input.amount * 100),
+                  recurring: input.isRecurring ? { interval: "month" } : undefined,
+                },
+                quantity: 1,
+              },
+            ],
+          });
+
+          return { url: paymentLink.url };
+        } catch (error) {
+          console.error("Error creating payment link:", error);
+          throw new Error("Failed to create payment link");
+        }
+      }),
   }),
 
   donations: router({

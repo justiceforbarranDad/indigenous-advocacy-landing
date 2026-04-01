@@ -1,5 +1,6 @@
 import { AlertCircle, FileText, Globe, Play, Heart, Signature, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SurveyBox } from '@/components/SurveyBox';
 import { useAuth } from '@/_core/hooks/useAuth';
 import { LatestUpdatesTicker } from '@/components/LatestUpdatesTicker';
@@ -12,6 +13,7 @@ const BG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdM
 const ORANGE_SHIRT_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/orange-shirt-sunset-forest.jpg";
 
 export default function Home() {
+  const { t, i18n } = useTranslation();
   const { user, loading, error, isAuthenticated, logout } = useAuth();
   const [expandedLetter, setExpandedLetter] = useState('en');
 
@@ -33,10 +35,10 @@ export default function Home() {
 
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 leading-tight">
-            Sunday Bloody Sunday
+            {i18n.language === 'fr' ? 'Dimanche Sanglant' : 'Sunday Bloody Sunday'}
           </h1>
           <h2 className="text-3xl md:text-4xl text-amber-300 mb-6 font-serif italic">
-            Part Two
+            {i18n.language === 'fr' ? 'Deuxième Partie' : 'Part Two'}
           </h2>
           <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
             Indigenous Justice Advocacy — Systemic Accountability — 15 Years of Documented Failure

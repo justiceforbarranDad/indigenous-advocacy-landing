@@ -100,9 +100,11 @@ import NewspaperHome from "./pages/NewspaperHome";
 import ModernHome from "./pages/ModernHome";
 import DonateViaBank from "./pages/DonateViaBank";
 import InteracDonationInterface from "./pages/InteracDonationInterface";
+import DonateStripeQR from "./pages/DonateStripeQR";
 import PodcastSubscribe from "./pages/PodcastSubscribe";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
+import { LanguageToggle } from "./components/LanguageToggle";
 import SundayBloodyySundayPart3 from "./pages/SundayBloodyySundayPart3";
 import DonationSuccess from "./pages/DonationSuccess";
 import AdminPaymentHistory from "./pages/AdminPaymentHistory";
@@ -222,6 +224,7 @@ function Router() {
       <Route path="/subscription-success" component={SubscriptionSuccess} />
       <Route path="/donate-via-bank" component={DonateViaBank} />
       <Route path="/donate-interac" component={InteracDonationInterface} />
+      <Route path="/donate-stripe-qr" component={DonateStripeQR} />
       <Route path="/subscribe" component={PodcastSubscribe} />
       <Route path="/podcast-subscribe" component={PodcastSubscribe} />
       <Route path="/donation-success" component={DonationSuccess} />
@@ -268,6 +271,9 @@ function App() {
         <TooltipProvider>
           <DNSWarningBanner />
           <Toaster />
+          <div className="fixed top-4 right-20 z-50">
+            <LanguageToggle />
+          </div>
           <HamburgerMenu />
           <Router />
           <LiveChat />

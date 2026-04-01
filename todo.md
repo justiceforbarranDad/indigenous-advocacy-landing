@@ -164,6 +164,20 @@
 - [x] Test all payment methods
 - [x] Integrate with home page CTA buttons
 
+## STRIPE QR CODE DIRECT PAYMENT (April 1, 2026 - PRIORITY)
+- [x] Create Stripe payment link for direct account deposits
+- [x] Generate QR code pointing to Stripe checkout
+- [x] Add preset amounts: $5, $10, $20, $50, $100, $250, $500, $1000
+- [x] Enable monthly recurring donations option
+- [x] Enable one-time donations option
+- [x] Add French title to main page: "Dimanche Sanglant, Deuxième Partie"
+- [x] Implement bilingual language toggle (English/French)
+- [ ] Add E-Transfer as backup payment method
+- [ ] Test QR code scanning on mobile devices
+- [ ] Verify Stripe payments go directly to user account
+- [ ] Create thank you email for donors (bilingual)
+- [ ] Deploy and test on live site
+
 
 ## STORY PAGE REDESIGN (March 15, 2026)
 - [ ] Remove donation widgets from story pages (BarransStory, MotherAbuseDPJ, WellnessCheck, etc.)
