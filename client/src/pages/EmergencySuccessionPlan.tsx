@@ -273,7 +273,7 @@ export default function EmergencySuccessionPlan() {
                 Foundation email accounts and communication systems.
               </p>
               <div className="bg-white p-3 rounded text-sm">
-                <p><strong>Main Email:</strong> justice@justiceforbarran.com</p>
+                <p><strong>Main Email:</strong> justice@indigenousadv-ahjdmzis.manus.space</p>
                 <p><strong>Password Location:</strong> [SECURE LOCATION]</p>
                 <p><strong>Recovery Email:</strong> [BACKUP EMAIL]</p>
                 <p><strong>2FA Recovery Codes:</strong> [SECURE LOCATION]</p>

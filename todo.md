@@ -207,21 +207,24 @@
 - [ ] Save checkpoint with expanded accountability features
 
 
-## MOBILE COMPATIBILITY FIXES (April 1, 2026 - PRIORITY)
-- [ ] Fix navigation menu for mobile (hamburger menu, responsive layout)
-- [ ] Fix hero section and buttons for mobile screens
-- [ ] Fix donation page layout for mobile
-- [ ] Fix all carousels for touch/swipe on mobile
-- [ ] Fix forms and input fields for mobile
-- [ ] Test on iOS Safari (iPhone)
-- [ ] Test on Android Chrome
-- [ ] Fix any overflow/scrolling issues
-- [ ] Optimize font sizes for mobile readability
-- [ ] Fix image sizing for mobile bandwidth
-- [ ] Ensure all payment buttons work on mobile
-- [ ] Test QR code scanning on mobile devices
-- [ ] Fix viewport meta tags for proper mobile scaling
-- [ ] Verify all links are touch-friendly (min 44px tap targets)
+## MOBILE OPTIMIZATION TESTING (April 1, 2026 - CURRENT PRIORITY)
+- [ ] Test website on mobile viewport (iPhone 375px, Android 360px)
+- [ ] Verify podcast player displays correctly on mobile
+- [ ] Test podcast language switching on mobile (English/French)
+- [ ] Verify QR codes are scannable on mobile
+- [ ] Test all pages on mobile: Home, Story, Donate, Contact, QR Codes
+- [ ] Verify hamburger menu works on iOS Safari
+- [ ] Verify hamburger menu works on Android Chrome
+- [ ] Test carousels on iOS Safari (swipe/tap)
+- [ ] Test carousels on Android Chrome (swipe/tap)
+- [ ] Test donation page buttons on mobile
+- [ ] Test contact form on mobile
+- [ ] Test all pages in portrait and landscape orientation
+- [ ] Verify no layout shift during load
+- [ ] Verify smooth scrolling on mobile
+- [ ] Check image loading performance on mobile
+- [ ] Verify all buttons have 44px+ minimum touch targets
+- [ ] Test French translation on all mobile pages
 
 ## COMPREHENSIVE SYSTEMIC ACCOUNTABILITY NEWSPAPER (March 15, 2026 - MAJOR EXPANSION)
 

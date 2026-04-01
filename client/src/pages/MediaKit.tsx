@@ -41,7 +41,7 @@ DEMANDS:
 
 "This is not about one child. This is about systemic abandonment of Indigenous families across Canada," says Barran's family.
 
-For more information: www.justiceforbarran.com
+For more information: indigenousadv-ahjdmzis.manus.space
 Contact: [Contact Information]
 
 ###`
@@ -73,7 +73,7 @@ DEMANDS:
 
 "Reconciliation without accountability is just marketing. We demand real change," says Barran's family.
 
-For more information: www.justiceforbarran.com/corporate-accountability
+For more information: indigenousadv-ahjdmzis.manus.space/corporate-accountability
 
 ###`
   },
@@ -110,7 +110,7 @@ DEMANDS:
 
 "Government officials have the power to investigate, reform, and protect. It's time to demand they use it," says Barran's family.
 
-For more information: www.justiceforbarran.com/government-accountability
+For more information: indigenousadv-ahjdmzis.manus.space/government-accountability
 
 ###`
   }
@@ -321,7 +321,7 @@ export default function MediaKit() {
             <div className="space-y-2 text-base">
               <p><span className="font-bold">Email:</span> justiceforbarran@gmail.com</p>
               <p><span className="font-bold">Phone:</span> [Contact Number]</p>
-              <p><span className="font-bold">Website:</span> www.justiceforbarran.com</p>
+              <p><span className="font-bold">Website:</span> indigenousadv-ahjdmzis.manus.space</p>
               <p><span className="font-bold">Twitter:</span> @HelpBarran</p>
             </div>
           </div>

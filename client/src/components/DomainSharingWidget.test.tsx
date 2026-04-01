@@ -30,7 +30,7 @@ describe('DomainSharingWidget', () => {
     render(<DomainSharingWidget />);
     
     expect(screen.getByText('https://www.justiceforbarran.ca')).toBeDefined();
-    expect(screen.getByText('https://www.justiceforbarran.com')).toBeDefined();
+    expect(screen.getByText('https://indigenousadv-ahjdmzis.manus.space')).toBeDefined();
     expect(screen.getByText('https://homepage.justiceforbarran.org')).toBeDefined();
   });
 
@@ -107,7 +107,7 @@ describe('DomainSharingWidget', () => {
       );
       const callArgs = (window.open as any).mock.calls[0][0];
       expect(callArgs).toContain('justiceforbarran.ca');
-      expect(callArgs).toContain('justiceforbarran.com');
+      expect(callArgs).toContain('indigenousadv-ahjdmzis.manus.space');
       expect(callArgs).toContain('justiceforbarran.org');
     });
   });

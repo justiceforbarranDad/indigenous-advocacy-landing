@@ -67,11 +67,11 @@ export function PodcastSubscription({ language = 'EN' }: PodcastSubscriptionProp
         </h4>
         <div className="bg-gray-100 border-2 border-black p-4 rounded-lg flex items-center justify-between">
           <code className="text-sm text-gray-700 break-all">
-            https://justiceforbarran.ca/podcast/feed.xml
+            https://indigenousadv-ahjdmzis.manus.space/podcast/feed.xml
           </code>
           <button
             onClick={() => {
-              navigator.clipboard.writeText('https://justiceforbarran.ca/podcast/feed.xml');
+              navigator.clipboard.writeText('https://indigenousadv-ahjdmzis.manus.space/podcast/feed.xml');
             }}
             className="ml-4 px-4 py-2 bg-black text-white font-bold rounded-lg hover:bg-gray-800 transition-colors whitespace-nowrap"
           >

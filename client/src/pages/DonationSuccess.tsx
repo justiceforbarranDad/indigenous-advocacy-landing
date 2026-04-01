@@ -37,7 +37,7 @@ Date: ${new Date().toLocaleDateString()}
 
 Your donation helps us fight for Indigenous justice and accountability.
 
-For more information, visit: www.justiceforbarran.com
+For more information, visit: indigenousadv-ahjdmzis.manus.space
     `;
 
     const element = document.createElement('a');

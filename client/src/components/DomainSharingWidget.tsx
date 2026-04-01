@@ -9,24 +9,18 @@ interface DomainSharingWidgetProps {
 }
 
 export function DomainSharingWidget({
-  title = "Share the Right Domain",
-  description = "Choose your preferred domain to share with supporters",
+  title = "Share the Campaign",
+  description = "Share Justice for Barran with supporters",
   showLabel = true
 }: DomainSharingWidgetProps) {
   const [copiedDomain, setCopiedDomain] = useState<string | null>(null);
 
   const domains = [
     {
-      name: 'Canada (.ca)',
-      url: 'https://www.justiceforbarran.ca',
-      icon: '🍁',
-      description: 'Primary Canadian domain'
-    },
-    {
-      name: 'International (.com)',
-      url: 'https://www.justiceforbarran.com',
-      icon: '🌍',
-      description: 'Global reach'
+      name: 'Manus Domain',
+      url: 'https://indigenousadv-ahjdmzis.manus.space/',
+      icon: '🔗',
+      description: 'Official campaign website'
     }
   ];
 
@@ -101,22 +95,22 @@ export function DomainSharingWidget({
 
       {/* Quick Share Buttons */}
       <div className="bg-amber-orange/5 border-2 border-amber-orange rounded-lg p-6 mt-6">
-        <h4 className="font-bold text-forest-green mb-4">📱 Share All Domains</h4>
+        <h4 className="font-bold text-forest-green mb-4">📱 Share Campaign</h4>
         <div className="flex flex-wrap gap-2">
           <Button
             onClick={() => {
-              const text = `Support Justice for Barran's campaign across all platforms:\n\n🍁 Canada: https://www.justiceforbarran.ca\n🌍 International: https://www.justiceforbarran.com\n\n\n#JusticeForBarran #EveryChildMatters`;
+              const text = `Support Justice for Barran's campaign for Indigenous rights and accountability.\n\nhttps://indigenousadv-ahjdmzis.manus.space/\n\n#JusticeForBarran #EveryChildMatters`;
               const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
               window.open(twitterUrl, '_blank');
             }}
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded text-sm font-semibold"
           >
-            Tweet All Links
+            Tweet
           </Button>
           <Button
             onClick={() => {
-              const text = `Support Justice for Barran's campaign across all platforms:\n\n🍁 Canada: https://www.justiceforbarran.ca\n🌍 International: https://www.justiceforbarran.com\n\n\n#JusticeForBarran #EveryChildMatters`;
-              const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://www.justiceforbarran.com')}`;
+              const text = `Support Justice for Barran's campaign for Indigenous rights and accountability.\n\nhttps://indigenousadv-ahjdmzis.manus.space/\n\n#JusticeForBarran #EveryChildMatters`;
+              const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://indigenousadv-ahjdmzis.manus.space/')}`;
               window.open(facebookUrl, '_blank');
             }}
             className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded text-sm font-semibold"
@@ -125,7 +119,7 @@ export function DomainSharingWidget({
           </Button>
           <Button
             onClick={() => {
-              const text = `Support Justice for Barran's campaign across all platforms:\n\n🍁 Canada: https://www.justiceforbarran.ca\n🌍 International: https://www.justiceforbarran.com\n\n\n#JusticeForBarran #EveryChildMatters`;
+              const text = `Support Justice for Barran's campaign for Indigenous rights and accountability.\n\nhttps://indigenousadv-ahjdmzis.manus.space/\n\n#JusticeForBarran #EveryChildMatters`;
               const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
               window.open(whatsappUrl, '_blank');
             }}

@@ -139,8 +139,8 @@ export default function Contact() {
               <h3 className="text-2xl font-black">Email</h3>
             </div>
             <p className="text-base mb-2">
-              <a href="mailto:contact@justiceforbarran.com" className="underline hover:font-bold">
-                contact@justiceforbarran.com
+              <a href="mailto:justiceforbarran@gmail.com" className="underline hover:font-bold">
+                justiceforbarran@gmail.com
               </a>
             </p>
             <p className="text-sm text-gray-700">

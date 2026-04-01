@@ -12,7 +12,7 @@ interface SocialShareProps {
 export function SocialMediaSharing({
   title,
   description = 'Justice for Barran - Fighting for Indigenous Rights and Accountability',
-  url = 'https://justiceforbarran.com',
+  url = 'https://indigenousadv-ahjdmzis.manus.space',
   hashtags = ['JusticeForBarran', 'IndigenousRights', 'Accountability'],
   position = 'inline',
 }: SocialShareProps) {

@@ -50,7 +50,7 @@ export function NavigationSidebar() {
         { label: 'Follow on TikTok', href: 'https://www.tiktok.com/@barranneedsjustice' },
         { label: 'Follow on Instagram', href: 'https://www.instagram.com/justiceforbarran' },
         { label: 'Follow on Facebook', href: 'https://www.facebook.com/share/1JbsMBESqK/?mibextid=wwXIfr' },
-        { label: 'Contact via Email', href: 'mailto:contact@justiceforbarran.com' },
+        { label: 'Contact via Email', href: 'mailto:contact@indigenousadv-ahjdmzis.manus.space' },
       ],
     },
     {

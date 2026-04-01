@@ -2,27 +2,12 @@ import { AlertCircle, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function DNSWarningBanner() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Hide banner on justiceforbarran.com domain - never show it there
-    if (window.location.hostname === 'www.justiceforbarran.com' || window.location.hostname === 'justiceforbarran.com') {
-      setIsVisible(false);
-      return;
-    }
-
-    // On Manus domain, always show the banner (don't dismiss it)
-    if (window.location.hostname.includes('manus.space')) {
-      setIsVisible(true);
-      return;
-    }
-  }, []);
-
-  const handleDismiss = () => {
+    // Don't show banner - website is live and working
     setIsVisible(false);
-    localStorage.setItem('dns-banner-dismissed', 'true');
-    localStorage.setItem('dns-banner-dismiss-time', new Date().toISOString());
-  };
+  }, []);
 
   if (!isVisible) return null;
 
@@ -33,30 +18,18 @@ export default function DNSWarningBanner() {
         
         <div className="flex-1">
           <h3 className="font-bold text-yellow-900 mb-2">
-            ⚠️ TEMPORARY NOTICE - PLEASE READ
+            ✓ WEBSITE IS LIVE AND SECURE
           </h3>
           <p className="text-yellow-800 mb-3">
-            Our website is LIVE and secure. If you're seeing an error on justiceforbarran.com, 
-            that's a normal DNS propagation delay (resolves in 24-48 hours). 
-            <strong> You're currently on the REAL, SAFE website.</strong>
+            You're on the official Justice for Barran website. All donations and information are secure.
           </p>
           <p className="text-sm text-yellow-700 mb-3">
-            This banner will automatically disappear once DNS propagation is complete. 
-            We're removing it to prevent confusion. Thank you for your patience.
+            Website: https://indigenousadv-ahjdmzis.manus.space/
           </p>
-          
-          <div className="flex gap-3">
-            <a
-              href="https://www.justiceforbarran.com"
-              className="inline-block bg-yellow-700 text-white px-4 py-2 font-bold hover:bg-yellow-800 rounded"
-            >
-              ✓ Confirm You're on the Real Site
-            </a>
-          </div>
         </div>
 
         <button
-          onClick={handleDismiss}
+          onClick={() => setIsVisible(false)}
           className="flex-shrink-0 text-yellow-700 hover:text-yellow-900 mt-1"
           aria-label="Dismiss banner"
         >

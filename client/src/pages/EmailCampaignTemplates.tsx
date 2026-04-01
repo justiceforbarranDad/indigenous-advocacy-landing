@@ -46,7 +46,7 @@ Sincerely,
 [YOUR EMAIL]
 [YOUR PHONE]
 
-Learn more: justiceforbarran.com`,
+Learn more: indigenousadv-ahjdmzis.manus.space`,
       },
       {
         id: 'sports',
@@ -69,7 +69,7 @@ Sincerely,
 [YOUR NAME]
 [YOUR EMAIL]
 
-justiceforbarran.com`,
+indigenousadv-ahjdmzis.manus.space`,
       },
       {
         id: 'corporate',
@@ -97,7 +97,7 @@ Sincerely,
 [YOUR NAME]
 [YOUR EMAIL]
 
-justiceforbarran.com`,
+indigenousadv-ahjdmzis.manus.space`,
       },
       {
         id: 'government',
@@ -122,7 +122,7 @@ Sincerely,
 [YOUR NAME]
 [YOUR EMAIL]
 
-justiceforbarran.com`,
+indigenousadv-ahjdmzis.manus.space`,
       },
     ],
     fr: [
@@ -156,7 +156,7 @@ Sincèrement,
 [VOTRE COURRIEL]
 [VOTRE TÉLÉPHONE]
 
-En savoir plus: justiceforbarran.com`,
+En savoir plus: indigenousadv-ahjdmzis.manus.space`,
       },
       {
         id: 'sports',
@@ -179,7 +179,7 @@ Sincèrement,
 [VOTRE NOM]
 [VOTRE COURRIEL]
 
-justiceforbarran.com`,
+indigenousadv-ahjdmzis.manus.space`,
       },
       {
         id: 'corporate',
@@ -207,7 +207,7 @@ Sincèrement,
 [VOTRE NOM]
 [VOTRE COURRIEL]
 
-justiceforbarran.com`,
+indigenousadv-ahjdmzis.manus.space`,
       },
       {
         id: 'government',
@@ -232,7 +232,7 @@ Sincèrement,
 [VOTRE NOM]
 [VOTRE COURRIEL]
 
-justiceforbarran.com`,
+indigenousadv-ahjdmzis.manus.space`,
       },
     ],
   };
@@ -407,7 +407,7 @@ justiceforbarran.com`,
         <div className="max-w-5xl mx-auto text-center text-sm">
           <p>{langContent.footer}</p>
           <p className="mt-4">
-            {language === 'en' ? 'Learn more:' : 'En savoir plus:'} <strong>justiceforbarran.com</strong>
+            {language === 'en' ? 'Learn more:' : 'En savoir plus:'} <strong>indigenousadv-ahjdmzis.manus.space</strong>
           </p>
         </div>
       </section>

@@ -119,12 +119,12 @@ export default function DonorTestimonials() {
   const selectedTest = testimonials.find(t => t.id === selectedTestimonial) || testimonials[0];
 
   const shareOnTwitter = () => {
-    const text = `"${language === 'en' ? selectedTest.message : selectedTest.messageFr}" - ${selectedTest.name} supports Justice for Barran. Real accountability for systemic failures. justiceforbarran.com`;
+    const text = `"${language === 'en' ? selectedTest.message : selectedTest.messageFr}" - ${selectedTest.name} supports Justice for Barran. Real accountability for systemic failures. indigenousadv-ahjdmzis.manus.space`;
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const shareOnFacebook = () => {
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=justiceforbarran.com`, '_blank');
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=indigenousadv-ahjdmzis.manus.space`, '_blank');
   };
 
   return (
@@ -262,7 +262,7 @@ export default function DonorTestimonials() {
         <div className="max-w-5xl mx-auto text-center text-sm">
           <p>{lang.footer}</p>
           <p className="mt-4">
-            {language === 'en' ? 'Learn more:' : 'En savoir plus:'} <strong>justiceforbarran.com</strong>
+            {language === 'en' ? 'Learn more:' : 'En savoir plus:'} <strong>indigenousadv-ahjdmzis.manus.space</strong>
           </p>
         </div>
       </section>
