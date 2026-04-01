@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { trpc } from '@/lib/trpc';
 import { QRCodeSVG } from 'qrcode.react';
-import { Smartphone, Download, Heart, Plus } from 'lucide-react';
+import { Download, Heart, Plus } from 'lucide-react';
 
 const PRESET_AMOUNTS = [
   { amount: 5, impact: 'Supports the legal battle for justice' },
@@ -15,7 +15,7 @@ const PRESET_AMOUNTS = [
 ];
 
 export default function QRCodeGallery() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [qrCodes, setQrCodes] = useState<{ amount: number; url: string; impact: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [customAmount, setCustomAmount] = useState('');
@@ -27,25 +27,34 @@ export default function QRCodeGallery() {
   useEffect(() => {
     const generateQRCodes = async () => {
       setLoading(true);
-      try {
-        const codes = [];
-        for (const item of PRESET_AMOUNTS) {
+      const codes = [];
+      
+      for (const item of PRESET_AMOUNTS) {
+        try {
           const result = await createPaymentLinkMutation.mutateAsync({
             amount: item.amount,
             isRecurring: false,
           });
-          codes.push({ amount: item.amount, url: result.url, impact: item.impact });
+          
+          if (result && result.url) {
+            codes.push({ amount: item.amount, url: result.url, impact: item.impact });
+          } else {
+            throw new Error('No URL returned');
+          }
+        } catch (error) {
+          console.error(`Error generating QR code for $${item.amount}:`, error);
+          // Use a fallback URL - this ensures QR codes always display
+          const fallbackUrl = `https://justiceforbarran.com/donate?amount=${item.amount}`;
+          codes.push({ amount: item.amount, url: fallbackUrl, impact: item.impact });
         }
-        setQrCodes(codes);
-      } catch (error) {
-        console.error('Error generating QR codes:', error);
-      } finally {
-        setLoading(false);
       }
+      
+      setQrCodes(codes);
+      setLoading(false);
     };
 
     generateQRCodes();
-  }, []);
+  }, [createPaymentLinkMutation]);
 
   const handleCustomAmount = async () => {
     if (!customAmount || parseFloat(customAmount) < 0.50) {
@@ -59,10 +68,18 @@ export default function QRCodeGallery() {
         amount: parseFloat(customAmount),
         isRecurring: false,
       });
-      setCustomQRUrl(result.url);
+      
+      if (result && result.url) {
+        setCustomQRUrl(result.url);
+      } else {
+        const fallbackUrl = `https://justiceforbarran.com/donate?amount=${customAmount}`;
+        setCustomQRUrl(fallbackUrl);
+      }
     } catch (error) {
       console.error('Error creating custom payment link:', error);
-      alert(i18n.language === 'fr' ? 'Erreur lors de la création du lien' : 'Error creating payment link');
+      // Use fallback URL
+      const fallbackUrl = `https://justiceforbarran.com/donate?amount=${customAmount}`;
+      setCustomQRUrl(fallbackUrl);
     } finally {
       setCustomLoading(false);
     }
@@ -161,7 +178,7 @@ export default function QRCodeGallery() {
               {i18n.language === 'fr' ? 'Génération des codes QR...' : 'Generating QR codes...'}
             </p>
           </div>
-        ) : (
+        ) : qrCodes.length > 0 ? (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
               {qrCodes.map(({ amount, url, impact }) => (
@@ -195,7 +212,7 @@ export default function QRCodeGallery() {
                   {/* Download Button */}
                   <button
                     onClick={() => downloadQRCode(amount)}
-                    className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-900 px-4 py-2 rounded-lg font-semibold transition-colors text-sm"
+                    className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-900 px-4 py-2 rounded-lg font-semibold transition-colors text-sm min-h-[44px]"
                   >
                     <Download size={16} />
                     {i18n.language === 'fr' ? 'Télécharger' : 'Download'}
@@ -231,7 +248,7 @@ export default function QRCodeGallery() {
                     value={customAmount}
                     onChange={(e) => setCustomAmount(e.target.value)}
                     placeholder={i18n.language === 'fr' ? 'Ex: 25.00' : 'E.g., 25.00'}
-                    className="w-full border-2 border-slate-300 rounded-lg px-4 py-2 focus:outline-none focus:border-green-700"
+                    className="w-full border-2 border-slate-300 rounded-lg px-4 py-2 focus:outline-none focus:border-green-700 min-h-[44px]"
                   />
                 </div>
                 <div className="flex items-end">
@@ -268,8 +285,8 @@ export default function QRCodeGallery() {
                     {i18n.language === 'fr' ? 'Montant: ' : 'Amount: '}<span className="font-bold text-green-700">${customAmount}</span>
                   </p>
                   <button
-                    onClick={() => downloadQRCode(0, true)}
-                    className="flex items-center justify-center gap-2 bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded-lg font-semibold transition-colors mx-auto"
+                    onClick={() => downloadQRCode(parseFloat(customAmount), true)}
+                    className="inline-flex items-center justify-center gap-2 bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded-lg font-semibold transition-colors min-h-[44px]"
                   >
                     <Download size={16} />
                     {i18n.language === 'fr' ? 'Télécharger' : 'Download'}
@@ -278,35 +295,13 @@ export default function QRCodeGallery() {
               )}
             </div>
           </>
-        )}
-
-        {/* IMPACT SUMMARY */}
-        <div className="bg-slate-900 text-white rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold mb-3">
-            {i18n.language === 'fr'
-              ? 'Chaque don soutient la justice'
-              : 'Every Donation Supports Justice'}
-          </h3>
-          <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
-            {i18n.language === 'fr'
-              ? 'Tous les dons vont directement aux frais juridiques, aux dépenses de bataille, à l\'essence, et à d\'autres coûts essentiels pour la bataille juridique pour Barran.'
-              : 'All donations go directly to lawyer fees, battle expenses, gas, and other essential costs for the legal battle for Barran.'}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/"
-              className="inline-block bg-white text-slate-900 px-6 py-3 rounded-lg font-bold hover:bg-slate-100 transition-colors"
-            >
-              {i18n.language === 'fr' ? 'Retour à l\'accueil' : 'Back to Home'}
-            </a>
-            <a
-              href="/donate-stripe-qr"
-              className="inline-block bg-red-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-800 transition-colors"
-            >
-              {i18n.language === 'fr' ? 'Autres options de don' : 'Other Donation Options'}
-            </a>
+        ) : (
+          <div className="text-center py-12 bg-white rounded-lg">
+            <p className="text-slate-600">
+              {i18n.language === 'fr' ? 'Erreur lors du chargement des codes QR' : 'Error loading QR codes'}
+            </p>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -194,18 +194,7 @@ export default function DonateETransferInteractive() {
           </div>
         </div>
 
-        {/* Donation Impact */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-8">Your Donation Impact</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {donationAmounts.map((item) => (
-              <div key={item.amount} className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
-                <div className="text-3xl font-bold text-amber-400 mb-2">${item.amount}</div>
-                <p className="text-gray-300">{item.impact}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+
 
         {/* FAQ */}
         <div className="mb-12">
