@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export default function DonateQuick() {
   const [copied, setCopied] = useState(false);
+  const stripePaymentLink = "https://buy.stripe.com/eVqeVdewcema0IBdJf9EI00";
   const donationLink = "https://indigenousadv-ahjdmzis.manus.space/donate";
   const etransferEmail = "justiceforbarran@gmail.com";
 
@@ -33,7 +34,7 @@ export default function DonateQuick() {
             <p className="text-gray-600 mb-4">Secure credit/debit card payment</p>
             <Button 
               className="w-full bg-blue-600 hover:bg-blue-700"
-              onClick={() => window.location.href = "https://indigenousadv-ahjdmzis.manus.space/donate-card"}
+              onClick={() => window.open(stripePaymentLink, '_blank')}
             >
               Donate Now
             </Button>

@@ -5,41 +5,43 @@ import { Download, Heart, Plus } from 'lucide-react';
 
 // QR codes point to Manus domain with amount parameters
 // The website handles the donation routing from there
+const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/eVqeVdewcema0IBdJf9EI00';
+
 const PRESET_AMOUNTS = [
   { 
     amount: 5, 
     impact: 'Supports the legal battle for justice',
-    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=5' // $5
+    stripeLink: STRIPE_PAYMENT_LINK
   },
   { 
     amount: 10, 
     impact: 'Helps pay for lawyer fees and court costs',
-    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=10' // $10
+    stripeLink: STRIPE_PAYMENT_LINK
   },
   { 
     amount: 20, 
     impact: 'Funds advocacy and documentation efforts',
-    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=20' // $20
+    stripeLink: STRIPE_PAYMENT_LINK
   },
   { 
     amount: 50, 
     impact: 'Covers travel and battle expenses',
-    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=50' // $50
+    stripeLink: STRIPE_PAYMENT_LINK
   },
   { 
     amount: 100, 
     impact: 'Supports ongoing legal representation',
-    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=100' // $100
+    stripeLink: STRIPE_PAYMENT_LINK
   },
   { 
     amount: 500, 
     impact: 'Funds major legal proceedings',
-    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=500' // $500
+    stripeLink: STRIPE_PAYMENT_LINK
   },
   { 
     amount: 1000, 
     impact: 'Covers comprehensive legal battle costs',
-    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=1000' // $1000
+    stripeLink: STRIPE_PAYMENT_LINK
   },
 ];
 
@@ -54,9 +56,8 @@ export default function QRCodeGallery() {
       return;
     }
 
-    // For custom amounts, point to Manus domain with amount parameter
-    const customUrl = `https://indigenousadv-ahjdmzis.manus.space/?amount=${parseFloat(customAmount)}`;
-    setCustomQRUrl(customUrl);
+    // For custom amounts, use Stripe payment link
+    setCustomQRUrl(STRIPE_PAYMENT_LINK);
   };
 
   const downloadQRCode = (amount: number, isCustom = false) => {
