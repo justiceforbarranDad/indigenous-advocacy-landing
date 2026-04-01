@@ -1,31 +1,35 @@
 import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Heart, Copy, Check, Mail, Smartphone, DollarSign } from 'lucide-react';
+import { Heart, Copy, Check, QrCode } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 
 export default function EasyDonate() {
   const { i18n } = useTranslation();
-  const [copiedMethod, setCopiedMethod] = useState<string | null>(null);
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
-  const paymentMethodsRef = useRef<HTMLDivElement>(null);
+  const qrRef = useRef<HTMLDivElement>(null);
 
   const amounts = [5, 10, 20, 50, 100, 500, 1000];
+  
+  // Stripe payment link for direct payments
+  const stripePaymentLink = 'https://buy.stripe.com/eVqeVdewcema0IBdJf9EI00';
 
   const handleAmountSelect = (amount: number) => {
     setSelectedAmount(amount);
-    // Scroll to payment methods after a short delay
+    // Scroll to QR code after a short delay
     setTimeout(() => {
-      paymentMethodsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      qrRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
   };
 
-  const copyToClipboard = (text: string, method: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedMethod(method);
-    setTimeout(() => setCopiedMethod(null), 2000);
-  };
-
-  const handleCopy = (text: string, method: string) => {
-    copyToClipboard(text, method);
+  const downloadQRCode = () => {
+    const canvas = document.querySelector('canvas');
+    if (canvas) {
+      const url = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `donation-${selectedAmount}-qr.png`;
+      link.click();
+    }
   };
 
   return (
@@ -41,8 +45,8 @@ export default function EasyDonate() {
           </div>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             {i18n.language === 'fr'
-              ? 'Aucune carte de crédit requise. Choisissez votre méthode de paiement préférée.'
-              : 'No credit card required. Choose your preferred payment method.'}
+              ? 'Scannez le code QR pour payer instantanément. Aucune carte de crédit requise.'
+              : 'Scan the QR code to pay instantly. No credit card required.'}
           </p>
         </div>
 
@@ -56,7 +60,7 @@ export default function EasyDonate() {
               <button
                 key={amount}
                 onClick={() => handleAmountSelect(amount)}
-                className={`py-3 px-4 rounded-lg font-bold text-lg transition-all ${
+                className={`py-4 px-4 rounded-lg font-bold text-lg transition-all min-h-[44px] ${
                   selectedAmount === amount
                     ? 'bg-red-700 text-white shadow-lg scale-105'
                     : 'bg-gray-100 text-slate-900 hover:bg-gray-200'
@@ -68,211 +72,162 @@ export default function EasyDonate() {
           </div>
         </div>
 
-        {/* PAYMENT METHODS */}
+        {/* QR CODE SECTION */}
         {selectedAmount && (
-          <div className="bg-red-100 p-4 rounded-lg mb-6 border-2 border-red-500 text-center">
-            <p className="text-lg font-bold text-red-900">
+          <div className="space-y-6">
+            {/* CONFIRMATION */}
+            <div className="bg-red-100 p-6 rounded-lg border-2 border-red-500 text-center">
+              <p className="text-xl font-bold text-red-900">
+                {i18n.language === 'fr'
+                  ? `Vous avez sélectionné: $${selectedAmount} CAD`
+                  : `You selected: $${selectedAmount} CAD`}
+              </p>
+            </div>
+
+            {/* QR CODE */}
+            <div className="bg-white rounded-lg shadow-lg p-8 border-2 border-blue-500 text-center">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-2">
+                <QrCode size={32} className="text-blue-600" />
+                {i18n.language === 'fr' ? 'Scannez pour payer' : 'Scan to Pay'}
+              </h3>
+              
+              <p className="text-slate-600 mb-6">
+                {i18n.language === 'fr'
+                  ? 'Utilisez la caméra de votre téléphone pour scanner ce code QR'
+                  : 'Use your phone camera to scan this QR code'}
+              </p>
+
+              {/* QR CODE DISPLAY */}
+              <div ref={qrRef} className="flex justify-center mb-6 bg-gray-50 p-6 rounded-lg">
+                <QRCodeSVG
+                  value={stripePaymentLink}
+                  size={256}
+                  level="H"
+                  includeMargin={true}
+                  className="border-4 border-gray-300 rounded"
+                />
+              </div>
+
+              {/* DOWNLOAD BUTTON */}
+              <button
+                onClick={downloadQRCode}
+                className="w-full bg-blue-600 text-white px-6 py-4 rounded-lg font-bold hover:bg-blue-700 transition-colors min-h-[44px] mb-4"
+              >
+                {i18n.language === 'fr' ? '📥 Télécharger le code QR' : '📥 Download QR Code'}
+              </button>
+
+              {/* INSTRUCTIONS */}
+              <div className="bg-blue-50 p-4 rounded-lg text-sm text-slate-700 text-left">
+                <p className="font-bold mb-2">
+                  {i18n.language === 'fr' ? '📱 Comment ça marche:' : '📱 How it works:'}
+                </p>
+                <ol className="list-decimal list-inside space-y-1">
+                  <li>{i18n.language === 'fr' ? 'Ouvrez l\'appareil photo de votre téléphone' : 'Open your phone camera'}</li>
+                  <li>{i18n.language === 'fr' ? 'Pointez vers ce code QR' : 'Point at this QR code'}</li>
+                  <li>{i18n.language === 'fr' ? 'Appuyez sur le lien qui apparaît' : 'Tap the link that appears'}</li>
+                  <li>{i18n.language === 'fr' ? 'Complétez le paiement' : 'Complete payment'}</li>
+                </ol>
+              </div>
+            </div>
+
+            {/* ALTERNATIVE METHODS */}
+            <div className="bg-white rounded-lg shadow-lg p-8 border-t-4 border-green-600">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                {i18n.language === 'fr' ? 'Autres méthodes de paiement' : 'Alternative Payment Methods'}
+              </h3>
+              
+              {/* E-TRANSFER */}
+              <div className="mb-6 pb-6 border-b">
+                <h4 className="font-bold text-lg text-slate-900 mb-3">
+                  {i18n.language === 'fr' ? '💳 Virement Interac' : '💳 Interac e-Transfer'}
+                </h4>
+                <p className="text-slate-600 mb-3">
+                  {i18n.language === 'fr'
+                    ? 'Envoyez un virement à:'
+                    : 'Send e-Transfer to:'}
+                </p>
+                <div className="bg-green-50 p-4 rounded border-2 border-green-300">
+                  <code className="font-mono font-bold text-lg">justiceforbarran@gmail.com</code>
+                </div>
+              </div>
+
+              {/* MOBILE WALLET */}
+              <div className="mb-6 pb-6 border-b">
+                <h4 className="font-bold text-lg text-slate-900 mb-3">
+                  {i18n.language === 'fr' ? '📱 Portefeuille Mobile' : '📱 Mobile Wallet'}
+                </h4>
+                <p className="text-slate-600 mb-3">
+                  {i18n.language === 'fr'
+                    ? 'Apple Pay • Google Pay • Samsung Pay'
+                    : 'Apple Pay • Google Pay • Samsung Pay'}
+                </p>
+                  <a
+                    href={stripePaymentLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors min-h-[44px]"
+                  >
+                    {i18n.language === 'fr' ? 'Payer maintenant' : 'Pay Now'}
+                  </a>
+              </div>
+
+              {/* CRYPTO */}
+              <div className="mb-6 pb-6 border-b">
+                <h4 className="font-bold text-lg text-slate-900 mb-3">
+                  {i18n.language === 'fr' ? '₿ Crypto-monnaie' : '₿ Cryptocurrency'}
+                </h4>
+                <p className="text-slate-600 mb-3">
+                  {i18n.language === 'fr'
+                    ? 'Bitcoin • Ethereum • Autres'
+                    : 'Bitcoin • Ethereum • Others'}
+                </p>
+                <p className="text-sm text-slate-600">
+                  {i18n.language === 'fr'
+                    ? 'Contactez-nous pour les adresses de portefeuille'
+                    : 'Contact us for wallet addresses'}
+                </p>
+              </div>
+
+              {/* BANK TRANSFER */}
+              <div>
+                <h4 className="font-bold text-lg text-slate-900 mb-3">
+                  {i18n.language === 'fr' ? '🏦 Virement Bancaire' : '🏦 Bank Transfer'}
+                </h4>
+                <p className="text-slate-600">
+                  {i18n.language === 'fr'
+                    ? 'Virements internationaux acceptés. Contactez-nous pour les détails.'
+                    : 'International transfers accepted. Contact us for details.'}
+                </p>
+              </div>
+            </div>
+
+            {/* THANK YOU MESSAGE */}
+            <div className="bg-gradient-to-r from-red-100 to-pink-100 rounded-lg shadow-lg p-8 text-center border-2 border-red-300">
+              <p className="text-lg font-bold text-red-900">
+                {i18n.language === 'fr'
+                  ? '❤️ Merci de soutenir la justice pour Barran'
+                  : '❤️ Thank you for supporting justice for Barran'}
+              </p>
+              <p className="text-slate-700 mt-2">
+                {i18n.language === 'fr'
+                  ? 'Chaque don finance directement la bataille juridique et les efforts de changement systémique.'
+                  : 'Every donation directly funds the legal battle and systemic change efforts.'}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* EMPTY STATE */}
+        {!selectedAmount && (
+          <div className="bg-gray-50 rounded-lg p-12 text-center border-2 border-dashed border-gray-300">
+            <QrCode size={48} className="mx-auto text-gray-400 mb-4" />
+            <p className="text-lg text-slate-600">
               {i18n.language === 'fr'
-                ? `Vous avez sélectionné: $${selectedAmount} CAD`
-                : `You selected: $${selectedAmount} CAD`}
+                ? 'Sélectionnez un montant ci-dessus pour voir le code QR'
+                : 'Select an amount above to see the QR code'}
             </p>
           </div>
         )}
-        <div className="space-y-6" ref={paymentMethodsRef}>
-          {/* E-TRANSFER */}
-          <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-green-600">
-            <div className="flex items-center gap-3 mb-4">
-              <Mail size={32} className="text-green-600" />
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900">
-                  {i18n.language === 'fr' ? 'Virement Interac' : 'Interac e-Transfer'}
-                </h3>
-                <p className="text-sm text-slate-600">
-                  {i18n.language === 'fr' ? 'Banque canadienne' : 'Canadian banks'}
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-green-50 p-6 rounded-lg mb-4">
-              <p className="text-sm text-slate-700 mb-3 font-bold">
-                {i18n.language === 'fr'
-                  ? 'Étape 1: Envoyez un virement à:'
-                  : 'Step 1: Send e-Transfer to:'}
-              </p>
-              <div className="flex items-center gap-3 mb-3">
-                <code className="flex-1 bg-white p-3 rounded border-2 border-green-300 font-mono text-lg font-bold">
-                  justiceforbarran@gmail.com
-                </code>
-                <button
-                  onClick={() => handleCopy('justiceforbarran@gmail.com', 'etransfer')}
-                  className="px-4 py-3 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
-                >
-                  {copiedMethod === 'etransfer' ? (
-                    <>
-                      <Check size={20} />
-                      {i18n.language === 'fr' ? 'Copié' : 'Copied'}
-                    </>
-                  ) : (
-                    <>
-                      <Copy size={20} />
-                      {i18n.language === 'fr' ? 'Copier' : 'Copy'}
-                    </>
-                  )}
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-blue-50 p-4 rounded-lg text-sm text-slate-700">
-              <p className="font-bold mb-2">💡 {i18n.language === 'fr' ? 'Conseil:' : 'Tip:'}</p>
-              <p className="mb-2">
-                {i18n.language === 'fr'
-                  ? 'Étape 2: Utilisez votre application bancaire pour envoyer un virement Interac.'
-                  : 'Step 2: Use your bank app to send an e-Transfer.'}
-              </p>
-              <p>
-                {i18n.language === 'fr'
-                  ? 'Aucune information de carte de crédit nécessaire!'
-                  : 'No credit card information needed!'}
-              </p>
-            </div>
-          </div>
-
-          {/* APPLE PAY / GOOGLE PAY */}
-          <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-blue-600">
-            <div className="flex items-center gap-3 mb-4">
-              <Smartphone size={32} className="text-blue-600" />
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900">
-                  {i18n.language === 'fr' ? 'Portefeuille Mobile' : 'Mobile Wallet'}
-                </h3>
-                <p className="text-sm text-slate-600">
-                  {i18n.language === 'fr' ? 'Apple Pay • Google Pay' : 'Apple Pay • Google Pay'}
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-blue-50 p-6 rounded-lg mb-4">
-              <p className="text-sm text-slate-700 mb-4">
-                {i18n.language === 'fr'
-                  ? 'Utilisez votre portefeuille mobile pour payer en toute sécurité.'
-                  : 'Use your mobile wallet to pay securely.'}
-              </p>
-              <button
-                onClick={() => {
-                  alert(i18n.language === 'fr'
-                    ? 'Fonctionnalité bientôt disponible'
-                    : 'Feature coming soon');
-                }}
-                className="w-full py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors text-lg"
-              >
-                {i18n.language === 'fr' ? 'Payer avec Portefeuille' : 'Pay with Wallet'}
-              </button>
-            </div>
-
-            <div className="bg-blue-50 p-4 rounded-lg text-sm text-slate-700">
-              <p className="font-bold mb-2">✅ {i18n.language === 'fr' ? 'Sécurisé:' : 'Secure:'}</p>
-              <p>
-                {i18n.language === 'fr'
-                  ? 'Vos informations de paiement sont protégées par votre appareil.'
-                  : 'Your payment information is protected by your device.'}
-              </p>
-            </div>
-          </div>
-
-          {/* CRYPTOCURRENCY (Optional) */}
-          <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-orange-600">
-            <div className="flex items-center gap-3 mb-4">
-              <DollarSign size={32} className="text-orange-600" />
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900">
-                  {i18n.language === 'fr' ? 'Crypto-monnaie' : 'Cryptocurrency'}
-                </h3>
-                <p className="text-sm text-slate-600">
-                  {i18n.language === 'fr' ? 'Bitcoin • Ethereum' : 'Bitcoin • Ethereum'}
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-orange-50 p-6 rounded-lg mb-4">
-              <p className="text-sm text-slate-700 mb-4">
-                {i18n.language === 'fr'
-                  ? 'Envoyez de la crypto-monnaie directement.'
-                  : 'Send cryptocurrency directly.'}
-              </p>
-              <button
-                onClick={() => {
-                  alert(i18n.language === 'fr'
-                    ? 'Adresses de portefeuille bientôt disponibles'
-                    : 'Wallet addresses coming soon');
-                }}
-                className="w-full py-4 bg-orange-600 text-white font-bold rounded-lg hover:bg-orange-700 transition-colors text-lg"
-              >
-                {i18n.language === 'fr' ? 'Adresses Crypto' : 'Crypto Addresses'}
-              </button>
-            </div>
-
-            <div className="bg-orange-50 p-4 rounded-lg text-sm text-slate-700">
-              <p className="font-bold mb-2">🔒 {i18n.language === 'fr' ? 'Privé:' : 'Private:'}</p>
-              <p>
-                {i18n.language === 'fr'
-                  ? 'Les transactions en crypto-monnaie offrent une confidentialité maximale.'
-                  : 'Cryptocurrency transactions offer maximum privacy.'}
-              </p>
-            </div>
-          </div>
-
-          {/* BANK TRANSFER */}
-          <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-purple-600">
-            <div className="flex items-center gap-3 mb-4">
-              <Mail size={32} className="text-purple-600" />
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900">
-                  {i18n.language === 'fr' ? 'Virement Bancaire' : 'Bank Transfer'}
-                </h3>
-                <p className="text-sm text-slate-600">
-                  {i18n.language === 'fr' ? 'Virements internationaux' : 'International transfers'}
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-purple-50 p-6 rounded-lg mb-4">
-              <p className="text-sm text-slate-700 mb-4">
-                {i18n.language === 'fr'
-                  ? 'Contactez-nous pour les détails du virement bancaire.'
-                  : 'Contact us for bank transfer details.'}
-              </p>
-              <a
-                href="mailto:justiceforbarran@gmail.com"
-                className="w-full block text-center py-4 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition-colors text-lg"
-              >
-                {i18n.language === 'fr' ? 'Envoyer un Email' : 'Send Email'}
-              </a>
-            </div>
-
-            <div className="bg-purple-50 p-4 rounded-lg text-sm text-slate-700">
-              <p className="font-bold mb-2">🌍 {i18n.language === 'fr' ? 'Global:' : 'Global:'}</p>
-              <p>
-                {i18n.language === 'fr'
-                  ? 'Nous acceptons les virements de n\'importe quel pays.'
-                  : 'We accept transfers from any country.'}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* FOOTER */}
-        <div className="text-center mt-12 p-8 bg-red-50 rounded-lg border-2 border-red-200">
-          <p className="text-lg text-slate-700 mb-3">
-            💙 {i18n.language === 'fr'
-              ? 'Merci de soutenir la justice pour Barran.'
-              : 'Thank you for supporting Justice for Barran.'}
-          </p>
-          <p className="text-sm text-slate-600">
-            {i18n.language === 'fr'
-              ? 'Chaque don compte. 100% va à la bataille juridique et à la défense.'
-              : 'Every donation counts. 100% goes to legal battle and advocacy.'}
-          </p>
-        </div>
       </div>
     </div>
   );
