@@ -1,7 +1,19 @@
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 
+const emotionalMemories = [
+  {
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_hSszDN_image_blurred_55817d16.png',
+    caption: 'Childhood joy'
+  },
+  {
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_gtFlxD_image_blurred_44d2b93a.png',
+    caption: 'Hope after hospital'
+  }
+];
+
 export default function Contact() {
+  const [currentMemoryIndex, setCurrentMemoryIndex] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -9,6 +21,14 @@ export default function Contact() {
     subject: '',
     message: ''
   });
+  
+  const nextMemory = () => {
+    setCurrentMemoryIndex((prev) => (prev + 1) % emotionalMemories.length);
+  };
+  
+  const prevMemory = () => {
+    setCurrentMemoryIndex((prev) => (prev - 1 + emotionalMemories.length) % emotionalMemories.length);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -54,6 +74,57 @@ export default function Contact() {
           <p className="text-lg leading-relaxed mb-4">
             Whether you have a similar story, want to support the campaign, offer legal assistance, or demand accountability from government and corporate officials, we're here to listen and connect you with resources.
           </p>
+        </div>
+
+        {/* EMOTIONAL MEMORIES */}
+        <div className="mb-8 pb-8 border-b-4 border-black">
+          <h2 className="text-3xl md:text-4xl font-black mb-4">Why We Fight</h2>
+          <p className="text-lg leading-relaxed mb-6">
+            These are the moments that matter. The childhood joys that were taken away. Every donation helps us fight for justice and ensure no other family experiences what Barran's family has endured.
+          </p>
+          
+          <div className="relative bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+            <div className="relative h-64 md:h-80 bg-gray-200">
+              <img 
+                src={emotionalMemories[currentMemoryIndex].image}
+                alt={emotionalMemories[currentMemoryIndex].caption}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/20"></div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 md:p-6">
+                <p className="text-white text-xl md:text-2xl font-bold">{emotionalMemories[currentMemoryIndex].caption}</p>
+              </div>
+            </div>
+            
+            {/* Navigation */}
+            <div className="flex items-center justify-between p-4 bg-gray-50 border-t-2 border-black">
+              <button 
+                onClick={prevMemory}
+                className="flex items-center gap-2 bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 transition-colors font-bold"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              
+              <div className="flex gap-2">
+                {emotionalMemories.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentMemoryIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentMemoryIndex ? 'bg-red-700 w-8' : 'bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
+              
+              <button 
+                onClick={nextMemory}
+                className="flex items-center gap-2 bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 transition-colors font-bold"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8 pb-8 border-b-4 border-black">

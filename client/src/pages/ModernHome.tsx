@@ -1,14 +1,51 @@
 import React, { useState } from 'react';
-import { ChevronDown, Share2, Heart, DollarSign, Mail, Phone } from 'lucide-react';
+import { ChevronDown, Share2, Heart, DollarSign, Mail, Phone, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PodcastPlayer } from '../components/PodcastPlayer';
 import { podcastEpisodes } from '../data/podcastEpisodes';
 import TestimonialsSection from '../components/TestimonialsSection';
 import { LanguageToggle } from '../components/LanguageToggle';
 import { useTranslation } from 'react-i18next';
 
+const childoodMemories = [
+  {
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_k8OyK8_image_blurred_80ae31c9.png',
+    caption: 'Biking adventures',
+    year: 'Before 2021'
+  },
+  {
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_i2KFrB_image_blurred_661be14d.png',
+    caption: 'Drumming - artistic expression',
+    year: 'Before 2021'
+  },
+  {
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_WHkMm8_image_blurred_d9dec266.png',
+    caption: 'Summer on the water',
+    year: 'Before 2021'
+  },
+  {
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_z7QxHh_image_blurred_a2134b61.png',
+    caption: 'Hockey passion',
+    year: 'Before 2021'
+  },
+  {
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_S8TjuO_image_blurred_ac1e04ca.png',
+    caption: 'Birthday celebrations',
+    year: 'Before 2021'
+  }
+];
+
 export default function ModernHome() {
   const { t } = useTranslation();
   const [showDonationBox, setShowDonationBox] = useState(true);
+  const [currentMemoryIndex, setCurrentMemoryIndex] = useState(0);
+  
+  const nextMemory = () => {
+    setCurrentMemoryIndex((prev) => (prev + 1) % childoodMemories.length);
+  };
+  
+  const prevMemory = () => {
+    setCurrentMemoryIndex((prev) => (prev - 1 + childoodMemories.length) % childoodMemories.length);
+  };
   
   // Add RSS feed link to document head
   React.useEffect(() => {
@@ -160,6 +197,66 @@ export default function ModernHome() {
           </div>
         </div>
       </div>
+
+      {/* CHILDHOOD MEMORIES CAROUSEL */}
+      <section className="bg-gradient-to-r from-gray-100 to-gray-50 py-12 md:py-16 border-t-4 border-red-700">
+        <div className="max-w-7xl mx-auto px-3 md:px-4">
+          <h2 className="text-2xl md:text-4xl font-bold mb-2 text-gray-900">What We Lost</h2>
+          <p className="text-gray-700 mb-8 text-sm md:text-base">These are the moments that mattered. The childhood joys that were taken away. Faces blurred to protect privacy.</p>
+          
+          <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="relative h-64 md:h-96 bg-gray-200">
+              <img 
+                src={childoodMemories[currentMemoryIndex].image}
+                alt={childoodMemories[currentMemoryIndex].caption}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/20"></div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 md:p-6">
+                <p className="text-white text-lg md:text-2xl font-bold">{childoodMemories[currentMemoryIndex].caption}</p>
+                <p className="text-gray-300 text-sm md:text-base">{childoodMemories[currentMemoryIndex].year}</p>
+              </div>
+            </div>
+            
+            {/* Navigation Buttons */}
+            <div className="flex items-center justify-between p-4 bg-gray-50 border-t border-gray-200">
+              <button 
+                onClick={prevMemory}
+                className="flex items-center gap-2 bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 transition-colors"
+              >
+                <ChevronLeft size={20} />
+                <span className="hidden sm:inline">Previous</span>
+              </button>
+              
+              <div className="flex gap-2">
+                {childoodMemories.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentMemoryIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentMemoryIndex ? 'bg-red-700 w-8' : 'bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
+              
+              <button 
+                onClick={nextMemory}
+                className="flex items-center gap-2 bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 transition-colors"
+              >
+                <span className="hidden sm:inline">Next</span>
+                <ChevronRight size={20} />
+              </button>
+            </div>
+            
+            <div className="p-4 md:p-6 bg-white">
+              <p className="text-gray-700 text-sm md:text-base">
+                {currentMemoryIndex + 1} of {childoodMemories.length} memories
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* PODCAST SECTION */}
       <section className="bg-white py-8 md:py-16 mt-8 md:mt-16 border-t-4 border-b-4 border-red-700">

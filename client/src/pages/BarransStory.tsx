@@ -1,9 +1,35 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { AlertCircle, Heart, Clock, MapPin, Users } from "lucide-react";
+import { AlertCircle, Heart, Clock, MapPin, Users, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import { SocialShareButtons } from "@/components/SocialShareButtons";
 
+const beforeMemories = [
+  {
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_Z0Z5EB_image_blurred_4ce86e8f.png',
+    caption: 'Childhood innocence'
+  },
+  {
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_R7Nc5x_image_blurred_df41ed37.png',
+    caption: 'New life begins'
+  },
+  {
+    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_KcddPM_image_blurred_df4b8c5a.png',
+    caption: 'Family bond'
+  }
+];
+
 export default function BarransStory() {
+  const [currentMemoryIndex, setCurrentMemoryIndex] = useState(0);
+  
+  const nextMemory = () => {
+    setCurrentMemoryIndex((prev) => (prev + 1) % beforeMemories.length);
+  };
+  
+  const prevMemory = () => {
+    setCurrentMemoryIndex((prev) => (prev - 1 + beforeMemories.length) % beforeMemories.length);
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground py-12 px-4">
       <div className="max-w-5xl mx-auto">
@@ -19,6 +45,55 @@ export default function BarransStory() {
             <p className="text-lg text-red-800">
               <strong>A 14-year-old boy was stabbed three times by a stranger wearing a balaclava.</strong> He survived. But the system that was supposed to protect him failed—before the stabbing, during his recovery, and for the next six years.
             </p>
+          </div>
+        </div>
+
+        {/* Before 2021 - Childhood Memories */}
+        <div className="mb-12 bg-gradient-to-r from-blue-50 to-blue-100 p-8 rounded-lg border-l-4 border-blue-600">
+          <h2 className="text-3xl font-bold text-blue-900 mb-4">Before 2021: Who Barran Was</h2>
+          <p className="text-gray-700 mb-6">These are the moments before everything changed. The childhood joys that shaped him. Faces blurred to protect privacy.</p>
+          
+          <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="relative h-64 md:h-80 bg-gray-200">
+              <img 
+                src={beforeMemories[currentMemoryIndex].image}
+                alt={beforeMemories[currentMemoryIndex].caption}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/20"></div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 md:p-6">
+                <p className="text-white text-xl md:text-2xl font-bold">{beforeMemories[currentMemoryIndex].caption}</p>
+              </div>
+            </div>
+            
+            {/* Navigation */}
+            <div className="flex items-center justify-between p-4 bg-gray-50 border-t border-gray-200">
+              <button 
+                onClick={prevMemory}
+                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              
+              <div className="flex gap-2">
+                {beforeMemories.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentMemoryIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentMemoryIndex ? 'bg-blue-600 w-8' : 'bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
+              
+              <button 
+                onClick={nextMemory}
+                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
           </div>
         </div>
 
