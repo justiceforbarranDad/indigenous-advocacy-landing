@@ -71,27 +71,6 @@ export default function DonationHub() {
       </div>
 
       <div className="container max-w-5xl mx-auto px-4 py-12">
-        {/* Campaign Progress */}
-        <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-8 mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <TrendingUp className="w-6 h-6 text-amber-400" />
-            <h2 className="text-2xl font-bold">Campaign Progress</h2>
-          </div>
-          
-          <div className="grid md:grid-cols-4 gap-4 mb-6">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl font-bold text-amber-400 mb-1">{stat.value}</div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="w-full bg-slate-700 rounded-full h-3 overflow-hidden">
-            <div className="bg-gradient-to-r from-amber-500 to-amber-400 h-full" style={{ width: '12.5%' }}></div>
-          </div>
-          <p className="text-sm text-gray-400 mt-2">$12,500 of $100,000 raised (12.5%)</p>
-        </div>
 
         {/* Payment Methods Tabs */}
         <div className="mb-12">
@@ -189,37 +168,7 @@ export default function DonationHub() {
           })}
         </div>
 
-        {/* Donation Amount Calculator */}
-        <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-8 mb-12">
-          <h2 className="text-2xl font-bold mb-6">Your Donation Impact</h2>
-          
-          <div className="mb-6">
-            <label className="block text-sm font-semibold mb-3">Select Amount</label>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
-              {donationImpacts.map((item) => (
-                <button
-                  key={item.amount}
-                  onClick={() => setDonationAmount(item.amount)}
-                  className={`py-2 px-3 rounded font-semibold transition-all ${
-                    donationAmount === item.amount
-                      ? 'bg-amber-600 text-white'
-                      : 'bg-slate-700 text-gray-300 hover:bg-slate-600'
-                  }`}
-                >
-                  ${item.amount}
-                </button>
-              ))}
-            </div>
-          </div>
 
-          <div className="bg-slate-900/50 rounded-lg p-6">
-            <div className="text-sm text-gray-400 mb-2">Your donation of</div>
-            <div className="text-4xl font-bold text-amber-400 mb-3">${donationAmount}</div>
-            <div className="text-lg font-semibold">
-              {donationImpacts.find(d => d.amount === donationAmount)?.impact}
-            </div>
-          </div>
-        </div>
 
         {/* Transparency Section */}
         <div className="bg-blue-900/20 border border-blue-600/50 rounded-lg p-8 mb-12">
