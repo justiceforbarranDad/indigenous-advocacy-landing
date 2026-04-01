@@ -33,10 +33,10 @@ export default function ModernHome() {
             Justice for Barran
           </div>
           <div className="hidden md:flex gap-4 lg:gap-8">
-            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">FRONT PAGE</a>
-            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">BARRAN'S STORY</a>
-            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">DONATE</a>
-            <a href="#" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">CONTACT</a>
+            <a href="/" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">FRONT PAGE</a>
+            <a href="/barrans-story" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">BARRAN'S STORY</a>
+            <a href="/donate-stripe-qr" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">DONATE</a>
+            <a href="/contact" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">CONTACT</a>
           </div>
           <div className="flex items-center gap-4">
             <LanguageToggle />

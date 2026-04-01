@@ -1587,3 +1587,12 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Add French toggle to main page header
 - [x] Make toggle visible on all pages
 - [x] Test French/English switching works on main page
+
+
+## BUG FIXES (April 1, 2026 - CRITICAL)
+- [x] Fix DONATE navigation link (currently broken)
+- [x] Fix CONTACT navigation link (currently broken)
+- [x] Fix BARRAN'S STORY navigation link (currently broken)
+- [x] Fix French toggle - should change all content to French
+- [x] Test all navigation links work on dev server
+- [x] Test French/English switching works completely
