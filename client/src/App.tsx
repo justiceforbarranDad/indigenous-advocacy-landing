@@ -117,7 +117,7 @@ import OrangeShirtDayAccountability from "./pages/OrangeShirtDayAccountability";
 import SponsorResponseTracker from "./pages/SponsorResponseTracker";
 import DonorTestimonials from "./pages/DonorTestimonials";
 import SubmitDonorTestimonial from "./pages/SubmitDonorTestimonial";
-import DNSWarningBanner from "./components/DNSWarningBanner";
+
 import FinancialTransparency from "./pages/FinancialTransparency";
 import FamilyCaseDocumentation from "./pages/FamilyCaseDocumentation";
 import UNComplaint from "./pages/UNComplaint";
@@ -284,7 +284,6 @@ function App() {
         // switchable
       >
         <TooltipProvider>
-          <DNSWarningBanner />
           <Toaster />
           <div className="fixed top-4 right-20 z-50">
             <LanguageToggle />

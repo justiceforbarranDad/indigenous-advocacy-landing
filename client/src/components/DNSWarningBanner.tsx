@@ -47,7 +47,7 @@ export default function DNSWarningBanner() {
           
           <div className="flex gap-3">
             <a
-              href="https://indigenousadv-ahjdmzis.manus.space"
+              href="https://www.justiceforbarran.com"
               className="inline-block bg-yellow-700 text-white px-4 py-2 font-bold hover:bg-yellow-800 rounded"
             >
               ✓ Confirm You're on the Real Site
