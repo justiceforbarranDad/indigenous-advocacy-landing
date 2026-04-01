@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { AlertCircle, Heart, Clock, MapPin, Users, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { SocialShareButtons } from "@/components/SocialShareButtons";
+import BarransTimeline from "@/components/BarransTimeline";
 
 const beforeMemories = [
   {
@@ -710,6 +711,9 @@ export default function BarransStory() {
             </Button>
           </div>
         </div>
+
+        {/* VISUAL TIMELINE WITH PHOTOS */}
+        <BarransTimeline />
       </div>
     </div>
   );
