@@ -1602,10 +1602,13 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Create QR codes for each payment link using qrcode.react
 - [x] Display QR codes in grid layout (2 columns on mobile, 3-4 on desktop)
 - [x] Add amount label under each QR code
-- [x] Add "Scan to Donate" instructions at top
+- [x] Add Scan to Donate instructions at top
 - [x] Add route /qr-codes to App.tsx
+- [x] Update impact descriptions to focus on legal battle and lawyer fees
+- [x] Add custom amount input field with QR code generation
+- [x] Mobile optimize QR code gallery (responsive sizing)
+- [x] Add bilingual support (English/French)
 - [ ] Add navigation link to QR code page from home/donate pages
 - [ ] Test QR codes on iOS Safari (scan with camera app)
 - [ ] Test QR codes on Android Chrome (scan with Google Lens)
 - [ ] Verify each QR code links to correct Stripe payment page
-- [x] Mobile optimize QR code gallery (responsive sizing)
