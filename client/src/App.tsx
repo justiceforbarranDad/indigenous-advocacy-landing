@@ -130,6 +130,7 @@ import DonationMilestones from "./pages/DonationMilestones";
 import EmergencySuccessionPlan from "./pages/EmergencySuccessionPlan";
 import Why500kEssential from "./pages/Why500kEssential";
 import PensionClawbackAccountability from "./pages/PensionClawbackAccountability";
+import Documents from "./pages/Documents";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -253,6 +254,7 @@ function Router() {
       <Route path="/emergency-succession-plan" component={EmergencySuccessionPlan} />
       <Route path="/why-500k-essential" component={Why500kEssential} />
       <Route path="/pension-clawback-accountability" component={PensionClawbackAccountability} />
+      <Route path="/documents" component={Documents} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
