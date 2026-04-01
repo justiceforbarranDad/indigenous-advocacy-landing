@@ -162,25 +162,7 @@
 - [x] Add testimonials from supporters
 - [x] Add FAQ about donation methods
 - [x] Test all payment methods
-- [x] Integrate with home page CTA buttons
-
-## STRIPE QR CODE DIRECT PAYMENT (April 1, 2026 - PRIORITY)
-- [x] Create Stripe payment link for direct account deposits
-- [x] Generate QR code pointing to Stripe checkout
-- [x] Add preset amounts: $5, $10, $20, $50, $100, $250, $500, $1000
-- [x] Enable monthly recurring donations option
-- [x] Enable one-time donations option
-- [x] Add French title to main page: "Dimanche Sanglant, Deuxième Partie"
-- [x] Implement bilingual language toggle (English/French)
-- [x] Add "Other Amount" custom input field with validation
-- [ ] Add E-Transfer as backup payment method
-- [ ] Test QR code scanning on mobile devices
-- [ ] Verify Stripe payments go directly to user account
-- [ ] Create thank you email for donors (bilingual)
-- [ ] Deploy and test on live site
-
-
-## STORY PAGE REDESIGN (March 15, 2026)
+- [x] Integrate with home page CTA butt## STRIPE QR CODE DIRECT PAYMENT (April 1, 2026 - PRIORITY)\n- [x] Create Stripe payment link for direct account deposits\n- [x] Generate QR code pointing to Stripe checkout\n- [x] Add preset amounts: $5, $10, $20, $50, $100, $250, $500, $1000\n- [x] Enable monthly recurring donations option\n- [x] Enable one-time donations option\n- [x] Add French title to main page: "Dimanche Sanglant, Deuxième Partie"\n- [x] Implement bilingual language toggle (English/French)\n- [x] Add "Other Amount" custom input field with validation\n- [ ] Add E-Transfer as backup payment method\n- [ ] Test QR code scanning on mobile devices\n- [ ] Verify Stripe payments go directly to user account\n- [ ] Create thank you email for donors (bilingual)\n- [ ] Deploy and test on live site\n\n\n## MOBILE RESPONSIVENESS FIXES (April 1, 2026 - CRITICAL)\n- [x] Fix hamburger menu - functional on mobile, hidden on desktop\n- [x] Mobile menu dropdown with all navigation links\n- [x] Carousel buttons - 44px minimum touch targets on all pages\n- [x] Carousel buttons repositioned inside carousel on mobile\n- [x] Donation page buttons - 44px minimum height (One-Time, Monthly, Preset amounts)\n- [x] Custom amount input - 44px minimum height, mobile-optimized\n- [x] Contact form inputs - 44px minimum height (name, email, phone, subject, message)\n- [x] Contact form submit button - 44px minimum height\n- [x] Contact info cards - full width on mobile, 3-column on desktop\n- [x] Carousel dot indicators - 32px minimum touch targets on mobile\n- [x] All buttons - responsive padding (smaller on mobile, larger on desktop)\n- [x] Viewport meta tags - verified correct configuration\n- [ ] Test hamburger menu on iOS Safari\n- [ ] Test hamburger menu on Android Chrome\n- [ ] Test carousels on iOS Safari (swipe/tap)\n- [ ] Test carousels on Android Chrome (swipe/tap)\n- [ ] Test donation page on iOS Safari\n- [ ] Test donation page on Android Chrome\n- [ ] Test contact form on iOS Safari\n- [ ] Test contact form on Android Chrome\n- [ ] Test all pages in portrait and landscape orientation\n- [ ] Verify no layout shift during load\n- [ ] Verify smooth scrolling on mobile\n- [ ] Create mobile testing checklist (COMPLETE)ORY PAGE REDESIGN (March 15, 2026)
 - [ ] Remove donation widgets from story pages (BarransStory, MotherAbuseDPJ, WellnessCheck, etc.)
 - [ ] Move all donation CTAs to dedicated donation page only
 - [ ] Darken color scheme on story pages (darker greens, charcoal backgrounds)
@@ -224,6 +206,22 @@
 - [ ] Test all new pages and links
 - [ ] Save checkpoint with expanded accountability features
 
+
+## MOBILE COMPATIBILITY FIXES (April 1, 2026 - PRIORITY)
+- [ ] Fix navigation menu for mobile (hamburger menu, responsive layout)
+- [ ] Fix hero section and buttons for mobile screens
+- [ ] Fix donation page layout for mobile
+- [ ] Fix all carousels for touch/swipe on mobile
+- [ ] Fix forms and input fields for mobile
+- [ ] Test on iOS Safari (iPhone)
+- [ ] Test on Android Chrome
+- [ ] Fix any overflow/scrolling issues
+- [ ] Optimize font sizes for mobile readability
+- [ ] Fix image sizing for mobile bandwidth
+- [ ] Ensure all payment buttons work on mobile
+- [ ] Test QR code scanning on mobile devices
+- [ ] Fix viewport meta tags for proper mobile scaling
+- [ ] Verify all links are touch-friendly (min 44px tap targets)
 
 ## COMPREHENSIVE SYSTEMIC ACCOUNTABILITY NEWSPAPER (March 15, 2026 - MAJOR EXPANSION)
 

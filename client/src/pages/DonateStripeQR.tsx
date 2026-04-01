@@ -73,15 +73,15 @@ export default function DonateStripeQR() {
         </div>
 
         {/* Donation Type Selection */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <div className="bg-white rounded-lg shadow-lg p-4 md:p-8 mb-8">
           <div className="mb-6">
             <h2 className="text-xl font-bold text-slate-900 mb-4">
               {i18n.language === 'fr' ? 'Type de don' : 'Donation Type'}
             </h2>
-            <div className="flex gap-4">
+            <div className="flex gap-2 md:gap-4">
               <button
                 onClick={() => setIsRecurring(false)}
-                className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all ${
+                className={`flex-1 py-3 md:py-3 px-3 md:px-4 rounded-lg font-semibold transition-all min-h-[44px] text-sm md:text-base ${
                   !isRecurring
                     ? 'bg-red-600 text-white shadow-lg'
                     : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
@@ -91,7 +91,7 @@ export default function DonateStripeQR() {
               </button>
               <button
                 onClick={() => setIsRecurring(true)}
-                className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all ${
+                className={`flex-1 py-3 md:py-3 px-3 md:px-4 rounded-lg font-semibold transition-all min-h-[44px] text-sm md:text-base ${
                   isRecurring
                     ? 'bg-blue-600 text-white shadow-lg'
                     : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
@@ -113,7 +113,7 @@ export default function DonateStripeQR() {
               <p className="text-sm text-slate-600 mb-3">
                 {i18n.language === 'fr' ? 'Montants prédéfinis:' : 'Preset amounts:'}
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
                 {PRESET_AMOUNTS.map((amount) => (
                   <button
                     key={amount}
@@ -121,7 +121,7 @@ export default function DonateStripeQR() {
                       setSelectedAmount(amount);
                       setCustomAmount('');
                     }}
-                    className={`py-3 px-4 rounded-lg font-semibold transition-all ${
+                    className={`py-3 px-3 md:px-4 rounded-lg font-semibold transition-all min-h-[44px] text-sm md:text-base ${
                       !customAmount && selectedAmount === amount
                         ? 'bg-green-600 text-white shadow-lg scale-105'
                         : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
@@ -152,7 +152,7 @@ export default function DonateStripeQR() {
                       setSelectedAmount(0);
                     }
                   }}
-                  className="flex-1 px-4 py-2 border-2 border-blue-300 rounded-lg focus:outline-none focus:border-blue-600 text-lg font-semibold"
+                  className="flex-1 px-3 md:px-4 py-3 md:py-2 border-2 border-blue-300 rounded-lg focus:outline-none focus:border-blue-600 text-base md:text-lg font-semibold min-h-[44px]"
                 />
               </div>
               <p className="text-xs text-blue-600 mt-2">

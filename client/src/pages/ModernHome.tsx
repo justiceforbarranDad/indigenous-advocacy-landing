@@ -38,6 +38,7 @@ export default function ModernHome() {
   const { t } = useTranslation();
   const [showDonationBox, setShowDonationBox] = useState(true);
   const [currentMemoryIndex, setCurrentMemoryIndex] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const nextMemory = () => {
     setCurrentMemoryIndex((prev) => (prev + 1) % childoodMemories.length);
@@ -77,9 +78,24 @@ export default function ModernHome() {
           </div>
           <div className="flex items-center gap-4">
             <LanguageToggle />
-            <div className="md:hidden text-2xl">☰</div>
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden text-2xl p-2 hover:bg-gray-100 rounded transition-colors"
+              aria-label="Toggle menu"
+            >
+              ☰
+            </button>
           </div>
         </div>
+        {/* MOBILE MENU */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t-2 border-red-700 bg-white">
+            <a href="/" className="block px-4 py-3 text-gray-700 hover:bg-red-50 font-semibold border-b">FRONT PAGE</a>
+            <a href="/barrans-story" className="block px-4 py-3 text-gray-700 hover:bg-red-50 font-semibold border-b">BARRAN'S STORY</a>
+            <a href="/donate-stripe-qr" className="block px-4 py-3 text-gray-700 hover:bg-red-50 font-semibold border-b">DONATE</a>
+            <a href="/contact" className="block px-4 py-3 text-gray-700 hover:bg-red-50 font-semibold">CONTACT</a>
+          </div>
+        )}
       </nav>
 
       {/* HERO SECTION */}
@@ -98,11 +114,11 @@ export default function ModernHome() {
             {t('home.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-            <a href="/donate" className="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 font-bold rounded hover:bg-red-800 transition-colors animate-pulse">
+            <a href="/donate" className="inline-flex items-center justify-center gap-2 bg-red-700 text-white px-6 py-4 md:py-3 font-bold rounded hover:bg-red-800 transition-colors animate-pulse text-base md:text-sm min-h-[44px]">
               <Heart size={20} />
               {t('common.donate').toUpperCase()}
             </a>
-            <a href="#" className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 font-bold rounded hover:bg-green-700 transition-colors">
+            <a href="#" className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-6 py-4 md:py-3 font-bold rounded hover:bg-green-700 transition-colors text-base md:text-sm min-h-[44px]">
               <Share2 size={20} />
               {t('common.share').toUpperCase()}
             </a>
@@ -222,9 +238,10 @@ export default function ModernHome() {
             <div className="flex items-center justify-between p-4 bg-gray-50 border-t border-gray-200">
               <button 
                 onClick={prevMemory}
-                className="flex items-center gap-2 bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 transition-colors"
+                className="flex items-center justify-center gap-1 md:gap-2 bg-red-700 text-white px-3 md:px-4 py-2 md:py-2 rounded hover:bg-red-800 transition-colors min-h-[44px] min-w-[44px] md:min-h-auto md:min-w-auto text-sm md:text-base"
+                aria-label="Previous memory"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={18} />
                 <span className="hidden sm:inline">Previous</span>
               </button>
               
@@ -242,10 +259,11 @@ export default function ModernHome() {
               
               <button 
                 onClick={nextMemory}
-                className="flex items-center gap-2 bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 transition-colors"
+                className="flex items-center justify-center gap-1 md:gap-2 bg-red-700 text-white px-3 md:px-4 py-2 md:py-2 rounded hover:bg-red-800 transition-colors min-h-[44px] min-w-[44px] md:min-h-auto md:min-w-auto text-sm md:text-base"
+                aria-label="Next memory"
               >
                 <span className="hidden sm:inline">Next</span>
-                <ChevronRight size={20} />
+                <ChevronRight size={18} />
               </button>
             </div>
             

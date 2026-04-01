@@ -97,39 +97,43 @@ export default function Contact() {
             </div>
             
             {/* Navigation */}
-            <div className="flex items-center justify-between p-4 bg-gray-50 border-t-2 border-black">
+            <div className="flex items-center justify-between p-3 md:p-4 bg-gray-50 border-t-2 border-black gap-2">
               <button 
                 onClick={prevMemory}
-                className="flex items-center gap-2 bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 transition-colors font-bold"
+                className="flex items-center justify-center gap-1 md:gap-2 bg-red-700 text-white px-3 md:px-4 py-2 md:py-2 rounded hover:bg-red-800 transition-colors font-bold min-h-[44px] min-w-[44px] md:min-h-auto md:min-w-auto"
+                aria-label="Previous memory"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={18} />
               </button>
               
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-wrap justify-center">
                 {emotionalMemories.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentMemoryIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentMemoryIndex ? 'bg-red-700 w-8' : 'bg-gray-400'
+                    className={`rounded-full transition-all min-h-[32px] min-w-[32px] md:min-h-auto md:min-w-auto ${
+                      index === currentMemoryIndex ? 'bg-red-700 w-8 h-3' : 'bg-gray-400 w-2 h-2'
                     }`}
+                    aria-label={`View memory ${index + 1}`}
+                    aria-current={index === currentMemoryIndex}
                   />
                 ))}
               </div>
               
               <button 
                 onClick={nextMemory}
-                className="flex items-center gap-2 bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 transition-colors font-bold"
+                className="flex items-center justify-center gap-1 md:gap-2 bg-red-700 text-white px-3 md:px-4 py-2 md:py-2 rounded hover:bg-red-800 transition-colors font-bold min-h-[44px] min-w-[44px] md:min-h-auto md:min-w-auto"
+                aria-label="Next memory"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={18} />
               </button>
             </div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-8 pb-8 border-b-4 border-black">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 pb-8 border-b-4 border-black">
           {/* EMAIL */}
-          <div className="border-2 border-black p-6">
+          <div className="border-2 border-black p-4 md:p-6">
             <div className="flex items-center gap-3 mb-4">
               <Mail size={28} className="font-black" />
               <h3 className="text-2xl font-black">Email</h3>
@@ -145,7 +149,7 @@ export default function Contact() {
           </div>
 
           {/* PHONE */}
-          <div className="border-2 border-black p-6">
+          <div className="border-2 border-black p-4 md:p-6">
             <div className="flex items-center gap-3 mb-4">
               <Phone size={28} className="font-black" />
               <h3 className="text-2xl font-black">Phone</h3>
@@ -161,7 +165,7 @@ export default function Contact() {
           </div>
 
           {/* ADDRESS */}
-          <div className="border-2 border-black p-6">
+          <div className="border-2 border-black p-4 md:p-6">
             <div className="flex items-center gap-3 mb-4">
               <MapPin size={28} className="font-black" />
               <h3 className="text-2xl font-black">Location</h3>
@@ -189,7 +193,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full border-2 border-black p-4 font-base focus:outline-none focus:bg-gray-100"
+                className="w-full border-2 border-black p-3 md:p-4 font-base focus:outline-none focus:bg-gray-100 text-base min-h-[44px]"
                 placeholder="Your name"
               />
             </div>
@@ -203,7 +207,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full border-2 border-black p-4 font-base focus:outline-none focus:bg-gray-100"
+                className="w-full border-2 border-black p-3 md:p-4 font-base focus:outline-none focus:bg-gray-100 text-base min-h-[44px]"
                 placeholder="your@email.com"
               />
             </div>
@@ -216,7 +220,7 @@ export default function Contact() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full border-2 border-black p-4 font-base focus:outline-none focus:bg-gray-100"
+                className="w-full border-2 border-black p-3 md:p-4 font-base focus:outline-none focus:bg-gray-100 text-base min-h-[44px]"
                 placeholder="(555) 123-4567"
               />
             </div>
@@ -229,7 +233,7 @@ export default function Contact() {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full border-2 border-black p-4 font-base focus:outline-none focus:bg-gray-100"
+                className="w-full border-2 border-black p-3 md:p-4 font-base focus:outline-none focus:bg-gray-100 text-base min-h-[44px]"
               >
                 <option value="">Select a subject...</option>
                 <option value="share-story">Share My Story</option>
@@ -251,7 +255,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={8}
-                className="w-full border-2 border-black p-4 font-base focus:outline-none focus:bg-gray-100 resize-none"
+                className="w-full border-2 border-black p-3 md:p-4 font-base focus:outline-none focus:bg-gray-100 resize-none text-base"
                 placeholder="Your message here..."
               />
             </div>
@@ -259,7 +263,7 @@ export default function Contact() {
             {/* SUBMIT BUTTON */}
             <button
               type="submit"
-              className="w-full bg-black text-white px-8 py-4 font-bold text-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-black text-white px-6 md:px-8 py-4 md:py-4 font-bold text-base md:text-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 min-h-[44px]"
             >
               <Send size={20} />
               Send Message
@@ -271,7 +275,7 @@ export default function Contact() {
         <div className="bg-black text-white p-8 border-4 border-black">
           <h2 className="text-3xl font-black mb-6">Quick Links</h2>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <div>
               <h3 className="text-xl font-bold mb-3">Get Involved</h3>
               <ul className="space-y-2">
