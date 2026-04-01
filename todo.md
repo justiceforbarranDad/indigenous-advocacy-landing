@@ -1594,3 +1594,18 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Fix French toggle - should change all content to French
 - [x] Test all navigation links work on dev server
 - [x] Test French/English switching works completely
+
+
+## QR CODE GALLERY PAGE (April 1, 2026 - NEW REQUEST)
+- [x] Create QRCodeGallery.tsx component with 7 preset amounts
+- [x] Generate individual Stripe payment links for each amount ($5, $10, $20, $50, $100, $500, $1000)
+- [x] Create QR codes for each payment link using qrcode.react
+- [x] Display QR codes in grid layout (2 columns on mobile, 3-4 on desktop)
+- [x] Add amount label under each QR code
+- [x] Add "Scan to Donate" instructions at top
+- [x] Add route /qr-codes to App.tsx
+- [ ] Add navigation link to QR code page from home/donate pages
+- [ ] Test QR codes on iOS Safari (scan with camera app)
+- [ ] Test QR codes on Android Chrome (scan with Google Lens)
+- [ ] Verify each QR code links to correct Stripe payment page
+- [x] Mobile optimize QR code gallery (responsive sizing)
