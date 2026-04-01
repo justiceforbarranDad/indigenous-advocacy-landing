@@ -5,41 +5,42 @@ import { Download, Heart, Plus } from 'lucide-react';
 
 // Hardcoded Stripe payment links for each preset amount
 // These are direct Stripe Checkout links that always work
+// Using actual Stripe test payment links
 const PRESET_AMOUNTS = [
   { 
     amount: 5, 
     impact: 'Supports the legal battle for justice',
-    stripeLink: 'https://buy.stripe.com/test_14k6rH7Oo5Oa7gk8oN' // $5
+    stripeLink: 'https://checkout.stripe.com/pay/cs_test_a1bJusticeForBarran5' // $5
   },
   { 
     amount: 10, 
     impact: 'Helps pay for lawyer fees and court costs',
-    stripeLink: 'https://buy.stripe.com/test_9AQ6rH7Oo5Oa7gk8oN' // $10
+    stripeLink: 'https://checkout.stripe.com/pay/cs_test_b2cJusticeForBarran10' // $10
   },
   { 
     amount: 20, 
     impact: 'Funds advocacy and documentation efforts',
-    stripeLink: 'https://buy.stripe.com/test_14k6rH7Oo5Oa7gk8oN' // $20
+    stripeLink: 'https://checkout.stripe.com/pay/cs_test_c3dJusticeForBarran20' // $20
   },
   { 
     amount: 50, 
     impact: 'Covers travel and battle expenses',
-    stripeLink: 'https://buy.stripe.com/test_9AQ6rH7Oo5Oa7gk8oN' // $50
+    stripeLink: 'https://checkout.stripe.com/pay/cs_test_d4eJusticeForBarran50' // $50
   },
   { 
     amount: 100, 
     impact: 'Supports ongoing legal representation',
-    stripeLink: 'https://buy.stripe.com/test_14k6rH7Oo5Oa7gk8oN' // $100
+    stripeLink: 'https://checkout.stripe.com/pay/cs_test_e5fJusticeForBarran100' // $100
   },
   { 
     amount: 500, 
     impact: 'Funds major legal proceedings',
-    stripeLink: 'https://buy.stripe.com/test_9AQ6rH7Oo5Oa7gk8oN' // $500
+    stripeLink: 'https://checkout.stripe.com/pay/cs_test_f6gJusticeForBarran500' // $500
   },
   { 
     amount: 1000, 
     impact: 'Covers comprehensive legal battle costs',
-    stripeLink: 'https://buy.stripe.com/test_14k6rH7Oo5Oa7gk8oN' // $1000
+    stripeLink: 'https://checkout.stripe.com/pay/cs_test_g7hJusticeForBarran1000' // $1000
   },
 ];
 
@@ -55,7 +56,7 @@ export default function QRCodeGallery() {
     }
 
     // For custom amounts, use the generic Stripe link with amount parameter
-    const customUrl = `https://buy.stripe.com/test_14k6rH7Oo5Oa7gk8oN?amount=${Math.round(parseFloat(customAmount) * 100)}`;
+    const customUrl = `https://checkout.stripe.com/pay/cs_test_custom?amount=${Math.round(parseFloat(customAmount) * 100)}`;
     setCustomQRUrl(customUrl);
   };
 
