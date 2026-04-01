@@ -101,6 +101,7 @@ import ModernHome from "./pages/ModernHome";
 import DonateViaBank from "./pages/DonateViaBank";
 import InteracDonationInterface from "./pages/InteracDonationInterface";
 import DonateStripeQR from "./pages/DonateStripeQR";
+import PaymentHub from "./pages/PaymentHub";
 import PodcastSubscribe from "./pages/PodcastSubscribe";
 import { LiveChat } from "./components/LiveChat";
 import { HamburgerMenu } from "./components/HamburgerMenu";
@@ -138,6 +139,8 @@ function Router() {
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
       <Route path="/donate" component={DonateQuick} />
+      <Route path="/payment-hub" component={PaymentHub} />
+      <Route path="/donate-stripe-qr" component={PaymentHub} />
       <Route path={"/donate-comprehensive"} component={DonateComprehensive} />
       <Route path={"/donation-instructions"} component={DonationInstructions} />
       <Route path={"/movement"} component={Movement} />

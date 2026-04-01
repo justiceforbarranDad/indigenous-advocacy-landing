@@ -1568,3 +1568,17 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Set up admin notification when donations received (bilingual)
 - [x] Test email delivery and formatting (21/21 tests passing)
 - [x] Verify donor information is securely stored
+
+
+## PAYMENT HUB PAGE (April 1, 2026 - NEW)
+- [x] Create PaymentHub page with all payment methods
+- [x] Add bank transfer instructions (direct deposit)
+- [x] Add E-Transfer (Interac) QR code
+- [x] Add Stripe link for card/Apple Pay/Google Pay
+- [x] Add PayPal donation button
+- [x] Add cryptocurrency payment option
+- [x] Make QR code point to PaymentHub page instead of Stripe
+- [x] Display all options with clear descriptions
+- [x] Bilingual support (English/French)
+- [ ] Test all payment methods work
+- [ ] Publish to live and share Twitter link

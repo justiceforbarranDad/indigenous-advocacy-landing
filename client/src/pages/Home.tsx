@@ -41,18 +41,18 @@ export default function Home() {
             {i18n.language === 'fr' ? 'Deuxième Partie' : 'Part Two'}
           </h2>
           <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Indigenous Justice Advocacy — Systemic Accountability — 15 Years of Documented Failure
+            {i18n.language === 'fr' ? t('home.heroSubtitle') : 'Indigenous Justice Advocacy — Systemic Accountability — 15 Years of Documented Failure'}
           </p>
           <div className="flex flex-wrap gap-3 justify-center mb-8">
-            <span className="bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold">Indigenous Rights</span>
-            <span className="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold">Justice for Barran</span>
-            <span className="bg-blue-900 text-white px-4 py-2 rounded-lg font-semibold">Accountability</span>
+            <span className="bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold">{i18n.language === 'fr' ? t('home.indigenousRights') : 'Indigenous Rights'}</span>
+            <span className="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold">{i18n.language === 'fr' ? t('home.justiceForBarran') : 'Justice for Barran'}</span>
+            <span className="bg-blue-900 text-white px-4 py-2 rounded-lg font-semibold">{i18n.language === 'fr' ? t('home.accountability') : 'Accountability'}</span>
           </div>
           <a
             href="#story"
             className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
           >
-            Read Our Story →
+            {i18n.language === 'fr' ? t('home.readOurStory') : 'Read Our Story →'}
           </a>
         </div>
       </div>
@@ -65,7 +65,7 @@ export default function Home() {
           {/* Publication Name */}
           <div className="text-center mb-4">
             <h1 className="text-5xl md:text-6xl font-black tracking-widest" style={{ fontFamily: 'Georgia, serif', letterSpacing: '0.15em' }}>
-              JUSTICE FOR BARRAN
+              {i18n.language === 'fr' ? t('home.newspaperTitle') : 'JUSTICE FOR BARRAN'}
             </h1>
             <div className="h-1 bg-white my-3 w-32 mx-auto"></div>
           </div>
@@ -73,10 +73,10 @@ export default function Home() {
           {/* Tagline and Date */}
           <div className="text-center">
             <p className="text-base md:text-lg tracking-wide mb-2">
-              A Newspaper of Indigenous Rights & Systemic Accountability
+              {i18n.language === 'fr' ? t('home.newspaperSubtitle') : 'A Newspaper of Indigenous Rights & Systemic Accountability'}
             </p>
             <p className="text-xs md:text-sm tracking-widest">
-              MARCH 31, 2026 — VOLUME 1, ISSUE 4
+              {i18n.language === 'fr' ? t('home.publicationDate') : 'MARCH 31, 2026 — VOLUME 1, ISSUE 4'}
             </p>
           </div>
         </div>
@@ -89,12 +89,12 @@ export default function Home() {
           <div className="flex gap-3">
             <div className="text-amber-600 font-bold text-lg">🛡️</div>
             <div>
-              <p className="font-bold text-sm mb-1">100% TRANSPARENT - YOUR BENEFITS ARE PROTECTED</p>
+              <p className="font-bold text-sm mb-1">{i18n.language === 'fr' ? t('home.transparentBannerTitle') : '100% TRANSPARENT - YOUR BENEFITS ARE PROTECTED'}</p>
               <p className="text-xs leading-relaxed">
-                All donations go directly to McGovern Institute Foundation Trust Account. Funds are NOT personal income and will NOT affect disability benefits. We operate with full legal transparency and comply with all disability program regulations.
+                {i18n.language === 'fr' ? t('home.transparentBannerText') : 'All donations go directly to McGovern Institute Foundation Trust Account. Funds are NOT personal income and will NOT affect disability benefits. We operate with full legal transparency and comply with all disability program regulations.'}
               </p>
               <a href="/financial-transparency" className="text-xs font-bold text-amber-600 hover:underline mt-2 inline-block">
-                View Financial Transparency →
+                {i18n.language === 'fr' ? t('home.viewFinancialTransparency') : 'View Financial Transparency →'}
               </a>
             </div>
           </div>
