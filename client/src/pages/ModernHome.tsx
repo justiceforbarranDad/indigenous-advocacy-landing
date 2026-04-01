@@ -189,18 +189,12 @@ export default function ModernHome() {
                 <h4 className="font-bold text-gray-900 mb-2 text-sm md:text-base">E-Transfer (Canada)</h4>
                 <p className="text-xs md:text-sm text-gray-700 mb-2">Send e-Transfer to:</p>
                 <p className="font-mono text-xs md:text-sm bg-gray-100 p-2 rounded mb-4 break-words overflow-hidden">justiceforbarran@gmail.com</p>
-                <div className="border-4 border-red-700 p-4 rounded mb-4 bg-gray-50">
-                  <p className="text-sm font-bold text-gray-900 mb-3 text-center">Scan QR to see all bank options</p>
-                  <a href="/donate-via-bank" className="block cursor-pointer hover:opacity-80 transition-opacity">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-donation_a272743f.png" alt="QR Code for Donations" className="w-full h-auto max-w-sm mx-auto rounded" />
-                  </a>
-                  <p className="text-xs text-gray-600 mt-3 text-center">Click to view all payment options</p>
-                </div>
+  
               </div>
 
-              <a href="/donate" className="block w-full bg-red-600 text-white py-2 md:py-3 font-bold rounded hover:bg-red-700 transition-colors mb-2 md:mb-3 text-sm md:text-base text-center font-bold">
+              <a href="/easy-donate" className="block w-full bg-red-600 text-white py-2 md:py-3 font-bold rounded hover:bg-red-700 transition-colors mb-2 md:mb-3 text-sm md:text-base text-center font-bold">
                 <Heart size={18} className="inline mr-2" />
-                DONATE NOW
+                SCAN TO DONATE
               </a>
               <a href="/donate-recurring" className="block w-full bg-blue-600 text-white py-2 md:py-3 font-bold rounded hover:bg-blue-700 transition-colors mb-2 md:mb-3 text-sm md:text-base text-center">
                 MONTHLY RECURRING
