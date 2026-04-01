@@ -172,6 +172,7 @@
 - [x] Enable one-time donations option
 - [x] Add French title to main page: "Dimanche Sanglant, Deuxième Partie"
 - [x] Implement bilingual language toggle (English/French)
+- [x] Add "Other Amount" custom input field with validation
 - [ ] Add E-Transfer as backup payment method
 - [ ] Test QR code scanning on mobile devices
 - [ ] Verify Stripe payments go directly to user account

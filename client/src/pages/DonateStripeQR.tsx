@@ -10,27 +10,40 @@ const PRESET_AMOUNTS = [5, 10, 20, 50, 100, 250, 500, 1000];
 export default function DonateStripeQR() {
   const { t, i18n } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState(50);
+  const [customAmount, setCustomAmount] = useState('');
   const [isRecurring, setIsRecurring] = useState(false);
   const [paymentUrl, setPaymentUrl] = useState('');
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const createPaymentLinkMutation = trpc.stripe.createPaymentLink.useMutation();
 
+  // Determine the actual amount to use (custom or preset)
+  const actualAmount = customAmount ? parseFloat(customAmount) : selectedAmount;
+
   useEffect(() => {
-    generatePaymentLink();
-  }, [selectedAmount, isRecurring]);
+    if (actualAmount >= 0.50) {
+      setError('');
+      generatePaymentLink();
+    }
+  }, [actualAmount, isRecurring]);
 
   const generatePaymentLink = async () => {
+    if (actualAmount < 0.50) {
+      setError(i18n.language === 'fr' ? 'Le montant minimum est $0.50' : 'Minimum donation is $0.50');
+      return;
+    }
     setLoading(true);
     try {
       const result = await createPaymentLinkMutation.mutateAsync({
-        amount: selectedAmount,
+        amount: actualAmount,
         isRecurring,
       });
       setPaymentUrl(result.url);
     } catch (error) {
       console.error('Error generating payment link:', error);
+      setError(i18n.language === 'fr' ? 'Erreur lors de la génération du lien' : 'Error generating payment link');
     } finally {
       setLoading(false);
     }
@@ -92,27 +105,70 @@ export default function DonateStripeQR() {
           {/* Amount Selection */}
           <div className="mb-8">
             <h2 className="text-xl font-bold text-slate-900 mb-4">
-              {i18n.language === 'fr' ? 'Montant' : 'Amount'}: ${selectedAmount}
+              {i18n.language === 'fr' ? 'Montant' : 'Amount'}: ${actualAmount || selectedAmount}
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {PRESET_AMOUNTS.map((amount) => (
-                <button
-                  key={amount}
-                  onClick={() => setSelectedAmount(amount)}
-                  className={`py-3 px-4 rounded-lg font-semibold transition-all ${
-                    selectedAmount === amount
-                      ? 'bg-green-600 text-white shadow-lg scale-105'
-                      : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
-                  }`}
-                >
-                  ${amount}
-                </button>
-              ))}
+            
+            {/* Preset Amounts */}
+            <div className="mb-6">
+              <p className="text-sm text-slate-600 mb-3">
+                {i18n.language === 'fr' ? 'Montants prédéfinis:' : 'Preset amounts:'}
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {PRESET_AMOUNTS.map((amount) => (
+                  <button
+                    key={amount}
+                    onClick={() => {
+                      setSelectedAmount(amount);
+                      setCustomAmount('');
+                    }}
+                    className={`py-3 px-4 rounded-lg font-semibold transition-all ${
+                      !customAmount && selectedAmount === amount
+                        ? 'bg-green-600 text-white shadow-lg scale-105'
+                        : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                    }`}
+                  >
+                    ${amount}
+                  </button>
+                ))}
+              </div>
             </div>
+
+            {/* Custom Amount Input */}
+            <div className="p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
+              <label className="block text-sm font-semibold text-slate-900 mb-3">
+                {i18n.language === 'fr' ? 'Autre montant' : 'Other Amount'}
+              </label>
+              <div className="flex gap-2 items-center">
+                <span className="text-2xl font-bold text-slate-600">$</span>
+                <input
+                  type="number"
+                  min="0.50"
+                  step="0.01"
+                  placeholder={i18n.language === 'fr' ? 'Entrez un montant' : 'Enter amount'}
+                  value={customAmount}
+                  onChange={(e) => {
+                    setCustomAmount(e.target.value);
+                    if (e.target.value) {
+                      setSelectedAmount(0);
+                    }
+                  }}
+                  className="flex-1 px-4 py-2 border-2 border-blue-300 rounded-lg focus:outline-none focus:border-blue-600 text-lg font-semibold"
+                />
+              </div>
+              <p className="text-xs text-blue-600 mt-2">
+                {i18n.language === 'fr' ? 'Montant minimum: $0.50' : 'Minimum: $0.50'}
+              </p>
+            </div>
+
+            {error && (
+              <div className="mt-4 p-3 bg-red-100 border-l-4 border-red-600 text-red-700 rounded">
+                {error}
+              </div>
+            )}
           </div>
 
           {/* QR Code Section */}
-          {paymentUrl && (
+          {paymentUrl && !error && (
             <div className="bg-slate-50 rounded-lg p-8 text-center mb-8">
               <h3 className="text-lg font-bold text-slate-900 mb-4">
                 {i18n.language === 'fr' ? 'Code QR' : 'QR Code'}
@@ -131,7 +187,7 @@ export default function DonateStripeQR() {
           )}
 
           {/* Payment Link */}
-          {paymentUrl && (
+          {paymentUrl && !error && (
             <div className="mb-6">
               <label className="block text-sm font-semibold text-slate-900 mb-2">
                 {i18n.language === 'fr' ? 'Lien de paiement' : 'Payment Link'}
@@ -155,7 +211,7 @@ export default function DonateStripeQR() {
           )}
 
           {/* Direct Payment Button */}
-          {paymentUrl && (
+          {paymentUrl && !error && (
             <a
               href={paymentUrl}
               target="_blank"
@@ -183,8 +239,8 @@ export default function DonateStripeQR() {
           </h3>
           <p className="text-amber-800 text-sm">
             {i18n.language === 'fr'
-              ? `Chaque don de $${selectedAmount} finance la défense juridique et le changement systémique pour les familles autochtones.`
-              : `Every $${selectedAmount} donation funds legal defense and systemic change for Indigenous families.`}
+              ? `Chaque don de $${actualAmount || selectedAmount} finance la défense juridique et le changement systémique pour les familles autochtones.`
+              : `Every $${actualAmount || selectedAmount} donation funds legal defense and systemic change for Indigenous families.`}
           </p>
         </div>
       </div>
