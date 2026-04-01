@@ -136,6 +136,7 @@ import FinancialDestruction from "./pages/FinancialDestruction";
 import SystemicAccountability from "./pages/SystemicAccountability";
 import LegalCitations from "./pages/LegalCitations";
 import QRCodeGallery from "./pages/QRCodeGallery";
+import EasyDonate from "./pages/EasyDonate";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -148,6 +149,7 @@ function Router() {
       <Route path="/payment-hub" component={PaymentHub} />
       <Route path="/donate-stripe-qr" component={PaymentHub} />
       <Route path="/qr-codes" component={QRCodeGallery} />
+      <Route path="/easy-donate" component={EasyDonate} />
       <Route path={"/donate-comprehensive"} component={DonateComprehensive} />
       <Route path={"/donation-instructions"} component={DonationInstructions} />
       <Route path={"/movement"} component={Movement} />

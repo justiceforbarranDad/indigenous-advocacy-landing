@@ -3,45 +3,45 @@ import { useTranslation } from 'react-i18next';
 import { QRCodeSVG } from 'qrcode.react';
 import { Download, Heart, Plus } from 'lucide-react';
 
-// QR codes point to Manus domain with amount parameters
-// The website handles the donation routing from there
-const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/eVqeVdewcema0IBdJf9EI00';
+// QR codes point to EasyDonate page - no credit card required
+const BASE_URL = 'https://indigenousadv-ahjdmzis.manus.space';
+const EASY_DONATE_LINK = `${BASE_URL}/easy-donate`;
 
 const PRESET_AMOUNTS = [
   { 
     amount: 5, 
     impact: 'Supports the legal battle for justice',
-    stripeLink: STRIPE_PAYMENT_LINK
+    stripeLink: EASY_DONATE_LINK
   },
   { 
     amount: 10, 
     impact: 'Helps pay for lawyer fees and court costs',
-    stripeLink: STRIPE_PAYMENT_LINK
+    stripeLink: EASY_DONATE_LINK
   },
   { 
     amount: 20, 
     impact: 'Funds advocacy and documentation efforts',
-    stripeLink: STRIPE_PAYMENT_LINK
+    stripeLink: EASY_DONATE_LINK
   },
   { 
     amount: 50, 
     impact: 'Covers travel and battle expenses',
-    stripeLink: STRIPE_PAYMENT_LINK
+    stripeLink: EASY_DONATE_LINK
   },
   { 
     amount: 100, 
     impact: 'Supports ongoing legal representation',
-    stripeLink: STRIPE_PAYMENT_LINK
+    stripeLink: EASY_DONATE_LINK
   },
   { 
     amount: 500, 
     impact: 'Funds major legal proceedings',
-    stripeLink: STRIPE_PAYMENT_LINK
+    stripeLink: EASY_DONATE_LINK
   },
   { 
     amount: 1000, 
     impact: 'Covers comprehensive legal battle costs',
-    stripeLink: STRIPE_PAYMENT_LINK
+    stripeLink: EASY_DONATE_LINK
   },
 ];
 
@@ -56,8 +56,8 @@ export default function QRCodeGallery() {
       return;
     }
 
-    // For custom amounts, use Stripe payment link
-    setCustomQRUrl(STRIPE_PAYMENT_LINK);
+    // For custom amounts, use EasyDonate link
+    setCustomQRUrl(EASY_DONATE_LINK);
   };
 
   const downloadQRCode = (amount: number, isCustom = false) => {
@@ -136,8 +136,8 @@ export default function QRCodeGallery() {
               <span className="font-bold text-red-700 flex-shrink-0">4.</span>
               <span>
                 {i18n.language === 'fr'
-                  ? 'Complétez le paiement par carte de crédit'
-                  : 'Complete payment with credit card'}
+                  ? 'Choisissez votre méthode de paiement (pas de carte de crédit requise!)'
+                  : 'Choose your payment method (no credit card required!)'}
               </span>
             </li>
           </ol>
