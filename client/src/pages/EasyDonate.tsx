@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Heart, Copy, Check, Mail, Smartphone, DollarSign } from 'lucide-react';
 
@@ -6,8 +6,17 @@ export default function EasyDonate() {
   const { i18n } = useTranslation();
   const [copiedMethod, setCopiedMethod] = useState<string | null>(null);
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
+  const paymentMethodsRef = useRef<HTMLDivElement>(null);
 
   const amounts = [5, 10, 20, 50, 100, 500, 1000];
+
+  const handleAmountSelect = (amount: number) => {
+    setSelectedAmount(amount);
+    // Scroll to payment methods after a short delay
+    setTimeout(() => {
+      paymentMethodsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
 
   const copyToClipboard = (text: string, method: string) => {
     navigator.clipboard.writeText(text);
@@ -46,10 +55,10 @@ export default function EasyDonate() {
             {amounts.map((amount) => (
               <button
                 key={amount}
-                onClick={() => setSelectedAmount(amount)}
+                onClick={() => handleAmountSelect(amount)}
                 className={`py-3 px-4 rounded-lg font-bold text-lg transition-all ${
                   selectedAmount === amount
-                    ? 'bg-red-700 text-white shadow-lg'
+                    ? 'bg-red-700 text-white shadow-lg scale-105'
                     : 'bg-gray-100 text-slate-900 hover:bg-gray-200'
                 }`}
               >
@@ -60,7 +69,16 @@ export default function EasyDonate() {
         </div>
 
         {/* PAYMENT METHODS */}
-        <div className="space-y-6">
+        {selectedAmount && (
+          <div className="bg-red-100 p-4 rounded-lg mb-6 border-2 border-red-500 text-center">
+            <p className="text-lg font-bold text-red-900">
+              {i18n.language === 'fr'
+                ? `Vous avez sélectionné: $${selectedAmount} CAD`
+                : `You selected: $${selectedAmount} CAD`}
+            </p>
+          </div>
+        )}
+        <div className="space-y-6" ref={paymentMethodsRef}>
           {/* E-TRANSFER */}
           <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-green-600">
             <div className="flex items-center gap-3 mb-4">
@@ -76,12 +94,12 @@ export default function EasyDonate() {
             </div>
 
             <div className="bg-green-50 p-6 rounded-lg mb-4">
-              <p className="text-sm text-slate-700 mb-3">
+              <p className="text-sm text-slate-700 mb-3 font-bold">
                 {i18n.language === 'fr'
-                  ? 'Envoyez un virement à:'
-                  : 'Send e-Transfer to:'}
+                  ? 'Étape 1: Envoyez un virement à:'
+                  : 'Step 1: Send e-Transfer to:'}
               </p>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 mb-3">
                 <code className="flex-1 bg-white p-3 rounded border-2 border-green-300 font-mono text-lg font-bold">
                   justiceforbarran@gmail.com
                 </code>
@@ -106,10 +124,15 @@ export default function EasyDonate() {
 
             <div className="bg-blue-50 p-4 rounded-lg text-sm text-slate-700">
               <p className="font-bold mb-2">💡 {i18n.language === 'fr' ? 'Conseil:' : 'Tip:'}</p>
+              <p className="mb-2">
+                {i18n.language === 'fr'
+                  ? 'Étape 2: Utilisez votre application bancaire pour envoyer un virement Interac.'
+                  : 'Step 2: Use your bank app to send an e-Transfer.'}
+              </p>
               <p>
                 {i18n.language === 'fr'
-                  ? 'Utilisez votre application bancaire pour envoyer un virement Interac. Aucune information de carte de crédit nécessaire!'
-                  : 'Use your bank app to send an e-Transfer. No credit card information needed!'}
+                  ? 'Aucune information de carte de crédit nécessaire!'
+                  : 'No credit card information needed!'}
               </p>
             </div>
           </div>
