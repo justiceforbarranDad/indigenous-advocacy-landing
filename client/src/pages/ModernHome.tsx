@@ -73,6 +73,7 @@ export default function ModernHome() {
           <div className="hidden md:flex gap-4 lg:gap-8">
             <a href="/" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">FRONT PAGE</a>
             <a href="/barrans-story" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">BARRAN'S STORY</a>
+            <a href="/qr-codes" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">QR CODES</a>
             <a href="/donate-stripe-qr" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">DONATE</a>
             <a href="/contact" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">CONTACT</a>
           </div>
@@ -92,6 +93,7 @@ export default function ModernHome() {
           <div className="md:hidden border-t-2 border-red-700 bg-white">
             <a href="/" className="block px-4 py-3 text-gray-700 hover:bg-red-50 font-semibold border-b">FRONT PAGE</a>
             <a href="/barrans-story" className="block px-4 py-3 text-gray-700 hover:bg-red-50 font-semibold border-b">BARRAN'S STORY</a>
+            <a href="/qr-codes" className="block px-4 py-3 text-gray-700 hover:bg-red-50 font-semibold border-b">QR CODES</a>
             <a href="/donate-stripe-qr" className="block px-4 py-3 text-gray-700 hover:bg-red-50 font-semibold border-b">DONATE</a>
             <a href="/contact" className="block px-4 py-3 text-gray-700 hover:bg-red-50 font-semibold">CONTACT</a>
           </div>
