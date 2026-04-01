@@ -55,11 +55,11 @@ export default function BarransStory() {
           <p className="text-gray-700 mb-6">These are the moments before everything changed. The childhood joys that shaped him. Faces blurred to protect privacy.</p>
           
           <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="relative h-64 md:h-80 bg-gray-200">
+            <div className="relative w-full h-64 md:h-80 bg-gray-200 flex items-center justify-center">
               <img 
                 src={beforeMemories[currentMemoryIndex].image}
                 alt={beforeMemories[currentMemoryIndex].caption}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
               <div className="absolute inset-0 bg-black/20"></div>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 md:p-6">
@@ -120,7 +120,7 @@ export default function BarransStory() {
               <div className="bg-white p-4 rounded border-l-2 border-amber-orange">
                 <p className="font-semibold text-forest-green mb-2">Source:</p>
                 <a
-                  href="https://montreal.ctvnews.ca/mobile/14-year-old-stabbing-victim-s-condition-upgraded-1.5308685"
+                  href="https://www.ctvnews.ca/montreal/local"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-amber-orange hover:text-amber-light font-semibold break-all"

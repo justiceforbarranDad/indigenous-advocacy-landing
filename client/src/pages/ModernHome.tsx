@@ -223,11 +223,11 @@ export default function ModernHome() {
           <p className="text-gray-700 mb-8 text-sm md:text-base">These are the moments that mattered. The childhood joys that were taken away. Faces blurred to protect privacy.</p>
           
           <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="relative h-64 md:h-96 bg-gray-200">
+            <div className="relative w-full h-64 md:h-96 bg-gray-200 flex items-center justify-center">
               <img 
                 src={childoodMemories[currentMemoryIndex].image}
                 alt={childoodMemories[currentMemoryIndex].caption}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
               <div className="absolute inset-0 bg-black/20"></div>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 md:p-6">
