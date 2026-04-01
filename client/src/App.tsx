@@ -48,6 +48,7 @@ import InteractiveCallMap from "./pages/InteractiveCallMap";
 import IndigenousChildrenRights from "./pages/IndigenousChildrenRights";
 import Shop from "./pages/Shop";
 import NewspaperFrontPage from "./pages/NewspaperFrontPage";
+import PoliceAccountability from "./pages/PoliceAccountability";
 import ElectoralReformDemands from "./pages/ElectoralReformDemands";
 import NewsletterSignup from "./pages/NewsletterSignup";
 import BrokenPromises from "./pages/BrokenPromises";
@@ -150,6 +151,7 @@ function Router() {
       <Route path="/donate-stripe-qr" component={PaymentHub} />
       <Route path="/qr-codes" component={QRCodeGallery} />
       <Route path="/easy-donate" component={EasyDonate} />
+      <Route path="/police-accountability" component={PoliceAccountability} />
       <Route path={"/donate-comprehensive"} component={DonateComprehensive} />
       <Route path={"/donation-instructions"} component={DonationInstructions} />
       <Route path={"/movement"} component={Movement} />

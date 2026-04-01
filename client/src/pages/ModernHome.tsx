@@ -3,7 +3,7 @@ import { ChevronDown, Share2, Heart, DollarSign, Mail, Phone, ChevronLeft, Chevr
 import { PodcastPlayer } from '../components/PodcastPlayer';
 import { podcastEpisodes } from '../data/podcastEpisodes';
 import TestimonialsSection from '../components/TestimonialsSection';
-import { LanguageToggle } from '../components/LanguageToggle';
+
 import { useTranslation } from 'react-i18next';
 
 const childoodMemories = [
@@ -78,7 +78,6 @@ export default function ModernHome() {
             <a href="/contact" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">CONTACT</a>
           </div>
           <div className="flex items-center gap-4">
-            <LanguageToggle />
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden text-2xl p-2 hover:bg-gray-100 rounded transition-colors"
