@@ -3,8 +3,11 @@ import { ChevronDown, Share2, Heart, DollarSign, Mail, Phone } from 'lucide-reac
 import { PodcastPlayer } from '../components/PodcastPlayer';
 import { podcastEpisodes } from '../data/podcastEpisodes';
 import TestimonialsSection from '../components/TestimonialsSection';
+import { LanguageToggle } from '../components/LanguageToggle';
+import { useTranslation } from 'react-i18next';
 
 export default function ModernHome() {
+  const { t } = useTranslation();
   const [showDonationBox, setShowDonationBox] = useState(true);
   
   // Add RSS feed link to document head
@@ -35,7 +38,10 @@ export default function ModernHome() {
             <a href="#" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">DONATE</a>
             <a href="#" className="text-gray-700 hover:text-red-700 font-semibold text-sm lg:text-base">CONTACT</a>
           </div>
-          <div className="md:hidden text-2xl">☰</div>
+          <div className="flex items-center gap-4">
+            <LanguageToggle />
+            <div className="md:hidden text-2xl">☰</div>
+          </div>
         </div>
       </nav>
 
@@ -49,19 +55,19 @@ export default function ModernHome() {
         />
         <div className="relative z-10 max-w-7xl mx-auto px-3 md:px-4 h-full flex flex-col justify-center">
           <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">
-            Sunday Bloody Sunday, Part Two
+            {t('home.title')}
           </h1>
           <p className="text-sm md:text-lg lg:text-xl text-gray-200 mb-4 md:mb-6 max-w-2xl">
-            Indigenous Teen Stabbed Three Times — System Failed Him For Five Years
+            {t('home.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
             <a href="/donate" className="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 font-bold rounded hover:bg-red-800 transition-colors animate-pulse">
               <Heart size={20} />
-              DONATE NOW
+              {t('common.donate').toUpperCase()}
             </a>
             <a href="#" className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 font-bold rounded hover:bg-green-700 transition-colors">
               <Share2 size={20} />
-              SHARE STORY
+              {t('common.share').toUpperCase()}
             </a>
           </div>
         </div>

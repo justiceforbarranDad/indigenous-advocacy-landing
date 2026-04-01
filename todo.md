@@ -1582,3 +1582,8 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Bilingual support (English/French)
 - [ ] Test all payment methods work
 - [ ] Publish to live and share Twitter link
+
+## LANGUAGE TOGGLE FIX (April 1, 2026 - URGENT)
+- [x] Add French toggle to main page header
+- [x] Make toggle visible on all pages
+- [x] Test French/English switching works on main page
