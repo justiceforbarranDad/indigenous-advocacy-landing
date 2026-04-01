@@ -3,28 +3,18 @@ import { useState, useEffect } from 'react';
 
 export default function DNSWarningBanner() {
   const [isVisible, setIsVisible] = useState(true);
-  const [shouldAutoHide, setShouldAutoHide] = useState(false);
 
   useEffect(() => {
-    // Check if banner should be hidden (DNS propagated or user dismissed)
-    const bannerDismissed = localStorage.getItem('dns-banner-dismissed');
-    const dismissTime = localStorage.getItem('dns-banner-dismiss-time');
-    
-    if (bannerDismissed) {
+    // Hide banner on justiceforbarran.com domain - never show it there
+    if (window.location.hostname === 'www.justiceforbarran.com' || window.location.hostname === 'justiceforbarran.com') {
       setIsVisible(false);
+      return;
     }
 
-    // Auto-hide after 48 hours (DNS propagation complete)
-    if (dismissTime) {
-      const dismissedAt = new Date(dismissTime).getTime();
-      const now = new Date().getTime();
-      const hoursPassed = (now - dismissedAt) / (1000 * 60 * 60);
-      
-      if (hoursPassed > 48) {
-        setIsVisible(false);
-        localStorage.removeItem('dns-banner-dismissed');
-        localStorage.removeItem('dns-banner-dismiss-time');
-      }
+    // On Manus domain, always show the banner (don't dismiss it)
+    if (window.location.hostname.includes('manus.space')) {
+      setIsVisible(true);
+      return;
     }
   }, []);
 
