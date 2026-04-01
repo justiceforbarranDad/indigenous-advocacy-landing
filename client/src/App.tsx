@@ -133,6 +133,7 @@ import PensionClawbackAccountability from "./pages/PensionClawbackAccountability
 import Documents from "./pages/Documents";
 import BarransDisabilityBattle from "./pages/BarransDisabilityBattle";
 import FinancialDestruction from "./pages/FinancialDestruction";
+import SystemicAccountability from "./pages/SystemicAccountability";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -259,6 +260,7 @@ function Router() {
       <Route path="/documents" component={Documents} />
       <Route path="/barrans-disability-battle" component={BarransDisabilityBattle} />
       <Route path="/financial-destruction" component={FinancialDestruction} />
+      <Route path="/systemic-accountability" component={SystemicAccountability} />
       {/* Fallback route */}
       <Route component={NotFound} />
     </Switch>
