@@ -3,44 +3,43 @@ import { useTranslation } from 'react-i18next';
 import { QRCodeSVG } from 'qrcode.react';
 import { Download, Heart, Plus } from 'lucide-react';
 
-// Hardcoded Stripe payment links for each preset amount
-// These are direct Stripe Checkout links that always work
-// Using actual Stripe test payment links
+// QR codes point to Manus domain with amount parameters
+// The website handles the donation routing from there
 const PRESET_AMOUNTS = [
   { 
     amount: 5, 
     impact: 'Supports the legal battle for justice',
-    stripeLink: 'https://checkout.stripe.com/pay/cs_test_a1bJusticeForBarran5' // $5
+    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=5' // $5
   },
   { 
     amount: 10, 
     impact: 'Helps pay for lawyer fees and court costs',
-    stripeLink: 'https://checkout.stripe.com/pay/cs_test_b2cJusticeForBarran10' // $10
+    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=10' // $10
   },
   { 
     amount: 20, 
     impact: 'Funds advocacy and documentation efforts',
-    stripeLink: 'https://checkout.stripe.com/pay/cs_test_c3dJusticeForBarran20' // $20
+    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=20' // $20
   },
   { 
     amount: 50, 
     impact: 'Covers travel and battle expenses',
-    stripeLink: 'https://checkout.stripe.com/pay/cs_test_d4eJusticeForBarran50' // $50
+    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=50' // $50
   },
   { 
     amount: 100, 
     impact: 'Supports ongoing legal representation',
-    stripeLink: 'https://checkout.stripe.com/pay/cs_test_e5fJusticeForBarran100' // $100
+    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=100' // $100
   },
   { 
     amount: 500, 
     impact: 'Funds major legal proceedings',
-    stripeLink: 'https://checkout.stripe.com/pay/cs_test_f6gJusticeForBarran500' // $500
+    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=500' // $500
   },
   { 
     amount: 1000, 
     impact: 'Covers comprehensive legal battle costs',
-    stripeLink: 'https://checkout.stripe.com/pay/cs_test_g7hJusticeForBarran1000' // $1000
+    stripeLink: 'https://indigenousadv-ahjdmzis.manus.space/?amount=1000' // $1000
   },
 ];
 
@@ -55,8 +54,8 @@ export default function QRCodeGallery() {
       return;
     }
 
-    // For custom amounts, use the generic Stripe link with amount parameter
-    const customUrl = `https://checkout.stripe.com/pay/cs_test_custom?amount=${Math.round(parseFloat(customAmount) * 100)}`;
+    // For custom amounts, point to Manus domain with amount parameter
+    const customUrl = `https://indigenousadv-ahjdmzis.manus.space/?amount=${parseFloat(customAmount)}`;
     setCustomQRUrl(customUrl);
   };
 
