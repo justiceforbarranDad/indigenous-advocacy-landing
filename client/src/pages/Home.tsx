@@ -7,10 +7,12 @@ import GoFundMeQRCode from '@/components/GoFundMeQRCode';
 import { DonorRecognition } from '@/components/DonorRecognition';
 import BloodFlagHero from '@/components/BloodFlagHero';
 import { Heart, ChevronRight, Play, X } from 'lucide-react';
+import StickyRadioPlayer from '@/components/StickyRadioPlayer';
 
 export default function Home() {
   const { i18n } = useTranslation();
   const [selectedRight, setSelectedRight] = useState<string | null>(null);
+  const [showRadioPlayer, setShowRadioPlayer] = useState(true);
 
   const stories = [
     {
@@ -130,6 +132,9 @@ export default function Home() {
 
   return (
     <div className="bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
+      {/* STICKY RADIO PLAYER */}
+      {showRadioPlayer && <StickyRadioPlayer />}
+
       {/* BLOOD FLAG HERO SECTION */}
       <BloodFlagHero />
 
