@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { LanguageToggle } from './LanguageToggle';
 
 export function NewspaperMasthead() {
   const { t } = useTranslation();
@@ -14,14 +13,10 @@ export function NewspaperMasthead() {
   return (
     <header className="bg-white border-b-4 border-black py-8 px-4">
       <div className="max-w-6xl mx-auto">
-        {/* Top bar with language toggle and date */}
-        <div className="flex justify-between items-center mb-6 text-xs font-serif">
-          <div className="flex-1"></div>
+        {/* Top bar with date */}
+        <div className="flex justify-center items-center mb-6 text-xs font-serif">
           <div className="text-center">
             <p className="font-bold">{dateStr}</p>
-          </div>
-          <div className="flex-1 flex justify-end">
-            <LanguageToggle />
           </div>
         </div>
 

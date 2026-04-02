@@ -9,29 +9,21 @@ export function DonationWithQR() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState('');
   
-  const createCheckout = trpc.stripe.createCheckoutSession.useMutation();
-
-  const handleDonate = async (amount: number) => {
-    try {
-      const result = await createCheckout.mutateAsync({
-        amount,
-        donorName: 'Justice for Barran Donor',
-        donorEmail: 'justiceforbarran@gmail.com',
-        message: `Donation $${amount}`,
-      });
-      
-      if (result.url) {
-        window.open(result.url, '_blank');
-      }
-    } catch (error) {
-      console.error('Donation error:', error);
-    }
+  const handleDonate = (amount: number) => {
+    // Direct bank transfer - open e-Transfer with banking app
+    const etransferLink = `interac://etransfer?email=justiceforbarran@gmail.com`;
+    window.location.href = etransferLink;
+    
+    // Fallback: Show manual entry instructions
+    setTimeout(() => {
+      alert(`Send $${amount} e-Transfer to: justiceforbarran@gmail.com\n\nIf your banking app didn't open, manually enter this email in your bank's e-Transfer form.`);
+    }, 500);
   };
 
-  const handleCustomDonate = async () => {
+  const handleCustomDonate = () => {
     const amount = parseFloat(customAmount);
     if (amount > 0) {
-      await handleDonate(amount);
+      handleDonate(amount);
     }
   };
 
@@ -59,7 +51,6 @@ export function DonationWithQR() {
             <Button
               key={amount}
               onClick={() => handleDonate(amount)}
-              disabled={createCheckout.isPending}
               className="bg-red-600 hover:bg-red-700 text-white font-bold py-3"
             >
               ${amount}
@@ -87,7 +78,7 @@ export function DonationWithQR() {
             </div>
             <Button
               onClick={handleCustomDonate}
-              disabled={createCheckout.isPending || !customAmount}
+              disabled={!customAmount}
               className="bg-green-600 hover:bg-green-700 text-white font-bold px-6"
             >
               Donate

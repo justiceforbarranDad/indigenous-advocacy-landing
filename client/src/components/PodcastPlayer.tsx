@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Share2, Download, FileText } from 'lucide-react';
-import { LanguageToggle } from './LanguageToggle';
 
 interface PodcastPlayerProps {
   title: string;
@@ -16,6 +15,73 @@ interface PodcastPlayerProps {
   transcript?: string;
   onShare?: () => void;
 }
+
+interface Episode {
+  id: string;
+  title: string;
+  language: 'en' | 'fr';
+  part: number;
+  duration: string;
+  url: string;
+  description: string;
+}
+
+const allEpisodes: Episode[] = [
+  {
+    id: 'part3-en',
+    title: 'Sunday Bloody Sunday, Part Three: The Attack & System Failure',
+    language: 'en',
+    part: 3,
+    duration: '45:32',
+    url: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-part3-english-final_be3dab41.wav',
+    description: 'The attack on Barran, system failure, education destroyed, and mental health crisis. Featuring Bill C-92 and Hatchet Lake Denesuline First Nation context.',
+  },
+  {
+    id: 'part4-en',
+    title: 'Sunday Bloody Sunday, Part Four: Political Silence',
+    language: 'en',
+    part: 4,
+    duration: '42:15',
+    url: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-part4-english-final_494efabb.wav',
+    description: '150+ elected officials contacted. Zero meaningful action. Five years of abandonment.',
+  },
+  {
+    id: 'part5-en',
+    title: 'Sunday Bloody Sunday, Part Five: The Call to Action',
+    language: 'en',
+    part: 5,
+    duration: '48:20',
+    url: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-part5-english-final_7ce929ae.wav',
+    description: 'Legal framework, what must change, and the call to action for justice.',
+  },
+  {
+    id: 'part3-fr',
+    title: 'Dimanche Sanglant, Troisième Partie: L\'Attaque et l\'Échec du Système',
+    language: 'fr',
+    part: 3,
+    duration: '48:45',
+    url: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-part3-french-final_f73444a3.wav',
+    description: 'L\'attaque sur Barran, l\'échec du système, l\'éducation détruite, et la crise de santé mentale.',
+  },
+  {
+    id: 'part4-fr',
+    title: 'Dimanche Sanglant, Quatrième Partie: Le Silence Politique',
+    language: 'fr',
+    part: 4,
+    duration: '44:30',
+    url: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-part4-french-final_dec05c42.wav',
+    description: 'Plus de 150 élus contactés. Zéro action significative. Cinq ans d\'abandon.',
+  },
+  {
+    id: 'part5-fr',
+    title: 'Dimanche Sanglant, Cinquième Partie: L\'Appel à l\'Action',
+    language: 'fr',
+    part: 5,
+    duration: '51:15',
+    url: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-part5-french-final_58c66ff7.wav',
+    description: 'Cadre juridique, ce qui doit changer, et l\'appel à l\'action pour la justice.',
+  },
+];
 
 export function PodcastPlayer({
   title,
@@ -175,8 +241,27 @@ export function PodcastPlayer({
 
       {/* Language Toggle */}
       {frenchAudioUrl && (
-        <div className="mb-6">
-          <LanguageToggle />
+        <div className="mb-6 flex gap-2">
+          <button
+            onClick={() => handleLanguageChange('english')}
+            className={`px-4 py-2 rounded font-semibold transition-all ${
+              currentLanguage === 'english'
+                ? 'bg-red-600 text-white hover:bg-red-700'
+                : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+            }`}
+          >
+            🇬🇧 English
+          </button>
+          <button
+            onClick={() => handleLanguageChange('french')}
+            className={`px-4 py-2 rounded font-semibold transition-all ${
+              currentLanguage === 'french'
+                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+            }`}
+          >
+            🇫🇷 Français
+          </button>
         </div>
       )}
 

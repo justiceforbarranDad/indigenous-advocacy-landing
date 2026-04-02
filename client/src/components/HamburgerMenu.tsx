@@ -2,7 +2,6 @@ import { MoreVertical, X } from 'lucide-react';
 import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
-import { LanguageToggle } from './LanguageToggle';
 
 export function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -84,11 +83,6 @@ export function HamburgerMenu() {
       {isOpen && (
         <div className="fixed top-16 right-4 z-40 bg-white rounded-lg shadow-2xl border-4 border-black w-80 max-h-[calc(100vh-100px)] overflow-y-auto">
           <div className="p-6 space-y-6">
-            {/* Language Toggle */}
-            <div className="border-b-3 border-black pb-4">
-              <h4 className="font-bold text-black text-sm uppercase tracking-wider mb-3">{t('menu.language')}</h4>
-              <LanguageToggle />
-            </div>
             
             {sections.map((section, idx) => (
               <div key={idx}>
