@@ -1,40 +1,36 @@
 import { QRCodeSVG as QRCode } from 'qrcode.react';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
-import { Button } from '@/components/ui/button';
 import { Copy, Check } from 'lucide-react';
 
 export function DonationQRCode() {
   const { t } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
-  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [currency, setCurrency] = useState<'CAD' | 'USD'>('CAD');
   const [copied, setCopied] = useState(false);
 
-  const donationAmounts = [
-    { amount: 5, label: '$5' },
-    { amount: 10, label: '$10' },
-    { amount: 20, label: '$20' },
-    { amount: 50, label: '$50' },
-    { amount: 100, label: '$100' },
-  ];
-
-  const getCheckoutUrl = (amount: number) => {
-    return `${window.location.origin}/donate?amount=${amount}`;
+  // Stripe Payment Links - CAD first (default), then USD
+  const paymentLinks = {
+    CAD: {
+      5: 'https://buy.stripe.com/cNifZhbk0b9Y76ZeNj9EI0e',
+      10: 'https://buy.stripe.com/aFa00jafW6TIbnf48F9EI0d',
+      20: 'https://buy.stripe.com/9B68wP73Kb9Y4YR7kR9EI0c',
+      50: 'https://buy.stripe.com/6oUeVdafWdi6ajb6gN9EI0b',
+      100: 'https://buy.stripe.com/eVq3cvewca5U8b38oV9EI0a',
+    },
+    USD: {
+      5: 'https://buy.stripe.com/14AaEX5ZGguifDv5cJ9EI0q',
+      10: 'https://buy.stripe.com/dRm00jgEk7XMbnf34B9EI0p',
+      20: 'https://buy.stripe.com/bJebJ187Oa5UfDv34B9EI0o',
+      50: 'https://buy.stripe.com/4gMdR987O0vkajb7kR9EI0n',
+      100: 'https://buy.stripe.com/00w00jco47XM3UNfRn9EI0m',
+    },
   };
 
-  const handleAmountSelect = (amount: number) => {
-    setSelectedAmount(amount);
-    setShowConfirmation(true);
-  };
+  const donationAmounts = [5, 10, 20, 50, 100];
 
-  const handleConfirmDonation = () => {
-    if (selectedAmount !== null) {
-      const url = getCheckoutUrl(selectedAmount);
-      window.open(url, '_blank');
-      setShowConfirmation(false);
-      setSelectedAmount(null);
-    }
+  const getPaymentLink = (amount: number) => {
+    return paymentLinks[currency][amount as keyof typeof paymentLinks['CAD']];
   };
 
   const copyToClipboard = (text: string) => {
@@ -66,67 +62,104 @@ export function DonationQRCode() {
         </p>
         <div className="grid grid-cols-4 gap-2">
           {paymentMethods.map((method, idx) => (
-            <div key={idx} className="flex items-center justify-center gap-1 bg-white rounded p-2 border border-gray-200">
+            <div key={idx} className="flex flex-col items-center justify-center gap-1 bg-white rounded p-2 border border-gray-200">
               <span className="text-lg">{method.icon}</span>
-              <span className="text-xs font-semibold text-gray-700 line-clamp-1">{method.name}</span>
+              <span className="text-xs font-semibold text-gray-700 line-clamp-2 text-center">{method.name}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* STEP 1: SELECT AMOUNT */}
+      {/* CURRENCY SELECTOR */}
+      <div className="flex gap-2 justify-center">
+        <button
+          onClick={() => setCurrency('CAD')}
+          className={`px-6 py-2 rounded-lg font-bold text-sm transition-all border-2 ${
+            currency === 'CAD'
+              ? 'bg-red-600 text-white border-red-600'
+              : 'bg-white text-gray-800 border-gray-300 hover:border-red-600'
+          }`}
+        >
+          🇨🇦 CAD
+        </button>
+        <button
+          onClick={() => setCurrency('USD')}
+          className={`px-6 py-2 rounded-lg font-bold text-sm transition-all border-2 ${
+            currency === 'USD'
+              ? 'bg-blue-600 text-white border-blue-600'
+              : 'bg-white text-gray-800 border-gray-300 hover:border-blue-600'
+          }`}
+        >
+          🇺🇸 USD
+        </button>
+      </div>
+
+      {/* DONATION AMOUNTS - CLICK TO SHOW QR */}
       <div className="border-2 border-blue-400 bg-blue-50 rounded-lg p-4">
-        <h4 className="text-lg font-bold mb-3 text-center">
-          {t('donate.step1SelectAmount')}
+        <h4 className="text-sm font-bold mb-3 text-center text-gray-800">
+          {t('donate.selectAmount')}
         </h4>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-          {donationAmounts.map((item) => (
+          {donationAmounts.map((amount) => (
             <button
-              key={item.amount}
-              onClick={() => handleAmountSelect(item.amount)}
+              key={amount}
+              onClick={() => setSelectedAmount(amount)}
               className={`py-3 px-2 rounded-lg font-bold text-sm transition-all border-2 ${
-                selectedAmount === item.amount
-                  ? 'bg-blue-600 text-white border-blue-600'
+                selectedAmount === amount
+                  ? 'bg-blue-600 text-white border-blue-600 shadow-lg'
                   : 'bg-white text-gray-800 border-gray-300 hover:border-blue-600 hover:bg-blue-100'
               }`}
             >
-              {item.label}
+              {currency}${amount}
             </button>
           ))}
         </div>
       </div>
 
-      {/* STEP 2: QR CODE (shows only when amount selected) */}
+      {/* QR CODE - SHOWS IMMEDIATELY WHEN AMOUNT SELECTED */}
       {selectedAmount && (
-        <div className="border-2 border-green-400 bg-green-50 rounded-lg p-6 text-center">
-          <h4 className="text-lg font-bold mb-2">
-            {t('donate.step2ScanQR')}
-          </h4>
-          <p className="text-sm text-gray-600 mb-4">
+        <div className="border-2 border-green-400 bg-green-50 rounded-lg p-6 text-center animate-in fade-in">
+          <p className="text-sm text-gray-600 mb-2">
             {t('donate.amount')}
-            <span className="text-2xl font-bold text-green-600">${selectedAmount}</span>
+            <span className="text-3xl font-bold text-green-600 block">
+              {currency}${selectedAmount}
+            </span>
           </p>
-          <div className="flex justify-center mb-4">
-            <div className="bg-white p-4 rounded-lg border-2 border-gray-200">
-              <QRCode
-                value={getCheckoutUrl(selectedAmount)}
-                size={200}
-                level="H"
-                includeMargin={true}
-                fgColor="#000000"
-                bgColor="#FFFFFF"
-              />
-            </div>
-          </div>
-          <p className="text-xs text-gray-600 mb-4">
+          <p className="text-xs text-gray-600 mb-4 font-semibold">
             {t('donate.pointCamera')}
           </p>
-          <button
-            onClick={() => setSelectedAmount(null)}
-            className="text-sm text-blue-600 hover:underline"
+
+          {/* QR CODE - LINKS TO STRIPE PAYMENT LINK */}
+          <div className="flex justify-center mb-4 bg-white p-4 rounded-lg inline-block mx-auto">
+            <QRCode
+              value={getPaymentLink(selectedAmount)}
+              size={220}
+              level="H"
+              includeMargin={true}
+              fgColor="#000000"
+              bgColor="#FFFFFF"
+            />
+          </div>
+
+          {/* DIRECT STRIPE LINK */}
+          <a
+            href={getPaymentLink(selectedAmount)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mb-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-bold text-sm transition-colors"
           >
-            {t('donate.changeAmount')}
-          </button>
+            {t('donate.donateNow')}
+          </a>
+
+          {/* CHANGE AMOUNT BUTTON */}
+          <div className="mt-4">
+            <button
+              onClick={() => setSelectedAmount(null)}
+              className="text-sm text-blue-600 hover:text-blue-800 hover:underline font-semibold"
+            >
+              ← {t('donate.changeAmount')}
+            </button>
+          </div>
         </div>
       )}
 
@@ -180,28 +213,6 @@ export function DonationQRCode() {
           </div>
         </div>
       </div>
-
-      {/* CONFIRMATION DIALOG */}
-      <AlertDialog open={showConfirmation} onOpenChange={setShowConfirmation}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              {t('donate.confirmDonation')}
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              {t('donate.confirmMessage', { amount: selectedAmount })}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <div className="flex gap-3">
-            <AlertDialogCancel>
-              {t('common.cancel')}
-            </AlertDialogCancel>
-            <AlertDialogAction onClick={handleConfirmDonation}>
-              {t('donate.confirm')}
-            </AlertDialogAction>
-          </div>
-        </AlertDialogContent>
-      </AlertDialog>
     </div>
   );
 }
