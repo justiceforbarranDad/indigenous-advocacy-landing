@@ -9,6 +9,7 @@ import { notifyOwner } from "./_core/notification";
 import { adminProcedure } from "./_core/trpc";
 import { db } from "./db";
 import { exportSurveyAsCSV, exportAnalyticsSummaryAsCSV, generateAnalyticsReport } from "./dataExport";
+import { generateEvidencePDF } from "./evidenceExport";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
 import { subscriptionRouter } from "./routers/subscriptions";
 import { eq, desc } from "drizzle-orm";
@@ -554,6 +555,19 @@ export const appRouter = router({
     }),
     analyticsReport: publicProcedure.query(async () => {
       return await generateAnalyticsReport();
+    }),
+    evidencePDF: publicProcedure.query(async () => {
+      try {
+        const pdfBuffer = await generateEvidencePDF();
+        return {
+          success: true,
+          data: pdfBuffer.toString('base64'),
+          filename: `Government-Accountability-Timeline-${new Date().toISOString().split('T')[0]}.pdf`
+        };
+      } catch (error) {
+        console.error('Error generating evidence PDF:', error);
+        throw new Error('Failed to generate evidence PDF');
+      }
     }),
   }),
   subscriptions: router(subscriptionRouter),
