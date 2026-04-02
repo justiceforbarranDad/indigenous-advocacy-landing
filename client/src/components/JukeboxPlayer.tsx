@@ -241,18 +241,18 @@ export function JukeboxPlayer() {
       
       {/* Jukebox Player - Minimized */}
       {!isOpen && (
-        <div className="fixed top-[21%] left-12 z-40">
+        <div className="fixed top-[18%] left-2 md:left-12 z-40">
           <button
             onClick={() => setIsOpen(true)}
-            className="relative w-32 h-40 bg-gradient-to-b from-yellow-300 via-yellow-200 to-yellow-400 rounded-lg shadow-2xl border-4 border-yellow-600 hover:shadow-3xl transition-all duration-300 transform hover:scale-105 group"
+            className="relative w-20 h-28 md:w-32 md:h-40 bg-gradient-to-b from-yellow-300 via-yellow-200 to-yellow-400 rounded-lg shadow-2xl border-2 md:border-4 border-yellow-600 hover:shadow-3xl transition-all duration-300 transform hover:scale-105 group"
             style={{
               backgroundImage: 'linear-gradient(135deg, #fcd34d 0%, #fbbf24 50%, #f59e0b 100%)',
               boxShadow: '0 0 20px rgba(217, 119, 6, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.3)'
             }}
           >
             {/* Jukebox speaker grille */}
-            <div className="absolute top-2 left-2 right-2 h-12 bg-black rounded-sm opacity-70 flex items-center justify-center">
-              <div className="text-yellow-300 text-xs font-bold text-center px-1 line-clamp-2">
+            <div className="absolute top-1 left-1 right-1 h-6 md:h-12 bg-black rounded-sm opacity-70 flex items-center justify-center">
+              <div className="text-yellow-300 text-xs md:text-xs font-bold text-center px-1 line-clamp-1 md:line-clamp-2 text-[8px] md:text-xs">
                 {currentEpisode.title}
               </div>
             </div>
