@@ -1655,3 +1655,16 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Add tracker link to main navigation menu
 - [ ] Create admin interface to manage tracker data
 - [ ] Add export functionality (CSV/PDF) for tracker reports
+
+
+## GOFUNDME QR CODE INTEGRATION (April 2, 2026)
+- [x] Updated E-Transfer QR code to link to gofund.me/role.flip.tall
+- [x] Updated Bank transfer QR code to link to gofund.me/role.flip.tall
+- [x] Created GoFundMeQRCode component with bilingual support
+- [x] Integrated GoFundMe QR code into home page sidebar
+- [x] Positioned QR code above donation section for maximum visibility
+- [x] Add trackers link to hamburger menu navigation
+- [x] Added impactTrackers translation key to English menu
+- [x] Added impactTrackers translation key to French menu
+- [ ] Test QR code scanning on mobile devices
+- [ ] Verify GoFundMe link works correctly

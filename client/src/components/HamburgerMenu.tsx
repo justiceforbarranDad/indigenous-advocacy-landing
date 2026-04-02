@@ -37,6 +37,7 @@ export function HamburgerMenu() {
     {
       titleKey: 'menu.learnMore',
       links: [
+        { labelKey: 'menu.impactTrackers', href: '/trackers' },
         { labelKey: 'menu.governmentAccountability', href: '/government-accountability' },
         { labelKey: 'menu.corporateAccountability', href: '/corporate-accountability' },
         { labelKey: 'menu.dpjAccountability', href: '/dpj-accountability' },

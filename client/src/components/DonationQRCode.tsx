@@ -11,14 +11,14 @@ export default function DonationQRCode() {
 
   const donationAmounts = [5, 10, 20, 50, 100];
 
-  // Generate QR code for e-Transfer
-  const generateETransferQRValue = (amount: number) => {
-    return `https://indigenousadv-ahjdmzis.manus.space/#donate?amount=${amount}&currency=${currency}&method=etransfer`;
+  // Generate QR code for GoFundMe
+  const generateETransferQRValue = () => {
+    return 'https://gofund.me/role.flip.tall';
   };
 
-  // Generate QR code for bank transfer
-  const generateBankQRValue = (amount: number) => {
-    return `https://indigenousadv-ahjdmzis.manus.space/#donate?amount=${amount}&currency=${currency}&method=bank`;
+  // Generate QR code for GoFundMe (same as e-Transfer)
+  const generateBankQRValue = () => {
+    return 'https://gofund.me/role.flip.tall';
   };
 
   const copyToClipboard = (text: string) => {
@@ -89,7 +89,7 @@ export default function DonationQRCode() {
             <div className="flex justify-center mb-4">
               <div className="bg-white p-4 rounded-lg shadow-md">
                 <QRCodeSVG
-                  value={generateETransferQRValue(selectedAmount)}
+                  value={generateETransferQRValue()}
                   size={180}
                   level="H"
                   includeMargin={true}
@@ -142,7 +142,7 @@ export default function DonationQRCode() {
             <div className="flex justify-center mb-4">
               <div className="bg-white p-4 rounded-lg shadow-md">
                 <QRCodeSVG
-                  value={generateBankQRValue(selectedAmount)}
+                  value={generateBankQRValue()}
                   size={180}
                   level="H"
                   includeMargin={true}

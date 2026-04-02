@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SocialShareButtons } from '@/components/SocialShareButtons';
 import DonationQRCode from '@/components/DonationQRCode';
+import GoFundMeQRCode from '@/components/GoFundMeQRCode';
 import { DonorRecognition } from '@/components/DonorRecognition';
 import { Heart, ChevronRight, Play, X } from 'lucide-react';
 
@@ -284,6 +285,11 @@ export default function Home() {
 
           {/* RIGHT COLUMN - SIDEBAR */}
           <div className="space-y-6">
+            {/* GOFUNDME QR CODE */}
+            <div className="mb-6">
+              <GoFundMeQRCode />
+            </div>
+
             {/* DONATION BOX */}
             <div className="border-4 border-red-600 bg-red-50 p-6">
               <h3 className="text-2xl font-bold mb-3 text-red-600">
