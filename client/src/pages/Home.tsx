@@ -221,6 +221,79 @@ export default function Home() {
         </div>
       </div>
 
+      {/* TESTIMONY VIDEO - APTN DELETED THIS */}
+      <div className="bg-red-900 text-white py-12 border-y-4 border-red-950">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-8">
+            <div className="inline-block bg-red-700 px-4 py-2 rounded-full mb-4">
+              <span className="text-sm font-bold tracking-widest">
+                {i18n.language === 'fr' ? '⚠️ VIDÉO SUPPRIMÉE PAR APTN' : '⚠️ VIDEO DELETED BY APTN'}
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black tracking-widest mb-4">
+              {i18n.language === 'fr' ? 'LE TÉMOIGNAGE QUE LES MÉDIAS ONT CENSURÉ' : 'THE TESTIMONY MAINSTREAM MEDIA CENSORED'}
+            </h2>
+            <p className="text-sm md:text-base text-gray-200 max-w-2xl mx-auto mb-6">
+              {i18n.language === 'fr' ? 'APTN a supprimé cette vidéo. Pourquoi ? Parce qu\'elle expose la vérité : comment un parent autochtone a été menacé de poursuites criminelles simplement pour demander de l\'aide pour son fils poignardé.' : 'APTN deleted this video. Why? Because it exposes the truth: how an Indigenous parent was threatened with criminal prosecution simply for asking for help for his stabbed son.'}
+            </p>
+          </div>
+          <div className="relative w-full bg-black rounded-lg overflow-hidden border-4 border-white" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/qMfy58mOUgQ"
+              title="February 22, 2026 - Testimony Deleted by APTN"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+          <div className="mt-6 bg-red-800 p-4 rounded border-l-4 border-white">
+            <p className="text-sm md:text-base mb-4">
+              {i18n.language === 'fr' ? 'Cette vidéo montre un parent autochtone expliquant comment : (1) son fils a été poignardé 3 fois à 14 ans, (2) le système l\'a abandonné, (3) quand il a demandé de l\'aide, on lui a envoyé un avertissement de cessation et désistement menaçant des poursuites criminelles pour harcèlement.' : 'This video shows an Indigenous parent explaining how: (1) his son was stabbed 3 times at age 14, (2) the system abandoned him, (3) when he asked for help, he received a cease-and-desist warning threatening criminal prosecution for harassment.'}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://www.youtube.com/@justiceforBarran"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white text-red-900 px-4 py-2 rounded font-bold hover:bg-gray-100 transition-colors"
+              >
+                {i18n.language === 'fr' ? '▶️ Regarder toutes les vidéos' : '▶️ Watch All Videos'}
+              </a>
+              <a
+                href="https://www.youtube.com/@justiceforBarran"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white text-red-900 px-4 py-2 rounded font-bold hover:bg-gray-100 transition-colors"
+              >
+                {i18n.language === 'fr' ? '🔔 S\'abonner' : '🔔 Subscribe'}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* FOLLOW & SUBSCRIBE SECTION */}
+      <div className="bg-blue-900 text-white py-12 border-y-4 border-blue-950">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-black tracking-widest mb-4">
+            {i18n.language === 'fr' ? 'SUIVEZ LA JUSTICE POUR BARRAN' : 'FOLLOW JUSTICE FOR BARRAN'}
+          </h2>
+          <p className="text-lg mb-8 text-gray-200">
+            {i18n.language === 'fr' ? 'Abonnez-vous à notre chaîne YouTube pour les dernières mises à jour, témoignages et appels à l\'action' : 'Subscribe to our YouTube channel for the latest updates, testimonies, and calls to action'}
+          </p>
+          <a
+            href="https://www.youtube.com/@justiceforBarran"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-red-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors"
+          >
+            <span className="text-2xl">▶️</span>
+            {i18n.language === 'fr' ? 'Visiter la chaîne YouTube' : 'Visit YouTube Channel'}
+          </a>
+        </div>
+      </div>
+
       {/* KING CHARLES UNCEDED TERRITORY SECTION */}
       <div className="bg-black text-white py-12 border-y-4 border-black">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
