@@ -39,19 +39,30 @@ export default function BarransStory() {
           <h1 className="text-5xl font-bold text-forest-green mb-4">
             Barran's Story: The Beginning
           </h1>
+          <div className="flex flex-col md:flex-row gap-4 mb-6 text-lg">
+            <div className="bg-blue-50 px-4 py-2 rounded border-l-4 border-blue-600">
+              <span className="font-bold text-blue-900">Born:</span> Late March 2006
+            </div>
+            <div className="bg-blue-50 px-4 py-2 rounded border-l-4 border-blue-600">
+              <span className="font-bold text-blue-900">Age in 2021:</span> 14 years old
+            </div>
+            <div className="bg-blue-50 px-4 py-2 rounded border-l-4 border-blue-600">
+              <span className="font-bold text-blue-900">Age in 2026:</span> 20 years old (Just turned 20 - March 2026)
+            </div>
+          </div>
           <p className="text-2xl text-charcoal-light font-serif italic mb-6">
             February 14, 2021 — The Day Everything Changed
           </p>
           <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded">
             <p className="text-lg text-red-800">
-              <strong>A 14-year-old boy was stabbed three times by a stranger wearing a balaclava.</strong> He survived. But the system that was supposed to protect him failed—before the stabbing, during his recovery, and for the next six years.
+              <strong>At just 14 years old, Barran was stabbed three times by a stranger wearing a balaclava.</strong> He survived. But the system that was supposed to protect him failed—before the stabbing, during his recovery, and for the next five years. Now 20 years old (just turned 20 in March 2026), he continues to fight for justice and accountability.
             </p>
           </div>
         </div>
 
         {/* Before 2021 - Childhood Memories */}
         <div className="mb-12 bg-gradient-to-r from-blue-50 to-blue-100 p-8 rounded-lg border-l-4 border-blue-600">
-          <h2 className="text-3xl font-bold text-blue-900 mb-4">Before 2021: Who Barran Was</h2>
+          <h2 className="text-3xl font-bold text-blue-900 mb-4">Before 2021: Who Barran Was (Ages 0-14)</h2>
           <p className="text-gray-700 mb-6">These are the moments before everything changed. The childhood joys that shaped him. Faces blurred to protect privacy.</p>
           
           <div className="relative bg-white rounded-lg shadow-lg overflow-hidden">
