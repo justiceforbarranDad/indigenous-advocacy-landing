@@ -11,6 +11,7 @@ import { TransparencyDashboard } from '@/components/TransparencyDashboard';
 
 const BG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp";
 const ORANGE_SHIRT_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/orange-shirt-sunset-forest.jpg";
+const FLAG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/flag-blood-since-2021-4CjA8xaagFPqoyptJsUJyV.webp";
 
 export default function Home() {
   const { t, i18n } = useTranslation();
@@ -22,15 +23,15 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
-      {/* HERO SECTION - ORANGE SHIRT & SUNSET */}
+      {/* HERO SECTION - FLAG WITH BLOOD & MESSAGE */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp')`,
+            backgroundImage: `url('${FLAG_IMAGE}')`,
           }}
         >
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/20"></div>
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-4xl">
@@ -105,32 +106,32 @@ export default function Home() {
           
           {/* MAIN HEADLINE STORY */}
           <div id="story" className="border-b-4 border-black pb-6">
-            <p className="text-xs font-bold uppercase tracking-wider mb-2">FRONT PAGE STORY</p>
+            <p className="text-xs font-bold uppercase tracking-wider mb-2">{t('home.frontPageStoryLabel')}</p>
             <h2 className="text-4xl font-bold mb-4" style={{ fontFamily: 'Georgia, serif' }}>
-              Sunday Bloody Sunday, Part Two: 15 Years of Systemic Abandonment
+              {t('home.headline')}
             </h2>
             <p className="text-sm font-bold mb-4">
-              Indigenous Family Demands Justice After DPJ Failure, Political Silence, and Corporate Hypocrisy
+              {t('home.subheadline')}
             </p>
             <div className="grid grid-cols-3 gap-4 mb-4">
               <div className="border-l-4 border-black pl-3">
-                <p className="text-xs font-bold">FAMILY TRAUMA</p>
-                <p className="text-sm">Teen stabbed 3x, major impacts, mental health destroyed</p>
+                <p className="text-xs font-bold">{t('home.familyTrauma')}</p>
+                <p className="text-sm">{t('home.familyTraumaDesc')}</p>
               </div>
               <div className="border-l-4 border-black pl-3">
-                <p className="text-xs font-bold">SYSTEM FAILURE</p>
-                <p className="text-sm">DPJ withdrew Jan 2023, no follow-up, Jordan's Principle ignored</p>
+                <p className="text-xs font-bold">{t('home.systemFailure')}</p>
+                <p className="text-sm">{t('home.systemFailureDesc')}</p>
               </div>
               <div className="border-l-4 border-black pl-3">
-                <p className="text-xs font-bold">POLITICAL SILENCE</p>
-                <p className="text-sm">50+ officials contacted, zero adequate responses</p>
+                <p className="text-xs font-bold">{t('home.politicalSilence')}</p>
+                <p className="text-sm">{t('home.politicalSilenceDesc')}</p>
               </div>
             </div>
             <p className="text-sm leading-relaxed mb-3">
-              Since 2021, our Indigenous family has fought for justice after serious trauma. A teenager stabbed three times. Major impacts. Mental health destroyed. The system that promised to protect vulnerable children abandoned us instead.
+              {t('home.paragraph1')}
             </p>
             <p className="text-sm leading-relaxed">
-              The Direction de la Protection de la Jeunesse (DPJ) became involved but withdrew in January 2023 - with no adequate follow-up, no education, no mental health support. Jordan's Principle - which guarantees no-delay services for First Nations children - was completely ignored.
+              {t('home.paragraph2')}
             </p>
           </div>
 
@@ -142,23 +143,23 @@ export default function Home() {
               
               {/* GOVERNMENT SILENCE */}
               <div className="border-l-4 border-black pl-4">
-                <p className="text-xs font-bold uppercase tracking-wider mb-2">POLITICAL ACCOUNTABILITY</p>
-                <h3 className="text-xl font-bold mb-2">Government Silence = Complicity</h3>
+                <p className="text-xs font-bold uppercase tracking-wider mb-2">{t('home.politicalAccountabilityLabel')}</p>
+                <h3 className="text-xl font-bold mb-2">{t('home.governmentSilence')}</h3>
                 <p className="text-xs leading-relaxed mb-2">
-                  We escalated to federal MPs - same silence. Our MNA sent a cease-and-desist warning instead of assistance. This is what happens when a constituent asks for help.
+                  {t('home.governmentSilenceDesc')}
                 </p>
                 <a href="/government-accountability" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
-                  Demand Accountability <ChevronRight size={14} />
+                  {t('home.demandAccountability')} <ChevronRight size={14} />
                 </a>
               </div>
 
               {/* PODCAST */}
               <div className="border-l-4 border-black pl-4">
-                <p className="text-xs font-bold uppercase tracking-wider mb-2">LISTEN</p>
-                <h3 className="text-xl font-bold mb-2">Le Silence des Politiciens</h3>
-                <p className="text-xs mb-3">Épisode 3 - 14:15</p>
+                <p className="text-xs font-bold uppercase tracking-wider mb-2">{t('home.listenLabel')}</p>
+                <h3 className="text-xl font-bold mb-2">{t('home.podcastTitle')}</h3>
+                <p className="text-xs mb-3">{t('home.podcastEpisode')}</p>
                 <a href="/podcast-hub" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
-                  Play Podcast <Play size={14} />
+                  {t('home.playPodcast')} <Play size={14} />
                 </a>
               </div>
 
@@ -169,23 +170,23 @@ export default function Home() {
               
               {/* CORPORATE HYPOCRISY */}
               <div className="border-l-4 border-black pl-4">
-                <p className="text-xs font-bold uppercase tracking-wider mb-2">CORPORATE ACCOUNTABILITY</p>
-                <h3 className="text-xl font-bold mb-2">Who Profits from Reconciliation?</h3>
+                <p className="text-xs font-bold uppercase tracking-wider mb-2">{t('home.corporateAccountabilityLabel')}</p>
+                <h3 className="text-xl font-bold mb-2">{t('home.whoProfit')}</h3>
                 <p className="text-xs leading-relaxed mb-2">
-                  RBC, TD Bank, Scotiabank, CIBC, Canadian Tire, Walmart Canada, NHL teams - all sponsor Orange Shirt Day while systemic failures continue.
+                  {t('home.whoProfitDesc')}
                 </p>
                 <a href="/corporate-accountability" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
-                  See Full List <ChevronRight size={14} />
+                  {t('home.seeFullList')} <ChevronRight size={14} />
                 </a>
               </div>
 
               {/* PETITION */}
               <div className="border-l-4 border-black pl-4">
-                <p className="text-xs font-bold uppercase tracking-wider mb-2">TAKE ACTION</p>
-                <h3 className="text-xl font-bold mb-2">Sign the Petition</h3>
-                <p className="text-xs mb-3">28,300+ signatures demanding independent inquiry</p>
+                <p className="text-xs font-bold uppercase tracking-wider mb-2">{t('home.takeActionLabel')}</p>
+                <h3 className="text-xl font-bold mb-2">{t('home.signPetition')}</h3>
+                <p className="text-xs mb-3">{t('home.signatures')}</p>
                 <a href="/accountability-petition" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
-                  Sign Now <Signature size={14} />
+                  {t('home.signNow')} <Signature size={14} />
                 </a>
               </div>
 
@@ -195,7 +196,7 @@ export default function Home() {
 
           {/* QR CODE FOR E-TRANSFER */}
           <div className="donation-card-container border-t-4 border-black pt-6 mt-6 text-center">
-            <p className="text-sm font-bold uppercase tracking-wider mb-4">Quick Donate via E-Transfer</p>
+            <p className="text-sm font-bold uppercase tracking-wider mb-4">{t('home.quickDonate')}</p>
             <div className="flex justify-center mb-6 overflow-hidden">
               <a href="/donate-etransfer" className="bg-white p-3 border-2 border-black rounded-lg hover:shadow-lg transition-shadow inline-block">
                 <img 
@@ -205,9 +206,9 @@ export default function Home() {
                 />
               </a>
             </div>
-            <p className="text-xs mb-2"><strong>Scan or click to donate</strong></p>
-            <p className="text-xs text-gray-600 mb-6">Opens interactive e-Transfer donation page with all Canadian banks</p>
-            <a href="/donation-impact" className="text-xs font-bold text-black hover:underline border-b-2 border-black pb-1">See where your donation goes →</a>
+            <p className="text-xs mb-2"><strong>{t('home.scanOrClick')}</strong></p>
+            <p className="text-xs text-gray-600 mb-6">{t('home.donateDescription')}</p>
+            <a href="/donation-impact" className="text-xs font-bold text-black hover:underline border-b-2 border-black pb-1">{t('home.seeImpact')}</a>
           </div>
 
           {/* BOTTOM SECTION - CALL TO ACTION */}
@@ -215,31 +216,31 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-4 text-center">
               <a href="/donate" className="border-2 border-black p-4 hover:bg-black hover:text-white transition-colors">
                 <Heart size={20} className="mx-auto mb-2" />
-                <p className="text-xs font-bold">DONATE</p>
-                <p className="text-xs">Support Legal Fund</p>
+                <p className="text-xs font-bold">{t('home.donateButton')}</p>
+                <p className="text-xs">{t('home.supportLegal')}</p>
               </a>
               <a href="/newspaper-reader" className="border-2 border-black p-4 hover:bg-black hover:text-white transition-colors">
                 <FileText size={20} className="mx-auto mb-2" />
-                <p className="text-xs font-bold">READ FULL NEWSPAPER</p>
-                <p className="text-xs">4-Page Spread</p>
+                <p className="text-xs font-bold">{t('home.readFullNewspaper')}</p>
+                <p className="text-xs">{t('home.fourPageSpread')}</p>
               </a>
               <a href="/contact" className="border-2 border-black p-4 hover:bg-black hover:text-white transition-colors">
                 <Globe size={20} className="mx-auto mb-2" />
-                <p className="text-xs font-bold">CONTACT</p>
-                <p className="text-xs">Get Involved</p>
+                <p className="text-xs font-bold">{t('home.contactButton')}</p>
+                <p className="text-xs">{t('home.getInvolved')}</p>
               </a>
             </div>
           </div>
 
           {/* DONATION DASHBOARD */}
           <div className="border-t-4 border-black pt-6 mb-6">
-            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">CAMPAIGN PROGRESS</p>
+            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">{t('home.campaignProgress')}</p>
             <DonationDashboard />
           </div>
 
           {/* DOMAIN SHARING */}
           <div className="border-t-4 border-black pt-6 mb-6">
-            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">SHARE WITH YOUR NETWORK</p>
+            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">{t('home.shareNetwork')}</p>
             <DomainSharingWidget
               title=""
               description=""
@@ -259,13 +260,28 @@ export default function Home() {
             <SocialShareButtons title="Justice for Barran" text="Five Years of Systemic Abandonment - Demand accountability for Indigenous justice" />
           </div>
 
+          {/* ABOUT US SECTION */}
+          <div className="border-t-4 border-black pt-6 mb-6">
+            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">{t('home.aboutUsTitle')}</p>
+            <div className="bg-gray-50 p-6 border-l-4 border-black">
+              <p className="text-sm leading-relaxed text-gray-800">
+                {t('home.aboutUsDescription')}
+              </p>
+              <div className="mt-4 pt-4 border-t border-gray-300">
+                <p className="text-xs font-bold text-gray-600">HATCHET LAKE DENESULINE FIRST NATION (DENE)</p>
+                <p className="text-xs text-gray-600 mt-1">Bill C-92 Legal Framework | February 10, 2026 Custody Order | 150+ Politicians Contacted | Zero Adequate Response</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         {/* FOOTER */}
         <div className="bg-black text-white py-6 px-6 text-center border-t-8 border-black">
           <p className="text-xs font-bold tracking-wider mb-2">JUSTICE FOR BARRAN - PART 3</p>
-          <p className="text-xs">Current Truth Before Reconciliation</p>
-          <p className="text-xs mt-3 text-gray-400">indigenousadv-ahjdmzis.manus.space</p>
+          <p className="text-xs">Current Truth Before Reconciliation | Since 2021</p>
+          <p className="text-xs mt-3 text-gray-400">indigenousadv-ahjdmzis.manus.space | www.justiceforbarran.com | www.justiceforbarran.ca</p>
+          <p className="text-xs mt-3 text-gray-500">Hatchet Lake Denesuline First Nation (Dene) | Bill C-92 Legal Framework</p>
         </div>
 
       </div>
