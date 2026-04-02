@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SocialShareButtons } from '@/components/SocialShareButtons';
+import { ShareButtons } from '@/components/ShareButtons';
 import DonationQRCode from '@/components/DonationQRCode';
 import GoFundMeQRCode from '@/components/GoFundMeQRCode';
 import { DonorRecognition } from '@/components/DonorRecognition';
@@ -240,6 +241,37 @@ export default function Home() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
+          </div>
+        </div>
+      </div>
+
+      {/* KING CHARLES THRONE SPEECH - VIRAL SECTION */}
+      <div className="bg-red-700 text-white py-12 border-y-4 border-red-900">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-black tracking-widest mb-2">
+              {i18n.language === 'fr' ? 'MAI 27, 2025: DISCOURS DU TRÔNE PENDANT QUE LES PEUPLES AUTOCHTONES SOUFFRENT' : 'MAY 27, 2025: THRONE SPEECH WHILE INDIGENOUS PEOPLES SUFFER'}
+            </h2>
+            <p className="text-sm md:text-base text-red-100 max-w-3xl mx-auto leading-relaxed">
+              {i18n.language === 'fr' ? 'Le roi Charles III prononce un discours majestueux sur la souveraineté canadienne et les alliances internationales. Mais où est la justice pour les enfants autochtones? Où sont les promesses tenues? Les paroles creuses du trône résonnent tandis que nos familles crient au secours.' : 'King Charles III delivers a majestic speech about Canadian sovereignty and international alliances. But where is justice for Indigenous children? Where are the kept promises? Empty throne words echo while our families cry for help.'}
+            </p>
+          </div>
+          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              className="absolute top-0 left-0 w-full h-full border-4 border-white"
+              src="https://www.youtube.com/embed/XpXBUhpHE9Q"
+              title="King Charles III Throne Speech May 27 2025"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+          <div className="mt-6 bg-red-600 p-4 rounded-b-lg">
+            <ShareButtons 
+              videoTitle="May 27, 2025: Throne Speech While Indigenous Peoples Suffer - Justice for Barran"
+              videoUrl="/"
+              hashtags={['JusticeForBarran', 'EveryChildMatters', 'TruthAndReconciliation', 'IndigenousRights', 'FraserMustResign']}
+            />
           </div>
         </div>
       </div>

@@ -1701,3 +1701,13 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Positioned video prominently on home page with black background
 - [x] Made video responsive and properly formatted
 - [ ] Publish website and test live
+
+
+## KING CHARLES THRONE SPEECH & VIRAL CAMPAIGN (April 2, 2026)
+- [x] Add King Charles throne speech video (May 27, 2025) with viral-worthy title
+- [x] Create powerful subtitle exposing government hypocrisy
+- [x] Add social media share buttons (Twitter, Facebook, LinkedIn, WhatsApp)
+- [x] Optimize Open Graph meta tags for social sharing
+- [x] Add bilingual support to throne speech section
+- [x] Test social sharing on mobile and desktop
+- [x] Save checkpoint and prepare for international publication
