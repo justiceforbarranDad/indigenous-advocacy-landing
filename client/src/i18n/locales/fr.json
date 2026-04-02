@@ -237,5 +237,15 @@
     "addDonorsInfo": "Les noms des supporters seront listés ici avec leur permission",
     "transparency": "Confidentialité D'abord",
     "transparencyText": "Nous respectons la confidentialité des donateurs. Les noms sont listés uniquement avec permission explicite. Tous les donateurs peuvent choisir de rester anonymes."
+  },
+  "silenceClock": {
+    "title": "L'HORLOGE DU SILENCE",
+    "days": "Jours",
+    "hours": "Heures",
+    "minutes": "Minutes",
+    "seconds": "Secondes",
+    "since": "Depuis le 14 février 2021",
+    "subtitle": "Jours de silence et d'inaction gouvernementaux",
+    "message": "Chaque seconde compte. La justice retardée est la justice refusée."
   }
 }
