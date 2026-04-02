@@ -10,6 +10,8 @@ import { ChevronLeft, Copy, Check } from 'lucide-react';
 import { useLocation } from 'wouter';
 import QRCode from 'qrcode';
 import { SocialShareButtons } from '@/components/SocialShareButtons';
+import TDDirectDonation from '@/components/TDDirectDonation';
+import InternationalDonation from '@/components/InternationalDonation';
 
 export default function Donate() {
   const [, setLocation] = useLocation();
@@ -85,6 +87,15 @@ export default function Donate() {
   return (
     <div className="min-h-screen bg-cream text-charcoal">
       <div className="container max-w-4xl mx-auto px-4 py-12">
+        {/* TD Direct Donation Section */}
+        <div className="mb-12">
+          <TDDirectDonation />
+        </div>
+        
+        {/* International Donation Section */}
+        <div className="mb-12">
+          <InternationalDonation />
+        </div>
         <button
           onClick={() => setLocation('/')}
           className="flex items-center gap-2 text-amber-orange hover:text-amber-light mb-8 transition-colors"
