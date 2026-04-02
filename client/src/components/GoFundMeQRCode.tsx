@@ -10,10 +10,10 @@ export default function GoFundMeQRCode() {
       <div className="flex flex-col md:flex-row items-center gap-6">
         {/* QR Code */}
         <div className="flex-shrink-0">
-          <div className="bg-white p-4 rounded-lg shadow-md border-2 border-red-200">
+          <div className="bg-white p-6 rounded-lg shadow-md border-2 border-red-200">
             <QRCodeSVG
               value="https://gofund.me/role.flip.tall"
-              size={160}
+              size={250}
               level="H"
               includeMargin={true}
               fgColor="#000000"
@@ -37,10 +37,10 @@ export default function GoFundMeQRCode() {
             href="https://gofund.me/role.flip.tall"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-bold transition-colors"
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-md hover:shadow-lg"
           >
             {i18n.language === 'fr' ? 'Donner Maintenant' : 'Donate Now'}
-            <ExternalLink size={18} />
+            <ExternalLink size={20} />
           </a>
 
           <p className="text-xs text-gray-600 mt-3">

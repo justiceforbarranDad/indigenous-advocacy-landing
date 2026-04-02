@@ -33,7 +33,7 @@ export default function DonationQRCode() {
       <div className="flex gap-2 mb-4 justify-center">
         <button
           onClick={() => setCurrency('CAD')}
-          className={`px-4 py-2 rounded font-bold transition-colors ${
+          className={`px-6 py-3 rounded-lg font-bold text-base transition-colors shadow-md hover:shadow-lg ${
             currency === 'CAD'
               ? 'bg-red-600 text-white'
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -43,7 +43,7 @@ export default function DonationQRCode() {
         </button>
         <button
           onClick={() => setCurrency('USD')}
-          className={`px-4 py-2 rounded font-bold transition-colors ${
+          className={`px-6 py-3 rounded-lg font-bold text-base transition-colors shadow-md hover:shadow-lg ${
             currency === 'USD'
               ? 'bg-blue-600 text-white'
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -54,15 +54,15 @@ export default function DonationQRCode() {
       </div>
 
       {/* DONATION AMOUNTS */}
-      <div className="grid grid-cols-5 gap-2 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
         {donationAmounts.map((amount) => (
           <button
             key={amount}
             onClick={() => setSelectedAmount(amount)}
-            className={`py-2 px-1 rounded font-bold text-sm transition-all ${
+            className={`py-4 px-3 rounded-lg font-bold text-base md:text-lg transition-all transform hover:scale-105 active:scale-95 ${
               selectedAmount === amount
-                ? 'bg-blue-600 text-white ring-2 ring-blue-800'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                ? 'bg-blue-600 text-white ring-2 ring-blue-800 shadow-lg'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300 shadow-md'
             }`}
           >
             {currency}${amount}
@@ -87,10 +87,10 @@ export default function DonationQRCode() {
 
             {/* E-TRANSFER QR CODE */}
             <div className="flex justify-center mb-4">
-              <div className="bg-white p-4 rounded-lg shadow-md">
+              <div className="bg-white p-8 rounded-lg shadow-lg">
                 <QRCodeSVG
                   value={generateETransferQRValue()}
-                  size={180}
+                  size={300}
                   level="H"
                   includeMargin={true}
                   fgColor="#000000"
@@ -105,7 +105,7 @@ export default function DonationQRCode() {
 
             <button
               onClick={() => copyToClipboard('justiceforbarran@gmail.com')}
-              className="w-full bg-green-600 text-white py-2 rounded font-bold hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-green-700 active:bg-green-800 transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
             >
               {copied ? (
                 <>
@@ -140,10 +140,10 @@ export default function DonationQRCode() {
 
             {/* BANK TRANSFER QR CODE */}
             <div className="flex justify-center mb-4">
-              <div className="bg-white p-4 rounded-lg shadow-md">
+              <div className="bg-white p-8 rounded-lg shadow-lg">
                 <QRCodeSVG
                   value={generateBankQRValue()}
-                  size={180}
+                  size={300}
                   level="H"
                   includeMargin={true}
                   fgColor="#000000"
@@ -160,7 +160,7 @@ export default function DonationQRCode() {
 
             <button
               onClick={() => setSelectedAmount(null)}
-              className="w-full bg-blue-600 text-white py-2 rounded font-bold hover:bg-blue-700 transition-colors"
+              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-md hover:shadow-lg"
             >
               {i18n.language === 'fr' ? 'Détails du Compte' : 'Account Details'}
             </button>
@@ -187,7 +187,7 @@ export default function DonationQRCode() {
 
             <button
               onClick={() => setSelectedAmount(null)}
-              className="w-full bg-gray-600 text-white py-2 rounded font-bold hover:bg-gray-700 transition-colors"
+              className="w-full bg-gray-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-gray-700 active:bg-gray-800 transition-colors shadow-md hover:shadow-lg"
             >
               {i18n.language === 'fr' ? 'Payer par Carte' : 'Pay by Card'}
             </button>

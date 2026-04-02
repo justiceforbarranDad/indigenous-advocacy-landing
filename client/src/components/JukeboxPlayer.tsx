@@ -244,16 +244,16 @@ export function JukeboxPlayer() {
         <div className="sticky top-2 left-2 md:left-12 z-40 w-fit">
           <button
             onClick={() => setIsOpen(true)}
-            className="relative w-16 h-20 md:w-32 md:h-40 bg-gradient-to-b from-yellow-300 via-yellow-200 to-yellow-400 rounded-lg shadow-2xl border-2 md:border-4 border-yellow-600 hover:shadow-3xl transition-all duration-300 transform hover:scale-105 group"
+            className="relative w-16 h-20 md:w-32 md:h-40 bg-gradient-to-b from-amber-700 via-amber-600 to-amber-800 rounded-lg shadow-2xl border-2 md:border-4 border-amber-900 hover:shadow-3xl transition-all duration-300 transform hover:scale-105 group"
             style={{
-              backgroundImage: 'linear-gradient(135deg, #fcd34d 0%, #fbbf24 50%, #f59e0b 100%)',
-              boxShadow: '0 0 20px rgba(217, 119, 6, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.3)'
+              backgroundImage: 'linear-gradient(135deg, #92400e 0%, #b45309 50%, #78350f 100%)',
+              boxShadow: '0 0 20px rgba(120, 53, 15, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2)'
             }}
           >
-            {/* Jukebox speaker grille */}
-            <div className="absolute top-1 left-1 right-1 h-6 md:h-12 bg-black rounded-sm opacity-70 flex items-center justify-center">
-              <div className="text-yellow-300 text-xs md:text-xs font-bold text-center px-1 line-clamp-1 md:line-clamp-2 text-[8px] md:text-xs">
-                {currentEpisode.title}
+            {/* Vintage Radio Display */}
+            <div className="absolute top-1 left-1 right-1 h-6 md:h-12 bg-amber-900 rounded-sm opacity-90 flex items-center justify-center border border-amber-700">
+              <div className="text-amber-100 text-xs md:text-xs font-bold text-center px-1 line-clamp-1 md:line-clamp-2 text-[8px] md:text-xs">
+                🎙️ LISTEN
               </div>
             </div>
 
