@@ -81,6 +81,17 @@ export default function InteracDonationInterface() {
 
   const displayAmount = customAmount || donationAmount;
 
+  // QR codes for each donation amount
+  const qrCodesByAmount: { [key: string]: string } = {
+    '5.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-5cad.png',
+    '10.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-10cad.png',
+    '20.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-20cad.png',
+    '50.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-50cad.png',
+    '100.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-100cad.png',
+  };
+
+  const currentQRCode = qrCodesByAmount[displayAmount] || qrCodesByAmount['100.00'];
+
   const handleBankSelect = (bankId: string) => {
     setSelectedBank(bankId);
     // In a real app, this would redirect to the bank's payment page
@@ -178,8 +189,8 @@ export default function InteracDonationInterface() {
             <h3 className="text-lg font-bold mb-4">{t.qrCode}</h3>
             <div className="flex justify-center mb-4">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/justice-for-barran-qr-code_ae3aa20e.png"
-                alt="Donation QR Code"
+                src={currentQRCode}
+                alt={`Donation QR Code for CAD$${displayAmount}`}
                 className="w-48 h-48 border-4 border-white shadow-lg rounded"
               />
             </div>
