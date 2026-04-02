@@ -18,6 +18,18 @@ export async function getDb() {
   return _db;
 }
 
+// Initialize db synchronously for router use
+if (!_db && process.env.DATABASE_URL) {
+  try {
+    _db = drizzle(process.env.DATABASE_URL);
+  } catch (error) {
+    console.warn("[Database] Failed to initialize:", error);
+  }
+}
+
+export const db = _db || ({} as any);
+
+
 export async function upsertUser(user: InsertUser): Promise<void> {
   if (!user.openId) {
     throw new Error("User openId is required for upsert");

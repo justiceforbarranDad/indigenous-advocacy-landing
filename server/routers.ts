@@ -6,13 +6,19 @@ import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile, incrementVideoView, getVideoViews, getAllVideoViews, subscribeEmail, getEmailSubscriber, unsubscribeEmail, getActiveSubscribers, createNewsUpdate, getPublishedNews, createEmailCampaign, submitSurveyResponse, getSurveyStats, getSurveyResponses, getActiveDonationCampaign, getDonationCampaignById, updateDonationCampaignRaisedAmount, getTotalRaisedAmount, createOrangeShirtEntry, getOrangeShirtEntries, getOrangeShirtEntriesByType, updateOrangeShirtEntry, getOrangeShirtStats, createGovernmentEntry, getGovernmentEntries, getGovernmentEntriesByLevel, updateGovernmentEntry, getGovernmentStats, getDonationImpactMetrics, updateDonationImpactMetrics, createGovernmentResponse, getPublicGovernmentResponses, updateGovernmentResponse, getGovernmentResponseStats } from "./db";
 import { notifyOwner } from "./_core/notification";
+import { adminProcedure } from "./_core/trpc";
+import { db } from "./db";
 import { exportSurveyAsCSV, exportAnalyticsSummaryAsCSV, generateAnalyticsReport } from "./dataExport";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
 import { subscriptionRouter } from "./routers/subscriptions";
+import { eq, desc } from "drizzle-orm";
 import { generateRSSFeed, getPodcastFeedConfig, getPodcastEpisodesForRSS } from "./rss-feed";
 import Stripe from "stripe";
+import { donationImpactMetrics, governmentResponseTracker } from "../drizzle/schema";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "");
+
+// Import database tables
 
 export const appRouter = router({
   system: systemRouter,
@@ -844,10 +850,10 @@ export const appRouter = router({
     }),
   }),
 
-  governmentTracker: router({
-    getPublicResponses: publicProcedure
+   governmentResponses: router({
+    getPublic: publicProcedure
       .input(z.object({
-        limit: z.number().default(20),
+        limit: z.number().default(10),
         offset: z.number().default(0),
       }))
       .query(async ({ input }) => {
@@ -859,5 +865,109 @@ export const appRouter = router({
     }),
   }),
 
+  admin: router({
+    // Donation management
+    donations: router({
+      add: adminProcedure
+        .input(z.object({
+          donorName: z.string().min(1),
+          donorEmail: z.string().email(),
+          amountCAD: z.number().positive(),
+          amountUSD: z.number().positive(),
+          method: z.enum(['e-transfer', 'bank-transfer', 'gofundme', 'stripe', 'crypto']),
+          isPublic: z.boolean().default(true),
+          notes: z.string().optional(),
+        }))
+        .mutation(async ({ input }) => {
+          const donation = await db.insert(donationImpactMetrics).values({
+            ...input,
+            donationDate: Math.floor(Date.now() / 1000),
+          }).returning();
+          return donation[0];
+        }),
+
+      update: adminProcedure
+        .input(z.object({
+          id: z.number(),
+          donorName: z.string().optional(),
+          isPublic: z.boolean().optional(),
+          notes: z.string().optional(),
+        }))
+        .mutation(async ({ input }) => {
+          const { id, ...updates } = input;
+          const updated = await db.update(donationImpactMetrics)
+            .set(updates)
+            .where(eq(donationImpactMetrics.id, id))
+            .returning();
+          return updated[0];
+        }),
+
+      delete: adminProcedure
+        .input(z.object({ id: z.number() }))
+        .mutation(async ({ input }) => {
+          await db.delete(donationImpactMetrics)
+            .where(eq(donationImpactMetrics.id, input.id));
+          return { success: true };
+        }),
+
+      getAll: adminProcedure.query(async () => {
+        return await db.select().from(donationImpactMetrics).orderBy(desc(donationImpactMetrics.createdAt));
+      }),
+    }),
+
+    // Government response management
+    governmentResponses: router({
+      add: adminProcedure
+        .input(z.object({
+          officialName: z.string().min(1),
+          position: z.string().min(1),
+          jurisdiction: z.string().min(1),
+          contactEmail: z.string().email(),
+          responseStatus: z.enum(['no-response', 'acknowledged', 'partial', 'full', 'refused', 'hostile']),
+          responseNotes: z.string().optional(),
+          isPublic: z.boolean().default(true),
+        }))
+        .mutation(async ({ input }) => {
+          const response = await db.insert(governmentResponseTracker).values({
+            ...input,
+            dateContacted: new Date(),
+            contactMethod: 'email',
+            contactSubject: 'Contact',
+          }).returning();
+          return response[0];
+        }),
+
+      update: adminProcedure
+        .input(z.object({
+          id: z.number(),
+          responseStatus: z.enum(['no-response', 'acknowledged', 'partial', 'full', 'refused', 'hostile']).optional(),
+          responseNotes: z.string().optional(),
+          isPublic: z.boolean().optional(),
+          daysSinceContact: z.number().optional(),
+        }))
+        .mutation(async ({ input }) => {
+          const { id, ...updates } = input;
+          const updated = await db.update(governmentResponseTracker)
+            .set(updates)
+            .where(eq(governmentResponseTracker.id, id))
+            .returning();
+          return updated[0];
+        }),
+
+      delete: adminProcedure
+        .input(z.object({ id: z.number() }))
+        .mutation(async ({ input }) => {
+          await db.delete(governmentResponseTracker)
+            .where(eq(governmentResponseTracker.id, input.id));
+          return { success: true };
+        }),
+
+      getAll: adminProcedure.query(async () => {
+        return await db.select().from(governmentResponseTracker).orderBy(desc(governmentResponseTracker.updatedAt));
+      }),
+    }),
+  }),
+
 });
+
 export type AppRouter = typeof appRouter;

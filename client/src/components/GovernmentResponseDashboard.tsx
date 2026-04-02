@@ -6,8 +6,8 @@ import { useState } from 'react';
 export default function GovernmentResponseDashboard() {
   const { i18n } = useTranslation();
   const [limit] = useState(20);
-  const { data: responses, isLoading: responsesLoading } = trpc.governmentTracker.getPublicResponses.useQuery({ limit });
-  const { data: stats, isLoading: statsLoading } = trpc.governmentTracker.getStats.useQuery();
+  const { data: responses, isLoading: responsesLoading } = trpc.governmentResponses.getPublic.useQuery({ limit });
+  const { data: stats, isLoading: statsLoading } = trpc.governmentResponses.getStats.useQuery();
 
   const getStatusIcon = (status: string) => {
     switch (status) {
