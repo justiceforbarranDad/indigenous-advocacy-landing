@@ -8,7 +8,7 @@ import { DonorRecognition } from '@/components/DonorRecognition';
 import BloodFlagHero from '@/components/BloodFlagHero';
 import { Heart, ChevronRight, Play, X } from 'lucide-react';
 import StickyRadioPlayer from '@/components/StickyRadioPlayer';
-import CassetteTapePlayer from '@/components/CassetteTapePlayer';
+import { JukeboxPlayer } from '@/components/JukeboxPlayer';
 
 export default function Home() {
   const { i18n } = useTranslation();
@@ -132,8 +132,8 @@ export default function Home() {
 
   return (
     <div className="bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
-      {/* CASSETTE TAPE PLAYER */}
-      <CassetteTapePlayer />
+      {/* JUKEBOX PLAYER */}
+      <JukeboxPlayer />
 
       {/* BLOOD FLAG HERO SECTION */}
       <BloodFlagHero />
