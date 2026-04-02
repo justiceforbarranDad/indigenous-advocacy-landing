@@ -1,0 +1,11 @@
+Currency,Amount,PaymentLink
+CAD,5,https://buy.stripe.com/aFafZh4VC91QbnfcFb9EI07
+CAD,10,https://buy.stripe.com/fZufZh3Rydi62QJdJf9EI08
+CAD,20,https://buy.stripe.com/dRmbJ1co491Qbnf9sZ9EI09
+CAD,50,https://buy.stripe.com/eVq3cvewca5U8b38oV9EI0a
+CAD,100,https://buy.stripe.com/6oUeVdafWdi6ajb6gN9EI0b
+USD,5,https://buy.stripe.com/14AaEX5ZGguifDv5cJ9EI0q
+USD,10,https://buy.stripe.com/dRm00jgEk7XMbnf34B9EI0p
+USD,20,https://buy.stripe.com/bJebJ187Oa5UfDv34B9EI0o
+USD,50,https://buy.stripe.com/4gMdR987O0vkajb7kR9EI0n
+USD,100,https://buy.stripe.com/00w00jco47XM3UNfRn9EI0m

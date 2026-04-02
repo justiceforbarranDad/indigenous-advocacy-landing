@@ -9,14 +9,14 @@ export function DonationQRCode() {
   const [currency, setCurrency] = useState<'CAD' | 'USD'>('CAD');
   const [copied, setCopied] = useState(false);
 
-  // Stripe Payment Links - CAD first (default), then USD
+  // Stripe Payment Links - RECURRING MONTHLY - CAD first (default), then USD
   const paymentLinks = {
     CAD: {
-      5: 'https://buy.stripe.com/cNifZhbk0b9Y76ZeNj9EI0e',
-      10: 'https://buy.stripe.com/aFa00jafW6TIbnf48F9EI0d',
-      20: 'https://buy.stripe.com/9B68wP73Kb9Y4YR7kR9EI0c',
-      50: 'https://buy.stripe.com/6oUeVdafWdi6ajb6gN9EI0b',
-      100: 'https://buy.stripe.com/eVq3cvewca5U8b38oV9EI0a',
+      5: 'https://buy.stripe.com/aFafZh4VC91QbnfcFb9EI07',
+      10: 'https://buy.stripe.com/fZufZh3Rydi62QJdJf9EI08',
+      20: 'https://buy.stripe.com/dRmbJ1co491Qbnf9sZ9EI09',
+      50: 'https://buy.stripe.com/eVq3cvewca5U8b38oV9EI0a',
+      100: 'https://buy.stripe.com/6oUeVdafWdi6ajb6gN9EI0b',
     },
     USD: {
       5: 'https://buy.stripe.com/14AaEX5ZGguifDv5cJ9EI0q',
@@ -97,7 +97,7 @@ export function DonationQRCode() {
       {/* DONATION AMOUNTS - CLICK TO SHOW QR */}
       <div className="border-2 border-blue-400 bg-blue-50 rounded-lg p-4">
         <h4 className="text-sm font-bold mb-3 text-center text-gray-800">
-          {t('donate.selectAmount')}
+          {t('donate.monthlyDonation')} - {t('donate.selectAmount')}
         </h4>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
           {donationAmounts.map((amount) => (
