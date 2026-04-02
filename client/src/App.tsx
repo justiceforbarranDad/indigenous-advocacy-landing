@@ -139,6 +139,7 @@ import LegalCitations from "./pages/LegalCitations";
 import QRCodeGallery from "./pages/QRCodeGallery";
 import EasyDonate from "./pages/EasyDonate";
 import OrangeShirtAccountability from "./pages/OrangeShirtAccountability";
+import Jurisprudence from "./pages/Jurisprudence";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -146,6 +147,7 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path="/legal" component={Legal} />
+      <Route path="/jurisprudence" component={Jurisprudence} />
       <Route path="/sunday-bloody-sunday-part-3" component={SundayBloodyySundayPart3} />
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />

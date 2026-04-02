@@ -126,7 +126,21 @@
     "mcGovernNote": "The fund is managed independently to ensure funds are used exclusively for their intended purpose.",
     "questions": "Questions About Our Finances?",
     "questionsText": "We welcome inquiries about how donations are used. Contact us for detailed financial reports, audit results, or any transparency questions.",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "disclaimerAccuracy": "All facts presented on this site are 100% accurate and fully documented.",
+    "disclaimerDocumentation": "Complete documentation and master files are available to prove every claim made. We maintain comprehensive records of all evidence, correspondence, legal filings, and communications referenced throughout this site.",
+    "disclaimerLegalAdvice": "I am not a lawyer and do not provide legal advice. All information shared here is publicly available information that anyone can access online. For legal guidance, please consult with a qualified attorney.",
+    "disclaimerPublicInfo": "All resources used in this advocacy are self-taught and derived from publicly available sources including government documents, court records, legislation, and publicly funded research."
+  },
+  "jurisprudence": {
+    "title": "Jurisprudence & Legal Precedents",
+    "subtitle": "Applicable Court Cases & Legal Framework Supporting Indigenous Child Welfare Rights",
+    "intro": "Legal Framework",
+    "introText": "The following Supreme Court of Canada and appellate decisions establish the legal framework protecting Indigenous families' rights to raise their children, the Crown's duty to consult, and the Crown's fiduciary obligations. These precedents directly apply to systemic failures in child welfare systems affecting Indigenous communities.",
+    "applicability": "Each case is cited with its direct applicability to Indigenous child welfare rights and systemic accountability.",
+    "cases": "Supreme Court & Appellate Decisions",
+    "keyPrinciples": "Key Legal Principles Established",
+    "applicationTitle": "Application to Justice for Barran"
   },
   "donors": {
     "title": "Supported By",

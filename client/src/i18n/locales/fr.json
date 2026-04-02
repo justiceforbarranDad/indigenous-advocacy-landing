@@ -210,7 +210,21 @@
     "mcGovernNote": "Le fonds est géré indépendamment pour assurer que les fonds sont utilisés exclusivement à leur fin prévue.",
     "questions": "Des Questions sur Nos Finances?",
     "questionsText": "Nous accueillons les demandes de renseignements sur la façon dont les dons sont utilisés. Contactez-nous pour des rapports financiers détaillés, des résultats d'audit ou toute question de transparence.",
-    "contactUs": "Nous Contacter"
+    "contactUs": "Nous Contacter",
+    "disclaimerAccuracy": "Tous les faits presentes sur ce site sont 100% exacts et entierement documentes.",
+    "disclaimerDocumentation": "Une documentation complete et des fichiers maitres sont disponibles pour prouver chaque affirmation faite. Nous maintenons des dossiers complets de toutes les preuves, correspondances, documents juridiques et communications referencees dans ce site.",
+    "disclaimerLegalAdvice": "Je ne suis pas avocat et ne fournis pas de conseils juridiques. Toutes les informations partagees ici sont des informations accessibles au public que n'importe qui peut consulter en ligne. Pour des conseils juridiques, veuillez consulter un avocat qualifie.",
+    "disclaimerPublicInfo": "Toutes les ressources utilisees dans ce plaidoyer sont autodidactes et proviennent de sources accessibles au public, notamment les documents gouvernementaux, les dossiers judiciaires, la legislation et la recherche financee par le public."
+  },
+  "jurisprudence": {
+    "title": "Jurisprudence et Precedents Juridiques",
+    "subtitle": "Decisions Judiciaires Applicables et Cadre Juridique Soutenant les Droits des Familles Autochtones en Matiere de Protection de l'Enfance",
+    "intro": "Cadre Juridique",
+    "introText": "Les decisions suivantes de la Cour supreme du Canada et des cours d'appel etablissent le cadre juridique protégeant les droits des familles autochtones d'elever leurs enfants, l'obligation de la Couronne de consulter et les obligations fiduciaires de la Couronne. Ces precedents s'appliquent directement aux defaillances systemiques dans les systemes de protection de l'enfance affectant les communautes autochtones.",
+    "applicability": "Chaque cas est cite avec son applicabilite directe aux droits des familles autochtones en matiere de protection de l'enfance et a la responsabilite systemique.",
+    "cases": "Decisions de la Cour Supreme et des Cours d'Appel",
+    "keyPrinciples": "Principes Juridiques Cles Etablis",
+    "applicationTitle": "Application au Cas de Justice pour Barran"
   },
   "donors": {
     "title": "Soutenu Par",

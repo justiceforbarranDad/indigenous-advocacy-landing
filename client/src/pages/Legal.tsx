@@ -19,7 +19,25 @@ export default function Legal() {
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto py-12 px-4">
+      <div className="max-w-4xl mx-auto py-12 px-4">        {/* DISCLAIMER SECTION */}
+        <section className="mb-12 bg-yellow-50 border-2 border-yellow-400 p-6 rounded-lg">
+          <h2 className="text-2xl font-bold text-yellow-900 mb-4">⚠️ Important Disclaimer</h2>
+          <div className="space-y-4 text-gray-800">
+            <p className="font-semibold text-lg">
+              {t('legal.disclaimerAccuracy')}
+            </p>
+            <p>
+              {t('legal.disclaimerDocumentation')}
+            </p>
+            <p className="border-l-4 border-yellow-600 pl-4 italic">
+              {t('legal.disclaimerLegalAdvice')}
+            </p>
+            <p>
+              {t('legal.disclaimerPublicInfo')}
+            </p>
+          </div>
+        </section>
+
         {/* Financial Transparency */}
         <section className="mb-12">
           <div className="flex items-center gap-3 mb-6">
