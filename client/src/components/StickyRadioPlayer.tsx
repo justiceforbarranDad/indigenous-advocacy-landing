@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, ChevronDown, ChevronUp, Volume2, X } from 'lucide-react';
+import { Play, Pause, ChevronDown, ChevronUp, Volume2, X, Share2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 interface Episode {
@@ -237,6 +237,23 @@ export default function StickyRadioPlayer() {
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
+  const shareEpisode = (platform: string) => {
+    const episodeUrl = `${window.location.origin}?episode=${currentEpisode.id}&lang=${language}`;
+    const text = `Check out this podcast episode: "${currentEpisode.title}" - ${currentEpisode.description}`;
+    
+    const shareUrls: Record<string, string> = {
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(episodeUrl)}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(episodeUrl)}`,
+      whatsapp: `https://wa.me/?text=${encodeURIComponent(text + ' ' + episodeUrl)}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(episodeUrl)}`,
+      email: `mailto:?subject=${encodeURIComponent(currentEpisode.title)}&body=${encodeURIComponent(text + '\n\n' + episodeUrl)}`
+    };
+    
+    if (shareUrls[platform]) {
+      window.open(shareUrls[platform], '_blank');
+    }
+  };
+
   if (!currentEpisode) return null;
 
   return (
@@ -336,6 +353,41 @@ export default function StickyRadioPlayer() {
                   Ep {ep.id}
                 </button>
               ))}
+            </div>
+
+            {/* Share Buttons */}
+            <div className="flex gap-2 mb-6 flex-wrap">
+              <span className="text-sm font-semibold self-center">Share Episode:</span>
+              <button
+                onClick={() => shareEpisode('twitter')}
+                className="bg-blue-400 hover:bg-blue-500 text-white px-3 py-1 rounded text-sm font-semibold transition-colors flex items-center gap-1"
+              >
+                <Share2 size={14} /> X/Twitter
+              </button>
+              <button
+                onClick={() => shareEpisode('facebook')}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-semibold transition-colors flex items-center gap-1"
+              >
+                <Share2 size={14} /> Facebook
+              </button>
+              <button
+                onClick={() => shareEpisode('whatsapp')}
+                className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm font-semibold transition-colors flex items-center gap-1"
+              >
+                <Share2 size={14} /> WhatsApp
+              </button>
+              <button
+                onClick={() => shareEpisode('linkedin')}
+                className="bg-blue-700 hover:bg-blue-800 text-white px-3 py-1 rounded text-sm font-semibold transition-colors flex items-center gap-1"
+              >
+                <Share2 size={14} /> LinkedIn
+              </button>
+              <button
+                onClick={() => shareEpisode('email')}
+                className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded text-sm font-semibold transition-colors flex items-center gap-1"
+              >
+                <Share2 size={14} /> Email
+              </button>
             </div>
 
             {/* Transcript */}
