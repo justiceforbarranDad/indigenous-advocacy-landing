@@ -8,11 +8,11 @@ import { DonorRecognition } from '@/components/DonorRecognition';
 import BloodFlagHero from '@/components/BloodFlagHero';
 import { Heart, ChevronRight, Play, X } from 'lucide-react';
 import StickyRadioPlayer from '@/components/StickyRadioPlayer';
+import CassetteTapePlayer from '@/components/CassetteTapePlayer';
 
 export default function Home() {
   const { i18n } = useTranslation();
   const [selectedRight, setSelectedRight] = useState<string | null>(null);
-  const [showRadioPlayer, setShowRadioPlayer] = useState(true);
 
   const stories = [
     {
@@ -132,8 +132,8 @@ export default function Home() {
 
   return (
     <div className="bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
-      {/* STICKY RADIO PLAYER */}
-      {showRadioPlayer && <StickyRadioPlayer />}
+      {/* CASSETTE TAPE PLAYER */}
+      <CassetteTapePlayer />
 
       {/* BLOOD FLAG HERO SECTION */}
       <BloodFlagHero />
