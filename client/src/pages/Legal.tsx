@@ -106,12 +106,12 @@ export default function Legal() {
           </div>
         </section>
 
-        {/* McGovern Legacy Fund */}
+        {/* McGovern Arts Institute of Human Rights */}
         <section className="mb-12">
           <div className="flex items-center gap-3 mb-6">
             <Users className="text-red-600" size={32} />
             <h2 className="text-3xl font-bold text-gray-900">
-              {t('legal.mcGovernLegacy')}
+              McGovern Arts Institute of Human Rights
             </h2>
           </div>
           <div className="bg-red-50 border-l-4 border-red-600 p-6 rounded">

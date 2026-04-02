@@ -8,6 +8,15 @@ export function DonationQRCode() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [currency, setCurrency] = useState<'CAD' | 'USD'>('CAD');
   const [copied, setCopied] = useState(false);
+  const [subscriptionTerm, setSubscriptionTerm] = useState<'1' | '3' | '6' | '12'>('1');
+
+  // Subscription term options with messaging
+  const subscriptionTerms = [
+    { value: '1' as const, label: 'Monthly', message: 'Flexible Support - cancel anytime' },
+    { value: '3' as const, label: '3 Months', message: 'Sustained Justice - help us plan ahead' },
+    { value: '6' as const, label: '6 Months', message: 'Long-term Change - support systemic reform' },
+    { value: '12' as const, label: '12 Months', message: 'Annual Justice Fund - year-round advocacy' },
+  ];
 
   // Stripe Payment Links - RECURRING MONTHLY - CAD first (default), then USD
   const paymentLinks = {
@@ -92,6 +101,31 @@ export function DonationQRCode() {
         >
           🇺🇸 USD
         </button>
+      </div>
+
+      {/* SUBSCRIPTION TERM SELECTOR */}
+      <div className="border-2 border-purple-400 bg-purple-50 rounded-lg p-4">
+        <h4 className="text-sm font-bold mb-3 text-center text-gray-800">
+          Select Your Commitment
+        </h4>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {subscriptionTerms.map((term) => (
+            <button
+              key={term.value}
+              onClick={() => setSubscriptionTerm(term.value)}
+              className={`py-2 px-2 rounded-lg font-bold text-xs transition-all border-2 ${
+                subscriptionTerm === term.value
+                  ? 'bg-purple-600 text-white border-purple-600 shadow-lg'
+                  : 'bg-white text-gray-800 border-gray-300 hover:border-purple-600 hover:bg-purple-100'
+              }`}
+            >
+              {term.label}
+            </button>
+          ))}
+        </div>
+        <p className="text-xs text-gray-700 text-center mt-3 italic">
+          {subscriptionTerms.find(t => t.value === subscriptionTerm)?.message}
+        </p>
       </div>
 
       {/* DONATION AMOUNTS - CLICK TO SHOW QR */}

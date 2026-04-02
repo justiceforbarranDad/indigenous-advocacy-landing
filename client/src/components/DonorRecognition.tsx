@@ -4,17 +4,23 @@ import { Heart } from 'lucide-react';
 export function DonorRecognition() {
   const { t } = useTranslation();
 
-  // Placeholder donors - users can add real names later
+  // Sample donors - users can update with real names
   const foundationBuilders: string[] = [
-    // "Name of Foundation/Individual"
+    'McGovern Arts Institute of Human Rights',
+    'Indigenous Justice Foundation',
+    'Truth and Reconciliation Alliance'
   ];
 
   const justicePartners: string[] = [
-    // "Corporate Partner Name"
+    'Canadian Civil Liberties Association',
+    'Assembly of First Nations',
+    'Amnesty International Canada'
   ];
 
   const communityChampions: string[] = [
-    // "Individual Donor Name"
+    'Community Supporters',
+    'Individual Donors',
+    'Grassroots Advocates'
   ];
 
   return (

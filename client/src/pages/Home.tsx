@@ -61,13 +61,45 @@ export default function Home() {
       {/* MASTHEAD */}
       <div className="bg-white border-b-4 border-black py-6 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* BLOODY CANADIAN FLAG */}
-          <div className="flex justify-center mb-6">
-            <img 
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/flag-blood-since-2021-heavy_96992821.png"
-              alt="Canadian Flag - Since 2021"
-              className="w-full max-w-2xl h-auto"
-            />
+          {/* KNOW YOUR RIGHTS BANNER */}
+          <div className="text-center mb-4 py-2 bg-red-600 text-white font-black tracking-widest text-sm md:text-base">
+            {i18n.language === 'fr' ? 'CONNAISSEZ VOS DROITS' : 'KNOW YOUR RIGHTS'}
+          </div>
+
+          {/* FLAG WITH CONSTITUTION & UN RIGHTS */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+            {/* LEFT - CANADA CONSTITUTION */}
+            <div className="bg-red-50 border-2 border-red-600 p-4 rounded text-xs md:text-sm">
+              <h3 className="font-bold text-red-900 mb-2 text-center">
+                {i18n.language === 'fr' ? 'CONSTITUTION CANADIENNE' : 'CANADIAN CONSTITUTION'}
+              </h3>
+              <ul className="space-y-1 text-gray-800">
+                <li className="font-semibold">• {i18n.language === 'fr' ? 'Charte des droits (s.2, s.15, s.35)' : 'Charter of Rights (s.2, s.15, s.35)'}</li>
+                <li className="font-semibold">• {i18n.language === 'fr' ? 'Loi C-92 (Protection de l\'enfance autochtone)' : 'Bill C-92 (Indigenous Child Welfare)'}</li>
+                <li className="font-semibold">• {i18n.language === 'fr' ? 'Principe de Jordan' : 'Jordan\'s Principle'}</li>
+              </ul>
+            </div>
+
+            {/* CENTER - BLOODY CANADIAN FLAG */}
+            <div className="flex justify-center">
+              <img 
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/flag-blood-since-2021-heavy_96992821.png"
+                alt="Canadian Flag - Since 2021"
+                className="w-full max-w-xs h-auto"
+              />
+            </div>
+
+            {/* RIGHT - UN RIGHTS */}
+            <div className="bg-blue-50 border-2 border-blue-600 p-4 rounded text-xs md:text-sm">
+              <h3 className="font-bold text-blue-900 mb-2 text-center">
+                {i18n.language === 'fr' ? 'DROITS DE L\'ONU' : 'UN RIGHTS'}
+              </h3>
+              <ul className="space-y-1 text-gray-800">
+                <li className="font-semibold">• {i18n.language === 'fr' ? 'UNDRIP (Peuples autochtones)' : 'UNDRIP (Indigenous Peoples)'}</li>
+                <li className="font-semibold">• {i18n.language === 'fr' ? 'UNCRC (Droits de l\'enfant)' : 'UNCRC (Rights of the Child)'}</li>
+                <li className="font-semibold">• {i18n.language === 'fr' ? 'UDHR (Droits humains universels)' : 'UDHR (Universal Human Rights)'}</li>
+              </ul>
+            </div>
           </div>
           
           <h1 className="text-4xl md:text-5xl font-black tracking-widest text-center mb-2" style={{ letterSpacing: '0.15em' }}>
