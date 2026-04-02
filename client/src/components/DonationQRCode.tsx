@@ -1,54 +1,24 @@
 import { QRCodeSVG as QRCode } from 'qrcode.react';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { Copy, Check, Loader2 } from 'lucide-react';
-import { trpc } from '@/lib/trpc';
+import { Copy, Check } from 'lucide-react';
 
 export function DonationQRCode() {
   const { t } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [currency, setCurrency] = useState<'CAD' | 'USD'>('CAD');
   const [copied, setCopied] = useState(false);
-  const [subscriptionTerm, setSubscriptionTerm] = useState<'1' | '3' | '6' | '12'>('1');
-  const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-  // Mutation to create checkout session
-  const createCheckout = trpc.stripe.createCheckoutSession.useMutation();
-
-  // Subscription term options with messaging
-  const subscriptionTerms = [
-    { value: '1' as const, label: 'Monthly', message: 'Flexible Support - cancel anytime' },
-    { value: '3' as const, label: '3 Months', message: 'Sustained Justice - help us plan ahead' },
-    { value: '6' as const, label: '6 Months', message: 'Long-term Change - support systemic reform' },
-    { value: '12' as const, label: '12 Months', message: 'Annual Justice Fund - year-round advocacy' },
-  ];
 
   const donationAmounts = [5, 10, 20, 50, 100];
 
-  // Handle amount selection - create checkout session
-  const handleAmountSelect = async (amount: number) => {
-    setSelectedAmount(amount);
-    setIsLoading(true);
-    setCheckoutUrl(null);
+  // Generate QR code value for bank transfer
+  const generateBankQRValue = (amount: number) => {
+    return `Bank Transfer: ${currency}$${amount}\nAccount: justiceforbarran\nAmount: ${currency}$${amount}`;
+  };
 
-    try {
-      const result = await createCheckout.mutateAsync({
-        amount: amount,
-        donorName: 'Donor',
-        donorEmail: 'donor@example.com',
-        message: 'Support Justice for Barran',
-      });
-
-      if (result.url) {
-        setCheckoutUrl(result.url);
-      }
-    } catch (error) {
-      console.error('Failed to create checkout session:', error);
-      alert('Failed to create payment link. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+  // Generate QR code value for e-Transfer
+  const generateETransferQRValue = (amount: number) => {
+    return `E-Transfer to: justiceforbarran@gmail.com\nAmount: ${currency}$${amount}\nNo password required`;
   };
 
   const copyToClipboard = (text: string) => {
@@ -69,9 +39,9 @@ export function DonationQRCode() {
   ];
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 w-full max-w-3xl mx-auto px-4">
       {/* CURRENCY SELECTOR */}
-      <div className="flex gap-2 justify-center">
+      <div className="flex gap-2 justify-center w-full">
         <button
           onClick={() => setCurrency('CAD')}
           className={`px-6 py-2 rounded-lg font-bold text-sm transition-all border-2 ${
@@ -94,33 +64,8 @@ export function DonationQRCode() {
         </button>
       </div>
 
-      {/* SUBSCRIPTION TERM SELECTOR */}
-      <div className="border-2 border-purple-400 bg-purple-50 rounded-lg p-4">
-        <h4 className="text-sm font-bold mb-3 text-center text-gray-800">
-          Select Your Commitment
-        </h4>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-          {subscriptionTerms.map((term) => (
-            <button
-              key={term.value}
-              onClick={() => setSubscriptionTerm(term.value)}
-              className={`py-2 px-2 rounded-lg font-bold text-xs transition-all border-2 ${
-                subscriptionTerm === term.value
-                  ? 'bg-purple-600 text-white border-purple-600 shadow-lg'
-                  : 'bg-white text-gray-800 border-gray-300 hover:border-purple-600 hover:bg-purple-100'
-              }`}
-            >
-              {term.label}
-            </button>
-          ))}
-        </div>
-        <p className="text-xs text-gray-700 text-center mt-3 italic">
-          {subscriptionTerms.find(t => t.value === subscriptionTerm)?.message}
-        </p>
-      </div>
-
-      {/* DONATION AMOUNTS - CLICK TO SHOW QR */}
-      <div className="border-2 border-blue-400 bg-blue-50 rounded-lg p-4">
+      {/* DONATION AMOUNTS - CLICK TO SHOW QR CODES */}
+      <div className="border-2 border-blue-400 bg-blue-50 rounded-lg p-4 w-full">
         <h4 className="text-sm font-bold mb-3 text-center text-gray-800">
           {t('donate.monthlyDonation')} - {t('donate.selectAmount')}
         </h4>
@@ -128,9 +73,8 @@ export function DonationQRCode() {
           {donationAmounts.map((amount) => (
             <button
               key={amount}
-              onClick={() => handleAmountSelect(amount)}
-              disabled={isLoading}
-              className={`py-3 px-2 rounded-lg font-bold text-sm transition-all border-2 disabled:opacity-50 ${
+              onClick={() => setSelectedAmount(amount)}
+              className={`py-3 px-2 rounded-lg font-bold text-sm transition-all border-2 ${
                 selectedAmount === amount
                   ? 'bg-blue-600 text-white border-blue-600 shadow-lg'
                   : 'bg-white text-gray-800 border-gray-300 hover:border-blue-600 hover:bg-blue-100'
@@ -142,73 +86,106 @@ export function DonationQRCode() {
         </div>
       </div>
 
-      {/* QR CODE - SHOWS IMMEDIATELY WHEN AMOUNT SELECTED - MOVED UP */}
+      {/* QR CODES FOR BANK TRANSFER & E-TRANSFER - SHOWS WHEN AMOUNT SELECTED */}
       {selectedAmount && (
-        <div className="border-2 border-green-400 bg-green-50 rounded-lg p-6 text-center animate-in fade-in">
-          <p className="text-sm text-gray-600 mb-2">
-            {t('donate.amount')}
-            <span className="text-3xl font-bold text-green-600 block">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+          {/* BANK TRANSFER QR CODE */}
+          <div className="border-2 border-green-400 bg-green-50 rounded-lg p-6 text-center">
+            <h5 className="text-sm font-bold text-gray-800 mb-2">🏦 Bank Transfer</h5>
+            <p className="text-2xl font-bold text-green-600 mb-1">
               {currency}${selectedAmount}
-            </span>
-          </p>
-          <p className="text-xs text-gray-600 mb-6 font-semibold">
-            {t('donate.pointCamera')}
-          </p>
+            </p>
+            <p className="text-xs text-gray-600 mb-4 font-semibold">
+              Scan to donate via bank transfer
+            </p>
 
-          {/* LOADING STATE */}
-          {isLoading && (
-            <div className="flex justify-center items-center mb-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <Loader2 size={60} className="animate-spin text-blue-600" />
+            {/* QR CODE */}
+            <div className="flex justify-center mb-4">
+              <div className="bg-white p-4 rounded-lg shadow-md">
+                <QRCode
+                  value={generateBankQRValue(selectedAmount)}
+                  size={180}
+                  level="H"
+                  includeMargin={true}
+                  fgColor="#000000"
+                  bgColor="#FFFFFF"
+                />
               </div>
             </div>
-          )}
 
-          {/* QR CODE - LINKS TO STRIPE PAYMENT LINK - FULLY CENTERED */}
-          {checkoutUrl && !isLoading && (
-            <>
-              <div className="flex justify-center mb-6">
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                  <QRCode
-                    value={checkoutUrl}
-                    size={240}
-                    level="H"
-                    includeMargin={true}
-                    fgColor="#000000"
-                    bgColor="#FFFFFF"
-                  />
-                </div>
+            <p className="text-xs text-gray-700 text-center">
+              Account: justiceforbarran
+            </p>
+          </div>
+
+          {/* E-TRANSFER QR CODE */}
+          <div className="border-2 border-orange-400 bg-orange-50 rounded-lg p-6 text-center">
+            <h5 className="text-sm font-bold text-gray-800 mb-2">📧 E-Transfer</h5>
+            <p className="text-2xl font-bold text-orange-600 mb-1">
+              {currency}${selectedAmount}
+            </p>
+            <p className="text-xs text-gray-600 mb-4 font-semibold">
+              Scan to send e-Transfer
+            </p>
+
+            {/* QR CODE */}
+            <div className="flex justify-center mb-4">
+              <div className="bg-white p-4 rounded-lg shadow-md">
+                <QRCode
+                  value={generateETransferQRValue(selectedAmount)}
+                  size={180}
+                  level="H"
+                  includeMargin={true}
+                  fgColor="#000000"
+                  bgColor="#FFFFFF"
+                />
               </div>
+            </div>
 
-              {/* DIRECT STRIPE LINK */}
-              <a
-                href={checkoutUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mb-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold text-sm transition-colors"
-              >
-                💳 {t('donate.donateNow')}
-              </a>
-            </>
-          )}
-
-          {/* CHANGE AMOUNT BUTTON */}
-          <div className="mt-4">
-            <button
-              onClick={() => {
-                setSelectedAmount(null);
-                setCheckoutUrl(null);
-              }}
-              className="text-sm text-blue-600 hover:text-blue-800 hover:underline font-semibold"
-            >
-              ← {t('donate.changeAmount')}
-            </button>
+            <p className="text-xs text-gray-700 text-center break-all">
+              justiceforbarran@gmail.com
+            </p>
           </div>
         </div>
       )}
 
-      {/* ACCEPTED PAYMENT METHODS - MOVED DOWN */}
-      <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-400 rounded-lg p-4">
+      {/* CHANGE AMOUNT BUTTON */}
+      {selectedAmount && (
+        <div className="text-center">
+          <button
+            onClick={() => setSelectedAmount(null)}
+            className="text-sm text-blue-600 hover:text-blue-800 hover:underline font-semibold"
+          >
+            ← {t('donate.changeAmount')}
+          </button>
+        </div>
+      )}
+
+      {/* STRIPE CREDIT CARD PAYMENT SECTION */}
+      <div className="border-2 border-purple-400 bg-purple-50 rounded-lg p-4 w-full">
+        <h4 className="text-sm font-bold mb-3 text-center text-gray-800">
+          💳 Credit Card Payment (Stripe)
+        </h4>
+        <p className="text-xs text-gray-600 mb-4 text-center">
+          Use Stripe for credit card, Apple Pay, or Google Pay
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          {donationAmounts.map((amount) => (
+            <a
+              key={amount}
+              href={`https://buy.stripe.com/test_link_for_${currency}_${amount}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-3 px-2 rounded-lg font-bold text-sm transition-all border-2 bg-white text-gray-800 border-gray-300 hover:border-purple-600 hover:bg-purple-100 text-center"
+            >
+              {currency}${amount}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* ACCEPTED PAYMENT METHODS */}
+      <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-400 rounded-lg p-4 w-full">
         <p className="text-xs font-bold text-gray-700 mb-2 text-center">
           {t('donate.weAccept')}
         </p>
@@ -225,8 +202,8 @@ export function DonationQRCode() {
         </div>
       </div>
 
-      {/* E-TRANSFER SECTION */}
-      <div className="border-2 border-orange-400 bg-orange-50 p-4 rounded-lg">
+      {/* E-TRANSFER DETAILS SECTION */}
+      <div className="border-2 border-orange-400 bg-orange-50 p-4 rounded-lg w-full">
         <h5 className="font-bold mb-3 text-sm flex items-center gap-2">
           📧 {t('donate.eTransfer')}
         </h5>
@@ -251,7 +228,7 @@ export function DonationQRCode() {
       </div>
 
       {/* SECURITY & INFO */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 w-full">
         <div className="flex items-start gap-2 mb-2">
           <span className="text-lg">🔒</span>
           <div>
