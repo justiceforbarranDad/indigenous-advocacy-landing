@@ -11,16 +11,16 @@ export function DonationQRCode() {
 
   const donationAmounts = [5, 10, 20, 50, 100];
 
-  // Generate QR code value for bank transfer
+  // Generate QR code value - links to donation page
   const generateBankQRValue = (amount: number) => {
-    // Simple text format that's easy to scan
-    return `justiceforbarran.ca/bank/${amount}/${currency}`;
+    // Link to donation page with amount pre-filled
+    return `https://indigenousadv-ahjdmzis.manus.space/#donate?amount=${amount}&currency=${currency}&method=bank`;
   };
 
-  // Generate QR code value for e-Transfer
+  // Generate QR code value - links to donation page for e-Transfer
   const generateETransferQRValue = (amount: number) => {
-    // Simple email format
-    return `justiceforbarran@gmail.com`;
+    // Link to donation page with amount pre-filled
+    return `https://indigenousadv-ahjdmzis.manus.space/#donate?amount=${amount}&currency=${currency}&method=etransfer`;
   };
 
   const copyToClipboard = (text: string) => {
@@ -115,8 +115,8 @@ export function DonationQRCode() {
               </div>
             </div>
 
-            <p className="text-xs text-gray-700 text-center font-mono">
-              justiceforbarran.ca/bank/{selectedAmount}/{currency}
+            <p className="text-xs text-gray-700 text-center">
+              Scan to donate via bank transfer
             </p>
           </div>
 
@@ -144,8 +144,8 @@ export function DonationQRCode() {
               </div>
             </div>
 
-            <p className="text-xs text-gray-700 text-center font-mono">
-              justiceforbarran@gmail.com
+            <p className="text-xs text-gray-700 text-center">
+              Scan to donate via e-Transfer
             </p>
           </div>
         </div>
