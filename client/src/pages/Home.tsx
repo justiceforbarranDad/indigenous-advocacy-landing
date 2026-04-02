@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SocialShareButtons } from '@/components/SocialShareButtons';
+import { DonationQRCode } from '@/components/DonationQRCode';
 import { Heart, ChevronRight, Play } from 'lucide-react';
 
 export default function Home() {
@@ -62,7 +63,7 @@ export default function Home() {
           {/* BLOODY CANADIAN FLAG */}
           <div className="flex justify-center mb-6">
             <img 
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/flag-blood-since-2021-heavy_e8f4a2c1.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/flag-blood-since-2021-heavy_96992821.png"
               alt="Canadian Flag - Since 2021"
               className="w-full max-w-2xl h-auto"
             />
@@ -151,13 +152,13 @@ export default function Home() {
 
           {/* RIGHT COLUMN - SIDEBAR */}
           <div className="space-y-6">
-            
-            {/* DONATION BOX */}
+                       {/* DONATION BOX */}
             <div className="border-4 border-red-600 bg-red-50 p-6">
               <h3 className="text-2xl font-bold mb-3 text-red-600">
                 {i18n.language === 'fr' ? 'Soutenir la Justice' : 'Support Justice'}
               </h3>
-              <p className="text-sm mb-4 leading-relaxed">
+              <DonationQRCode />
+              <p className="text-sm mb-4 leading-relaxed mt-6">
                 {i18n.language === 'fr' ? '100% des dons vont directement à la défense juridique, à la défense des droits et aux efforts de changement systémique.' : '100% of donations go directly to legal defense, advocacy, and systemic change efforts.'}
               </p>
               <div className="space-y-3 mb-4">
