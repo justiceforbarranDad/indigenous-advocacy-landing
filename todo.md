@@ -1692,3 +1692,12 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Create admin dashboard page with role-based access control
 - [ ] Test admin functionality end-to-end
 - [ ] Verify sample data displays correctly in public trackers
+
+
+## KING CHARLES UNCEDED TERRITORY VIDEO (April 2, 2026)
+- [x] Embedded King Charles video about unceded territory acknowledgement
+- [x] Added bilingual section heading (English/French)
+- [x] Created powerful subtitle exposing Crown hypocrisy
+- [x] Positioned video prominently on home page with black background
+- [x] Made video responsive and properly formatted
+- [ ] Publish website and test live

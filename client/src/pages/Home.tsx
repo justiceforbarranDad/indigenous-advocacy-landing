@@ -220,6 +220,30 @@ export default function Home() {
         </div>
       </div>
 
+      {/* KING CHARLES UNCEDED TERRITORY SECTION */}
+      <div className="bg-black text-white py-12 border-y-4 border-black">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-black tracking-widest mb-2">
+              {i18n.language === 'fr' ? 'LE ROI CHARLES RECONNAÎT LE TERRITOIRE NON CÉDÉ' : 'KING CHARLES ACKNOWLEDGES UNCEDED TERRITORY'}
+            </h2>
+            <p className="text-sm md:text-base text-gray-300 max-w-2xl mx-auto">
+              {i18n.language === 'fr' ? 'Même la Couronne reconnaît les terres non cédées — mais les systèmes d\'oppression persistent. Les paroles creuses sans action.' : 'Even the Crown acknowledges unceded lands — yet systemic oppression persists. Empty words without action.'}
+            </p>
+          </div>
+          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              className="absolute top-0 left-0 w-full h-full border-4 border-white"
+              src="https://www.youtube.com/embed/Lnuj9yO7phY"
+              title="King Charles Acknowledges Unceded Territory"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
       {/* MAIN CONTENT GRID */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
