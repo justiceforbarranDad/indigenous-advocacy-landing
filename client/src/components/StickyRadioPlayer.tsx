@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, ChevronDown, ChevronUp, Volume2, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -11,7 +13,7 @@ interface Episode {
   transcript: string;
 }
 
-const episodes: Episode[] = [
+const episodesEN: Episode[] = [
   {
     id: 1,
     title: 'The Silence of Politicians',
@@ -88,6 +90,67 @@ When a child needs help and the system abandons them, every day of delay compoun
   }
 ];
 
+const episodesFR: Episode[] = [
+  {
+    id: 1,
+    title: 'Le Silence des Politiciens',
+    description: 'Une investigation sur la responsabilité gouvernementale et l\'échec des élus à servir leurs électeurs.',
+    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep1-silence-politiciens-fr_ae2cceb3.wav',
+    duration: '8:45',
+    transcript: `LE SILENCE DES POLITICIENS: Une Investigation sur la Responsabilité Gouvernementale
+
+Pendant 1 873 jours, une famille cherche de l'aide auprès des élus. Des représentants fédéraux, provinciaux et municipaux. Tous silencieux. Tous qui les abandonnent.
+
+Ceci est l'histoire de l'échec systémique. Ceci est l'investigation sur les raisons pour lesquelles les politiciens qui ont juré de servir leurs électeurs ignorent plutôt les appels désespérés à la justice.
+
+En 2021, une famille a contacté sa députée à l'Assemblée nationale, Céline Haytayan, représentant Laval-des-Rapides au Québec. Ils avaient un problème grave. Un enfant de leur famille avait été poignardé plusieurs fois. Le Département de la Protection de la Jeunesse était impliqué mais avait retiré son soutien sans suivi adéquat.`
+  },
+  {
+    id: 2,
+    title: 'L\'Échec du Système: DPJ',
+    description: 'Une investigation sur l\'échec institutionnel et l\'effondrement de la protection de l\'enfance au Québec.',
+    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep2-systeme-echec-dpj-fr_5b898699.wav',
+    duration: '9:12',
+    transcript: `L'ÉCHEC DU SYSTÈME: Une Investigation sur la Responsabilité de la DPJ
+
+La Direction de la Protection de la Jeunesse. La DPJ. Au Québec, c'est l'institution responsable de protéger les enfants contre les abus et la négligence. Mais que se passe-t-il quand le système conçu pour protéger les enfants devient le système qui les abandonne?
+
+Ceci est l'investigation sur l'échec institutionnel. Ceci est l'histoire d'un enfant qui avait besoin d'aide et qui a reçu l'abandon à la place.`
+  },
+  {
+    id: 3,
+    title: '1873 Jours d\'Injustice',
+    description: 'Une investigation chronologique de cinq ans d\'attente pour la responsabilité.',
+    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep3-1873-jours-injustice-fr_1d5fcf9b.wav',
+    duration: '7:58',
+    transcript: `1873 JOURS D'INJUSTICE: Une Investigation Chronologique
+
+1 873 jours. C'est cinq ans et deux mois. C'est combien de temps une famille attend la justice. C'est combien de temps ils cherchent de l'aide auprès des institutions qui étaient censées les protéger.
+
+Chaque jour qui passe est un jour sans résolution. Chaque jour est un jour d'injustice continue. Chaque jour est un jour où le système échoue.`
+  },
+  {
+    id: 4,
+    title: 'Les Droits Autochtones Sous Attaque',
+    description: 'Une investigation juridique sur les violations systémiques et l\'échec institutionnel.',
+    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep4-droits-autochtones-fr_413794de.wav',
+    duration: '8:34',
+    transcript: `LES DROITS AUTOCHTONES SOUS ATTAQUE: Une Investigation Juridique
+
+La Déclaration des Nations Unies sur les droits des peuples autochtones. La Charte canadienne des droits et libertés. Le projet de loi C-92. Ce ne sont pas que des documents juridiques. Ce sont des promesses.`
+  },
+  {
+    id: 5,
+    title: 'La Justice Retardée est la Justice Niée',
+    description: 'L\'impact de l\'échec systémique et la puissance de la résistance collective.',
+    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep5-justice-retardee-fr_b97c8c25.wav',
+    duration: '8:21',
+    transcript: `LA JUSTICE RETARDÉE EST LA JUSTICE NIÉE: L'Impact de l'Échec Systémique
+
+La justice retardée est la justice niée. Ce n'est pas qu'un principe juridique. C'est la réalité vécue des familles qui attendent la responsabilité.`
+  }
+];
+
 export default function StickyRadioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentEpisodeId, setCurrentEpisodeId] = useState(1);
@@ -95,10 +158,18 @@ export default function StickyRadioPlayer() {
   const [isMinimized, setIsMinimized] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [language, setLanguage] = useState<'en' | 'fr'>('en');
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const currentEpisode = episodes.find(ep => ep.id === currentEpisodeId);
+  const episodes = language === 'en' ? episodesEN : episodesFR;
+  const currentEpisode = episodes.find(ep => ep.id === currentEpisodeId) || episodes[0];
+
+  // Update language when i18n language changes
+  useEffect(() => {
+    const currentLang = i18n.language.startsWith('fr') ? 'fr' : 'en';
+    setLanguage(currentLang);
+  }, [i18n.language]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -107,7 +178,6 @@ export default function StickyRadioPlayer() {
     const updateTime = () => setCurrentTime(audio.currentTime);
     const updateDuration = () => setDuration(audio.duration);
     const handleEnded = () => {
-      // Auto-play next episode
       if (currentEpisodeId < episodes.length) {
         setCurrentEpisodeId(currentEpisodeId + 1);
       } else {
@@ -124,7 +194,7 @@ export default function StickyRadioPlayer() {
       audio.removeEventListener('loadedmetadata', updateDuration);
       audio.removeEventListener('ended', handleEnded);
     };
-  }, [currentEpisodeId]);
+  }, [currentEpisodeId, episodes.length]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -150,161 +220,142 @@ export default function StickyRadioPlayer() {
   const handleEpisodeChange = (episodeId: number) => {
     setCurrentEpisodeId(episodeId);
     setCurrentTime(0);
-    // Delay play to ensure audio source is loaded
-    setTimeout(() => {
-      setIsPlaying(true);
-    }, 100);
+    setIsPlaying(true);
   };
 
-  const formatTime = (seconds: number) => {
-    if (!seconds || isNaN(seconds)) return '0:00';
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  const handleLanguageChange = (lang: 'en' | 'fr') => {
+    setLanguage(lang);
+    setCurrentEpisodeId(1);
+    setIsPlaying(false);
+    setCurrentTime(0);
+  };
+
+  const formatTime = (time: number) => {
+    if (!time || isNaN(time)) return '0:00';
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
   if (!currentEpisode) return null;
 
   return (
-    <>
-      <audio
-        ref={audioRef}
-        src={currentEpisode.audioUrl}
-        crossOrigin="anonymous"
-        controls={false}
-        preload="metadata"
-      />
+    <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isMinimized ? 'h-16' : 'h-auto'}`}>
+      <div className="bg-red-600 text-white shadow-lg">
+        {/* Language Selector */}
+        <div className="flex justify-between items-center px-4 py-2 bg-black/20">
+          <div className="flex gap-2">
+            <button
+              onClick={() => handleLanguageChange('en')}
+              className={`px-3 py-1 rounded text-sm font-semibold transition-colors ${
+                language === 'en' 
+                  ? 'bg-white text-red-600' 
+                  : 'bg-red-700 text-white hover:bg-red-800'
+              }`}
+            >
+              🇬🇧 English
+            </button>
+            <button
+              onClick={() => handleLanguageChange('fr')}
+              className={`px-3 py-1 rounded text-sm font-semibold transition-colors ${
+                language === 'fr' 
+                  ? 'bg-white text-red-600' 
+                  : 'bg-red-700 text-white hover:bg-red-800'
+              }`}
+            >
+              🇫🇷 Français
+            </button>
+          </div>
+          <button
+            onClick={() => setIsMinimized(!isMinimized)}
+            className="text-white hover:bg-red-700 p-1 rounded transition-colors"
+          >
+            {isMinimized ? <ChevronDown size={20} /> : <ChevronUp size={20} />}
+          </button>
+        </div>
 
-      {/* Sticky Radio Player */}
-      <div className="fixed top-20 left-0 right-0 z-40 px-4 py-4">
-        <div className={`max-w-6xl mx-auto transition-all duration-300 ${
-          isMinimized ? 'bg-red-600 rounded-lg shadow-lg' : 'bg-gradient-to-r from-red-600 to-red-700 rounded-xl shadow-2xl'
-        }`}>
-          {!isMinimized ? (
-            <div className="p-6 text-white">
-              {/* Header */}
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <Volume2 className="w-6 h-6 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-sm font-semibold opacity-90">LIVE PODCAST</h3>
-                    <h2 className="text-2xl font-bold">{currentEpisode.title}</h2>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setShowTranscript(!showTranscript)}
-                    className="px-3 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition"
-                  >
-                    {showTranscript ? 'Hide' : 'Show'} Transcript
-                  </button>
-                  <button
-                    onClick={() => setIsMinimized(true)}
-                    className="p-2 hover:bg-white/20 rounded-lg transition"
-                  >
-                    <ChevronUp className="w-5 h-5" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-white/90 mb-4">{currentEpisode.description}</p>
-
-              {/* Player Controls */}
-              <div className="flex items-center gap-4 mb-4">
-                <button
-                  onClick={handlePlayPause}
-                  className="flex-shrink-0 w-16 h-16 bg-white text-red-600 rounded-full flex items-center justify-center hover:bg-red-50 transition shadow-lg"
-                >
-                  {isPlaying ? (
-                    <Pause className="w-8 h-8 fill-current" />
-                  ) : (
-                    <Play className="w-8 h-8 fill-current ml-1" />
-                  )}
-                </button>
-
-                {/* Progress Bar */}
-                <div className="flex-1">
-                  <input
-                    type="range"
-                    min="0"
-                    max={duration || 0}
-                    value={currentTime}
-                    onChange={(e) => {
-                      if (audioRef.current) {
-                        audioRef.current.currentTime = parseFloat(e.target.value);
-                      }
-                    }}
-                    className="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer accent-white"
-                  />
-                  <div className="flex justify-between text-sm text-white/80 mt-1">
-                    <span>{formatTime(currentTime)}</span>
-                    <span>{formatTime(duration)}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Episode Selector */}
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
-                {episodes.map((ep) => (
-                  <button
-                    key={ep.id}
-                    onClick={() => handleEpisodeChange(ep.id)}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition ${
-                      currentEpisodeId === ep.id
-                        ? 'bg-white text-red-600'
-                        : 'bg-white/20 hover:bg-white/30 text-white'
-                    }`}
-                  >
-                    Ep {ep.id}
-                  </button>
-                ))}
-              </div>
-
-              {/* Transcript */}
-              {showTranscript && (
-                <div className="mt-4 bg-white/10 rounded-lg p-4 max-h-64 overflow-y-auto">
-                  <h4 className="font-bold mb-2">Transcript</h4>
-                  <p className="text-sm text-white/90 whitespace-pre-wrap leading-relaxed">
-                    {currentEpisode.transcript}
-                  </p>
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className="p-4 flex items-center justify-between cursor-pointer" onClick={() => setIsMinimized(false)}>
-              <div className="flex items-center gap-3 flex-1 min-w-0">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handlePlayPause();
-                  }}
-                  className="flex-shrink-0 w-10 h-10 bg-white text-red-600 rounded-full flex items-center justify-center hover:bg-red-50 transition"
-                >
-                  {isPlaying ? (
-                    <Pause className="w-5 h-5 fill-current" />
-                  ) : (
-                    <Play className="w-5 h-5 fill-current ml-0.5" />
-                  )}
-                </button>
-                <div className="min-w-0">
-                  <p className="text-white text-sm font-semibold truncate">{currentEpisode.title}</p>
-                  <p className="text-white/80 text-xs">{formatTime(currentTime)} / {formatTime(duration)}</p>
+        {!isMinimized && (
+          <div className="p-6">
+            {/* Header */}
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start gap-3 flex-1">
+                <Volume2 size={24} className="mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="text-xl font-bold">LIVE PODCAST</h3>
+                  <h2 className="text-3xl font-serif font-bold mt-2">{currentEpisode.title}</h2>
+                  <p className="text-sm mt-3 opacity-90">{currentEpisode.description}</p>
                 </div>
               </div>
               <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsMinimized(false);
-                }}
-                className="p-2 hover:bg-white/20 rounded-lg transition"
+                onClick={() => setShowTranscript(!showTranscript)}
+                className="bg-red-700 hover:bg-red-800 px-4 py-2 rounded font-semibold text-sm transition-colors flex-shrink-0 ml-4"
               >
-                <ChevronDown className="w-5 h-5 text-white" />
+                {showTranscript ? 'Hide' : 'Show'} Transcript
               </button>
             </div>
-          )}
-        </div>
+
+            {/* Player Controls */}
+            <div className="flex items-center gap-4 mb-6">
+              <button
+                onClick={handlePlayPause}
+                className="bg-white text-red-600 rounded-full p-4 hover:bg-gray-100 transition-colors flex-shrink-0"
+              >
+                {isPlaying ? <Pause size={32} /> : <Play size={32} />}
+              </button>
+              <div className="flex-1">
+                <input
+                  type="range"
+                  min="0"
+                  max={duration || 0}
+                  value={currentTime}
+                  onChange={(e) => {
+                    const audio = audioRef.current;
+                    if (audio) audio.currentTime = parseFloat(e.target.value);
+                  }}
+                  className="w-full h-2 bg-red-700 rounded-lg appearance-none cursor-pointer"
+                />
+                <div className="flex justify-between text-sm mt-2">
+                  <span>{formatTime(currentTime)}</span>
+                  <span>{formatTime(duration)}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Episode Selector */}
+            <div className="grid grid-cols-5 gap-2 mb-6">
+              {episodes.map((ep) => (
+                <button
+                  key={ep.id}
+                  onClick={() => handleEpisodeChange(ep.id)}
+                  className={`py-2 px-3 rounded font-semibold text-sm transition-colors ${
+                    currentEpisodeId === ep.id
+                      ? 'bg-white text-red-600'
+                      : 'bg-red-700 hover:bg-red-800 text-white'
+                  }`}
+                >
+                  Ep {ep.id}
+                </button>
+              ))}
+            </div>
+
+            {/* Transcript */}
+            {showTranscript && (
+              <div className="bg-red-700 rounded-lg p-4 max-h-64 overflow-y-auto">
+                <h4 className="font-bold mb-3 text-lg">Transcript</h4>
+                <p className="text-sm leading-relaxed whitespace-pre-wrap">{currentEpisode.transcript}</p>
+              </div>
+            )}
+
+            {/* Audio Element */}
+            <audio
+              ref={audioRef}
+              src={currentEpisode.audioUrl}
+              crossOrigin="anonymous"
+              controls={false}
+            />
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
