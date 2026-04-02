@@ -141,6 +141,7 @@ import EasyDonate from "./pages/EasyDonate";
 import OrangeShirtAccountability from "./pages/OrangeShirtAccountability";
 import Jurisprudence from "./pages/Jurisprudence";
 import Trackers from "./pages/Trackers";
+import SocialMediaHub from "./pages/SocialMediaHub";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -150,6 +151,7 @@ function Router() {
       <Route path="/legal" component={Legal} />
       <Route path="/jurisprudence" component={Jurisprudence} />
       <Route path="/trackers" component={Trackers} />
+      <Route path="/social-media" component={SocialMediaHub} />
       <Route path="/sunday-bloody-sunday-part-3" component={SundayBloodyySundayPart3} />
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
