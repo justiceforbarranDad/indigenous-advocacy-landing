@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { SilenceClock } from './SilenceClock';
 
 export default function BloodFlagHero() {
   const { i18n } = useTranslation();
@@ -28,7 +29,7 @@ export default function BloodFlagHero() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/canada-flag-blood-waving-pole-dRLabrFFVSRcSkFi3qCsrY.webp)',
+          backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/canada-flag-totem-parliament-centered-E7LKafshVwbSq86RqWKQGC.webp)',
           backgroundPosition: 'center',
           backgroundSize: 'cover'
         }}
@@ -67,6 +68,11 @@ export default function BloodFlagHero() {
           <p className="text-lg md:text-xl font-semibold text-gray-100 max-w-2xl mx-auto">
             {text.subtitle}
           </p>
+
+          {/* The Silence Clock */}
+          <div className="mt-12">
+            <SilenceClock />
+          </div>
         </div>
       </div>
     </div>
