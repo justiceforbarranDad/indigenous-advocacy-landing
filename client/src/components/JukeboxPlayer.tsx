@@ -241,7 +241,7 @@ export function JukeboxPlayer() {
       
       {/* Jukebox Player - Minimized */}
       {!isOpen && (
-        <div className="fixed bottom-6 right-6 z-40">
+        <div className="fixed top-6 right-6 z-40">
           <button
             onClick={() => setIsOpen(true)}
             className="relative w-32 h-40 bg-gradient-to-b from-yellow-300 via-yellow-200 to-yellow-400 rounded-lg shadow-2xl border-4 border-yellow-600 hover:shadow-3xl transition-all duration-300 transform hover:scale-105 group"
