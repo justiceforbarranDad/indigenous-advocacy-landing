@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, donationCampaigns, DonationCampaign, legalProfiles, InsertLegalProfile, parentProfiles, InsertParentProfile, videoViews, InsertVideoView, emailSubscribers, InsertEmailSubscriber, newsUpdates, InsertNewsUpdate, emailCampaigns, InsertEmailCampaign, surveyResponses, InsertSurveyResponse } from "../drizzle/schema";
+import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, donationCampaigns, DonationCampaign, legalProfiles, InsertLegalProfile, parentProfiles, InsertParentProfile, videoViews, InsertVideoView, emailSubscribers, InsertEmailSubscriber, newsUpdates, InsertNewsUpdate, emailCampaigns, InsertEmailCampaign, surveyResponses, InsertSurveyResponse, orangeShirtAccountability, InsertOrangeShirtAccountability, OrangeShirtAccountability, governmentAccountability, InsertGovernmentAccountability, GovernmentAccountability } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -409,4 +409,132 @@ export async function getTotalRaisedAmount(): Promise<number> {
   
   const campaign = await getActiveDonationCampaign();
   return campaign ? campaign.raisedAmount : 0;
+}
+
+// Orange Shirt Day Accountability Functions
+export async function createOrangeShirtEntry(entry: InsertOrangeShirtAccountability) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  const result = await db.insert(orangeShirtAccountability).values(entry);
+  return result;
+}
+
+export async function getOrangeShirtEntries(limit: number = 100, offset: number = 0): Promise<OrangeShirtAccountability[]> {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select().from(orangeShirtAccountability).limit(limit).offset(offset);
+  return result;
+}
+
+export async function getOrangeShirtEntriesByType(type: string): Promise<OrangeShirtAccountability[]> {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select().from(orangeShirtAccountability).where(eq(orangeShirtAccountability.organizationType, type as any));
+  return result;
+}
+
+export async function updateOrangeShirtEntry(id: number, updates: Partial<OrangeShirtAccountability>) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  await db.update(orangeShirtAccountability)
+    .set({
+      ...updates,
+      updatedAt: new Date(),
+    })
+    .where(eq(orangeShirtAccountability.id, id));
+}
+
+export async function getOrangeShirtStats() {
+  const db = await getDb();
+  if (!db) {
+    return { total: 0, noResponse: 0, responded: 0, performative: 0 };
+  }
+  
+  const all = await db.select().from(orangeShirtAccountability);
+  const noResponse = all.filter(e => e.responseStatus === "no_response").length;
+  const responded = all.filter(e => e.responseStatus !== "no_response").length;
+  const performative = all.filter(e => e.isPerformative === "yes").length;
+  
+  return {
+    total: all.length,
+    noResponse,
+    responded,
+    performative,
+  };
+}
+
+// Government Accountability Functions
+export async function createGovernmentEntry(entry: InsertGovernmentAccountability) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  const result = await db.insert(governmentAccountability).values(entry);
+  return result;
+}
+
+export async function getGovernmentEntries(limit: number = 100, offset: number = 0): Promise<GovernmentAccountability[]> {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select().from(governmentAccountability).limit(limit).offset(offset);
+  return result;
+}
+
+export async function getGovernmentEntriesByLevel(level: string): Promise<GovernmentAccountability[]> {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select().from(governmentAccountability).where(eq(governmentAccountability.governmentLevel, level as any));
+  return result;
+}
+
+export async function updateGovernmentEntry(id: number, updates: Partial<GovernmentAccountability>) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  await db.update(governmentAccountability)
+    .set({
+      ...updates,
+      updatedAt: new Date(),
+    })
+    .where(eq(governmentAccountability.id, id));
+}
+
+export async function getGovernmentStats() {
+  const db = await getDb();
+  if (!db) {
+    return { total: 0, noResponse: 0, responded: 0, ceaseAndDesist: 0 };
+  }
+  
+  const all = await db.select().from(governmentAccountability);
+  const noResponse = all.filter(e => e.responseStatus === "no_response").length;
+  const responded = all.filter(e => e.responseStatus !== "no_response").length;
+  const ceaseAndDesist = all.filter(e => e.ceaseAndDesistReceived === "yes").length;
+  
+  return {
+    total: all.length,
+    noResponse,
+    responded,
+    ceaseAndDesist,
+  };
 }

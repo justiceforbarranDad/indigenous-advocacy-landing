@@ -71,6 +71,13 @@
       "when": 1774910160912,
       "tag": "0009_lowly_thing",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1775136053242,
+      "tag": "0010_easy_impossible_man",
+      "breakpoints": true
     }
   ]
 }

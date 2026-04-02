@@ -4,7 +4,7 @@ const COOKIE_NAME = "session";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
-import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile, incrementVideoView, getVideoViews, getAllVideoViews, subscribeEmail, getEmailSubscriber, unsubscribeEmail, getActiveSubscribers, createNewsUpdate, getPublishedNews, createEmailCampaign, submitSurveyResponse, getSurveyStats, getSurveyResponses, getActiveDonationCampaign, getDonationCampaignById, updateDonationCampaignRaisedAmount, getTotalRaisedAmount } from "./db";
+import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile, incrementVideoView, getVideoViews, getAllVideoViews, subscribeEmail, getEmailSubscriber, unsubscribeEmail, getActiveSubscribers, createNewsUpdate, getPublishedNews, createEmailCampaign, submitSurveyResponse, getSurveyStats, getSurveyResponses, getActiveDonationCampaign, getDonationCampaignById, updateDonationCampaignRaisedAmount, getTotalRaisedAmount, createOrangeShirtEntry, getOrangeShirtEntries, getOrangeShirtEntriesByType, updateOrangeShirtEntry, getOrangeShirtStats, createGovernmentEntry, getGovernmentEntries, getGovernmentEntriesByLevel, updateGovernmentEntry, getGovernmentStats } from "./db";
 import { notifyOwner } from "./_core/notification";
 import { exportSurveyAsCSV, exportAnalyticsSummaryAsCSV, generateAnalyticsReport } from "./dataExport";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
@@ -551,6 +551,243 @@ export const appRouter = router({
     }),
   }),
   subscriptions: router(subscriptionRouter),
+
+  accountability: router({
+    orangeShirt: router({
+      create: publicProcedure
+        .input(z.object({
+          organizationName: z.string().min(1, "Organization name is required"),
+          organizationType: z.enum(["corporate_sponsor", "nhl_team", "sports_team", "orange_shirt_society", "other"]),
+          category: z.string().optional(),
+          email: z.string().email().optional(),
+          phone: z.string().optional(),
+          socialMedia: z.string().optional(),
+          website: z.string().optional(),
+          contactPerson: z.string().optional(),
+          dateFirstContacted: z.date().optional(),
+          contactMethod: z.enum(["email", "phone", "social_media", "in_person", "letter", "other"]).optional(),
+          responseStatus: z.enum(["no_response", "acknowledged", "committed", "acting", "performative", "hostile"]).default("no_response"),
+          responseDate: z.date().optional(),
+          responseContent: z.string().optional(),
+          commitmentDetails: z.string().optional(),
+          followUpDate: z.date().optional(),
+          notes: z.string().optional(),
+          isPerformative: z.enum(["yes", "no"]).default("no"),
+        }))
+        .mutation(async ({ input }) => {
+          try {
+            await createOrangeShirtEntry({
+              organizationName: input.organizationName,
+              organizationType: input.organizationType,
+              category: input.category || null,
+              email: input.email || null,
+              phone: input.phone || null,
+              socialMedia: input.socialMedia || null,
+              website: input.website || null,
+              contactPerson: input.contactPerson || null,
+              dateFirstContacted: input.dateFirstContacted || null,
+              contactMethod: input.contactMethod || null,
+              responseStatus: input.responseStatus,
+              responseDate: input.responseDate || null,
+              responseContent: input.responseContent || null,
+              commitmentDetails: input.commitmentDetails || null,
+              followUpDate: input.followUpDate || null,
+              notes: input.notes || null,
+              isPerformative: input.isPerformative,
+            });
+            
+            await notifyOwner({
+              title: "New Orange Shirt Accountability Entry",
+              content: `${input.organizationName} (${input.organizationType}) added to tracker. Status: ${input.responseStatus}`,
+            });
+            
+            return { success: true, message: "Entry created successfully" };
+          } catch (error) {
+            console.error("Error creating orange shirt entry:", error);
+            throw new Error("Failed to create entry");
+          }
+        }),
+
+      getAll: publicProcedure
+        .input(z.object({
+          limit: z.number().default(100),
+          offset: z.number().default(0),
+        }))
+        .query(async ({ input }) => {
+          try {
+            return await getOrangeShirtEntries(input.limit, input.offset);
+          } catch (error) {
+            console.error("Error fetching orange shirt entries:", error);
+            return [];
+          }
+        }),
+
+      getByType: publicProcedure
+        .input(z.object({
+          type: z.enum(["corporate_sponsor", "nhl_team", "sports_team", "orange_shirt_society", "other"]),
+        }))
+        .query(async ({ input }) => {
+          try {
+            return await getOrangeShirtEntriesByType(input.type);
+          } catch (error) {
+            console.error("Error fetching orange shirt entries by type:", error);
+            return [];
+          }
+        }),
+
+      update: publicProcedure
+        .input(z.object({
+          id: z.number(),
+          responseStatus: z.enum(["no_response", "acknowledged", "committed", "acting", "performative", "hostile"]).optional(),
+          responseDate: z.date().optional(),
+          responseContent: z.string().optional(),
+          commitmentDetails: z.string().optional(),
+          followUpDate: z.date().optional(),
+          notes: z.string().optional(),
+          isPerformative: z.enum(["yes", "no"]).optional(),
+        }))
+        .mutation(async ({ input }) => {
+          try {
+            const { id, ...updates } = input;
+            await updateOrangeShirtEntry(id, updates as any);
+            return { success: true, message: "Entry updated successfully" };
+          } catch (error) {
+            console.error("Error updating orange shirt entry:", error);
+            throw new Error("Failed to update entry");
+          }
+        }),
+
+      getStats: publicProcedure.query(async () => {
+        try {
+          return await getOrangeShirtStats();
+        } catch (error) {
+          console.error("Error fetching orange shirt stats:", error);
+          return { total: 0, noResponse: 0, responded: 0, performative: 0 };
+        }
+      }),
+    }),
+
+    government: router({
+      create: publicProcedure
+        .input(z.object({
+          officialName: z.string().min(1, "Official name is required"),
+          title: z.string().min(1, "Title is required"),
+          governmentLevel: z.enum(["federal", "provincial", "municipal", "agency", "other"]),
+          department: z.string().optional(),
+          jurisdiction: z.string().optional(),
+          email: z.string().email().optional(),
+          phone: z.string().optional(),
+          officeAddress: z.string().optional(),
+          socialMedia: z.string().optional(),
+          website: z.string().optional(),
+          dateFirstContacted: z.date().optional(),
+          contactMethod: z.enum(["email", "phone", "social_media", "in_person", "letter", "other"]).optional(),
+          responseStatus: z.enum(["no_response", "acknowledged", "committed", "acting", "hostile", "cease_and_desist"]).default("no_response"),
+          responseDate: z.date().optional(),
+          responseContent: z.string().optional(),
+          commitmentDetails: z.string().optional(),
+          followUpDate: z.date().optional(),
+          ceaseAndDesistReceived: z.enum(["yes", "no"]).default("no"),
+          ceaseAndDesistDate: z.date().optional(),
+          notes: z.string().optional(),
+        }))
+        .mutation(async ({ input }) => {
+          try {
+            await createGovernmentEntry({
+              officialName: input.officialName,
+              title: input.title,
+              governmentLevel: input.governmentLevel,
+              department: input.department || null,
+              jurisdiction: input.jurisdiction || null,
+              email: input.email || null,
+              phone: input.phone || null,
+              officeAddress: input.officeAddress || null,
+              socialMedia: input.socialMedia || null,
+              website: input.website || null,
+              dateFirstContacted: input.dateFirstContacted || null,
+              contactMethod: input.contactMethod || null,
+              responseStatus: input.responseStatus,
+              responseDate: input.responseDate || null,
+              responseContent: input.responseContent || null,
+              commitmentDetails: input.commitmentDetails || null,
+              followUpDate: input.followUpDate || null,
+              ceaseAndDesistReceived: input.ceaseAndDesistReceived,
+              ceaseAndDesistDate: input.ceaseAndDesistDate || null,
+              notes: input.notes || null,
+            });
+            
+            await notifyOwner({
+              title: "New Government Accountability Entry",
+              content: `${input.officialName} (${input.governmentLevel}) added to tracker. Status: ${input.responseStatus}`,
+            });
+            
+            return { success: true, message: "Entry created successfully" };
+          } catch (error) {
+            console.error("Error creating government entry:", error);
+            throw new Error("Failed to create entry");
+          }
+        }),
+
+      getAll: publicProcedure
+        .input(z.object({
+          limit: z.number().default(100),
+          offset: z.number().default(0),
+        }))
+        .query(async ({ input }) => {
+          try {
+            return await getGovernmentEntries(input.limit, input.offset);
+          } catch (error) {
+            console.error("Error fetching government entries:", error);
+            return [];
+          }
+        }),
+
+      getByLevel: publicProcedure
+        .input(z.object({
+          level: z.enum(["federal", "provincial", "municipal", "agency", "other"]),
+        }))
+        .query(async ({ input }) => {
+          try {
+            return await getGovernmentEntriesByLevel(input.level);
+          } catch (error) {
+            console.error("Error fetching government entries by level:", error);
+            return [];
+          }
+        }),
+
+      update: publicProcedure
+        .input(z.object({
+          id: z.number(),
+          responseStatus: z.enum(["no_response", "acknowledged", "committed", "acting", "hostile", "cease_and_desist"]).optional(),
+          responseDate: z.date().optional(),
+          responseContent: z.string().optional(),
+          commitmentDetails: z.string().optional(),
+          followUpDate: z.date().optional(),
+          ceaseAndDesistReceived: z.enum(["yes", "no"]).optional(),
+          ceaseAndDesistDate: z.date().optional(),
+          notes: z.string().optional(),
+        }))
+        .mutation(async ({ input }) => {
+          try {
+            const { id, ...updates } = input;
+            await updateGovernmentEntry(id, updates as any);
+            return { success: true, message: "Entry updated successfully" };
+          } catch (error) {
+            console.error("Error updating government entry:", error);
+            throw new Error("Failed to update entry");
+          }
+        }),
+
+      getStats: publicProcedure.query(async () => {
+        try {
+          return await getGovernmentStats();
+        } catch (error) {
+          console.error("Error fetching government stats:", error);
+          return { total: 0, noResponse: 0, responded: 0, ceaseAndDesist: 0 };
+        }
+      }),
+    }),
+  }),
   
   podcast: router({
     feed: publicProcedure.query(() => {

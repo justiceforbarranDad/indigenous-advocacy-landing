@@ -215,3 +215,60 @@ export const stripePayments = mysqlTable("stripe_payments", {
 
 export type StripePayment = typeof stripePayments.$inferSelect;
 export type InsertStripePayment = typeof stripePayments.$inferInsert;
+
+// Orange Shirt Day Accountability Tracker Table
+export const orangeShirtAccountability = mysqlTable("orange_shirt_accountability", {
+  id: int("id").autoincrement().primaryKey(),
+  organizationName: varchar("organization_name", { length: 255 }).notNull(),
+  organizationType: mysqlEnum("organization_type", ["corporate_sponsor", "nhl_team", "sports_team", "orange_shirt_society", "other"]).notNull(),
+  category: varchar("category", { length: 100 }), // e.g., "Banking", "Retail", "Sports"
+  email: varchar("email", { length: 320 }),
+  phone: varchar("phone", { length: 20 }),
+  socialMedia: text("social_media"), // JSON: {twitter, facebook, instagram, linkedin}
+  website: varchar("website", { length: 512 }),
+  contactPerson: varchar("contact_person", { length: 255 }),
+  dateFirstContacted: timestamp("date_first_contacted"),
+  contactMethod: mysqlEnum("contact_method", ["email", "phone", "social_media", "in_person", "letter", "other"]),
+  responseStatus: mysqlEnum("response_status", ["no_response", "acknowledged", "committed", "acting", "performative", "hostile"]).default("no_response").notNull(),
+  responseDate: timestamp("response_date"),
+  responseContent: text("response_content"), // What they said
+  commitmentDetails: text("commitment_details"), // What they committed to
+  followUpDate: timestamp("follow_up_date"),
+  notes: text("notes"),
+  isPerformative: mysqlEnum("is_performative", ["yes", "no"]).default("no").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type OrangeShirtAccountability = typeof orangeShirtAccountability.$inferSelect;
+export type InsertOrangeShirtAccountability = typeof orangeShirtAccountability.$inferInsert;
+
+// Government Agencies Accountability Tracker Table
+export const governmentAccountability = mysqlTable("government_accountability", {
+  id: int("id").autoincrement().primaryKey(),
+  officialName: varchar("official_name", { length: 255 }).notNull(),
+  title: varchar("title", { length: 255 }).notNull(),
+  governmentLevel: mysqlEnum("government_level", ["federal", "provincial", "municipal", "agency", "other"]).notNull(),
+  department: varchar("department", { length: 255 }),
+  jurisdiction: varchar("jurisdiction", { length: 255 }), // e.g., "Quebec", "Canada"
+  email: varchar("email", { length: 320 }),
+  phone: varchar("phone", { length: 20 }),
+  officeAddress: text("office_address"),
+  socialMedia: text("social_media"), // JSON: {twitter, facebook, instagram, linkedin}
+  website: varchar("website", { length: 512 }),
+  dateFirstContacted: timestamp("date_first_contacted"),
+  contactMethod: mysqlEnum("contact_method", ["email", "phone", "social_media", "in_person", "letter", "other"]),
+  responseStatus: mysqlEnum("response_status", ["no_response", "acknowledged", "committed", "acting", "hostile", "cease_and_desist"]).default("no_response").notNull(),
+  responseDate: timestamp("response_date"),
+  responseContent: text("response_content"),
+  commitmentDetails: text("commitment_details"),
+  followUpDate: timestamp("follow_up_date"),
+  ceaseAndDesistReceived: mysqlEnum("cease_and_desist_received", ["yes", "no"]).default("no").notNull(),
+  ceaseAndDesistDate: timestamp("cease_and_desist_date"),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type GovernmentAccountability = typeof governmentAccountability.$inferSelect;
+export type InsertGovernmentAccountability = typeof governmentAccountability.$inferInsert;
