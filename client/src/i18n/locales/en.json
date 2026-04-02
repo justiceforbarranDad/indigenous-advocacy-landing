@@ -68,7 +68,17 @@
     "term3Months": "3 Months",
     "term6Months": "6 Months",
     "term12Months": "12 Months",
-    "donateNow": "Donate Now"
+    "donateNow": "Donate Now",
+    "weAccept": "We Accept",
+    "internationalDonations": "We accept international donations",
+    "amount": "Donation Amount:",
+    "pointCamera": "Point your camera at the QR code to donate",
+    "changeAmount": "Change Amount",
+    "sendETransferEmail": "Send e-transfer to this email address",
+    "securePayment": "Secure Payment",
+    "bankEncryption": "All payments are encrypted and processed securely by Stripe",
+    "hundredPercentJustice": "100% Goes to Justice",
+    "mcGovern": "McGovern Arts Institute of Human Rights"
   },
   "contact": {
     "title": "Contact Us",

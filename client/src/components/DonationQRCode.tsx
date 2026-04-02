@@ -61,24 +61,6 @@ export function DonationQRCode() {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* ACCEPTED PAYMENT METHODS */}
-      <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-400 rounded-lg p-4">
-        <p className="text-xs font-bold text-gray-700 mb-2 text-center">
-          {t('donate.weAccept')}
-        </p>
-        <p className="text-xs text-gray-600 mb-3 text-center italic">
-          {t('donate.internationalDonations')}
-        </p>
-        <div className="grid grid-cols-4 gap-2">
-          {paymentMethods.map((method, idx) => (
-            <div key={idx} className="flex flex-col items-center justify-center gap-1 bg-white rounded p-2 border border-gray-200">
-              <span className="text-lg">{method.icon}</span>
-              <span className="text-xs font-semibold text-gray-700 line-clamp-2 text-center">{method.name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* CURRENCY SELECTOR */}
       <div className="flex gap-2 justify-center">
         <button
@@ -150,7 +132,7 @@ export function DonationQRCode() {
         </div>
       </div>
 
-      {/* QR CODE - SHOWS IMMEDIATELY WHEN AMOUNT SELECTED */}
+      {/* QR CODE - SHOWS IMMEDIATELY WHEN AMOUNT SELECTED - MOVED UP */}
       {selectedAmount && (
         <div className="border-2 border-green-400 bg-green-50 rounded-lg p-6 text-center animate-in fade-in">
           <p className="text-sm text-gray-600 mb-2">
@@ -196,6 +178,24 @@ export function DonationQRCode() {
           </div>
         </div>
       )}
+
+      {/* ACCEPTED PAYMENT METHODS - MOVED DOWN */}
+      <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-400 rounded-lg p-4">
+        <p className="text-xs font-bold text-gray-700 mb-2 text-center">
+          {t('donate.weAccept')}
+        </p>
+        <p className="text-xs text-gray-600 mb-3 text-center italic">
+          {t('donate.internationalDonations')}
+        </p>
+        <div className="grid grid-cols-4 gap-2">
+          {paymentMethods.map((method, idx) => (
+            <div key={idx} className="flex flex-col items-center justify-center gap-1 bg-white rounded p-2 border border-gray-200">
+              <span className="text-lg">{method.icon}</span>
+              <span className="text-xs font-semibold text-gray-700 line-clamp-2 text-center">{method.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* E-TRANSFER SECTION */}
       <div className="border-2 border-orange-400 bg-orange-50 p-4 rounded-lg">
