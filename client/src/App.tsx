@@ -60,7 +60,6 @@ import AlliesAndOrganizations from "./pages/AlliesAndOrganizations";
 import VideoHub from "./pages/VideoHub";
 import AFNAccountability from "./pages/AFNAccountability";
 import SafetyResourcesSystemicFailure from "./pages/SafetyResourcesSystemicFailure";
-import DonateETransfer from "./pages/DonateETransfer";
 import FrenchPodcast from "./pages/FrenchPodcast";
 import SurveyMap from "./pages/SurveyMap";
 import AdminAnalytics from "./pages/AdminAnalytics";
@@ -93,7 +92,7 @@ import AdminAlertDashboard from "./pages/AdminAlertDashboard";
 import PodcastHub from "./pages/PodcastHub";
 import NewspaperReader from "./pages/NewspaperReader";
 import DonationImpact from "./pages/DonationImpact";
-import DonateETransferInteractive from "./pages/DonateETransferInteractive";
+
 import DonationHub from "./pages/DonationHub";
 import DonateRecurring from "./pages/DonateRecurring";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
@@ -235,7 +234,7 @@ function Router() {
       <Route path="/podcast-hub" component={PodcastHub} />
       <Route path="/newspaper-reader" component={NewspaperReader} />
       <Route path="/donation-impact" component={DonationImpact} />
-      <Route path="/donate-etransfer" component={DonateETransferInteractive} />
+
       <Route path="/donation-hub" component={DonationHub} />
       <Route path="/donate-recurring" component={DonateRecurring} />
       <Route path="/subscription-success" component={SubscriptionSuccess} />
