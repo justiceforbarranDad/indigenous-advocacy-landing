@@ -46,9 +46,11 @@ export function DonationQRCode() {
   const paymentMethods = [
     { name: 'Visa', icon: '💳' },
     { name: 'Mastercard', icon: '💳' },
+    { name: 'Amex', icon: '💳' },
     { name: 'Apple Pay', icon: '🍎' },
     { name: 'Google Pay', icon: '🔵' },
     { name: 'Klarna', icon: '⏰' },
+    { name: 'Sezzle', icon: '⏰' },
     { name: 'E-Transfer', icon: '📧' },
   ];
 
@@ -56,10 +58,13 @@ export function DonationQRCode() {
     <div className="flex flex-col gap-6">
       {/* ACCEPTED PAYMENT METHODS */}
       <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-400 rounded-lg p-4">
-        <p className="text-xs font-bold text-gray-700 mb-3 text-center">
+        <p className="text-xs font-bold text-gray-700 mb-2 text-center">
           {t('donate.weAccept')}
         </p>
-        <div className="grid grid-cols-3 gap-2">
+        <p className="text-xs text-gray-600 mb-3 text-center italic">
+          {t('donate.internationalDonations')}
+        </p>
+        <div className="grid grid-cols-4 gap-2">
           {paymentMethods.map((method, idx) => (
             <div key={idx} className="flex items-center justify-center gap-1 bg-white rounded p-2 border border-gray-200">
               <span className="text-lg">{method.icon}</span>

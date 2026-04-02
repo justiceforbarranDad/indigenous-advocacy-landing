@@ -54,6 +54,7 @@
     "viewFinancialTransparency": "Voir la transparence financière →"
   },
   "donate": {
+    "internationalDonations": "✓ Nous acceptons les dons internationaux",
     "title": "Faire un don",
     "subtitle": "Soutenir la justice pour Barran",
     "description": "Chaque don finance la défense juridique et le changement systémique",
@@ -86,7 +87,10 @@
     "confirmDonation": "Confirmer le don",
     "confirmMessage": "Vous êtes sur le point de donner ${{amount}}. Êtes-vous sûr?",
     "confirm": "Confirmer",
-    "cancel": "Annuler"
+    "cancel": "Annuler",
+    "internationalDonations": "✓ Nous acceptons les dons internationaux",
+    "amex": "American Express",
+    "sezzle": "Sezzle"
   },
   "contact": {
     "title": "Nous contacter",
