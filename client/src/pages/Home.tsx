@@ -3,10 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { SocialShareButtons } from '@/components/SocialShareButtons';
 import { DonationQRCode } from '@/components/DonationQRCode';
 import { DonorRecognition } from '@/components/DonorRecognition';
-import { Heart, ChevronRight, Play } from 'lucide-react';
+import { Heart, ChevronRight, Play, X } from 'lucide-react';
 
 export default function Home() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
+  const [selectedRight, setSelectedRight] = useState<string | null>(null);
 
   const stories = [
     {
@@ -56,16 +57,84 @@ export default function Home() {
     }
   ];
 
+  const rightsData = {
+    charter: {
+      en: {
+        title: 'Charter of Rights (s.2, s.15, s.35)',
+        description: 'The Canadian Charter of Rights and Freedoms protects fundamental freedoms and equality rights. Section 2 guarantees freedom of expression and association. Section 15 protects equality before and under the law. Section 35 recognizes Aboriginal and treaty rights of Indigenous peoples.'
+      },
+      fr: {
+        title: 'Charte des droits (s.2, s.15, s.35)',
+        description: 'La Charte canadienne des droits et libertés protège les libertés fondamentales et les droits à l\'égalité. L\'article 2 garantit la liberté d\'expression et d\'association. L\'article 15 protège l\'égalité devant la loi. L\'article 35 reconnaît les droits autochtones et les droits issus de traités des peuples autochtones.'
+      }
+    },
+    billC92: {
+      en: {
+        title: 'Bill C-92 (Indigenous Child Welfare)',
+        description: 'An Act respecting First Nations, Inuit and Métis children, youth and families. Bill C-92 recognizes the jurisdiction of Indigenous nations over child protection and family services. It prioritizes keeping Indigenous children connected to their communities, culture, and families while ensuring their safety and well-being.'
+      },
+      fr: {
+        title: 'Loi C-92 (Protection de l\'enfance autochtone)',
+        description: 'Loi concernant les enfants, les jeunes et les familles des Premières Nations, des Inuits et des Métis. La Loi C-92 reconnaît la juridiction des nations autochtones sur la protection de l\'enfance et les services à la famille. Elle privilégie le maintien des enfants autochtones dans leurs communautés, leur culture et leurs familles.'
+      }
+    },
+    jordan: {
+      en: {
+        title: 'Jordan\'s Principle',
+        description: 'A child-first principle named after Jordan River Anderson, a First Nations child who died waiting for government agencies to determine who should pay for his home care. The principle states that when jurisdictional disputes arise over services for Indigenous children, the government of first contact must provide the service and sort out payment later. It ensures no child is denied services due to jurisdictional disputes.'
+      },
+      fr: {
+        title: 'Principe de Jordan',
+        description: 'Un principe mettant l\'enfant en priorité, nommé d\'après Jordan River Anderson, un enfant des Premières Nations décédé en attendant que les organismes gouvernementaux déterminent qui devrait payer ses soins à domicile. Le principe stipule que lorsque des différends de compétence surviennent concernant les services aux enfants autochtones, le gouvernement du premier contact doit fournir le service et régler le paiement plus tard.'
+      }
+    },
+    undrip: {
+      en: {
+        title: 'UNDRIP (Indigenous Peoples)',
+        description: 'The United Nations Declaration on the Rights of Indigenous Peoples is an international instrument that establishes a universal framework of minimum standards for the rights of Indigenous peoples. It covers rights to self-determination, lands, territories, resources, culture, identity, and free, prior and informed consent for projects affecting Indigenous communities.'
+      },
+      fr: {
+        title: 'UNDRIP (Peuples autochtones)',
+        description: 'La Déclaration des Nations Unies sur les droits des peuples autochtones est un instrument international qui établit un cadre universel de normes minimales pour les droits des peuples autochtones. Elle couvre les droits à l\'autodétermination, aux terres, aux territoires, aux ressources, à la culture, à l\'identité et au consentement préalable, donné librement et en connaissance de cause.'
+      }
+    },
+    uncrc: {
+      en: {
+        title: 'UNCRC (Rights of the Child)',
+        description: 'The United Nations Convention on the Rights of the Child is the most widely ratified human rights treaty. It establishes that all children have the right to survival, development, protection, and participation. It requires governments to ensure children\'s access to education, healthcare, protection from violence and exploitation, and the right to be heard in decisions affecting them.'
+      },
+      fr: {
+        title: 'UNCRC (Droits de l\'enfant)',
+        description: 'La Convention des Nations Unies relative aux droits de l\'enfant est le traité relatif aux droits de l\'homme le plus largement ratifié. Elle établit que tous les enfants ont le droit à la survie, au développement, à la protection et à la participation. Elle exige que les gouvernements assurent l\'accès des enfants à l\'éducation, aux soins de santé, à la protection contre la violence et l\'exploitation.'
+      }
+    },
+    udhr: {
+      en: {
+        title: 'UDHR (Universal Human Rights)',
+        description: 'The Universal Declaration of Human Rights is a foundational international document adopted by the United Nations in 1948. It proclaims the inalienable rights of all members of the human family including rights to life, liberty, security, freedom from slavery, torture, and discrimination, and rights to work, education, and social security.'
+      },
+      fr: {
+        title: 'UDHR (Droits humains universels)',
+        description: 'La Déclaration universelle des droits de l\'homme est un document international fondamental adopté par les Nations Unies en 1948. Elle proclame les droits inaliénables de tous les membres de la famille humaine, y compris les droits à la vie, à la liberté, à la sécurité, à la liberté de l\'esclavage, de la torture et de la discrimination.'
+      }
+    }
+  };
+
+  const getRightContent = (key: string) => {
+    const lang = i18n.language === 'fr' ? 'fr' : 'en';
+    return (rightsData as any)[key]?.[lang];
+  };
+
   return (
     <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
       {/* MASTHEAD */}
-      <div className="bg-white border-b-4 border-black py-6 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* KNOW YOUR RIGHTS BANNER */}
-          <div className="text-center mb-4 py-2 bg-red-600 text-white font-black tracking-widest text-sm md:text-base">
-            {i18n.language === 'fr' ? 'CONNAISSEZ VOS DROITS' : 'KNOW YOUR RIGHTS'}
-          </div>
+      <div className="bg-white border-b-4 border-black">
+        {/* KNOW YOUR RIGHTS BANNER - FULL WIDTH */}
+        <div className="text-center py-2 bg-red-600 text-white font-black tracking-widest text-sm md:text-base w-full">
+          {i18n.language === 'fr' ? 'CONNAISSEZ VOS DROITS' : 'KNOW YOUR RIGHTS'}
+        </div>
 
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-6">
           {/* FLAG WITH CONSTITUTION & UN RIGHTS */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
             {/* LEFT - CANADA CONSTITUTION */}
@@ -74,9 +143,24 @@ export default function Home() {
                 {i18n.language === 'fr' ? 'CONSTITUTION CANADIENNE' : 'CANADIAN CONSTITUTION'}
               </h3>
               <ul className="space-y-1 text-gray-800">
-                <li className="font-semibold">• {i18n.language === 'fr' ? 'Charte des droits (s.2, s.15, s.35)' : 'Charter of Rights (s.2, s.15, s.35)'}</li>
-                <li className="font-semibold">• {i18n.language === 'fr' ? 'Loi C-92 (Protection de l\'enfance autochtone)' : 'Bill C-92 (Indigenous Child Welfare)'}</li>
-                <li className="font-semibold">• {i18n.language === 'fr' ? 'Principe de Jordan' : 'Jordan\'s Principle'}</li>
+                <li 
+                  className="font-semibold cursor-pointer hover:text-red-600 transition-colors"
+                  onClick={() => setSelectedRight('charter')}
+                >
+                  • {i18n.language === 'fr' ? 'Charte des droits (s.2, s.15, s.35)' : 'Charter of Rights (s.2, s.15, s.35)'}
+                </li>
+                <li 
+                  className="font-semibold cursor-pointer hover:text-red-600 transition-colors"
+                  onClick={() => setSelectedRight('billC92')}
+                >
+                  • {i18n.language === 'fr' ? 'Loi C-92 (Protection de l\'enfance autochtone)' : 'Bill C-92 (Indigenous Child Welfare)'}
+                </li>
+                <li 
+                  className="font-semibold cursor-pointer hover:text-red-600 transition-colors"
+                  onClick={() => setSelectedRight('jordan')}
+                >
+                  • {i18n.language === 'fr' ? 'Principe de Jordan' : 'Jordan\'s Principle'}
+                </li>
               </ul>
             </div>
 
@@ -95,9 +179,24 @@ export default function Home() {
                 {i18n.language === 'fr' ? 'DROITS DE L\'ONU' : 'UN RIGHTS'}
               </h3>
               <ul className="space-y-1 text-gray-800">
-                <li className="font-semibold">• {i18n.language === 'fr' ? 'UNDRIP (Peuples autochtones)' : 'UNDRIP (Indigenous Peoples)'}</li>
-                <li className="font-semibold">• {i18n.language === 'fr' ? 'UNCRC (Droits de l\'enfant)' : 'UNCRC (Rights of the Child)'}</li>
-                <li className="font-semibold">• {i18n.language === 'fr' ? 'UDHR (Droits humains universels)' : 'UDHR (Universal Human Rights)'}</li>
+                <li 
+                  className="font-semibold cursor-pointer hover:text-blue-600 transition-colors"
+                  onClick={() => setSelectedRight('undrip')}
+                >
+                  • {i18n.language === 'fr' ? 'UNDRIP (Peuples autochtones)' : 'UNDRIP (Indigenous Peoples)'}
+                </li>
+                <li 
+                  className="font-semibold cursor-pointer hover:text-blue-600 transition-colors"
+                  onClick={() => setSelectedRight('uncrc')}
+                >
+                  • {i18n.language === 'fr' ? 'UNCRC (Droits de l\'enfant)' : 'UNCRC (Rights of the Child)'}
+                </li>
+                <li 
+                  className="font-semibold cursor-pointer hover:text-blue-600 transition-colors"
+                  onClick={() => setSelectedRight('udhr')}
+                >
+                  • {i18n.language === 'fr' ? 'UDHR (Droits humains universels)' : 'UDHR (Universal Human Rights)'}
+                </li>
               </ul>
             </div>
           </div>
@@ -185,7 +284,7 @@ export default function Home() {
 
           {/* RIGHT COLUMN - SIDEBAR */}
           <div className="space-y-6">
-                       {/* DONATION BOX */}
+            {/* DONATION BOX */}
             <div className="border-4 border-red-600 bg-red-50 p-6">
               <h3 className="text-2xl font-bold mb-3 text-red-600">
                 {i18n.language === 'fr' ? 'Soutenir la Justice' : 'Support Justice'}
@@ -202,104 +301,98 @@ export default function Home() {
                   <Heart size={18} className="inline mr-2" />
                   {i18n.language === 'fr' ? 'Donner Maintenant' : 'Donate Now'}
                 </a>
-                <a 
-                  href="/donate-etransfer"
-                  className="block w-full bg-white text-red-600 font-bold py-3 px-4 text-center border-2 border-red-600 hover:bg-red-50 transition-colors rounded"
-                >
-                  {i18n.language === 'fr' ? 'Virement Électronique' : 'E-Transfer'}
-                </a>
               </div>
-              <p className="text-xs text-gray-600">
-                {i18n.language === 'fr' ? 'Tous les dons vont au compte fiduciaire de la Fondation McGovern. Les fonds NE sont PAS un revenu personnel.' : 'All funds go to McGovern Institute Foundation Trust. NOT personal income.'}
-              </p>
             </div>
 
-            {/* PODCAST BOX */}
-            <div className="border-4 border-black p-6 bg-gray-50">
-              <h3 className="text-lg font-bold mb-3">
+            {/* PODCAST SECTION */}
+            <div className="border-4 border-black p-6">
+              <h3 className="text-xl font-bold mb-4">
                 {i18n.language === 'fr' ? 'Écouter' : 'Listen'}
               </h3>
-              <p className="text-xs font-bold mb-2">
-                {i18n.language === 'fr' ? 'Le Silence des Politiciens' : 'The Silence of Politicians'}
-              </p>
-              <p className="text-xs text-gray-600 mb-3">
-                {i18n.language === 'fr' ? 'Épisode 3 • 14:15' : 'Episode 3 • 14:15'}
-              </p>
-              <a 
-                href="/podcast-hub"
-                className="inline-flex items-center gap-2 bg-black text-white font-bold py-2 px-4 text-xs hover:bg-gray-800 transition-colors rounded"
-              >
-                <Play size={14} />
-                {i18n.language === 'fr' ? 'Écouter' : 'Play'}
-              </a>
-            </div>
-
-            {/* ACTION BOX */}
-            <div className="border-4 border-green-600 bg-green-50 p-6">
-              <h3 className="text-lg font-bold mb-3 text-green-600">
-                {i18n.language === 'fr' ? 'Passer à l\'Action' : 'Take Action'}
-              </h3>
-              <div className="space-y-2">
+              <div className="bg-gray-100 p-4 rounded">
+                <div className="flex items-center gap-3 mb-3">
+                  <Play size={24} className="text-red-600" />
+                  <div>
+                    <p className="font-bold text-sm">{i18n.language === 'fr' ? 'Justice pour Barran' : 'Justice for Barran'}</p>
+                    <p className="text-xs text-gray-600">{i18n.language === 'fr' ? 'Podcast' : 'Podcast'}</p>
+                  </div>
+                </div>
                 <a 
-                  href="/accountability-petition"
-                  className="block text-xs font-bold text-green-600 hover:underline"
+                  href="#"
+                  className="text-xs font-bold text-red-600 hover:underline"
                 >
-                  ✓ {i18n.language === 'fr' ? 'Signer la pétition' : 'Sign the Petition'}
-                </a>
-                <a 
-                  href="/government-accountability"
-                  className="block text-xs font-bold text-green-600 hover:underline"
-                >
-                  ✓ {i18n.language === 'fr' ? 'Responsabilité gouvernementale' : 'Government Accountability'}
-                </a>
-                <a 
-                  href="/corporate-accountability"
-                  className="block text-xs font-bold text-green-600 hover:underline"
-                >
-                  ✓ {i18n.language === 'fr' ? 'Responsabilité corporative' : 'Corporate Accountability'}
-                </a>
-                <a 
-                  href="/contact"
-                  className="block text-xs font-bold text-green-600 hover:underline"
-                >
-                  ✓ {i18n.language === 'fr' ? 'Nous contacter' : 'Contact Us'}
+                  {i18n.language === 'fr' ? 'Écouter maintenant →' : 'Listen now →'}
                 </a>
               </div>
             </div>
 
-            {/* SHARE BOX */}
-            <div className="border-4 border-black p-6">
-              <h3 className="text-lg font-bold mb-3">
-                {i18n.language === 'fr' ? 'Partager' : 'Share'}
+            {/* ACTION ITEMS */}
+            <div className="border-4 border-green-600 bg-green-50 p-6">
+              <h3 className="text-lg font-bold mb-3 text-green-700">
+                {i18n.language === 'fr' ? 'Agir Maintenant' : 'Take Action'}
               </h3>
-              <SocialShareButtons 
-                title={i18n.language === 'fr' ? 'Justice pour Barran' : 'Justice for Barran'} 
-                text={i18n.language === 'fr' ? 'Cinq ans d\'abandon systémique - Exiger la responsabilité' : 'Five Years of Systemic Abandonment - Demand Accountability'} 
-              />
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a href="#" className="font-bold text-green-700 hover:underline">
+                    {i18n.language === 'fr' ? '→ Signer la pétition' : '→ Sign Petition'}
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-bold text-green-700 hover:underline">
+                    {i18n.language === 'fr' ? '→ Demander des comptes' : '→ Demand Accountability'}
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-bold text-green-700 hover:underline">
+                    {i18n.language === 'fr' ? '→ Contacter les élus' : '→ Contact Officials'}
+                  </a>
+                </li>
+              </ul>
             </div>
 
+            {/* SOCIAL SHARING */}
+            <div className="border-4 border-black p-4">
+              <SocialShareButtons 
+                title={i18n.language === 'fr' ? 'Justice pour Barran' : 'Justice for Barran'}
+                text={i18n.language === 'fr' ? 'Lisez l\'histoire complète de Barran et soutenez la justice pour les familles autochtones' : 'Read Barran\'s full story and support justice for Indigenous families'}
+                variant="vertical"
+                showLabel={true}
+              />
+            </div>
           </div>
-
         </div>
       </div>
 
       {/* DONOR RECOGNITION */}
-      <DonorRecognition />
-
-      {/* FOOTER */}
-      <div className="bg-black text-white py-6 px-4 md:px-8 border-t-4 border-black mt-12">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-xs font-bold tracking-wider mb-2">
-            {i18n.language === 'fr' ? 'JUSTICE POUR BARRAN - PARTIE 3' : 'JUSTICE FOR BARRAN - PART 3'}
-          </p>
-          <p className="text-xs mb-3">
-            {i18n.language === 'fr' ? 'Vérité Actuelle Avant Réconciliation' : 'Current Truth Before Reconciliation'}
-          </p>
-          <p className="text-xs text-gray-400">
-            indigenousadv-ahjdmzis.manus.space
-          </p>
+      <div className="bg-gray-50 border-t-4 border-black py-12">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <DonorRecognition />
         </div>
       </div>
+
+      {/* RIGHTS MODAL */}
+      {selectedRight && getRightContent(selectedRight) && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg max-w-2xl w-full max-h-96 overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b-2 border-gray-200 p-4 flex justify-between items-center">
+              <h2 className="text-2xl font-bold">
+                {getRightContent(selectedRight)?.title}
+              </h2>
+              <button
+                onClick={() => setSelectedRight(null)}
+                className="p-1 hover:bg-gray-100 rounded transition-colors"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <div className="p-6">
+              <p className="text-gray-700 leading-relaxed">
+                {getRightContent(selectedRight)?.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
