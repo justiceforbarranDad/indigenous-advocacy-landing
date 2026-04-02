@@ -1,273 +1,267 @@
-import { AlertCircle, FileText, Globe, Play, Heart, Signature, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { SurveyBox } from '@/components/SurveyBox';
-import { useAuth } from '@/_core/hooks/useAuth';
-import { LatestUpdatesTicker } from '@/components/LatestUpdatesTicker';
 import { SocialShareButtons } from '@/components/SocialShareButtons';
-import { DonationDashboard } from '@/components/DonationDashboard';
-import { DomainSharingWidget } from '@/components/DomainSharingWidget';
-import { TransparencyDashboard } from '@/components/TransparencyDashboard';
-
-const BG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp";
-const ORANGE_SHIRT_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/orange-shirt-sunset-forest.jpg";
+import { Heart, ChevronRight, Play } from 'lucide-react';
 
 export default function Home() {
   const { t, i18n } = useTranslation();
-  const { user, loading, error, isAuthenticated, logout } = useAuth();
-  const [expandedLetter, setExpandedLetter] = useState('en');
 
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const stories = [
+    {
+      id: 1,
+      title: i18n.language === 'fr' ? 'Dimanche Sanglant, Deuxième Partie' : 'Sunday Bloody Sunday, Part Two',
+      subtitle: i18n.language === 'fr' ? 'Adolescent autochtone poignardé trois fois — Le système l\'a abandonné pendant cinq ans' : 'Indigenous Teen Stabbed Three Times — System Failed Him For Five Years',
+      excerpt: i18n.language === 'fr' ? 'Depuis 2021, notre famille autochtone se bat pour la justice après un traumatisme grave. Un adolescent poignardé trois fois. Impacts majeurs. Santé mentale détruite.' : 'Since 2021, our Indigenous family has fought for justice after serious trauma. A teenager stabbed three times. Major impacts. Mental health destroyed.',
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp',
+      link: '/barrans-story',
+      featured: true
+    },
+    {
+      id: 2,
+      title: i18n.language === 'fr' ? 'Silence Politique = Complicité' : 'Political Silence = Complicity',
+      subtitle: i18n.language === 'fr' ? 'Fédéral, Provincial, Municipal - Tous ont échoué' : 'Federal, Provincial, Municipal - All Failed',
+      excerpt: i18n.language === 'fr' ? 'Nous avons escaladé vers les députés fédéraux - même silence. Notre MNA a envoyé un avertissement de cessation et désistement au lieu d\'aide.' : 'We escalated to federal MPs - same silence. Our MNA sent a cease-and-desist warning instead of assistance.',
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/advocacy-series-3-political-silence_07d0c9ad.png',
+      link: '/government-accountability',
+      featured: false
+    },
+    {
+      id: 3,
+      title: i18n.language === 'fr' ? 'Cinq Ans d\'Échec Institutionnel' : 'Five Years of Institutional Failure',
+      subtitle: i18n.language === 'fr' ? 'La DPJ l\'a abandonné. Le bien-être l\'a ignoré.' : 'DPJ Abandoned Him. Welfare Ignored Him.',
+      excerpt: i18n.language === 'fr' ? 'La Direction de la Protection de la Jeunesse (DPJ) s\'est impliquée mais s\'est retirée en janvier 2023 - sans suivi adéquat, sans éducation, sans soutien en santé mentale.' : 'The Direction de la Protection de la Jeunesse (DPJ) became involved but withdrew in January 2023 - with no adequate follow-up.',
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/advocacy-series-2-system-failure_5bff13ea.png',
+      link: '/systemic-accountability',
+      featured: false
+    },
+    {
+      id: 4,
+      title: i18n.language === 'fr' ? 'Bill C-92 - Juridiction Autochtone' : 'Bill C-92 - Indigenous Jurisdiction',
+      subtitle: i18n.language === 'fr' ? 'Protection de l\'enfance sous contrôle autochtone' : 'Child Protection Under Indigenous Control',
+      excerpt: i18n.language === 'fr' ? 'Bill C-92 reconnaît la juridiction autochtone sur la protection de l\'enfance. Les familles autochtones urbaines exigent une justice réelle.' : 'Bill C-92 recognizes Indigenous jurisdiction over child protection. Urban Aboriginal families demand real justice.',
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/advocacy-series-4-indigenous-rights_2d9a239e.png',
+      link: '/legal-resources',
+      featured: false
+    },
+    {
+      id: 5,
+      title: i18n.language === 'fr' ? 'Responsabilité Corporative' : 'Corporate Accountability',
+      subtitle: i18n.language === 'fr' ? 'Qui profite de la réconciliation ?' : 'Who Profits from Reconciliation?',
+      excerpt: i18n.language === 'fr' ? 'RBC, TD Bank, Scotiabank, CIBC, Canadian Tire, Walmart Canada - tous parrainent la Journée de la chemise orange tout en échouant.' : 'RBC, TD Bank, Scotiabank, CIBC, Canadian Tire, Walmart Canada - all sponsor Orange Shirt Day while failing.',
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/advocacy-series-5-justice-now_04411a49.png',
+      link: '/corporate-accountability',
+      featured: false
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
-      {/* HERO SECTION - ORANGE SHIRT & SUNSET */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp')`,
-          }}
-        >
-          <div className="absolute inset-0 bg-black/40"></div>
-        </div>
-
-        <div className="relative z-10 text-center px-4 max-w-4xl">
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 leading-tight">
-            {i18n.language === 'fr' ? 'Dimanche Sanglant' : 'Sunday Bloody Sunday'}
-          </h1>
-          <h2 className="text-3xl md:text-4xl text-amber-300 mb-6 font-serif italic">
-            {i18n.language === 'fr' ? 'Deuxième Partie' : 'Part Two'}
-          </h2>
-          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-            {i18n.language === 'fr' ? t('home.heroSubtitle') : 'Indigenous Justice Advocacy — Systemic Accountability — 15 Years of Documented Failure'}
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center mb-8">
-            <span className="bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold">{i18n.language === 'fr' ? t('home.indigenousRights') : 'Indigenous Rights'}</span>
-            <span className="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold">{i18n.language === 'fr' ? t('home.justiceForBarran') : 'Justice for Barran'}</span>
-            <span className="bg-blue-900 text-white px-4 py-2 rounded-lg font-semibold">{i18n.language === 'fr' ? t('home.accountability') : 'Accountability'}</span>
+      {/* MASTHEAD */}
+      <div className="bg-white border-b-4 border-black py-6 px-4 md:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* BLOODY CANADIAN FLAG */}
+          <div className="flex justify-center mb-6">
+            <img 
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/flag-blood-since-2021-heavy_e8f4a2c1.png"
+              alt="Canadian Flag - Since 2021"
+              className="w-full max-w-2xl h-auto"
+            />
           </div>
-          <a
-            href="#story"
-            className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-          >
-            {i18n.language === 'fr' ? t('home.readOurStory') : 'Read Our Story →'}
-          </a>
+          
+          <h1 className="text-4xl md:text-5xl font-black tracking-widest text-center mb-2" style={{ letterSpacing: '0.15em' }}>
+            {i18n.language === 'fr' ? 'JUSTICE POUR BARRAN' : 'JUSTICE FOR BARRAN'}
+          </h1>
+          <div className="h-1 bg-black w-32 mx-auto mb-3"></div>
+          <p className="text-center text-sm md:text-base tracking-wide mb-2">
+            {i18n.language === 'fr' ? 'Un Journal des Droits Autochtones et de la Responsabilité Systémique' : 'A Magazine of Indigenous Rights & Systemic Accountability'}
+          </p>
+          <p className="text-center text-xs tracking-widest text-gray-600">
+            {i18n.language === 'fr' ? 'AVRIL 2, 2026 — VOLUME 1, NUMÉRO 5' : 'APRIL 2, 2026 — VOLUME 1, ISSUE 5'}
+          </p>
         </div>
       </div>
 
-      {/* SINGLE PAGE NEWSPAPER LAYOUT */}
-      <div className="max-w-4xl mx-auto bg-white">
-        
-        {/* NEWSPAPER MASTHEAD */}
-        <div className="w-full bg-black text-white py-8 px-6 border-b-8 border-black">
-          {/* Publication Name */}
-          <div className="text-center mb-4">
-            <h1 className="text-5xl md:text-6xl font-black tracking-widest" style={{ fontFamily: 'Georgia, serif', letterSpacing: '0.15em' }}>
-              {i18n.language === 'fr' ? t('home.newspaperTitle') : 'JUSTICE FOR BARRAN'}
-            </h1>
-            <div className="h-1 bg-white my-3 w-32 mx-auto"></div>
-          </div>
+      {/* MAIN CONTENT GRID */}
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          {/* Tagline and Date */}
-          <div className="text-center">
-            <p className="text-base md:text-lg tracking-wide mb-2">
-              {i18n.language === 'fr' ? t('home.newspaperSubtitle') : 'A Newspaper of Indigenous Rights & Systemic Accountability'}
-            </p>
-            <p className="text-xs md:text-sm tracking-widest">
-              {i18n.language === 'fr' ? t('home.publicationDate') : 'MARCH 31, 2026 — VOLUME 1, ISSUE 4'}
-            </p>
-          </div>
-        </div>
-
-        {/* LATEST UPDATES TICKER */}
-        <LatestUpdatesTicker />
-
-        {/* TRANSPARENCY & DISABILITY BENEFITS PROTECTION BANNER */}
-        <div className="bg-amber-50 border-l-4 border-amber-600 p-4 mx-6 mt-4">
-          <div className="flex gap-3">
-            <div className="text-amber-600 font-bold text-lg">🛡️</div>
-            <div>
-              <p className="font-bold text-sm mb-1">{i18n.language === 'fr' ? t('home.transparentBannerTitle') : '100% TRANSPARENT - YOUR BENEFITS ARE PROTECTED'}</p>
-              <p className="text-xs leading-relaxed">
-                {i18n.language === 'fr' ? t('home.transparentBannerText') : 'All donations go directly to McGovern Institute Foundation Trust Account. Funds are NOT personal income and will NOT affect disability benefits. We operate with full legal transparency and comply with all disability program regulations.'}
-              </p>
-              <a href="/financial-transparency" className="text-xs font-bold text-amber-600 hover:underline mt-2 inline-block">
-                {i18n.language === 'fr' ? t('home.viewFinancialTransparency') : 'View Financial Transparency →'}
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* NEWSPAPER CONTENT - SINGLE PAGE */}
-        <div className="px-6 py-8 space-y-6">
-          
-          {/* MAIN HEADLINE STORY */}
-          <div id="story" className="border-b-4 border-black pb-6">
-            <p className="text-xs font-bold uppercase tracking-wider mb-2">FRONT PAGE STORY</p>
-            <h2 className="text-4xl font-bold mb-4" style={{ fontFamily: 'Georgia, serif' }}>
-              Sunday Bloody Sunday, Part Two: 15 Years of Systemic Abandonment
-            </h2>
-            <p className="text-sm font-bold mb-4">
-              Indigenous Family Demands Justice After DPJ Failure, Political Silence, and Corporate Hypocrisy
-            </p>
-            <div className="grid grid-cols-3 gap-4 mb-4">
-              <div className="border-l-4 border-black pl-3">
-                <p className="text-xs font-bold">FAMILY TRAUMA</p>
-                <p className="text-sm">Teen stabbed 3x, major impacts, mental health destroyed</p>
-              </div>
-              <div className="border-l-4 border-black pl-3">
-                <p className="text-xs font-bold">SYSTEM FAILURE</p>
-                <p className="text-sm">DPJ withdrew Jan 2023, no follow-up, Jordan's Principle ignored</p>
-              </div>
-              <div className="border-l-4 border-black pl-3">
-                <p className="text-xs font-bold">POLITICAL SILENCE</p>
-                <p className="text-sm">50+ officials contacted, zero adequate responses</p>
-              </div>
-            </div>
-            <p className="text-sm leading-relaxed mb-3">
-              Since 2021, our Indigenous family has fought for justice after serious trauma. A teenager stabbed three times. Major impacts. Mental health destroyed. The system that promised to protect vulnerable children abandoned us instead.
-            </p>
-            <p className="text-sm leading-relaxed">
-              The Direction de la Protection de la Jeunesse (DPJ) became involved but withdrew in January 2023 - with no adequate follow-up, no education, no mental health support. Jordan's Principle - which guarantees no-delay services for First Nations children - was completely ignored.
-            </p>
-          </div>
-
-          {/* TWO COLUMN LAYOUT */}
-          <div className="grid grid-cols-2 gap-6">
+          {/* LEFT COLUMN - FEATURED STORY + MAIN STORIES */}
+          <div className="md:col-span-2 space-y-6">
             
-            {/* LEFT COLUMN */}
-            <div className="space-y-6">
-              
-              {/* GOVERNMENT SILENCE */}
-              <div className="border-l-4 border-black pl-4">
-                <p className="text-xs font-bold uppercase tracking-wider mb-2">POLITICAL ACCOUNTABILITY</p>
-                <h3 className="text-xl font-bold mb-2">Government Silence = Complicity</h3>
-                <p className="text-xs leading-relaxed mb-2">
-                  We escalated to federal MPs - same silence. Our MNA sent a cease-and-desist warning instead of assistance. This is what happens when a constituent asks for help.
-                </p>
-                <a href="/government-accountability" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
-                  Demand Accountability <ChevronRight size={14} />
-                </a>
-              </div>
-
-              {/* PODCAST */}
-              <div className="border-l-4 border-black pl-4">
-                <p className="text-xs font-bold uppercase tracking-wider mb-2">LISTEN</p>
-                <h3 className="text-xl font-bold mb-2">Le Silence des Politiciens</h3>
-                <p className="text-xs mb-3">Épisode 3 - 14:15</p>
-                <a href="/podcast-hub" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
-                  Play Podcast <Play size={14} />
-                </a>
-              </div>
-
-            </div>
-
-            {/* RIGHT COLUMN */}
-            <div className="space-y-6">
-              
-              {/* CORPORATE HYPOCRISY */}
-              <div className="border-l-4 border-black pl-4">
-                <p className="text-xs font-bold uppercase tracking-wider mb-2">CORPORATE ACCOUNTABILITY</p>
-                <h3 className="text-xl font-bold mb-2">Who Profits from Reconciliation?</h3>
-                <p className="text-xs leading-relaxed mb-2">
-                  RBC, TD Bank, Scotiabank, CIBC, Canadian Tire, Walmart Canada, NHL teams - all sponsor Orange Shirt Day while systemic failures continue.
-                </p>
-                <a href="/corporate-accountability" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
-                  See Full List <ChevronRight size={14} />
-                </a>
-              </div>
-
-              {/* PETITION */}
-              <div className="border-l-4 border-black pl-4">
-                <p className="text-xs font-bold uppercase tracking-wider mb-2">TAKE ACTION</p>
-                <h3 className="text-xl font-bold mb-2">Sign the Petition</h3>
-                <p className="text-xs mb-3">28,300+ signatures demanding independent inquiry</p>
-                <a href="/accountability-petition" className="text-xs font-bold text-black hover:underline flex items-center gap-1">
-                  Sign Now <Signature size={14} />
-                </a>
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* QR CODE FOR E-TRANSFER */}
-          <div className="donation-card-container border-t-4 border-black pt-6 mt-6 text-center">
-            <p className="text-sm font-bold uppercase tracking-wider mb-4">Quick Donate via E-Transfer</p>
-            <div className="flex justify-center mb-6 overflow-hidden">
-              <a href="/donate-etransfer" className="bg-white p-3 border-2 border-black rounded-lg hover:shadow-lg transition-shadow inline-block">
+            {/* FEATURED STORY - LARGE */}
+            {stories[0] && (
+              <div className="border-4 border-black overflow-hidden hover:shadow-lg transition-shadow">
                 <img 
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/etransfer-qr-code_96d6276a.png" 
-                  alt="E-Transfer QR Code - Click to donate" 
-                  className="w-40 h-40 md:w-48 md:h-48 cursor-pointer block"
+                  src={stories[0].image} 
+                  alt={stories[0].title}
+                  className="w-full h-64 md:h-80 object-cover"
                 />
+                <div className="p-6 bg-white">
+                  <p className="text-xs font-bold uppercase tracking-wider text-red-600 mb-2">FEATURED STORY</p>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-2 leading-tight">
+                    {stories[0].title}
+                  </h2>
+                  <p className="text-sm font-bold text-gray-700 mb-3">
+                    {stories[0].subtitle}
+                  </p>
+                  <p className="text-sm leading-relaxed mb-4">
+                    {stories[0].excerpt}
+                  </p>
+                  <a 
+                    href={stories[0].link}
+                    className="inline-flex items-center gap-2 text-sm font-bold text-black hover:underline border-b-2 border-black pb-1"
+                  >
+                    {i18n.language === 'fr' ? 'Lire l\'histoire complète' : 'Read Full Story'} <ChevronRight size={14} />
+                  </a>
+                </div>
+              </div>
+            )}
+
+            {/* GRID OF SMALLER STORIES */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {stories.slice(1, 5).map((story) => (
+                <div key={story.id} className="border-4 border-black overflow-hidden hover:shadow-lg transition-shadow">
+                  <img 
+                    src={story.image} 
+                    alt={story.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4 bg-white">
+                    <h3 className="text-lg md:text-xl font-bold mb-1 leading-tight">
+                      {story.title}
+                    </h3>
+                    <p className="text-xs font-bold text-gray-600 mb-2">
+                      {story.subtitle}
+                    </p>
+                    <p className="text-xs leading-relaxed mb-3 line-clamp-2">
+                      {story.excerpt}
+                    </p>
+                    <a 
+                      href={story.link}
+                      className="text-xs font-bold text-black hover:underline flex items-center gap-1"
+                    >
+                      {i18n.language === 'fr' ? 'Lire' : 'Read'} <ChevronRight size={12} />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          {/* RIGHT COLUMN - SIDEBAR */}
+          <div className="space-y-6">
+            
+            {/* DONATION BOX */}
+            <div className="border-4 border-red-600 bg-red-50 p-6">
+              <h3 className="text-2xl font-bold mb-3 text-red-600">
+                {i18n.language === 'fr' ? 'Soutenir la Justice' : 'Support Justice'}
+              </h3>
+              <p className="text-sm mb-4 leading-relaxed">
+                {i18n.language === 'fr' ? '100% des dons vont directement à la défense juridique, à la défense des droits et aux efforts de changement systémique.' : '100% of donations go directly to legal defense, advocacy, and systemic change efforts.'}
+              </p>
+              <div className="space-y-3 mb-4">
+                <a 
+                  href="/donate"
+                  className="block w-full bg-red-600 text-white font-bold py-3 px-4 text-center hover:bg-red-700 transition-colors rounded"
+                >
+                  <Heart size={18} className="inline mr-2" />
+                  {i18n.language === 'fr' ? 'Donner Maintenant' : 'Donate Now'}
+                </a>
+                <a 
+                  href="/donate-etransfer"
+                  className="block w-full bg-white text-red-600 font-bold py-3 px-4 text-center border-2 border-red-600 hover:bg-red-50 transition-colors rounded"
+                >
+                  {i18n.language === 'fr' ? 'Virement Électronique' : 'E-Transfer'}
+                </a>
+              </div>
+              <p className="text-xs text-gray-600">
+                {i18n.language === 'fr' ? 'Tous les dons vont au compte fiduciaire de la Fondation McGovern. Les fonds NE sont PAS un revenu personnel.' : 'All funds go to McGovern Institute Foundation Trust. NOT personal income.'}
+              </p>
+            </div>
+
+            {/* PODCAST BOX */}
+            <div className="border-4 border-black p-6 bg-gray-50">
+              <h3 className="text-lg font-bold mb-3">
+                {i18n.language === 'fr' ? 'Écouter' : 'Listen'}
+              </h3>
+              <p className="text-xs font-bold mb-2">
+                {i18n.language === 'fr' ? 'Le Silence des Politiciens' : 'The Silence of Politicians'}
+              </p>
+              <p className="text-xs text-gray-600 mb-3">
+                {i18n.language === 'fr' ? 'Épisode 3 • 14:15' : 'Episode 3 • 14:15'}
+              </p>
+              <a 
+                href="/podcast-hub"
+                className="inline-flex items-center gap-2 bg-black text-white font-bold py-2 px-4 text-xs hover:bg-gray-800 transition-colors rounded"
+              >
+                <Play size={14} />
+                {i18n.language === 'fr' ? 'Écouter' : 'Play'}
               </a>
             </div>
-            <p className="text-xs mb-2"><strong>Scan or click to donate</strong></p>
-            <p className="text-xs text-gray-600 mb-6">Opens interactive e-Transfer donation page with all Canadian banks</p>
-            <a href="/donation-impact" className="text-xs font-bold text-black hover:underline border-b-2 border-black pb-1">See where your donation goes →</a>
-          </div>
 
-          {/* BOTTOM SECTION - CALL TO ACTION */}
-          <div className="border-t-4 border-black pt-6 mt-6">
-            <div className="grid grid-cols-3 gap-4 text-center">
-              <a href="/donate" className="border-2 border-black p-4 hover:bg-black hover:text-white transition-colors">
-                <Heart size={20} className="mx-auto mb-2" />
-                <p className="text-xs font-bold">DONATE</p>
-                <p className="text-xs">Support Legal Fund</p>
-              </a>
-              <a href="/newspaper-reader" className="border-2 border-black p-4 hover:bg-black hover:text-white transition-colors">
-                <FileText size={20} className="mx-auto mb-2" />
-                <p className="text-xs font-bold">READ FULL NEWSPAPER</p>
-                <p className="text-xs">4-Page Spread</p>
-              </a>
-              <a href="/contact" className="border-2 border-black p-4 hover:bg-black hover:text-white transition-colors">
-                <Globe size={20} className="mx-auto mb-2" />
-                <p className="text-xs font-bold">CONTACT</p>
-                <p className="text-xs">Get Involved</p>
-              </a>
+            {/* ACTION BOX */}
+            <div className="border-4 border-green-600 bg-green-50 p-6">
+              <h3 className="text-lg font-bold mb-3 text-green-600">
+                {i18n.language === 'fr' ? 'Passer à l\'Action' : 'Take Action'}
+              </h3>
+              <div className="space-y-2">
+                <a 
+                  href="/accountability-petition"
+                  className="block text-xs font-bold text-green-600 hover:underline"
+                >
+                  ✓ {i18n.language === 'fr' ? 'Signer la pétition' : 'Sign the Petition'}
+                </a>
+                <a 
+                  href="/government-accountability"
+                  className="block text-xs font-bold text-green-600 hover:underline"
+                >
+                  ✓ {i18n.language === 'fr' ? 'Responsabilité gouvernementale' : 'Government Accountability'}
+                </a>
+                <a 
+                  href="/corporate-accountability"
+                  className="block text-xs font-bold text-green-600 hover:underline"
+                >
+                  ✓ {i18n.language === 'fr' ? 'Responsabilité corporative' : 'Corporate Accountability'}
+                </a>
+                <a 
+                  href="/contact"
+                  className="block text-xs font-bold text-green-600 hover:underline"
+                >
+                  ✓ {i18n.language === 'fr' ? 'Nous contacter' : 'Contact Us'}
+                </a>
+              </div>
             </div>
-          </div>
 
-          {/* DONATION DASHBOARD */}
-          <div className="border-t-4 border-black pt-6 mb-6">
-            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">CAMPAIGN PROGRESS</p>
-            <DonationDashboard />
-          </div>
+            {/* SHARE BOX */}
+            <div className="border-4 border-black p-6">
+              <h3 className="text-lg font-bold mb-3">
+                {i18n.language === 'fr' ? 'Partager' : 'Share'}
+              </h3>
+              <SocialShareButtons 
+                title={i18n.language === 'fr' ? 'Justice pour Barran' : 'Justice for Barran'} 
+                text={i18n.language === 'fr' ? 'Cinq ans d\'abandon systémique - Exiger la responsabilité' : 'Five Years of Systemic Abandonment - Demand Accountability'} 
+              />
+            </div>
 
-          {/* DOMAIN SHARING */}
-          <div className="border-t-4 border-black pt-6 mb-6">
-            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">SHARE WITH YOUR NETWORK</p>
-            <DomainSharingWidget
-              title=""
-              description=""
-              showLabel={false}
-            />
-          </div>
-
-          {/* TRANSPARENCY & ACCOUNTABILITY */}
-          <div className="border-t-4 border-black pt-6 mb-6">
-            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">COMPLETE TRANSPARENCY & ACCOUNTABILITY</p>
-            <TransparencyDashboard />
-          </div>
-
-          {/* SOCIAL SHARING */}
-          <div className="border-t-4 border-black pt-6">
-            <p className="text-xs font-bold uppercase tracking-wider mb-4 text-center">SHARE THIS STORY</p>
-            <SocialShareButtons title="Justice for Barran" text="Five Years of Systemic Abandonment - Demand accountability for Indigenous justice" />
           </div>
 
         </div>
+      </div>
 
-        {/* FOOTER */}
-        <div className="bg-black text-white py-6 px-6 text-center border-t-8 border-black">
-          <p className="text-xs font-bold tracking-wider mb-2">JUSTICE FOR BARRAN - PART 3</p>
-          <p className="text-xs">Current Truth Before Reconciliation</p>
-          <p className="text-xs mt-3 text-gray-400">indigenousadv-ahjdmzis.manus.space</p>
+      {/* FOOTER */}
+      <div className="bg-black text-white py-6 px-4 md:px-8 border-t-4 border-black mt-12">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-xs font-bold tracking-wider mb-2">
+            {i18n.language === 'fr' ? 'JUSTICE POUR BARRAN - PARTIE 3' : 'JUSTICE FOR BARRAN - PART 3'}
+          </p>
+          <p className="text-xs mb-3">
+            {i18n.language === 'fr' ? 'Vérité Actuelle Avant Réconciliation' : 'Current Truth Before Reconciliation'}
+          </p>
+          <p className="text-xs text-gray-400">
+            indigenousadv-ahjdmzis.manus.space | www.justiceforbarran.com | www.justiceforbarran.ca
+          </p>
         </div>
-
       </div>
     </div>
   );

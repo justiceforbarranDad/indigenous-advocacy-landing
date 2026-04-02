@@ -142,7 +142,8 @@ import EasyDonate from "./pages/EasyDonate";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
-    <Switch>      <Route path={"/"} component={ModernHome} />
+    <Switch>
+      <Route path={"/"} component={Home} />
       <Route path="/sunday-bloody-sunday-part-3" component={SundayBloodyySundayPart3} />
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
