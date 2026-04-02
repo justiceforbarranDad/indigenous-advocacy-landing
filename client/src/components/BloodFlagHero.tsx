@@ -25,47 +25,45 @@ export default function BloodFlagHero() {
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/canada-flag-totem-centennial-flame-KJWX9Q84sgCsU8VMeyAwCs.webp)',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover'
-        }}
-      >
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
-      </div>
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        className="absolute inset-0 w-full h-full object-cover"
+        src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-blood-dripping-animation_8660d9ed.mp4"
+      />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Text Content */}
-      <div className="relative z-10 w-full px-4 py-8">
+      <div className="relative z-20 w-full px-4 py-8">
         {/* Red Banner - Know Your Rights */}
-        <div className="bg-red-600 text-white text-center py-4 mb-8">
+        <div className="bg-red-600 text-white text-center py-4 mb-8 shadow-lg">
           <h1 className="text-2xl md:text-4xl font-bold tracking-widest">
             {text.knowYourRights}
           </h1>
         </div>
 
         {/* Main Content */}
-        <div className="text-center text-white max-w-4xl mx-auto">
+        <div className="text-center text-white max-w-4xl mx-auto drop-shadow-lg">
           {/* Since 2021 */}
-          <p className="text-3xl md:text-5xl font-bold mb-4 tracking-wider">
+          <p className="text-3xl md:text-5xl font-bold mb-4 tracking-wider drop-shadow-md">
             {text.since}
           </p>
 
           {/* Title */}
-          <h2 className="text-4xl md:text-6xl font-bold mb-2 leading-tight">
+          <h2 className="text-4xl md:text-6xl font-bold mb-2 leading-tight drop-shadow-md">
             {text.title}
           </h2>
 
           {/* Date */}
-          <p className="text-2xl md:text-3xl font-bold mb-6">
+          <p className="text-2xl md:text-3xl font-bold mb-6 drop-shadow-md">
             {text.date}
           </p>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl font-semibold text-gray-100 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl font-semibold text-gray-100 max-w-2xl mx-auto drop-shadow-md">
             {text.subtitle}
           </p>
 
