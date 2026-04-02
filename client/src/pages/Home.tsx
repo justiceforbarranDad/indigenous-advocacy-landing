@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SocialShareButtons } from '@/components/SocialShareButtons';
 import { DonationQRCode } from '@/components/DonationQRCode';
+import { DonorRecognition } from '@/components/DonorRecognition';
 import { Heart, ChevronRight, Play } from 'lucide-react';
 
 export default function Home() {
@@ -249,6 +250,9 @@ export default function Home() {
 
         </div>
       </div>
+
+      {/* DONOR RECOGNITION */}
+      <DonorRecognition />
 
       {/* FOOTER */}
       <div className="bg-black text-white py-6 px-4 md:px-8 border-t-4 border-black mt-12">
