@@ -124,7 +124,7 @@ export default function Home() {
                   <img 
                     src={story.image} 
                     alt={story.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-auto object-contain bg-gray-100"
                   />
                   <div className="p-4 bg-white">
                     <h3 className="text-lg md:text-xl font-bold mb-1 leading-tight">
