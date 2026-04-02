@@ -7,4 +7,14 @@ export const ENV = {
   isProduction: process.env.NODE_ENV === "production",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
+  stripeSecretKey: process.env.STRIPE_SECRET_KEY ?? "",
+  stripePublishableKey: process.env.VITE_STRIPE_PUBLISHABLE_KEY ?? "",
 };
+
+// Validate Stripe keys are available
+if (!ENV.stripeSecretKey) {
+  console.warn("Warning: STRIPE_SECRET_KEY is not configured. Stripe payments will not work.");
+}
+if (!ENV.stripePublishableKey) {
+  console.warn("Warning: VITE_STRIPE_PUBLISHABLE_KEY is not configured. Stripe payments will not work.");
+}

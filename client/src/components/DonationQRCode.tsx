@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { useTranslation } from 'react-i18next';
 import { Copy, Check } from 'lucide-react';
+import StripePaymentModal from './StripePaymentModal';
 
 export default function DonationQRCode() {
   const { i18n } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [currency, setCurrency] = useState<'CAD' | 'USD'>('CAD');
   const [copied, setCopied] = useState(false);
+  const [showStripeModal, setShowStripeModal] = useState(false);
 
   const donationAmounts = [5, 10, 20, 50, 100];
 
@@ -186,7 +188,7 @@ export default function DonationQRCode() {
             </div>
 
             <button
-              onClick={() => setSelectedAmount(null)}
+              onClick={() => setShowStripeModal(true)}
               className="w-full bg-gray-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-gray-700 active:bg-gray-800 transition-colors shadow-md hover:shadow-lg"
             >
               {i18n.language === 'fr' ? 'Payer par Carte' : 'Pay by Card'}
@@ -210,6 +212,14 @@ export default function DonationQRCode() {
           </div>
         </div>
       )}
+
+      {/* Stripe Payment Modal */}
+      <StripePaymentModal
+        isOpen={showStripeModal}
+        onClose={() => setShowStripeModal(false)}
+        amount={selectedAmount || 0}
+        currency={currency}
+      />
     </div>
   );
 }

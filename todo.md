@@ -1711,3 +1711,23 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Add bilingual support to throne speech section
 - [x] Test social sharing on mobile and desktop
 - [x] Save checkpoint and prepare for international publication
+
+
+## STRIPE PAYMENT GATEWAY INTEGRATION (April 2, 2026 - NEW)
+- [ ] Set up Stripe API keys in environment variables
+- [ ] Create backend Stripe payment intent endpoint
+- [ ] Build Stripe payment modal component
+- [ ] Connect Pay by Card button to Stripe checkout
+- [ ] Test payment flow with test card numbers
+- [ ] Implement error handling and user feedback
+- [ ] Add success/failure page redirects
+- [ ] Test on mobile and desktop
+- [ ] Verify Stripe webhook handling
+- [ ] Deploy and test on live site
+
+
+## SILENCE CLOCK DISPLAY FIX (April 2, 2026 - URGENT)
+- [x] Reduce silence clock box sizes (days, hours, minutes, seconds)
+- [x] Reduce font sizes for better proportions
+- [x] Test on mobile and desktop viewports
+- [x] Ensure responsive layout works correctly
