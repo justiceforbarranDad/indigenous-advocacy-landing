@@ -29,7 +29,7 @@ export default function BloodFlagHero() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/canada-flag-totem-parliament-centered-E7LKafshVwbSq86RqWKQGC.webp)',
+          backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/canada-flag-totem-centennial-flame-KJWX9Q84sgCsU8VMeyAwCs.webp)',
           backgroundPosition: 'center',
           backgroundSize: 'cover'
         }}
