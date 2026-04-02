@@ -289,7 +289,9 @@ export default function Home() {
               <h3 className="text-2xl font-bold mb-3 text-red-600">
                 {i18n.language === 'fr' ? 'Soutenir la Justice' : 'Support Justice'}
               </h3>
-              <DonationQRCode />
+              <div className="w-full max-w-md mx-auto">
+                <DonationQRCode />
+              </div>
               <p className="text-sm mb-4 leading-relaxed mt-6">
                 {i18n.language === 'fr' ? '100% des dons vont directement à la défense juridique, à la défense des droits et aux efforts de changement systémique.' : '100% of donations go directly to legal defense, advocacy, and systemic change efforts.'}
               </p>
