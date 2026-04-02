@@ -16,7 +16,7 @@ const episodes: Episode[] = [
     id: 1,
     title: 'The Silence of Politicians',
     description: 'An investigation into government accountability and the failure of elected officials to serve their constituents.',
-    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep1-silence-politicians-en.wav',
+    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep1-silence-politicians-en_f098563e.wav',
     duration: '8:45',
     transcript: `THE SILENCE OF POLITICIANS: An Investigation into Government Accountability
 
@@ -34,7 +34,7 @@ This is not an isolated incident. This is a pattern. A systematic failure of ele
     id: 2,
     title: 'System Failure: DPJ Accountability',
     description: 'An investigation into institutional failure and child protection collapse in Quebec.',
-    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep2-system-failure-dpj-en.wav',
+    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep2-system-failure-dpj-en_a4cd9326.wav',
     duration: '9:12',
     transcript: `SYSTEM FAILURE: An Investigation into DPJ Accountability and Child Protection Collapse
 
@@ -50,7 +50,7 @@ But in January 2023, DPJ withdrew. No adequate follow-up. No transition plan. No
     id: 3,
     title: '1873 Days of Injustice',
     description: 'A timeline investigation into five years of waiting for accountability.',
-    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep3-1873-days-en.wav',
+    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep3-1873-days-en_a9cb1b8f.wav',
     duration: '7:58',
     transcript: `1873 DAYS OF INJUSTICE: A Timeline Investigation
 
@@ -64,7 +64,7 @@ February 14, 2021. The date that changed everything. A teenager in an Indigenous
     id: 4,
     title: 'Indigenous Rights Under Attack',
     description: 'A legal investigation into systemic violations and institutional failure.',
-    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep4-indigenous-rights-en.wav',
+    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep4-indigenous-rights-en_c6cf99e6.wav',
     duration: '8:34',
     transcript: `INDIGENOUS RIGHTS UNDER ATTACK: A Legal Investigation
 
@@ -78,7 +78,7 @@ This is the legal investigation into systemic violations and institutional failu
     id: 5,
     title: 'Justice Delayed is Justice Denied',
     description: 'The human cost of systemic failure and the power of collective resistance.',
-    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep5-justice-delayed-en.wav',
+    audioUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep5-justice-delayed-en_c3757edf.wav',
     duration: '8:21',
     transcript: `JUSTICE DELAYED IS JUSTICE DENIED: The Impact of Systemic Failure
 

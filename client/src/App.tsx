@@ -48,6 +48,8 @@ import CallLogDocumentation from "./pages/CallLogDocumentation";
 import InteractiveCallMap from "./pages/InteractiveCallMap";
 import IndigenousChildrenRights from "./pages/IndigenousChildrenRights";
 import Shop from "./pages/Shop";
+import DonateEtransfer from "./pages/DonateEtransfer";
+
 import NewspaperFrontPage from "./pages/NewspaperFrontPage";
 import PoliceAccountability from "./pages/PoliceAccountability";
 import ElectoralReformDemands from "./pages/ElectoralReformDemands";
@@ -160,6 +162,7 @@ function Router() {
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
       <Route path="/donate" component={DonateQuick} />
+      <Route path="/donate-etransfer" component={DonateEtransfer} />
       <Route path="/payment-hub" component={PaymentHub} />
       <Route path="/donate-stripe-qr" component={PaymentHub} />
       <Route path="/qr-codes" component={QRCodeGallery} />
