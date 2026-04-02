@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { DonationQRCode } from './DonationQRCode';
+import DonationQRCode from './DonationQRCode';
 
 describe('DonationQRCode', () => {
   it('renders QR code component', () => {

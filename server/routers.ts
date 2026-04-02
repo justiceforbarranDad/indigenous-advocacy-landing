@@ -4,7 +4,7 @@ const COOKIE_NAME = "session";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
-import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile, incrementVideoView, getVideoViews, getAllVideoViews, subscribeEmail, getEmailSubscriber, unsubscribeEmail, getActiveSubscribers, createNewsUpdate, getPublishedNews, createEmailCampaign, submitSurveyResponse, getSurveyStats, getSurveyResponses, getActiveDonationCampaign, getDonationCampaignById, updateDonationCampaignRaisedAmount, getTotalRaisedAmount, createOrangeShirtEntry, getOrangeShirtEntries, getOrangeShirtEntriesByType, updateOrangeShirtEntry, getOrangeShirtStats, createGovernmentEntry, getGovernmentEntries, getGovernmentEntriesByLevel, updateGovernmentEntry, getGovernmentStats } from "./db";
+import { createSurvivorStory, getPublicSurvivorStories, createDonation, getTotalDonations, createLegalProfile, createParentProfile, incrementVideoView, getVideoViews, getAllVideoViews, subscribeEmail, getEmailSubscriber, unsubscribeEmail, getActiveSubscribers, createNewsUpdate, getPublishedNews, createEmailCampaign, submitSurveyResponse, getSurveyStats, getSurveyResponses, getActiveDonationCampaign, getDonationCampaignById, updateDonationCampaignRaisedAmount, getTotalRaisedAmount, createOrangeShirtEntry, getOrangeShirtEntries, getOrangeShirtEntriesByType, updateOrangeShirtEntry, getOrangeShirtStats, createGovernmentEntry, getGovernmentEntries, getGovernmentEntriesByLevel, updateGovernmentEntry, getGovernmentStats, getDonationImpactMetrics, updateDonationImpactMetrics, createGovernmentResponse, getPublicGovernmentResponses, updateGovernmentResponse, getGovernmentResponseStats } from "./db";
 import { notifyOwner } from "./_core/notification";
 import { exportSurveyAsCSV, exportAnalyticsSummaryAsCSV, generateAnalyticsReport } from "./dataExport";
 import { sendEmail, generateStoryConfirmationEmail, generateStoryConfirmationText, generateDonationConfirmationEmail, generateDonationConfirmationText } from "./_core/emailService";
@@ -828,6 +828,36 @@ export const appRouter = router({
     }),
   }),
 
+  donationImpact: router({
+    getMetrics: publicProcedure.query(async () => {
+      const metrics = await getDonationImpactMetrics();
+      return metrics || {
+        id: 0,
+        totalRaisedCAD: 0,
+        totalRaisedUSD: 0,
+        totalDonors: 0,
+        legalHoursFunded: 0,
+        hourlyRate: 25000,
+        lastUpdated: new Date(),
+        createdAt: new Date(),
+      };
+    }),
+  }),
+
+  governmentTracker: router({
+    getPublicResponses: publicProcedure
+      .input(z.object({
+        limit: z.number().default(20),
+        offset: z.number().default(0),
+      }))
+      .query(async ({ input }) => {
+        return await getPublicGovernmentResponses(input.limit, input.offset);
+      }),
+    
+    getStats: publicProcedure.query(async () => {
+      return await getGovernmentResponseStats();
+    }),
+  }),
 
 });
 export type AppRouter = typeof appRouter;

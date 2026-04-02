@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { DonationQRCode } from './DonationQRCode';
+import DonationQRCode from './DonationQRCode';
 import { trpc } from '@/lib/trpc';
 
 const DONATION_AMOUNTS = [5, 10, 20, 50, 100];

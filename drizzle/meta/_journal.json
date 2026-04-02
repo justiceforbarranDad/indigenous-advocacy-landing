@@ -78,6 +78,13 @@
       "when": 1775136053242,
       "tag": "0010_easy_impossible_man",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1775147990430,
+      "tag": "0011_quick_mantis",
+      "breakpoints": true
     }
   ]
 }

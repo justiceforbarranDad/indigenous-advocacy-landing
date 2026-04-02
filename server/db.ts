@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, donationCampaigns, DonationCampaign, legalProfiles, InsertLegalProfile, parentProfiles, InsertParentProfile, videoViews, InsertVideoView, emailSubscribers, InsertEmailSubscriber, newsUpdates, InsertNewsUpdate, emailCampaigns, InsertEmailCampaign, surveyResponses, InsertSurveyResponse, orangeShirtAccountability, InsertOrangeShirtAccountability, OrangeShirtAccountability, governmentAccountability, InsertGovernmentAccountability, GovernmentAccountability } from "../drizzle/schema";
+import { InsertUser, users, survivorStories, InsertSurvivorStory, donations, InsertDonation, donationCampaigns, DonationCampaign, legalProfiles, InsertLegalProfile, parentProfiles, InsertParentProfile, videoViews, InsertVideoView, emailSubscribers, InsertEmailSubscriber, newsUpdates, InsertNewsUpdate, emailCampaigns, InsertEmailCampaign, surveyResponses, InsertSurveyResponse, orangeShirtAccountability, InsertOrangeShirtAccountability, OrangeShirtAccountability, governmentAccountability, InsertGovernmentAccountability, GovernmentAccountability, donationImpactMetrics, InsertDonationImpactMetrics, DonationImpactMetrics, governmentResponseTracker, InsertGovernmentResponseTracker, GovernmentResponseTracker } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -537,4 +537,126 @@ export async function getGovernmentStats() {
     responded,
     ceaseAndDesist,
   };
+}
+
+
+// Donation Impact Metrics Functions
+export async function getDonationImpactMetrics() {
+  const db = await getDb();
+  if (!db) {
+    return null;
+  }
+  
+  const result = await db.select().from(donationImpactMetrics).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function updateDonationImpactMetrics(metrics: Partial<InsertDonationImpactMetrics>) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  const existing = await getDonationImpactMetrics();
+  
+  if (existing) {
+    await db.update(donationImpactMetrics)
+      .set({
+        ...metrics,
+        lastUpdated: new Date(),
+      })
+      .where(eq(donationImpactMetrics.id, existing.id));
+  } else {
+    await db.insert(donationImpactMetrics).values({
+      ...metrics,
+      lastUpdated: new Date(),
+    });
+  }
+}
+
+// Government Response Tracker Functions
+export async function createGovernmentResponse(response: InsertGovernmentResponseTracker) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  const result = await db.insert(governmentResponseTracker).values(response);
+  return result;
+}
+
+export async function getGovernmentResponses(limit: number = 50, offset: number = 0) {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select().from(governmentResponseTracker).limit(limit).offset(offset);
+  return result;
+}
+
+export async function getPublicGovernmentResponses(limit: number = 50, offset: number = 0) {
+  const db = await getDb();
+  if (!db) {
+    return [];
+  }
+  
+  const result = await db.select()
+    .from(governmentResponseTracker)
+    .where(eq(governmentResponseTracker.publiclyShared, "yes"))
+    .limit(limit)
+    .offset(offset);
+  return result;
+}
+
+export async function updateGovernmentResponse(id: number, updates: Partial<InsertGovernmentResponseTracker>) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+  
+  await db.update(governmentResponseTracker)
+    .set({
+      ...updates,
+      updatedAt: new Date(),
+    })
+    .where(eq(governmentResponseTracker.id, id));
+}
+
+export async function getGovernmentResponseStats() {
+  const db = await getDb();
+  if (!db) {
+    return {
+      total: 0,
+      noResponse: 0,
+      acknowledged: 0,
+      partialResponse: 0,
+      fullResponse: 0,
+      refused: 0,
+      hostile: 0,
+      avgDaysToRespond: 0,
+    };
+  }
+  
+  const all = await db.select().from(governmentResponseTracker);
+  
+  const stats = {
+    total: all.length,
+    noResponse: all.filter(r => r.responseStatus === "no_response").length,
+    acknowledged: all.filter(r => r.responseStatus === "acknowledged").length,
+    partialResponse: all.filter(r => r.responseStatus === "partial_response").length,
+    fullResponse: all.filter(r => r.responseStatus === "full_response").length,
+    refused: all.filter(r => r.responseStatus === "refused").length,
+    hostile: all.filter(r => r.responseStatus === "hostile").length,
+    avgDaysToRespond: 0,
+  };
+  
+  // Calculate average days to respond
+  const responded = all.filter(r => r.daysToRespond !== null);
+  if (responded.length > 0) {
+    const totalDays = responded.reduce((sum, r) => sum + (r.daysToRespond || 0), 0);
+    stats.avgDaysToRespond = Math.round(totalDays / responded.length);
+  }
+  
+  return stats;
 }

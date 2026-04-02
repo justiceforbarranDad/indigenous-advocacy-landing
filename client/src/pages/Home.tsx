@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SocialShareButtons } from '@/components/SocialShareButtons';
-import { DonationQRCode } from '@/components/DonationQRCode';
+import DonationQRCode from '@/components/DonationQRCode';
 import { DonorRecognition } from '@/components/DonorRecognition';
 import { Heart, ChevronRight, Play, X } from 'lucide-react';
 

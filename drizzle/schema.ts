@@ -272,3 +272,46 @@ export const governmentAccountability = mysqlTable("government_accountability", 
 
 export type GovernmentAccountability = typeof governmentAccountability.$inferSelect;
 export type InsertGovernmentAccountability = typeof governmentAccountability.$inferInsert;
+
+// Donation Impact Tracker Table
+export const donationImpactMetrics = mysqlTable("donation_impact_metrics", {
+  id: int("id").autoincrement().primaryKey(),
+  totalRaisedCAD: int("total_raised_cad").default(0).notNull(), // Amount in cents
+  totalRaisedUSD: int("total_raised_usd").default(0).notNull(), // Amount in cents
+  totalDonors: int("total_donors").default(0).notNull(),
+  legalHoursFunded: int("legal_hours_funded").default(0).notNull(), // Calculated: total raised / hourly rate
+  hourlyRate: int("hourly_rate").default(25000).notNull(), // Default $250/hour in cents
+  lastUpdated: timestamp("last_updated").defaultNow().onUpdateNow().notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type DonationImpactMetrics = typeof donationImpactMetrics.$inferSelect;
+export type InsertDonationImpactMetrics = typeof donationImpactMetrics.$inferInsert;
+
+// Government Official Response Tracker Table
+export const governmentResponseTracker = mysqlTable("government_response_tracker", {
+  id: int("id").autoincrement().primaryKey(),
+  officialName: varchar("official_name", { length: 255 }).notNull(),
+  title: varchar("title", { length: 255 }).notNull(),
+  governmentLevel: mysqlEnum("government_level", ["federal", "provincial", "municipal", "agency", "other"]).notNull(),
+  department: varchar("department", { length: 255 }),
+  jurisdiction: varchar("jurisdiction", { length: 255 }),
+  email: varchar("email", { length: 320 }),
+  phone: varchar("phone", { length: 20 }),
+  dateContacted: timestamp("date_contacted").notNull(),
+  contactMethod: mysqlEnum("contact_method", ["email", "phone", "social_media", "in_person", "letter", "other"]).notNull(),
+  contactSubject: varchar("contact_subject", { length: 255 }).notNull(), // e.g., "DPJ Support Request", "Jordan's Principle"
+  responseStatus: mysqlEnum("response_status", ["no_response", "acknowledged", "partial_response", "full_response", "refused", "hostile"]).default("no_response").notNull(),
+  responseDate: timestamp("response_date"),
+  responseNotes: text("response_notes"), // Summary of what they said
+  daysToRespond: int("days_to_respond"), // Calculated: responseDate - dateContacted
+  followUpRequired: mysqlEnum("follow_up_required", ["yes", "no"]).default("no").notNull(),
+  followUpDate: timestamp("follow_up_date"),
+  publiclyShared: mysqlEnum("publicly_shared", ["yes", "no"]).default("no").notNull(), // Can be displayed on dashboard
+  notes: text("notes"), // Internal notes
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type GovernmentResponseTracker = typeof governmentResponseTracker.$inferSelect;
+export type InsertGovernmentResponseTracker = typeof governmentResponseTracker.$inferInsert;
