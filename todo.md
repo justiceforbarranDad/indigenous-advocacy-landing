@@ -1666,8 +1666,15 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Add trackers link to hamburger menu navigation
 - [x] Added impactTrackers translation key to English menu
 - [x] Added impactTrackers translation key to French menu
-- [ ] Test QR code scanning on mobile devices
-- [ ] Verify GoFundMe link works correctly
+- [x] Test QR code scanning on mobile devices
+- [x] Verify GoFundMe link works correctly
+
+## REALISTIC BLOOD FLAG IMAGE (April 2, 2026)
+- [x] Generated realistic blood effect on Canadian flag image
+- [x] Uploaded blood flag image to CDN
+- [x] Integrated blood flag into home page featured story
+- [x] Verified image displays correctly on desktop and mobile
+- [ ] Publish website and test live
 
 
 ## TRACKER DATA POPULATION & ADMIN DASHBOARD (April 2, 2026)

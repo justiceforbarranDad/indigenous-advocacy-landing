@@ -16,7 +16,7 @@ export default function Home() {
       title: i18n.language === 'fr' ? 'Dimanche Sanglant, Deuxième Partie' : 'Sunday Bloody Sunday, Part Two',
       subtitle: i18n.language === 'fr' ? 'Adolescent autochtone poignardé trois fois — Le système l\'a abandonné pendant cinq ans' : 'Indigenous Teen Stabbed Three Times — System Failed Him For Five Years',
       excerpt: i18n.language === 'fr' ? 'Depuis 2021, notre famille autochtone se bat pour la justice après un traumatisme grave. Un adolescent poignardé trois fois. Impacts majeurs. Santé mentale détruite.' : 'Since 2021, our Indigenous family has fought for justice after serious trauma. A teenager stabbed three times. Major impacts. Mental health destroyed.',
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-bg-USRfqWoNeN2aPgVufSqEfJ.webp',
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/canada-flag-blood-realistic-kUV87PZuSNfV2tELkshjKK.webp',
       link: '/barrans-story',
       featured: true
     },
