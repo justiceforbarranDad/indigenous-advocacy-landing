@@ -131,7 +131,13 @@ export default function StickyRadioPlayer() {
     if (!audio) return;
 
     if (isPlaying) {
-      audio.play();
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log('Audio play error:', error);
+          setIsPlaying(false);
+        });
+      }
     } else {
       audio.pause();
     }
@@ -144,7 +150,10 @@ export default function StickyRadioPlayer() {
   const handleEpisodeChange = (episodeId: number) => {
     setCurrentEpisodeId(episodeId);
     setCurrentTime(0);
-    setIsPlaying(true);
+    // Delay play to ensure audio source is loaded
+    setTimeout(() => {
+      setIsPlaying(true);
+    }, 100);
   };
 
   const formatTime = (seconds: number) => {
@@ -162,6 +171,8 @@ export default function StickyRadioPlayer() {
         ref={audioRef}
         src={currentEpisode.audioUrl}
         crossOrigin="anonymous"
+        controls={false}
+        preload="metadata"
       />
 
       {/* Sticky Radio Player */}
