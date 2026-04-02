@@ -259,7 +259,7 @@ export default function Home() {
             {i18n.language === 'fr' ? 'Vérité Actuelle Avant Réconciliation' : 'Current Truth Before Reconciliation'}
           </p>
           <p className="text-xs text-gray-400">
-            indigenousadv-ahjdmzis.manus.space | www.justiceforbarran.com | www.justiceforbarran.ca
+            indigenousadv-ahjdmzis.manus.space
           </p>
         </div>
       </div>
