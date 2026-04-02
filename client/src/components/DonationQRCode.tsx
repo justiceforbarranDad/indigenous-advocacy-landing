@@ -13,12 +13,14 @@ export function DonationQRCode() {
 
   // Generate QR code value for bank transfer
   const generateBankQRValue = (amount: number) => {
-    return `Bank Transfer: ${currency}$${amount}\nAccount: justiceforbarran\nAmount: ${currency}$${amount}`;
+    // Simple text format that's easy to scan
+    return `justiceforbarran.ca/bank/${amount}/${currency}`;
   };
 
   // Generate QR code value for e-Transfer
   const generateETransferQRValue = (amount: number) => {
-    return `E-Transfer to: justiceforbarran@gmail.com\nAmount: ${currency}$${amount}\nNo password required`;
+    // Simple email format
+    return `justiceforbarran@gmail.com`;
   };
 
   const copyToClipboard = (text: string) => {
@@ -104,7 +106,7 @@ export function DonationQRCode() {
               <div className="bg-white p-4 rounded-lg shadow-md">
                 <QRCode
                   value={generateBankQRValue(selectedAmount)}
-                  size={180}
+                  size={200}
                   level="H"
                   includeMargin={true}
                   fgColor="#000000"
@@ -113,8 +115,8 @@ export function DonationQRCode() {
               </div>
             </div>
 
-            <p className="text-xs text-gray-700 text-center">
-              Account: justiceforbarran
+            <p className="text-xs text-gray-700 text-center font-mono">
+              justiceforbarran.ca/bank/{selectedAmount}/{currency}
             </p>
           </div>
 
@@ -133,7 +135,7 @@ export function DonationQRCode() {
               <div className="bg-white p-4 rounded-lg shadow-md">
                 <QRCode
                   value={generateETransferQRValue(selectedAmount)}
-                  size={180}
+                  size={200}
                   level="H"
                   includeMargin={true}
                   fgColor="#000000"
@@ -142,7 +144,7 @@ export function DonationQRCode() {
               </div>
             </div>
 
-            <p className="text-xs text-gray-700 text-center break-all">
+            <p className="text-xs text-gray-700 text-center font-mono">
               justiceforbarran@gmail.com
             </p>
           </div>
