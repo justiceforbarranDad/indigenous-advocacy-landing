@@ -24,6 +24,7 @@ const banks: Bank[] = [
 
 export default function InteracDonationInterface() {
   const [language, setLanguage] = useState<'en' | 'fr'>('en');
+  const [currency, setCurrency] = useState<'CAD' | 'USD'>('CAD');
   const [donationAmount, setDonationAmount] = useState('100.00');
   const [customAmount, setCustomAmount] = useState('');
   const [selectedBank, setSelectedBank] = useState<string | null>(null);
@@ -34,6 +35,8 @@ export default function InteracDonationInterface() {
     en: {
       requestForMoney: 'Request For Money',
       cad: 'CAD',
+      usd: 'USD',
+      selectCurrency: 'Select Currency',
       from: 'From',
       justiceForBarran: 'Justice for Barran Campaign',
       viewRequestDetails: 'View Request Details',
@@ -54,6 +57,8 @@ export default function InteracDonationInterface() {
     fr: {
       requestForMoney: 'Demande de Fonds',
       cad: 'CAD',
+      usd: 'USD',
+      selectCurrency: 'Sélectionnez la devise',
       from: 'De',
       justiceForBarran: 'Campagne Justice pour Barran',
       viewRequestDetails: 'Voir les détails de la demande',
@@ -81,16 +86,25 @@ export default function InteracDonationInterface() {
 
   const displayAmount = customAmount || donationAmount;
 
-  // QR codes for each donation amount
-  const qrCodesByAmount: { [key: string]: string } = {
-    '5.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-5cad.png',
-    '10.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-10cad.png',
-    '20.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-20cad.png',
-    '50.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-50cad.png',
-    '100.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-100cad.png',
+  // QR codes for each donation amount by currency
+  const qrCodesByAmount: { [key: string]: { [key: string]: string } } = {
+    'CAD': {
+      '5.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-5cad.png',
+      '10.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-10cad.png',
+      '20.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-20cad.png',
+      '50.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-50cad.png',
+      '100.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-100cad.png',
+    },
+    'USD': {
+      '5.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-5usd.png',
+      '10.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-10usd.png',
+      '20.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-20usd.png',
+      '50.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-50usd.png',
+      '100.00': 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code-100usd.png',
+    },
   };
 
-  const currentQRCode = qrCodesByAmount[displayAmount] || qrCodesByAmount['100.00'];
+  const currentQRCode = qrCodesByAmount[currency][displayAmount] || qrCodesByAmount[currency]['100.00'];
 
   const handleBankSelect = (bankId: string) => {
     setSelectedBank(bankId);
@@ -130,6 +144,30 @@ export default function InteracDonationInterface() {
 
       {/* MAIN CONTENT */}
       <div className="px-4 py-8 max-w-2xl mx-auto">
+        {/* CURRENCY SELECTOR */}
+        <div className="mb-8 flex gap-4">
+          <button
+            onClick={() => setCurrency('CAD')}
+            className={`flex-1 py-3 px-4 rounded-lg font-bold transition-all ${
+              currency === 'CAD'
+                ? 'bg-red-600 text-white'
+                : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
+            }`}
+          >
+            {t.cad}
+          </button>
+          <button
+            onClick={() => setCurrency('USD')}
+            className={`flex-1 py-3 px-4 rounded-lg font-bold transition-all ${
+              currency === 'USD'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
+            }`}
+          >
+            {t.usd}
+          </button>
+        </div>
+
         {/* DONATION AMOUNT SECTION */}
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-4">
@@ -140,7 +178,7 @@ export default function InteracDonationInterface() {
           <div className="mb-6">
             <div className="text-5xl font-bold text-gray-900 mb-2">
               ${displayAmount}
-              <span className="text-2xl text-gray-600 ml-2">{t.cad}</span>
+              <span className="text-2xl text-gray-600 ml-2">{currency}</span>
             </div>
           </div>
 
