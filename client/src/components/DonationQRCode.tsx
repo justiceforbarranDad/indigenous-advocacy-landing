@@ -1,7 +1,8 @@
 import { QRCodeSVG as QRCode } from 'qrcode.react';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { Copy, Check } from 'lucide-react';
+import { Copy, Check, Loader2 } from 'lucide-react';
+import { trpc } from '@/lib/trpc';
 
 export function DonationQRCode() {
   const { t } = useTranslation();
@@ -9,6 +10,11 @@ export function DonationQRCode() {
   const [currency, setCurrency] = useState<'CAD' | 'USD'>('CAD');
   const [copied, setCopied] = useState(false);
   const [subscriptionTerm, setSubscriptionTerm] = useState<'1' | '3' | '6' | '12'>('1');
+  const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Mutation to create checkout session
+  const createCheckout = trpc.stripe.createCheckoutSession.useMutation();
 
   // Subscription term options with messaging
   const subscriptionTerms = [
@@ -18,28 +24,31 @@ export function DonationQRCode() {
     { value: '12' as const, label: '12 Months', message: 'Annual Justice Fund - year-round advocacy' },
   ];
 
-  // Stripe Payment Links - RECURRING MONTHLY - CAD first (default), then USD
-  const paymentLinks = {
-    CAD: {
-      5: 'https://buy.stripe.com/aFafZh4VC91QbnfcFb9EI07',
-      10: 'https://buy.stripe.com/fZufZh3Rydi62QJdJf9EI08',
-      20: 'https://buy.stripe.com/dRmbJ1co491Qbnf9sZ9EI09',
-      50: 'https://buy.stripe.com/eVq3cvewca5U8b38oV9EI0a',
-      100: 'https://buy.stripe.com/6oUeVdafWdi6ajb6gN9EI0b',
-    },
-    USD: {
-      5: 'https://buy.stripe.com/14AaEX5ZGguifDv5cJ9EI0q',
-      10: 'https://buy.stripe.com/dRm00jgEk7XMbnf34B9EI0p',
-      20: 'https://buy.stripe.com/bJebJ187Oa5UfDv34B9EI0o',
-      50: 'https://buy.stripe.com/4gMdR987O0vkajb7kR9EI0n',
-      100: 'https://buy.stripe.com/00w00jco47XM3UNfRn9EI0m',
-    },
-  };
-
   const donationAmounts = [5, 10, 20, 50, 100];
 
-  const getPaymentLink = (amount: number) => {
-    return paymentLinks[currency][amount as keyof typeof paymentLinks['CAD']];
+  // Handle amount selection - create checkout session
+  const handleAmountSelect = async (amount: number) => {
+    setSelectedAmount(amount);
+    setIsLoading(true);
+    setCheckoutUrl(null);
+
+    try {
+      const result = await createCheckout.mutateAsync({
+        amount: amount,
+        donorName: 'Donor',
+        donorEmail: 'donor@example.com',
+        message: 'Support Justice for Barran',
+      });
+
+      if (result.url) {
+        setCheckoutUrl(result.url);
+      }
+    } catch (error) {
+      console.error('Failed to create checkout session:', error);
+      alert('Failed to create payment link. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const copyToClipboard = (text: string) => {
@@ -119,8 +128,9 @@ export function DonationQRCode() {
           {donationAmounts.map((amount) => (
             <button
               key={amount}
-              onClick={() => setSelectedAmount(amount)}
-              className={`py-3 px-2 rounded-lg font-bold text-sm transition-all border-2 ${
+              onClick={() => handleAmountSelect(amount)}
+              disabled={isLoading}
+              className={`py-3 px-2 rounded-lg font-bold text-sm transition-all border-2 disabled:opacity-50 ${
                 selectedAmount === amount
                   ? 'bg-blue-600 text-white border-blue-600 shadow-lg'
                   : 'bg-white text-gray-800 border-gray-300 hover:border-blue-600 hover:bg-blue-100'
@@ -141,36 +151,54 @@ export function DonationQRCode() {
               {currency}${selectedAmount}
             </span>
           </p>
-          <p className="text-xs text-gray-600 mb-4 font-semibold">
+          <p className="text-xs text-gray-600 mb-6 font-semibold">
             {t('donate.pointCamera')}
           </p>
 
-          {/* QR CODE - LINKS TO STRIPE PAYMENT LINK */}
-          <div className="flex justify-center mb-4 bg-white p-4 rounded-lg inline-block mx-auto">
-            <QRCode
-              value={getPaymentLink(selectedAmount)}
-              size={220}
-              level="H"
-              includeMargin={true}
-              fgColor="#000000"
-              bgColor="#FFFFFF"
-            />
-          </div>
+          {/* LOADING STATE */}
+          {isLoading && (
+            <div className="flex justify-center items-center mb-6">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <Loader2 size={60} className="animate-spin text-blue-600" />
+              </div>
+            </div>
+          )}
 
-          {/* DIRECT STRIPE LINK */}
-          <a
-            href={getPaymentLink(selectedAmount)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mb-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-bold text-sm transition-colors"
-          >
-            {t('donate.donateNow')}
-          </a>
+          {/* QR CODE - LINKS TO STRIPE PAYMENT LINK - FULLY CENTERED */}
+          {checkoutUrl && !isLoading && (
+            <>
+              <div className="flex justify-center mb-6">
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <QRCode
+                    value={checkoutUrl}
+                    size={240}
+                    level="H"
+                    includeMargin={true}
+                    fgColor="#000000"
+                    bgColor="#FFFFFF"
+                  />
+                </div>
+              </div>
+
+              {/* DIRECT STRIPE LINK */}
+              <a
+                href={checkoutUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mb-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold text-sm transition-colors"
+              >
+                💳 {t('donate.donateNow')}
+              </a>
+            </>
+          )}
 
           {/* CHANGE AMOUNT BUTTON */}
           <div className="mt-4">
             <button
-              onClick={() => setSelectedAmount(null)}
+              onClick={() => {
+                setSelectedAmount(null);
+                setCheckoutUrl(null);
+              }}
               className="text-sm text-blue-600 hover:text-blue-800 hover:underline font-semibold"
             >
               ← {t('donate.changeAmount')}
