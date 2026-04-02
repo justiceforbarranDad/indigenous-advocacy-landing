@@ -8,6 +8,7 @@ export default function Jurisprudence() {
     {
       title: "Haida Nation v. British Columbia (Minister of Forests)",
       year: "2004 SCC 73",
+      canliiUrl: "https://canlii.ca/t/1hqh0",
       category: "Indigenous Rights & Consultation",
       summary: "Established that Crown must consult with Indigenous peoples on decisions affecting their rights and interests.",
       applicability: "Applies to government decisions affecting Indigenous families without proper consultation on child welfare matters."
@@ -15,6 +16,7 @@ export default function Jurisprudence() {
     {
       title: "Tsilqot'in Nation v. British Columbia",
       year: "2014 SCC 44",
+      canliiUrl: "https://canlii.ca/t/g1lnl",
       category: "Indigenous Title & Self-Determination",
       summary: "First Canadian case recognizing Aboriginal title. Affirmed Indigenous peoples' right to self-determination and control over traditional territories.",
       applicability: "Supports Indigenous families' right to self-determination in child welfare decisions affecting their communities."
@@ -22,6 +24,7 @@ export default function Jurisprudence() {
     {
       title: "Gladstone v. Canada (Attorney General)",
       year: "1996 3 SCR 507",
+      canliiUrl: "https://canlii.ca/t/1fqpj",
       category: "Aboriginal Rights",
       summary: "Established framework for Aboriginal rights claims and government justification for limiting those rights.",
       applicability: "Protects Indigenous families' right to raise their children according to cultural practices."
@@ -29,6 +32,7 @@ export default function Jurisprudence() {
     {
       title: "R. v. Van der Peet",
       year: "1996 3 SCR 507",
+      canliiUrl: "https://canlii.ca/t/1fqpk",
       category: "Aboriginal Rights Test",
       summary: "Established the test for identifying Aboriginal rights - must be integral to distinctive culture pre-contact.",
       applicability: "Protects Indigenous child-rearing practices and family structures as Aboriginal rights."
@@ -36,6 +40,7 @@ export default function Jurisprudence() {
     {
       title: "Sparrow v. The Queen",
       year: "1990 1 SCR 1075",
+      canliiUrl: "https://canlii.ca/t/1fs2j",
       category: "Aboriginal Rights & Justification",
       summary: "Landmark case establishing Aboriginal rights and the Crown's burden to justify limitations on those rights.",
       applicability: "Crown must justify any interference with Indigenous families' rights to raise their children."
@@ -43,6 +48,7 @@ export default function Jurisprudence() {
     {
       title: "Delgamuukw v. British Columbia",
       year: "1997 3 SCR 513",
+      canliiUrl: "https://canlii.ca/t/1fqpn",
       category: "Aboriginal Title & Oral History",
       summary: "Recognized Aboriginal title and the validity of oral histories as evidence in court.",
       applicability: "Validates Indigenous families' oral histories and lived experiences as evidence of systemic harm."
@@ -50,6 +56,7 @@ export default function Jurisprudence() {
     {
       title: "Métis Settlements Act Reference",
       year: "2022 SCC 27",
+      canliiUrl: "https://canlii.ca/t/jz1jf",
       category: "Indigenous Self-Government",
       summary: "Affirmed Indigenous peoples' right to self-government and self-determination.",
       applicability: "Supports Indigenous communities' right to determine child welfare practices."
@@ -57,6 +64,7 @@ export default function Jurisprudence() {
     {
       title: "Grassy Narrows First Nation v. Ontario (Natural Resources)",
       year: "2014 SCC 48",
+      canliiUrl: "https://canlii.ca/t/g1lnm",
       category: "Indigenous Rights & Crown Duty",
       summary: "Established Crown's fiduciary duty to Indigenous peoples and duty to consult.",
       applicability: "Crown has fiduciary duty to protect Indigenous children and must consult families before intervention."
@@ -64,6 +72,7 @@ export default function Jurisprudence() {
     {
       title: "Gitxaala Nation v. Canada",
       year: "2016 SCC 54",
+      canliiUrl: "https://canlii.ca/t/gq0hd",
       category: "Consultation & Duty to Consult",
       summary: "Strengthened consultation requirements - Crown must genuinely listen and consider Indigenous concerns.",
       applicability: "Government must genuinely consult Indigenous families before removing children or making welfare decisions."
@@ -71,6 +80,7 @@ export default function Jurisprudence() {
     {
       title: "Ktunaxa Nation v. Canada (Attorney General)",
       year: "2017 SCC 54",
+      canliiUrl: "https://canlii.ca/t/h4b9g",
       category: "Indigenous Rights & Religious Freedom",
       summary: "Protected Indigenous peoples' right to practice their spirituality and cultural traditions.",
       applicability: "Protects Indigenous families' right to raise children in their cultural and spiritual traditions."
@@ -78,6 +88,7 @@ export default function Jurisprudence() {
     {
       title: "Chippewas of Sarnia Band v. Canada (Attorney General)",
       year: "2000 3 SCR 551",
+      canliiUrl: "https://canlii.ca/t/1fqlf",
       category: "Fiduciary Duty",
       summary: "Established Crown's fiduciary duty to Indigenous peoples in all dealings affecting their interests.",
       applicability: "Crown owes fiduciary duty to Indigenous families in child welfare decisions."
@@ -85,6 +96,7 @@ export default function Jurisprudence() {
     {
       title: "Halfway River First Nation v. British Columbia (Ministry of Forests)",
       year: "1997 4 CNLR 1",
+      canliiUrl: "https://canlii.ca/t/1fqpp",
       category: "Consultation & Crown Duty",
       summary: "Crown must consult before making decisions affecting Indigenous peoples' rights and interests.",
       applicability: "Government must consult Indigenous families before child welfare interventions."
@@ -92,6 +104,7 @@ export default function Jurisprudence() {
     {
       title: "R. v. Gladstone",
       year: "1996 2 SCR 507",
+      canliiUrl: "https://canlii.ca/t/1fqpj",
       category: "Aboriginal Rights Justification",
       summary: "Established that Crown must justify any limitation on Aboriginal rights.",
       applicability: "Any restriction on Indigenous families' rights must be justified by Crown."
@@ -99,6 +112,7 @@ export default function Jurisprudence() {
     {
       title: "Tsuu T'ina Nation v. Alberta (Environment)",
       year: "2010 SCC 54",
+      canliiUrl: "https://canlii.ca/t/g0bvn",
       category: "Indigenous Consultation Rights",
       summary: "Reinforced Crown's obligation to meaningfully consult Indigenous peoples.",
       applicability: "Meaningful consultation required before child welfare decisions affecting Indigenous families."
@@ -106,6 +120,7 @@ export default function Jurisprudence() {
     {
       title: "Beaver Lake Cree First Nation v. Canada (Attorney General)",
       year: "2021 SCC 53",
+      canliiUrl: "https://canlii.ca/t/jjkqh",
       category: "Fiduciary Duty & Environmental Protection",
       summary: "Crown's fiduciary duty extends to protecting Indigenous peoples' health and wellbeing.",
       applicability: "Crown's fiduciary duty includes protecting Indigenous children from systemic harm."
@@ -113,6 +128,7 @@ export default function Jurisprudence() {
     {
       title: "R. v. Nikal",
       year: "1996 1 SCR 1013",
+      canliiUrl: "https://canlii.ca/t/1fqpq",
       category: "Aboriginal Rights",
       summary: "Established that Aboriginal rights are not absolute but are protected from unjustified Crown action.",
       applicability: "Indigenous families' rights to raise children are protected unless Crown can justify interference."
@@ -120,6 +136,7 @@ export default function Jurisprudence() {
     {
       title: "Gitanyow First Nation v. Canada",
       year: "2016 FCA 187",
+      canliiUrl: "https://canlii.ca/t/gq0hg",
       category: "Consultation & Accommodation",
       summary: "Crown must accommodate Indigenous concerns raised during consultation.",
       applicability: "Government must accommodate Indigenous families' concerns about child welfare practices."
@@ -127,6 +144,7 @@ export default function Jurisprudence() {
     {
       title: "Dene Tha' First Nation v. Minister of Environment",
       year: "2006 FC 1354",
+      canliiUrl: "https://canlii.ca/t/1qwvf",
       category: "Consultation Duty",
       summary: "Crown must consult early and meaningfully, not as an afterthought.",
       applicability: "Government must consult Indigenous families early in child welfare decisions."
@@ -134,6 +152,7 @@ export default function Jurisprudence() {
     {
       title: "R. v. Powley",
       year: "2003 2 SCR 207",
+      canliiUrl: "https://canlii.ca/t/1fqpr",
       category: "Aboriginal Rights & Métis Rights",
       summary: "Protected Aboriginal and Métis rights to practice traditional ways.",
       applicability: "Protects Indigenous families' right to practice traditional child-rearing."
@@ -141,6 +160,7 @@ export default function Jurisprudence() {
     {
       title: "Carrier Sekani Tribal Council v. Minister of Mines and Petroleum Resources",
       year: "2010 SCC 43",
+      canliiUrl: "https://canlii.ca/t/g0bvj",
       category: "Consultation & Accommodation",
       summary: "Crown must genuinely consider and accommodate Indigenous concerns.",
       applicability: "Government must genuinely consider Indigenous families' concerns about child welfare."
@@ -214,9 +234,19 @@ export default function Jurisprudence() {
                   <p className="text-gray-700 mb-3">
                     <span className="font-semibold text-gray-900">Decision:</span> {caseItem.summary}
                   </p>
-                  <p className="text-gray-700 border-l-4 border-green-500 pl-4">
+                  <p className="text-gray-700 border-l-4 border-green-500 pl-4 mb-3">
                     <span className="font-semibold text-green-900">Applies to Barran's Case:</span> {caseItem.applicability}
                   </p>
+                  {caseItem.canliiUrl && (
+                    <a
+                      href={caseItem.canliiUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold underline"
+                    >
+                      📋 Read Full Decision on CanLII →
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
