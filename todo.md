@@ -1674,6 +1674,10 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Uploaded blood flag image to CDN
 - [x] Integrated blood flag into home page featured story
 - [x] Verified image displays correctly on desktop and mobile
+- [x] Generated enhanced blood flag with waving pole and dramatic blood cascade
+- [x] Created BloodFlagHero component with text overlay
+- [x] Integrated hero section at top of home page
+- [x] Added bilingual support (English/French)
 - [ ] Publish website and test live
 
 

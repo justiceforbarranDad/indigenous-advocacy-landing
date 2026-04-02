@@ -4,6 +4,7 @@ import { SocialShareButtons } from '@/components/SocialShareButtons';
 import DonationQRCode from '@/components/DonationQRCode';
 import GoFundMeQRCode from '@/components/GoFundMeQRCode';
 import { DonorRecognition } from '@/components/DonorRecognition';
+import BloodFlagHero from '@/components/BloodFlagHero';
 import { Heart, ChevronRight, Play, X } from 'lucide-react';
 
 export default function Home() {
@@ -127,7 +128,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
+    <div className="bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
+      {/* BLOOD FLAG HERO SECTION */}
+      <BloodFlagHero />
+
+      <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
       {/* MASTHEAD */}
       <div className="bg-white border-b-4 border-black">
         {/* KNOW YOUR RIGHTS BANNER - FULL WIDTH */}
@@ -401,6 +406,7 @@ export default function Home() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }
