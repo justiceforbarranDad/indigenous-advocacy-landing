@@ -143,6 +143,7 @@ import Jurisprudence from "./pages/Jurisprudence";
 import Trackers from "./pages/Trackers";
 import SocialMediaHub from "./pages/SocialMediaHub";
 import GovernmentAccountabilityTimeline from "./pages/GovernmentAccountabilityTimeline";
+import LegalCommunicationProtocol from "./pages/LegalCommunicationProtocol";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -154,6 +155,7 @@ function Router() {
       <Route path="/trackers" component={Trackers} />
       <Route path="/social-media" component={SocialMediaHub} />
       <Route path="/accountability-timeline" component={GovernmentAccountabilityTimeline} />
+      <Route path="/legal-communication-protocol" component={LegalCommunicationProtocol} />
       <Route path="/sunday-bloody-sunday-part-3" component={SundayBloodyySundayPart3} />
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
