@@ -1,487 +1,352 @@
 import React, { useState } from 'react';
-import { trpc } from '@/lib/trpc';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { toast } from 'sonner';
-import { ChevronLeft, Copy, Check } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 import { useLocation } from 'wouter';
-import QRCode from 'qrcode';
-import { SocialShareButtons } from '@/components/SocialShareButtons';
-import TDDirectDonation from '@/components/TDDirectDonation';
-import InternationalDonation from '@/components/InternationalDonation';
+
+type Language = 'en' | 'fr';
+
+const translations = {
+  en: {
+    title: 'Support Justice for Barran',
+    subtitle: 'McGovern Arts Institute Community Healing Centre',
+    description: 'Terry James Foundation wellness retreat for autistic & First Nations kids',
+    donateCAD: 'Donate in CAD',
+    donateUSD: 'Donate in USD',
+    pointCamera: '📱 Point Camera & Pay',
+    chooseAmount: '💳 Choose Amount & Pay',
+    scanInfo: 'Scan with any phone camera',
+    worksWithAll: 'Works with all payment methods',
+    clickAny: 'Click any amount to donate instantly. All major credit cards, Apple Pay, Google Pay, PayPal, Klarna, and Sezzle accepted.',
+    otherAmount: 'Other Amount',
+    enterCustom: 'Enter Custom Amount & Pay',
+    allPaymentMethods: '✓ All Payment Methods Accepted:',
+    yourImpact: 'Your Impact',
+    donations: 'Donations go to legal advocacy',
+    fees: 'Administrative fees',
+    potential: 'Systemic change potential',
+    directETransfer: '✓ Direct e-Transfer (Canada)',
+    eTransferDesc: '100% of your donation goes directly — NO PLATFORM FEES',
+    sendTo: 'Send e-Transfer to:',
+    noPassword: 'NO PASSWORD REQUIRED - Direct Deposit',
+    available: 'Available to all Canadian banks. Instant transfer confirmation.',
+    whySupport: 'Why Your Support Matters',
+    legalAdvocacy: 'Legal Advocacy',
+    legalAdvocacyDesc: 'Systemic change for Indigenous families',
+    justiceBarran: 'Justice for Barran',
+    justiceBarranDesc: 'Accountability for government failures',
+    communityHealing: 'Community Healing',
+    communityHealingDesc: 'Wellness programs and support services',
+    truthReconciliation: 'Truth & Reconciliation',
+    truthReconciliationDesc: 'Real action for systemic change',
+    backHome: 'Back to Home',
+  },
+  fr: {
+    title: 'Soutenir la Justice pour Barran',
+    subtitle: 'Centre de Guérison Communautaire de l\'Institut des Arts McGovern',
+    description: 'Retraite de bien-être de la Fondation Terry James pour les enfants autistes et des Premières Nations',
+    donateCAD: 'Donner en CAD',
+    donateUSD: 'Donner en USD',
+    pointCamera: '📱 Pointez la Caméra et Payez',
+    chooseAmount: '💳 Choisissez un Montant et Payez',
+    scanInfo: 'Scannez avec n\'importe quelle caméra téléphonique',
+    worksWithAll: 'Fonctionne avec tous les modes de paiement',
+    clickAny: 'Cliquez sur n\'importe quel montant pour donner instantanément. Toutes les principales cartes de crédit, Apple Pay, Google Pay, PayPal, Klarna et Sezzle acceptés.',
+    otherAmount: 'Autre Montant',
+    enterCustom: 'Entrez un Montant Personnalisé et Payez',
+    allPaymentMethods: '✓ Tous les Modes de Paiement Acceptés:',
+    yourImpact: 'Votre Impact',
+    donations: 'Les dons vont à l\'aide juridique',
+    fees: 'Frais administratifs',
+    potential: 'Potentiel de changement systémique',
+    directETransfer: '✓ Transfert Électronique Direct (Canada)',
+    eTransferDesc: '100% de votre don va directement — AUCUN FRAIS DE PLATEFORME',
+    sendTo: 'Envoyez un transfert électronique à:',
+    noPassword: 'AUCUN MOT DE PASSE REQUIS - Dépôt Direct',
+    available: 'Disponible pour toutes les banques canadiennes. Confirmation de transfert instantanée.',
+    whySupport: 'Pourquoi Votre Soutien Est Important',
+    legalAdvocacy: 'Plaidoyer Juridique',
+    legalAdvocacyDesc: 'Changement systémique pour les familles autochtones',
+    justiceBarran: 'Justice pour Barran',
+    justiceBarranDesc: 'Responsabilité des défaillances gouvernementales',
+    communityHealing: 'Guérison Communautaire',
+    communityHealingDesc: 'Programmes de bien-être et services de soutien',
+    truthReconciliation: 'Vérité et Réconciliation',
+    truthReconciliationDesc: 'Action réelle pour le changement systémique',
+    backHome: 'Retour à l\'Accueil',
+  },
+};
 
 export default function Donate() {
   const [, setLocation] = useLocation();
-  const [copied, setCopied] = useState(false);
+  const [language, setLanguage] = useState<Language>('en');
+  const [currency, setCurrency] = useState<'CAD' | 'USD'>('CAD');
 
-  // Generate QR code on mount
-  React.useEffect(() => {
-    const canvas = document.getElementById('qrcode-canvas') as HTMLCanvasElement;
-    if (canvas) {
-      QRCode.toCanvas(canvas, 'etransfer:justiceforbarran@gmail.com', {
-        width: 200,
-        margin: 2,
-        color: {
-          dark: '#2D5016',
-          light: '#FFFEF5',
-        },
-      });
-    }
-  }, []);
-  const [formData, setFormData] = useState<{
-    donorName: string;
-    donorEmail: string;
-    amount: string;
-    method: 'etransfer' | 'gofundme' | 'other';
-    message: string;
-    isAnonymous: 'yes' | 'no';
-  }>({
-    donorName: '',
-    donorEmail: '',
-    amount: '',
-    method: 'etransfer',
-    message: '',
-    isAnonymous: 'no',
-  });
+  const t = translations[language];
+  const cadLink = 'https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01';
+  const usdLink = 'https://buy.stripe.com/test_bJeeVdeBsgJaeqE6h13Ru02';
+  const currentLink = currency === 'CAD' ? cadLink : usdLink;
+  const symbol = currency === 'CAD' ? 'CAD $' : 'USD $';
 
-  const { data: totalData } = trpc.donations.getTotal.useQuery();
-  const { data: campaignData } = trpc.donations.getActiveCampaign.useQuery();
-  const submitDonation = trpc.donations.submit.useMutation({
-    onSuccess: () => {
-      toast.success('Thank you for your donation!');
-      setFormData({
-        donorName: '',
-        donorEmail: '',
-        amount: '',
-        method: 'etransfer',
-        message: '',
-        isAnonymous: 'no',
-      });
-    },
-    onError: (error) => {
-      toast.error(error.message || 'Failed to process donation');
-    },
-  });
+  const presetAmounts = [5, 10, 20, 50, 100];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.amount || parseFloat(formData.amount) < 0.01) {
-      toast.error('Please enter a valid amount');
-      return;
-    }
-    submitDonation.mutate({
-      ...formData,
-      amount: parseFloat(formData.amount),
-    });
-  };
-
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleDonate = () => {
+    window.open(currentLink, '_blank');
   };
 
   return (
     <div className="min-h-screen bg-cream text-charcoal">
-      <div className="container max-w-4xl mx-auto px-4 py-12">
-        {/* TD Direct Donation Section */}
-        <div className="mb-12">
-          <TDDirectDonation />
-        </div>
-        
-        {/* International Donation Section */}
-        <div className="mb-12">
-          <InternationalDonation />
-        </div>
-
-        {/* Stripe Payment Link Section */}
-        <Card className="border-amber-orange/20 mb-8 bg-gradient-to-br from-amber-orange/5 to-forest-green/5">
-          <CardHeader className="bg-forest-green text-cream">
-            <CardTitle className="text-2xl">💳 Donate via Stripe (Quick & Easy)</CardTitle>
-            <CardDescription className="text-cream/80">
-              Support McGovern Arts Institute Community Healing Centre and Terry James Foundation wellness retreat for autistic & First Nations kids – after-hours and weekend programs
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="pt-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* QR Code Section */}
-              <div className="flex flex-col items-center justify-center">
-                <div className="bg-white p-6 rounded-lg border-2 border-amber-orange">
-                  <p className="text-sm font-semibold text-charcoal mb-4 text-center">Scan to Donate</p>
-                  <div className="w-48 h-48 bg-white rounded-lg flex items-center justify-center">
-                    <iframe
-                      src="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
-                      width="100%"
-                      height="100%"
-                      frameBorder="0"
-                      className="rounded-lg"
-                    />
-                  </div>
-                  <p className="text-xs text-charcoal-light text-center mt-4">
-                    Scan with your phone camera or Stripe app
-                  </p>
-                </div>
-              </div>
-
-              {/* Donation Buttons Section */}
-              <div className="flex flex-col justify-center space-y-4">
-                <p className="text-sm font-semibold text-charcoal mb-2">Quick Donation Amounts (CAD)</p>
-                <div className="grid grid-cols-2 gap-3">
-                  <a
-                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-amber-orange hover:bg-amber-light text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
-                  >
-                    Donate $5
-                  </a>
-                  <a
-                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-amber-orange hover:bg-amber-light text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
-                  >
-                    Donate $10
-                  </a>
-                  <a
-                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-amber-orange hover:bg-amber-light text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
-                  >
-                    Donate $20
-                  </a>
-                  <a
-                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-amber-orange hover:bg-amber-light text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
-                  >
-                    Donate $50
-                  </a>
-                  <a
-                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-amber-orange hover:bg-amber-light text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
-                  >
-                    Donate $100
-                  </a>
-                  <a
-                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-forest-green hover:bg-forest-green/80 text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
-                  >
-                    Custom Amount
-                  </a>
-                </div>
-                <div className="bg-amber-orange/10 p-4 rounded-lg border-l-4 border-amber-orange mt-4">
-                  <p className="text-sm text-charcoal font-semibold mb-2">✓ Secure & Fast</p>
-                  <p className="text-xs text-charcoal-light">
-                    No password required. Stripe handles all payments securely. Donors can choose custom amounts too.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
+      {/* Language Toggle */}
+      <div className="flex justify-end gap-2 p-4 bg-forest-green/10">
         <button
-          onClick={() => setLocation('/')}
-          className="flex items-center gap-2 text-amber-orange hover:text-amber-light mb-8 transition-colors"
+          onClick={() => setLanguage('en')}
+          className={`px-4 py-2 rounded font-bold transition-all ${
+            language === 'en'
+              ? 'bg-forest-green text-white'
+              : 'bg-white text-forest-green border-2 border-forest-green'
+          }`}
         >
-          <ChevronLeft size={20} />
-          Back to Home
+          🇬🇧 English
         </button>
+        <button
+          onClick={() => setLanguage('fr')}
+          className={`px-4 py-2 rounded font-bold transition-all ${
+            language === 'fr'
+              ? 'bg-forest-green text-white'
+              : 'bg-white text-forest-green border-2 border-forest-green'
+          }`}
+        >
+          🇫🇷 Français
+        </button>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* e-Transfer Section */}
-          <Card className="border-amber-orange/20 h-fit">
-            <CardHeader className="bg-forest-green text-cream">
-              <CardTitle className="text-2xl">✓ Direct e-Transfer (Canada)</CardTitle>
-              <CardDescription className="text-cream/80">
-                100% of your donation goes directly to justice — NO PLATFORM FEES
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="pt-8 space-y-6">
-              <div className="bg-amber-orange/10 p-6 rounded-lg border-2 border-amber-orange">
-                <p className="text-sm text-charcoal-light mb-3">Send e-Transfer to:</p>
-                <div className="flex flex-col md:flex-row items-center gap-2 mb-4">
-                  <code className="w-full md:flex-1 bg-white p-3 rounded font-mono text-xs md:text-sm break-words overflow-hidden">
-                    justiceforbarran@gmail.com
-                  </code>
-                  <button
-                    onClick={() => copyToClipboard('justiceforbarran@gmail.com')}
-                    className="p-2 hover:bg-amber-orange/20 rounded transition-colors flex-shrink-0"
-                  >
-                    {copied ? <Check size={20} className="text-green-600" /> : <Copy size={20} />}
-                  </button>
-                </div>
-                <p className="text-xs text-charcoal-light mb-4 text-amber-orange font-semibold">
-                  ✓ NO PASSWORD REQUIRED - Direct Deposit to Account
-                </p>
-                
-                {/* QR Code */}
-                <div className="flex flex-col items-center gap-3 bg-white p-4 rounded-lg overflow-hidden">
-                  <p className="text-xs text-charcoal-light font-semibold">Scan to Send e-Transfer</p>
-                  <div className="w-full flex justify-center">
-                    <img src="/etransfer-qr.png" alt="e-Transfer QR Code" className="w-40 h-40 border-2 border-forest-green rounded" />
-                  </div>
-                  <p className="text-xs text-charcoal-light text-center">
-                    Scan with your banking app for instant direct deposit
-                  </p>
-                </div>
-              </div>
+      {/* Hero Banner */}
+      <div className="w-full bg-gradient-to-r from-forest-green to-forest-green/80 py-16 border-b-8 border-amber-orange">
+        <div className="container max-w-6xl mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-cream mb-4">
+            {t.title}
+          </h1>
+          <p className="text-xl md:text-2xl text-cream/90 mb-2">
+            {t.subtitle}
+          </p>
+          <p className="text-lg text-cream/80">
+            {t.description}
+          </p>
+        </div>
+      </div>
 
-              <div className="space-y-3">
-                <h4 className="font-semibold text-charcoal">Why Direct e-Transfer?</h4>
-                <ul className="text-sm text-charcoal-light space-y-2">
-                  <li className="flex gap-2">
-                    <span className="text-amber-orange font-bold">✓</span>
-                    <span><strong>100% of funds</strong> go directly to justice efforts</span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-amber-orange font-bold">✓</span>
-                    <span><strong>ZERO platform fees</strong> (vs. 2-3% on other platforms)</span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-amber-orange font-bold">✓</span>
-                    <span>Available to all Canadian banks</span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-amber-orange font-bold">✓</span>
-                    <span>Instant transfer confirmation</span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-amber-orange font-bold">✓</span>
-                    <span>Direct support for accountability & justice</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-amber-orange/10 p-4 rounded-lg border-l-4 border-amber-orange">
-                <p className="text-sm text-charcoal font-semibold mb-2">
-                  💰 Save 2-3% in fees compared to other platforms
-                </p>
-                <p className="text-xs text-charcoal-light">
-                  Every dollar counts. Direct e-Transfer ensures maximum impact for justice and accountability.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Donation Form */}
-          <Card className="border-amber-orange/20">
-            <CardHeader className="bg-forest-green text-cream">
-              <CardTitle className="text-2xl">Donation Form</CardTitle>
-              <CardDescription className="text-cream/80">
-                Track your support for justice
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="pt-8">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-semibold mb-2">Your Name</label>
-                  <Input
-                    type="text"
-                    placeholder="Your name (or leave blank for anonymous)"
-                    value={formData.donorName}
-                    onChange={(e) => setFormData({ ...formData, donorName: e.target.value })}
-                    className="bg-white"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-2">Email</label>
-                  <Input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={formData.donorEmail}
-                    onChange={(e) => setFormData({ ...formData, donorEmail: e.target.value })}
-                    required
-                    className="bg-white"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-2">Donation Amount (CAD)</label>
-                  <Input
-                    type="number"
-                    placeholder="25.00"
-                    value={formData.amount}
-                    onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
-                    required
-                    step="0.01"
-                    min="0"
-                    className="bg-white"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-2">Donation Method</label>
-                  <Select value={formData.method} onValueChange={(value: any) => setFormData({ ...formData, method: value })}>
-                    <SelectTrigger className="bg-white">
-                      <SelectValue placeholder="Select method" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="etransfer">e-Transfer (Recommended)</SelectItem>
-                      <SelectItem value="gofundme">GoFundMe</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-2">Message (Optional)</label>
-                  <Textarea
-                    placeholder="Share why you're supporting this cause..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="bg-white"
-                  />
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    id="anonymous"
-                    checked={formData.isAnonymous === 'yes'}
-                    onChange={(e) => setFormData({ ...formData, isAnonymous: e.target.checked ? 'yes' : 'no' })}
-                    className="w-4 h-4"
-                  />
-                  <label htmlFor="anonymous" className="text-sm">Keep my donation anonymous</label>
-                </div>
-
-                <Button
-                  type="submit"
-                  className="w-full bg-amber-orange hover:bg-amber-light text-white font-semibold py-3"
-                  disabled={submitDonation.isPending}
-                >
-                  {submitDonation.isPending ? 'Processing...' : 'Submit Donation'}
-                </Button>
-              </form>
-
-              {campaignData && (
-                <div className="mt-6 space-y-3">
-                  <div className="bg-black text-white p-6 rounded-lg">
-                    <h3 className="text-xl font-bold mb-2">{campaignData.title}</h3>
-                    <p className="text-sm text-gray-200 mb-4">{campaignData.description}</p>
-                    
-                    {/* Progress Bar */}
-                    <div className="mb-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-semibold">Raised: ${(campaignData.raisedAmount / 100).toFixed(2)}</span>
-                        <span className="text-sm font-semibold">Goal: ${(campaignData.goalAmount / 100).toFixed(2)}</span>
-                      </div>
-                      <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
-                        <div 
-                          className="bg-amber-orange h-full transition-all duration-500"
-                          style={{ width: `${Math.min(campaignData.percentageRaised, 100)}%` }}
-                        />
-                      </div>
-                      <p className="text-center text-sm font-bold text-amber-orange mt-2">
-                        {campaignData.percentageRaised}% Funded
-                      </p>
-                    </div>
-                    
-                    <p className="text-xs text-gray-300 text-center">
-                      Remaining: ${((campaignData.goalAmount - campaignData.raisedAmount) / 100).toFixed(2)}
-                    </p>
-                  </div>
-                </div>
-              )}
-              {totalData && (
-                <div className="mt-6 p-4 bg-forest-green/10 rounded-lg text-center">
-                  <p className="text-sm text-charcoal-light mb-1">Total Raised (All Time)</p>
-                  <p className="text-2xl font-bold text-amber-orange">${totalData.totalCAD}</p>
-                </div>
-              )}
-            </CardContent>
-          </Card>
+      {/* Main Content */}
+      <div className="container max-w-6xl mx-auto px-4 py-12">
+        
+        {/* Currency Toggle */}
+        <div className="flex justify-center gap-4 mb-12">
+          <button
+            onClick={() => setCurrency('CAD')}
+            className={`px-8 py-4 rounded-lg font-bold text-lg transition-all ${
+              currency === 'CAD'
+                ? 'bg-forest-green text-white shadow-lg scale-105'
+                : 'bg-white text-forest-green border-2 border-forest-green hover:bg-forest-green/10'
+            }`}
+          >
+            {t.donateCAD}
+          </button>
+          <button
+            onClick={() => setCurrency('USD')}
+            className={`px-8 py-4 rounded-lg font-bold text-lg transition-all ${
+              currency === 'USD'
+                ? 'bg-blue-600 text-white shadow-lg scale-105'
+                : 'bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-600/10'
+            }`}
+          >
+            {t.donateUSD}
+          </button>
         </div>
 
-        {/* YouTube Channel */}
-        <Card className="mt-8 border-red-600/30 bg-red-50">
-          <CardHeader>
-            <CardTitle className="text-lg text-red-700">Follow the Journey on YouTube</CardTitle>
-            <CardDescription>
-              Subscribe to @justiceforBarran for ongoing updates, evidence, and accountability documentation.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <a
-              href="https://www.youtube.com/@justiceforBarran"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-            >
-              Subscribe to @justiceforBarran
-            </a>
-          </CardContent>
-        </Card>
-
-        {/* GoFundMe Section */}
-        <Card className="mt-8 border-amber-orange/30 bg-forest-green/5">
-          <CardHeader className="bg-forest-green text-cream">
-            <CardTitle className="text-2xl">✓ GoFundMe Campaign</CardTitle>
-            <CardDescription className="text-cream/80">
-              Scan the QR code to donate via GoFundMe
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="pt-8">
-            <div className="flex flex-col items-center gap-6">
-              {/* GoFundMe QR Code */}
-              <div className="bg-white p-8 rounded-lg border-4 border-forest-green shadow-lg">
+        {/* Two Column Layout: QR + Buttons */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+          
+          {/* Left: QR Code - Point Camera & Pay */}
+          <div className="flex flex-col items-center justify-center">
+            <div className={`p-8 rounded-2xl shadow-2xl border-4 ${currency === 'CAD' ? 'border-forest-green bg-white' : 'border-blue-600 bg-white'}`}>
+              <p className={`text-lg font-bold mb-6 text-center ${currency === 'CAD' ? 'text-forest-green' : 'text-blue-600'}`}>
+                {t.pointCamera}
+              </p>
+              <div className="w-72 h-72 bg-white rounded-xl flex items-center justify-center border-2 border-gray-300 p-2">
                 <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/qr-code(3)_87756ba0.png"
-                  alt="GoFundMe QR Code - Scan to donate to Robert's fundraiser Sunday Bloody Sunday"
-                  className="w-64 h-64 object-contain"
+                  src={currency === 'CAD' 
+                    ? 'https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01'
+                    : 'https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://buy.stripe.com/test_bJeeVdeBsgJaeqE6h13Ru02'
+                  }
+                  alt={`Donate QR Code - ${currency}`}
+                  className="w-full h-full"
                 />
               </div>
-              
-              <div className="text-center space-y-3">
-                <p className="text-lg font-semibold text-charcoal">Scan to donate to Robert's fundraiser</p>
-                <p className="text-2xl font-bold text-amber-orange">"Sunday Bloody Sunday"</p>
-                <p className="text-sm text-charcoal-light max-w-md">
-                  Use your phone camera to scan the QR code above, or visit the GoFundMe campaign directly.
-                </p>
-              </div>
-
-              <a
-                href="https://gofund.me/role.flip.tall"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-amber-orange hover:bg-amber-light text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-              >
-                Open GoFundMe Campaign
-              </a>
+              <p className={`text-sm font-semibold mt-6 text-center ${currency === 'CAD' ? 'text-forest-green' : 'text-blue-600'}`}>
+                {t.scanInfo}
+              </p>
+              <p className="text-xs text-charcoal-light text-center mt-2">
+                {t.worksWithAll}
+              </p>
             </div>
-          </CardContent>
-        </Card>
+          </div>
 
-        {/* Social Sharing Section */}
-        <Card className="mt-8 border-amber-orange/30 bg-amber-orange/5">
-          <CardHeader className="bg-forest-green text-cream">
-            <CardTitle className="text-2xl">📢 Share This Campaign</CardTitle>
-            <CardDescription className="text-cream/80">
-              Help amplify the message by sharing with your network
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="pt-8">
-            <SocialShareButtons
-              title="Justice for Barran - Support Indigenous Rights"
-              text="Support Justice for Barran's campaign for Indigenous rights and accountability. Help us reach our $100,000 goal for comprehensive legal defense. Every donation counts. #JusticeForBarran #EveryChildMatters"
-              hashtags={['JusticeForBarran', 'IndigenousRights', 'EveryChildMatters', 'TruthAndReconciliation']}
-              variant="horizontal"
-              showLabel={true}
-              highlightTitle="Donation Campaign"
-            />
-          </CardContent>
-        </Card>
+          {/* Right: Direct Donation Buttons */}
+          <div className="flex flex-col justify-center space-y-4">
+            <h2 className={`text-3xl font-bold mb-2 ${currency === 'CAD' ? 'text-forest-green' : 'text-blue-600'}`}>
+              {t.chooseAmount}
+            </h2>
+            <p className="text-charcoal-light mb-6">
+              {t.clickAny}
+            </p>
+
+            {/* Preset Buttons */}
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              {presetAmounts.map((amount) => (
+                <button
+                  key={amount}
+                  onClick={handleDonate}
+                  className={`py-4 px-4 rounded-xl font-bold text-lg transition-all border-2 hover:shadow-lg ${
+                    currency === 'CAD'
+                      ? 'border-forest-green text-white bg-forest-green hover:bg-forest-green/90'
+                      : 'border-blue-600 text-white bg-blue-600 hover:bg-blue-700'
+                  }`}
+                >
+                  {symbol}<br/>{amount}
+                </button>
+              ))}
+            </div>
+
+            {/* Custom Amount */}
+            <div className="pt-4 border-t-2 border-gray-300">
+              <p className={`font-bold mb-3 ${currency === 'CAD' ? 'text-forest-green' : 'text-blue-600'}`}>
+                {t.otherAmount}
+              </p>
+              <button
+                onClick={handleDonate}
+                className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all border-2 hover:shadow-lg ${
+                  currency === 'CAD'
+                    ? 'border-amber-orange text-white bg-amber-orange hover:bg-amber-light'
+                    : 'border-blue-600 text-white bg-blue-600 hover:bg-blue-700'
+                }`}
+              >
+                {t.enterCustom}
+              </button>
+            </div>
+
+            {/* Payment Methods Info */}
+            <div className={`mt-6 p-4 rounded-lg ${currency === 'CAD' ? 'bg-forest-green/10 border-2 border-forest-green' : 'bg-blue-600/10 border-2 border-blue-600'}`}>
+              <p className="font-bold mb-2 text-sm">{t.allPaymentMethods}</p>
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                <div>• Visa</div>
+                <div>• Mastercard</div>
+                <div>• American Express</div>
+                <div>• Discover</div>
+                <div>• Diners Club</div>
+                <div>• JCB</div>
+                <div>• Apple Pay</div>
+                <div>• Google Pay</div>
+                <div>• PayPal</div>
+                <div>• Klarna</div>
+                <div>• Sezzle</div>
+                <div>• Bank Transfer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Impact Section */}
+        <div className={`p-8 rounded-2xl border-4 mb-12 ${currency === 'CAD' ? 'border-forest-green bg-forest-green/5' : 'border-blue-600 bg-blue-600/5'}`}>
+          <h3 className={`text-2xl font-bold mb-6 text-center ${currency === 'CAD' ? 'text-forest-green' : 'text-blue-600'}`}>
+            {t.yourImpact}
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <p className={`text-5xl font-bold ${currency === 'CAD' ? 'text-amber-orange' : 'text-blue-600'}`}>
+                100%
+              </p>
+              <p className="text-charcoal-light mt-3 font-semibold">
+                {t.donations}
+              </p>
+            </div>
+            <div className="text-center">
+              <p className={`text-5xl font-bold ${currency === 'CAD' ? 'text-amber-orange' : 'text-blue-600'}`}>
+                0%
+              </p>
+              <p className="text-charcoal-light mt-3 font-semibold">
+                {t.fees}
+              </p>
+            </div>
+            <div className="text-center">
+              <p className={`text-5xl font-bold ${currency === 'CAD' ? 'text-amber-orange' : 'text-blue-600'}`}>
+                ∞
+              </p>
+              <p className="text-charcoal-light mt-3 font-semibold">
+                {t.potential}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Alternative: e-Transfer */}
+        <div className={`p-8 rounded-2xl border-4 mb-12 ${currency === 'CAD' ? 'border-forest-green bg-forest-green/5' : 'border-blue-600 bg-blue-600/5'}`}>
+          <h3 className={`text-2xl font-bold mb-4 ${currency === 'CAD' ? 'text-forest-green' : 'text-blue-600'}`}>
+            {t.directETransfer}
+          </h3>
+          <p className="text-charcoal-light mb-4">
+            {t.eTransferDesc}
+          </p>
+          <div className="bg-white p-6 rounded-xl border-2 border-amber-orange">
+            <p className="text-sm text-charcoal-light mb-2">{t.sendTo}</p>
+            <p className="font-mono font-bold text-2xl text-charcoal mb-3">justiceforbarran@gmail.com</p>
+            <p className="text-sm text-amber-orange font-semibold">
+              {t.noPassword}
+            </p>
+          </div>
+        </div>
+
+        {/* Why Support */}
+        <div className={`p-8 rounded-2xl border-4 mb-12 ${currency === 'CAD' ? 'border-amber-orange bg-amber-orange/5' : 'border-blue-600 bg-blue-600/5'}`}>
+          <h3 className={`text-2xl font-bold mb-6 ${currency === 'CAD' ? 'text-forest-green' : 'text-blue-600'}`}>
+            {t.whySupport}
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex gap-3">
+              <span className="text-amber-orange font-bold text-2xl">✓</span>
+              <div>
+                <p className="font-bold text-charcoal">{t.legalAdvocacy}</p>
+                <p className="text-charcoal-light">{t.legalAdvocacyDesc}</p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-amber-orange font-bold text-2xl">✓</span>
+              <div>
+                <p className="font-bold text-charcoal">{t.justiceBarran}</p>
+                <p className="text-charcoal-light">{t.justiceBarranDesc}</p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-amber-orange font-bold text-2xl">✓</span>
+              <div>
+                <p className="font-bold text-charcoal">{t.communityHealing}</p>
+                <p className="text-charcoal-light">{t.communityHealingDesc}</p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-amber-orange font-bold text-2xl">✓</span>
+              <div>
+                <p className="font-bold text-charcoal">{t.truthReconciliation}</p>
+                <p className="text-charcoal-light">{t.truthReconciliationDesc}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Back Button */}
+        <button
+          onClick={() => setLocation('/')}
+          className="flex items-center gap-2 text-amber-orange hover:text-amber-light transition-colors font-bold text-lg"
+        >
+          <ChevronLeft size={24} />
+          {t.backHome}
+        </button>
       </div>
     </div>
   );

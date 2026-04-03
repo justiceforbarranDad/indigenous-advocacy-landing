@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SocialShareButtons } from '@/components/SocialShareButtons';
 import { ShareButtons } from '@/components/ShareButtons';
 import SimpleDonation from '@/components/SimpleDonation';
@@ -138,6 +138,71 @@ export default function Home() {
 
       {/* BLOOD FLAG HERO SECTION */}
       <BloodFlagHero />
+
+      {/* DONATION BANNER - WHITE BACKGROUND WITH SMALL QR */}
+      <div className="w-full bg-white border-b-4 border-forest-green py-6 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+            {/* Left: Small QR Code */}
+            <div className="flex flex-col items-center">
+              <p className="text-sm font-bold text-forest-green mb-3">
+                {i18n.language === 'fr' ? '📱 Scannez pour Donner' : '📱 Scan to Donate'}
+              </p>
+              <div className="w-32 h-32 bg-white border-2 border-forest-green rounded-lg p-2">
+                <img
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
+                  alt="Donate QR"
+                  className="w-full h-full"
+                />
+              </div>
+            </div>
+
+            {/* Center: Title & Description */}
+            <div className="text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-forest-green mb-2">
+                {i18n.language === 'fr' ? 'Soutenez la Justice' : 'Support Justice'}
+              </h2>
+              <p className="text-charcoal-light mb-4">
+                {i18n.language === 'fr' 
+                  ? '100% des dons vont directement à la défense juridique'
+                  : '100% of donations go directly to legal advocacy'
+                }
+              </p>
+              <p className="text-sm text-charcoal-light">
+                {i18n.language === 'fr'
+                  ? 'McGovern Arts Institute Community Healing Centre'
+                  : 'McGovern Arts Institute Community Healing Centre'
+                }
+              </p>
+            </div>
+
+            {/* Right: Donation Buttons */}
+            <div className="flex flex-col gap-2">
+              <div className="grid grid-cols-2 gap-2">
+                {[5, 10, 20, 50].map((amount) => (
+                  <a
+                    key={amount}
+                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2 px-3 bg-forest-green text-white rounded font-bold text-sm hover:bg-forest-green/90 transition-all text-center"
+                  >
+                    CAD ${amount}
+                  </a>
+                ))}
+              </div>
+              <a
+                href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="py-2 px-4 bg-amber-orange text-white rounded font-bold text-sm hover:bg-amber-light transition-all text-center"
+              >
+                {i18n.language === 'fr' ? 'Autre Montant' : 'Other Amount'}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="min-h-screen bg-white text-black pt-4 md:pt-0" style={{ fontFamily: 'Georgia, serif' }}>
       {/* MASTHEAD */}
