@@ -241,10 +241,10 @@ export function JukeboxPlayer() {
       
       {/* Jukebox Player - Minimized */}
       {!isOpen && (
-        <div className="sticky top-2 left-2 md:left-12 z-40 w-fit">
+        <div className="sticky top-20 md:top-2 left-2 md:left-12 z-40 w-fit">
           <button
             onClick={() => setIsOpen(true)}
-            className="relative w-16 h-20 md:w-32 md:h-40 bg-gradient-to-b from-amber-700 via-amber-600 to-amber-800 rounded-lg shadow-2xl border-2 md:border-4 border-amber-900 hover:shadow-3xl transition-all duration-300 transform hover:scale-105 group"
+            className="relative w-14 h-16 md:w-32 md:h-40 bg-gradient-to-b from-amber-700 via-amber-600 to-amber-800 rounded-lg shadow-2xl border-2 md:border-4 border-amber-900 hover:shadow-3xl transition-all duration-300 transform hover:scale-105 group"
             style={{
               backgroundImage: 'linear-gradient(135deg, #92400e 0%, #b45309 50%, #78350f 100%)',
               boxShadow: '0 0 20px rgba(120, 53, 15, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2)'

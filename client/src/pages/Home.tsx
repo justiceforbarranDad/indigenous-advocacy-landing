@@ -138,7 +138,7 @@ export default function Home() {
       {/* BLOOD FLAG HERO SECTION */}
       <BloodFlagHero />
 
-      <div className="min-h-screen bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
+      <div className="min-h-screen bg-white text-black pt-4 md:pt-0" style={{ fontFamily: 'Georgia, serif' }}>
       {/* MASTHEAD */}
       <div className="bg-white border-b-4 border-black">
         {/* KNOW YOUR RIGHTS BANNER - FULL WIDTH */}
@@ -146,11 +146,11 @@ export default function Home() {
           {i18n.language === 'fr' ? 'CONNAISSEZ VOS DROITS' : 'KNOW YOUR RIGHTS'}
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-6">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-6">
           {/* FLAG WITH CONSTITUTION & UN RIGHTS */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 mb-4 md:mb-6 items-center">
             {/* LEFT - CANADA CONSTITUTION */}
-            <div className="bg-red-50 border-2 border-red-600 p-4 rounded text-xs md:text-sm">
+            <div className="bg-red-50 border-2 border-red-600 p-2 md:p-4 rounded text-xs md:text-sm">
               <h3 className="font-bold text-red-900 mb-2 text-center">
                 {i18n.language === 'fr' ? 'CONSTITUTION CANADIENNE' : 'CANADIAN CONSTITUTION'}
               </h3>
@@ -186,7 +186,7 @@ export default function Home() {
             </div>
 
             {/* RIGHT - UN RIGHTS */}
-            <div className="bg-blue-50 border-2 border-blue-600 p-4 rounded text-xs md:text-sm">
+            <div className="bg-blue-50 border-2 border-blue-600 p-2 md:p-4 rounded text-xs md:text-sm">
               <h3 className="font-bold text-blue-900 mb-2 text-center">
                 {i18n.language === 'fr' ? 'DROITS DE L\'ONU' : 'UN RIGHTS'}
               </h3>
@@ -430,22 +430,22 @@ export default function Home() {
             </div>
 
             {/* DONATION BOX */}
-            <div className="border-4 border-red-600 bg-red-50 p-6">
-              <h3 className="text-2xl font-bold mb-3 text-red-600">
+            <div className="border-4 border-red-600 bg-red-50 p-4 md:p-6">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 text-red-600">
                 {i18n.language === 'fr' ? 'Soutenir la Justice' : 'Support Justice'}
               </h3>
               <div className="w-full max-w-md mx-auto">
                 <DonationQRCode />
               </div>
-              <p className="text-sm mb-4 leading-relaxed mt-6">
+              <p className="text-xs md:text-sm mb-4 leading-relaxed mt-4 md:mt-6">
                 {i18n.language === 'fr' ? '100% des dons vont directement à la défense juridique, à la défense des droits et aux efforts de changement systémique.' : '100% of donations go directly to legal defense, advocacy, and systemic change efforts.'}
               </p>
               <div className="space-y-3 mb-4">
                 <a 
                   href="/donate"
-                  className="block w-full bg-red-600 text-white font-bold py-3 px-4 text-center hover:bg-red-700 transition-colors rounded"
+                  className="block w-full bg-red-600 text-white font-bold py-4 md:py-3 px-4 text-center text-base md:text-sm hover:bg-red-700 transition-colors rounded active:bg-red-800"
                 >
-                  <Heart size={18} className="inline mr-2" />
+                  <Heart size={20} className="inline mr-2" />
                   {i18n.language === 'fr' ? 'Donner Maintenant' : 'Donate Now'}
                 </a>
               </div>
@@ -474,11 +474,11 @@ export default function Home() {
             </div>
 
             {/* ACTION ITEMS */}
-            <div className="border-4 border-green-600 bg-green-50 p-6">
-              <h3 className="text-lg font-bold mb-3 text-green-700">
+            <div className="border-4 border-green-600 bg-green-50 p-4 md:p-6">
+              <h3 className="text-base md:text-lg font-bold mb-3 text-green-700">
                 {i18n.language === 'fr' ? 'Agir Maintenant' : 'Take Action'}
               </h3>
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 text-xs md:text-sm">
                 <li>
                   <a href="#" className="font-bold text-green-700 hover:underline">
                     {i18n.language === 'fr' ? '→ Signer la pétition' : '→ Sign Petition'}
