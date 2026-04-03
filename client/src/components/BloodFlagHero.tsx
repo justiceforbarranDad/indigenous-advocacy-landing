@@ -25,16 +25,18 @@ export default function BloodFlagHero() {
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
+      {/* Background Image - Parliament Building */}
+      <div
         className="absolute inset-0 w-full h-full object-cover"
-        src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/hero-blood-dripping-animation_8660d9ed.mp4"
+        style={{
+          backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/parliament-hero-bg_parliament-buildings-ottawa.webp)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
       />
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Text Content */}
       <div className="relative z-20 w-full px-4 py-8">
