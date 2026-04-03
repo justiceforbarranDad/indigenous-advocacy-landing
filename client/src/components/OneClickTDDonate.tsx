@@ -29,24 +29,24 @@ Email: ${BANK_DETAILS.email}
   `.trim();
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 py-12">
-      <div className="bg-gradient-to-br from-red-50 to-rose-50 rounded-lg border-2 border-red-300 p-8">
+    <div className="w-full px-4 py-8 md:py-12">
+      <div className="max-w-3xl mx-auto bg-gradient-to-br from-red-50 to-rose-50 rounded-xl border-2 border-red-300 p-6 md:p-10">
         {/* Header */}
-        <div className="flex items-center gap-2 mb-2">
-          <Heart className="text-red-600" size={24} />
-          <h2 className="text-3xl font-bold text-red-900">Make a Donation</h2>
+        <div className="flex items-center gap-3 mb-2">
+          <Heart className="text-red-600 flex-shrink-0" size={28} />
+          <h2 className="text-2xl md:text-4xl font-bold text-red-900">Make a Donation</h2>
         </div>
-        <p className="text-red-700 mb-8">Support Justice for Barran - Every donation helps</p>
+        <p className="text-base md:text-lg text-red-700 mb-8">Support Justice for Barran - Every donation helps</p>
 
-        {/* Amount Selection */}
+        {/* Amount Selection - FIXED FOR DESKTOP */}
         <div className="mb-8">
-          <p className="text-sm font-semibold text-red-900 mb-3">Select Amount:</p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          <p className="text-sm font-semibold text-red-900 mb-4">Select Amount:</p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4">
             {AMOUNTS.map((amount) => (
               <button
                 key={amount}
                 onClick={() => setSelectedAmount(amount)}
-                className={`py-4 px-3 rounded-lg font-bold text-lg transition-all transform ${
+                className={`py-3 md:py-4 px-2 md:px-4 rounded-lg font-bold text-base md:text-lg transition-all transform whitespace-nowrap ${
                   selectedAmount === amount
                     ? 'bg-red-700 text-white shadow-lg scale-105'
                     : 'bg-red-600 text-white hover:bg-red-700 shadow-lg hover:shadow-xl hover:scale-105'
@@ -59,16 +59,16 @@ Email: ${BANK_DETAILS.email}
         </div>
 
         {/* Bank Details Section */}
-        <div className="bg-white rounded-lg border-2 border-red-200 p-6 mb-6">
-          <h3 className="text-lg font-bold text-red-900 mb-4 flex items-center gap-2">
-            <span className="text-2xl">🏦</span> Send e-Transfer to:
+        <div className="bg-white rounded-lg border-2 border-red-200 p-4 md:p-8 mb-6">
+          <h3 className="text-lg md:text-xl font-bold text-red-900 mb-6 flex items-center gap-2">
+            <span className="text-2xl md:text-3xl">🏦</span> Send e-Transfer to:
           </h3>
 
           {/* Email */}
-          <div className="mb-4 p-4 bg-red-50 rounded-lg">
-            <p className="text-xs text-red-600 mb-1 font-semibold">EMAIL</p>
-            <div className="flex items-center justify-between gap-2">
-              <p className="text-lg font-mono font-bold text-red-900 break-all">
+          <div className="mb-4 p-4 md:p-5 bg-red-50 rounded-lg">
+            <p className="text-xs md:text-sm text-red-600 mb-2 font-semibold uppercase tracking-wide">Email</p>
+            <div className="flex items-center justify-between gap-3 flex-wrap">
+              <p className="text-base md:text-lg font-mono font-bold text-red-900 break-all">
                 {BANK_DETAILS.email}
               </p>
               <button
@@ -86,42 +86,42 @@ Email: ${BANK_DETAILS.email}
           </div>
 
           {/* Branch & Account */}
-          <div className="grid grid-cols-2 gap-3 mb-4">
-            <div className="p-4 bg-red-50 rounded-lg">
-              <p className="text-xs text-red-600 mb-1 font-semibold">BRANCH</p>
-              <div className="flex items-center justify-between gap-2">
-                <p className="text-lg font-mono font-bold text-red-900">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-6">
+            <div className="p-4 md:p-5 bg-red-50 rounded-lg">
+              <p className="text-xs md:text-sm text-red-600 mb-2 font-semibold uppercase tracking-wide">Branch</p>
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-lg md:text-xl font-mono font-bold text-red-900">
                   {BANK_DETAILS.branch}
                 </p>
                 <button
                   onClick={() => copyToClipboard(BANK_DETAILS.branch, 'branch')}
-                  className="p-2 hover:bg-red-100 rounded transition-colors"
+                  className="flex-shrink-0 p-2 hover:bg-red-100 rounded transition-colors"
                   title="Copy branch"
                 >
                   {copiedField === 'branch' ? (
-                    <Check size={16} className="text-green-600" />
+                    <Check size={18} className="text-green-600" />
                   ) : (
-                    <Copy size={16} className="text-red-600" />
+                    <Copy size={18} className="text-red-600" />
                   )}
                 </button>
               </div>
             </div>
 
-            <div className="p-4 bg-red-50 rounded-lg">
-              <p className="text-xs text-red-600 mb-1 font-semibold">ACCOUNT</p>
-              <div className="flex items-center justify-between gap-2">
-                <p className="text-lg font-mono font-bold text-red-900">
+            <div className="p-4 md:p-5 bg-red-50 rounded-lg">
+              <p className="text-xs md:text-sm text-red-600 mb-2 font-semibold uppercase tracking-wide">Account</p>
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-lg md:text-xl font-mono font-bold text-red-900">
                   {BANK_DETAILS.account}
                 </p>
                 <button
                   onClick={() => copyToClipboard(BANK_DETAILS.account, 'account')}
-                  className="p-2 hover:bg-red-100 rounded transition-colors"
+                  className="flex-shrink-0 p-2 hover:bg-red-100 rounded transition-colors"
                   title="Copy account"
                 >
                   {copiedField === 'account' ? (
-                    <Check size={16} className="text-green-600" />
+                    <Check size={18} className="text-green-600" />
                   ) : (
-                    <Copy size={16} className="text-red-600" />
+                    <Copy size={18} className="text-red-600" />
                   )}
                 </button>
               </div>
@@ -131,7 +131,7 @@ Email: ${BANK_DETAILS.email}
           {/* Copy All Details */}
           <button
             onClick={() => copyToClipboard(bankDetailsText, 'all')}
-            className="w-full py-3 px-4 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center gap-2"
+            className="w-full py-3 md:py-4 px-4 bg-red-600 text-white font-bold text-base md:text-lg rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center gap-2"
           >
             {copiedField === 'all' ? (
               <>
@@ -146,9 +146,9 @@ Email: ${BANK_DETAILS.email}
         </div>
 
         {/* Instructions */}
-        <div className="bg-red-50 border-l-4 border-red-600 p-4 mb-6 rounded">
-          <h4 className="font-bold text-red-900 mb-2">How to Donate:</h4>
-          <ol className="text-sm text-red-800 space-y-1 list-decimal list-inside">
+        <div className="bg-red-50 border-l-4 border-red-600 p-4 md:p-6 mb-6 rounded">
+          <h4 className="font-bold text-red-900 mb-3 text-base md:text-lg">How to Donate:</h4>
+          <ol className="text-sm md:text-base text-red-800 space-y-2 list-decimal list-inside">
             <li>Select an amount above (CA$5, $10, $20, $50, or $100)</li>
             <li>Copy the email address or all details using the buttons above</li>
             <li>Open your bank's e-Transfer app</li>
@@ -158,7 +158,7 @@ Email: ${BANK_DETAILS.email}
         </div>
 
         {/* Info Message */}
-        <p className="text-xs text-red-600 text-center">
+        <p className="text-xs md:text-sm text-red-600 text-center font-semibold">
           ✅ 100% of donations go directly to legal defense, advocacy, and systemic change efforts.
         </p>
       </div>
