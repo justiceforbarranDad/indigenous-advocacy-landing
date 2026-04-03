@@ -96,6 +96,100 @@ export default function Donate() {
         <div className="mb-12">
           <InternationalDonation />
         </div>
+
+        {/* Stripe Payment Link Section */}
+        <Card className="border-amber-orange/20 mb-8 bg-gradient-to-br from-amber-orange/5 to-forest-green/5">
+          <CardHeader className="bg-forest-green text-cream">
+            <CardTitle className="text-2xl">💳 Donate via Stripe (Quick & Easy)</CardTitle>
+            <CardDescription className="text-cream/80">
+              Support McGovern Arts Institute Community Healing Centre and Terry James Foundation wellness retreat for autistic & First Nations kids – after-hours and weekend programs
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* QR Code Section */}
+              <div className="flex flex-col items-center justify-center">
+                <div className="bg-white p-6 rounded-lg border-2 border-amber-orange">
+                  <p className="text-sm font-semibold text-charcoal mb-4 text-center">Scan to Donate</p>
+                  <div className="w-48 h-48 bg-white rounded-lg flex items-center justify-center">
+                    <iframe
+                      src="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
+                      width="100%"
+                      height="100%"
+                      frameBorder="0"
+                      className="rounded-lg"
+                    />
+                  </div>
+                  <p className="text-xs text-charcoal-light text-center mt-4">
+                    Scan with your phone camera or Stripe app
+                  </p>
+                </div>
+              </div>
+
+              {/* Donation Buttons Section */}
+              <div className="flex flex-col justify-center space-y-4">
+                <p className="text-sm font-semibold text-charcoal mb-2">Quick Donation Amounts (CAD)</p>
+                <div className="grid grid-cols-2 gap-3">
+                  <a
+                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-amber-orange hover:bg-amber-light text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
+                  >
+                    Donate $5
+                  </a>
+                  <a
+                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-amber-orange hover:bg-amber-light text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
+                  >
+                    Donate $10
+                  </a>
+                  <a
+                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-amber-orange hover:bg-amber-light text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
+                  >
+                    Donate $20
+                  </a>
+                  <a
+                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-amber-orange hover:bg-amber-light text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
+                  >
+                    Donate $50
+                  </a>
+                  <a
+                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-amber-orange hover:bg-amber-light text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
+                  >
+                    Donate $100
+                  </a>
+                  <a
+                    href="https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-forest-green hover:bg-forest-green/80 text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
+                  >
+                    Custom Amount
+                  </a>
+                </div>
+                <div className="bg-amber-orange/10 p-4 rounded-lg border-l-4 border-amber-orange mt-4">
+                  <p className="text-sm text-charcoal font-semibold mb-2">✓ Secure & Fast</p>
+                  <p className="text-xs text-charcoal-light">
+                    No password required. Stripe handles all payments securely. Donors can choose custom amounts too.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         <button
           onClick={() => setLocation('/')}
           className="flex items-center gap-2 text-amber-orange hover:text-amber-light mb-8 transition-colors"
