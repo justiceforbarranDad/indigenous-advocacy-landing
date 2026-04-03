@@ -13,29 +13,22 @@ export default function DonationQRCode() {
 
   const donationAmounts = [5, 10, 20, 50, 100];
 
-  // Generate Stripe payment links for each amount
-  const generateStripeCheckoutLink = (amount: number) => {
-    // These are Stripe payment links that should be created in your Stripe dashboard
-    // Format: https://buy.stripe.com/test/...
-    // For now, we'll use a generic Stripe checkout URL
-    const stripeLinks: { [key: number]: string } = {
-      5: 'https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ',
-      10: 'https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ',
-      20: 'https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ',
-      50: 'https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ',
-      100: 'https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ',
-    };
-    return stripeLinks[amount] || `https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ?amount=${amount * 100}`;
+  // Bank account details for e-Transfer
+  const bankDetails = {
+    bankName: 'TD Bank',
+    branchNumber: '4303',
+    accountNumber: '6255007',
+    email: 'justiceforbarran@gmail.com',
   };
 
-  // Generate QR code for e-Transfer (GoFundMe)
+  // Generate e-Transfer QR code value (email)
   const generateETransferQRValue = () => {
-    return 'https://gofund.me/role.flip.tall';
+    return `mailto:${bankDetails.email}`;
   };
 
-  // Generate QR code for Stripe payment link
-  const generateStripQRValue = (amount: number) => {
-    return generateStripeCheckoutLink(amount);
+  // Generate bank details text for QR code
+  const generateBankDetailsText = () => {
+    return `TD Bank\nBranch: ${bankDetails.branchNumber}\nAccount: ${bankDetails.accountNumber}`;
   };
 
   // Handle QR code click
@@ -172,36 +165,52 @@ export default function DonationQRCode() {
               </p>
             </div>
 
-            {/* STRIPE PAYMENT QR CODE */}
-            <div className="flex justify-center mb-4">
-              <div 
-                className="bg-white p-8 rounded-lg shadow-lg cursor-pointer hover:shadow-xl transition-shadow hover:scale-105 transform"
-                onClick={() => handleQRCodeClick(generateStripQRValue(selectedAmount))}
-                title="Click to open Stripe payment"
-              >
-                <QRCodeSVG
-                  value={generateStripQRValue(selectedAmount)}
-                  size={300}
-                  level="H"
-                  includeMargin={true}
-                  fgColor="#000000"
-                  bgColor="#FFFFFF"
-                />
+            {/* TD BANK DETAILS SECTION */}
+            <div className="border-2 border-blue-500 bg-blue-50 rounded-lg p-6">
+              <div className="text-center mb-4">
+                <h3 className="text-lg font-bold text-blue-900 mb-2">
+                  {i18n.language === 'fr' ? '🏦 Détails du Compte TD' : '🏦 TD Bank Account Details'}
+                </h3>
+                <p className="text-sm text-blue-800">
+                  {i18n.language === 'fr'
+                    ? 'Virement direct - Instantané'
+                    : 'Direct Transfer - Instant'}
+                </p>
               </div>
+
+              {/* BANK DETAILS */}
+              <div className="space-y-3 mb-6 bg-white p-4 rounded-lg">
+                <div className="flex justify-between">
+                  <span className="font-semibold text-blue-900">{i18n.language === 'fr' ? 'Banque:' : 'Bank:'}</span>
+                  <span className="text-blue-700">{bankDetails.bankName}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-semibold text-blue-900">{i18n.language === 'fr' ? 'Succursale:' : 'Branch:'}</span>
+                  <span className="text-blue-700">{bankDetails.branchNumber}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-semibold text-blue-900">{i18n.language === 'fr' ? 'Compte:' : 'Account:'}</span>
+                  <span className="text-blue-700">{bankDetails.accountNumber}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-semibold text-blue-900">{i18n.language === 'fr' ? 'Email:' : 'Email:'}</span>
+                  <span className="text-blue-700">{bankDetails.email}</span>
+                </div>
+              </div>
+
+              <button
+                onClick={() => copyToClipboard(`${bankDetails.bankName}\nBranch: ${bankDetails.branchNumber}\nAccount: ${bankDetails.accountNumber}`)}
+                className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-md hover:shadow-lg mb-3"
+              >
+                {i18n.language === 'fr' ? 'Copier Détails' : 'Copy Details'}
+              </button>
+
+              <p className="text-xs text-blue-700 text-center">
+                {i18n.language === 'fr'
+                  ? 'Copiez les détails et envoyez via e-Transfer à justiceforbarran@gmail.com'
+                  : 'Copy details and send via e-Transfer to justiceforbarran@gmail.com'}
+              </p>
             </div>
-
-            <p className="text-xs text-blue-800 text-center mb-3">
-              {i18n.language === 'fr'
-                ? 'Compte TD - Aucun frais'
-                : 'TD Bank Account - No Fees'}
-            </p>
-
-            <button
-              onClick={() => copyToClipboard('justiceforbarran@gmail.com')}
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-md hover:shadow-lg"
-            >
-              {i18n.language === 'fr' ? 'Détails du Compte' : 'Account Details'}
-            </button>
 
             <p className="text-xs text-blue-700 text-center mt-3">
               {i18n.language === 'fr'
@@ -210,32 +219,7 @@ export default function DonationQRCode() {
             </p>
           </div>
 
-          {/* STRIPE CC - OPTIONAL BACKUP */}
-          <div className="border-2 border-gray-400 bg-gray-50 rounded-lg p-6">
-            <div className="text-center mb-4">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                {i18n.language === 'fr' ? '💳 Carte de Crédit (Optionnel)' : '💳 Credit Card (Optional)'}
-              </h3>
-              <p className="text-sm text-gray-700">
-                {i18n.language === 'fr'
-                  ? 'Via Stripe - Frais de 2.9% + $0.30'
-                  : 'Via Stripe - 2.9% + $0.30 fee'}
-              </p>
-            </div>
 
-            <button
-              onClick={() => setShowStripeModal(true)}
-              className="w-full bg-gray-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-gray-700 active:bg-gray-800 transition-colors shadow-md hover:shadow-lg"
-            >
-              {i18n.language === 'fr' ? 'Payer par Carte' : 'Pay by Card'}
-            </button>
-
-            <p className="text-xs text-gray-600 text-center mt-3">
-              {i18n.language === 'fr'
-                ? 'Pour ceux sans accès à e-Transfer ou virement bancaire'
-                : 'For those without e-Transfer or bank access'}
-            </p>
-          </div>
 
           {/* AMOUNT DISPLAY */}
           <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-4 text-center">
@@ -249,13 +233,7 @@ export default function DonationQRCode() {
         </div>
       )}
 
-      {/* Stripe Payment Modal */}
-      <StripePaymentModal
-        isOpen={showStripeModal}
-        onClose={() => setShowStripeModal(false)}
-        amount={selectedAmount || 0}
-        currency={currency}
-      />
+
     </div>
   );
 }
