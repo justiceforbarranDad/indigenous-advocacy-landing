@@ -9,6 +9,7 @@ import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { generateRSSFeed, getPodcastFeedConfig, getPodcastEpisodesForRSS } from "../rss-feed";
 import { handleStripeWebhook } from "../stripe-webhook";
+import stripeCheckoutRouter from "../stripe-checkout";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -44,6 +45,9 @@ async function startServer() {
 
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
+  
+  // Stripe checkout
+  app.use("/api/stripe", stripeCheckoutRouter);
   
   // RSS Feed for podcast distribution
   app.get("/api/podcast/feed.xml", (req, res) => {
