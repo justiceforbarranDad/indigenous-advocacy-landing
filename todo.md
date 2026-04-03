@@ -99,6 +99,7 @@
 - [x] QR code uploaded to CDN - donate-banks-qr-code.png with permanent URL (COMPLETE)
 - [x] ModernHome.tsx updated - QR code displays with CDN URL, all buttons functional (COMPLETE)
 - [x] DonateViaBank route registered - /donate-via-bank fully configured in App.tsx (COMPLETE)
+- [x] QR codes made clickable - Viewers can click QR codes to open Stripe payment links directly
 - [ ] Governor General Wellness Check - Add Feb 27, 2026 videos with subtitles showing final insult
 - [ ] Simon Jolin-Barrette Correction - Fix who he cried for (not his daughter)
 - [ ] 13 Rights of Users Poster - Add image showing rights children were denied

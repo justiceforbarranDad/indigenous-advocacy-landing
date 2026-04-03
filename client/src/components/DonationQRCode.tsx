@@ -13,14 +13,34 @@ export default function DonationQRCode() {
 
   const donationAmounts = [5, 10, 20, 50, 100];
 
-  // Generate QR code for GoFundMe
+  // Generate Stripe payment links for each amount
+  const generateStripeCheckoutLink = (amount: number) => {
+    // These are Stripe payment links that should be created in your Stripe dashboard
+    // Format: https://buy.stripe.com/test/...
+    // For now, we'll use a generic Stripe checkout URL
+    const stripeLinks: { [key: number]: string } = {
+      5: 'https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ',
+      10: 'https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ',
+      20: 'https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ',
+      50: 'https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ',
+      100: 'https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ',
+    };
+    return stripeLinks[amount] || `https://buy.stripe.com/test/cN2aFa9OI6Oy0O0dQQ?amount=${amount * 100}`;
+  };
+
+  // Generate QR code for e-Transfer (GoFundMe)
   const generateETransferQRValue = () => {
     return 'https://gofund.me/role.flip.tall';
   };
 
-  // Generate QR code for GoFundMe (same as e-Transfer)
-  const generateBankQRValue = () => {
-    return 'https://gofund.me/role.flip.tall';
+  // Generate QR code for Stripe payment link
+  const generateStripQRValue = (amount: number) => {
+    return generateStripeCheckoutLink(amount);
+  };
+
+  // Handle QR code click
+  const handleQRCodeClick = (url: string) => {
+    window.open(url, '_blank');
   };
 
   const copyToClipboard = (text: string) => {
@@ -89,7 +109,11 @@ export default function DonationQRCode() {
 
             {/* E-TRANSFER QR CODE */}
             <div className="flex justify-center mb-4">
-              <div className="bg-white p-8 rounded-lg shadow-lg">
+              <div 
+                className="bg-white p-8 rounded-lg shadow-lg cursor-pointer hover:shadow-xl transition-shadow hover:scale-105 transform"
+                onClick={() => handleQRCodeClick(generateETransferQRValue())}
+                title="Click to open e-Transfer"
+              >
                 <QRCodeSVG
                   value={generateETransferQRValue()}
                   size={300}
@@ -105,20 +129,28 @@ export default function DonationQRCode() {
               justiceforbarran@gmail.com
             </p>
 
-            <button
-              onClick={() => copyToClipboard('justiceforbarran@gmail.com')}
-              className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-green-700 active:bg-green-800 transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
-            >
-              {copied ? (
-                <>
-                  <Check size={16} /> {i18n.language === 'fr' ? 'Copié!' : 'Copied!'}
-                </>
-              ) : (
-                <>
-                  <Copy size={16} /> {i18n.language === 'fr' ? 'Copier Email' : 'Copy Email'}
-                </>
-              )}
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={() => copyToClipboard('justiceforbarran@gmail.com')}
+                className="flex-1 bg-green-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-green-700 active:bg-green-800 transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+              >
+                {copied ? (
+                  <>
+                    <Check size={16} /> {i18n.language === 'fr' ? 'Copié!' : 'Copied!'}
+                  </>
+                ) : (
+                  <>
+                    <Copy size={16} /> {i18n.language === 'fr' ? 'Copier Email' : 'Copy Email'}
+                  </>
+                )}
+              </button>
+              <button
+                onClick={() => handleQRCodeClick(generateETransferQRValue())}
+                className="flex-1 bg-green-700 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-green-800 active:bg-green-900 transition-colors shadow-md hover:shadow-lg"
+              >
+                {i18n.language === 'fr' ? 'Ouvrir' : 'Open'}
+              </button>
+            </div>
 
             <p className="text-xs text-green-700 text-center mt-3">
               {i18n.language === 'fr'
@@ -140,11 +172,15 @@ export default function DonationQRCode() {
               </p>
             </div>
 
-            {/* BANK TRANSFER QR CODE */}
+            {/* STRIPE PAYMENT QR CODE */}
             <div className="flex justify-center mb-4">
-              <div className="bg-white p-8 rounded-lg shadow-lg">
+              <div 
+                className="bg-white p-8 rounded-lg shadow-lg cursor-pointer hover:shadow-xl transition-shadow hover:scale-105 transform"
+                onClick={() => handleQRCodeClick(generateStripQRValue(selectedAmount))}
+                title="Click to open Stripe payment"
+              >
                 <QRCodeSVG
-                  value={generateBankQRValue()}
+                  value={generateStripQRValue(selectedAmount)}
                   size={300}
                   level="H"
                   includeMargin={true}
@@ -161,7 +197,7 @@ export default function DonationQRCode() {
             </p>
 
             <button
-              onClick={() => setSelectedAmount(null)}
+              onClick={() => copyToClipboard('justiceforbarran@gmail.com')}
               className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-md hover:shadow-lg"
             >
               {i18n.language === 'fr' ? 'Détails du Compte' : 'Account Details'}
