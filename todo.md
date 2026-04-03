@@ -1731,3 +1731,10 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Reduce font sizes for better proportions
 - [x] Test on mobile and desktop viewports
 - [x] Ensure responsive layout works correctly
+
+
+## JUKEBOX PLAYER PLAY BUTTON (April 2, 2026 - URGENT)
+- [ ] Add prominent play button to jukebox interface
+- [ ] Ensure play button is visible and clickable
+- [ ] Test audio playback functionality
+- [ ] Verify button styling matches vintage jukebox aesthetic
