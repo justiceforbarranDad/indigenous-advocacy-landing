@@ -240,6 +240,24 @@ export default function InteracDonationInterface() {
           </div>
         </div>
 
+        {/* SUGGESTED AMOUNTS - CLICKABLE BUTTONS */}
+        <div className="mb-8">
+          <h3 className="text-lg font-bold text-gray-900 mb-4 uppercase tracking-wider">
+            {language === 'en' ? 'Suggested amounts:' : 'Montants suggérés:'}
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+            {['5.00', '10.00', '20.00', '50.00', '100.00'].map((amount) => (
+              <button
+                key={amount}
+                onClick={() => setDonationAmount(amount)}
+                className="py-4 px-3 bg-green-100 border-2 border-green-600 text-green-900 font-bold rounded-lg hover:bg-green-200 active:bg-green-300 transition-colors text-sm md:text-base"
+              >
+                {currency}${amount}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* CUSTOM AMOUNT INPUT */}
         <div className="mb-8">
           <label className="block text-sm font-bold text-gray-900 mb-3 uppercase tracking-wider">

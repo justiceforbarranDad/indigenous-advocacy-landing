@@ -98,6 +98,7 @@ import DonationImpact from "./pages/DonationImpact";
 
 import DonationHub from "./pages/DonationHub";
 import DonateRecurring from "./pages/DonateRecurring";
+import DirectDepositDonation from "./pages/DirectDepositDonation";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 import NewspaperHome from "./pages/NewspaperHome";
 import ModernHome from "./pages/ModernHome";
@@ -162,6 +163,7 @@ function Router() {
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
       <Route path="/donate" component={DonateQuick} />
+      <Route path="/donate-direct" component={DirectDepositDonation} />
       <Route path="/donate-etransfer" component={DonateEtransfer} />
       <Route path="/payment-hub" component={PaymentHub} />
       <Route path="/donate-stripe-qr" component={PaymentHub} />
