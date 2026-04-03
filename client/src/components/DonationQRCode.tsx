@@ -21,9 +21,14 @@ export default function DonationQRCode() {
     email: 'justiceforbarran@gmail.com',
   };
 
-  // Generate e-Transfer QR code value (plain text with bank details)
+  // Generate e-Transfer QR code value (email)
   const generateETransferQRValue = () => {
-    return `TD Bank\nBranch: ${bankDetails.branchNumber}\nAccount: ${bankDetails.accountNumber}\nEmail: ${bankDetails.email}`;
+    return `mailto:${bankDetails.email}`;
+  };
+
+  // Generate bank details text for QR code
+  const generateBankDetailsText = () => {
+    return `TD Bank\nBranch: ${bankDetails.branchNumber}\nAccount: ${bankDetails.accountNumber}`;
   };
 
   // Handle QR code click
@@ -117,20 +122,28 @@ export default function DonationQRCode() {
               justiceforbarran@gmail.com
             </p>
 
-            <button
-              onClick={() => copyToClipboard('justiceforbarran@gmail.com')}
-              className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-green-700 active:bg-green-800 transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
-            >
-              {copied ? (
-                <>
-                  <Check size={16} /> {i18n.language === 'fr' ? 'Copié!' : 'Copied!'}
-                </>
-              ) : (
-                <>
-                  <Copy size={16} /> {i18n.language === 'fr' ? 'Copier Email' : 'Copy Email'}
-                </>
-              )}
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={() => copyToClipboard('justiceforbarran@gmail.com')}
+                className="flex-1 bg-green-600 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-green-700 active:bg-green-800 transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+              >
+                {copied ? (
+                  <>
+                    <Check size={16} /> {i18n.language === 'fr' ? 'Copié!' : 'Copied!'}
+                  </>
+                ) : (
+                  <>
+                    <Copy size={16} /> {i18n.language === 'fr' ? 'Copier Email' : 'Copy Email'}
+                  </>
+                )}
+              </button>
+              <button
+                onClick={() => handleQRCodeClick(generateETransferQRValue())}
+                className="flex-1 bg-green-700 text-white py-3 px-4 rounded-lg font-bold text-base hover:bg-green-800 active:bg-green-900 transition-colors shadow-md hover:shadow-lg"
+              >
+                {i18n.language === 'fr' ? 'Ouvrir' : 'Open'}
+              </button>
+            </div>
 
             <p className="text-xs text-green-700 text-center mt-3">
               {i18n.language === 'fr'
