@@ -4,6 +4,7 @@ import { AlertTriangle } from 'lucide-react';
 import { JukeboxPlayer } from '@/components/JukeboxPlayer';
 import { SirenWarningModal } from '@/components/SirenWarningModal';
 import TheSilenceClock from '@/components/TheSilenceClock';
+import { BookReader } from '@/components/BookReader';
 import { trpc } from '@/lib/trpc';
 
 export default function Home() {
@@ -178,22 +179,25 @@ export default function Home() {
             <div className="flex flex-col gap-3">
               <div className="grid grid-cols-5 gap-2">
                 {[5, 10, 20, 50, 100].map((amount) => (
-                  <button
+                  <a
                     key={amount}
-                    onClick={() => handleDonateClick(amount)}
+                    href={`mailto:jamesrobertmcgovern@hotmail.com?subject=Donation ${amount} CAD - Justice for Barran`}
                     className="py-3 px-2 bg-red-600 text-white rounded-lg font-bold text-sm md:text-base hover:bg-red-700 shadow-md hover:shadow-lg transition-all transform hover:scale-105 text-center whitespace-nowrap"
                   >
                     ${amount}
-                  </button>
+                  </a>
                 ))}
               </div>
               <p className="text-center text-xs text-gray-500 mt-1">
-                {i18n.language === 'fr' ? 'Paiement sécurisé par Stripe' : i18n.language === 'ht' ? 'Peman sekirize pa Stripe' : 'Secure payment via Stripe'}
+                {i18n.language === 'fr' ? 'Virement Interac e-Transfer' : i18n.language === 'ht' ? 'Transfert Interac e-Transfer' : 'Interac e-Transfer'}
               </p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ===== 4B. BOOK READER SECTION ===== */}
+      <BookReader />
 
       {/* ===== 5. CONTACT INFORMATION SECTION ===== */}
       <section className="bg-gray-900 text-white py-8 px-4">
