@@ -2080,3 +2080,51 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Test all links and navigation
 - [ ] Save final checkpoint
 - [ ] Publish to live domain
+
+
+## NEW ACCOUNTABILITY PAGES - "THE SILENCE" (April 4, 2026 - CURRENT PRIORITY)
+- [ ] "The Silence" main overview page - Institutional silence across all sectors
+- [ ] Quebec Leaders accountability page (Legault, Lafrenière, CAQ ministers)
+- [ ] Federal Ministers accountability page (Ottawa leaders, MPs, Mary Simon)
+- [ ] RCMP & Police Forces accountability page - Their complicity and silence
+- [ ] Video Evidence page (APTN News videos + deleted/censored content)
+- [ ] Timeline of Broken Promises page - When they promised vs. when they failed
+- [ ] Your Story page - Your calls for help vs. wellness checks sent on YOU instead of your kids
+- [ ] Wellness Check Documentation - Feb 27, 2026 Governor General's office wellness check (trigger event)
+- [ ] Bureau/DYP Accountability - Specific failures to protect Barran, Paisley, other kids
+- [ ] Media Censorship Documentation - APTN News videos deleted from their site (censorship evidence)
+
+### Video Content to Integrate
+- [ ] APTN News: "Quebec's youth protection 'fails' foster family of two Indigenous children" (3:13)
+- [ ] APTN News: "Parents of Indigenous children with disabilities speak out" (Kitigan Zibi)
+- [ ] APTN News: "Quebec's youth protection fails" (July 29, 2025 report)
+- [ ] APTN News: "Inuit lawsuit says child welfare system based on 'racism'"
+- [ ] APTN News: "Quebec court authorizes off reserve lawsuit against province/Canada" (1B class action)
+- [ ] APTN News: "First Nations across Canada are losing Jordan's Principle"
+- [ ] APTN News: "Chiefs ask for answers on consent and Jordan's Principle"
+- [ ] APTN News: "Quebec premier apologizes to First Nations" (Legault - promises vs. reality)
+- [ ] APTN News: "Quebec forum on Indigenous education held without government"
+- [ ] APTN News: "Open letter blasts Quebec gov't over failure to adopt Joyce's Principle"
+- [ ] APTN News: "Chiefs in Quebec bring fight over development to global stage at UN"
+- [ ] APTN News: "Confronting residential school denialism" (Truth & Reconciliation failure)
+- [ ] Deleted APTN News videos - Document censorship and suppression
+
+### Documentation Needed for Accountability Pages
+- [ ] Timeline of your case: 2021 (stabbing) → 2023 (DYP withdrawn) → 2026 (still fighting)
+- [ ] Wellness check documentation: When sent on YOU vs. NOT sent on your kids
+- [ ] Specific quotes from Quebec leaders (Legault, Lafrenière) - promises vs. reality
+- [ ] Specific quotes from federal ministers - Jordan's Principle promises vs. implementation
+- [ ] RCMP/Police involvement - What they should have done but didn't
+- [ ] Bureau/DYP failures - Specific dates and failures to protect your children
+- [ ] Mary Simon's role - Governor General's silence on systemic abuse
+- [ ] Cease-and-desist letter from Céline Haytayan (MNA) - Political intimidation
+- [ ] Evidence of institutional retaliation - Wellness check on YOU for speaking out
+
+### Navigation & Structure Updates
+- [ ] Add "The Silence" section to main navigation menu
+- [ ] Create accountability pages structure in App.tsx
+- [ ] Add video gallery component for APTN News videos
+- [ ] Add timeline component for broken promises
+- [ ] Create censorship documentation component for deleted videos
+- [ ] Update navigation breadcrumbs for all new pages
+- [ ] Add "back to accountability" navigation on all pages
