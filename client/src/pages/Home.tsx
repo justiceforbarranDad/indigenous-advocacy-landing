@@ -12,7 +12,7 @@ import { JukeboxPlayer } from '@/components/JukeboxPlayer';
 import { OneClickTDDonate } from '@/components/OneClickTDDonate';
 import { SirenWarningModal } from '@/components/SirenWarningModal';
 import TheSilenceClock from '@/components/TheSilenceClock';
-import TotemPoleHero from '@/components/TotemPoleHero';
+import { BloodStainedFlagHero } from '@/components/BloodStainedFlagHero';
 
 export default function Home() {
   const { i18n } = useTranslation();
@@ -141,11 +141,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* TOTEM POLE HERO SECTION */}
-      <TotemPoleHero />
-
-      {/* BLOOD FLAG HERO SECTION */}
-      <BloodFlagHero />
+      {/* BLOOD STAINED FLAG HERO SECTION */}
+      <BloodStainedFlagHero />
 
       {/* THE SILENCE CLOCK */}
       <div className="w-full bg-gradient-to-b from-gray-900 to-gray-800 py-12 px-4">
