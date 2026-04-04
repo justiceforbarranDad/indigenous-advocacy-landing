@@ -44,9 +44,11 @@ export default function TheSilenceClock() {
   }, []);
 
   return (
-    <div className="silence-clock-container">
+      <div className="silence-clock-container">
       <div className="silence-clock-header">
-        <h2>THE SILENCE CLOCK</h2>
+        <h2>
+          {i18n.language === 'fr' ? "L'HORLOGE DU SILENCE" : i18n.language === 'ht' ? 'REVÈY SILANS LA' : 'THE SILENCE CLOCK'}
+        </h2>
       </div>
 
       <div className="silence-clock-display">
