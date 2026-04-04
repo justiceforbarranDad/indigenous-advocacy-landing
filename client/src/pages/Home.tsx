@@ -11,7 +11,9 @@ export default function Home() {
   const [showSirenModal, setShowSirenModal] = useState(false);
 
   const handleDonateClick = (amount: number) => {
-    window.open(`https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01?prefilled_amount=${amount * 100}`, '_blank');
+    // Direct one-click Stripe checkout
+    const stripeLink = `https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01?prefilled_amount=${amount * 100}`;
+    window.location.href = stripeLink;
   };
 
   return (
@@ -72,13 +74,23 @@ export default function Home() {
           </p>
 
           {/* Flag text overlays */}
-          <div className="mt-4 flex gap-4 flex-wrap justify-center">
+          <div className="mt-4 flex gap-4 flex-wrap justify-center mb-6">
             <span className="bg-red-700/80 text-white px-4 py-1 rounded font-black text-sm md:text-base tracking-wider">
               JUSTICE FOR BARRAN
             </span>
             <span className="bg-red-700/80 text-white px-4 py-1 rounded font-black text-sm md:text-base tracking-wider">
               SUNDAY BLOODY SUNDAY
             </span>
+          </div>
+
+          {/* Podcast Player Buttons - Hero Section */}
+          <div className="mt-6 flex gap-3 flex-wrap justify-center">
+            <a href="#podcast" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+              🎙️ {i18n.language === 'fr' ? 'Écouter' : i18n.language === 'ht' ? 'Tande' : 'Listen'}
+            </a>
+            <a href="#podcast" className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+              ▶️ {i18n.language === 'fr' ? 'Lire' : i18n.language === 'ht' ? 'Li' : 'Play'}
+            </a>
           </div>
         </div>
 
