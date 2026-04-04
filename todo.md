@@ -80,6 +80,12 @@
 - Ready to fight for justice
 
 
+## URGENT FIXES (April 4, 2026 - CRITICAL)
+- [ ] Replace Stripe checkout with direct TD Bank e-Transfer payment (1-click donation)
+- [ ] Remove English intro text from Kreyòl podcast page
+- [ ] Fix Episode 2 duration - currently only 1:47, needs to be 15+ minutes
+- [ ] Test all donation buttons on live site after fixes
+
 ## URGENT NEW FEATURES (User Requested)
 - [x] Systemic Failures Accountability Page - Document Sean Fraser, Simon Jolin-Barrette, Quebec lawyers (COMPLETE)
 - [x] Sean Fraser Remarks Integration - "to me that's an insult to many" documented with full context
