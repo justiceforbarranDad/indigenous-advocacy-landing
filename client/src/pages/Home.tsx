@@ -170,7 +170,7 @@ export default function Home() {
                   : '100% of donations go directly to legal advocacy'}
               </p>
               <p className="text-sm text-gray-500">
-                McGovern Arts Institute Community Healing Centre
+                Justice for Barran - Indigenous Rights Advocacy
               </p>
             </div>
 

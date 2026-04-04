@@ -193,8 +193,8 @@ export const appRouter = router({
                 price_data: {
                   currency: "cad",
                   product_data: {
-                    name: "Donation to McGovern Arts Institute Human Rights Foundation",
-                    description: "Support Justice for Barran - Indigenous Advocacy",
+                    name: "Donation to Justice for Barran - Indigenous Advocacy",
+                    description: "100% goes directly to legal defense and advocacy",
                   },
                   unit_amount: Math.round(input.amount * 100),
                 },
