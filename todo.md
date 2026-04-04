@@ -1865,3 +1865,12 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] THE SILENCE CLOCK below video (1875+ days counting)
 - [x] Full-width banner, not too tall, eye-catching
 - [ ] Save checkpoint with video hero
+
+
+## HOMEPAGE RESTRUCTURE (April 4, 2026 - PRIORITY)
+- [x] Move video hero to VERY TOP of page (before everything)
+- [x] Full-width edge-to-edge video like Boosted Boards layout
+- [x] Integrate podcast player below hero area
+- [x] Add all 3 languages: English, Français, Kreyòl
+- [x] Donations section below video hero
+- [ ] Save checkpoint and republish
