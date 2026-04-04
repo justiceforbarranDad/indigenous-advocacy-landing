@@ -180,6 +180,43 @@ export const appRouter = router({
   }),
 
   donations: router({
+    createCheckoutSession: publicProcedure
+      .input(z.object({
+        amount: z.number().min(0.50, "Minimum donation is $0.50"),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        try {
+          const session = await stripe.checkout.sessions.create({
+            payment_method_types: ["card"],
+            line_items: [
+              {
+                price_data: {
+                  currency: "cad",
+                  product_data: {
+                    name: "Donation to McGovern Arts Institute Human Rights Foundation",
+                    description: "Support Justice for Barran - Indigenous Advocacy",
+                  },
+                  unit_amount: Math.round(input.amount * 100),
+                },
+                quantity: 1,
+              },
+            ],
+            mode: "payment",
+            success_url: `${ctx.req.headers.origin}/donation-success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${ctx.req.headers.origin}`,
+            customer_email: undefined,
+            metadata: {
+              amount: input.amount.toString(),
+            },
+          });
+          
+          return { url: session.url };
+        } catch (error) {
+          console.error("Error creating checkout session:", error);
+          throw new Error("Failed to create checkout session");
+        }
+      }),
+    
     submit: publicProcedure
       .input(z.object({
         donorName: z.string().min(1, "Name is required"),

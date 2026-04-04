@@ -116,7 +116,7 @@ const episodes: Record<string, Episode[]> = {
       id: 1,
       title: "Silans Politisyen yo",
       description: "Kouman ofisyèl yo nan tout nivo yo te inyore yon moun ki te mande èd pou yon fanmi Endyen an kriz.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep1-silans-politisyen-ht_22740bc0.wav",
+      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep1-silans-politisyen-full_f304fae2.wav",
       transcript: "SILANS POLITISYEN YO: Yon Envestigasyon sou Responsabilite Gouvènman\n\nPandant 1,873 jou, yon fanmi t ap chèche èd nan ofisyèl yo. Reprezantan federal, provincial, ak miniksipal. Yo tout silansye. Yo tout abandone yo.",
       duration: "8:45"
     },
@@ -124,7 +124,7 @@ const episodes: Record<string, Episode[]> = {
       id: 2,
       title: "Echèk Sistèm - Responsabilite DPJ",
       description: "Yon envestigasyon sou echèk enstitisyonèl ak efondman pwoteksyon timoun nan Kebèk.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep2-echek-sistem-dpj-ht_6e2851be.wav",
+      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep2-echek-sistem-dpj-full_2efba7d0.wav",
       transcript: "ECHÈK SISTÈM: Yon Envestigasyon sou Responsabilite DPJ\n\nDieksyon Pwoteksyon Timoun. DPJ. Nan Kebèk, se enstitisyon responsab pou pwoteje timoun kont abiy ak neglijan.",
       duration: "9:12"
     },
@@ -132,7 +132,7 @@ const episodes: Record<string, Episode[]> = {
       id: 3,
       title: "1873 Jou Injistis",
       description: "Yon tann kronolojik de senk an pou responsabilite.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep3-1873-jou-injistis-ht_a3b929e8.wav",
+      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep3-1873-jou-injistis-full_568e0ee3.wav",
       transcript: "1873 JOU INJISTIS: Yon Envestigasyon Kronolojik\n\n1,873 jou. Se senk an ak de mwa. Se konbyen tan yon fanmi t ap tann pou jistis.",
       duration: "7:58"
     },
@@ -140,7 +140,7 @@ const episodes: Record<string, Episode[]> = {
       id: 4,
       title: "Dwa Endyen yo Anba Atak",
       description: "Yon envestigasyon legal sou vyolasyon sistematik ak echèk enstitisyonèl.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep4-dwa-endyen-ht_3661d611.wav",
+      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep4-dwa-endyen-atak-full_b3317862.wav",
       transcript: "DWA ENDYEN YO ANBA ATAK: Yon Envestigasyon Legal\n\nDeklarasyon Nasyon Ini sou Dwa Pèp Endyen yo. Chata Kanadyen Dwa ak Libète. Pwojè Lwa C-92.",
       duration: "8:34"
     },
@@ -148,7 +148,7 @@ const episodes: Record<string, Episode[]> = {
       id: 5,
       title: "Jistis Retade se Jistis Refize",
       description: "Dènye apèl pou responsabilite, enkit endepandan, ak reyèl chanjman sistematik.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep5-jistis-retade-ht_0defa2f5.wav",
+      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep5-jistis-retade-full_460458e3.wav",
       transcript: "JISTIS RETADE SE JISTIS REFIZE: Enpak Echèk Sistematik\n\nJistis retade se jistis refize. Se pa jis yon prensip legal. Se reyalite fanmi yo ap viv ki ap tann pou responsabilite.",
       duration: "8:21"
     },
@@ -156,7 +156,7 @@ const episodes: Record<string, Episode[]> = {
       id: 6,
       title: "Òganizasyon Abandone",
       description: "Kouman gwo òganizasyon ak enstitisyon yo te rete silansye, inyore apèl pou responsabilite ak sipò pou fanmi Endyen an kriz.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep6-òganizasyon-abandone-ht_bc3123a3.wav",
+      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep6-òganizasyon-abandone-full_4a977b70.wav",
       transcript: "ÒGANIZASYON ABANDONE: Lè Enstitisyon Refize Reponn\n\nSilans politisyen yo. Silans ajans gouvènman. Men sa sou òganizasyon ki di yo defann dwa Endyen?",
       duration: "9:15"
     }

@@ -1871,7 +1871,7 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Move video hero to VERY TOP of page (before everything)
 - [x] Full-width edge-to-edge video like Boosted Boards layout
 - [x] Integrate podcast player below hero area
-- [x] Add all 3 languages: English, Français, Kreyòl
+- [x] Add all 3 languages: English, Français, Kreyòl - COMPLETE with Kreyòl audio
 - [x] Donations section below video hero
 - [ ] Save checkpoint and republish
 
@@ -1960,8 +1960,8 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 
 - [ ] All donation buttons visible on Home page
 - [ ] All donation buttons visible on Donation page
-- [ ] Podcast buttons visible on Home page
-- [x] Podcast buttons visible on Podcast page - Native HTML5 player with Kreyòl audio - Native HTML5 player with Kreyòl support
+- [x] Podcast buttons visible on Home page - Listen/Play buttons with all 3 languages
+- [x] Podcast buttons visible on Podcast page - Native HTML5 player with Kreyòl audio - Native HTML5 player with Kreyòl support - ALL 6 EPISODES LIVE
 - [ ] Navigation buttons visible on all pages
 - [ ] Language selector visible on all pages
 - [ ] Social media buttons visible and clickable

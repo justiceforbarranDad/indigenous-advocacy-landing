@@ -4,16 +4,23 @@ import { AlertTriangle } from 'lucide-react';
 import { JukeboxPlayer } from '@/components/JukeboxPlayer';
 import { SirenWarningModal } from '@/components/SirenWarningModal';
 import TheSilenceClock from '@/components/TheSilenceClock';
-
+import { trpc } from '@/lib/trpc';
 
 export default function Home() {
   const { i18n } = useTranslation();
   const [showSirenModal, setShowSirenModal] = useState(false);
+  const createCheckoutMutation = trpc.donations.createCheckoutSession.useMutation();
 
-  const handleDonateClick = (amount: number) => {
-    // Direct one-click Stripe checkout
-    const stripeLink = `https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01?prefilled_amount=${amount * 100}`;
-    window.location.href = stripeLink;
+  const handleDonateClick = async (amount: number) => {
+    try {
+      const { url } = await createCheckoutMutation.mutateAsync({ amount });
+      if (url) {
+        window.open(url, '_blank');
+      }
+    } catch (error) {
+      console.error('Error creating checkout session:', error);
+      alert('Failed to create checkout session. Please try again.');
+    }
   };
 
   return (
