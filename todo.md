@@ -1961,7 +1961,7 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] All donation buttons visible on Home page
 - [ ] All donation buttons visible on Donation page
 - [ ] Podcast buttons visible on Home page
-- [ ] Podcast buttons visible on Podcast page
+- [x] Podcast buttons visible on Podcast page - Native HTML5 player with Kreyòl support
 - [ ] Navigation buttons visible on all pages
 - [ ] Language selector visible on all pages
 - [ ] Social media buttons visible and clickable
