@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, ChevronDown, ChevronUp, Share2, Copy, X } from 'lucide-react';
 
 interface Episode {
@@ -113,60 +113,7 @@ const episodes: Record<string, Episode[]> = {
   ]
 };
 
-// Indigenous Finger Painting Art Component
-function IndigenousArtBorder() {
-  return (
-    <svg viewBox="0 0 400 100" className="w-full h-auto" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }}>
-      {/* Left decorative pattern - concentric circles */}
-      <g opacity="0.8">
-        <circle cx="30" cy="50" r="20" fill="none" stroke="#8B4513" strokeWidth="2"/>
-        <circle cx="30" cy="50" r="15" fill="none" stroke="#D2691E" strokeWidth="2"/>
-        <circle cx="30" cy="50" r="10" fill="none" stroke="#CD853F" strokeWidth="2"/>
-        <circle cx="30" cy="50" r="5" fill="#8B4513"/>
-        
-        {/* Dots around circles */}
-        {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => {
-          const rad = (angle * Math.PI) / 180;
-          const x = 30 + 25 * Math.cos(rad);
-          const y = 50 + 25 * Math.sin(rad);
-          return <circle key={angle} cx={x} cy={y} r="2" fill="#D2691E"/>;
-        })}
-      </g>
-
-      {/* Center decorative pattern - traditional lines and dots */}
-      <g opacity="0.8">
-        {/* Horizontal lines */}
-        <line x1="80" y1="30" x2="320" y2="30" stroke="#8B4513" strokeWidth="1" strokeDasharray="5,3"/>
-        <line x1="80" y1="50" x2="320" y2="50" stroke="#D2691E" strokeWidth="2"/>
-        <line x1="80" y1="70" x2="320" y2="70" stroke="#8B4513" strokeWidth="1" strokeDasharray="5,3"/>
-        
-        {/* Decorative dots along center line */}
-        {[100, 140, 180, 220, 260, 300].map((x) => (
-          <circle key={x} cx={x} cy="50" r="3" fill="#CD853F"/>
-        ))}
-      </g>
-
-      {/* Right decorative pattern - spiral-like design */}
-      <g opacity="0.8">
-        <circle cx="370" cy="50" r="20" fill="none" stroke="#8B4513" strokeWidth="2"/>
-        <circle cx="370" cy="50" r="15" fill="none" stroke="#D2691E" strokeWidth="2"/>
-        <circle cx="370" cy="50" r="10" fill="none" stroke="#CD853F" strokeWidth="2"/>
-        <circle cx="370" cy="50" r="5" fill="#8B4513"/>
-        
-        {/* Dots around circles */}
-        {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => {
-          const rad = (angle * Math.PI) / 180;
-          const x = 370 + 25 * Math.cos(rad);
-          const y = 50 + 25 * Math.sin(rad);
-          return <circle key={`right-${angle}`} cx={x} cy={y} r="2" fill="#D2691E"/>;
-        })}
-      </g>
-    </svg>
-  );
-}
-
 export function JukeboxPlayer() {
-  const [isOpen, setIsOpen] = useState(false);
   const [language, setLanguage] = useState<'en' | 'fr'>('en');
   const [currentEpisodeId, setCurrentEpisodeId] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -207,27 +154,6 @@ export function JukeboxPlayer() {
     }
   };
 
-  const shareEpisode = (platform: string) => {
-    const url = window.location.href;
-    const text = `Check out "${currentEpisode.title}" - ${currentEpisode.description}`;
-    
-    const shareUrls: Record<string, string> = {
-      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-      whatsapp: `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-      email: `mailto:?subject=${encodeURIComponent(currentEpisode.title)}&body=${encodeURIComponent(text + '\n' + url)}`
-    };
-
-    if (shareUrls[platform]) {
-      window.open(shareUrls[platform], '_blank');
-    }
-  };
-
-  const copyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
-  };
-
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -255,231 +181,112 @@ export function JukeboxPlayer() {
     <>
       <audio ref={audioRef} src={currentEpisode.audioUrl} />
       
-      {/* Jukebox Player - Minimized */}
-      {!isOpen && (
-        <div className="sticky top-20 md:top-2 left-2 md:left-12 z-40 w-fit">
+      {/* Native Design Podcast Player - Inline Display */}
+      <div className="w-full bg-gradient-to-b from-amber-50 to-cream rounded-xl border-4 border-amber-orange p-8 shadow-lg">
+        
+        {/* Language Toggle */}
+        <div className="flex gap-3 mb-6 justify-center">
           <button
-            onClick={() => setIsOpen(true)}
-            className="relative w-14 h-16 md:w-32 md:h-40 bg-gradient-to-b from-amber-700 via-amber-600 to-amber-800 rounded-lg shadow-2xl border-2 md:border-4 border-amber-900 hover:shadow-3xl transition-all duration-300 transform hover:scale-105 group"
-            style={{
-              backgroundImage: 'linear-gradient(135deg, #92400e 0%, #b45309 50%, #78350f 100%)',
-              boxShadow: '0 0 20px rgba(120, 53, 15, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2)'
-            }}
+            onClick={() => handleLanguageChange('en')}
+            className={`py-2 px-6 rounded-lg font-bold text-sm transition-all ${
+              language === 'en'
+                ? 'bg-forest-green text-cream shadow-lg'
+                : 'bg-cream text-forest-green border-2 border-forest-green hover:bg-forest-green/10'
+            }`}
           >
-            {/* Vintage Radio Display */}
-            <div className="absolute top-1 left-1 right-1 h-6 md:h-12 bg-amber-900 rounded-sm opacity-90 flex items-center justify-center border border-amber-700">
-              <div className="text-amber-100 text-xs md:text-xs font-bold text-center px-1 line-clamp-1 md:line-clamp-2 text-[8px] md:text-xs">
-                🎙️ LISTEN
-              </div>
-            </div>
-
-            {/* Vinyl record visual */}
-            <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-black border-4 border-gray-800 flex items-center justify-center">
-              <div className="w-6 h-6 rounded-full bg-yellow-300 flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-black"></div>
-              </div>
-            </div>
-
-            {/* Play indicator */}
-            {isPlaying && (
-              <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2">
-                <div className="flex gap-1">
-                  {[0, 1, 2].map((i) => (
-                    <div
-                      key={i}
-                      className="w-1 h-3 bg-red-500 rounded-full animate-pulse"
-                      style={{ animationDelay: `${i * 0.1}s` }}
-                    ></div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Click to open hint */}
-            <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-gray-600 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-              Click to play
-            </div>
+            🇬🇧 English
+          </button>
+          <button
+            onClick={() => handleLanguageChange('fr')}
+            className={`py-2 px-6 rounded-lg font-bold text-sm transition-all ${
+              language === 'fr'
+                ? 'bg-forest-green text-cream shadow-lg'
+                : 'bg-cream text-forest-green border-2 border-forest-green hover:bg-forest-green/10'
+            }`}
+          >
+            🇫🇷 Français
           </button>
         </div>
-      )}
 
-      {/* Jukebox Player - Expanded */}
-      {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-96 bg-gradient-to-b from-yellow-300 via-yellow-200 to-yellow-400 rounded-xl shadow-2xl border-4 border-yellow-600 p-6"
-          style={{
-            backgroundImage: 'linear-gradient(135deg, #fcd34d 0%, #fbbf24 50%, #f59e0b 100%)',
-            boxShadow: '0 0 30px rgba(217, 119, 6, 0.6), inset 0 2px 8px rgba(255, 255, 255, 0.4)'
-          }}
-        >
-          {/* Indigenous Art Border - Top */}
-          <div className="mb-4 -mx-6 px-6">
-            <IndigenousArtBorder />
-          </div>
-
-          {/* Close button */}
-          <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-3 right-3 p-1 hover:bg-yellow-500 rounded-lg transition-colors"
-          >
-            <X size={20} className="text-gray-800" />
-          </button>
-
-          {/* Jukebox Title */}
-          <div className="text-center mb-4">
-            <h3 className="text-2xl font-bold text-gray-900" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.1)' }}>
-              🎵 PODCAST JUKEBOX 🎵
-            </h3>
-            <p className="text-xs text-gray-700 mt-1">🪶 Justice for Barran 🪶</p>
-          </div>
-
-          {/* Display Screen */}
-          <div className="bg-black rounded-lg p-4 mb-4 border-2 border-gray-800">
-            <div className="text-yellow-300 font-mono text-sm mb-2">
-              <p className="font-bold truncate">{currentEpisode.title}</p>
-              <p className="text-xs opacity-75 mt-1">{language === 'en' ? 'Now Playing' : 'En cours de lecture'}</p>
-            </div>
-            
-            {/* Progress bar */}
-            <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
+        {/* Current Episode Info */}
+        <div className="bg-white rounded-lg p-6 mb-6 border-2 border-amber-orange">
+          <p className="text-sm font-semibold text-amber-orange uppercase tracking-wider mb-2">
+            {language === 'en' ? 'Now Playing' : 'En cours de lecture'}
+          </p>
+          <h3 className="text-2xl font-bold text-forest-green mb-2">{currentEpisode.title}</h3>
+          <p className="text-charcoal-light mb-4">{currentEpisode.description}</p>
+          
+          {/* Progress Bar */}
+          <div className="mb-3">
+            <div className="w-full bg-gray-300 rounded-full h-2 mb-2">
               <div
-                className="bg-red-500 h-2 rounded-full transition-all"
+                className="bg-amber-orange h-2 rounded-full transition-all"
                 style={{ width: `${duration ? (currentTime / duration) * 100 : 0}%` }}
               ></div>
             </div>
-            
-            <div className="flex justify-between text-xs text-yellow-300 font-mono">
+            <div className="flex justify-between text-xs text-charcoal-light font-semibold">
               <span>{formatTime(currentTime)}</span>
               <span>{formatTime(duration)}</span>
             </div>
           </div>
+        </div>
 
-          {/* Language Toggle */}
-          <div className="flex gap-2 mb-4">
-            <button
-              onClick={() => handleLanguageChange('en')}
-              className={`flex-1 py-2 px-3 rounded-lg font-bold text-sm transition-all ${
-                language === 'en'
-                  ? 'bg-red-600 text-white shadow-lg'
-                  : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
-              }`}
-            >
-              🇬🇧 English
-            </button>
-            <button
-              onClick={() => handleLanguageChange('fr')}
-              className={`flex-1 py-2 px-3 rounded-lg font-bold text-sm transition-all ${
-                language === 'fr'
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
-              }`}
-            >
-              🇫🇷 Français
-            </button>
-          </div>
-
-          {/* Play/Pause Button */}
-          <button
-            onClick={handlePlayPause}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg mb-4 flex items-center justify-center gap-2 transition-all shadow-lg"
-          >
-            {isPlaying ? (
-              <>
-                <Pause size={20} /> {language === 'en' ? 'Pause' : 'Pause'}
-              </>
-            ) : (
-              <>
-                <Play size={20} /> {language === 'en' ? 'Play' : 'Lecture'}
-              </>
-            )}
-          </button>
-
-          {/* Episode Selector */}
-          <div className="bg-black rounded-lg p-3 mb-4 border-2 border-gray-800 max-h-32 overflow-y-auto">
-            <p className="text-yellow-300 font-bold text-xs mb-2">
-              {language === 'en' ? 'SELECT EPISODE' : 'SÉLECTIONNER ÉPISODE'}
-            </p>
-            <div className="space-y-1">
-              {episodes[language].map((ep) => (
-                <button
-                  key={ep.id}
-                  onClick={() => handleEpisodeChange(ep.id)}
-                  className={`w-full text-left px-2 py-1 rounded text-xs font-mono transition-all ${
-                    currentEpisodeId === ep.id
-                      ? 'bg-red-600 text-white'
-                      : 'bg-gray-700 text-yellow-300 hover:bg-gray-600'
-                  }`}
-                >
-                  #{ep.id}: {ep.title}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Transcript Toggle */}
-          <button
-            onClick={() => setShowTranscript(!showTranscript)}
-            className="w-full bg-gray-800 hover:bg-gray-700 text-yellow-300 font-bold py-2 px-3 rounded-lg mb-3 text-sm transition-all"
-          >
-            {showTranscript ? '📖 Hide Transcript' : '📖 Show Transcript'}
-          </button>
-
-          {/* Transcript Display */}
-          {showTranscript && (
-            <div className="bg-black rounded-lg p-3 mb-4 border-2 border-gray-800 max-h-32 overflow-y-auto">
-              <p className="text-yellow-300 text-xs font-mono leading-relaxed">
-                {currentEpisode.transcript}
-              </p>
-            </div>
+        {/* Play Button */}
+        <button
+          onClick={handlePlayPause}
+          className="w-full bg-amber-orange hover:bg-amber-light text-forest-green font-bold py-4 px-6 rounded-lg mb-6 flex items-center justify-center gap-3 transition-all shadow-lg text-lg"
+        >
+          {isPlaying ? (
+            <>
+              <Pause size={24} /> {language === 'en' ? 'Pause' : 'Pause'}
+            </>
+          ) : (
+            <>
+              <Play size={24} /> {language === 'en' ? 'Play' : 'Lecture'}
+            </>
           )}
+        </button>
 
-          {/* Share Buttons */}
-          <div className="grid grid-cols-3 gap-2 mb-3">
-            <button
-              onClick={() => shareEpisode('twitter')}
-              className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-2 rounded text-xs transition-all"
-              title="Share on Twitter/X"
-            >
-              𝕏
-            </button>
-            <button
-              onClick={() => shareEpisode('facebook')}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded text-xs transition-all"
-              title="Share on Facebook"
-            >
-              f
-            </button>
-            <button
-              onClick={() => shareEpisode('whatsapp')}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-2 rounded text-xs transition-all"
-              title="Share on WhatsApp"
-            >
-              💬
-            </button>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2 mb-4">
-            <button
-              onClick={() => shareEpisode('linkedin')}
-              className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-2 rounded text-xs transition-all"
-              title="Share on LinkedIn"
-            >
-              in
-            </button>
-            <button
-              onClick={copyLink}
-              className="bg-gray-700 hover:bg-gray-600 text-yellow-300 font-bold py-2 px-2 rounded text-xs transition-all flex items-center justify-center gap-1"
-              title="Copy link"
-            >
-              <Copy size={14} /> Copy
-            </button>
-          </div>
-
-          {/* Indigenous Art Border - Bottom */}
-          <div className="-mx-6 px-6">
-            <IndigenousArtBorder />
+        {/* Episode Grid */}
+        <div className="mb-6">
+          <p className="text-sm font-bold text-forest-green mb-3 uppercase tracking-wider">
+            {language === 'en' ? 'All Episodes' : 'Tous les Épisodes'}
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {episodes[language].map((ep) => (
+              <button
+                key={ep.id}
+                onClick={() => handleEpisodeChange(ep.id)}
+                className={`p-3 rounded-lg font-semibold text-sm transition-all ${
+                  currentEpisodeId === ep.id
+                    ? 'bg-forest-green text-cream shadow-lg'
+                    : 'bg-white text-forest-green border-2 border-forest-green hover:bg-forest-green/10'
+                }`}
+              >
+                <div className="font-bold">Ep. {ep.id}</div>
+                <div className="text-xs mt-1 line-clamp-2">{ep.title}</div>
+              </button>
+            ))}
           </div>
         </div>
-      )}
+
+        {/* Transcript Toggle */}
+        <button
+          onClick={() => setShowTranscript(!showTranscript)}
+          className="w-full bg-cream border-2 border-forest-green text-forest-green font-bold py-3 px-4 rounded-lg mb-3 transition-all hover:bg-forest-green/10"
+        >
+          {showTranscript ? '📖 Hide Transcript' : '📖 Show Transcript'}
+        </button>
+
+        {/* Transcript Display */}
+        {showTranscript && (
+          <div className="bg-white rounded-lg p-4 mb-6 border-2 border-amber-orange max-h-48 overflow-y-auto">
+            <p className="text-sm text-charcoal-light leading-relaxed whitespace-pre-wrap font-serif">
+              {currentEpisode.transcript}
+            </p>
+          </div>
+        )}
+      </div>
     </>
   );
 }
