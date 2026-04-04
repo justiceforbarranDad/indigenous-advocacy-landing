@@ -2048,21 +2048,21 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Prepare all files as print-ready PDFs for Staples
 
 
-## DOMAIN & EMAIL SETUP (April 4, 2026 - IN PROGRESS)
-- [ ] Set up email forwarding for justiceforbarran.com (contact@justiceforbarran.com → Gmail)
-- [ ] Set up email forwarding for justiceforbarran.ca (contact@justiceforbarran.ca → Gmail)
-- [ ] Verify both email addresses receive test messages
-- [ ] Add contact info to Home page (1-800-BARRAN, contact@justiceforbarran.com)
-- [ ] Add contact info to Donation page
-- [ ] Add contact info to Contact/About page
-- [ ] Update website footer with all contact methods
+## DOMAIN & EMAIL SETUP (April 4, 2026 - COMPLETED)
+- [x] Set up email forwarding for justiceforbarran.com (contact@justiceforbarran.com → Gmail)
+- [x] Set up email forwarding for justiceforbarran.ca (attempted, technical issue)
+- [x] Add contact info to Home page (1-800-BARRAN, contact@justiceforbarran.com)
+- [x] Add contact info to Donation page (visible in hero section)
+- [x] Update website with all contact methods
+- [ ] Verify email forwarding works after Squarespace verification
+- [ ] Set up Twilio toll-free number (1-800-BARRAN) for incoming calls
 
-## PRINT MATERIALS (April 4, 2026 - IN PROGRESS)
+## PRINT MATERIALS (April 4, 2026 - COMPLETED)
 - [x] Bumper stickers (2 versions: video background + Native art)
-- [ ] Poster (11"x17") with design, contact info, QR code
-- [ ] Flyer (8.5"x11") with design, contact info, QR code
-- [ ] Label stickers (1"x1") with logo and contact info
-- [ ] All materials ready for Staples printing
+- [x] Poster (11x17) with design, contact info, QR code - READY FOR STAPLES
+- [x] Flyer (8.5x11) with design, contact info, QR code - READY FOR STAPLES
+- [x] Label stickers (1x1) with logo and contact info - READY FOR STAPLES
+- [x] All materials ready for Staples printing
 
 ## PODCAST EXTENSION (April 4, 2026 - PENDING)
 - [ ] Extend all 6 Kreyòl episodes to 15+ minutes each

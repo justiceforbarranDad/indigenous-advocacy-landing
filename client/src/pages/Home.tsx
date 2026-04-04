@@ -195,7 +195,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== 5. KNOW YOUR RIGHTS BANNER ===== */}
+      {/* ===== 5. CONTACT INFORMATION SECTION ===== */}
+      <section className="bg-gray-900 text-white py-8 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-2xl font-bold mb-6">
+            {i18n.language === 'fr' ? 'Nous Contacter' : i18n.language === 'ht' ? 'Kontakte Nou' : 'Contact Us'}
+          </h3>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12">
+            <div>
+              <p className="text-sm text-gray-400 mb-2">
+                {i18n.language === 'fr' ? 'Telephone' : i18n.language === 'ht' ? 'Telefon' : 'Phone'}
+              </p>
+              <p className="text-xl font-bold text-amber-400">1-800-BARRAN</p>
+              <p className="text-sm text-gray-500">(1-800-227-726)</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-400 mb-2">
+                {i18n.language === 'fr' ? 'Email' : i18n.language === 'ht' ? 'Imel' : 'Email'}
+              </p>
+              <a href="mailto:contact@justiceforbarran.com" className="text-xl font-bold text-amber-400 hover:text-amber-300 transition-colors">
+                contact@justiceforbarran.com
+              </a>
+            </div>
+            <div>
+              <p className="text-sm text-gray-400 mb-2">
+                {i18n.language === 'fr' ? 'Site Web' : i18n.language === 'ht' ? 'Sit Entenet' : 'Website'}
+              </p>
+              <p className="text-xl font-bold text-amber-400">justiceforbarran.com</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 6. KNOW YOUR RIGHTS BANNER ===== */}
       <section className="text-center py-3 bg-red-600 text-white font-black tracking-widest text-sm md:text-base w-full">
         {i18n.language === 'fr' ? 'CONNAISSEZ VOS DROITS' : i18n.language === 'ht' ? 'KONNEN DWA OU' : 'KNOW YOUR RIGHTS'}
       </section>
