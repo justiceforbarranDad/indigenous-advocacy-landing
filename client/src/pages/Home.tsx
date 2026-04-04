@@ -84,55 +84,42 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Right: Donation Buttons - ONE CLICK TO PAY */}
-            <div className="flex flex-col gap-2">
-              <div className="grid grid-cols-2 gap-2">
-                {[5, 10, 20, 50].map((amount) => (
+            {/* Right: All 5 Donation Buttons - Native Design */}
+            <div className="flex flex-col gap-3">
+              <div className="grid grid-cols-5 gap-2">
+                {[5, 10, 20, 50, 100].map((amount) => (
                   <button
                     key={amount}
                     onClick={() => handleDonateClick(amount)}
-                    className="py-2 px-3 bg-forest-green text-white rounded font-bold text-sm hover:bg-forest-green/90 transition-all text-center"
+                    className="py-3 px-2 bg-amber-orange text-forest-green rounded font-bold text-sm md:text-base hover:bg-amber-light shadow-md hover:shadow-lg transition-all transform hover:scale-105 text-center whitespace-nowrap"
                   >
-                    CAD ${amount}
+                    ${amount}
                   </button>
                 ))}
               </div>
-              <button
-                onClick={() => {
-                  const customAmount = prompt(i18n.language === 'fr' ? 'Entrez le montant (CAD):' : 'Enter amount (CAD):');
-                  if (customAmount) {
-                    handleDonateClick(parseInt(customAmount));
-                  }
-                }}
-                className="py-2 px-4 bg-amber-orange text-white rounded font-bold text-sm hover:bg-amber-light transition-all text-center"
-              >
-                {i18n.language === 'fr' ? 'Autre Montant' : 'Other Amount'}
-              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ===== NATIVE THEME MEDIA PLAYER ===== */}
-      <div className="w-full bg-forest-green text-cream py-4 px-4 border-b-4 border-amber-orange">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <span className="text-2xl">🎙️</span>
-            <div>
-              <p className="font-bold text-amber-orange">
+      {/* ===== FULL PODCAST PLAYER WITH ALL EPISODES - NATIVE DESIGN ===== */}
+      <div id="podcast" className="w-full bg-gradient-to-b from-forest-green to-forest-green/95 py-8 px-4 border-b-4 border-amber-orange">
+        <div className="max-w-7xl mx-auto">
+          {/* Podcast Header */}
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="text-5xl">🎙️</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-cream font-serif">
                 {i18n.language === 'fr' ? 'Justice pour Barran' : 'Justice for Barran'}
-              </p>
-              <p className="text-sm text-cream/80">
-                {i18n.language === 'fr' ? 'Podcast - Écoutez maintenant' : 'Podcast - Listen Now'}
-              </p>
+              </h2>
             </div>
+            <div className="h-1 w-24 bg-amber-orange mx-auto mb-4"></div>
+            <p className="text-cream text-lg font-semibold">
+              {i18n.language === 'fr' ? '6 Épisodes Complets • Anglais & Français' : '6 Full Episodes • English & French'}
+            </p>
           </div>
-          <a
-            href="#podcast"
-            className="px-4 py-2 bg-amber-orange text-forest-green rounded font-bold hover:bg-amber-light transition-all"
-          >
-            {i18n.language === 'fr' ? '▶️ Écouter' : '▶️ Listen'}
-          </a>
+          {/* Full Jukebox Player */}
+          <JukeboxPlayer />
         </div>
       </div>
 
