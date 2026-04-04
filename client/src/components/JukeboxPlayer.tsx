@@ -51,6 +51,14 @@ const episodes: Record<string, Episode[]> = {
       audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep5-justice-delayed-en_c3757edf.wav",
       transcript: "JUSTICE DELAYED IS JUSTICE DENIED: The Impact of Systemic Failure\n\nJustice delayed is justice denied. This is not just a legal principle. This is the lived reality of families waiting for accountability.",
       duration: "8:21"
+    },
+    {
+      id: 6,
+      title: "Ghosted Organizations",
+      description: "How major organizations and institutions have remained silent, ignoring calls for accountability and support for Indigenous families in crisis.",
+      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep6-ghosted-organizations-en_f21bfa20.wav",
+      transcript: "GHOSTED ORGANIZATIONS: When Institutions Fail to Respond\n\nSilence from politicians. Silence from government agencies. But what about the organizations that claim to champion Indigenous rights? What about the NGOs, the advocacy groups, the institutions that have platforms and resources?",
+      duration: "9:15"
     }
   ],
   fr: [
@@ -93,6 +101,14 @@ const episodes: Record<string, Episode[]> = {
       audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep5-justice-retardee-fr_b97c8c25.wav",
       transcript: "LA JUSTICE RETARDÉE EST LA JUSTICE NIÉE: L'Impact de l'Échec Systémique\n\nLa justice retardée est la justice niée. Ce n'est pas qu'un principe juridique. C'est la réalité vécue des familles qui attendent la responsabilité.",
       duration: "8:21"
+    },
+    {
+      id: 6,
+      title: "Organisations Abandonnées",
+      description: "Comment les organisations majeures et les institutions ont gardé le silence, ignorant les appels à la responsabilité et au soutien des familles autochtones en crise.",
+      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/podcast-ep6-organisations-abandonnees-fr_2104f348.wav",
+      transcript: "ORGANISATIONS ABANDONNÉES: Quand les Institutions Refusent de Répondre\n\nSilence des politiciens. Silence des agences gouvernementales. Mais qu'en est-il des organisations qui prétendent défendre les droits autochtones?",
+      duration: "9:15"
     }
   ]
 };
