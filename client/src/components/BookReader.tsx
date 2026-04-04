@@ -54,6 +54,7 @@ const bookPages: BookPage[] = [
 export function BookReader() {
   const { i18n } = useTranslation();
   const [currentPage, setCurrentPage] = useState(0);
+  const [isFlipping, setIsFlipping] = useState(false);
   
   const leftPage = bookPages[currentPage];
   const rightPage = bookPages[currentPage + 1];
@@ -62,85 +63,133 @@ export function BookReader() {
   const canGoPrev = currentPage > 0;
   
   const goNext = () => {
-    if (canGoNext) setCurrentPage(currentPage + 2);
+    if (canGoNext && !isFlipping) {
+      setIsFlipping(true);
+      setTimeout(() => {
+        setCurrentPage(currentPage + 2);
+        setIsFlipping(false);
+      }, 400);
+    }
   };
   
   const goPrev = () => {
-    if (canGoPrev) setCurrentPage(Math.max(0, currentPage - 2));
+    if (canGoPrev && !isFlipping) {
+      setIsFlipping(true);
+      setTimeout(() => {
+        setCurrentPage(Math.max(0, currentPage - 2));
+        setIsFlipping(false);
+      }, 400);
+    }
   };
 
   return (
-    <div className="w-full bg-gradient-to-b from-gray-900 to-black py-12 px-4">
-      <div className="max-w-6xl mx-auto">
+    <div className="w-full bg-gradient-to-b from-gray-900 via-black to-gray-900 py-16 px-4">
+      <div className="max-w-7xl mx-auto">
         {/* Book Title */}
-        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-2">
           {i18n.language === 'fr' ? "Cinq Ans d'Abandon Systémique" : i18n.language === 'ht' ? "Senk Ane Abandone Sistematik" : "Five Years of Systemic Abandonment"}
         </h2>
+        <p className="text-center text-red-500 text-lg font-semibold mb-12">
+          {i18n.language === 'fr' ? "Le Livre de la Justice" : i18n.language === 'ht' ? "Liv Jistis la" : "The Book of Justice"}
+        </p>
 
-        {/* Book Container */}
-        <div className="bg-white rounded-lg shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 min-h-96">
-            {/* Left Page */}
-            <div className="bg-amber-50 p-8 md:p-12 border-r border-gray-300 flex flex-col justify-between">
-              <div>
-                <p className="text-sm text-gray-500 font-semibold tracking-widest mb-4">
-                  {i18n.language === 'fr' ? 'PAGE' : i18n.language === 'ht' ? 'PAJ' : 'PAGE'} {currentPage + 1}
-                </p>
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                  {leftPage.title}
-                </h3>
-                <p className="text-gray-700 leading-relaxed text-lg">
-                  {leftPage.content}
-                </p>
+        {/* 3D Book Container */}
+        <div className="flex justify-center items-center min-h-96">
+          <div className="perspective w-full max-w-5xl">
+            {/* Book Shadow & 3D Effect */}
+            <div className="relative">
+              {/* Book Spine Shadow */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-black via-gray-800 to-black z-20"></div>
+
+              {/* Book Pages Container */}
+              <div className={`grid grid-cols-2 gap-0 bg-white rounded-lg shadow-2xl overflow-hidden transition-opacity duration-400 ${isFlipping ? 'opacity-75' : 'opacity-100'}`}>
+                {/* Left Page */}
+                <div className="bg-amber-50 p-8 md:p-12 flex flex-col justify-between min-h-96 border-r-2 border-gray-300">
+                  <div>
+                    <p className="text-xs text-gray-500 font-semibold tracking-widest mb-4 uppercase">
+                      {i18n.language === 'fr' ? 'Page' : i18n.language === 'ht' ? 'Paj' : 'Page'} {currentPage + 1}
+                    </p>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 font-serif">
+                      {leftPage?.title}
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed text-base md:text-lg">
+                      {leftPage?.content}
+                    </p>
+                  </div>
+                  <div className="text-xs text-gray-400 mt-8 font-serif">
+                    Justice for Barran • Indigenous Rights Advocacy
+                  </div>
+                </div>
+
+                {/* Right Page */}
+                <div className="bg-white p-8 md:p-12 flex flex-col justify-between min-h-96">
+                  {rightPage ? (
+                    <>
+                      <div>
+                        <p className="text-xs text-gray-500 font-semibold tracking-widest mb-4 uppercase">
+                          {i18n.language === 'fr' ? 'Page' : i18n.language === 'ht' ? 'Paj' : 'Page'} {currentPage + 2}
+                        </p>
+                        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 font-serif">
+                          {rightPage.title}
+                        </h3>
+                        <p className="text-gray-700 leading-relaxed text-base md:text-lg">
+                          {rightPage.content}
+                        </p>
+                      </div>
+                      <div className="text-xs text-gray-400 mt-8 font-serif">
+                        Justice for Barran • Indigenous Rights Advocacy
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center h-full text-center">
+                      <p className="text-2xl font-bold text-gray-900 mb-4">
+                        {i18n.language === 'fr' ? 'Fin du Livre' : i18n.language === 'ht' ? 'Fin Liv la' : 'End of Book'}
+                      </p>
+                      <p className="text-gray-600 text-lg">
+                        {i18n.language === 'fr' ? 'Merci de votre attention' : i18n.language === 'ht' ? 'Mèsi pou atansyon ou' : 'Thank you for your attention'}
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
-              <p className="text-xs text-gray-400 mt-8">Justice for Barran</p>
             </div>
 
-            {/* Right Page */}
-            {rightPage && (
-              <div className="bg-white p-8 md:p-12 flex flex-col justify-between">
-                <div>
-                  <p className="text-sm text-gray-500 font-semibold tracking-widest mb-4">
-                    {i18n.language === 'fr' ? 'PAGE' : i18n.language === 'ht' ? 'PAJ' : 'PAGE'} {currentPage + 2}
-                  </p>
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                    {rightPage.title}
-                  </h3>
-                  <p className="text-gray-700 leading-relaxed text-lg">
-                    {rightPage.content}
-                  </p>
-                </div>
-                <p className="text-xs text-gray-400 mt-8">Justice for Barran</p>
+            {/* Navigation Controls */}
+            <div className="flex justify-between items-center mt-8 px-4">
+              <button
+                onClick={goPrev}
+                disabled={!canGoPrev || isFlipping}
+                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all transform ${
+                  canGoPrev && !isFlipping
+                    ? 'bg-red-600 hover:bg-red-700 text-white hover:scale-105 shadow-lg'
+                    : 'bg-gray-400 text-gray-600 cursor-not-allowed'
+                }`}
+              >
+                <ChevronLeft size={20} />
+                {i18n.language === 'fr' ? 'Précédent' : i18n.language === 'ht' ? 'Anvan' : 'Previous'}
+              </button>
+
+              {/* Page Counter */}
+              <div className="text-white text-center">
+                <p className="text-lg font-semibold">
+                  {i18n.language === 'fr' ? 'Pages' : i18n.language === 'ht' ? 'Paj' : 'Pages'} {currentPage + 1}-{Math.min(currentPage + 2, bookPages.length)} {i18n.language === 'fr' ? 'de' : i18n.language === 'ht' ? 'nan' : 'of'} {bookPages.length}
+                </p>
               </div>
-            )}
+
+              <button
+                onClick={goNext}
+                disabled={!canGoNext || isFlipping}
+                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all transform ${
+                  canGoNext && !isFlipping
+                    ? 'bg-red-600 hover:bg-red-700 text-white hover:scale-105 shadow-lg'
+                    : 'bg-gray-400 text-gray-600 cursor-not-allowed'
+                }`}
+              >
+                {i18n.language === 'fr' ? 'Suivant' : i18n.language === 'ht' ? 'Apre' : 'Next'}
+                <ChevronRight size={20} />
+              </button>
+            </div>
           </div>
-        </div>
-
-        {/* Navigation Controls */}
-        <div className="flex items-center justify-between mt-8">
-          <button
-            onClick={goPrev}
-            disabled={!canGoPrev}
-            className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-          >
-            <ChevronLeft size={20} />
-            {i18n.language === 'fr' ? 'Précédent' : i18n.language === 'ht' ? 'Anvan' : 'Previous'}
-          </button>
-
-          <div className="text-center">
-            <p className="text-white font-semibold">
-              {i18n.language === 'fr' ? 'Page' : i18n.language === 'ht' ? 'Paj' : 'Page'} {currentPage + 1}-{currentPage + 2} {i18n.language === 'fr' ? 'de' : i18n.language === 'ht' ? 'nan' : 'of'} {bookPages.length}
-            </p>
-          </div>
-
-          <button
-            onClick={goNext}
-            disabled={!canGoNext}
-            className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-          >
-            {i18n.language === 'fr' ? 'Suivant' : i18n.language === 'ht' ? 'Apre' : 'Next'}
-            <ChevronRight size={20} />
-          </button>
         </div>
       </div>
     </div>
