@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Download, Copy, Mail } from 'lucide-react';
+import { TranslationWidget } from '@/components/TranslationWidget';
 
 export default function UNComplaintTemplate() {
   const [copied, setCopied] = useState(false);
@@ -202,6 +203,9 @@ REFERENCES:
             Pre-filled template for submitting complaints to the United Nations Human Rights Committee regarding systemic violations.
           </p>
         </div>
+
+        {/* Translation Widget */}
+        <TranslationWidget content={complaintText} title="UN_Human_Rights_Complaint" />
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4 mb-8">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Download, Copy, Mail } from 'lucide-react';
+import { TranslationWidget } from '@/components/TranslationWidget';
 
 export default function ICCComplaintTemplate() {
   const [copied, setCopied] = useState(false);
@@ -319,6 +320,9 @@ Website: https://www.icc-cpi.int/`;
             Pre-filled template for submitting communications to the International Criminal Court regarding systemic crimes against Indigenous peoples.
           </p>
         </div>
+
+        {/* Translation Widget */}
+        <TranslationWidget content={complaintText} title="ICC_Complaint" />
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4 mb-8">
