@@ -11,6 +11,7 @@ import StickyRadioPlayer from '@/components/StickyRadioPlayer';
 import { JukeboxPlayer } from '@/components/JukeboxPlayer';
 import { OneClickTDDonate } from '@/components/OneClickTDDonate';
 import { SirenWarningModal } from '@/components/SirenWarningModal';
+import TheSilenceClock from '@/components/TheSilenceClock';
 
 export default function Home() {
   const { i18n } = useTranslation();
@@ -142,6 +143,13 @@ export default function Home() {
       {/* BLOOD FLAG HERO SECTION */}
       <BloodFlagHero />
 
+      {/* THE SILENCE CLOCK */}
+      <div className="w-full bg-gradient-to-b from-gray-900 to-gray-800 py-12 px-4">
+        <div className="max-w-4xl mx-auto">
+          <TheSilenceClock />
+        </div>
+      </div>
+
       <div className="min-h-screen bg-white text-black pt-4 md:pt-0" style={{ fontFamily: 'Georgia, serif' }}>
         {/* MASTHEAD */}
         <div className="bg-white border-b-4 border-black">
@@ -151,7 +159,7 @@ export default function Home() {
           </div>
 
           <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-6">
-            {/* Featured story section would go here */}
+            {/* Featured story section */}
           </div>
         </div>
       </div>
