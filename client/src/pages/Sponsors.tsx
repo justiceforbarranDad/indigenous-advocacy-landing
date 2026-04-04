@@ -80,6 +80,213 @@ export default function Sponsors() {
           </div>
         </Card>
 
+        {/* Top Donors Section */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-6">
+            <Heart className="w-6 h-6 text-amber-orange" />
+            <h2 className="text-2xl font-bold text-forest-green">
+              {i18n.language === 'fr' ? 'Nos Grands Donateurs' : 'Our Top Donors'}
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {/* Bronze Level */}
+            <Card className="p-6 border-2 border-amber-600 bg-amber-50">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-amber-600 mb-2">🥉</div>
+                <h3 className="font-bold text-lg mb-2">
+                  {i18n.language === 'fr' ? 'Bronze' : 'Bronze'}
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  {i18n.language === 'fr' ? 'CA$500+' : 'CA$500+'}
+                </p>
+                <p className="text-xs text-gray-700">
+                  {i18n.language === 'fr'
+                    ? 'Planter un arbre'
+                    : 'Plant a tree'
+                  }
+                </p>
+              </div>
+            </Card>
+
+            {/* Silver Level */}
+            <Card className="p-6 border-2 border-gray-400 bg-gray-50">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-gray-400 mb-2">🥈</div>
+                <h3 className="font-bold text-lg mb-2">
+                  {i18n.language === 'fr' ? 'Argent' : 'Silver'}
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  {i18n.language === 'fr' ? 'CA$1000+' : 'CA$1000+'}
+                </p>
+                <p className="text-xs text-gray-700">
+                  {i18n.language === 'fr'
+                    ? 'Jardin mémorial'
+                    : 'Memorial garden'
+                  }
+                </p>
+              </div>
+            </Card>
+
+            {/* Gold Level */}
+            <Card className="p-6 border-2 border-yellow-500 bg-yellow-50">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-yellow-500 mb-2">🥇</div>
+                <h3 className="font-bold text-lg mb-2">
+                  {i18n.language === 'fr' ? 'Or' : 'Gold'}
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  {i18n.language === 'fr' ? 'CA$5000+' : 'CA$5000+'}
+                </p>
+                <p className="text-xs text-gray-700">
+                  {i18n.language === 'fr'
+                    ? 'Nommer une salle'
+                    : 'Name a facility'
+                  }
+                </p>
+              </div>
+            </Card>
+
+            {/* Platinum Level */}
+            <Card className="p-6 border-2 border-forest-green bg-green-50">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-forest-green mb-2">👑</div>
+                <h3 className="font-bold text-lg mb-2">
+                  {i18n.language === 'fr' ? 'Platine' : 'Platinum'}
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  {i18n.language === 'fr' ? 'CA$10000+' : 'CA$10000+'}
+                </p>
+                <p className="text-xs text-gray-700">
+                  {i18n.language === 'fr'
+                    ? 'Projet de paix'
+                    : 'Peace project'
+                  }
+                </p>
+              </div>
+            </Card>
+          </div>
+
+          <Card className="p-6 bg-amber-50 border-2 border-amber-orange text-center">
+            <p className="text-gray-700 mb-4">
+              {i18n.language === 'fr'
+                ? 'Aucun grand donateur pour le moment. Soyez le premier à créer un héritage durable.'
+                : 'No top donors yet. Be the first to create a lasting legacy.'
+              }
+            </p>
+            <Button 
+              className="bg-amber-orange hover:bg-amber-light"
+              onClick={() => window.location.href = '/donate'}
+            >
+              {i18n.language === 'fr' ? 'Devenir donateur majeur' : 'Become a Major Donor'}
+            </Button>
+          </Card>
+        </div>
+
+        {/* Legacy Projects Section */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-6">
+            <Users className="w-6 h-6 text-forest-green" />
+            <h2 className="text-2xl font-bold text-forest-green">
+              {i18n.language === 'fr' ? 'Projets d\'Héritage' : 'Legacy Projects'}
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* Tree Planting */}
+            <Card className="p-6 border-2 border-green-600">
+              <div className="mb-4">
+                <div className="text-4xl mb-3">🌱</div>
+                <h3 className="text-xl font-bold text-forest-green mb-2">
+                  {i18n.language === 'fr' ? 'Forêt de la Paix' : 'Peace Forest'}
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  {i18n.language === 'fr'
+                    ? 'Planter des arbres au centre de guérison'
+                    : 'Plant trees at the healing centre'
+                  }
+                </p>
+              </div>
+              <div className="bg-green-50 p-4 rounded mb-4">
+                <p className="text-sm font-semibold text-forest-green mb-2">
+                  {i18n.language === 'fr' ? 'Arbres plantés:' : 'Trees planted:'}
+                </p>
+                <p className="text-3xl font-bold text-forest-green">0</p>
+              </div>
+              <p className="text-xs text-gray-600">
+                {i18n.language === 'fr'
+                  ? 'Chaque arbre représente l\'espoir et la guérison'
+                  : 'Each tree represents hope and healing'
+                }
+              </p>
+            </Card>
+
+            {/* Memorial Gardens */}
+            <Card className="p-6 border-2 border-amber-orange">
+              <div className="mb-4">
+                <div className="text-4xl mb-3">🌹</div>
+                <h3 className="text-xl font-bold text-forest-green mb-2">
+                  {i18n.language === 'fr' ? 'Jardins Mémoriaux' : 'Memorial Gardens'}
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  {i18n.language === 'fr'
+                    ? 'Honorer les familles et les survivants'
+                    : 'Honor families and survivors'
+                  }
+                </p>
+              </div>
+              <div className="bg-amber-50 p-4 rounded mb-4">
+                <p className="text-sm font-semibold text-amber-orange mb-2">
+                  {i18n.language === 'fr' ? 'Jardins créés:' : 'Gardens created:'}
+                </p>
+                <p className="text-3xl font-bold text-amber-orange">0</p>
+              </div>
+              <p className="text-xs text-gray-600">
+                {i18n.language === 'fr'
+                  ? 'Espaces de réflexion et de paix'
+                  : 'Spaces for reflection and peace'
+                }
+              </p>
+            </Card>
+          </div>
+
+          {/* Peace Projects */}
+          <Card className="p-6 border-2 border-forest-green bg-green-50">
+            <div className="mb-4">
+              <div className="text-4xl mb-3">☮️</div>
+              <h3 className="text-xl font-bold text-forest-green mb-2">
+                {i18n.language === 'fr' ? 'Projets de Paix' : 'Peace Projects'}
+              </h3>
+              <p className="text-sm text-gray-600 mb-3">
+                {i18n.language === 'fr'
+                  ? 'Initiatives pour la réconciliation et le changement systémique'
+                  : 'Initiatives for reconciliation and systemic change'
+                }
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="bg-white p-4 rounded border-l-4 border-forest-green">
+                <p className="text-sm font-semibold text-forest-green mb-2">
+                  {i18n.language === 'fr' ? 'Familles soutenues' : 'Families supported'}
+                </p>
+                <p className="text-2xl font-bold text-forest-green">0</p>
+              </div>
+              <div className="bg-white p-4 rounded border-l-4 border-amber-orange">
+                <p className="text-sm font-semibold text-amber-orange mb-2">
+                  {i18n.language === 'fr' ? 'Enfants aidés' : 'Children helped'}
+                </p>
+                <p className="text-2xl font-bold text-amber-orange">0</p>
+              </div>
+              <div className="bg-white p-4 rounded border-l-4 border-forest-green">
+                <p className="text-sm font-semibold text-forest-green mb-2">
+                  {i18n.language === 'fr' ? 'Cas gagnés' : 'Cases won'}
+                </p>
+                <p className="text-2xl font-bold text-forest-green">0</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+
         {/* Monthly Supporters */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-6">
