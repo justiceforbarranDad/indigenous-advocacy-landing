@@ -144,17 +144,16 @@ export default function Home() {
       <section className="w-full bg-white text-black py-10 px-4 border-t-4 border-red-600">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-            {/* Left: QR Code */}
-            <div className="flex flex-col items-center">
+            {/* Left: Interac Instructions */}
+            <div className="flex flex-col items-center bg-red-50 p-6 rounded-lg">
               <p className="text-sm font-bold text-gray-800 mb-3">
-                {i18n.language === 'fr' ? '📱 Scannez pour Donner' : i18n.language === 'ht' ? '📱 Eskane pou Bay' : '📱 Scan to Donate'}
+                {i18n.language === 'fr' ? '💳 Virement Interac' : i18n.language === 'ht' ? '💳 Transfert Interac' : '💳 Interac e-Transfer'}
               </p>
-              <div className="w-36 h-36 bg-white border-2 border-gray-300 rounded-lg p-2 shadow-lg">
-                <img
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01"
-                  alt="Donate QR"
-                  className="w-full h-full"
-                />
+              <div className="text-center">
+                <p className="text-gray-700 font-semibold mb-2">contact@justiceforbarran.com</p>
+                <p className="text-xs text-gray-600">
+                  {i18n.language === 'fr' ? 'Envoyez directement à votre banque' : i18n.language === 'ht' ? 'Voye dirèkteman nan bank ou' : 'Send directly from your bank'}
+                </p>
               </div>
             </div>
 
