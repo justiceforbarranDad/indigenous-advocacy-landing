@@ -1874,3 +1874,53 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Add all 3 languages: English, Français, Kreyòl
 - [x] Donations section below video hero
 - [ ] Save checkpoint and republish
+
+
+## LIVE DONATION COUNTER (April 4, 2026)
+- [ ] Add donation_stats table to database schema
+- [ ] Push database migration
+- [ ] Create tRPC procedure to get donation count
+- [ ] Update Stripe webhook to increment donation count
+- [ ] Build LiveDonationCounter UI component
+- [ ] Display counter on homepage donation section
+- [ ] Write vitest tests for donation counter
+- [ ] Save checkpoint
+
+
+## AUTO MAINTENANCE (April 4, 2026)
+- [ ] Server-side health check endpoint (/api/health)
+- [ ] Auto cleanup of old/expired sessions
+- [ ] Database connection health monitoring
+- [ ] Stripe webhook health verification
+- [ ] Automated error logging and notification to owner
+- [ ] Scheduled maintenance tasks (cron-style)
+
+
+## CRASH/SYSTEM PROTECTION (April 4, 2026)
+- [ ] Server-side global error handler (uncaughtException, unhandledRejection)
+- [ ] Rate limiting on API endpoints
+- [ ] Request timeout protection
+- [ ] Memory leak detection and cleanup
+- [ ] Graceful shutdown handler
+- [ ] Frontend error boundary with recovery UI
+- [ ] API retry logic with exponential backoff
+- [ ] Database connection pool health monitoring
+
+
+## SPAM & TROJAN PROTECTION (April 4, 2026)
+- [ ] Honeypot fields on all forms
+- [ ] Content filtering for spam submissions
+- [ ] Bot detection (user-agent, request patterns)
+- [ ] Suspicious payload blocking (XSS, SQL injection patterns)
+- [ ] IP-based rate limiting per endpoint
+- [ ] Request size limits
+- [ ] Security headers (CSP, X-Frame-Options, etc.)
+
+
+## EMAIL ALERTS TO OWNER (April 4, 2026)
+- [ ] Alert on new donation received
+- [ ] Alert on security threat detected
+- [ ] Alert on system crash/error
+- [ ] Alert on suspicious activity (spam, bot attacks)
+- [ ] Alert on database issues
+- [ ] Alert on webhook failures
