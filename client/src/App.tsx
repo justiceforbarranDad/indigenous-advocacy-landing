@@ -48,6 +48,7 @@ import HallOfShame from "./pages/HallOfShame";
 import HowToDocumentYourCase from "./pages/HowToDocumentYourCase";
 import PodcastDashboard from "./pages/PodcastDashboard";
 import OrangeShirtDayInvestigation from "./pages/OrangeShirtDayInvestigation";
+import DonationsPage from "./pages/DonationsPage";
 import CallLogDocumentation from "./pages/CallLogDocumentation";
 import InteractiveCallMap from "./pages/InteractiveCallMap";
 import CensorshipAndSuppression from "./pages/CensorshipAndSuppression";
@@ -181,6 +182,7 @@ function Router() {
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
       <Route path="/donate" component={DonateEnhanced} />
+      <Route path="/donate-now" component={DonationsPage} />
       <Route path="/sponsors" component={Sponsors} />
       <Route path="/donate-quick" component={DonateQuick} />
       <Route path="/donate-direct" component={DirectDepositDonation} />

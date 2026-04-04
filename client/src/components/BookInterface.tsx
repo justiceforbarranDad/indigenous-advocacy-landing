@@ -71,6 +71,66 @@ export function BookInterface({ onClose }: BookInterfaceProps) {
       ),
     },
     {
+      title: 'POLITICAL HYPOCRISY: EAT HEALTHY',
+      left: (
+        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/caricature-water-crisis-1-CZc7NH2hcC66YhQoWLkmC8.webp" alt="Eat Healthy" className="w-full h-full object-cover" />
+      ),
+      right: (
+        <div className="flex flex-col items-center justify-center h-full bg-yellow-50 p-4">
+          <p className="text-xl font-black text-yellow-900 text-center mb-4">Politicians preach 'Eat Healthy!'</p>
+          <p className="text-gray-700 text-center text-sm">While Rez communities have NO CLEAN WATER for decades</p>
+          <p className="text-red-600 font-bold mt-4">⚠️ HYPOCRISY EXPOSED ⚠️</p>
+        </div>
+      ),
+    },
+    {
+      title: 'BILLIONS FOR EVERYONE BUT REZ',
+      left: (
+        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/caricature-water-crisis-2-9VaZcD94aE6Cgw9VTMV7nz.webp" alt="Money Tree" className="w-full h-full object-cover" />
+      ),
+      right: (
+        <div className="flex flex-col items-center justify-center h-full bg-green-50 p-4">
+          <p className="text-xl font-black text-green-900 text-center mb-4">Billions flowing to:</p>
+          <ul className="text-gray-700 text-sm space-y-2">
+            <li>✈️ Overseas aid</li>
+            <li>🏢 Brookfield & corporate friends</li>
+            <li>🏠 Wealthy neighborhoods</li>
+            <li>❌ Rez gets: NOTHING</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      title: 'DECADES OF BROKEN PROMISES',
+      left: (
+        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/caricature-water-crisis-3-L7QowaCQR9PhLqGt89wXBv.webp" alt="Broken Promises" className="w-full h-full object-cover" />
+      ),
+      right: (
+        <div className="flex flex-col items-center justify-center h-full bg-red-50 p-4">
+          <p className="text-xl font-black text-red-900 text-center mb-4">Same Promise, Different Suit</p>
+          <p className="text-gray-700 text-center text-sm">2000s: "We'll fix it!"</p>
+          <p className="text-gray-700 text-center text-sm">2010s: "We'll fix it!"</p>
+          <p className="text-gray-700 text-center text-sm">2020s: "We'll fix it!"</p>
+          <p className="text-red-600 font-bold mt-4">20+ YEARS OF LIES</p>
+        </div>
+      ),
+    },
+    {
+      title: 'WE DESERVE CLEAN WATER NOW',
+      left: (
+        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/caricature-water-crisis-4-ASSeqkC9a33VW3jtJGeJ5Q.webp" alt="Action Now" className="w-full h-full object-cover" />
+      ),
+      right: (
+        <div className="flex flex-col items-center justify-center h-full bg-blue-50 p-4">
+          <p className="text-2xl font-black text-blue-900 text-center mb-4">💪 ACTION NOT WORDS</p>
+          <p className="text-gray-700 text-center text-sm mb-4">Kids demanding accountability</p>
+          <p className="text-blue-600 font-bold">✓ Vote them out</p>
+          <p className="text-blue-600 font-bold">✓ Demand real action</p>
+          <p className="text-blue-600 font-bold">✓ Hold them accountable</p>
+        </div>
+      ),
+    },
+    {
       title: 'CONTACT',
       left: (
         <div className="flex flex-col items-center justify-center h-full">
