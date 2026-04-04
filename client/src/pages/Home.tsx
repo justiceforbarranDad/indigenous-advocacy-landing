@@ -183,8 +183,8 @@ export default function Home() {
                     key={amount}
                     onClick={() => {
                       const subject = `Donation ${amount} CAD - Justice for Barran`;
-                      const body = `I would like to send $${amount} CAD via Interac e-Transfer to support Justice for Barran.\n\nPlease send to: justiceforbarran@gmail.com`;
-                      window.location.href = `mailto:justiceforbarran@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                      const body = `I would like to send $${amount} CAD via Interac e-Transfer to support Justice for Barran.\n\nPlease send to: contact@justiceforbarran.com`;
+                      window.location.href = `mailto:contact@justiceforbarran.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                     }}
                     className="py-3 px-2 bg-red-600 text-white rounded-lg font-bold text-sm md:text-base hover:bg-red-700 shadow-md hover:shadow-lg transition-all transform hover:scale-105 text-center whitespace-nowrap"
                   >
