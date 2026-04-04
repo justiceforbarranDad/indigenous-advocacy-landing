@@ -78,6 +78,7 @@ import CaseTracker from "./pages/CaseTracker";
 import HumanRights from "./pages/HumanRights";
 import VideoTestimonials from "./pages/VideoTestimonials";
 import Obituaries from "./pages/Obituaries";
+import LegacyDrawer from "./pages/LegacyDrawer";
 import FallenSoldiers from "./pages/FallenSoldiers";
 import Newspaper from "./pages/Newspaper";
 import Sponsorship from "./pages/Sponsorship";
@@ -147,6 +148,7 @@ import Trackers from "./pages/Trackers";
 import SocialMediaHub from "./pages/SocialMediaHub";
 import GovernmentAccountabilityTimeline from "./pages/GovernmentAccountabilityTimeline";
 import LegalCommunicationProtocol from "./pages/LegalCommunicationProtocol";
+import McGoverRanchHealingCentre from "./pages/McGoverRanchHealingCentre";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -159,6 +161,7 @@ function Router() {
       <Route path="/social-media" component={SocialMediaHub} />
       <Route path="/accountability-timeline" component={GovernmentAccountabilityTimeline} />
       <Route path="/legal-communication-protocol" component={LegalCommunicationProtocol} />
+      <Route path="/healing-centre" component={McGoverRanchHealingCentre} />
       <Route path="/sunday-bloody-sunday-part-3" component={SundayBloodyySundayPart3} />
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
