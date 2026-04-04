@@ -1972,3 +1972,36 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Button text is readable (not cut off)
 - [ ] Buttons work on mobile (touch-friendly)
 - [ ] Buttons work on desktop (click-friendly)
+
+
+## PODCAST EPISODE DURATION EXTENSION (April 4, 2026 - PRIORITY)
+- [ ] Extend Episode 1 "Silans Politisyen yo" to 15+ minutes
+- [ ] Extend Episode 2 "Echèk Sistèm - Responsabilite DPJ" to 15+ minutes
+- [ ] Extend Episode 3 "1873 Jou Injistis" to 15+ minutes
+- [ ] Extend Episode 4 "Dwa Endyen yo Anba Atak" to 15+ minutes
+- [ ] Extend Episode 5 "Jistis Retade se Jistis Refize" to 15+ minutes
+- [ ] Extend Episode 6 "Òganizasyon Abandone" to 15+ minutes
+- [ ] Upload all extended episodes to CDN
+- [ ] Update JukeboxPlayer with new CDN URLs
+- [ ] Test all episodes play correctly with 15+ minute durations
+- [ ] Save checkpoint
+
+
+## INDIGINEWS KAI CASE COMPARISON (April 4, 2026)
+- [ ] Research IndigiNews Kai case from Courtenay B.C.
+- [ ] Document teen stabbing and bullying mishandling details
+- [ ] Identify systemic failures across systems in Kai case
+- [ ] Create detailed comparison analysis: Kai case vs. Barran story
+- [ ] Identify common patterns of systemic failure
+- [ ] Document how both cases show cross-system failure
+
+
+## WALL OF SHAME PAGE (April 4, 2026)
+- [ ] Create Wall of Shame page component
+- [ ] Add Kai case comparison section (Courtenay B.C. vs. our story)
+- [ ] Add political hypocrisy section (anti-bullying rhetoric vs. real actions)
+- [ ] Add carbon tax vs. human rights violations section
+- [ ] Add Senate bullying incident (Plett vs. Clement)
+- [ ] Add relevant jurisprudence section
+- [ ] Add navigation link to Wall of Shame page
+- [ ] Ensure page is translatable (EN/FR/Kreyòl)
