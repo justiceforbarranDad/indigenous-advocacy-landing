@@ -1,0 +1,298 @@
+.totem-pole-hero {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+.parliament-left,
+.parliament-right {
+  position: absolute;
+  bottom: 0;
+  width: 200px;
+  height: 300px;
+  background: linear-gradient(to top, #333, transparent);
+  clip-path: polygon(0 100%, 0 0, 50% 20%, 100% 0, 100% 100%);
+}
+
+.parliament-left {
+  left: 5%;
+}
+
+.parliament-right {
+  right: 5%;
+  transform: scaleX(-1);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Totem Pole */
+.totem-pole {
+  position: relative;
+  width: 80px;
+  height: 300px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.totem-section {
+  width: 100%;
+  flex: 1;
+  background: linear-gradient(90deg, #8b4513 0%, #a0522d 50%, #8b4513 100%);
+  border: 2px solid #654321;
+  position: relative;
+  overflow: hidden;
+}
+
+.totem-1::before,
+.totem-2::before,
+.totem-3::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #ffd700;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.totem-1::before {
+  background: #ff6b6b;
+}
+
+.totem-2::before {
+  background: #4ecdc4;
+}
+
+.totem-3::before {
+  background: #ffe66d;
+}
+
+.totem-base {
+  width: 120px;
+  height: 30px;
+  background: linear-gradient(90deg, #654321 0%, #8b4513 50%, #654321 100%);
+  border: 2px solid #3d2817;
+  border-radius: 4px;
+}
+
+/* Peace Flame */
+.peace-flame {
+  position: absolute;
+  top: 20px;
+  width: 60px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flame-outer {
+  position: absolute;
+  width: 50px;
+  height: 70px;
+  background: linear-gradient(to top, #ff8c00, #ffd700, #ffffff);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flameFlicker 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px #ff8c00);
+}
+
+.flame-inner {
+  position: absolute;
+  width: 30px;
+  height: 50px;
+  background: linear-gradient(to top, #ffd700, #ffffff);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flameFlicker 1.5s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scaleY(1) scaleX(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(1.1) scaleX(0.95);
+    opacity: 0.9;
+  }
+}
+
+/* Blood Drops */
+.blood-drops-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100px;
+  height: 100%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.blood-drop {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #dc2626;
+  border-radius: 50%;
+  left: 50%;
+  animation: bloodDrop 3s ease-in forwards;
+  filter: drop-shadow(0 0 3px #dc2626);
+}
+
+@keyframes bloodDrop {
+  0% {
+    top: 0;
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+  100% {
+    top: 350px;
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+}
+
+/* Fountain */
+.fountain {
+  position: absolute;
+  bottom: 30px;
+  width: 150px;
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.fountain-bowl {
+  width: 140px;
+  height: 60px;
+  background: linear-gradient(135deg, #888 0%, #555 100%);
+  border-radius: 50% 50% 30% 30%;
+  border: 3px solid #333;
+  position: relative;
+  overflow: hidden;
+}
+
+.fountain-water {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to top, #dc2626, #ff6b6b);
+  animation: fountainFill 4s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+@keyframes fountainFill {
+  0% {
+    height: 0%;
+  }
+  50% {
+    height: 30%;
+  }
+  100% {
+    height: 60%;
+  }
+}
+
+/* Hero Overlay */
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 5;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.hero-overlay h1 {
+  font-size: 48px;
+  font-weight: 900;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  margin: 0;
+  background: #dc2626;
+  padding: 15px 30px;
+  display: inline-block;
+  letter-spacing: 2px;
+}
+
+.hero-overlay p {
+  font-size: 24px;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .totem-pole-hero {
+    height: 400px;
+  }
+
+  .totem-pole {
+    height: 200px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 32px;
+    padding: 10px 20px;
+  }
+
+  .hero-overlay p {
+    font-size: 16px;
+  }
+
+  .parliament-left,
+  .parliament-right {
+    width: 120px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .totem-pole-hero {
+    height: 300px;
+  }
+
+  .totem-pole {
+    height: 150px;
+    width: 60px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 24px;
+    padding: 8px 15px;
+  }
+
+  .hero-overlay p {
+    font-size: 14px;
+  }
+}
