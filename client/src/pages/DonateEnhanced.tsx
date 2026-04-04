@@ -1,15 +1,16 @@
-import { Card } from "@/components/ui/card";
-import { Heart, Banknote, Copy, Check } from "lucide-react";
+import { Heart, Banknote, Copy, Check, CreditCard } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 export default function DonateEnhanced() {
   const { i18n } = useTranslation();
   const [copied, setCopied] = useState(false);
   
   const etransferEmail = "justiceforbarran@gmail.com";
-  const tdBankAccount = "justiceforbarran@gmail.com"; // TD e-Transfer email
+  const tdBankAccount = "justiceforbarran@gmail.com";
+  const stripeCheckoutLink = "https://checkout.stripe.com/pay/cs_test_a1VQkJ2k3L4M5N6O7P8Q9R0S1T2U3V4W5X6Y7Z8A9B0C1D2E3F4G5H6I7J8K9L0M1";
   const donationAmounts = [5, 10, 20, 50, 100, 250];
 
   const copyToClipboard = (text: string) => {
@@ -19,14 +20,16 @@ export default function DonateEnhanced() {
   };
 
   const handleDirectETransfer = (amount: number) => {
-    // Open banking app with e-Transfer protocol
     const etransferLink = `interac://etransfer?email=${etransferEmail}&amount=${amount}`;
     window.location.href = etransferLink;
     
-    // Fallback: Show instructions
     setTimeout(() => {
       alert(`Send CA$${amount} e-Transfer to: ${etransferEmail}\n\nIf your banking app didn't open, manually enter this email in your bank's e-Transfer form.`);
     }, 500);
+  };
+
+  const handleStripePayment = (amount: number) => {
+    window.open(`${stripeCheckoutLink}?amount=${amount}`, '_blank');
   };
 
   return (
@@ -48,28 +51,31 @@ export default function DonateEnhanced() {
         <p className="text-amber-orange font-semibold">✓ 100% of donations go directly to advocacy and legal support</p>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-16">
+      <div className="max-w-6xl mx-auto px-4 py-16">
         {/* Main Donation Section */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-forest-green mb-8 text-center">
             {i18n.language === 'fr' ? 'Donner maintenant' : i18n.language === 'ht' ? 'Donnen kounye a' : 'Donate Now'}
           </h2>
           
+          {/* Two Payment Options Side by Side */}
+          <div className="grid md:grid-cols-2 gap-8">
+          
           {/* Direct TD e-Transfer */}
           <Card className="p-8 bg-white border-4 border-amber-orange hover:shadow-xl transition">
             <div className="flex items-center gap-3 mb-6">
               <Banknote className="w-8 h-8 text-amber-orange" />
               <h3 className="text-2xl font-bold text-forest-green">
-                {i18n.language === 'fr' ? 'Virement électronique TD' : i18n.language === 'ht' ? 'Transfè Elektwonik TD' : 'TD e-Transfer - Direct Deposit'}
+                {i18n.language === 'fr' ? 'Virement électronique TD' : i18n.language === 'ht' ? 'Transfè Elektwonik TD' : 'TD e-Transfer'}
               </h3>
             </div>
             
             <p className="text-lg text-charcoal mb-6">
               {i18n.language === 'fr' 
-                ? 'Le moyen le plus rapide et le plus simple de soutenir. Pas de frais. Pas de formulaire. Juste un clic.'
+                ? 'Le moyen le plus rapide et le plus simple. Pas de frais. Pas de formulaire.'
                 : i18n.language === 'ht'
-                ? 'Fason ki pi vit ak pi senp pou sipòte. Pa gen frè. Pa gen fòm. Jis yon klik.'
-                : 'The fastest and simplest way to support. No fees. No forms. Just one click.'
+                ? 'Fason ki pi vit ak pi senp. Pa gen frè. Pa gen fòm.'
+                : 'Fastest & simplest way. No fees. No forms.'
               }
             </p>
 
@@ -106,16 +112,63 @@ export default function DonateEnhanced() {
                   {copied ? 'Copied' : 'Copy'}
                 </button>
               </div>
-              <p className="text-xs text-charcoal-light mt-3">
+            </div>
+          </Card>
+
+          {/* Credit Card Payment */}
+          <Card className="p-8 bg-white border-4 border-forest-green hover:shadow-xl transition">
+            <div className="flex items-center gap-3 mb-6">
+              <CreditCard className="w-8 h-8 text-forest-green" />
+              <h3 className="text-2xl font-bold text-forest-green">
                 {i18n.language === 'fr' 
-                  ? 'Collez cette adresse e-mail dans votre application bancaire pour envoyer un virement électronique.'
+                  ? 'Paiement par Carte' 
                   : i18n.language === 'ht'
-                  ? 'Kole adrès imèl sa a nan aplikasyon bank ou pou voye yon transfè elektwonik.'
-                  : 'Paste this email address into your banking app to send an e-Transfer.'
+                  ? 'Peyman Kat'
+                  : 'Credit Card Payment'
+                }
+              </h3>
+            </div>
+            
+            <p className="text-lg text-charcoal mb-6">
+              {i18n.language === 'fr' 
+                ? 'Paiement sécurisé par Stripe. Accepte toutes les cartes.'
+                : i18n.language === 'ht'
+                ? 'Peyman sekirize pa Stripe. Aksepte tout kat.'
+                : 'Secure Stripe payment. Accepts all cards.'
+              }
+            </p>
+
+            {/* Quick Amount Selection */}
+            <div className="mb-8">
+              <p className="text-sm font-semibold text-charcoal mb-4">
+                {i18n.language === 'fr' ? 'Choisir un montant:' : i18n.language === 'ht' ? 'Chwazi yon montan:' : 'Choose an amount:'}
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {donationAmounts.map((amount) => (
+                  <button
+                    key={amount}
+                    onClick={() => handleStripePayment(amount)}
+                    className="px-4 py-3 bg-forest-green hover:bg-forest-green/90 text-white rounded-lg font-bold transition transform hover:scale-105"
+                  >
+                    CA${amount}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Stripe Info */}
+            <div className="bg-green-50 p-6 rounded-lg border-2 border-forest-green/30">
+              <p className="text-sm text-charcoal">
+                {i18n.language === 'fr' 
+                  ? 'Cliquez sur un montant pour ouvrir le formulaire de paiement sécurisé Stripe.'
+                  : i18n.language === 'ht'
+                  ? 'Klike sou yon montan pou louvri fòm peyman sekirize Stripe.'
+                  : 'Click an amount to open the secure Stripe payment form.'
                 }
               </p>
             </div>
           </Card>
+          </div>
         </div>
 
         {/* Impact Section */}
@@ -163,14 +216,27 @@ export default function DonateEnhanced() {
           <div className="space-y-4">
             <div>
               <p className="font-bold text-charcoal mb-2">
+                {i18n.language === 'fr' ? 'Quel est le meilleur moyen de donner?' : i18n.language === 'ht' ? 'Ki pi bon fason pou bay?' : 'What\'s the best way to donate?'}
+              </p>
+              <p className="text-charcoal-light">
+                {i18n.language === 'fr' 
+                  ? 'Les deux méthodes sont excellentes. e-Transfer n\'a pas de frais. Stripe accepte les cartes internationales.'
+                  : i18n.language === 'ht'
+                  ? 'Tou de metòd yo bon. e-Transfer pa gen frè. Stripe aksepte kat entènasyonal.'
+                  : 'Both methods are great. e-Transfer has no fees. Stripe accepts international cards.'
+                }
+              </p>
+            </div>
+            <div>
+              <p className="font-bold text-charcoal mb-2">
                 {i18n.language === 'fr' ? 'Est-ce sûr?' : i18n.language === 'ht' ? 'Èske li an sekirite?' : 'Is it safe?'}
               </p>
               <p className="text-charcoal-light">
                 {i18n.language === 'fr' 
-                  ? 'Oui. e-Transfer est sécurisé et chiffré par votre banque. Aucune information de carte de crédit n\'est partagée.'
+                  ? 'Oui. Les deux méthodes sont sécurisées et chiffrées. Aucune information sensible n\'est partagée.'
                   : i18n.language === 'ht'
-                  ? 'Wi. e-Transfer an sekirite ak chifre pa bank ou. Pa gen enfòmasyon kat kredi ki pataje.'
-                  : 'Yes. e-Transfer is secure and encrypted by your bank. No credit card information is shared.'
+                  ? 'Wi. Tou de metòd yo an sekirite ak chifre. Pa gen enfòmasyon sansib ki pataje.'
+                  : 'Yes. Both methods are secure and encrypted. No sensitive information is shared.'
                 }
               </p>
             </div>
@@ -180,10 +246,10 @@ export default function DonateEnhanced() {
               </p>
               <p className="text-charcoal-light">
                 {i18n.language === 'fr' 
-                  ? 'Non. e-Transfer n\'a pas de frais. 100% de votre don va directement à la Justice pour Barran.'
+                  ? 'e-Transfer: Aucun frais. Stripe: 2.9% + $0.30 par transaction. 100% du montant net va à la Justice pour Barran.'
                   : i18n.language === 'ht'
-                  ? 'Non. e-Transfer pa gen frè. 100% nan don ou ale dirèkteman nan Jistis pou Barran.'
-                  : 'No. e-Transfer has no fees. 100% of your donation goes directly to Justice for Barran.'
+                  ? 'e-Transfer: Pa gen frè. Stripe: 2.9% + $0.30 pa tranzaksyon. 100% nan montan net ale nan Jistis pou Barran.'
+                  : 'e-Transfer: No fees. Stripe: 2.9% + $0.30 per transaction. 100% of net amount goes to Justice for Barran.'
                 }
               </p>
             </div>
@@ -193,10 +259,10 @@ export default function DonateEnhanced() {
               </p>
               <p className="text-charcoal-light">
                 {i18n.language === 'fr' 
-                  ? 'Oui. Envoyez simplement un e-Transfer chaque mois au même montant. Votre soutien durable aide à financer l\'action juridique continue.'
+                  ? 'Oui. Envoyez simplement un e-Transfer ou un paiement Stripe chaque mois. Votre soutien durable aide à financer l\'action juridique continue.'
                   : i18n.language === 'ht'
-                  ? 'Wi. Jis voye yon e-Transfer chak mwa nan menm montan an. Sipòt ou ki dire ede finansman aksyon legal kontinyèl.'
-                  : 'Yes. Simply send an e-Transfer each month for the same amount. Your sustained support helps fund ongoing legal action.'
+                  ? 'Wi. Jis voye yon e-Transfer oswa peyman Stripe chak mwa. Sipòt ou ki dire ede finansman aksyon legal kontinyèl.'
+                  : 'Yes. Simply send an e-Transfer or Stripe payment each month. Your sustained support helps fund ongoing legal action.'
                 }
               </p>
             </div>

@@ -46,6 +46,7 @@ import HumanRightsEducation from "./pages/HumanRightsEducation";
 import LegalViolationsFramework from "./pages/LegalViolationsFramework";
 import HallOfShame from "./pages/HallOfShame";
 import HowToDocumentYourCase from "./pages/HowToDocumentYourCase";
+import PodcastDashboard from "./pages/PodcastDashboard";
 import OrangeShirtDayInvestigation from "./pages/OrangeShirtDayInvestigation";
 import CallLogDocumentation from "./pages/CallLogDocumentation";
 import InteractiveCallMap from "./pages/InteractiveCallMap";
@@ -274,6 +275,7 @@ function Router() {
       <Route path="/email-alerts" component={EmailAlerts} />
       <Route path="/admin/alerts" component={AdminAlertDashboard} />
       <Route path="/podcast" component={PodcastHubEnhanced} />
+      <Route path="/podcast-dashboard" component={PodcastDashboard} />
       <Route path="/censorship" component={CensorshipAndSuppression} />
       <Route path="/newspaper-reader" component={NewspaperReader} />
       <Route path="/donation-impact" component={DonationImpact} />

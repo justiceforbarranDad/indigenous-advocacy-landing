@@ -81,9 +81,17 @@
 
 
 ## URGENT FIXES (April 4, 2026 - CRITICAL)
-- [ ] Replace Stripe checkout with direct TD Bank e-Transfer payment (1-click donation)
-- [ ] Remove English intro text from Kreyòl podcast page
-- [ ] Fix Episode 2 duration - currently only 1:47, needs to be 15+ minutes
+- [x] Replace Stripe checkout with direct TD Bank e-Transfer payment (1-click donation) - DONE
+- [ ] Extend ALL 6 Kreyòl podcast episodes to 15+ minutes (remove English intro from all)
+  - [ ] Episode 1: Silans Politisyen yo (Political Silence)
+  - [ ] Episode 2: Echak Sistèm (System Failure)
+  - [ ] Episode 3: Jistis Jolitsis (Justice Delayed)
+  - [ ] Episode 4: Dwa Fanmiy yo (Family Rights)
+  - [ ] Episode 5: Jistis Retade (Justice Withheld)
+  - [ ] Episode 6: Organizasyon Abandone (Abandoned Organization)
+- [ ] Add credit card payment option back to donation page (same size as e-Transfer)
+- [ ] Integrate Nikamowin radio into podcast dashboard with toggle
+- [ ] Prepare Staples print-ready materials (flyers, posters, QR cards)
 - [ ] Test all donation buttons on live site after fixes
 
 ## URGENT NEW FEATURES (User Requested)
@@ -2011,3 +2019,63 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Add relevant jurisprudence section
 - [ ] Add navigation link to Wall of Shame page
 - [ ] Ensure page is translatable (EN/FR/Kreyòl)
+
+
+## PODCAST DASHBOARD WITH STORY CARDS (April 4, 2026)
+- [ ] Create podcast dashboard page with story cards/boxes (like Stripe dashboard)
+- [ ] Add listener statistics cards (total listeners, episodes played, countries reached)
+- [ ] Add story submission cards (stories shared, testimonies received, impact metrics)
+- [ ] Display all 6 Kreyòl episodes in card format with play buttons
+- [ ] Add donation impact cards (funds raised, legal hours funded, families supported)
+- [ ] Make cards responsive and visually similar to Stripe dashboard style
+
+## PAYMENT OPTIONS - ADD CREDIT CARD BACK (April 4, 2026)
+- [ ] Add Stripe credit card option back to donation page
+- [ ] Display both e-Transfer and credit card at SAME SIZE and SAME VISIBILITY
+- [ ] Arrange side-by-side on desktop, stacked on mobile
+- [ ] Both options equally prominent in donation flow
+
+## KREYÒL PODCAST FIXES (April 4, 2026)
+- [ ] Remove English intro text from Kreyòl podcast page
+- [ ] Extend Episode 2 from 1:47 to 15+ minutes with full Kreyòl content
+- [ ] Verify all 6 episodes are 15+ minutes each
+- [ ] Test audio playback on live site
+
+## STAPLES PRINT MATERIALS (April 4, 2026)
+- [ ] Create donation flyer (8.5x11) with QR code and e-Transfer info
+- [ ] Create poster (11x17) with Justice for Barran message and donation QR
+- [ ] Create business cards with website URL and donation QR code
+- [ ] Prepare all files as print-ready PDFs for Staples
+
+
+## DOMAIN & EMAIL SETUP (April 4, 2026 - IN PROGRESS)
+- [ ] Set up email forwarding for justiceforbarran.com (contact@justiceforbarran.com → Gmail)
+- [ ] Set up email forwarding for justiceforbarran.ca (contact@justiceforbarran.ca → Gmail)
+- [ ] Verify both email addresses receive test messages
+- [ ] Add contact info to Home page (1-800-BARRAN, contact@justiceforbarran.com)
+- [ ] Add contact info to Donation page
+- [ ] Add contact info to Contact/About page
+- [ ] Update website footer with all contact methods
+
+## PRINT MATERIALS (April 4, 2026 - IN PROGRESS)
+- [x] Bumper stickers (2 versions: video background + Native art)
+- [ ] Poster (11"x17") with design, contact info, QR code
+- [ ] Flyer (8.5"x11") with design, contact info, QR code
+- [ ] Label stickers (1"x1") with logo and contact info
+- [ ] All materials ready for Staples printing
+
+## PODCAST EXTENSION (April 4, 2026 - PENDING)
+- [ ] Extend all 6 Kreyòl episodes to 15+ minutes each
+- [ ] Remove English intro from all episodes
+- [ ] Generate extended 4-voice roundtable format audio
+- [ ] Upload extended episodes to CDN
+- [ ] Update podcast player with new episode durations
+- [ ] Test all episodes on dev and live site
+
+## FINAL TESTING & PUBLICATION (April 4, 2026 - PENDING)
+- [ ] Test donation system (Stripe + e-Transfer) on live site
+- [ ] Verify TD e-Transfer payout
+- [ ] Test all language switching on live site
+- [ ] Test all links and navigation
+- [ ] Save final checkpoint
+- [ ] Publish to live domain
