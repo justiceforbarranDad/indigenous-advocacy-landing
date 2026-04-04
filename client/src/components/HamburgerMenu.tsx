@@ -52,6 +52,8 @@ export function HamburgerMenu() {
         { labelKey: 'menu.politicalGhosting', href: '/political-ghosting' },
         { labelKey: 'menu.aFathersCry', href: '/a-fathers-cry' },
         { labelKey: 'menu.legalBarriers', href: '/legal-barriers' },
+        { labelKey: 'menu.unComplaintTemplate', href: '/un-complaint-template' },
+        { labelKey: 'menu.iccComplaintTemplate', href: '/icc-complaint-template' },
       ],
     },
     {

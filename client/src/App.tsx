@@ -56,6 +56,8 @@ import LegalBarriers from "./pages/LegalBarriers";
 import IndigenousChildrenRights from "./pages/IndigenousChildrenRights";
 import Shop from "./pages/Shop";
 import DonateEtransfer from "./pages/DonateEtransfer";
+import UNComplaintTemplate from "./pages/UNComplaintTemplate";
+import ICCComplaintTemplate from "./pages/ICCComplaintTemplate";
 
 import NewspaperFrontPage from "./pages/NewspaperFrontPage";
 import PoliceAccountability from "./pages/PoliceAccountability";
@@ -225,6 +227,8 @@ function Router() {
       <Route path="/political-ghosting" component={PoliticalGhosting} />
       <Route path="/a-fathers-cry" component={AFathersCry} />
       <Route path="/legal-barriers" component={LegalBarriers} />
+      <Route path="/un-complaint-template" component={UNComplaintTemplate} />
+      <Route path="/icc-complaint-template" component={ICCComplaintTemplate} />
       <Route path="/indigenous-children-rights" component={IndigenousChildrenRights} />
       <Route path="/shop" component={Shop} />
       <Route path="/newspaper-front-page" component={NewspaperFrontPage} />
