@@ -149,6 +149,7 @@ import SocialMediaHub from "./pages/SocialMediaHub";
 import GovernmentAccountabilityTimeline from "./pages/GovernmentAccountabilityTimeline";
 import LegalCommunicationProtocol from "./pages/LegalCommunicationProtocol";
 import McGoverRanchHealingCentre from "./pages/McGoverRanchHealingCentre";
+import TerryJamesLegacy from "./pages/TerryJamesLegacy";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -162,6 +163,7 @@ function Router() {
       <Route path="/accountability-timeline" component={GovernmentAccountabilityTimeline} />
       <Route path="/legal-communication-protocol" component={LegalCommunicationProtocol} />
       <Route path="/healing-centre" component={McGoverRanchHealingCentre} />
+      <Route path="/terry-james-legacy" component={TerryJamesLegacy} />
       <Route path="/sunday-bloody-sunday-part-3" component={SundayBloodyySundayPart3} />
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
