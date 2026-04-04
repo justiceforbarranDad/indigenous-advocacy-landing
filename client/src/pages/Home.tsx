@@ -176,48 +176,25 @@ export default function Home() {
             </div>
 
             {/* Right: Donation Buttons */}
-            <div className="flex flex-col gap-4">
-              {/* Interac e-Transfer Section */}
-              <div>
-                <p className="text-center text-xs font-bold text-gray-700 mb-2 uppercase">
-                  {i18n.language === 'fr' ? 'Virement Interac' : i18n.language === 'ht' ? 'Interac Transfert' : 'Interac e-Transfer'}
-                </p>
-                <div className="grid grid-cols-5 gap-2">
-                  {[5, 10, 20, 50, 100].map((amount) => (
-                    <button
-                      key={`etransfer-${amount}`}
-                      onClick={() => {
-                        const subject = `Donation ${amount} CAD - Justice for Barran`;
-                        const body = `I would like to send $${amount} CAD via Interac e-Transfer to support Justice for Barran.\n\nPlease send to: jamesrobertmcgovern@hotmail.com`;
-                        window.location.href = `mailto:jamesrobertmcgovern@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                      }}
-                      className="py-2 px-1 bg-green-600 text-white rounded-lg font-bold text-xs md:text-sm hover:bg-green-700 shadow-md hover:shadow-lg transition-all transform hover:scale-105 text-center"
-                    >
-                      ${amount}
-                    </button>
-                  ))}
-                </div>
+            <div className="flex flex-col gap-3">
+              <div className="grid grid-cols-5 gap-2">
+                {[5, 10, 20, 50, 100].map((amount) => (
+                  <button
+                    key={amount}
+                    onClick={() => {
+                      const subject = `Donation ${amount} CAD - Justice for Barran`;
+                      const body = `I would like to send $${amount} CAD via Interac e-Transfer to support Justice for Barran.\n\nPlease send to: jamesrobertmcgovern@hotmail.com`;
+                      window.location.href = `mailto:jamesrobertmcgovern@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    }}
+                    className="py-3 px-2 bg-red-600 text-white rounded-lg font-bold text-sm md:text-base hover:bg-red-700 shadow-md hover:shadow-lg transition-all transform hover:scale-105 text-center whitespace-nowrap"
+                  >
+                    ${amount}
+                  </button>
+                ))}
               </div>
-
-              {/* Stripe Section */}
-              <div>
-                <p className="text-center text-xs font-bold text-gray-700 mb-2 uppercase">
-                  {i18n.language === 'fr' ? 'Carte de Crédit' : i18n.language === 'ht' ? 'Kat Kredi' : 'Credit Card'}
-                </p>
-                <div className="grid grid-cols-5 gap-2">
-                  {[5, 10, 20, 50, 100].map((amount) => (
-                    <a
-                      key={`stripe-${amount}`}
-                      href={`https://donate.stripe.com/test_9B63cvgJA8cE3M048T3Ru01?amount=${amount * 100}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="py-2 px-1 bg-blue-600 text-white rounded-lg font-bold text-xs md:text-sm hover:bg-blue-700 shadow-md hover:shadow-lg transition-all transform hover:scale-105 text-center"
-                    >
-                      ${amount}
-                    </a>
-                  ))}
-                </div>
-              </div>
+              <p className="text-center text-xs text-gray-500 mt-1">
+                {i18n.language === 'fr' ? 'Virement Interac e-Transfer' : i18n.language === 'ht' ? 'Transfert Interac e-Transfer' : 'Interac e-Transfer'}
+              </p>
             </div>
           </div>
         </div>
