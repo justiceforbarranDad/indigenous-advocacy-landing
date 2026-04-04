@@ -56,7 +56,7 @@ export default function PoliticalGhosting() {
           <div className="flex items-center gap-3 mb-4">
             <AlertTriangle className="w-8 h-8 text-red-600" />
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
-              Political Ghosting: 125+ Officials, 1 Response
+              Political Ghosting: 500+ Contacts, 1 Response
             </h1>
           </div>
           <p className="text-xl text-slate-700 mt-4">
@@ -65,11 +65,16 @@ export default function PoliticalGhosting() {
         </div>
 
         {/* Key Statistics */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
           <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
-            <div className="text-4xl font-bold text-red-600 mb-2">125+</div>
-            <div className="text-lg text-slate-700">Officials Contacted</div>
-            <div className="text-sm text-slate-600 mt-2">Federal, Provincial, Municipal, Institutional</div>
+            <div className="text-4xl font-bold text-red-600 mb-2">500+</div>
+            <div className="text-lg text-slate-700">Total Contacts</div>
+            <div className="text-sm text-slate-600 mt-2">Across all levels and sectors</div>
+          </div>
+          <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-6">
+            <div className="text-4xl font-bold text-orange-600 mb-2">125+</div>
+            <div className="text-lg text-slate-700">Quebec Officials</div>
+            <div className="text-sm text-slate-600 mt-2">MNAs, Ministers, Agencies</div>
           </div>
           <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-6">
             <div className="text-4xl font-bold text-amber-600 mb-2">1</div>
@@ -80,7 +85,7 @@ export default function PoliticalGhosting() {
 
         {/* Breakdown by Level */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">Breakdown by Government Level</h2>
+          <h2 className="text-3xl font-bold text-slate-900 mb-6">Breakdown: 500+ Total Contacts</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {ghostedOfficials.map((level, idx) => (
               <div key={idx} className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
