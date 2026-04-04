@@ -204,10 +204,9 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12">
             <div>
               <p className="text-sm text-gray-400 mb-2">
-                {i18n.language === 'fr' ? 'Telephone' : i18n.language === 'ht' ? 'Telefon' : 'Phone'}
+                {i18n.language === 'fr' ? 'Site Web' : i18n.language === 'ht' ? 'Sit Entenet' : 'Website'}
               </p>
-              <p className="text-xl font-bold text-amber-400">1-800-BARRAN</p>
-              <p className="text-sm text-gray-500">(1-800-227-726)</p>
+              <p className="text-xl font-bold text-amber-400">justiceforbarran.com</p>
             </div>
             <div>
               <p className="text-sm text-gray-400 mb-2">
@@ -216,12 +215,6 @@ export default function Home() {
               <a href="mailto:contact@justiceforbarran.com" className="text-xl font-bold text-amber-400 hover:text-amber-300 transition-colors">
                 contact@justiceforbarran.com
               </a>
-            </div>
-            <div>
-              <p className="text-sm text-gray-400 mb-2">
-                {i18n.language === 'fr' ? 'Site Web' : i18n.language === 'ht' ? 'Sit Entenet' : 'Website'}
-              </p>
-              <p className="text-xl font-bold text-amber-400">justiceforbarran.com</p>
             </div>
           </div>
         </div>

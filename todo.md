@@ -2054,8 +2054,9 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] Add contact info to Home page (1-800-BARRAN, contact@justiceforbarran.com)
 - [x] Add contact info to Donation page (visible in hero section)
 - [x] Update website with all contact methods
-- [ ] Verify email forwarding works after Squarespace verification
-- [ ] Set up Twilio toll-free number (1-800-BARRAN) for incoming calls
+- [ ] Verify email forwarding works after Squarespace verification (PENDING USER ACTION)
+- [x] Set up Twilio toll-free number (1-800-BARRAN) - SKIPPED (costs for incoming calls)
+- [x] Update website contact section (Website → Email only, no phone number)
 
 ## PRINT MATERIALS (April 4, 2026 - COMPLETED)
 - [x] Bumper stickers (2 versions: video background + Native art)
