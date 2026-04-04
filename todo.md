@@ -1924,3 +1924,51 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Alert on suspicious activity (spam, bot attacks)
 - [ ] Alert on database issues
 - [ ] Alert on webhook failures
+
+
+## PERFORMANCE MONITORING & SYSTEM HEALTH (April 4, 2026)
+
+- [ ] Add Core Web Vitals tracking (LCP, FID, CLS)
+- [ ] Add page load speed monitoring
+- [ ] Add API response time tracking
+- [ ] Add error tracking and logging
+- [ ] Add real-time performance alerts
+- [ ] Set up dashboard to view metrics
+- [ ] Monitor Stripe checkout performance
+- [ ] Track video hero load times
+- [ ] Monitor database query performance
+- [ ] Set up automated alerts for performance degradation
+
+
+## iOS & ANDROID COMPATIBILITY (April 4, 2026)
+
+- [ ] Push notifications work on iOS
+- [ ] Push notifications work on Android
+- [ ] Apple Pay integration (iOS payment)
+- [ ] Google Pay integration (Android payment)
+- [ ] Stripe payments work on iOS Safari
+- [ ] Stripe payments work on Android Chrome
+- [ ] Mobile responsiveness tested on iOS
+- [ ] Mobile responsiveness tested on Android
+- [ ] Touch targets 44px minimum on all buttons
+- [ ] Video hero plays on iOS Safari
+- [ ] Video hero plays on Android Chrome
+- [ ] QR codes scannable on iOS
+- [ ] QR codes scannable on Android
+
+## BUTTON VISIBILITY & ACCESSIBILITY (April 4, 2026)
+
+- [ ] All donation buttons visible on Home page
+- [ ] All donation buttons visible on Donation page
+- [ ] Podcast buttons visible on Home page
+- [ ] Podcast buttons visible on Podcast page
+- [ ] Navigation buttons visible on all pages
+- [ ] Language selector visible on all pages
+- [ ] Social media buttons visible and clickable
+- [ ] CTA buttons have sufficient contrast
+- [ ] All buttons have hover states
+- [ ] All buttons have focus states (keyboard accessible)
+- [ ] No hidden buttons or overlapping elements
+- [ ] Button text is readable (not cut off)
+- [ ] Buttons work on mobile (touch-friendly)
+- [ ] Buttons work on desktop (click-friendly)
