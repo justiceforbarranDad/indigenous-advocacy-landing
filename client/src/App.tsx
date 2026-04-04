@@ -31,6 +31,8 @@ import BarransStory from "./pages/BarransStory";
 import MotherAbuseDPJ from "./pages/MotherAbuseDPJ";
 import DonateComprehensive from '@/pages/DonateComprehensive';
 import DonateQuick from '@/pages/DonateQuick';
+import DonateEnhanced from '@/pages/DonateEnhanced';
+import Sponsors from '@/pages/Sponsors';
 import DonationInstructions from '@/pages/DonationInstructions';
 import Movement from "./pages/Movement";
 import TimelineNewspaperArchive from "./pages/TimelineNewspaperArchive";
@@ -169,7 +171,9 @@ function Router() {
       <Route path="/sunday-bloody-sunday-part-3" component={SundayBloodyySundayPart3} />
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
-      <Route path="/donate" component={DonateQuick} />
+      <Route path="/donate" component={DonateEnhanced} />
+      <Route path="/sponsors" component={Sponsors} />
+      <Route path="/donate-quick" component={DonateQuick} />
       <Route path="/donate-direct" component={DirectDepositDonation} />
       <Route path="/donate-etransfer" component={DonateEtransfer} />
       <Route path="/payment-hub" component={PaymentHub} />
