@@ -46,6 +46,15 @@ export function HamburgerMenu() {
       ],
     },
     {
+      titleKey: 'menu.documentation',
+      links: [
+        { labelKey: 'menu.censorshipAndSuppression', href: '/censorship-and-suppression' },
+        { labelKey: 'menu.politicalGhosting', href: '/political-ghosting' },
+        { labelKey: 'menu.aFathersCry', href: '/a-fathers-cry' },
+        { labelKey: 'menu.legalBarriers', href: '/legal-barriers' },
+      ],
+    },
+    {
       titleKey: 'menu.connect',
       links: [
         { labelKey: 'menu.followTwitter', href: 'https://x.com/helpbarran?s=21' },

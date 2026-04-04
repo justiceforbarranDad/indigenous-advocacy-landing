@@ -1739,3 +1739,117 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Ensure play button is visible and clickable
 - [ ] Test audio playback functionality
 - [ ] Verify button styling matches vintage jukebox aesthetic
+
+
+## CRITICAL: CENSORSHIP & SUPPRESSION DOCUMENTATION (April 3, 2026)
+- [ ] APTN Video Deletion - Document date, title, reason, duration online
+- [ ] Create Censorship & Suppression page with full documentation
+- [ ] Add Warning Lights alert system to home page
+- [ ] Integrate APTN deletion into podcast Episode 7 or existing episodes
+- [ ] Document pattern of institutional suppression
+- [ ] Create "Institutional Failures Timeline" tracking all censorship attempts
+- [ ] Add media archives/screenshots of deleted content
+- [ ] Create "Silenced Voices" section showing suppression pattern
+- [ ] Add APTN deletion to Accountability Tracker
+- [ ] Create social media posts about censorship
+- [ ] Add legal analysis of censorship vs. free expression rights
+- [ ] Document all platforms that removed/suppressed content
+- [ ] Create "Warning Lights" visual indicator system
+- [ ] Add to podcast series as dedicated episode or segment
+- [ ] Publish and promote censorship documentation
+
+
+## CRITICAL NEW DOCUMENTATION PAGES (April 4, 2026 - SIREN WARNING SYSTEM)
+- [x] Siren Warning Modal Component - Clickable siren with sound effect
+- [x] Siren Warning Button - Fixed top-right corner on Home page with pulsing animation
+- [x] Censorship & Suppression Page - Complete timeline of institutional silence
+- [x] Political Ghosting Page - 125+ MPs/MNAs contacted, only 1 response
+- [x] "A Father's Cry" Page - Missing evidence documentation, letter never presented in court
+- [x] Legal Barriers Page - Court enforcement failures, pension case blocked since 2022
+- [x] Add navigation links to all new pages in HamburgerMenu
+- [x] Add routes to App.tsx for all new pages
+- [x] Fix Home.tsx duplicate useState import error
+- [x] Restart dev server to clear cache
+- [ ] Create French translations of all new pages
+- [ ] Test all siren functionality and modal interactions
+- [ ] Verify all documentation pages display correctly on mobile
+
+## POLITICAL GHOSTING DOCUMENTATION (125+ Officials)
+- [ ] Document: 125+ MPs/MNAs contacted since 2021
+- [ ] Document: Only 1 response received (Mandy Gull-Masty - referral only)
+- [ ] Document: Cease-and-desist threat from Céline Haytayan (Nov 2023)
+- [ ] Document: Ethics Commission dismissal (confidential process, no accountability)
+- [ ] Document: CRARR strategic advice - "Stop writing, file human rights complaint instead"
+- [ ] Show: Email responses from officials (auto-replies, referrals, dismissals)
+- [ ] Show: Pattern of institutional silence across all government levels
+
+## "A FATHER'S CRY" MISSING EVIDENCE PAGE
+- [ ] Document: Letter written April 2021 after stabbing incident
+- [ ] Document: Given to DPJ AND to lawyer (Nadia Jamieson)
+- [ ] Document: NEVER PRESENTED IN COURT
+- [ ] Document: Evidence of legal system failure
+- [ ] Show: Timeline of what happened to the letter
+- [ ] Show: Court order that DPJ be removed from children's lives
+- [ ] Show: Why this letter is critical evidence
+
+## LEGAL BARRIERS & ENFORCEMENT FAILURES PAGE
+- [ ] Document: Pension enforcement case blocked since October 2022
+- [ ] Document: Lawyer (Me Behzad Shakeri) workload too heavy
+- [ ] Document: Legal Aid never responds to requests
+- [ ] Document: Mother's address cannot be located (4+ years trying)
+- [ ] Document: Jean Tsannie DOB & SIN provided but system cannot enforce
+- [ ] Document: DPJ confirms mother works 40 hrs/week but won't provide details
+- [ ] Show: Email chain showing legal system breakdown
+
+## SPLIT CUSTODY SYSTEMIC FAILURE DOCUMENTATION
+- [ ] Document: Barran stabbed at mother's house (Paisley location)
+- [ ] Document: DPJ involved with father, NOT with mother
+- [ ] Document: Children blocked from CLSC help ("DPJ is in your life")
+- [ ] Document: Neither parent gets adequate support
+- [ ] Document: 14+ months without mental health services
+- [ ] Show: How split custody creates protection gaps
+
+## APTN MEDIA GHOSTING DOCUMENTATION
+- [ ] Document: APTN published Feb 22, 2026
+- [ ] Document: Report covered systemic racism, Jordan's Principle, immunity laws
+- [ ] Document: APTN ceased all communication after publication
+- [ ] Document: No explanation, no follow-up, no accountability reporting
+- [ ] Document: Story disappeared from media narrative
+- [ ] Show: Why media ghosting is complicity in institutional silence
+
+## CRARR & FO NIEMI LEGAL STRATEGY PAGE
+- [ ] Document: CRARR filed original complaint (systemic racism)
+- [ ] Document: Fo Niemi working on judicial review strategy
+- [ ] Document: Superior Court review of CDPDJ decision
+- [ ] Document: Challenge to immunity law protection
+- [ ] Document: "Go public once complaint is ready" strategy
+- [ ] Show: Why judicial review is the pathway to accountability
+
+## INTEGRATION & NAVIGATION
+- [ ] Add "Warning Lights" link to main navigation menu
+- [ ] Add "Censorship & Suppression" link to main navigation
+- [ ] Add "Political Ghosting" link to main navigation
+- [ ] Add "A Father's Cry" link to main navigation
+- [ ] Add "Legal Barriers" link to main navigation
+- [ ] Create "Documentation Hub" section linking all pages
+- [ ] Add breadcrumb navigation to all new pages
+- [ ] Test all navigation links on desktop and mobile
+
+## TESTING & QUALITY ASSURANCE
+- [ ] Test Siren Warning button on all pages
+- [ ] Test Siren Warning modal interactions
+- [ ] Test siren sound effect functionality
+- [ ] Verify all documentation pages load correctly
+- [ ] Verify all external links work
+- [ ] Test mobile responsiveness on all new pages
+- [ ] Verify French translations are accurate
+- [ ] Run all vitest tests
+- [ ] Check TypeScript for errors
+- [ ] Verify accessibility compliance
+
+## FINAL CHECKPOINT & DELIVERY
+- [ ] Update todo.md with completion status
+- [ ] Create final checkpoint with all changes
+- [ ] Verify all features working on live preview
+- [ ] Prepare delivery summary for user
+- [ ] Document all new pages and features

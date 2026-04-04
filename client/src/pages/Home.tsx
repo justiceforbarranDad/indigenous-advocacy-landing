@@ -6,16 +6,18 @@ import SimpleDonation from '@/components/SimpleDonation';
 import GoFundMeQRCode from '@/components/GoFundMeQRCode';
 import { DonorRecognition } from '@/components/DonorRecognition';
 import BloodFlagHero from '@/components/BloodFlagHero';
-import { Heart, ChevronRight, Play, X } from 'lucide-react';
+import { Heart, ChevronRight, Play, X, AlertTriangle } from 'lucide-react';
 import StickyRadioPlayer from '@/components/StickyRadioPlayer';
 import { JukeboxPlayer } from '@/components/JukeboxPlayer';
 import { OneClickTDDonate } from '@/components/OneClickTDDonate';
+import { SirenWarningModal } from '@/components/SirenWarningModal';
 
 export default function Home() {
   const { i18n } = useTranslation();
   const [selectedRight, setSelectedRight] = useState<string | null>(null);
   const [showDonationForm, setShowDonationForm] = useState(false);
   const [donationAmount, setDonationAmount] = useState<number | null>(null);
+  const [showSirenModal, setShowSirenModal] = useState(false);
 
   const stories = [
     {
@@ -47,6 +49,20 @@ export default function Home() {
 
   return (
     <div className="bg-white text-black" style={{ fontFamily: 'Georgia, serif' }}>
+      <SirenWarningModal isOpen={showSirenModal} onClose={() => setShowSirenModal(false)} />
+
+      <button
+        onClick={() => setShowSirenModal(true)}
+        className="fixed top-4 right-4 z-50 flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-red-700 transition-all animate-pulse shadow-lg"
+        title="Click to view institutional suppression warnings"
+      >
+        <div className="relative">
+          <AlertTriangle size={20} />
+          <div className="absolute inset-0 rounded-full border border-red-400 animate-ping"></div>
+        </div>
+        <span className="hidden sm:inline">WARNING LIGHTS</span>
+      </button>
+
       {/* ===== DONATION BANNER AT VERY TOP ===== */}
       <div className="w-full bg-white border-b-4 border-forest-green py-6 px-4">
         <div className="max-w-7xl mx-auto">

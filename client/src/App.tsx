@@ -5,6 +5,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { AlertTriangle } from 'lucide-react';
 
 import Home from "./pages/Home";
 import Resources from "./pages/Resources";
@@ -48,6 +49,10 @@ import HowToDocumentYourCase from "./pages/HowToDocumentYourCase";
 import OrangeShirtDayInvestigation from "./pages/OrangeShirtDayInvestigation";
 import CallLogDocumentation from "./pages/CallLogDocumentation";
 import InteractiveCallMap from "./pages/InteractiveCallMap";
+import CensorshipAndSuppression from "./pages/CensorshipAndSuppression";
+import PoliticalGhosting from "./pages/PoliticalGhosting";
+import AFathersCry from "./pages/AFathersCry";
+import LegalBarriers from "./pages/LegalBarriers";
 import IndigenousChildrenRights from "./pages/IndigenousChildrenRights";
 import Shop from "./pages/Shop";
 import DonateEtransfer from "./pages/DonateEtransfer";
@@ -96,6 +101,7 @@ import SMSAlerts from "./pages/SMSAlerts";
 import EmailAlerts from "./pages/EmailAlerts";
 import AdminAlertDashboard from "./pages/AdminAlertDashboard";
 import PodcastHub from "./pages/PodcastHub";
+import PodcastHubEnhanced from "./pages/PodcastHubEnhanced";
 import NewspaperReader from "./pages/NewspaperReader";
 import DonationImpact from "./pages/DonationImpact";
 
@@ -215,6 +221,10 @@ function Router() {
       <Route path="/orange-shirt-day-investigation" component={OrangeShirtDayInvestigation} />
       <Route path="/call-log-documentation" component={CallLogDocumentation} />
       <Route path="/interactive-call-map" component={InteractiveCallMap} />
+      <Route path="/censorship-and-suppression" component={CensorshipAndSuppression} />
+      <Route path="/political-ghosting" component={PoliticalGhosting} />
+      <Route path="/a-fathers-cry" component={AFathersCry} />
+      <Route path="/legal-barriers" component={LegalBarriers} />
       <Route path="/indigenous-children-rights" component={IndigenousChildrenRights} />
       <Route path="/shop" component={Shop} />
       <Route path="/newspaper-front-page" component={NewspaperFrontPage} />
@@ -259,7 +269,8 @@ function Router() {
       <Route path="/sms-alerts" component={SMSAlerts} />
       <Route path="/email-alerts" component={EmailAlerts} />
       <Route path="/admin/alerts" component={AdminAlertDashboard} />
-      <Route path="/podcast-hub" component={PodcastHub} />
+      <Route path="/podcast" component={PodcastHubEnhanced} />
+      <Route path="/censorship" component={CensorshipAndSuppression} />
       <Route path="/newspaper-reader" component={NewspaperReader} />
       <Route path="/donation-impact" component={DonationImpact} />
 
