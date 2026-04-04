@@ -1853,3 +1853,15 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [ ] Verify all features working on live preview
 - [ ] Prepare delivery summary for user
 - [ ] Document all new pages and features
+
+
+## LOOPING VIDEO HERO (April 4, 2026)
+- [x] Generate 3D cinematic hero video with parliament buildings, totem pole, flame, blood-red fountain
+- [x] Upload video to CDN
+- [x] Integrate looping video into VideoHeroWithClock component
+- [x] Add text overlays: "SINCE 2021", "Canada's Sunday Bloody Sunday", "February 14, 2021"
+- [x] Add flag text: "JUSTICE FOR BARRAN", "SUNDAY BLOODY SUNDAY"
+- [x] Blood drop animation (1 per second) overlaid on video
+- [x] THE SILENCE CLOCK below video (1875+ days counting)
+- [x] Full-width banner, not too tall, eye-catching
+- [ ] Save checkpoint with video hero
