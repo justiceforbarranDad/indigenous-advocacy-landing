@@ -1,11 +1,62 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Volume2 } from 'lucide-react';
 import TheSilenceClock from './TheSilenceClock';
 import { JukeboxPlayer } from './JukeboxPlayer';
 
 interface BookInterfaceProps {
   onClose: () => void;
+}
+
+// Radio Player Component
+function RadioPlayer() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  return (
+    <div className="flex flex-col justify-center h-full bg-gradient-to-b from-purple-900 to-purple-800 p-6 rounded-lg">
+      <div className="text-center">
+        <Volume2 className="w-12 h-12 text-yellow-300 mx-auto mb-4" />
+        <h3 className="text-xl font-bold text-white mb-2">Indigenous Music Radio</h3>
+        <p className="text-sm text-purple-200 mb-6">Royalty-free Native music from Pixabay</p>
+        
+        <button
+          onClick={() => setIsPlaying(!isPlaying)}
+          className={`px-6 py-3 rounded-lg font-bold text-white transition-all ${
+            isPlaying 
+              ? 'bg-red-600 hover:bg-red-700' 
+              : 'bg-green-600 hover:bg-green-700'
+          }`}
+        >
+          {isPlaying ? '⏸ Pause' : '▶ Play Music'}
+        </button>
+
+        {isPlaying && (
+          <div className="mt-6 space-y-2">
+            <div className="flex justify-center gap-1">
+              {[...Array(8)].map((_, i) => (
+                <div
+                  key={i}
+                  className="w-1 bg-yellow-300 rounded-full animate-pulse"
+                  style={{
+                    height: `${20 + Math.random() * 30}px`,
+                    animationDelay: `${i * 0.1}s`,
+                  }}
+                />
+              ))}
+            </div>
+            <p className="text-xs text-purple-200 mt-4">Now playing: Indigenous music stream</p>
+          </div>
+        )}
+
+        <div className="mt-8 pt-6 border-t border-purple-600">
+          <p className="text-xs text-purple-300">
+            Music by Pixabay<br />
+            Royalty-free • No copyright issues
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function BookInterfaceComplete({ onClose }: BookInterfaceProps) {
@@ -18,10 +69,10 @@ export function BookInterfaceComplete({ onClose }: BookInterfaceProps) {
       title: 'COVER',
       left: (
         <div className="flex flex-col items-center justify-center h-full bg-gradient-to-b from-gray-800 to-black">
-          <h1 className="text-5xl font-black text-white text-center mb-4">SUNDAY BLOODY SUNDAY</h1>
-          <h2 className="text-3xl font-bold text-red-600 text-center mb-8">PART TWO</h2>
-          <p className="text-xl text-white text-center max-w-md">Indigenous Justice Advocacy</p>
-          <p className="text-sm text-gray-400 text-center mt-8">Since February 14, 2021</p>
+          <h1 className="text-5xl font-black text-yellow-300 text-center mb-4">SUNDAY BLOODY SUNDAY</h1>
+          <h2 className="text-3xl font-bold text-yellow-300 text-center mb-8">PART TWO</h2>
+          <p className="text-xl text-yellow-300 text-center max-w-md">Indigenous Justice Advocacy</p>
+          <p className="text-sm text-yellow-300 text-center mt-8">Since February 14, 2021</p>
         </div>
       ),
       right: <TheSilenceClock />,
@@ -65,9 +116,62 @@ export function BookInterfaceComplete({ onClose }: BookInterfaceProps) {
       ),
     },
 
-    // PAGE 2: FAMILY TRAUMA (2021 onwards)
+    // PAGE 2: PODCAST PLAYER + ARTICLE
     {
-      title: 'PAGE 2: FAMILY TRAUMA BEGINS',
+      title: 'PAGE 2: LISTEN TO THE PODCAST',
+      left: <JukeboxPlayer />,
+      right: (
+        <div className="flex flex-col justify-center h-full space-y-4 overflow-y-auto">
+          <h3 className="text-2xl font-black text-gray-900 mb-4">Podcast: Voices of Justice</h3>
+          <p className="text-sm text-gray-700 leading-relaxed">
+            Listen to six powerful episodes documenting the systemic failures, political silence, and ongoing fight for Indigenous justice.
+          </p>
+          <div className="bg-blue-50 p-4 rounded space-y-3">
+            <p className="text-xs font-bold text-blue-900">EPISODE TOPICS:</p>
+            <ul className="text-xs text-blue-800 space-y-2">
+              <li>• The Silence of Politicians</li>
+              <li>• System Failure - DPJ Accountability</li>
+              <li>• 1873 Days of Injustice</li>
+              <li>• Indigenous Rights Under Attack</li>
+              <li>• Justice Delayed is Justice Denied</li>
+              <li>• Call to Action: Your Role in Change</li>
+            </ul>
+          </div>
+          <p className="text-xs text-gray-600 mt-4">
+            Available in English, Québécois French, and Kreyòl. Each episode includes full transcripts and references.
+          </p>
+        </div>
+      ),
+    },
+
+    // PAGE 3: ARTICLE + RADIO PLAYER
+    {
+      title: 'PAGE 3: INDIGENOUS MUSIC RADIO',
+      left: (
+        <div className="flex flex-col justify-center h-full space-y-4 overflow-y-auto">
+          <h3 className="text-2xl font-black text-gray-900 mb-4">Music as Resistance</h3>
+          <p className="text-sm text-gray-700 leading-relaxed">
+            Indigenous music carries the voices of ancestors, the resilience of survivors, and the hope for a better future. Listen as you read.
+          </p>
+          <div className="bg-green-50 p-4 rounded space-y-2">
+            <p className="text-xs font-bold text-green-900">WHY MUSIC MATTERS:</p>
+            <p className="text-xs text-green-800">Music is a form of resistance. It heals trauma. It connects us to our roots. It amplifies our voices when institutions silence us.</p>
+          </div>
+          <div className="bg-purple-50 p-4 rounded space-y-2">
+            <p className="text-xs font-bold text-purple-900">ROYALTY-FREE & LEGAL:</p>
+            <p className="text-xs text-purple-800">All music is sourced from Pixabay with no copyright restrictions. Support Indigenous artists and creators.</p>
+          </div>
+          <p className="text-xs text-gray-600 mt-4">
+            Play the radio on the right while reading. Let the music accompany your journey through this story of justice and resilience.
+          </p>
+        </div>
+      ),
+      right: <RadioPlayer />,
+    },
+
+    // PAGE 4: FAMILY TRAUMA BEGINS
+    {
+      title: 'PAGE 4: FAMILY TRAUMA BEGINS',
       left: (
         <div className="flex flex-col justify-center h-full space-y-4">
           <h3 className="text-2xl font-black text-gray-900 mb-4">Since 2021: System Failure</h3>
@@ -98,385 +202,145 @@ export function BookInterfaceComplete({ onClose }: BookInterfaceProps) {
             <p className="text-xs font-bold text-purple-900">JORDAN'S PRINCIPLE</p>
             <p className="text-xs text-purple-800 mt-2">When there's a jurisdictional dispute over funding, the government that receives the request first must pay. No delays. No bureaucracy. Help the child NOW.</p>
           </div>
-          <p className="text-sm text-gray-700 leading-relaxed mt-4">
+          <p className="text-xs text-gray-600 mt-4">
             But for this Indigenous family, Jordan's Principle was ignored. Services were delayed. Coordination failed. A child suffered.
           </p>
-          <p className="text-xs font-bold text-red-600 mt-4">⚠️ SYSTEMIC FAILURE DOCUMENTED</p>
         </div>
       ),
     },
 
-    // PAGE 3: POLITICAL SILENCE - MNA
+    // PAGE 5: POLITICAL SILENCE
     {
-      title: 'PAGE 3: POLITICAL SILENCE',
+      title: 'PAGE 5: POLITICAL SILENCE',
       left: (
         <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">MNA Response: Cease & Desist</h3>
+          <h3 className="text-2xl font-black text-gray-900 mb-4">MNA Cease-and-Desist</h3>
           <p className="text-sm text-gray-700 leading-relaxed">
-            The family asked their MNA (Member of National Assembly) for help on DPJ/IVAC files. Instead of assistance, they received a warning.
+            When seeking help from elected officials, a constituent received a cease-and-desist warning instead of assistance.
           </p>
-          <div className="bg-red-50 p-4 rounded mt-4 space-y-2">
+          <div className="bg-red-50 p-4 rounded space-y-2">
             <p className="text-sm font-bold text-red-900">NOVEMBER 19, 2023</p>
-            <p className="text-xs text-red-800">MNA's office sent cease-and-desist warning:</p>
-            <p className="text-xs text-red-800 font-bold mt-2">Stop all contact (in-person, phone, email, social media) or face criminal harassment complaint and police involvement.</p>
+            <p className="text-xs text-red-800 mt-2">MNA Céline Haytayan's office sent warning: Stop all contact (in-person, phone, email, social media) or face criminal harassment complaint and police involvement.</p>
           </div>
-          <p className="text-sm text-gray-700 leading-relaxed mt-4">
-            This is what happens when a constituent asks for help from their elected representative.
+          <p className="text-xs text-gray-600 mt-4">
+            This is what happens when a constituent asks for help. Intimidation. Silencing. Threats instead of solutions.
           </p>
         </div>
       ),
       right: (
         <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Intimidation Instead of Service</h3>
+          <h3 className="text-2xl font-black text-gray-900 mb-4">Provincial Ghosting</h3>
           <p className="text-sm text-gray-700 leading-relaxed">
-            A family in crisis reached out to their elected representative. Instead of:
+            Multiple CAQ ministers and provincial officials ignored pleas for intervention and inquiry.
           </p>
-          <ul className="text-sm text-gray-700 space-y-1 ml-4">
-            <li>✓ Listening to their concerns</li>
-            <li>✓ Investigating the issue</li>
-            <li>✓ Providing support</li>
-          </ul>
-          <p className="text-sm text-gray-700 leading-relaxed mt-4">
-            They received:
-          </p>
-          <ul className="text-sm text-red-700 space-y-1 ml-4 font-bold">
-            <li>✗ Intimidation</li>
-            <li>✗ Threats of police action</li>
-            <li>✗ Silencing tactics</li>
-          </ul>
-          <p className="text-xs font-bold text-red-600 mt-4">
-            This violates the duty of elected officials to serve their constituents.
+          <div className="bg-orange-50 p-4 rounded space-y-2">
+            <p className="text-sm font-bold text-orange-900">PROVINCIAL LEVEL</p>
+            <ul className="text-xs text-orange-800 space-y-1 mt-2">
+              <li>• CAQ ministers: No response</li>
+              <li>• CDPDJ: Refused investigation 2x</li>
+              <li>• Provincial offices: Complete silence</li>
+            </ul>
+          </div>
+          <p className="text-xs text-gray-600 mt-4">
+            When local officials fail, you expect provincial support. Instead: more silence, more ghosting.
           </p>
         </div>
       ),
     },
 
-    // PAGE 4: PROVINCIAL GHOSTING
+    // PAGE 6: FEDERAL SILENCE
     {
-      title: 'PAGE 4: PROVINCIAL GHOSTING',
+      title: 'PAGE 6: FEDERAL SILENCE',
       left: (
         <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Provincial Level: Complete Silence</h3>
+          <h3 className="text-2xl font-black text-gray-900 mb-4">MPs Ignored Pleas</h3>
           <p className="text-sm text-gray-700 leading-relaxed">
-            Multiple attempts to reach provincial level officials:
+            Escalated to federal MPs. Same silence. No action. No response.
           </p>
-          <div className="bg-gray-100 p-4 rounded space-y-3 mt-4">
-            <div className="border-l-4 border-red-600 pl-3">
-              <p className="text-xs font-bold text-gray-900">CAQ MINISTERS</p>
-              <p className="text-xs text-gray-700">Ignored pleas for intervention</p>
-            </div>
-            <div className="border-l-4 border-red-600 pl-3">
-              <p className="text-xs font-bold text-gray-900">PROVINCIAL OFFICIALS</p>
-              <p className="text-xs text-gray-700">No response, no action</p>
-            </div>
-            <div className="border-l-4 border-red-600 pl-3">
-              <p className="text-xs font-bold text-gray-900">CDPDJ (HUMAN RIGHTS COMMISSION)</p>
-              <p className="text-xs text-gray-700">Refused investigation requests 2x</p>
-            </div>
+          <div className="bg-gray-50 p-4 rounded space-y-2">
+            <p className="text-sm font-bold text-gray-900">FEDERAL BODIES CONTACTED:</p>
+            <ul className="text-xs text-gray-700 space-y-1 mt-2">
+              <li>• Protecteur du citoyen: Limited powers</li>
+              <li>• Commissaire à l'éthique: No jurisdiction</li>
+              <li>• CHRC Ref 100021349: Limits acknowledged</li>
+            </ul>
           </div>
         </div>
       ),
       right: (
         <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Pattern of Abandonment</h3>
+          <h3 className="text-2xl font-black text-gray-900 mb-4">Systemic Failures Documented</h3>
           <p className="text-sm text-gray-700 leading-relaxed">
-            When a family reaches out to their government for help, they expect:
+            CDPDJ's 2025 Nunavik systemic inquiry shows chronic failures affecting Indigenous children.
           </p>
-          <ul className="text-sm text-gray-700 space-y-1 ml-4">
-            <li>✓ Response within reasonable time</li>
-            <li>✓ Investigation of claims</li>
-            <li>✓ Action to protect children</li>
-          </ul>
-          <p className="text-sm text-gray-700 leading-relaxed mt-4">
-            Instead, they found:
-          </p>
-          <ul className="text-sm text-red-700 space-y-1 ml-4 font-bold">
-            <li>✗ Silence</li>
-            <li>✗ Refusals</li>
-            <li>✗ Abandonment</li>
-          </ul>
-          <p className="text-xs font-bold text-red-600 mt-4">
-            This is not how government should treat Indigenous families seeking justice.
-          </p>
-        </div>
-      ),
-    },
-
-    // PAGE 5: FEDERAL SILENCE
-    {
-      title: 'PAGE 5: FEDERAL SILENCE',
-      left: (
-        <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Federal Level: Same Silence</h3>
-          <p className="text-sm text-gray-700 leading-relaxed">
-            Escalated to federal MPs. Same result: silence.
-          </p>
-          <div className="bg-gray-100 p-4 rounded space-y-3 mt-4">
-            <div className="border-l-4 border-red-600 pl-3">
-              <p className="text-xs font-bold text-gray-900">FEDERAL MPs</p>
-              <p className="text-xs text-gray-700">No response, no action</p>
-            </div>
-            <div className="border-l-4 border-red-600 pl-3">
-              <p className="text-xs font-bold text-gray-900">PROTECTEUR DU CITOYEN</p>
-              <p className="text-xs text-gray-700">Claims limits on powers</p>
-            </div>
-            <div className="border-l-4 border-red-600 pl-3">
-              <p className="text-xs font-bold text-gray-900">COMMISSAIRE À L'ÉTHIQUE</p>
-              <p className="text-xs text-gray-700">No real change for DPJ decisions</p>
-            </div>
-            <div className="border-l-4 border-red-600 pl-3">
-              <p className="text-xs font-bold text-gray-900">CHRC (REF: 100021349)</p>
-              <p className="text-xs text-gray-700">Limited authority acknowledged</p>
-            </div>
-          </div>
-        </div>
-      ),
-      right: (
-        <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Every Level Failed</h3>
-          <p className="text-sm text-gray-700 leading-relaxed font-bold">
-            From local to federal, the response was the same:
-          </p>
-          <div className="space-y-3 mt-4">
-            <div className="bg-red-50 p-3 rounded">
-              <p className="text-xs font-bold text-red-900">MUNICIPAL LEVEL</p>
-              <p className="text-xs text-red-800">No action</p>
-            </div>
-            <div className="bg-orange-50 p-3 rounded">
-              <p className="text-xs font-bold text-orange-900">PROVINCIAL LEVEL</p>
-              <p className="text-xs text-orange-800">Silence & refusals</p>
-            </div>
-            <div className="bg-yellow-50 p-3 rounded">
-              <p className="text-xs font-bold text-yellow-900">FEDERAL LEVEL</p>
-              <p className="text-xs text-yellow-800">Same silence</p>
-            </div>
-          </div>
-          <p className="text-xs font-bold text-red-600 mt-4">
-            ⚠️ SYSTEMIC FAILURE AT EVERY LEVEL
-          </p>
-        </div>
-      ),
-    },
-
-    // PAGE 6: SYSTEMIC FAILURES DOCUMENTED
-    {
-      title: 'PAGE 6: SYSTEMIC FAILURES DOCUMENTED',
-      left: (
-        <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Nunavik Systemic Inquiry (2025)</h3>
-          <p className="text-sm text-gray-700 leading-relaxed">
-            The CDPDJ's 2025 Nunavik systemic inquiry reveals the truth:
-          </p>
-          <div className="bg-red-50 p-4 rounded mt-4 space-y-2">
-            <p className="text-xs font-bold text-red-900">FINDINGS</p>
-            <ul className="text-xs text-red-800 space-y-1 ml-4">
-              <li>• Under-resourced systems</li>
+          <div className="bg-red-50 p-4 rounded space-y-2">
+            <p className="text-sm font-bold text-red-900">DOCUMENTED VIOLATIONS:</p>
+            <ul className="text-xs text-red-800 space-y-1 mt-2">
+              <li>• Under-resourced services</li>
               <li>• Culturally inappropriate interventions</li>
-              <li>• Harm to Indigenous kids' health</li>
-              <li>• Damage to child development</li>
-              <li>• Chronic failures across the board</li>
+              <li>• Harm to children's health/development</li>
+              <li>• Article 23 UNCRC violations</li>
+              <li>• Quebec Charter art. 39 violations</li>
             </ul>
           </div>
         </div>
       ),
-      right: (
+    },
+
+    // PAGE 7: LEGAL RIGHTS
+    {
+      title: 'PAGE 7: LEGAL RIGHTS & CONSTITUTION',
+      left: (
         <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Legal Violations</h3>
+          <h3 className="text-2xl font-black text-gray-900 mb-4">Protected Expression</h3>
           <p className="text-sm text-gray-700 leading-relaxed">
-            This family's experience breaks multiple laws:
+            Public posts calling for accountability are protected by law.
           </p>
-          <div className="bg-purple-50 p-4 rounded mt-4 space-y-2">
-            <p className="text-xs font-bold text-purple-900">VIOLATIONS</p>
-            <ul className="text-xs text-purple-800 space-y-1 ml-4">
-              <li>✗ Article 23 UNCRC (child welfare)</li>
-              <li>✗ Quebec Charter art. 39 (equality)</li>
-              <li>✗ Reconciliation spirit (TRC)</li>
-              <li>✗ Jordan's Principle (no-delay services)</li>
-              <li>✗ Constitutional duty to consult</li>
-            </ul>
+          <div className="bg-green-50 p-4 rounded space-y-2">
+            <p className="text-sm font-bold text-green-900">CHARTER s.2(b)</p>
+            <p className="text-xs text-green-800 mt-2">Freedom of expression. Responsible communication on public interest. Grant v Torstar 2009 CSC 61.</p>
           </div>
-          <p className="text-xs font-bold text-red-600 mt-4">
-            5+ YEARS OF DOCUMENTED VIOLATIONS
-          </p>
+          <div className="bg-blue-50 p-4 rounded space-y-2">
+            <p className="text-sm font-bold text-blue-900">INDIGENOUS RIGHTS</p>
+            <p className="text-xs text-blue-800 mt-2">2024 CSC 5 affirms Indigenous rights to advocate for justice and self-determination.</p>
+          </div>
         </div>
       ),
-    },
-
-    // PAGE 7: LEGAL RIGHTS & CONSTITUTIONAL PROTECTION
-    {
-      title: 'PAGE 7: LEGAL RIGHTS & PROTECTION',
-      left: (
+      right: (
         <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Constitutional Protection</h3>
+          <h3 className="text-2xl font-black text-gray-900 mb-4">Children's Rights</h3>
           <p className="text-sm text-gray-700 leading-relaxed">
-            Public posts calling for accountability are protected by law:
+            Every child has rights. Know them. Teach them. Defend them.
           </p>
-          <div className="bg-blue-50 p-4 rounded mt-4 space-y-2">
-            <p className="text-xs font-bold text-blue-900">CANADIAN CHARTER</p>
-            <p className="text-xs text-blue-800">Section 2(b) - Freedom of Expression</p>
-            <p className="text-xs text-blue-800 mt-2">Grant v Torstar 2009 CSC 61: Responsible communication on public interest is protected.</p>
+          <div className="bg-purple-50 p-4 rounded space-y-2">
+            <p className="text-sm font-bold text-purple-900">UNCRC ARTICLE 3</p>
+            <p className="text-xs text-purple-800 mt-2">Best interests of the child shall be a primary consideration in all actions concerning children.</p>
           </div>
-          <div className="bg-green-50 p-4 rounded mt-4 space-y-2">
-            <p className="text-xs font-bold text-green-900">INDIGENOUS RIGHTS</p>
-            <p className="text-xs text-green-800">2024 CSC 5: Indigenous rights jurisprudence protects advocacy.</p>
+          <div className="bg-yellow-50 p-4 rounded space-y-2">
+            <p className="text-sm font-bold text-yellow-900">CANADIAN CONSTITUTION</p>
+            <p className="text-xs text-yellow-800 mt-2">Section 35: Recognition of Aboriginal peoples' rights. Section 15: Equality rights for all.</p>
           </div>
-        </div>
-      ),
-      right: (
-        <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Right to Demand Accountability</h3>
-          <p className="text-sm text-gray-700 leading-relaxed">
-            This advocacy is protected because it:
-          </p>
-          <ul className="text-sm text-gray-700 space-y-2 ml-4">
-            <li>✓ Addresses public interest issues</li>
-            <li>✓ Calls for government accountability</li>
-            <li>✓ Protects Indigenous rights</li>
-            <li>✓ Demands justice for children</li>
-            <li>✓ Contains no threats or violence</li>
-          </ul>
-          <p className="text-sm text-gray-700 leading-relaxed mt-4">
-            The right to speak about government failures is fundamental to democracy.
-          </p>
-          <p className="text-xs font-bold text-green-600 mt-4">
-            ✓ LEGALLY PROTECTED EXPRESSION
-          </p>
         </div>
       ),
     },
 
-    // PAGE 8: CHILDREN'S EDUCATION
+    // PAGE 8: CALL TO ACTION
     {
-      title: 'PAGE 8: CHILDREN\'S EDUCATION',
+      title: 'PAGE 8: CALL TO ACTION',
       left: (
         <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Know Your Rights</h3>
-          <p className="text-sm text-gray-700 leading-relaxed font-bold">
-            Every child deserves to know:
-          </p>
-          <div className="bg-blue-50 p-4 rounded mt-4 space-y-3">
-            <div>
-              <p className="text-xs font-bold text-blue-900">CANADIAN CONSTITUTION</p>
-              <p className="text-xs text-blue-800">Protects your rights and freedoms</p>
-            </div>
-            <div>
-              <p className="text-xs font-bold text-blue-900">CANADIAN CHARTER</p>
-              <p className="text-xs text-blue-800">Guarantees equality and freedom</p>
-            </div>
-            <div>
-              <p className="text-xs font-bold text-blue-900">SUPREME COURT</p>
-              <p className="text-xs text-blue-800">Interprets laws to protect you</p>
-            </div>
-            <div>
-              <p className="text-xs font-bold text-blue-900">UNITED NATIONS</p>
-              <p className="text-xs text-blue-800">Convention on Rights of the Child</p>
-            </div>
+          <h3 className="text-2xl font-black text-gray-900 mb-4">How You Can Help</h3>
+          <div className="bg-red-50 p-4 rounded space-y-2">
+            <p className="text-sm font-bold text-red-900">DONATE</p>
+            <p className="text-xs text-red-800 mt-2">100% of donations go directly to legal advocacy. Every dollar supports justice for Barran and other Indigenous families.</p>
           </div>
-        </div>
-      ),
-      right: (
-        <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Your Rights Matter</h3>
-          <p className="text-sm text-gray-700 leading-relaxed">
-            You have the right to:
-          </p>
-          <ul className="text-sm text-gray-700 space-y-2 ml-4">
-            <li>✓ Safety and protection</li>
-            <li>✓ Education</li>
-            <li>✓ Health care</li>
-            <li>✓ Family support</li>
-            <li>✓ Freedom of expression</li>
-            <li>✓ Participate in decisions affecting you</li>
-            <li>✓ Access to justice</li>
-          </ul>
-          <p className="text-sm text-gray-700 leading-relaxed mt-4">
-            When government fails to protect these rights, you have the right to speak up and demand change.
-          </p>
-        </div>
-      ),
-    },
-
-    // PAGE 9: POLITICAL ACCOUNTABILITY
-    {
-      title: 'PAGE 9: POLITICAL ACCOUNTABILITY',
-      left: (
-        <img 
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/caricature-water-crisis-1-CZc7NH2hcC66YhQoWLkmC8.webp" 
-          alt="Political Hypocrisy" 
-          className="w-full h-full object-cover"
-        />
-      ),
-      right: (
-        <div className="flex flex-col justify-center h-full space-y-4 p-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Hypocrisy Exposed</h3>
-          <p className="text-sm text-gray-700 leading-relaxed font-bold">
-            Politicians preach "Eat Healthy!" while:
-          </p>
-          <div className="bg-red-50 p-4 rounded mt-4 space-y-2">
-            <p className="text-xs text-red-800">✗ Rez communities have NO CLEAN WATER for DECADES</p>
-            <p className="text-xs text-red-800">✗ Kids drink contaminated water daily</p>
-            <p className="text-xs text-red-800">✗ Health crisis ignored by government</p>
-            <p className="text-xs text-red-800">✗ Billions spent elsewhere, nothing for Rez</p>
+          <div className="bg-blue-50 p-4 rounded space-y-2">
+            <p className="text-sm font-bold text-blue-900">SHARE</p>
+            <p className="text-xs text-blue-800 mt-2">Share this story. Tag elected officials. Demand accountability. Use #JusticeForBarran #SundayBloodySunday</p>
           </div>
-          <p className="text-xs font-bold text-red-600 mt-4">
-            ⚠️ GOVERNMENT HYPOCRISY EXPOSED ⚠️
-          </p>
-        </div>
-      ),
-    },
-
-    // PAGE 10: GOVERNMENT SPENDING PRIORITIES
-    {
-      title: 'PAGE 10: SPENDING PRIORITIES',
-      left: (
-        <img 
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/caricature-water-crisis-2-9VaZcD94aE6Cgw9VTMV7nz.webp" 
-          alt="Money Tree" 
-          className="w-full h-full object-cover"
-        />
-      ),
-      right: (
-        <div className="flex flex-col justify-center h-full space-y-4 p-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Billions For Everyone But Rez</h3>
-          <p className="text-sm text-gray-700 leading-relaxed font-bold">
-            Government spending flows to:
-          </p>
-          <div className="bg-green-50 p-4 rounded mt-4 space-y-2">
-            <p className="text-xs text-green-800">✈️ Overseas aid - BILLIONS</p>
-            <p className="text-xs text-green-800">🏢 Corporate friends (Brookfield) - BILLIONS</p>
-            <p className="text-xs text-green-800">🏠 Wealthy neighborhoods - BILLIONS</p>
-            <p className="text-xs text-green-800 font-bold">❌ Rez gets: NOTHING</p>
-          </div>
-          <p className="text-xs font-bold text-red-600 mt-4">
-            20+ YEARS OF BROKEN PROMISES
-          </p>
-        </div>
-      ),
-    },
-
-    // PAGE 11: CALL TO ACTION
-    {
-      title: 'PAGE 11: CALL TO ACTION',
-      left: (
-        <div className="flex flex-col justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">What Can You Do?</h3>
-          <div className="space-y-3">
-            <div className="bg-blue-50 p-3 rounded">
-              <p className="text-xs font-bold text-blue-900">1. DONATE</p>
-              <p className="text-xs text-blue-800">Support legal defense and advocacy</p>
-            </div>
-            <div className="bg-green-50 p-3 rounded">
-              <p className="text-xs font-bold text-green-900">2. SHARE</p>
-              <p className="text-xs text-green-800">Tell others about this injustice</p>
-            </div>
-            <div className="bg-purple-50 p-3 rounded">
-              <p className="text-xs font-bold text-purple-900">3. CONTACT OFFICIALS</p>
-              <p className="text-xs text-purple-800">Demand accountability from your representatives</p>
-            </div>
-            <div className="bg-red-50 p-3 rounded">
-              <p className="text-xs font-bold text-red-900">4. VOTE</p>
-              <p className="text-xs text-red-800">Support candidates who care about Indigenous rights</p>
-            </div>
+          <div className="bg-green-50 p-4 rounded space-y-2">
+            <p className="text-sm font-bold text-green-900">VOTE</p>
+            <p className="text-xs text-green-800 mt-2">Vote for leaders who support Indigenous rights, child protection, and government accountability.</p>
           </div>
         </div>
       ),
@@ -484,127 +348,124 @@ export function BookInterfaceComplete({ onClose }: BookInterfaceProps) {
         <div className="flex flex-col justify-center h-full space-y-4">
           <h3 className="text-2xl font-black text-gray-900 mb-4">Justice Requires Action</h3>
           <p className="text-sm text-gray-700 leading-relaxed">
-            No threats. No intimidation. Only demanding accountability to protect other Indigenous families.
+            Truth and Reconciliation was not a conclusion. It was a beginning that governments chose to ignore.
           </p>
-          <p className="text-sm text-gray-700 leading-relaxed mt-4">
-            Victims today deserve better than "sorry" without change.
-          </p>
-          <div className="bg-yellow-50 p-4 rounded mt-4 space-y-2">
-            <p className="text-xs font-bold text-yellow-900">OPEN TO PUBLIC DEBATE</p>
-            <p className="text-xs text-yellow-800">Sources and emails available. Tag/share if you've been ghosted too.</p>
+          <div className="bg-gray-50 p-4 rounded space-y-2">
+            <p className="text-sm font-bold text-gray-900">WHAT WE DEMAND:</p>
+            <ul className="text-xs text-gray-700 space-y-1 mt-2">
+              <li>✓ Independent inquiry into DPJ failures</li>
+              <li>✓ Jordan's Principle application</li>
+              <li>✓ Real support for Indigenous families</li>
+              <li>✓ Government accountability</li>
+              <li>✓ Systemic change</li>
+            </ul>
           </div>
           <p className="text-xs font-bold text-red-600 mt-4">
-            WHEN WILL THERE BE REAL ACTION?
+            The reckoning is coming. History will judge.
           </p>
         </div>
       ),
     },
 
-    // PAGE 12: BACK COVER / CONTACT
+    // PAGE 9: BACK COVER
     {
       title: 'BACK COVER',
       left: (
-        <div className="flex flex-col items-center justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Contact Us</h3>
-          <a 
-            href="mailto:contact@justiceforbarran.com" 
-            className="text-blue-600 hover:underline font-semibold text-lg"
-          >
-            contact@justiceforbarran.com
-          </a>
-          <p className="text-sm text-gray-600">justiceforbarran.com</p>
-          <div className="mt-6 space-y-2">
-            <p className="text-xs font-bold text-gray-700">Follow Us</p>
-            <p className="text-xs text-gray-600">Twitter • Instagram • Facebook</p>
+        <div className="flex flex-col items-center justify-center h-full bg-gradient-to-b from-black to-gray-800 p-6">
+          <h2 className="text-3xl font-black text-yellow-300 text-center mb-6">JUSTICE FOR BARRAN</h2>
+          <p className="text-sm text-yellow-300 text-center mb-8 max-w-sm">
+            A story of systemic failure, political silence, and the ongoing fight for Indigenous justice in Canada.
+          </p>
+          <div className="border-t border-yellow-300 pt-6 w-full text-center">
+            <p className="text-xs text-yellow-300 mb-4">📧 Contact: admin@justiceforbarran.com</p>
+            <p className="text-xs text-yellow-300 mb-4">🌐 Website: www.indigenousadv-ahjdmzis.manus.space</p>
+            <p className="text-xs text-yellow-300">📱 Share: #JusticeForBarran #SundayBloodySunday</p>
           </div>
         </div>
       ),
       right: (
-        <div className="flex flex-col items-center justify-center h-full space-y-4">
-          <h3 className="text-2xl font-black text-gray-900 mb-4">Support Justice</h3>
-          <p className="text-sm text-gray-700 text-center">
-            Every donation funds legal defense and systemic change.
-          </p>
-          <div className="bg-green-50 p-4 rounded text-center mt-4">
-            <p className="text-xs font-bold text-green-900">DONATE NOW</p>
-            <p className="text-xs text-green-800 mt-2">Interac e-Transfer</p>
-            <p className="text-xs text-green-800">Credit Cards</p>
-            <p className="text-xs text-green-800">QR Codes</p>
+        <div className="flex flex-col items-center justify-center h-full bg-gradient-to-b from-gray-800 to-black p-6">
+          <h3 className="text-2xl font-black text-yellow-300 text-center mb-6">SUPPORT THE CAUSE</h3>
+          <div className="space-y-4 w-full">
+            <button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              💰 Donate Now
+            </button>
+            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              📢 Share Story
+            </button>
+            <button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+              ✍️ Sign Petition
+            </button>
           </div>
-          <p className="text-xs text-gray-600 mt-4">© 2026 Justice for Barran</p>
+          <p className="text-xs text-yellow-300 text-center mt-8">
+            Every voice matters. Every action counts. Together, we demand justice.
+          </p>
         </div>
       ),
     },
   ];
 
-  const canGoPrev = currentPage > 0;
-  const canGoNext = currentPage < pages.length - 1;
+  const goToNextPage = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const goToPreviousPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const currentPageData = pages[currentPage];
 
   return (
-    <div className="relative w-full min-h-screen bg-gradient-to-b from-gray-900 to-black py-8 px-4">
-      {/* CLOSE BUTTON */}
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 z-50 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-bold"
-      >
-        ✕ Close
-      </button>
+    <div className="fixed inset-0 bg-black bg-opacity-95 flex flex-col items-center justify-center z-50 p-4">
+      {/* Header */}
+      <div className="w-full max-w-6xl mb-4 flex justify-between items-center">
+        <h2 className="text-xl font-bold text-white">{currentPageData.title}</h2>
+        <button
+          onClick={onClose}
+          className="text-white hover:text-red-500 text-2xl font-bold"
+        >
+          ✕ Close
+        </button>
+      </div>
 
-      {/* BOOK CONTAINER */}
-      <div className="max-w-6xl mx-auto">
-        {/* PAGE TITLE */}
-        <h2 className="text-center text-3xl font-black text-white mb-8">
-          {pages[currentPage].title}
-        </h2>
-
-        {/* DOUBLE-PAGE SPREAD */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 bg-white rounded-lg shadow-2xl overflow-hidden">
-          {/* LEFT PAGE */}
-          <div className="p-8 bg-white border-r-4 border-gray-300 min-h-96 flex items-center justify-center">
-            {pages[currentPage].left}
-          </div>
-
-          {/* RIGHT PAGE */}
-          <div className="p-8 bg-gray-50 min-h-96 flex items-center justify-center">
-            {pages[currentPage].right}
-          </div>
+      {/* Book Pages */}
+      <div className="w-full max-w-6xl bg-white rounded-lg shadow-2xl overflow-hidden flex">
+        {/* Left Page */}
+        <div className="w-1/2 p-8 overflow-y-auto max-h-96 bg-gradient-to-br from-gray-50 to-white">
+          {currentPageData.left}
         </div>
 
-        {/* PAGE COUNTER */}
-        <div className="text-center mb-8">
-          <p className="text-white text-lg font-semibold">
-            Page {currentPage + 1} of {pages.length}
-          </p>
+        {/* Right Page */}
+        <div className="w-1/2 p-8 overflow-y-auto max-h-96 bg-white border-l border-gray-200">
+          {currentPageData.right}
         </div>
+      </div>
 
-        {/* NAVIGATION BUTTONS */}
-        <div className="flex justify-center gap-4">
-          <button
-            onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
-            disabled={!canGoPrev}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-bold transition-all ${
-              canGoPrev
-                ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                : 'bg-gray-600 text-gray-400 cursor-not-allowed'
-            }`}
-          >
-            <ChevronLeft size={20} />
-            {i18n.language === 'fr' ? 'Précédent' : i18n.language === 'ht' ? 'Anvan' : 'Previous'}
-          </button>
+      {/* Footer */}
+      <div className="w-full max-w-6xl mt-4 flex justify-between items-center">
+        <button
+          onClick={goToPreviousPage}
+          disabled={currentPage === 0}
+          className="flex items-center gap-2 px-6 py-2 bg-gray-600 hover:bg-gray-700 disabled:bg-gray-400 text-white font-bold rounded transition-colors"
+        >
+          <ChevronLeft size={20} /> Précédent
+        </button>
 
-          <button
-            onClick={() => setCurrentPage(Math.min(pages.length - 1, currentPage + 1))}
-            disabled={!canGoNext}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-bold transition-all ${
-              canGoNext
-                ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                : 'bg-gray-600 text-gray-400 cursor-not-allowed'
-            }`}
-          >
-            {i18n.language === 'fr' ? 'Suivant' : i18n.language === 'ht' ? 'Apre' : 'Next'}
-            <ChevronRight size={20} />
-          </button>
-        </div>
+        <span className="text-white font-bold">
+          Page {currentPage + 1} of {pages.length}
+        </span>
+
+        <button
+          onClick={goToNextPage}
+          disabled={currentPage === pages.length - 1}
+          className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-bold rounded transition-colors"
+        >
+          Suivant <ChevronRight size={20} />
+        </button>
       </div>
     </div>
   );
