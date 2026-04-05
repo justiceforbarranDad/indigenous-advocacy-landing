@@ -32,8 +32,7 @@ export default function HomeBookCover() {
         }}
       />
 
-      {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-black/30" />
+
 
       {/* REAL Canadian Flag - Top Center */}
       <div className="absolute top-12 left-1/2 transform -translate-x-1/2 z-20">
