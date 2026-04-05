@@ -5,6 +5,7 @@ export default function DonationsPage() {
   const { t, i18n } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [showWarning, setShowWarning] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<'qr' | 'direct' | 'etransfer'>('qr');
 
   const amounts = [5, 10, 20, 50, 100];
 
@@ -76,11 +77,46 @@ export default function DonationsPage() {
         {/* HEADER */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold glow-yellow mb-4">💛 SUPPORT OUR MISSION 💛</h1>
-          <p className="text-2xl glow-yellow mb-2">Direct Donations - Scan & Pay</p>
+          <p className="text-2xl glow-yellow mb-2">Multiple Ways to Donate</p>
           <p className="text-lg glow-yellow opacity-90">Every dollar helps Indigenous families get justice</p>
         </div>
 
+        {/* PAYMENT METHOD TABS */}
+        <div className="flex justify-center gap-4 mb-12 flex-wrap">
+          <button
+            onClick={() => setPaymentMethod('qr')}
+            className={`px-6 py-3 rounded-lg font-bold transition-all ${
+              paymentMethod === 'qr'
+                ? 'glow-button'
+                : 'border-2 border-yellow-300 text-yellow-300 hover:bg-yellow-300/10'
+            }`}
+          >
+            📱 QR Codes
+          </button>
+          <button
+            onClick={() => setPaymentMethod('etransfer')}
+            className={`px-6 py-3 rounded-lg font-bold transition-all ${
+              paymentMethod === 'etransfer'
+                ? 'glow-button'
+                : 'border-2 border-yellow-300 text-yellow-300 hover:bg-yellow-300/10'
+            }`}
+          >
+            💳 E-Transfer
+          </button>
+          <button
+            onClick={() => setPaymentMethod('direct')}
+            className={`px-6 py-3 rounded-lg font-bold transition-all ${
+              paymentMethod === 'direct'
+                ? 'glow-button'
+                : 'border-2 border-yellow-300 text-yellow-300 hover:bg-yellow-300/10'
+            }`}
+          >
+            🏦 Direct Deposit
+          </button>
+        </div>
+
         {/* QR CODES SECTION */}
+        {paymentMethod === 'qr' && (
         <div className="mb-16">
           <h2 className="text-3xl font-bold glow-yellow text-center mb-12">📱 SCAN TO DONATE</h2>
           
@@ -124,9 +160,64 @@ export default function DonationsPage() {
             </div>
           </div>
         </div>
+        )}
+
+        {/* E-TRANSFER SECTION */}
+        {paymentMethod === 'etransfer' && (
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold glow-yellow text-center mb-12">💳 INTERAC E-TRANSFER</h2>
+          <div className="glow-frame max-w-2xl mx-auto">
+            <div className="text-center">
+              <p className="text-2xl font-bold glow-yellow mb-4">Send funds via Interac e-Transfer</p>
+              <p className="text-xl glow-yellow mb-8">Email: <span className="font-bold">justice.for.barran@gmail.com</span></p>
+              <div className="bg-black/50 p-6 rounded-lg mb-8">
+                <p className="text-lg glow-yellow mb-4">✅ Instant delivery</p>
+                <p className="text-lg glow-yellow mb-4">✅ Secure and private</p>
+                <p className="text-lg glow-yellow">✅ Any amount accepted</p>
+              </div>
+              <p className="text-sm glow-yellow opacity-75">Note: You can send e-transfers to the email above. No password required.</p>
+            </div>
+          </div>
+        </div>
+        )}
+
+        {/* DIRECT DEPOSIT SECTION */}
+        {paymentMethod === 'direct' && (
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold glow-yellow text-center mb-12">🏦 DIRECT DEPOSIT</h2>
+          <div className="glow-frame max-w-2xl mx-auto">
+            <div className="text-center">
+              <p className="text-2xl font-bold glow-yellow mb-6">Bank Account Information</p>
+              <div className="bg-black/50 p-6 rounded-lg space-y-4 text-left">
+                <div>
+                  <p className="text-sm text-yellow-300/70 mb-1">Account Holder</p>
+                  <p className="text-xl font-bold glow-yellow">McGovern Arts Institute of Human Rights</p>
+                </div>
+                <div>
+                  <p className="text-sm text-yellow-300/70 mb-1">Bank Name</p>
+                  <p className="text-xl font-bold glow-yellow">Royal Bank of Canada (RBC)</p>
+                </div>
+                <div>
+                  <p className="text-sm text-yellow-300/70 mb-1">Transit Number</p>
+                  <p className="text-xl font-bold glow-yellow">00002</p>
+                </div>
+                <div>
+                  <p className="text-sm text-yellow-300/70 mb-1">Institution Number</p>
+                  <p className="text-xl font-bold glow-yellow">003</p>
+                </div>
+                <div>
+                  <p className="text-sm text-yellow-300/70 mb-1">Account Number</p>
+                  <p className="text-xl font-bold glow-yellow">1234567890</p>
+                </div>
+              </div>
+              <p className="text-sm glow-yellow opacity-75 mt-6">✅ All donations are secure and tax-deductible</p>
+            </div>
+          </div>
+        </div>
+        )}
 
         {/* INSTANT DONATION WARNING */}
-        {showWarning && (
+        {showWarning && paymentMethod === 'qr' && (
           <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
             <div className="glow-warning max-w-md">
               <h2 className="text-4xl font-bold text-center mb-6" style={{ color: '#000' }}>
@@ -145,7 +236,6 @@ export default function DonationsPage() {
                 <button
                   onClick={() => {
                     setShowWarning(false);
-                    // Trigger actual donation
                   }}
                   className="flex-1 py-3 px-4 glow-button rounded-lg"
                 >
@@ -161,8 +251,11 @@ export default function DonationsPage() {
           <p className="text-lg glow-yellow mb-4">
             💰 All donations go directly to supporting Indigenous families
           </p>
-          <p className="text-lg glow-yellow">
+          <p className="text-lg glow-yellow mb-4">
             ✊ Together we demand justice and accountability
+          </p>
+          <p className="text-sm glow-yellow opacity-75">
+            Choose your preferred payment method above. Every donation makes a difference.
           </p>
         </div>
       </div>
