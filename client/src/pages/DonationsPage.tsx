@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 export default function DonationsPage() {
   const { t, i18n } = useTranslation();
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
+  const [showWarning, setShowWarning] = useState(false);
 
   const amounts = [5, 10, 20, 50, 100];
 
@@ -17,149 +18,154 @@ export default function DonationsPage() {
       100: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_RnBI0p_qr_00w00jco47XM3UNfRn9EI0m_d74e5542.png',
     },
     usd: {
-      5: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_FXeDJJ_qr_eVq7sL5ZG91Q4YR8oV9EI0h_ae3c53e8.png',
-      10: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_vJvcea_qr_28E4gz87O7XMgHz8oV9EI0g_924f5fff.png',
-      20: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_xwck1X_qr_fZufZh3Rydi62QJdJf9EI08_51f358ee.png',
-      50: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_2zVWTq_qr_14AaEX5ZGguifDv5cJ9EI0q_63f1c31a.png',
-      100: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_H559Zk_qr_aFa00jafW6TIbnf48F9EI0d_e63c3f04.png',
-    },
-  };
-
-  // Payment buttons
-  const paymentButtons = {
-    cdn: {
-      5: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_7DhUgn_5-cdn_8f07100b.png',
-      10: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_QpzChK_10-cdn_68170b86.png',
-      20: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_mIQcqF_20-cdn_38a35bfc.png',
-      50: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_sNDa0x_50-cdn_790ec0ee.png',
-      100: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_VxnpA8_100-cdn_0e47674c.png',
-    },
-    usd: {
-      5: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_fGBAtF_5-usd_38100bfa.png',
-      10: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_bbbnpm_10-usd_042ce5a4.png',
-      20: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_U39AdB_20-usd_e1d0a09c.png',
-      50: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_5gJSrV_50-usd_a2f4197c.png',
-      100: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_vzY7aT_100-usd_a883f4cc.png',
+      5: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/5-usd_bd2c5f7d.png',
+      10: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/10-usd_2e8626ac.png',
+      20: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/pasted_file_U39AdB_20-usd_8f33553c.png',
+      50: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/50-usd_a1384294.png',
+      100: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/100-usd_fc5313c8.png',
     },
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-12 px-4">
+    <div className="min-h-screen bg-black py-12 px-4" style={{ background: '#0a0a0a' }}>
+      <style>{`
+        @keyframes glow {
+          0%, 100% { box-shadow: 0 0 10px rgba(255, 255, 0, 0.5), 0 0 20px rgba(255, 255, 0, 0.3), inset 0 0 10px rgba(255, 255, 0, 0.1); }
+          50% { box-shadow: 0 0 20px rgba(255, 255, 0, 0.8), 0 0 40px rgba(255, 255, 0, 0.5), inset 0 0 15px rgba(255, 255, 0, 0.2); }
+        }
+        
+        .glow-yellow {
+          color: #ffff00;
+          text-shadow: 0 0 10px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 0, 0.5);
+        }
+        
+        .glow-frame {
+          border: 3px solid #ffff00;
+          border-radius: 12px;
+          padding: 16px;
+          background: rgba(255, 255, 0, 0.05);
+          animation: glow 2s ease-in-out infinite;
+          box-shadow: 0 0 10px rgba(255, 255, 0, 0.5), 0 0 20px rgba(255, 255, 0, 0.3), inset 0 0 10px rgba(255, 255, 0, 0.1);
+        }
+        
+        .glow-button {
+          background: linear-gradient(135deg, #ffff00 0%, #ffff88 100%);
+          color: #000;
+          border: 2px solid #ffff00;
+          font-weight: bold;
+          box-shadow: 0 0 15px rgba(255, 255, 0, 0.6), 0 0 30px rgba(255, 255, 0, 0.3);
+          transition: all 0.3s ease;
+        }
+        
+        .glow-button:hover {
+          box-shadow: 0 0 25px rgba(255, 255, 0, 0.8), 0 0 50px rgba(255, 255, 0, 0.5);
+          transform: scale(1.05);
+        }
+        
+        .glow-warning {
+          background: linear-gradient(135deg, #ffff00 0%, #ffff88 100%);
+          border: 3px solid #ffff00;
+          border-radius: 16px;
+          padding: 32px;
+          box-shadow: 0 0 30px rgba(255, 255, 0, 0.8), 0 0 60px rgba(255, 255, 0, 0.5), inset 0 0 20px rgba(255, 255, 0, 0.2);
+          animation: glow 1.5s ease-in-out infinite;
+        }
+      `}</style>
+
       <div className="max-w-6xl mx-auto">
         {/* HEADER */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-black text-white mb-4">💚 DONATE NOW 💚</h1>
-          <p className="text-xl text-gray-300 mb-2">Support Justice for Barran</p>
-          <p className="text-gray-400">Every donation helps fight for Indigenous rights and accountability</p>
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold glow-yellow mb-4">💛 SUPPORT OUR MISSION 💛</h1>
+          <p className="text-2xl glow-yellow mb-2">Direct Donations - Scan & Pay</p>
+          <p className="text-lg glow-yellow opacity-90">Every dollar helps Indigenous families get justice</p>
         </div>
 
-        {/* INTERAC e-TRANSFER SECTION */}
+        {/* QR CODES SECTION */}
         <div className="mb-16">
-          <h2 className="text-3xl font-black text-green-400 mb-8 text-center">📱 INTERAC e-TRANSFER (Direct to TD)</h2>
-          <p className="text-center text-gray-300 mb-8">Scan QR code with your phone camera or click button to donate instantly</p>
-
-          {/* CDN DONATIONS */}
+          <h2 className="text-3xl font-bold glow-yellow text-center mb-12">📱 SCAN TO DONATE</h2>
+          
+          {/* CDN QR Codes */}
           <div className="mb-12">
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">🍁 Canadian Dollars (CAD)</h3>
+            <h3 className="text-2xl font-bold glow-yellow text-center mb-8">🍁 Canadian Dollars (CAD)</h3>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               {amounts.map((amount) => (
-                <div key={`cdn-${amount}`} className="flex flex-col items-center">
-                  {/* QR Code */}
-                  <div className="mb-4 p-2 bg-white rounded-lg">
-                    <img
-                      src={qrCodes.cdn[amount as keyof typeof qrCodes.cdn]}
-                      alt={`Donate $${amount} CAD`}
-                      className="w-32 h-32 object-cover"
-                    />
+                <div key={`cdn-${amount}`} className="glow-frame">
+                  <div className="text-center mb-4">
+                    <p className="text-xl font-bold glow-yellow">${amount} CAD</p>
                   </div>
-                  {/* Payment Button */}
-                  <button
-                    onClick={() => setSelectedAmount(amount)}
-                    className="w-full"
-                  >
-                    <img
-                      src={paymentButtons.cdn[amount as keyof typeof paymentButtons.cdn]}
-                      alt={`Pay $${amount} CAD`}
-                      className="w-full h-auto hover:opacity-80 transition-opacity"
-                    />
-                  </button>
+                  <img 
+                    src={qrCodes.cdn[amount as keyof typeof qrCodes.cdn]} 
+                    alt={`$${amount} CAD QR Code`}
+                    className="w-full h-auto mb-4"
+                  />
+                  <p className="text-center glow-yellow font-semibold">Scan to pay</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* USD DONATIONS */}
+          {/* USD QR Codes */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">🇺🇸 US Dollars (USD)</h3>
+            <h3 className="text-2xl font-bold glow-yellow text-center mb-8">🇺🇸 US Dollars (USD)</h3>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               {amounts.map((amount) => (
-                <div key={`usd-${amount}`} className="flex flex-col items-center">
-                  {/* QR Code */}
-                  <div className="mb-4 p-2 bg-white rounded-lg">
-                    <img
-                      src={qrCodes.usd[amount as keyof typeof qrCodes.usd]}
-                      alt={`Donate $${amount} USD`}
-                      className="w-32 h-32 object-cover"
-                    />
+                <div key={`usd-${amount}`} className="glow-frame">
+                  <div className="text-center mb-4">
+                    <p className="text-xl font-bold glow-yellow">${amount} USD</p>
                   </div>
-                  {/* Payment Button */}
-                  <button
-                    onClick={() => setSelectedAmount(amount)}
-                    className="w-full"
-                  >
-                    <img
-                      src={paymentButtons.usd[amount as keyof typeof paymentButtons.usd]}
-                      alt={`Pay $${amount} USD`}
-                      className="w-full h-auto hover:opacity-80 transition-opacity"
-                    />
-                  </button>
+                  <img 
+                    src={qrCodes.usd[amount as keyof typeof qrCodes.usd]} 
+                    alt={`$${amount} USD QR Code`}
+                    className="w-full h-auto mb-4"
+                  />
+                  <p className="text-center glow-yellow font-semibold">Scan to pay</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* CREDIT CARD SECTION */}
-        <div className="bg-purple-900 rounded-lg p-8 text-center">
-          <h2 className="text-3xl font-black text-white mb-4">💳 CREDIT CARD DONATIONS</h2>
-          <p className="text-gray-300 mb-6">Visa, Mastercard, Amex - Secure Stripe Payment</p>
-          <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors">
-            Donate with Credit Card
-          </button>
-        </div>
+        {/* INSTANT DONATION WARNING */}
+        {showWarning && (
+          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+            <div className="glow-warning max-w-md">
+              <h2 className="text-4xl font-bold text-center mb-6" style={{ color: '#000' }}>
+                ⚡ INSTANT DONATION ⚡
+              </h2>
+              <p className="text-xl text-center font-semibold mb-8" style={{ color: '#000' }}>
+                This is an immediate, non-refundable donation to support Indigenous families seeking justice.
+              </p>
+              <div className="flex gap-4">
+                <button
+                  onClick={() => setShowWarning(false)}
+                  className="flex-1 py-3 px-4 bg-black text-yellow-300 font-bold rounded-lg border-2 border-yellow-300 hover:bg-gray-900"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    setShowWarning(false);
+                    // Trigger actual donation
+                  }}
+                  className="flex-1 py-3 px-4 glow-button rounded-lg"
+                >
+                  Confirm Donation
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
-        {/* THANK YOU */}
-        <div className="text-center mt-12">
-          <p className="text-gray-400 text-lg">🙏 Thank you for supporting justice and accountability 🙏</p>
+        {/* FOOTER INFO */}
+        <div className="text-center mt-16 pt-8 border-t border-yellow-500/30">
+          <p className="text-lg glow-yellow mb-4">
+            💰 All donations go directly to supporting Indigenous families
+          </p>
+          <p className="text-lg glow-yellow">
+            ✊ Together we demand justice and accountability
+          </p>
         </div>
       </div>
-
-      {/* WARNING MODAL */}
-      {selectedAmount && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-          <div className="bg-yellow-300 rounded-lg p-8 max-w-md text-center animate-pulse">
-            <p className="text-4xl font-black text-yellow-900 mb-4">⚡ INSTANT DONATION ⚡</p>
-            <p className="text-xl font-bold text-yellow-900 mb-6">This is an instant donation</p>
-            <div className="flex gap-4">
-              <button
-                onClick={() => setSelectedAmount(null)}
-                className="flex-1 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded font-bold"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={() => {
-                  // Process donation
-                  setSelectedAmount(null);
-                }}
-                className="flex-1 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-bold"
-              >
-                Confirm
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
