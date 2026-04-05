@@ -49,6 +49,7 @@ import HowToDocumentYourCase from "./pages/HowToDocumentYourCase";
 import PodcastDashboard from "./pages/PodcastDashboard";
 import OrangeShirtDayInvestigation from "./pages/OrangeShirtDayInvestigation";
 import DonationsPage from "./pages/DonationsPage";
+import PodcastRadioPage from "./pages/PodcastRadioPage";
 import CallLogDocumentation from "./pages/CallLogDocumentation";
 import InteractiveCallMap from "./pages/InteractiveCallMap";
 import CensorshipAndSuppression from "./pages/CensorshipAndSuppression";
@@ -183,6 +184,7 @@ function Router() {
       <Route path={"/share-story"} component={ShareStory} />
       <Route path="/donate" component={DonateEnhanced} />
       <Route path="/donate-now" component={DonationsPage} />
+      <Route path="/podcast-radio" component={PodcastRadioPage} />
       <Route path="/sponsors" component={Sponsors} />
       <Route path="/donate-quick" component={DonateQuick} />
       <Route path="/donate-direct" component={DirectDepositDonation} />

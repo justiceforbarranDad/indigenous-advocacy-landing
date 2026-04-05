@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BookCover } from '@/components/BookCover';
-import { BookInterface } from '@/components/BookInterface';
+import { BookInterfaceComplete } from '@/components/BookInterfaceComplete';
 import { trpc } from '@/lib/trpc';
 import QRCode from 'qrcode';
 
@@ -71,11 +71,7 @@ export default function Home() {
 
   // If book is opened, show book interface
   if (bookOpened) {
-    return (
-      <>
-        <BookInterface onClose={() => setBookOpened(false)} />
-      </>
-    );
+    return <BookInterfaceComplete onClose={() => setBookOpened(false)} />;
   }
 
   // Show book cover as full-screen overlay
