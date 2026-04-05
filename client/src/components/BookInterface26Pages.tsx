@@ -12,7 +12,19 @@ interface PageContent {
   hasRadio?: boolean;
 }
 
-const CONTACT_INFO = 'The McGovern Fondation Human Rights\nwww.themcgovernfondationofhumanrights.com\ncontact@justiceforbarran.com';
+const CONTACT_INFO_EN = 'The McGovern Foundation of Human Rights\nwww.themcgovernfondationofhumanrights.com\ncontact@justiceforbarran.com';
+
+const CONTACT_INFO_FR = 'La Fondation McGovern pour les droits de l\'homme\nwww.themcgovernfondationofhumanrights.com\ncontact@justiceforbarran.com';
+
+const CONTACT_INFO_HT = 'Fondasyon McGovern pou Dwa Moun\nwww.themcgovernfondationofhumanrights.com\ncontact@justiceforbarran.com';
+
+const getContactInfo = (lang: 'en' | 'fr' | 'ht') => {
+  switch(lang) {
+    case 'fr': return CONTACT_INFO_FR;
+    case 'ht': return CONTACT_INFO_HT;
+    default: return CONTACT_INFO_EN;
+  }
+};
 
 const pages26: PageContent[] = [
   // PAGE 0: COVER
@@ -20,7 +32,7 @@ const pages26: PageContent[] = [
     id: 0,
     title: 'Cover',
     leftContent: 'SUNDAY BLOODY SUNDAY\nPART TWO\n\nCanada\'s Sunday Bloody Sunday\nFebruary 14, 2021\n\nCurrent Truth Before Reconciliation',
-    rightContent: `JUSTICE FOR BARRAN\n\nPress to Enter\n\n---\n${CONTACT_INFO}`,
+    rightContent: `JUSTICE FOR BARRAN\n\nPress to Enter`,
     hasAudio: false,
   },
   
@@ -1953,10 +1965,7 @@ Together, we can create change.
 
 #JusticeForBarran
 #SundayBloodyySunday
-#IndigenousJustice
-
----
-${CONTACT_INFO}`,
+#IndigenousJustice`,
     hasAudio: false,
   },
 ];
@@ -2002,9 +2011,9 @@ export function BookInterface26Pages() {
               <h2 className="text-2xl font-bold mb-4 text-amber-600">{page.title}</h2>
               <div className="text-sm leading-relaxed whitespace-pre-wrap">{page.leftContent}</div>
               <div className="mt-6 pt-4 border-t border-slate-300 text-xs text-slate-600">
-                <p className="font-semibold">{CONTACT_INFO.split('\n')[0]}</p>
-                <p>{CONTACT_INFO.split('\n')[1]}</p>
-                <p>{CONTACT_INFO.split('\n')[2]}</p>
+                {getContactInfo(selectedLanguage).split('\n').map((line, i) => (
+                  <p key={i} className={i === 0 ? 'font-semibold' : ''}>{line}</p>
+                ))}
               </div>
             </div>
 
@@ -2029,9 +2038,9 @@ export function BookInterface26Pages() {
               )}
 
               <div className="mt-6 pt-4 border-t border-slate-300 text-xs text-slate-600">
-                <p className="font-semibold">{CONTACT_INFO.split('\n')[0]}</p>
-                <p>{CONTACT_INFO.split('\n')[1]}</p>
-                <p>{CONTACT_INFO.split('\n')[2]}</p>
+                {getContactInfo(selectedLanguage).split('\n').map((line, i) => (
+                  <p key={i} className={i === 0 ? 'font-semibold' : ''}>{line}</p>
+                ))}
               </div>
             </div>
           </div>
