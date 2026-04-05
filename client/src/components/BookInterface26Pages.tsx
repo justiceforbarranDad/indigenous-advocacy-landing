@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Volume2, VolumeX } from 'lucide-react';
 import { JukeboxPlayer } from './JukeboxPlayer';
+import PageDonationSection from './PageDonationSection';
 
 interface PageContent {
   id: number;
@@ -17,6 +18,20 @@ const CONTACT_INFO_EN = 'The McGovern Foundation of Human Rights\nwww.themcgover
 const CONTACT_INFO_FR = 'La Fondation McGovern pour les droits de l\'homme\nwww.themcgovernfondationofhumanrights.com\ncontact@justiceforbarran.com';
 
 const CONTACT_INFO_HT = 'Fondasyon McGovern pou Dwa Moun\nwww.themcgovernfondationofhumanrights.com\ncontact@justiceforbarran.com';
+
+const DONATION_SECTION_EN = '\n\n--- SUPPORT JUSTICE ---\n\nDonate: $5  $10  $20  $50  $100\n\nYour donation supports legal advocacy and systemic reform.';
+
+const DONATION_SECTION_FR = '\n\n--- SOUTENIR LA JUSTICE ---\n\nDonner: $5  $10  $20  $50  $100\n\nVotre don soutient l\'plaidoirie juridique et la réforme systémique.';
+
+const DONATION_SECTION_HT = '\n\n--- SIPÒTE JISTIS ---\n\nDonnen: $5  $10  $20  $50  $100\n\nDonasyon ou sipòte avokasi legal ak refòm sistèm.';
+
+const getDonationSection = (lang: 'en' | 'fr' | 'ht') => {
+  switch(lang) {
+    case 'fr': return DONATION_SECTION_FR;
+    case 'ht': return DONATION_SECTION_HT;
+    default: return DONATION_SECTION_EN;
+  }
+};
 
 const getContactInfo = (lang: 'en' | 'fr' | 'ht') => {
   switch(lang) {
@@ -2036,6 +2051,9 @@ export function BookInterface26Pages() {
                   </button>
                 </div>
               )}
+
+              {/* Donation Section */}
+              <PageDonationSection language={selectedLanguage} />
 
               <div className="mt-6 pt-4 border-t border-slate-300 text-xs text-slate-600">
                 {getContactInfo(selectedLanguage).split('\n').map((line, i) => (

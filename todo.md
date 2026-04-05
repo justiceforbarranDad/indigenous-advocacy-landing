@@ -82,6 +82,7 @@
 
 ## URGENT FIXES (April 4, 2026 - CRITICAL)
 - [x] Replace Stripe checkout with direct TD Bank e-Transfer payment (1-click donation) - DONE
+- [x] Donation system on ALL 26 pages (CAD e-Transfer + USD Stripe/Apple Pay/Klarna/Sezzle) - COMPLETE
 - [ ] Extend ALL 6 Kreyòl podcast episodes to 15+ minutes (remove English intro from all)
   - [ ] Episode 1: Silans Politisyen yo (Political Silence)
   - [ ] Episode 2: Echak Sistèm (System Failure)
