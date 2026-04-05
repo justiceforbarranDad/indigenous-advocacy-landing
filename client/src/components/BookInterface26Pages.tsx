@@ -11,6 +11,7 @@ interface PageContent {
   hasAudio?: boolean;
   hasPodcast?: boolean;
   hasRadio?: boolean;
+  videoUrl?: string;
 }
 
 const CONTACT_INFO_EN = 'The McGovern Foundation of Human Rights\nwww.themcgovernfondationofhumanrights.com\ncontact@justiceforbarran.com';

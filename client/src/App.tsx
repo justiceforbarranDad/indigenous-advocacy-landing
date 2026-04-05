@@ -8,6 +8,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { AlertTriangle } from 'lucide-react';
 
 import Home from "./pages/Home";
+import HomeBookCover from "./pages/HomeBookCover";
 import Resources from "./pages/Resources";
 import ShareStory from "./pages/ShareStory";
 import Donate from "./pages/Donate";
@@ -170,7 +171,8 @@ function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+        <Route path="/" component={HomeBookCover} />
+      <Route path="/home-original" component={Home} />
       <Route path="/legal" component={Legal} />
       <Route path="/jurisprudence" component={Jurisprudence} />
       <Route path="/trackers" component={Trackers} />
