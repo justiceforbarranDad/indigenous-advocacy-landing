@@ -172,6 +172,7 @@ function Router() {
   return (
     <Switch>
         <Route path="/" component={HomeBookCover} />
+      <Route path="/book" component={Newspaper} />
       <Route path="/home-original" component={Home} />
       <Route path="/legal" component={Legal} />
       <Route path="/jurisprudence" component={Jurisprudence} />
