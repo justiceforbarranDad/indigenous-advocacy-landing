@@ -48,6 +48,7 @@ import HallOfShame from "./pages/HallOfShame";
 import HowToDocumentYourCase from "./pages/HowToDocumentYourCase";
 import PodcastDashboard from "./pages/PodcastDashboard";
 import OrangeShirtDayInvestigation from "./pages/OrangeShirtDayInvestigation";
+import NewspaperSamplePage from "./components/NewspaperSamplePage";
 import DonationsPage from "./pages/DonationsPage";
 import PodcastRadioPage from "./pages/PodcastRadioPage";
 import CallLogDocumentation from "./pages/CallLogDocumentation";
@@ -225,7 +226,8 @@ function Router() {
       <Route path={"/legal-violations-framework"} component={LegalViolationsFramework} />
       <Route path={"/hall-of-shame"} component={HallOfShame} />
       <Route path={"/how-to-document-your-case"} component={HowToDocumentYourCase} />
-      <Route path="/orange-shirt-day-investigation" component={OrangeShirtDayInvestigation} />
+      <Route path="/orange-shirt-day" component={OrangeShirtDayInvestigation} />
+      <Route path="/newspaper-sample" component={NewspaperSamplePage} />
       <Route path="/call-log-documentation" component={CallLogDocumentation} />
       <Route path="/interactive-call-map" component={InteractiveCallMap} />
       <Route path="/censorship-and-suppression" component={CensorshipAndSuppression} />
