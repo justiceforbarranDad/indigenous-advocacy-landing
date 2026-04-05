@@ -344,7 +344,9 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
-
+          <div className="fixed top-4 right-20 z-50">
+            <LanguageToggle />
+          </div>
           <HamburgerMenu />
           <Router />
           <LiveChat />
