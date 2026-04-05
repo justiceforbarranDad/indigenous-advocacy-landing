@@ -54,10 +54,20 @@ export default function HomeBookCover() {
   const t = translations[selectedLanguage];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Full-Screen Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="https://cdn.pixabay.com/vimeo/video-files/parliament-buildings-northern-lights.mp4" type="video/mp4" />
+      </video>
 
       {/* Language Selection - Top Left */}
-      <div className="absolute top-6 left-6 z-10">
+      <div className="absolute top-6 left-6 z-20">
         <p className="text-yellow-400 text-sm font-bold mb-2">{t.chooseLanguage}</p>
         <div className="flex gap-2 flex-wrap">
           <button
@@ -93,34 +103,22 @@ export default function HomeBookCover() {
         </div>
       </div>
 
-      {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
-      >
-        <source src="https://cdn.pixabay.com/vimeo/video-files/parliament-buildings-northern-lights.mp4" type="video/mp4" />
-      </video>
-
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50 z-0"></div>
-
-      {/* Content Container */}
-      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen">
+      {/* Content Overlay Container */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4">
+        
         {/* Book Cover Content */}
         <div className="text-center max-w-2xl mb-12">
-          <h1 className="text-6xl md:text-7xl font-bold text-yellow-400 mb-4 leading-tight drop-shadow-lg">
+          <h1 className="text-6xl md:text-7xl font-bold text-yellow-400 mb-4 leading-tight drop-shadow-2xl" style={{textShadow: '0 0 20px rgba(0,0,0,0.8)'}}>
             {t.title}
           </h1>
-          <h2 className="text-4xl md:text-5xl text-yellow-300 mb-6 font-serif italic drop-shadow-lg">
+          <h2 className="text-4xl md:text-5xl text-yellow-300 mb-6 font-serif italic drop-shadow-2xl" style={{textShadow: '0 0 20px rgba(0,0,0,0.8)'}}>
             {t.subtitle}
           </h2>
-          <p className="text-yellow-200 text-xl mb-2 drop-shadow-lg">{t.date}</p>
-          <p className="text-yellow-300 text-lg mb-8 drop-shadow-lg">{t.tagline}</p>
+          <p className="text-yellow-200 text-xl mb-2 drop-shadow-2xl" style={{textShadow: '0 0 15px rgba(0,0,0,0.8)'}}>{t.date}</p>
+          <p className="text-yellow-300 text-lg mb-8 drop-shadow-2xl" style={{textShadow: '0 0 15px rgba(0,0,0,0.8)'}}>{t.tagline}</p>
         </div>
 
-        {/* Silence Clock - Smaller at Bottom */}
+        {/* Silence Clock */}
         <div className="bg-red-900 border-4 border-yellow-400 rounded-lg p-6 mb-8 max-w-2xl shadow-2xl">
           <h3 className="text-yellow-400 text-2xl font-bold text-center mb-4">
             {t.silenceClock}
