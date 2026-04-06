@@ -56,6 +56,20 @@ This is a legal court filing package that requires professional lawyer-standard 
 - **Content:** Contact information and filing details
 - **Finish:** Matte
 
+### Cover Plastification (Lamination)
+- **Front Cover:** Plastified/Laminated
+- **Back Cover:** Plastified/Laminated
+- **Type:** Professional lamination (3-5 mil)
+- **Finish:** Matte or semi-gloss (not glossy)
+- **Purpose:** Protection, durability, professional appearance
+- **Benefits:**
+  - ✓ Water-resistant
+  - ✓ Protects from damage
+  - ✓ Professional appearance
+  - ✓ Extended durability
+  - ✓ Premium look
+  - ✓ Easy to handle without wear
+
 ### Spine
 - **Width:** Calculated based on page count
 - **Text:** "JUSTICE FOR BARRAN - COURT FILING"
@@ -220,6 +234,7 @@ Before finalizing, Staples should verify:
 
 - [ ] Paper: 32 lb Bond, Bright White, Smooth finish
 - [ ] Covers: Cardstock 80-110 lb, professional appearance
+- [ ] Plastification: Front and back covers laminated
 - [ ] Binding: Perfect Binding, secure, professional
 - [ ] Tabs: Color-coded, labeled, properly placed
 - [ ] Printing: Clear, readable, professional
@@ -263,16 +278,25 @@ Before finalizing, Staples should verify:
    - Cardstock 80-110 lb
    - Front and back covers
    - Professional appearance
+   - **PLASTIFICATION/LAMINATION on front and back covers**
 
-4. **Tabs:**
+4. **Plastification/Lamination:**
+   - Front cover: Plastified
+   - Back cover: Plastified
+   - Type: Professional lamination (3-5 mil)
+   - Finish: Matte or semi-gloss
+   - Purpose: Protection, durability, premium appearance
+
+5. **Tabs:**
    - Color-coded tabs with labels
    - 11 tabs total
    - Printed labels with section names
 
-5. **Finishing:**
+6. **Finishing:**
    - Professional appearance
    - Court-ready quality
    - All pages secure
+   - Plastified covers
 
 ### Timeline
 - **Drop off:** Tuesday morning (April 8, 2026)
@@ -290,9 +314,10 @@ Before finalizing, Staples should verify:
 | 32 lb Bond printing (200 pages) | 3 copies | $0.15/page | $90 |
 | Perfect binding | 3 | $5-10 each | $25 |
 | Cardstock covers | 6 | $2 each | $12 |
+| Plastification/Lamination (front & back) | 6 | $2-3 each | $18 |
 | Color-coded tabs (11 tabs) | 3 sets | $3-5 per set | $15 |
 | Finishing/quality check | 3 | $5 each | $15 |
-| **TOTAL ESTIMATE** | | | **$157** |
+| **TOTAL ESTIMATE** | | | **$175** |
 
 *Note: Prices vary by location. Call Staples for exact quote.*
 
@@ -305,11 +330,12 @@ Before finalizing, Staples should verify:
 ✓ **Paper Quality:** 32 lb Bond (not cheap office paper)
 ✓ **Binding:** Perfect binding (not staples or clips)
 ✓ **Covers:** Cardstock (not regular paper)
+✓ **Plastification:** Laminated front and back covers (professional, durable, water-resistant)
 ✓ **Tabs:** Color-coded with labels (not handwritten)
 ✓ **Printing:** Professional (not home printer)
 ✓ **Organization:** Clear, logical, easy to navigate
 ✓ **Formatting:** Consistent margins, fonts, spacing
-✓ **Appearance:** Court-ready, professional, impressive
+✓ **Appearance:** Court-ready, professional, impressive, premium quality
 
 ### Why This Matters for Court
 

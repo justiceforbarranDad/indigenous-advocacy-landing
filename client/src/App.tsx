@@ -166,6 +166,9 @@ import LegalCommunicationProtocol from "./pages/LegalCommunicationProtocol";
 import McGoverRanchHealingCentre from "./pages/McGoverRanchHealingCentre";
 import TerryJamesLegacy from "./pages/TerryJamesLegacy";
 import FamilyFriendsTribute from "./pages/FamilyFriendsTribute";
+import AdminDonationDashboard from "./pages/AdminDonationDashboard";
+import DonationThankYou from "./pages/DonationThankYou";
+import DonateEnhancedMultiCurrency from "./pages/DonateEnhancedMultiCurrency";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -193,6 +196,9 @@ function Router() {
       <Route path="/donate-quick" component={DonateQuick} />
       <Route path="/donate-direct" component={DirectDepositDonation} />
       <Route path="/donate-etransfer" component={DonateEtransfer} />
+      <Route path="/donation-thank-you" component={DonationThankYou} />
+      <Route path="/admin/donations" component={AdminDonationDashboard} />
+      <Route path="/donate-enhanced-multi-currency" component={DonateEnhancedMultiCurrency} />
       <Route path="/payment-hub" component={PaymentHub} />
       <Route path="/donate-stripe-qr" component={PaymentHub} />
       <Route path="/qr-codes" component={QRCodeGallery} />
