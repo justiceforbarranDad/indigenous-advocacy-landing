@@ -1,0 +1,47 @@
+{
+  "duration": 30.780000686645508,
+  "language": "french",
+  "segments": [
+    {
+      "start": 0,
+      "end": 4,
+      "text": " C'est quoi votre numéro de matricule encore? Parce que j'ai pas de crayon, faut que j'enregistre."
+    },
+    {
+      "start": 4,
+      "end": 5.5,
+      "text": " Ben, je vous l'ai dit plus tôt, monsieur."
+    },
+    {
+      "start": 5.5,
+      "end": 8.800000190734863,
+      "text": " Non, mais j'ai pas de crayon, monsieur, je vous le demande."
+    },
+    {
+      "start": 8.800000190734863,
+      "end": 16,
+      "text": " C'est correct, j'avais demandé les transcripts audios de notre conversation, si tu veux pas écouter les victimes."
+    },
+    {
+      "start": 16,
+      "end": 19.5,
+      "text": " OK. Pourriez-vous me répéter votre nom, s'il vous plaît?"
+    },
+    {
+      "start": 19.5,
+      "end": 23.799999237060547,
+      "text": " Ben, je vous l'ai dit, monsieur. Comme vous m'avez dit, votre matricule."
+    },
+    {
+      "start": 23.799999237060547,
+      "end": 29.799999237060547,
+      "text": " C'est ben beau, on va... Je vais demander de l'assistance à quelqu'un d'autre. Merci, monsieur."
+    },
+    {
+      "start": 29.799999237060547,
+      "end": 30.799999237060547,
+      "text": " Merci."
+    }
+  ],
+  "full_text": "C'est quoi votre numéro de matricule encore? Parce que j'ai pas de crayon, faut que j'enregistre. Ben, je vous l'ai dit plus tôt, monsieur. Non, mais j'ai pas de crayon, monsieur, je vous le demande. C'est correct, j'avais demandé les transcripts audios de notre conversation, si tu veux pas écouter les victimes. OK. Pourriez-vous me répéter votre nom, s'il vous plaît? Ben, je vous l'ai dit, monsieur. Comme vous m'avez dit, votre matricule. C'est ben beau, on va... Je vais demander de l'assistance à quelqu'un d'autre. Merci, monsieur. Merci."
+}
