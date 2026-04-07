@@ -139,23 +139,24 @@ export default function HomeBookCover() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black" style={{
-      backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/PARLIAMENT_HILL_AURORA_BOOK_COVER_684216a3.png)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundAttachment: 'fixed'
-    }}>
+    <div className="relative w-full h-screen overflow-hidden bg-black">
+      {/* Background image */}
+      <img
+        src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/PARLIAMENT_HILL_AURORA_BOOK_COVER_684216a3.png"
+        alt="Parliament Hill Aurora"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
       {/* Blood dripping animation overlay */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none z-10"
+        className="absolute inset-0 w-full h-full pointer-events-none z-20"
       />
 
       {/* Dark overlay removed - video now visible */}
 
       {/* TIMER + TICKER WRAPPED AROUND CENTENNIAL FLAME BASE */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-30">
         <div className="relative w-96 h-96">
           {/* TIMER - Center */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -225,7 +226,7 @@ export default function HomeBookCover() {
       </div>
 
       {/* Language selector - 3 uniform black boxes at bottom with yellow text */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-40">
         {/* English */}
         <button
           onClick={() => handleLanguageSelect('en')}
