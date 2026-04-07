@@ -4,14 +4,13 @@ import { useLocation } from 'wouter';
 export default function HomeBookCover() {
   const [, navigate] = useLocation();
   const [videoEnded, setVideoEnded] = useState(false);
-  const [elapsedTime, setElapsedTime] = useState({ days: 0, hours: 0, minutes: 0 });
-  const [daysCount, setDaysCount] = useState(0);
+  const [timerDisplay, setTimerDisplay] = useState('0:00:00:00');
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Calculate elapsed time since Feb 14, 2021 noon
+  // Update timer every second - showing days:hours:minutes:seconds
   useEffect(() => {
-    const calculateElapsed = () => {
+    const updateTimer = () => {
       const startDate = new Date(2021, 1, 14, 12, 0, 0); // Feb 14, 2021 noon
       const now = new Date();
       const diffMs = now.getTime() - startDate.getTime();
@@ -19,28 +18,14 @@ export default function HomeBookCover() {
       const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diffMs % (1000 * 60)) / 1000);
       
-      setElapsedTime({ days, hours, minutes });
+      const display = `${days}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      setTimerDisplay(display);
     };
 
-    calculateElapsed();
-    const interval = setInterval(calculateElapsed, 60000); // Update every minute
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // Update days count every second (live ticker)
-  useEffect(() => {
-    const updateDaysCount = () => {
-      const startDate = new Date(2021, 1, 14, 12, 0, 0); // Feb 14, 2021 noon
-      const now = new Date();
-      const diffMs = now.getTime() - startDate.getTime();
-      const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-      setDaysCount(days);
-    };
-
-    updateDaysCount();
-    const interval = setInterval(updateDaysCount, 1000); // Update every second
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000); // Update every second
 
     return () => clearInterval(interval);
   }, []);
@@ -156,58 +141,18 @@ export default function HomeBookCover() {
       {/* Dark overlay for better text visibility */}
       <div className="absolute inset-0 bg-black/20" />
 
-      {/* Live counter + sports ticker clock - wrapping around Centennial Flame base */}
+      {/* TIMER - ONE BIG BOX showing days:hours:minutes:seconds */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-        <div className="relative w-96 h-96">
-          {/* Days - Top */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-black border-2 border-yellow-400 px-4 py-2 rounded-sm">
-            <div className="text-yellow-400 font-bold text-lg text-center">
-              {elapsedTime.days}
+        <div className="bg-black border-3 border-yellow-400 px-12 py-8 rounded-sm">
+          <div className="text-center">
+            {/* Timer display - days:hours:minutes:seconds */}
+            <div className="text-yellow-400 font-bold text-5xl font-mono tracking-wider mb-3">
+              {timerDisplay}
             </div>
-            <div className="text-yellow-400 text-xs text-center font-bold">
-              DAYS
-            </div>
-          </div>
-
-          {/* Hours - Right */}
-          <div className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black border-2 border-yellow-400 px-4 py-2 rounded-sm">
-            <div className="text-yellow-400 font-bold text-lg text-center">
-              {elapsedTime.hours}
-            </div>
-            <div className="text-yellow-400 text-xs text-center font-bold">
-              HOURS
-            </div>
-          </div>
-
-          {/* Minutes - Bottom */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black border-2 border-yellow-400 px-4 py-2 rounded-sm">
-            <div className="text-yellow-400 font-bold text-lg text-center">
-              {elapsedTime.minutes}
-            </div>
-            <div className="text-yellow-400 text-xs text-center font-bold">
-              MINUTES
-            </div>
-          </div>
-
-          {/* Left - Since Feb 14, 2021 */}
-          <div className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black border-2 border-yellow-400 px-3 py-2 rounded-sm">
-            <div className="text-yellow-400 text-xs text-center font-bold whitespace-nowrap">
-              SINCE
-            </div>
-            <div className="text-yellow-400 text-xs text-center font-bold">
-              FEB 14
-            </div>
-            <div className="text-yellow-400 text-xs text-center font-bold">
-              2021
-            </div>
-          </div>
-
-          {/* Sports Ticker Clock - Bottom Right (Days Count) */}
-          <div className="absolute -bottom-20 right-0 transform translate-x-2">
-            <div className="bg-black border-2 border-yellow-400 px-4 py-2 rounded-sm animate-pulse">
-              <div className="text-yellow-400 font-bold text-2xl text-center font-mono tracking-wider">
-                {daysCount}
-              </div>
+            
+            {/* Label */}
+            <div className="text-yellow-400 text-sm font-bold">
+              SINCE FEB 14, 2021
             </div>
           </div>
         </div>
