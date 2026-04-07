@@ -5,8 +5,17 @@ export default function HomeBookCover() {
   const [, navigate] = useLocation();
   const [videoEnded, setVideoEnded] = useState(false);
   const [timerDisplay, setTimerDisplay] = useState('0:00:00:00');
+  const [currentDateTime, setCurrentDateTime] = useState('');
+  const [tickerIndex, setTickerIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const tickerMessages = [
+    'JUSTICE FOR BARRAN • SYSTEMIC FAILURE EXPOSED • GHOSTING CONTINUES',
+    'INDIGENOUS RIGHTS VIOLATED • DPJ FAIL • JORDAN\'S PRINCIPLE IGNORED',
+    'TRUTH AND RECONCILIATION • ACCOUNTABILITY REQUIRED • EVERY CHILD MATTERS',
+    'FEDERAL SILENCE • PROVINCIAL FAILURE • MUNICIPAL NEGLECT • JUSTICE DELAYED'
+  ];
 
   // Update timer every second - showing days:hours:minutes:seconds
   useEffect(() => {
@@ -22,10 +31,24 @@ export default function HomeBookCover() {
       
       const display = `${days}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
       setTimerDisplay(display);
+
+      // Update current date and time
+      const dateStr = now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+      const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      setCurrentDateTime(`${dateStr} • ${timeStr}`);
     };
 
     updateTimer();
     const interval = setInterval(updateTimer, 1000); // Update every second
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Rotate ticker messages every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTickerIndex((prev) => (prev + 1) % tickerMessages.length);
+    }, 5000); // Change message every 5 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -141,22 +164,64 @@ export default function HomeBookCover() {
       {/* Dark overlay for better text visibility */}
       <div className="absolute inset-0 bg-black/20" />
 
-      {/* TIMER - ONE BIG BOX showing days:hours:minutes:seconds */}
+      {/* TIMER - SPORTS LED DIGITAL TICKER */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-        <div className="bg-black border-3 border-yellow-400 px-12 py-8 rounded-sm">
+        <div className="bg-black border-4 border-yellow-400 px-16 py-6 rounded-sm" style={{
+          boxShadow: '0 0 30px rgba(250, 204, 21, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.8)'
+        }}>
           <div className="text-center">
-            {/* Timer display - days:hours:minutes:seconds */}
-            <div className="text-yellow-400 font-bold text-5xl font-mono tracking-wider mb-3">
+            {/* Timer display - LED style */}
+            <div className="text-yellow-400 font-bold text-7xl font-mono tracking-wider" style={{
+              textShadow: '0 0 10px rgba(250, 204, 21, 0.8), 0 0 20px rgba(250, 204, 21, 0.5)',
+              letterSpacing: '0.15em',
+              fontFamily: '"Courier New", monospace'
+            }}>
               {timerDisplay}
             </div>
             
-            {/* Label */}
-            <div className="text-yellow-400 text-sm font-bold">
+            {/* Label - smaller */}
+            <div className="text-yellow-400 text-xs font-bold mt-2" style={{
+              textShadow: '0 0 5px rgba(250, 204, 21, 0.6)'
+            }}>
               SINCE FEB 14, 2021
             </div>
           </div>
         </div>
       </div>
+
+      {/* SCROLLING NEWS TICKER - Top of screen */}
+      <div className="absolute top-0 left-0 right-0 bg-black border-b-2 border-yellow-400 overflow-hidden z-40">
+        <div className="flex items-center h-10">
+          {/* Current date and time */}
+          <div className="flex-shrink-0 px-4 bg-yellow-400 text-black font-bold text-xs whitespace-nowrap">
+            LIVE
+          </div>
+          
+          {/* Scrolling ticker messages */}
+          <div className="flex-1 overflow-hidden">
+            <div 
+              className="inline-block whitespace-nowrap px-4 text-yellow-400 font-bold text-xs animate-pulse"
+              style={{
+                animation: 'scroll 15s linear infinite'
+              }}
+            >
+              {currentDateTime} • {tickerMessages[tickerIndex]} • {currentDateTime} • {tickerMessages[tickerIndex]}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CSS for scrolling animation */}
+      <style>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+      `}</style>
 
       {/* Language selector - 3 uniform black boxes at bottom with yellow text */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
