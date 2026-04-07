@@ -380,3 +380,14 @@
 - **Donation Tracking**: Real-time updates from Stripe webhook
 - **Legal**: All content reviewed and protected under Charter s.2(b)
 
+
+
+## URGENT: Vintage Radio & TV Components (NEW REQUEST)
+- [ ] Create vintage Radio component with 5 podcast channel presets
+- [ ] Add Play/Pause, Volume control, Channel selector to Radio
+- [ ] Integrate royalty-free native music background
+- [ ] Create vintage TV component with YouTube video playback
+- [ ] Add podcast player option to TV component
+- [ ] Decide layout: same page or separate pages for Radio/TV
+- [ ] Test all playback and controls
+- [ ] Deploy and verify working
