@@ -8,6 +8,8 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { AlertTriangle } from 'lucide-react';
 
 import Home from "./pages/Home";
+import FrontCover from "./pages/FrontCover";
+import Book from "./pages/Book";
 import Resources from "./pages/Resources";
 import ShareStory from "./pages/ShareStory";
 import Donate from "./pages/Donate";
