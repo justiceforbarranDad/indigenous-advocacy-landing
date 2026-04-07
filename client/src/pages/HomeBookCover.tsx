@@ -155,8 +155,7 @@ export default function HomeBookCover() {
         className="absolute inset-0 w-full h-full pointer-events-none"
       />
 
-      {/* Dark overlay for better text visibility */}
-      <div className="absolute inset-0 bg-black/20" />
+      {/* Dark overlay removed - video now visible */}
 
       {/* TIMER + TICKER WRAPPED AROUND CENTENNIAL FLAME BASE */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">

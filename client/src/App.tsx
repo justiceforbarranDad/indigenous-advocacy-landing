@@ -355,7 +355,6 @@ function App() {
 
           <HamburgerMenu />
           <Router />
-          <LiveChat />
 
         </TooltipProvider>
       </ThemeProvider>
