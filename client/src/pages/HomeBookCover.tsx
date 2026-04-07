@@ -10,10 +10,10 @@ export default function HomeBookCover() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const tickerMessages = [
-    'JUSTICE FOR BARRAN • SYSTEMIC FAILURE EXPOSED • GHOSTING CONTINUES',
-    'INDIGENOUS RIGHTS VIOLATED • DPJ FAIL • JORDAN\'S PRINCIPLE IGNORED',
-    'TRUTH AND RECONCILIATION • ACCOUNTABILITY REQUIRED • EVERY CHILD MATTERS',
-    'FEDERAL SILENCE • PROVINCIAL FAILURE • MUNICIPAL NEGLECT • JUSTICE DELAYED'
+    'QUEBEC SUPERIOR COURT • DISTRICT OF MONTREAL • MOTION RECORD',
+    'IN THE MATTER OF • JUSTICE FOR BARRAN McGOVERN',
+    'INDIGENOUS JUSTICE ADVOCACY PLATFORM • THE McGOVERN FOUNDATION OF HUMAN RIGHTS',
+    'JUSTICE FOR BARRAN • SYSTEMIC FAILURE EXPOSED • GHOSTING CONTINUES'
   ];
 
   // Update timer every second - showing days:hours:minutes:seconds
@@ -60,7 +60,7 @@ export default function HomeBookCover() {
     return () => video.removeEventListener('ended', handleEnded);
   }, []);
 
-  // Blood dripping animation overlay
+  // Court document overlay with legal aesthetic
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
