@@ -195,10 +195,14 @@ export default function HomeBookCover() {
             </div>
           </div>
 
-          {/* TICKER BOX - Bottom (wrapping around flame) */}
-          <div className="absolute -bottom-24 left-1/2 transform -translate-x-1/2 w-full max-w-md">
-            <div className="bg-black border-2 border-yellow-400 px-3 py-1 rounded-sm overflow-hidden">
-              <div className="text-yellow-400 font-bold text-xs whitespace-nowrap animate-pulse">
+          {/* TICKER BOX - Bottom (same size as main timer) */}
+          <div className="absolute -bottom-32 left-1/2 transform -translate-x-1/2">
+            <div className="bg-black border-4 border-yellow-400 px-16 py-3 rounded-sm" style={{
+              boxShadow: '0 0 20px rgba(250, 204, 21, 0.3)'
+            }}>
+              <div className="text-yellow-400 font-bold text-sm whitespace-nowrap" style={{
+                textShadow: '0 0 5px rgba(250, 204, 21, 0.6)'
+              }}>
                 {tickerMessages[(tickerIndex + 1) % tickerMessages.length]}
               </div>
             </div>
