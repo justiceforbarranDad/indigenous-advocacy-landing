@@ -1,7 +1,7 @@
 export const translations = {
   en: {
     cover: {
-      left: 'SUNDAY BLOODY SUNDAY\nPART TWO\n\nCanada\'s Sunday Bloody Sunday\nFebruary 14, 2021\n\nCurrent Truth Before Reconciliation',
+      left: 'SUNDAY BLOODY SUNDAY\nPART TWO\n\nCanada\'s Sunday Bloody Sunday\nFebruary 14, 2021\n\n',
       right: 'JUSTICE FOR BARRAN\n\nPress to Enter',
     },
     page1: {

@@ -136,7 +136,7 @@ export function BookCover({ onEnter }: BookCoverProps) {
             ? "Vérité actuelle avant la réconciliation" 
             : i18n.language === 'ht' 
             ? "Verite aktyèl anvan rekonsilyasyon" 
-            : "Current Truth Before Reconciliation"}
+            : ""}
         </p>
 
         {/* LANGUAGE SELECTOR BUTTON */}

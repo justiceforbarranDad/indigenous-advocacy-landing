@@ -134,7 +134,7 @@ const keyQuotes = [
     attribution: "Justice for Barran Campaign"
   },
   {
-    quote: "Current Truth Before Reconciliation. Systemic failure must be exposed before healing can begin.",
+    quote: ". Systemic failure must be exposed before healing can begin.",
     attribution: "Justice for Barran Campaign"
   }
 ];

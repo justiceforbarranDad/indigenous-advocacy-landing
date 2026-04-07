@@ -101,7 +101,7 @@ export function BookReader() {
                       Canada's Sunday Bloody Sunday
                     </h1>
                     <p className="text-white text-2xl mb-4">February 14, 2021</p>
-                    <p className="text-red-500 text-lg italic mb-8">Current Truth Before Reconciliation — Justice for Barran</p>
+                    <p className="text-red-500 text-lg italic mb-8"> — Justice for Barran</p>
                   </div>
 
                   {/* Action Buttons */}

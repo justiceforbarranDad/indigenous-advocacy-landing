@@ -14,7 +14,7 @@ const COVER_TEXT = {
     subtitle: 'PART TWO',
     tagline: "Canada's Sunday Bloody Sunday",
     date: 'February 14, 2021',
-    message: 'Current Truth Before Reconciliation',
+    message: '',
     button: 'JUSTICE FOR BARRAN',
     donate: 'SUPPORT JUSTICE',
     donateDesc: 'Your donation supports legal advocacy and systemic reform',

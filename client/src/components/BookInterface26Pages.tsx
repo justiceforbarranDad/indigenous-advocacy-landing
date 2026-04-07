@@ -47,7 +47,7 @@ const pages26: PageContent[] = [
   {
     id: 0,
     title: 'Cover',
-    leftContent: 'SUNDAY BLOODY SUNDAY\nPART TWO\n\nCanada\'s Sunday Bloody Sunday\nFebruary 14, 2021\n\nCurrent Truth Before Reconciliation',
+    leftContent: 'SUNDAY BLOODY SUNDAY\nPART TWO\n\nCanada\'s Sunday Bloody Sunday\nFebruary 14, 2021\n\n',
     rightContent: `JUSTICE FOR BARRAN\n\nPress to Enter`,
     hasAudio: false,
   },
