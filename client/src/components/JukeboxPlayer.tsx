@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useState, useRef, useEffect } from 'react';
+import { Play, Pause, ChevronDown, ChevronUp, Share2, Copy, X } from 'lucide-react';
 
 interface Episode {
   id: number;
@@ -110,157 +110,183 @@ const episodes: Record<string, Episode[]> = {
       transcript: "ORGANISATIONS ABANDONNÉES: Quand les Institutions Refusent de Répondre\n\nSilence des politiciens. Silence des agences gouvernementales. Mais qu'en est-il des organisations qui prétendent défendre les droits autochtones?",
       duration: "9:15"
     }
-  ],
-  ht: [
-    {
-      id: 1,
-      title: "Silans Politisyen yo",
-      description: "Kouman ofisyèl yo nan tout nivo yo te inyore yon moun ki te mande èd pou yon fanmi Endyen an kriz.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep1-silans-politisyen-full_f304fae2.wav",
-      transcript: "SILANS POLITISYEN YO: Yon Envestigasyon sou Responsabilite Gouvènman\n\nPandant 1,873 jou, yon fanmi t ap chèche èd nan ofisyèl yo. Reprezantan federal, provincial, ak miniksipal. Yo tout silansye. Yo tout abandone yo.",
-      duration: "8:45"
-    },
-    {
-      id: 2,
-      title: "Echèk Sistèm - Responsabilite DPJ",
-      description: "Yon envestigasyon sou echèk enstitisyonèl ak efondman pwoteksyon timoun nan Kebèk.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep2-echek-sistem-dpj-full_2efba7d0.wav",
-      transcript: "ECHÈK SISTÈM: Yon Envestigasyon sou Responsabilite DPJ\n\nDieksyon Pwoteksyon Timoun. DPJ. Nan Kebèk, se enstitisyon responsab pou pwoteje timoun kont abiy ak neglijan.",
-      duration: "9:12"
-    },
-    {
-      id: 3,
-      title: "1873 Jou Injistis",
-      description: "Yon tann kronolojik de senk an pou responsabilite.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep3-1873-jou-injistis-full_568e0ee3.wav",
-      transcript: "1873 JOU INJISTIS: Yon Envestigasyon Kronolojik\n\n1,873 jou. Se senk an ak de mwa. Se konbyen tan yon fanmi t ap tann pou jistis.",
-      duration: "7:58"
-    },
-    {
-      id: 4,
-      title: "Dwa Endyen yo Anba Atak",
-      description: "Yon envestigasyon legal sou vyolasyon sistematik ak echèk enstitisyonèl.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep4-dwa-endyen-atak-full_b3317862.wav",
-      transcript: "DWA ENDYEN YO ANBA ATAK: Yon Envestigasyon Legal\n\nDeklarasyon Nasyon Ini sou Dwa Pèp Endyen yo. Chata Kanadyen Dwa ak Libète. Pwojè Lwa C-92.",
-      duration: "8:34"
-    },
-    {
-      id: 5,
-      title: "Jistis Retade se Jistis Refize",
-      description: "Dènye apèl pou responsabilite, enkit endepandan, ak reyèl chanjman sistematik.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep5-jistis-retade-full_460458e3.wav",
-      transcript: "JISTIS RETADE SE JISTIS REFIZE: Enpak Echèk Sistematik\n\nJistis retade se jistis refize. Se pa jis yon prensip legal. Se reyalite fanmi yo ap viv ki ap tann pou responsabilite.",
-      duration: "8:21"
-    },
-    {
-      id: 6,
-      title: "Òganizasyon Abandone",
-      description: "Kouman gwo òganizasyon ak enstitisyon yo te rete silansye, inyore apèl pou responsabilite ak sipò pou fanmi Endyen an kriz.",
-      audioUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/ep6-òganizasyon-abandone-full_4a977b70.wav",
-      transcript: "ÒGANIZASYON ABANDONE: Lè Enstitisyon Refize Reponn\n\nSilans politisyen yo. Silans ajans gouvènman. Men sa sou òganizasyon ki di yo defann dwa Endyen?",
-      duration: "9:15"
-    }
   ]
 };
 
 export function JukeboxPlayer() {
-  const { i18n } = useTranslation();
+  const [language, setLanguage] = useState<'en' | 'fr'>('en');
   const [currentEpisodeId, setCurrentEpisodeId] = useState(1);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [showTranscript, setShowTranscript] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
-  // Map language codes: 'ht' for Kreyòl, 'fr' for French, 'en' for English
-  const language = i18n.language === 'fr' ? 'fr' : i18n.language === 'ht' ? 'ht' : 'en';
   const currentEpisode = episodes[language].find(ep => ep.id === currentEpisodeId) || episodes[language][0];
+
+  const handlePlayPause = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   const handleEpisodeChange = (id: number) => {
     setCurrentEpisodeId(id);
+    setIsPlaying(false);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
   };
 
-  const getLanguageLabel = () => {
-    if (language === 'fr') return 'En cours de lecture';
-    if (language === 'ht') return 'Ap jwe';
-    return 'Now Playing';
+  const handleLanguageChange = (lang: 'en' | 'fr') => {
+    setLanguage(lang);
+    setCurrentEpisodeId(1);
+    setIsPlaying(false);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
   };
 
-  const getTranscriptLabel = () => {
-    if (language === 'fr') return '📖 Montre Transskripsyon';
-    if (language === 'ht') return '📖 Montre Transskripsyon';
-    return '📖 Show Transcript';
-  };
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
 
-  const getHideTranscriptLabel = () => {
-    if (language === 'fr') return '📖 Kache Transskripsyon';
-    if (language === 'ht') return '📖 Kache Transskripsyon';
-    return '📖 Hide Transcript';
-  };
+    const updateTime = () => setCurrentTime(audio.currentTime);
+    const updateDuration = () => setDuration(audio.duration);
 
-  const getEpisodesLabel = () => {
-    if (language === 'fr') return 'Tous les Épisodes';
-    if (language === 'ht') return 'Tout Epizòd yo';
-    return 'All Episodes';
+    audio.addEventListener('timeupdate', updateTime);
+    audio.addEventListener('loadedmetadata', updateDuration);
+
+    return () => {
+      audio.removeEventListener('timeupdate', updateTime);
+      audio.removeEventListener('loadedmetadata', updateDuration);
+    };
+  }, []);
+
+  const formatTime = (time: number) => {
+    if (!time || isNaN(time)) return '0:00';
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
   return (
-    <div className="w-full space-y-6">
-      {/* Current Episode Info */}
-      <div className="bg-white rounded-lg p-6 border-2 border-red-600 shadow-lg">
-        <p className="text-sm font-semibold text-red-600 uppercase tracking-wider mb-2">
-          {getLanguageLabel()}
-        </p>
-        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{currentEpisode.title}</h3>
-        <p className="text-gray-700 mb-4">{currentEpisode.description}</p>
+    <>
+      <audio ref={audioRef} src={currentEpisode.audioUrl} />
+      
+      {/* Native Design Podcast Player - Inline Display */}
+      <div className="w-full bg-gradient-to-b from-amber-50 to-cream rounded-xl border-4 border-amber-orange p-8 shadow-lg">
         
-        {/* Native HTML5 Audio Player */}
-        <audio 
-          controls 
-          className="w-full mb-4 h-10 rounded-lg"
-          controlsList="nodownload"
-          key={currentEpisode.audioUrl}
-        >
-          <source src={currentEpisode.audioUrl} type="audio/wav" />
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-
-      {/* Episode Grid */}
-      <div className="bg-white rounded-lg p-6 border-2 border-gray-200 shadow-lg">
-        <p className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wider">
-          {getEpisodesLabel()}
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {episodes[language].map((ep) => (
-            <button
-              key={ep.id}
-              onClick={() => handleEpisodeChange(ep.id)}
-              className={`p-4 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 ${
-                currentEpisodeId === ep.id
-                  ? 'bg-red-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-900 border-2 border-gray-300 hover:bg-gray-200'
-              }`}
-            >
-              <div className="font-bold text-base">Ep. {ep.id}</div>
-              <div className="text-xs mt-1 line-clamp-2">{ep.title}</div>
-            </button>
-          ))}
+        {/* Language Toggle */}
+        <div className="flex gap-3 mb-6 justify-center">
+          <button
+            onClick={() => handleLanguageChange('en')}
+            className={`py-2 px-6 rounded-lg font-bold text-sm transition-all ${
+              language === 'en'
+                ? 'bg-forest-green text-cream shadow-lg'
+                : 'bg-cream text-forest-green border-2 border-forest-green hover:bg-forest-green/10'
+            }`}
+          >
+            🇬🇧 English
+          </button>
+          <button
+            onClick={() => handleLanguageChange('fr')}
+            className={`py-2 px-6 rounded-lg font-bold text-sm transition-all ${
+              language === 'fr'
+                ? 'bg-forest-green text-cream shadow-lg'
+                : 'bg-cream text-forest-green border-2 border-forest-green hover:bg-forest-green/10'
+            }`}
+          >
+            🇫🇷 Français
+          </button>
         </div>
-      </div>
 
-      {/* Transcript Toggle */}
-      <button
-        onClick={() => setShowTranscript(!showTranscript)}
-        className="w-full bg-gray-100 border-2 border-gray-300 text-gray-900 font-bold py-3 px-4 rounded-lg transition-all hover:bg-gray-200 active:scale-95"
-      >
-        {showTranscript ? getHideTranscriptLabel() : getTranscriptLabel()}
-      </button>
-
-      {/* Transcript Display */}
-      {showTranscript && (
-        <div className="bg-white rounded-lg p-6 border-2 border-red-600 shadow-lg max-h-96 overflow-y-auto">
-          <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap font-serif">
-            {currentEpisode.transcript}
+        {/* Current Episode Info */}
+        <div className="bg-white rounded-lg p-6 mb-6 border-2 border-amber-orange">
+          <p className="text-sm font-semibold text-amber-orange uppercase tracking-wider mb-2">
+            {language === 'en' ? 'Now Playing' : 'En cours de lecture'}
           </p>
+          <h3 className="text-2xl font-bold text-forest-green mb-2">{currentEpisode.title}</h3>
+          <p className="text-charcoal-light mb-4">{currentEpisode.description}</p>
+          
+          {/* Progress Bar */}
+          <div className="mb-3">
+            <div className="w-full bg-gray-300 rounded-full h-2 mb-2">
+              <div
+                className="bg-amber-orange h-2 rounded-full transition-all"
+                style={{ width: `${duration ? (currentTime / duration) * 100 : 0}%` }}
+              ></div>
+            </div>
+            <div className="flex justify-between text-xs text-charcoal-light font-semibold">
+              <span>{formatTime(currentTime)}</span>
+              <span>{formatTime(duration)}</span>
+            </div>
+          </div>
         </div>
-      )}
-    </div>
+
+        {/* Play Button */}
+        <button
+          onClick={handlePlayPause}
+          className="w-full bg-amber-orange hover:bg-amber-light text-forest-green font-bold py-4 px-6 rounded-lg mb-6 flex items-center justify-center gap-3 transition-all shadow-lg text-lg"
+        >
+          {isPlaying ? (
+            <>
+              <Pause size={24} /> {language === 'en' ? 'Pause' : 'Pause'}
+            </>
+          ) : (
+            <>
+              <Play size={24} /> {language === 'en' ? 'Play' : 'Lecture'}
+            </>
+          )}
+        </button>
+
+        {/* Episode Grid */}
+        <div className="mb-6">
+          <p className="text-sm font-bold text-forest-green mb-3 uppercase tracking-wider">
+            {language === 'en' ? 'All Episodes' : 'Tous les Épisodes'}
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {episodes[language].map((ep) => (
+              <button
+                key={ep.id}
+                onClick={() => handleEpisodeChange(ep.id)}
+                className={`p-3 rounded-lg font-semibold text-sm transition-all ${
+                  currentEpisodeId === ep.id
+                    ? 'bg-forest-green text-cream shadow-lg'
+                    : 'bg-white text-forest-green border-2 border-forest-green hover:bg-forest-green/10'
+                }`}
+              >
+                <div className="font-bold">Ep. {ep.id}</div>
+                <div className="text-xs mt-1 line-clamp-2">{ep.title}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Transcript Toggle */}
+        <button
+          onClick={() => setShowTranscript(!showTranscript)}
+          className="w-full bg-cream border-2 border-forest-green text-forest-green font-bold py-3 px-4 rounded-lg mb-3 transition-all hover:bg-forest-green/10"
+        >
+          {showTranscript ? '📖 Hide Transcript' : '📖 Show Transcript'}
+        </button>
+
+        {/* Transcript Display */}
+        {showTranscript && (
+          <div className="bg-white rounded-lg p-4 mb-6 border-2 border-amber-orange max-h-48 overflow-y-auto">
+            <p className="text-sm text-charcoal-light leading-relaxed whitespace-pre-wrap font-serif">
+              {currentEpisode.transcript}
+            </p>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

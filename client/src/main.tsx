@@ -12,11 +12,6 @@ import { Suspense } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n/config';
 
-// Redirect .ca domain to .com domain
-if (typeof window !== 'undefined' && window.location.hostname === 'justiceforbarran.ca') {
-  window.location.href = 'https://justiceforbarran.com' + window.location.pathname + window.location.search + window.location.hash;
-}
-
 // Wrap App with I18nextProvider
 const AppWithI18n = () => (
   <I18nextProvider i18n={i18n}>

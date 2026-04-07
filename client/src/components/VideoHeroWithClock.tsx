@@ -58,7 +58,7 @@ export function VideoHeroWithClock() {
             February 14, 2021
           </p>
           <p className="text-red-400 text-sm md:text-base mt-2 font-medium italic">
-             — Justice for Barran
+            Current Truth Before Reconciliation — Justice for Barran
           </p>
         </div>
 

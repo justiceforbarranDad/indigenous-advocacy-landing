@@ -105,7 +105,7 @@ export default function NewspaperReader() {
 
           <p className="text-xs text-center mt-6 border-t-2 border-black pt-4">
             Justice for Barran | Sunday Bloody Sunday, Part 3<br/>
-            <br/>
+            Current Truth Before Reconciliation<br/>
             indigenousadv-ahjdmzis.manus.space
           </p>
         </div>
@@ -118,7 +118,7 @@ export default function NewspaperReader() {
       <RealisticNewspaperReader
         pages={newspaperPages}
         title="JUSTICE FOR BARRAN"
-        subtitle="Part 3 - "
+        subtitle="Part 3 - Current Truth Before Reconciliation"
       />
     </div>
   );

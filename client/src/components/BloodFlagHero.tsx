@@ -10,7 +10,7 @@ export default function BloodFlagHero() {
       since: 'SINCE 2021',
       title: "Canada's Sunday Bloody Sunday",
       date: 'February 14, 2021',
-      subtitle: ' - Justice for Barran'
+      subtitle: 'Current Truth Before Reconciliation - Justice for Barran'
     },
     fr: {
       knowYourRights: 'CONNAISSEZ VOS DROITS',

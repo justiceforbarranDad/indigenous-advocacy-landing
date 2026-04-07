@@ -8,7 +8,6 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { AlertTriangle } from 'lucide-react';
 
 import Home from "./pages/Home";
-import HomeBookCover from "./pages/HomeBookCover";
 import Resources from "./pages/Resources";
 import ShareStory from "./pages/ShareStory";
 import Donate from "./pages/Donate";
@@ -47,11 +46,7 @@ import HumanRightsEducation from "./pages/HumanRightsEducation";
 import LegalViolationsFramework from "./pages/LegalViolationsFramework";
 import HallOfShame from "./pages/HallOfShame";
 import HowToDocumentYourCase from "./pages/HowToDocumentYourCase";
-import PodcastDashboard from "./pages/PodcastDashboard";
 import OrangeShirtDayInvestigation from "./pages/OrangeShirtDayInvestigation";
-import NewspaperSamplePage from "./components/NewspaperSamplePage";
-import DonationsPage from "./pages/DonationsPage";
-import PodcastRadioPage from "./pages/PodcastRadioPage";
 import CallLogDocumentation from "./pages/CallLogDocumentation";
 import InteractiveCallMap from "./pages/InteractiveCallMap";
 import CensorshipAndSuppression from "./pages/CensorshipAndSuppression";
@@ -62,7 +57,6 @@ import IndigenousChildrenRights from "./pages/IndigenousChildrenRights";
 import Shop from "./pages/Shop";
 import DonateEtransfer from "./pages/DonateEtransfer";
 import UNComplaintTemplate from "./pages/UNComplaintTemplate";
-
 import ICCComplaintTemplate from "./pages/ICCComplaintTemplate";
 
 import NewspaperFrontPage from "./pages/NewspaperFrontPage";
@@ -167,17 +161,12 @@ import LegalCommunicationProtocol from "./pages/LegalCommunicationProtocol";
 import McGoverRanchHealingCentre from "./pages/McGoverRanchHealingCentre";
 import TerryJamesLegacy from "./pages/TerryJamesLegacy";
 import FamilyFriendsTribute from "./pages/FamilyFriendsTribute";
-import AdminDonationDashboard from "./pages/AdminDonationDashboard";
-import DonationThankYou from "./pages/DonationThankYou";
-import DonateEnhancedMultiCurrency from "./pages/DonateEnhancedMultiCurrency";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
-        <Route path="/" component={HomeBookCover} />
-      <Route path="/book" component={Newspaper} />
-      <Route path="/home-original" component={Home} />
+      <Route path={"/"} component={Home} />
       <Route path="/legal" component={Legal} />
       <Route path="/jurisprudence" component={Jurisprudence} />
       <Route path="/trackers" component={Trackers} />
@@ -191,15 +180,10 @@ function Router() {
       <Route path={"/resources"} component={Resources} />
       <Route path={"/share-story"} component={ShareStory} />
       <Route path="/donate" component={DonateEnhanced} />
-      <Route path="/donate-now" component={DonationsPage} />
-      <Route path="/podcast-radio" component={PodcastRadioPage} />
       <Route path="/sponsors" component={Sponsors} />
       <Route path="/donate-quick" component={DonateQuick} />
       <Route path="/donate-direct" component={DirectDepositDonation} />
       <Route path="/donate-etransfer" component={DonateEtransfer} />
-      <Route path="/donation-thank-you" component={DonationThankYou} />
-      <Route path="/admin/donations" component={AdminDonationDashboard} />
-      <Route path="/donate-enhanced-multi-currency" component={DonateEnhancedMultiCurrency} />
       <Route path="/payment-hub" component={PaymentHub} />
       <Route path="/donate-stripe-qr" component={PaymentHub} />
       <Route path="/qr-codes" component={QRCodeGallery} />
@@ -236,8 +220,7 @@ function Router() {
       <Route path={"/legal-violations-framework"} component={LegalViolationsFramework} />
       <Route path={"/hall-of-shame"} component={HallOfShame} />
       <Route path={"/how-to-document-your-case"} component={HowToDocumentYourCase} />
-      <Route path="/orange-shirt-day" component={OrangeShirtDayInvestigation} />
-      <Route path="/newspaper-sample" component={NewspaperSamplePage} />
+      <Route path="/orange-shirt-day-investigation" component={OrangeShirtDayInvestigation} />
       <Route path="/call-log-documentation" component={CallLogDocumentation} />
       <Route path="/interactive-call-map" component={InteractiveCallMap} />
       <Route path="/censorship-and-suppression" component={CensorshipAndSuppression} />
@@ -291,7 +274,6 @@ function Router() {
       <Route path="/email-alerts" component={EmailAlerts} />
       <Route path="/admin/alerts" component={AdminAlertDashboard} />
       <Route path="/podcast" component={PodcastHubEnhanced} />
-      <Route path="/podcast-dashboard" component={PodcastDashboard} />
       <Route path="/censorship" component={CensorshipAndSuppression} />
       <Route path="/newspaper-reader" component={NewspaperReader} />
       <Route path="/donation-impact" component={DonationImpact} />
@@ -352,9 +334,12 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
-
+          <div className="fixed top-4 right-20 z-50">
+            <LanguageToggle />
+          </div>
           <HamburgerMenu />
           <Router />
+          <LiveChat />
 
         </TooltipProvider>
       </ThemeProvider>
