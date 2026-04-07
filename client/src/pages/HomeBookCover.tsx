@@ -139,20 +139,17 @@ export default function HomeBookCover() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
-      {/* 1-minute Parliament Hill walkthrough video */}
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        className="absolute inset-0 w-full h-full object-cover"
-        src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/parliament-hill-walkthrough-1min_89191384.mp4"
-      />
+    <div className="relative w-full h-screen overflow-hidden bg-black" style={{
+      backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/PARLIAMENT_HILL_AURORA_BOOK_COVER_684216a3.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed'
+    }}>
 
       {/* Blood dripping animation overlay */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none"
+        className="absolute inset-0 w-full h-full pointer-events-none z-10"
       />
 
       {/* Dark overlay removed - video now visible */}
