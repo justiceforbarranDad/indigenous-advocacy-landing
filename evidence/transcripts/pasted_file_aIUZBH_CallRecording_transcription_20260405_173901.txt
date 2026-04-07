@@ -1,0 +1,8 @@
+[00:00.0 - 00:04.0] C'est quoi votre numéro de matricule encore? Parce que j'ai pas de crayon, faut que j'enregistre.
+[00:04.0 - 00:05.5] Ben, je vous l'ai dit plus tôt, monsieur.
+[00:05.5 - 00:08.8] Non, mais j'ai pas de crayon, monsieur, je vous le demande.
+[00:08.8 - 00:16.0] C'est correct, j'avais demandé les transcripts audios de notre conversation, si tu veux pas écouter les victimes.
+[00:16.0 - 00:19.5] OK. Pourriez-vous me répéter votre nom, s'il vous plaît?
+[00:19.5 - 00:23.8] Ben, je vous l'ai dit, monsieur. Comme vous m'avez dit, votre matricule.
+[00:23.8 - 00:29.8] C'est ben beau, on va... Je vais demander de l'assistance à quelqu'un d'autre. Merci, monsieur.
+[00:29.8 - 00:30.8] Merci.

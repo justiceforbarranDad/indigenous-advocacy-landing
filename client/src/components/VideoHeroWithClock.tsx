@@ -98,7 +98,16 @@ export function VideoHeroWithClock() {
         <TheSilenceClock />
       </div>
 
-      {/* CSS Animation for blood drops */}
+      {/* SPORTS TICKER - wrapping around Centennial Flame */}
+      <div className="relative z-20 bg-black px-4 py-6 border-t-4 border-yellow-400">
+        <div className="overflow-hidden">
+          <div className="animate-scroll flex gap-8 whitespace-nowrap">
+            <span className="text-yellow-400 font-bold text-sm md:text-base">🏒 HOCKEY NEWS • 🏈 SPORTS UPDATE • ⚽ FOOTBALL SCORES • 🏀 BASKETBALL • 🎾 TENNIS • 🏒 HOCKEY NEWS • 🏈 SPORTS UPDATE • ⚽ FOOTBALL SCORES • 🏀 BASKETBALL • 🎾 TENNIS</span>
+          </div>
+        </div>
+      </div>
+
+      {/* CSS Animation for blood drops and ticker scroll */}
       <style>{`
         @keyframes bloodDrop {
           0% {
@@ -112,6 +121,17 @@ export function VideoHeroWithClock() {
             transform: translateY(180px) scaleY(0.7);
             opacity: 0;
           }
+        }
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
         }
       `}</style>
     </div>
