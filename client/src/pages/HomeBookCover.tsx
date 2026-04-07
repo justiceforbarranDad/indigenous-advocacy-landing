@@ -5,7 +5,7 @@ export default function HomeBookCover() {
   const [, navigate] = useLocation();
   const [videoEnded, setVideoEnded] = useState(false);
   const [elapsedTime, setElapsedTime] = useState({ days: 0, hours: 0, minutes: 0 });
-  const [currentTime, setCurrentTime] = useState('00:00:00');
+  const [daysCount, setDaysCount] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -29,18 +29,18 @@ export default function HomeBookCover() {
     return () => clearInterval(interval);
   }, []);
 
-  // Update live clock every second
+  // Update days count every second (live ticker)
   useEffect(() => {
-    const updateClock = () => {
+    const updateDaysCount = () => {
+      const startDate = new Date(2021, 1, 14, 12, 0, 0); // Feb 14, 2021 noon
       const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      setCurrentTime(`${hours}:${minutes}:${seconds}`);
+      const diffMs = now.getTime() - startDate.getTime();
+      const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      setDaysCount(days);
     };
 
-    updateClock();
-    const interval = setInterval(updateClock, 1000); // Update every second
+    updateDaysCount();
+    const interval = setInterval(updateDaysCount, 1000); // Update every second
 
     return () => clearInterval(interval);
   }, []);
@@ -202,14 +202,11 @@ export default function HomeBookCover() {
             </div>
           </div>
 
-          {/* Sports Ticker Clock - Bottom Right */}
+          {/* Sports Ticker Clock - Bottom Right (Days Count) */}
           <div className="absolute -bottom-20 right-0 transform translate-x-2">
             <div className="bg-black border-2 border-yellow-400 px-4 py-2 rounded-sm animate-pulse">
-              <div className="text-yellow-400 font-bold text-lg text-center font-mono tracking-wider">
-                {currentTime}
-              </div>
-              <div className="text-yellow-400 text-xs text-center font-bold">
-                LIVE
+              <div className="text-yellow-400 font-bold text-2xl text-center font-mono tracking-wider">
+                {daysCount}
               </div>
             </div>
           </div>
