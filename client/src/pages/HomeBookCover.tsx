@@ -5,10 +5,11 @@ export default function HomeBookCover() {
   const [, navigate] = useLocation();
   const [videoEnded, setVideoEnded] = useState(false);
   const [elapsedTime, setElapsedTime] = useState({ days: 0, hours: 0, minutes: 0 });
+  const [currentTime, setCurrentTime] = useState('00:00:00');
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Calculate elapsed time since Feb 14, 2019 noon
+  // Calculate elapsed time since Feb 14, 2021 noon
   useEffect(() => {
     const calculateElapsed = () => {
       const startDate = new Date(2021, 1, 14, 12, 0, 0); // Feb 14, 2021 noon
@@ -24,6 +25,22 @@ export default function HomeBookCover() {
 
     calculateElapsed();
     const interval = setInterval(calculateElapsed, 60000); // Update every minute
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Update live clock every second
+  useEffect(() => {
+    const updateClock = () => {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      setCurrentTime(`${hours}:${minutes}:${seconds}`);
+    };
+
+    updateClock();
+    const interval = setInterval(updateClock, 1000); // Update every second
 
     return () => clearInterval(interval);
   }, []);
@@ -61,25 +78,39 @@ export default function HomeBookCover() {
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Blood drops falling
-      const dropCount = 15;
+      // Blood drops falling - realistic with 1 second spacing
+      const dropCount = 8;
       for (let i = 0; i < dropCount; i++) {
-        const dropX = canvas.width * 0.5 + Math.sin(time * 0.5 + i) * 250;
-        const dropY = (time * 120 + i * 80) % (canvas.height + 100);
-        const dropSize = 4 + Math.sin(time + i) * 2;
+        // Calculate drop position with 1 second (60 frames) spacing
+        const dropSpacing = 60; // frames between drops
+        const dropPhase = (time - i * dropSpacing) % (canvas.height / 100 + 60);
+        
+        if (dropPhase < 0) continue; // Drop hasn't started yet
+        
+        const dropX = canvas.width * 0.5 + Math.sin(time * 0.3 + i) * 150;
+        const dropY = dropPhase * 100;
+        const dropSize = 8 + Math.sin(time + i) * 2; // Larger drops
 
-        // Blood drop
-        ctx.fillStyle = `rgba(220, 0, 0, ${Math.max(0, 0.95 - (dropY / canvas.height) * 0.95)})`;
+        if (dropY > canvas.height) continue; // Drop has fallen off screen
+
+        // Main blood drop - more realistic
+        ctx.fillStyle = `rgba(180, 0, 0, ${Math.max(0, 1 - (dropY / canvas.height) * 0.8)})`;
         ctx.beginPath();
         ctx.arc(dropX, dropY, dropSize, 0, Math.PI * 2);
         ctx.fill();
 
-        // Blood trail
-        ctx.strokeStyle = `rgba(200, 0, 0, ${Math.max(0, 0.7 - (dropY / canvas.height) * 0.7)})`;
-        ctx.lineWidth = 2;
+        // Outer glow for realism
+        ctx.fillStyle = `rgba(220, 0, 0, ${Math.max(0, 0.5 - (dropY / canvas.height) * 0.5)})`;
+        ctx.beginPath();
+        ctx.arc(dropX, dropY, dropSize + 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Blood trail below drop
+        ctx.strokeStyle = `rgba(150, 0, 0, ${Math.max(0, 0.6 - (dropY / canvas.height) * 0.6)})`;
+        ctx.lineWidth = 3;
         ctx.beginPath();
         ctx.moveTo(dropX, dropY);
-        ctx.lineTo(dropX + Math.sin(time + i) * 6, dropY + 50);
+        ctx.lineTo(dropX + Math.sin(time + i) * 4, dropY + 80);
         ctx.stroke();
       }
 
@@ -125,7 +156,7 @@ export default function HomeBookCover() {
       {/* Dark overlay for better text visibility */}
       <div className="absolute inset-0 bg-black/20" />
 
-      {/* Live counter - wrapping around Centennial Flame base */}
+      {/* Live counter + sports ticker clock - wrapping around Centennial Flame base */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
         <div className="relative w-96 h-96">
           {/* Days - Top */}
@@ -158,7 +189,7 @@ export default function HomeBookCover() {
             </div>
           </div>
 
-          {/* Left - Since Feb 14, 2019 */}
+          {/* Left - Since Feb 14, 2021 */}
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black border-2 border-yellow-400 px-3 py-2 rounded-sm">
             <div className="text-yellow-400 text-xs text-center font-bold whitespace-nowrap">
               SINCE
@@ -168,6 +199,18 @@ export default function HomeBookCover() {
             </div>
             <div className="text-yellow-400 text-xs text-center font-bold">
               2021
+            </div>
+          </div>
+
+          {/* Sports Ticker Clock - Bottom Right */}
+          <div className="absolute -bottom-20 right-0 transform translate-x-2">
+            <div className="bg-black border-2 border-yellow-400 px-4 py-2 rounded-sm animate-pulse">
+              <div className="text-yellow-400 font-bold text-lg text-center font-mono tracking-wider">
+                {currentTime}
+              </div>
+              <div className="text-yellow-400 text-xs text-center font-bold">
+                LIVE
+              </div>
             </div>
           </div>
         </div>
