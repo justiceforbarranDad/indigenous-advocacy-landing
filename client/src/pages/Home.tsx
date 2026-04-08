@@ -214,10 +214,7 @@ export default function Home() {
             </p>
             <div className="bg-gray-800 rounded-lg p-6 text-center text-yellow-300">
               <p className="mb-4">🎙️ Podcast Player</p>
-              <audio controls className="w-full">
-                <source src="" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
+              <p className="text-gray-400 text-sm italic">Audio coming soon</p>
             </div>
           </div>
         </div>
@@ -238,10 +235,7 @@ export default function Home() {
             </p>
             <div className="bg-gray-800 rounded-lg p-6 text-center text-yellow-300">
               <p className="mb-4">📻 Radio Player</p>
-              <audio controls className="w-full">
-                <source src="" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
+              <p className="text-gray-400 text-sm italic">Audio coming soon</p>
             </div>
           </div>
         </div>
