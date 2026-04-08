@@ -5,9 +5,9 @@ export default function LanguageSelector() {
   const { i18n } = useTranslation();
 
   const languages = [
-    { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'ht', name: 'Kreyòl', flag: '🇭🇹' },
+    { code: 'en', name: 'English' },
+    { code: 'fr', name: 'Français' },
+    { code: 'ht', name: 'Créole Haïtien' },
   ];
 
   const handleLanguageChange = (code: string) => {
@@ -25,7 +25,6 @@ export default function LanguageSelector() {
             className={`language-button ${i18n.language === lang.code ? 'active' : ''}`}
             title={lang.name}
           >
-            <span className="flag">{lang.flag}</span>
             <span className="name">{lang.name}</span>
           </button>
         ))}
@@ -74,28 +73,14 @@ export default function LanguageSelector() {
           box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
         }
 
-        .flag {
-          font-size: 18px;
-        }
-
         .name {
-          display: none;
-        }
-
-        @media (min-width: 640px) {
-          .name {
-            display: inline;
-          }
+          display: inline;
         }
 
         @media (max-width: 480px) {
           .language-button {
             padding: 6px 10px;
             font-size: 12px;
-          }
-
-          .flag {
-            font-size: 16px;
           }
         }
       `}</style>

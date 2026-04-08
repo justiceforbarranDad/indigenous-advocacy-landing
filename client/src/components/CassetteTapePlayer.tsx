@@ -207,7 +207,7 @@ export default function CassetteTapePlayer() {
             language === 'en' ? 'bg-yellow-400 text-black' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
         >
-          🇬🇧 EN
+          Canadian English
         </button>
         <button
           onClick={() => handleLanguageChange('fr')}
@@ -215,7 +215,7 @@ export default function CassetteTapePlayer() {
             language === 'fr' ? 'bg-yellow-400 text-black' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
         >
-          🇫🇷 FR
+          Canadian French
         </button>
       </div>
 

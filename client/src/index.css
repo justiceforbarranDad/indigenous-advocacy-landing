@@ -95,11 +95,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Lora', Georgia, serif;
-    background-image: url('https://d2xsxph8kpxj0f.cloudfront.net/310519663438870618/AHjdMzisGBtTsV22ZEw3x9/background-flag-reconciliation_a93c61b3.png');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #000000;
     position: relative;
   }
   
@@ -110,7 +106,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(0, 0, 0, 0);
     pointer-events: none;
     z-index: -1;
   }

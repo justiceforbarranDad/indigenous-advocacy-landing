@@ -13,11 +13,11 @@ export function TranslationWidget({ content, title }: TranslationWidgetProps) {
   const [copied, setCopied] = useState(false);
 
   const languages = [
-    { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'ht', name: 'Kreyòl', flag: '🇭🇹' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
-    { code: 'pt', name: 'Português', flag: '🇧🇷' },
+    { code: 'en', name: 'English' },
+    { code: 'fr', name: 'Français' },
+    { code: 'ht', name: 'Créole Haïtien' },
+    { code: 'es', name: 'Español' },
+    { code: 'pt', name: 'Portugués' },
   ];
 
   const handleTranslate = async (langCode: string) => {
@@ -92,7 +92,7 @@ export function TranslationWidget({ content, title }: TranslationWidgetProps) {
                   : 'bg-white text-blue-600 border-2 border-blue-300 hover:bg-blue-100'
               } disabled:opacity-50`}
             >
-              {lang.flag} {lang.name}
+              {lang.name}
             </button>
           ))}
         </div>

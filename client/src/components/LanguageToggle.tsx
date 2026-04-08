@@ -17,7 +17,7 @@ export function LanguageToggle() {
     };
   }, [i18n]);
 
-  const toggleLanguage = (lang: 'en' | 'fr') => {
+  const toggleLanguage = (lang: 'en' | 'fr' | 'ht') => {
     i18n.changeLanguage(lang);
     setCurrentLang(lang);
     localStorage.setItem('preferredLanguage', lang);
@@ -34,7 +34,7 @@ export function LanguageToggle() {
             : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
         }`}
       >
-        🇬🇧 English
+        Canadian English
       </Button>
       <Button
         onClick={() => toggleLanguage('fr')}
@@ -45,7 +45,18 @@ export function LanguageToggle() {
             : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
         }`}
       >
-        🇫🇷 Français
+        Canadian French
+      </Button>
+      <Button
+        onClick={() => toggleLanguage('ht')}
+        variant={currentLang === 'ht' ? 'default' : 'outline'}
+        className={`px-4 py-2 rounded font-semibold transition-all ${
+          currentLang === 'ht'
+            ? 'bg-yellow-300 text-black hover:bg-yellow-400'
+            : 'bg-gray-700 text-yellow-300 hover:bg-gray-600'
+        }`}
+      >
+        Haitian Creole
       </Button>
     </div>
   );

@@ -246,6 +246,43 @@
 - [ ] Verify all buttons have 44px+ minimum touch targets
 - [ ] Test French translation on all mobile pages
 
+## COMPLETED: Previous Version Features
+- [x] 13-slide carousel with accountability message
+- [x] Children's Rights education page
+- [x] Share Your Story form
+- [x] Direct e-Transfer donations
+- [x] QR code for e-Transfer donations
+- [x] Resources & References page
+- [x] Persistent music player
+- [x] Social media integration buttons
+- [x] International Legal Support page
+- [x] Admin Dashboard
+- [x] Public Stories Gallery
+- [x] Monthly Impact Reports
+- [x] Indigenous Nations page
+- [x] Accountability Tracker page
+- [x] Legal disclaimers and Charter protection notices
+
+## URGENT: MULTILINGUAL REDESIGN (April 8, 2026 - PRIORITY)
+- [ ] Change main title to "Justice For Barran"
+- [ ] Add footer with "The McGovern Foundation of Human Rights"
+- [ ] Implement Canadian English translation (full page)
+- [ ] Implement Canadian French (Français Canadien) translation (full page)
+- [ ] Implement Haitian Creole (Créole Haïtien) translation (full page)
+- [ ] Build language selector with 3 text-only buttons (no flag emojis)
+- [ ] Ensure full-page translation when language is selected
+- [ ] Black background + yellow text throughout
+- [ ] Parliament buildings (Quebec + Ottawa) visible
+- [ ] Remove ALL flag images from codebase
+- [ ] Build functional podcast player
+- [ ] Build functional radio station
+- [ ] Build donation system with preset amounts ($5, $10, $20, $50, $100)
+- [ ] TD Bank direct transfer integration
+- [ ] Stripe credit card integration
+- [ ] Apple Pay integration
+- [ ] QR codes for each preset amount
+- [ ] Remove ALL lawsuit/legal financial details from public pages
+
 ## COMPREHENSIVE SYSTEMIC ACCOUNTABILITY NEWSPAPER (March 15, 2026 - MAJOR EXPANSION)
 
 ### Phase 1: Systemic Violations Archive

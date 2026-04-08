@@ -185,7 +185,7 @@ export function JukeboxPlayer() {
       <div className="w-full bg-gradient-to-b from-amber-50 to-cream rounded-xl border-4 border-amber-orange p-8 shadow-lg">
         
         {/* Language Toggle */}
-        <div className="flex gap-3 mb-6 justify-center">
+        <div className="flex gap-3 mb-6 justify-center flex-wrap">
           <button
             onClick={() => handleLanguageChange('en')}
             className={`py-2 px-6 rounded-lg font-bold text-sm transition-all ${
@@ -194,7 +194,7 @@ export function JukeboxPlayer() {
                 : 'bg-cream text-forest-green border-2 border-forest-green hover:bg-forest-green/10'
             }`}
           >
-            🇬🇧 English
+            Canadian English
           </button>
           <button
             onClick={() => handleLanguageChange('fr')}
@@ -204,7 +204,17 @@ export function JukeboxPlayer() {
                 : 'bg-cream text-forest-green border-2 border-forest-green hover:bg-forest-green/10'
             }`}
           >
-            🇫🇷 Français
+            Canadian French
+          </button>
+          <button
+            onClick={() => handleLanguageChange('ht')}
+            className={`py-2 px-6 rounded-lg font-bold text-sm transition-all ${
+              language === 'ht'
+                ? 'bg-forest-green text-cream shadow-lg'
+                : 'bg-cream text-forest-green border-2 border-forest-green hover:bg-forest-green/10'
+            }`}
+          >
+            Haitian Creole
           </button>
         </div>
 
