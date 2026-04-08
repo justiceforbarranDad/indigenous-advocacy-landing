@@ -106,33 +106,27 @@ export default function Home() {
       <div className="fixed top-4 right-4 z-50 flex gap-2">
         <button
           onClick={() => setLanguage('en')}
-          className={`px-3 py-1 rounded text-sm font-semibold transition-colors ${
-            language === 'en'
-              ? 'bg-yellow-300 text-black'
-              : 'bg-gray-700 text-yellow-300 hover:bg-gray-600'
-          }`}
+          className="px-3 py-1 rounded text-sm font-semibold bg-yellow-300 text-black hover:bg-yellow-400 transition-colors border-0"
         >
-          English
+          {language === 'en' && 'Canadian English'}
+          {language === 'fr' && 'Anglais Canadien'}
+          {language === 'ht' && 'Anglè Kanadyen'}
         </button>
         <button
           onClick={() => setLanguage('fr')}
-          className={`px-3 py-1 rounded text-sm font-semibold transition-colors ${
-            language === 'fr'
-              ? 'bg-yellow-300 text-black'
-              : 'bg-gray-700 text-yellow-300 hover:bg-gray-600'
-          }`}
+          className="px-3 py-1 rounded text-sm font-semibold bg-yellow-300 text-black hover:bg-yellow-400 transition-colors border-0"
         >
-          Français
+          {language === 'en' && 'Canadian French'}
+          {language === 'fr' && 'Français Canadien'}
+          {language === 'ht' && 'Franse Kanadyen'}
         </button>
         <button
           onClick={() => setLanguage('ht')}
-          className={`px-3 py-1 rounded text-sm font-semibold transition-colors ${
-            language === 'ht'
-              ? 'bg-yellow-300 text-black'
-              : 'bg-gray-700 text-yellow-300 hover:bg-gray-600'
-          }`}
+          className="px-3 py-1 rounded text-sm font-semibold bg-yellow-300 text-black hover:bg-yellow-400 transition-colors border-0"
         >
-          Créole Haïtien
+          {language === 'en' && 'Haitian Creole'}
+          {language === 'fr' && 'Créole Haïtien'}
+          {language === 'ht' && 'Kreyòl Ayisyen'}
         </button>
       </div>
 
@@ -154,7 +148,7 @@ export default function Home() {
 
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <h1 className="text-5xl md:text-7xl font-bold text-yellow-300 mb-6 leading-tight font-serif">
-            Justice For Barran
+            {t('heroTitle')}
           </h1>
           <p className="text-xl md:text-2xl text-yellow-200 mb-8 font-light">
             {t('heroSubtitle')}
@@ -226,7 +220,9 @@ export default function Home() {
           </h2>
           <Card className="bg-black border-4 border-yellow-300 p-8">
             <p className="text-yellow-200 text-center mb-6">
-              Listen to our full podcast about Indigenous advocacy and justice.
+              {language === 'en' && 'Listen to our full podcast about Indigenous advocacy and justice.'}
+              {language === 'fr' && 'Écoutez notre podcast complet sur l\'advocacy autochtone et la justice.'}
+              {language === 'ht' && 'Koute podcast konple nou sou advokasi Endijèn ak jistis.'}
             </p>
             {/* Podcast player placeholder */}
             <div className="bg-gray-800 rounded-lg p-6 text-center text-yellow-300">
@@ -249,13 +245,17 @@ export default function Home() {
           </h2>
           <Card className="bg-black border-4 border-yellow-300 p-8">
             <p className="text-yellow-200 text-center mb-6">
-              Tune in to our live radio station for Indigenous advocacy and updates.
+              {language === 'en' && 'Tune in to our live radio station for Indigenous advocacy and updates.'}
+              {language === 'fr' && 'Écoutez notre station de radio en direct pour l\'advocacy autochtone et les mises à jour.'}
+              {language === 'ht' && 'Koute estasyon radyo dirèk nou pou advokasi Endijèn ak nouvel.'}
             </p>
             {/* Radio player placeholder */}
             <div className="bg-gray-800 rounded-lg p-6 text-center text-yellow-300">
               <p className="mb-4">📻 Radio Station</p>
               <Button className="bg-yellow-300 hover:bg-yellow-400 text-black px-8 py-2 rounded-lg font-semibold">
-                Tune In Live
+                {language === 'en' && 'Tune In Live'}
+                {language === 'fr' && 'Écouter en Direct'}
+                {language === 'ht' && 'Koute Dirèk'}
               </Button>
             </div>
           </Card>
