@@ -95,7 +95,7 @@ export default function PageDonationSection({ language }: PageDonationSectionPro
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const createCheckoutMutation = trpc.donations.createCheckoutSession.useMutation();
+  const createCheckoutMutation = trpc.stripe.createCheckoutSession.useMutation();
 
   const handleStripeCheckout = async (amount: number) => {
     setIsLoading(true);
@@ -104,6 +104,8 @@ export default function PageDonationSection({ language }: PageDonationSectionPro
     try {
       const result = await createCheckoutMutation.mutateAsync({
         amount,
+        donorName: 'Donor',
+        donorEmail: 'donor@justiceforbarran.com',
       });
 
       if (result?.url) {

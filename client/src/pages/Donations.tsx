@@ -10,7 +10,7 @@ export default function Donations() {
   const [qrCodes, setQrCodes] = useState<{ [key: number]: string }>({});
   const [showDonationWarning, setShowDonationWarning] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
-  const createCheckoutMutation = trpc.donations.createCheckoutSession.useMutation();
+  const createCheckoutMutation = trpc.stripe.createCheckoutSession.useMutation();
 
   // Generate QR codes for Interac donations
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function Donations() {
     // Fallback to Stripe after 2 seconds if Interac doesn't work
     setTimeout(async () => {
       try {
-        const { url } = await createCheckoutMutation.mutateAsync({ amount: selectedAmount });
+        const { url } = await createCheckoutMutation.mutateAsync({ amount: selectedAmount, donorName: 'Donor', donorEmail: 'donor@justiceforbarran.com' });
         if (url) {
           window.open(url, '_blank');
         }
@@ -239,7 +239,7 @@ export default function Donations() {
                     key={`stripe-${amount}`}
                     onClick={async () => {
                       try {
-                        const { url } = await createCheckoutMutation.mutateAsync({ amount });
+                        const { url } = await createCheckoutMutation.mutateAsync({ amount, donorName: 'Donor', donorEmail: 'donor@justiceforbarran.com' });
                         if (url) {
                           window.open(url, '_blank');
                         }
