@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { useAuth } from "@/_core/hooks/useAuth";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { ChevronDown, Heart, Radio, Music } from "lucide-react";
 
 type Language = 'en' | 'fr' | 'ht';
@@ -146,13 +144,13 @@ export default function Home() {
           <p className="text-lg text-yellow-100 mb-12 max-w-2xl mx-auto">
             {t('mission')}
           </p>
-          <Button
+          <button
             onClick={() => document.getElementById('donation-section')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-yellow-300 hover:bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+            className="bg-yellow-300 hover:bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2"
           >
-            <Heart className="mr-2 inline" size={20} />
+            <Heart size={20} />
             {t('supportTitle')}
-          </Button>
+          </button>
         </div>
 
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -208,7 +206,7 @@ export default function Home() {
             <Music size={40} />
             {t('podcast')}
           </h2>
-          <Card className="bg-black border-4 border-yellow-300 p-8">
+          <div className="bg-black border-4 border-yellow-300 p-8 rounded-lg">
             <p className="text-yellow-200 text-center mb-6">
               {language === 'en' && 'Listen to our full podcast about Indigenous advocacy and justice.'}
               {language === 'fr' && 'Écoutez notre podcast complet sur l\'advocacy autochtone et la justice.'}
@@ -221,7 +219,7 @@ export default function Home() {
                 Your browser does not support the audio element.
               </audio>
             </div>
-          </Card>
+          </div>
         </div>
       </section>
 
@@ -232,7 +230,7 @@ export default function Home() {
             <Radio size={40} />
             {t('radio')}
           </h2>
-          <Card className="bg-black border-4 border-yellow-300 p-8">
+          <div className="bg-black border-4 border-yellow-300 p-8 rounded-lg">
             <p className="text-yellow-200 text-center mb-6">
               {language === 'en' && 'Tune in to our live radio station for Indigenous advocacy and updates.'}
               {language === 'fr' && 'Écoutez notre station de radio en direct pour l\'advocacy autochtone et les mises à jour.'}
@@ -245,7 +243,7 @@ export default function Home() {
                 Your browser does not support the audio element.
               </audio>
             </div>
-          </Card>
+          </div>
         </div>
       </section>
 
