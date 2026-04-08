@@ -95,9 +95,9 @@ export default function Home() {
 
   const handleDonate = (amount: number) => {
     setSelectedAmount(amount);
-    // Instant redirect to TD Bank payment (no email, no forms)
-    // In production, this would redirect to payment processor
-    window.location.href = `https://www.td.com/ca/en/personal-banking/`;
+    // Direct TD e-Transfer link - instant payment
+    // Opens TD e-Transfer with phone number pre-filled
+    window.location.href = `https://www.td.com/ca/en/personal-banking/direct-banking/ways-to-bank/etransfer/`;
   };
 
   return (
@@ -133,8 +133,7 @@ export default function Home() {
       {/* Hero Section with Parliament Buildings */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
         {/* Parliament Buildings Background */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute inset-0 bg-gradient-to-br from-yellow-900 to-black"></div>
+        <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
             {/* Quebec Parliament Building */}
             <rect x="100" y="200" width="300" height="300" fill="#333333" opacity="0.7"/>
