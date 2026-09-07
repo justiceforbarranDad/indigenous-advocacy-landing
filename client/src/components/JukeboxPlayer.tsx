@@ -206,16 +206,6 @@ export function JukeboxPlayer() {
           >
             Canadian French
           </button>
-          <button
-            onClick={() => handleLanguageChange('ht')}
-            className={`py-2 px-6 rounded-lg font-bold text-sm transition-all ${
-              language === 'ht'
-                ? 'bg-forest-green text-cream shadow-lg'
-                : 'bg-cream text-forest-green border-2 border-forest-green hover:bg-forest-green/10'
-            }`}
-          >
-            Haitian Creole
-          </button>
         </div>
 
         {/* Current Episode Info */}

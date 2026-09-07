@@ -1902,3 +1902,12 @@ STYLE: Indigenous advocacy infographic aesthetic (three-panel layout, Indigenous
 - [x] THE SILENCE CLOCK below video (1875+ days counting)
 - [x] Full-width banner, not too tall, eye-catching
 - [ ] Save checkpoint with video hero
+
+## SECURE PUBLIC-CONTENT AND MEDIA UPGRADE (User Requested)
+- [x] Apply the V5 public-content anonymity shield to the active public shell: remove unauthorized civilian surnames, personal first names, and private email addresses from the homepage and metadata; retain only the authorized public titles and contact emails specified by the user.
+- [x] Replace public homepage/About legal framing with a careful bilingual English/French presentation grounded in the requested Canadian constitutional and Aboriginal-law authorities, without presenting legal conclusions as guaranteed outcomes.
+- [x] Replace empty podcast and radio placeholders with responsive dark-themed media players using the supplied blueprint code and secure YouTube embed domain where applicable.
+- [x] Remove the third language option from the public language framework and keep only Canadian English and Canadian French.
+- [x] Verify build output, focused regression tests, TypeScript checks, and local homepage/storage-proxy smoke tests before saving a checkpoint; visual screenshot capture remains pending because the preview service did not expose a URL.
+- [x] Review and resolve the media-player import, storage-proxy, and legacy public-route regressions discovered during verification.
+- [x] Audit the active public surface: removed legacy routes and the unused i18n provider so prohibited identities and the removed third-language option are absent from the production bundle; archived source files remain outside the public route surface.
